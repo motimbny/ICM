@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.TextField?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../../../../Desktop/ICM/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="140.0" text="      Home        ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/ICM/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="Show requests">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/ICM/document.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="  Personal info ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/ICM/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="       Help         ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/ICM/info.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="   Log-Out     ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../Desktop/ICM/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0" stylesheets="@../../../../../Desktop/ICM/style.css">
+         <children>
+            <Button fx:id="SendTesterSUbmitReport" layoutX="476.0" layoutY="451.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="110.0" text="Send">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </Button>
+            <Label layoutX="197.0" layoutY="42.0" prefHeight="45.0" prefWidth="241.0" text="Submit a report">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="112.0" prefHeight="25.0" prefWidth="79.0" text="Request ID">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="187.0" prefHeight="25.0" prefWidth="127.0" text="Report summry">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField disable="true" layoutX="48.0" layoutY="140.0" prefHeight="25.0" prefWidth="194.0" />
+            <TextArea layoutX="48.0" layoutY="214.0" prefHeight="200.0" prefWidth="538.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="116.0" prefWidth="140.0" stylesheets="@../../../../../Desktop/ICM/style.css">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="4.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../Desktop/ICM/logo.JPG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>
