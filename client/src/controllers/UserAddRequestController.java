@@ -6,7 +6,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 
-public class useraddreController 
+public class UserAddRequestController 
 {
     @FXML
     private Button homeBTN;
