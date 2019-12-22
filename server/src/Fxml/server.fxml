@@ -2,24 +2,31 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.serverController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.serverController">
    <children>
-      <Button fx:id="connect" layoutX="31.0" layoutY="272.0" mnemonicParsing="false" onMouseClicked="#connect" prefHeight="38.0" prefWidth="200.0" text="Connect" />
-      <Button fx:id="disconnect" layoutX="31.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#disconnect" prefHeight="38.0" prefWidth="200.0" text="Disconnect" />
-      <ImageView fitHeight="163.0" fitWidth="424.0" layoutX="113.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="connect" layoutX="52.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#connect" prefHeight="38.0" prefWidth="200.0" text="Connect" />
+      <Button fx:id="disconnect" layoutX="52.0" layoutY="455.0" mnemonicParsing="false" onMouseClicked="#disconnect" prefHeight="38.0" prefWidth="200.0" text="Disconnect" />
+      <ImageView fitHeight="199.0" fitWidth="444.0" layoutX="335.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Images/logo.JPG" />
          </image>
       </ImageView>
-      <TextArea fx:id="messagebox" layoutX="250.0" layoutY="235.0" prefHeight="133.0" prefWidth="317.0" />
-      <Label layoutX="257.0" layoutY="210.0" text="Server message:" />
-      <TextField fx:id="port" layoutX="39.0" layoutY="235.0" prefHeight="25.0" prefWidth="188.0" promptText="enter port number here..." />
-      <Label layoutX="39.0" layoutY="210.0" prefHeight="17.0" prefWidth="105.0" text="Port to connect:" />
+      <TextArea fx:id="messagebox" layoutX="322.0" layoutY="248.0" prefHeight="313.0" prefWidth="431.0" />
+      <Label layoutX="322.0" layoutY="227.0" text="Server message:" />
+      <TextField fx:id="port" layoutX="28.0" layoutY="52.0" prefHeight="25.0" prefWidth="188.0" promptText="enter port number here..." />
+      <Label layoutX="28.0" layoutY="35.0" prefHeight="17.0" prefWidth="105.0" text="Port to connect:" />
+      <Label layoutX="27.0" layoutY="105.0" prefHeight="17.0" prefWidth="163.0" text="Data base user name:" />
+      <Label layoutX="28.0" layoutY="156.0" prefHeight="17.0" prefWidth="125.0" text="Data base password:" />
+      <Label layoutX="28.0" layoutY="205.0" prefHeight="17.0" prefWidth="144.0" text="Data base scheme name:" />
+      <TextField fx:id="dbuser" layoutX="28.0" layoutY="122.0" prefHeight="25.0" prefWidth="188.0" promptText="enter data base name here..." />
+      <TextField fx:id="dbscheme" layoutX="28.0" layoutY="223.0" prefHeight="25.0" prefWidth="188.0" promptText="enter scheme name here..." />
+      <PasswordField fx:id="dbpassword" layoutX="28.0" layoutY="173.0" prefHeight="25.0" prefWidth="188.0" promptText="enter password here..." />
    </children>
 </Pane>

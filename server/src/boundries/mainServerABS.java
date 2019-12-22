@@ -48,7 +48,18 @@ public class mainServerABS extends AbstractServer
 		 {
 			 try 
 			    {
-			      listen(); //Start listening for connections
+			      this.listen(); //Start listening for connections
+			    } 
+			    catch (Exception ex) 
+			    {
+			    	serverController.showOnScreen("ERROR - Could not listen for clients!");
+			    }
+		 }
+		 public void stopServer()
+		 {
+			 try 
+			    {
+			      this.stopListening(); //Start listening for connections
 			    } 
 			    catch (Exception ex) 
 			    {
