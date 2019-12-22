@@ -6,28 +6,27 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import entity.ConnectToDB;
+import entity.DBmessage;
 import entity.User;
 
 public class loginSController 
 {
 	private String user;
 	private String password;
-	private ConnectToDB connection;
-	public loginSController(String user,String password,ConnectToDB connection)
+	private Connection connection;
+	public loginSController(DBmessage msg,Connection connection)
 	{
-		this.user=user;
-		this.password=password;
+		this.user=((String)msg.getObjs().get(0));
+		this.password=((String)msg.getObjs().get(1));
 		this.connection=connection;
 	}
 	public User CheckLogIn()
 	{
     	Statement stmt;
     	User toSend;
-    	Connection con;
-    	con=connection.Connect();
   		try 
   		  {
-  			stmt = con.createStatement();
+  			stmt = connection.createStatement();
   			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE userName='"+user+ "'");
   	 		if(rs.next()==false)
   	 		{
