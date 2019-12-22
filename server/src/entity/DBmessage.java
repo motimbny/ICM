@@ -3,23 +3,19 @@ package entity;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import Enums.MessageType;
+
 public class DBmessage implements Serializable
 {
 
     	private static final long serialVersionUID = 1L;
-		public enum MessageType
-		{
-			UPDATE, SELECT, DBData,Exception,SetDB, DBStatus, INSERT;
-		}
 		private ArrayList<Object> objM;
-		private String clas = null;
 		private MessageType type;
-		public DBmessage(MessageType type, ArrayList<Object> objs, String clas) 
+		public DBmessage(MessageType type, ArrayList<Object> objs) 
 		{
 			super();
 			this.type = type;
 			this.objM = objs;
-			this.clas=clas;
 		}
 
 		public MessageType getType() 
@@ -42,15 +38,5 @@ public class DBmessage implements Serializable
 			this.objM = new ArrayList<>();
 			for (Object o : objs)
 				this.objM.add(o);
-		}
-		
-		public String getClasz() 
-		{
-			return clas;
-		}
-
-		public void setClasz(String clas)
-		{
-			this.clas = clas;
 		}
 }
