@@ -18,6 +18,7 @@ public class mainServer extends Application
 	 @Override
 	 public void start(Stage primaryStage) 
 	 {
+		 //nhbubu
 		    window=primaryStage;
 	        try 
 	        {
