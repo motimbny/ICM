@@ -1,13 +1,24 @@
 package controllers;
 
+import java.util.ArrayList;
+
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 
 public class UserAddRequestController 
 {
+	public UserAddRequestController()
+	{
+		badAddRequest.setVisible(false);
+		goodAddRe.setVisible(false);
+		addreBTN.setStyle("-fx-border-color: black;");
+	}
     @FXML
     private Button homeBTN;
     @FXML
@@ -35,39 +46,67 @@ public class UserAddRequestController
     @FXML
     private Button addAttachmentsUserAddReq;
     @FXML
+    private Label badAddRequest;
+    @FXML
+    private Label goodAddRe;
+    @FXML
+    void submitRequest(MouseEvent event) 
+    {
+    	if(desExtSit.getText().equals("")||desReqCha.getText().equals("")||expChaBen.getText().equals(""))
+    	{
+    		badAddRequest.setVisible(true);
+    	}
+    	else
+    	{
+    		badAddRequest.setVisible(false);
+	    	ArrayList<Object> arry=new ArrayList();
+	        arry.add(chooseInfoCom.getValue());
+	        arry.add(desExtSit.getText());
+	        arry.add(desReqCha.getText());
+	        arry.add(expChaBen.getText());
+	        arry.add(MorInfoAdd.getText());
+	    	DBmessage dbm=new DBmessage(MessageType.Login, arry);
+	    	//mainallcontrollers.mcABS.sendtoserver(dbm);  
+    	}
+    }
+    public void setOnSucsess()
+    {
+		goodAddRe.setVisible(true);
+    }
+    @FXML
     void backToHome(MouseEvent event) 
     {
-
+    	//mainallcontrollers.setWindowVar("userhome");
+    	//mainallcontrollers.setWindow();
     }
-
     @FXML
     void backToRequest(MouseEvent event)
     {
-
+    	//mainallcontrollers.setWindowVar("userrequests");
+    	//mainallcontrollers.setWindow();
     }
-
     @FXML
     void backTohelp(MouseEvent event)
     {
-
+    	//mainallcontrollers.setWindowVar("help");
+    	//mainallcontrollers.setWindow();
     }
-
     @FXML
     void backToinfo(MouseEvent event)
     {
-
+    	//mainallcontrollers.setWindowVar("userinfo");
+    	//mainallcontrollers.setWindow();
     }
-
     @FXML
     void backTorAddequest(MouseEvent event) 
     {
-
+    	//mainallcontrollers.setWindowVar("useraddrequest");
+    	//mainallcontrollers.setWindow();
     }
-
     @FXML
     void logut(MouseEvent event)
     {
-
+    	//mainallcontrollers.setWindowVar("login");
+    	//mainallcontrollers.setWindow();
     }
-
 }

@@ -15,12 +15,15 @@ public class MainAllControllers
 	Scene s;
     Pane pane;
 	private WindowToShow WindowToShow;
-	
     public MainAllControllers(Stage window)
     {
     	this.window=window;
     	WindowToShow=new WindowToShow();
     	WindowToShow.setWindowToShow("login");
+    }
+    public void setWindowVar(String str)
+    {
+    	this.WindowToShow.setWindowToShow(str);
     }
 	public void setWindow() 
 	{

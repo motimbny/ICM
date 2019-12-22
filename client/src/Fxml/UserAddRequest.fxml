@@ -72,7 +72,7 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0" stylesheets="@../../../../../Desktop/ICM/style.css">
          <children>
-            <Button fx:id="submitRequestUserAddReq" layoutX="495.0" layoutY="545.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="152.0" text="Submit request">
+            <Button fx:id="submitRequestUserAddReq" layoutX="495.0" layoutY="545.0" mnemonicParsing="false" onMouseClicked="#submitRequest" prefHeight="39.0" prefWidth="152.0" text="Submit request">
                <font>
                   <Font size="18.0" />
                </font>
@@ -121,6 +121,8 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
+            <Label fx:id="badAddRequest" layoutX="495.0" layoutY="525.0" text="Please fill all fields necessary" />
+            <Label fx:id="goodAddRe" layoutX="502.0" layoutY="525.0" text="request was submitted" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0" stylesheets="@../../../../../Desktop/ICM/style.css">
