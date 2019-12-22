@@ -69,7 +69,13 @@ public class MainAllControllers {
 	{
 		CCRequestMoreInfoController controller=new CCRequestMoreInfoController(); //CCRequestMoreInfo
 		pathfxml="/Fxml/ControlCommeteeRequestMoreInfo.fxml";
-		windowName="ICM-Login";
+		windowName="ICM-RequestMoreInformation";
+	}
+	public void initCCShowRequests()
+	{
+		CCShowRequestsController controller=new CCShowRequestsController(); //CCShowRequests
+		pathfxml="/Fxml/ControlCommeteeShowRequests.fxml";
+		windowName="ICM-ShowRequests";
 	}
 	
 }
