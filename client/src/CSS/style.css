@@ -65,7 +65,11 @@
 	-fx-border-radius: 5 5 5 5; 
     -fx-background-radius: 5 5 5 5; 
 }
-
+#wrongLbl
+{
+	    -fx-text-fill: red;
+	
+}
 #loginMainScreen
 {
 	-fx-border-color: #3C3C3C;
