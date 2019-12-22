@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.sql.Connection;
 
 import controllers.loginSController;
+import controllers.serverController;
 import entity.DBmessage;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
@@ -12,12 +13,16 @@ public class mainServerABS extends AbstractServer
 	    Object controller;
 	    private Connection connection;
 	    private boolean IsDBConnected=false;
-		public mainServerABS(int port,Connection connection)
+	    private serverController serverController;
+		public mainServerABS(int port,serverController serverController)
 		{
 			super(port);
-	    	this.connection=connection;
-	    	if(!connection.equals(null))
-	    		IsDBConnected=true;
+	    	this.serverController=serverController;
+		}
+		public void connectToDb(Connection connection)
+		{
+			this.connection=connection;
+			IsDBConnected=true;
 		}
 		@Override
 		protected void handleMessageFromClient(Object msg, ConnectionToClient client)
@@ -47,17 +52,17 @@ public class mainServerABS extends AbstractServer
 			    } 
 			    catch (Exception ex) 
 			    {
-			      System.out.println("ERROR - Could not listen for clients!");
+			    	serverController.showOnScreen("ERROR - Could not listen for clients!");
 			    }
 		 }
 	    protected void serverStarted()
 	    {
-	    	System.out.println("> Server listening for connections on port " + getPort());
+	    	serverController.showOnScreen("> Server listening for connections on port " + getPort());
 	    }
 
 	    protected void serverStopped()
 	    {
-	    	System.out.println("> Server has stopped listening for connections.");
+	    	serverController.showOnScreen("> Server has stopped listening for connections.");
 	    }
 	    public boolean getIsDBConnected()
 	    {
