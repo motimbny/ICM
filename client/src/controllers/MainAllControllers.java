@@ -7,20 +7,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-public class MainAllControllers {
-
-	mainClientABS mcABS;
-	Object controller;
-	String pathfxml,windowName;
+import entity.WindowToShow;
+public class MainAllControllers 
+{
+	mainClientABS mcABS;               //singleton of one 
 	Stage window;
 	Scene s;
     Pane pane;
+	private WindowToShow WindowToShow;
 	
     public MainAllControllers(Stage window)
     {
     	this.window=window;
-    	initLogin();
+    	WindowToShow=new WindowToShow();
+    	WindowToShow.setWindowToShow("login");
     }
 	public void setWindow() 
 	{
@@ -32,9 +32,9 @@ public class MainAllControllers {
 	        try 
 	        {
 	            FXMLLoader loader = new FXMLLoader();
-	            loader.setLocation(getClass().getResource(pathfxml));
+	            loader.setLocation(getClass().getResource(WindowToShow.getPathfxml()));
 	            pane =  loader.load();
-	            controller = loader.getController();
+	            WindowToShow.controller = loader.getController();
 	        } 
 	        catch (IOException e) 
 	        {
@@ -45,37 +45,8 @@ public class MainAllControllers {
 	}
 	public void setScence(Scene s)
 	{
-		 window.setTitle(windowName);
+		 window.setTitle(WindowToShow.getWindowName());
 	     window.setScene(s);
 	     window.show(); 
 	}
-	
-	
-	//------------------------------------//
-	
-	public void initLogin()
-	{
-		LoginController controller=new LoginController();
-		pathfxml="/Fxml/Login.fxml";
-		windowName="ICM-Login";
-	}
-	public void initCCEvaluationReport()
-	{
-		CCEvaluationReportController controller=new CCEvaluationReportController(); //CCEvaluationReport
-		pathfxml="/Fxml/ControlCommeteeEvaluationReport.fxml";
-		windowName="ICM-EvaluationReport";
-	}
-	public void initCCRequestMoreInfo()
-	{
-		CCRequestMoreInfoController controller=new CCRequestMoreInfoController(); //CCRequestMoreInfo
-		pathfxml="/Fxml/ControlCommeteeRequestMoreInfo.fxml";
-		windowName="ICM-RequestMoreInformation";
-	}
-	public void initCCShowRequests()
-	{
-		CCShowRequestsController controller=new CCShowRequestsController(); //CCShowRequests
-		pathfxml="/Fxml/ControlCommeteeShowRequests.fxml";
-		windowName="ICM-ShowRequests";
-	}
-	///
 }
