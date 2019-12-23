@@ -25,7 +25,6 @@ public class mainClientABS extends AbstractClient
 	{
 		if(msg instanceof User)
 		{
-			   System.out.println("im here");
 			  MainAllControllers.setWindowVar("userHome");
 			  MainAllControllers.changeWin();
 		 }

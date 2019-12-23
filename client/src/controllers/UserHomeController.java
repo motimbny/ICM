@@ -1,10 +1,15 @@
 package controllers;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 
-public class UserHomeController {
-
+public class UserHomeController 
+{
+    public UserHomeController()
+    {
+    	MainAllControllers=MainAllControllers.getInstance();
+    }
     @FXML
     private Button homeBTN;
 
@@ -22,15 +27,38 @@ public class UserHomeController {
 
     @FXML
     private Button logoutBTN;
+    private MainAllControllers MainAllControllers;
 
     @FXML
-    private Label helloUserName;
+    void addreBTNE(MouseEvent event)
+    {
+          
+    }
 
     @FXML
-    private Label PendingRequests;
+    void helpBTNE(MouseEvent event) 
+    {
+
+    }
 
     @FXML
-    private Label ExistingRequests;
+    void logoutBTNE(MouseEvent event)
+    {
+    	MainAllControllers.setWindowVar("login");
+    	MainAllControllers.changeWin();
+    	MainAllControllers.user=null;
+    }
+
+    @FXML
+    void personBTNE(MouseEvent event) 
+    {
+
+    }
+
+    @FXML
+    void showreBTNE(MouseEvent event) 
+    {
+    	
+    }
 
 }
-

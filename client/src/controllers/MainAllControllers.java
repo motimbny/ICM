@@ -14,7 +14,7 @@ public class MainAllControllers
 {
 	public mainClientABS mcABS;       //singleton of one 
 	public Stage window;
-	private User user;
+	User user;
 	Scene s;
     Pane pane;
     private static MainAllControllers mac=new MainAllControllers();
@@ -46,7 +46,6 @@ public class MainAllControllers
 			@Override
 			public void run() 
 			{
-				MainAllControllers.window.getScene().getWindow().hide();
 				MainAllControllers.setWindow();
 			}
 		});
