@@ -10,18 +10,31 @@ import javafx.stage.Stage;
 import entity.WindowToShow;
 public class MainAllControllers 
 {
-	mainClientABS mcABS;       //singleton of one 
+	public mainClientABS mcABS;       //singleton of one 
 	Stage window;
 	Scene s;
     Pane pane;
-	private WindowToShow WindowToShow;
-    public MainAllControllers(Stage window)
+    private static MainAllControllers mac=new MainAllControllers();
+	public WindowToShow WindowToShow;
+	private MainAllControllers() 
+	{
+		this.mac=mac;
+	}
+	public void setMainAbs() throws IOException
+	{
+		mcABS=new mainClientABS("",5555);
+	}
+	public static MainAllControllers getInstance()
+	{
+		return mac;
+	}
+    public void initMainAllControllers(Stage window) throws IOException
     {
     	this.window=window;
     	WindowToShow=new WindowToShow();
     	WindowToShow.setWindowToShow("login");
     	setWindow();
-    	// loadScene();
+    	
     }
     public void setWindowVar(String str)
     {

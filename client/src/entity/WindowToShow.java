@@ -6,9 +6,6 @@ import controllers.CCShowRequestsController;
 import controllers.LoginController;
 import controllers.PerformanceLeaderHomeController;
 import controllers.PerformanceLeaderShowRequestsController;
-import controllers.SupervisorEmployeesListController;
-import controllers.SupervisorHomeController;
-import controllers.SupervisorShowRequestsController;
 import controllers.TesterShowRequestsController;
 import controllers.TesterSubmitReportController;
 import controllers.UserAddRequestController;
@@ -55,12 +52,6 @@ public class WindowToShow {
 		case "CCShowRequests":
 			initCCShowRequests();
 			break;
-		case "SupervisorHome":
-			initSupervisorHome();
-			break;
-		case "SupervisorEmployeesList":
-			initSupervisorEmployeesList();
-			break;
 		}
 	}
 
@@ -75,7 +66,6 @@ public class WindowToShow {
 	//------------------------------------------------------------------//
 	public void initLogin() {
 		LoginController controller = new LoginController();
-		controller.loginController();
 		pathfxml = "/Fxml/Login.fxml";
 		windowName = "ICM-Login";
 	}
@@ -138,23 +128,5 @@ public class WindowToShow {
 		PerformanceLeaderHomeController controller = new PerformanceLeaderHomeController(); // PerformanceLeaderHomeController
 		pathfxml = "/Fxml/PerformanceLeaderHome.fxml";
 		windowName = "ICM-PerformanceLeaderHome";
-	}
-	
-	public void initSupervisorHome() {
-		SupervisorHomeController controller = new SupervisorHomeController(); // SupervisorHomeController
-		pathfxml = "/Fxml/SupervisorHome.fxml";
-		windowName = "ICM-SupervisorHome";
-	}
-	
-	public void initSupervisorEmployeesList() {
-		SupervisorEmployeesListController controller = new SupervisorEmployeesListController(); // SupervisorEmployeesListController
-		pathfxml = "/Fxml/SupervisorEmployeesList.fxml";
-		windowName = "ICM-SupervisorEmployeesList";
-	}
-	
-	public void initSupervisorShowRequests() {
-		SupervisorShowRequestsController controller = new SupervisorShowRequestsController(); // SupervisorShowRequestsController
-		pathfxml = "/Fxml/SupervisorShowRequests.fxml";
-		windowName = "ICM-SupervisorShowRequests";
 	}
 }
