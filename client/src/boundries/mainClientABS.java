@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import controllers.MainAllControllers;
 import entity.DBmessage;
+import entity.User;
 import ocsf.client.AbstractClient;
 
 public class mainClientABS extends AbstractClient
@@ -15,16 +16,11 @@ public class mainClientABS extends AbstractClient
 		MainAllControllers=MainAllControllers.getInstance();
 		openConnection();
 	}
-<<<<<<< HEAD
 	
 
-=======
-//
->>>>>>> branch 'master' of https://github.com/motimbny/Project.git
 	@Override
 	protected void handleMessageFromServer(Object msg)
 	{
-<<<<<<< HEAD
 		if(msg instanceof User)
 		{
 			/*MainAllControllers.setWindowVar("userHome");
@@ -34,9 +30,6 @@ public class mainClientABS extends AbstractClient
 		}
 		else
 		   System.out.println("bad");
-=======
-		
->>>>>>> branch 'master' of https://github.com/motimbny/Project.git
 	}
 	public void handleMessageFromClientUI(DBmessage msg)  
 	  {
