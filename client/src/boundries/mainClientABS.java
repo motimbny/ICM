@@ -25,6 +25,7 @@ public class mainClientABS extends AbstractClient
 		{
 			/*MainAllControllers.setWindowVar("userHome");
 			MainAllControllers.setWindow();*/
+			///
 			   System.out.println("good");
 
 		}
