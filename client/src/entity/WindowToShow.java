@@ -6,6 +6,7 @@ import controllers.CCShowRequestsController;
 import controllers.LoginController;
 import controllers.PerformanceLeaderHomeController;
 import controllers.PerformanceLeaderShowRequestsController;
+import controllers.SuperviserExtentionRequestController;
 import controllers.SupervisorEmployeesListController;
 import controllers.SupervisorHomeController;
 import controllers.SupervisorShowRequestsController;
@@ -60,6 +61,12 @@ public class WindowToShow {
 			break;
 		case "SupervisorEmployeesList":
 			initSupervisorEmployeesList();
+			break;
+		case "SuperviserExtentionRequest":
+			initSuperviserExtentionRequest();
+			break;
+		case "SupervisorShowRequests":
+			initSupervisorShowRequests();
 			break;
 		}
 	}
@@ -156,5 +163,11 @@ public class WindowToShow {
 		SupervisorShowRequestsController controller = new SupervisorShowRequestsController(); // SupervisorShowRequestsController
 		pathfxml = "/Fxml/SupervisorShowRequests.fxml";
 		windowName = "ICM-SupervisorShowRequests";
+	}
+	
+	public void initSuperviserExtentionRequest() {
+		SuperviserExtentionRequestController controller = new SuperviserExtentionRequestController(); // SuperviserExtentionRequestController
+		pathfxml = "/Fxml/SuperviserExtentionRequest.fxml";
+		windowName = "ICM-SuperviserExtentionRequest";
 	}
 }
