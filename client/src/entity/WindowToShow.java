@@ -8,6 +8,7 @@ import controllers.PerformanceLeaderHomeController;
 import controllers.PerformanceLeaderShowRequestsController;
 import controllers.SupervisorEmployeesListController;
 import controllers.SupervisorHomeController;
+import controllers.SupervisorShowRequestsController;
 import controllers.TesterShowRequestsController;
 import controllers.TesterSubmitReportController;
 import controllers.UserAddRequestController;
