@@ -47,7 +47,7 @@ public class WindowToShow {
 		return windowName;
 	}
 
-	// ______________________________________________________________//
+	//------------------------------------------------------------------//
 	public void initLogin() {
 		LoginController controller = new LoginController();
 		pathfxml = "/Fxml/Login.fxml";
