@@ -4,6 +4,10 @@ import controllers.CCEvaluationReportController;
 import controllers.CCRequestMoreInfoController;
 import controllers.CCShowRequestsController;
 import controllers.LoginController;
+import controllers.PerformanceLeaderHomeController;
+import controllers.PerformanceLeaderShowRequestsController;
+import controllers.TesterShowRequestsController;
+import controllers.TesterSubmitReportController;
 import controllers.UserAddRequestController;
 import controllers.UserHomeController;
 import controllers.UserShowRequestsController;
@@ -26,6 +30,18 @@ public class WindowToShow {
 			break;
 		case "UserAddRequest":
 			initUserAddRequest();
+			break;
+		case "TesterSubmitReport":
+			initTesterSubmitReport();
+			break;
+		case "TesterShowRequests":
+			initTesterShowRequests();
+			break;
+		case "PerformanceLeaderShowRequests":
+			initPerformanceLeaderShowRequests();
+			break;
+		case "PerformanceLeaderHome":
+			initPerformanceLeaderHome();
 			break;
 		case "CCEvaluationReport":
 			initCCEvaluationReport();
@@ -88,5 +104,29 @@ public class WindowToShow {
 		UserAddRequestController controller = new UserAddRequestController(); // UserAddRequestController
 		pathfxml = "/Fxml/UserAddRequest.fxml";
 		windowName = "ICM-UserAddRequest";
+	}
+	
+	public void initTesterSubmitReport() {
+		TesterSubmitReportController controller = new TesterSubmitReportController(); // TesterSubmitReportController
+		pathfxml = "/Fxml/TesterSubmitReport.fxml";
+		windowName = "ICM-TesterSubmitReport";
+	}
+	
+	public void initTesterShowRequests() {
+		TesterShowRequestsController controller = new TesterShowRequestsController(); // TesterShowRequestsController
+		pathfxml = "/Fxml/TesterShowRequests.fxml";
+		windowName = "ICM-TesterShowRequests";
+	}
+	
+	public void initPerformanceLeaderShowRequests() {
+		PerformanceLeaderShowRequestsController controller = new PerformanceLeaderShowRequestsController(); // PerformanceLeaderShowRequestsController
+		pathfxml = "/Fxml/PerformanceLeaderShowRequests.fxml";
+		windowName = "ICM-PerformanceLeaderShowRequests";
+	}
+	
+	public void initPerformanceLeaderHome() {
+		PerformanceLeaderHomeController controller = new PerformanceLeaderHomeController(); // PerformanceLeaderHomeController
+		pathfxml = "/Fxml/PerformanceLeaderHome.fxml";
+		windowName = "ICM-PerformanceLeaderHome";
 	}
 }
