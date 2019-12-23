@@ -7,6 +7,6 @@
 			<accessrule kind="accessible" pattern="javafx/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Gefen/Downloads/ICM/mysql-connector-java-8.0.13.jar"/>
+	<classpathentry kind="lib" path="/Project-Icm/mysql-connector-java-8.0.13.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

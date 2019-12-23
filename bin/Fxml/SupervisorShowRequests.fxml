@@ -14,7 +14,7 @@
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
-            <Button fx:id="homeBTN" mnemonicParsing="false" onAction="#goHomePage" prefHeight="47.0" prefWidth="140.0" text="      Home        ">
+            <Button mnemonicParsing="false" prefHeight="47.0" prefWidth="140.0" text="      Home        ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -23,7 +23,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="showreBTN" mnemonicParsing="false" onAction="#goShowReqPage" prefHeight="46.0" prefWidth="140.0" text="Show requests">
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="Show requests">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -32,7 +32,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="EmployeesManagmentBTN" mnemonicParsing="false" onAction="#goEmployeesMangPage" prefHeight="46.0" prefWidth="140.0" text="Employees managment" textOverrun="CLIP">
+            <Button fx:id="EmployeesManagment" mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="Employees managment" textOverrun="CLIP">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -41,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="personBTN" mnemonicParsing="false" onAction="#goPersonalPage" prefHeight="46.0" prefWidth="140.0" text="  Personal info ">
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="  Personal info ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -50,7 +50,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="helpBTN" mnemonicParsing="false" onAction="#goHelpPage" prefHeight="46.0" prefWidth="140.0" text="       Help         ">
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="       Help         ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -59,7 +59,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="logoutBTN" mnemonicParsing="false" onAction="#goLogoutPage" prefHeight="46.0" prefWidth="140.0" text="   Log-Out     ">
+            <Button mnemonicParsing="false" prefHeight="46.0" prefWidth="140.0" text="   Log-Out     ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -77,17 +77,17 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <TableView fx:id="requestTable" layoutX="43.0" layoutY="103.0" prefHeight="362.0" prefWidth="597.0">
+            <TableView layoutX="43.0" layoutY="103.0" prefHeight="362.0" prefWidth="597.0">
                <columns>
                   <TableColumn prefWidth="190.77774047851562" text="Request id" />
                   <TableColumn prefWidth="202.44439697265625" text="Request status" />
                   <TableColumn prefWidth="202.0" text="Request process stage" />
                </columns>
             </TableView>
-            <Button fx:id="SuprvisorUpdateRequestBTN" ellipsisString="" layoutX="43.0" layoutY="477.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="Update Request" />
-            <Button fx:id="SuprvisorCloseRequestBTN" layoutX="462.0" layoutY="477.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="Close Request" />
-            <Button fx:id="SuprvisorSuspendRequestBTN" layoutX="259.0" layoutY="477.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="Suspend Request" />
-            <Button fx:id="SuprvisorExtensionRequestBTN" layoutX="44.0" layoutY="521.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="View Extension Request" />
+            <Button fx:id="SuprvisorUpdateRequest" ellipsisString="" layoutX="43.0" layoutY="477.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="Update Request" />
+            <Button fx:id="SuprvisorCloseRequest" layoutX="462.0" layoutY="477.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="Close Request" />
+            <Button fx:id="SuprvisorSuspendRequest" layoutX="259.0" layoutY="477.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="Suspend Request" />
+            <Button fx:id="SuprvisorExtensionRequest" layoutX="44.0" layoutY="521.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="178.0" text="View Extension Request" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0" stylesheets="@../../../../../Desktop/ICM/style.css">
