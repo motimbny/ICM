@@ -15,7 +15,7 @@ public class MainAllControllers
 	Scene s;
     Pane pane;
     private static MainAllControllers mac=new MainAllControllers();
-	private WindowToShow WindowToShow;
+	public WindowToShow WindowToShow;
 	private MainAllControllers() 
 	{
 		this.mac=mac;

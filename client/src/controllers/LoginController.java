@@ -35,6 +35,7 @@ public class LoginController
     @FXML
     void Login(MouseEvent event) throws IOException 
     {
+		wrongLbl.setVisible(false);
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 		MainAllControllers.setMainAbs();
     	ArrayList<Object> arry=new ArrayList();
@@ -49,8 +50,8 @@ public class LoginController
     {
          
     }
-    public void setVisibleLbl(boolean condition)
+    public void setVisibleLbl()
     {
-		wrongLbl.setVisible(condition);
+		wrongLbl.setVisible(true);
     }
 }

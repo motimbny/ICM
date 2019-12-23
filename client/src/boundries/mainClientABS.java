@@ -2,25 +2,31 @@ package boundries;
 
 import java.io.IOException;
 
+import controllers.MainAllControllers;
 import entity.DBmessage;
 import entity.User;
 import ocsf.client.AbstractClient;
 
 public class mainClientABS extends AbstractClient
 {
+    private MainAllControllers MainAllControllers;
 	public mainClientABS(String host, int port) throws IOException
 	{
 		super(host, port);
+		MainAllControllers=MainAllControllers.getInstance();
 		openConnection();
 	}
-	//
+	
 
 	@Override
 	protected void handleMessageFromServer(Object msg)
 	{
 		if(msg instanceof User)
 		{
-			System.out.println("good");
+			/*MainAllControllers.setWindowVar("userHome");
+			MainAllControllers.setWindow();*/
+			   System.out.println("good");
+
 		}
 		else
 		   System.out.println("bad");
