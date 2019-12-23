@@ -12,7 +12,7 @@ public class mainClientABS extends AbstractClient
 		super(host, port);
 		openConnection();
 	}
-
+//
 	@Override
 	protected void handleMessageFromServer(Object msg)
 	{
