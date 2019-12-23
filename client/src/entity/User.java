@@ -43,4 +43,8 @@ public class User implements Serializable
 	{
 		return Name;
 	}
+	public Position getPosition()
+	{
+		return job;
+	}
 }

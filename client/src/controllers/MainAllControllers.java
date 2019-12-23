@@ -86,4 +86,8 @@ public class MainAllControllers
 	     window.setScene(s);
 	     window.show();
 	}
+	public void badUser()
+	{
+		((LoginController) WindowToShow.controller).setVisibleLbl();
+	}
 }

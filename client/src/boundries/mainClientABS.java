@@ -2,6 +2,7 @@ package boundries;
 
 import java.io.IOException;
 
+import Enums.Position;
 import controllers.MainAllControllers;
 import entity.DBmessage;
 import entity.User;
@@ -24,11 +25,12 @@ public class mainClientABS extends AbstractClient
 	{
 		if(msg instanceof User)
 		{
-			MainAllControllers.setWindowVar("userHome");
-			MainAllControllers.changeWin();
-		}
-		else
-		   System.out.println("bad");
+			   System.out.println("im here");
+			  MainAllControllers.setWindowVar("userHome");
+			  MainAllControllers.changeWin();
+		 }
+		  else
+			  MainAllControllers.badUser();
 	}
 	public void handleMessageFromClientUI(DBmessage msg)  
 	  {

@@ -20,13 +20,13 @@
       </ImageView>
       <TextArea fx:id="messagebox" layoutX="322.0" layoutY="248.0" prefHeight="313.0" prefWidth="431.0" />
       <Label layoutX="322.0" layoutY="227.0" text="Server message:" />
-      <TextField fx:id="port" layoutX="28.0" layoutY="52.0" prefHeight="25.0" prefWidth="188.0" promptText="enter port number here..." />
+      <TextField fx:id="port" layoutX="28.0" layoutY="52.0" prefHeight="25.0" prefWidth="188.0" promptText="enter port number here..." text="5555" />
       <Label layoutX="28.0" layoutY="35.0" prefHeight="17.0" prefWidth="105.0" text="Port to connect:" />
       <Label layoutX="27.0" layoutY="105.0" prefHeight="17.0" prefWidth="163.0" text="Data base user name:" />
       <Label layoutX="28.0" layoutY="156.0" prefHeight="17.0" prefWidth="125.0" text="Data base password:" />
       <Label layoutX="28.0" layoutY="205.0" prefHeight="17.0" prefWidth="144.0" text="Data base scheme name:" />
-      <TextField fx:id="dbuser" layoutX="28.0" layoutY="122.0" prefHeight="25.0" prefWidth="188.0" promptText="enter data base name here..." />
-      <TextField fx:id="dbscheme" layoutX="28.0" layoutY="223.0" prefHeight="25.0" prefWidth="188.0" promptText="enter scheme name here..." />
-      <PasswordField fx:id="dbpassword" layoutX="28.0" layoutY="173.0" prefHeight="25.0" prefWidth="188.0" promptText="enter password here..." />
+      <TextField fx:id="dbuser" layoutX="28.0" layoutY="122.0" prefHeight="25.0" prefWidth="188.0" promptText="enter data base name here..." text="root" />
+      <TextField fx:id="dbscheme" layoutX="28.0" layoutY="223.0" prefHeight="25.0" prefWidth="188.0" promptText="enter scheme name here..." text="project" />
+      <PasswordField fx:id="dbpassword" layoutX="28.0" layoutY="173.0" prefHeight="25.0" prefWidth="188.0" promptText="enter password here..." text="Aa123456" />
    </children>
 </Pane>

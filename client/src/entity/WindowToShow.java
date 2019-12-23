@@ -62,7 +62,6 @@ public class WindowToShow {
 	public String getWindowName() {
 		return windowName;
 	}
-
 	//------------------------------------------------------------------//
 	public void initLogin() {
 		LoginController controller = new LoginController();
