@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import entity.WindowToShow;
 public class MainAllControllers 
 {
-	mainClientABS mcABS;               //singleton of one 
+	mainClientABS mcABS;       //singleton of one 
 	Stage window;
 	Scene s;
     Pane pane;
@@ -20,6 +20,8 @@ public class MainAllControllers
     	this.window=window;
     	WindowToShow=new WindowToShow();
     	WindowToShow.setWindowToShow("login");
+    	setWindow();
+    	// loadScene();
     }
     public void setWindowVar(String str)
     {
@@ -50,6 +52,6 @@ public class MainAllControllers
 	{
 		 window.setTitle(WindowToShow.getWindowName());
 	     window.setScene(s);
-	     window.show(); 
+	     window.show();
 	}
 }
