@@ -3,6 +3,7 @@ package boundries;
 import java.io.IOException;
 
 import entity.DBmessage;
+import entity.User;
 import ocsf.client.AbstractClient;
 
 public class mainClientABS extends AbstractClient
@@ -16,7 +17,11 @@ public class mainClientABS extends AbstractClient
 	@Override
 	protected void handleMessageFromServer(Object msg)
 	{
-		
+		if(msg instanceof User)
+		{
+			System.out.println("good");
+		}
+		System.out.println("bad");
 	}
 	public void handleMessageFromClientUI(DBmessage msg)  
 	  {

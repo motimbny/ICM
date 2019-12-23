@@ -7,6 +7,10 @@
 			<accessrule kind="accessible" pattern="javafx/**"/>
 		</accessrules>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Users/Gefen/Downloads/ICM/mysql-connector-java-8.0.13.jar"/>
+=======
+	<classpathentry kind="lib" path="C:/Users/Matthew&apos;sPc/eclipse-workspace/ICM/mysql-connector-java-8.0.13.jar"/>
+>>>>>>> branch 'master' of https://github.com/motimbny/Project.git
 	<classpathentry kind="output" path="bin"/>
 </classpath>
