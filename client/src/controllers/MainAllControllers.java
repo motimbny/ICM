@@ -3,15 +3,18 @@ package controllers;
 import java.io.IOException;
 
 import boundries.mainClientABS;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import entity.User;
 import entity.WindowToShow;
 public class MainAllControllers 
 {
 	public mainClientABS mcABS;       //singleton of one 
-	Stage window;
+	public Stage window;
+	private User user;
 	Scene s;
     Pane pane;
     private static MainAllControllers mac=new MainAllControllers();
@@ -36,9 +39,25 @@ public class MainAllControllers
     	setWindow();
     	
     }
+    protected static void changeWindow(MainAllControllers MainAllControllers) 
+    {
+    	Platform.runLater(new Runnable() {
+
+			@Override
+			public void run() 
+			{
+				MainAllControllers.window.getScene().getWindow().hide();
+				MainAllControllers.setWindow();
+			}
+		});
+    }
     public void setWindowVar(String str)
     {
     	this.WindowToShow.setWindowToShow(str);
+    }
+    public void changeWin()
+    {
+    	changeWindow(this);
     }
 	public void setWindow() 
 	{

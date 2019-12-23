@@ -5,6 +5,7 @@ import java.io.IOException;
 import controllers.MainAllControllers;
 import entity.DBmessage;
 import entity.User;
+import javafx.event.ActionEvent;
 import ocsf.client.AbstractClient;
 
 public class mainClientABS extends AbstractClient
@@ -23,10 +24,8 @@ public class mainClientABS extends AbstractClient
 	{
 		if(msg instanceof User)
 		{
-			/*MainAllControllers.setWindowVar("userHome");
-			MainAllControllers.setWindow();*/
-			   System.out.println("good");
-
+			MainAllControllers.setWindowVar("userHome");
+			MainAllControllers.changeWin();
 		}
 		else
 		   System.out.println("bad");
