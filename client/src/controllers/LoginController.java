@@ -16,11 +16,11 @@ import javafx.scene.input.MouseEvent;
 public class LoginController
 {
 	private boolean userflag=false;
-	public LoginController()
+	public void loginController()
 	{
-		wrongLbl.setVisible(false);
-		loginMainScreen.setDisable(true);
-		UserNameField.textProperty().addListener(new ChangeListener<String>()
+		//wrongLbl.setVisible(false);
+		//loginMainScreen.setDisable(true);
+		/*UserNameField.textProperty().addListener(new ChangeListener<String>()
 		{
 		    @Override
 		    public void changed(ObservableValue<? extends String> observable,
@@ -39,7 +39,7 @@ public class LoginController
                if(!oldValue.equals(newValue)&& userflag==true)
            		 loginMainScreen.setDisable(false);
 		    }
-		});
+		});*/
 	}
     @FXML
     private Button loginMainScreen;
