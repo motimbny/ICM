@@ -121,6 +121,8 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
+            <Label fx:id="badAddRequest" layoutX="495.0" layoutY="525.0" text="Please fill all fields necessary" />
+            <Label fx:id="goodAddRe" layoutX="502.0" layoutY="525.0" text="request was submitted" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0" stylesheets="@../../../../../Desktop/ICM/style.css">
