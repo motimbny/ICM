@@ -14,22 +14,14 @@ public class MainAllControllers
 	Stage window;
 	Scene s;
     Pane pane;
-    private static MainAllControllers mac=new MainAllControllers();
 	private WindowToShow WindowToShow;
-	private MainAllControllers()
-	{
-		this.mac=mac;
-	}
-	public static MainAllControllers getInstance()
-	{
-		return mac;
-	}
-    public void initMainAllControllers(Stage window)
+    public MainAllControllers(Stage window)
     {
     	this.window=window;
     	WindowToShow=new WindowToShow();
     	WindowToShow.setWindowToShow("login");
     	setWindow();
+    	// loadScene();
     }
     public void setWindowVar(String str)
     {

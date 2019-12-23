@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 import Enums.MessageType;
@@ -19,7 +18,6 @@ public class LoginController
 	private boolean userflag=false;
 	public void loginController()
 	{
-		MainAllControllers=MainAllControllers.getInstance();
 		//wrongLbl.setVisible(false);
 		//loginMainScreen.setDisable(true);
 		/*UserNameField.textProperty().addListener(new ChangeListener<String>()
@@ -57,15 +55,14 @@ public class LoginController
     private Label baduserpass;
     @FXML
     private Label wrongLbl;
-    private MainAllControllers MainAllControllers;
     @FXML
-    void Login(MouseEvent event) throws IOException 
+    void Login(MouseEvent event) 
     {
     	ArrayList<Object> arry=new ArrayList();
     	arry.add(UserNameField.getText());
     	arry.add(PasswordField.getText());
     	DBmessage dbm=new DBmessage(MessageType.Login, arry);
-    	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
+    	//mainallcontrollers.mcABS.sendtoserver(dbm);        //this line will send DBmessage to server
     }
     @FXML
     void forgotpass(MouseEvent event)
