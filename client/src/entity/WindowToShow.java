@@ -70,7 +70,7 @@ public class WindowToShow {
 			break;
 		}
 	}
-//
+
 	public String getPathfxml() {
 		return pathfxml;
 	}
