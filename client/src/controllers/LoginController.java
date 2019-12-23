@@ -17,32 +17,6 @@ import javafx.scene.input.MouseEvent;
 public class LoginController
 {
 	private boolean userflag=false;
-	public void loginController()
-	{
-		MainAllControllers=MainAllControllers.getInstance();
-		//wrongLbl.setVisible(false);
-		//loginMainScreen.setDisable(true);
-		/*UserNameField.textProperty().addListener(new ChangeListener<String>()
-		{
-		    @Override
-		    public void changed(ObservableValue<? extends String> observable,
-		            String oldValue, String newValue) 
-		    {
-               if(!oldValue.equals(newValue))
-            	   userflag=true;   
-		    }
-		});
-		PasswordField.textProperty().addListener(new ChangeListener<String>()
-		{
-		    @Override
-		    public void changed(ObservableValue<? extends String> observable,
-		            String oldValue, String newValue) 
-		    {
-               if(!oldValue.equals(newValue)&& userflag==true)
-           		 loginMainScreen.setDisable(false);
-		    }
-		});*/
-	}
     @FXML
     private Button loginMainScreen;
     @FXML
@@ -61,10 +35,13 @@ public class LoginController
     @FXML
     void Login(MouseEvent event) throws IOException 
     {
+		MainAllControllers=controllers.MainAllControllers.getInstance();
+		MainAllControllers.setMainAbs();
     	ArrayList<Object> arry=new ArrayList();
     	arry.add(UserNameField.getText());
     	arry.add(PasswordField.getText());
-    	DBmessage dbm=new DBmessage(MessageType.Login, arry);
+    	DBmessage dbm;
+    	dbm=new DBmessage(MessageType.Login, arry);
     	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
     }
     @FXML

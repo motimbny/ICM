@@ -66,7 +66,6 @@ public class WindowToShow {
 	//------------------------------------------------------------------//
 	public void initLogin() {
 		LoginController controller = new LoginController();
-		controller.loginController();
 		pathfxml = "/Fxml/Login.fxml";
 		windowName = "ICM-Login";
 	}

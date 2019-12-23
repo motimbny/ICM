@@ -21,7 +21,8 @@ public class mainClientABS extends AbstractClient
 		{
 			System.out.println("good");
 		}
-		System.out.println("bad");
+		else
+		   System.out.println("bad");
 	}
 	public void handleMessageFromClientUI(DBmessage msg)  
 	  {
