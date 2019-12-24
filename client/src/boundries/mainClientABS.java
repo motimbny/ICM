@@ -25,21 +25,20 @@ public class mainClientABS extends AbstractClient
 	{
 		if(msg instanceof User)
 		{
-			if(((User)msg)==null)
-				 MainAllControllers.badUser();
-			else 
+				try 
+				{
+					MainAllControllers.setWindowVar("userHome");
+					MainAllControllers.changeWin();
+					  MainAllControllers.setUser((User)msg);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} 
+              }
+			else
 			{
-				try {
-				MainAllControllers.setWindowVar("userHome");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			  MainAllControllers.changeWin();
-			  MainAllControllers.setUser((User)msg);
-			}  
-		 }
-			 
-		
+				 MainAllControllers.badUser();		 
+			}  			 	
 	}
 	public void handleMessageFromClientUI(DBmessage msg)  
 	  {
