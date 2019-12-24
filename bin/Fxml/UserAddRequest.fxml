@@ -78,7 +78,7 @@
                </font>
             </Button>
             <TextArea fx:id="desExtSit" layoutX="242.0" layoutY="149.0" prefHeight="78.0" prefWidth="386.0" />
-            <ChoiceBox fx:id="chooseInfoCom" layoutX="242.0" layoutY="108.0" prefHeight="31.0" prefWidth="386.0" />
+            <ChoiceBox fx:id="chooseInfoCom" layoutX="242.0" layoutY="108.0" onMouseClicked="#setfields" prefHeight="31.0" prefWidth="386.0" />
             <Label layoutX="48.0" layoutY="111.0" text="*Choose Information System">
                <font>
                   <Font size="14.0" />

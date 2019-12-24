@@ -1,18 +1,22 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 
-public class UserAddRequestController 
+
+public class UserAddRequestController implements Initializable
 {
 	private MainAllControllers MainAllControllers;
 	public UserAddRequestController()
@@ -37,7 +41,7 @@ public class UserAddRequestController
     @FXML
     private TextArea desExtSit;
     @FXML
-    private ChoiceBox<?> chooseInfoCom;
+    private ChoiceBox<String> chooseInfoCom;
     @FXML
     private TextArea desReqCha;
     @FXML
@@ -76,6 +80,11 @@ public class UserAddRequestController
 				e.printStackTrace();
 			}  
     	}
+    }
+    @FXML
+    void setfields(MouseEvent event)
+    {
+
     }
     public void setOnSucsess()
     {
@@ -118,4 +127,13 @@ public class UserAddRequestController
     	MainAllControllers.changeWin();
     	MainAllControllers.user=null;
     }
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		chooseInfoCom.getItems().add("Moodle");
+    	chooseInfoCom.getItems().add("Info System");
+    	chooseInfoCom.getItems().add("Libary");
+    	chooseInfoCom.getItems().add("Computers");
+		
+	}
 }
