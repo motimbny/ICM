@@ -19,6 +19,7 @@ public class UserAddRequestController
 	{
     	MainAllControllers=MainAllControllers.getInstance();
 	}
+	
     @FXML
     private Button homeBTN;
     @FXML
