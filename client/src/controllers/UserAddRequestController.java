@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -14,6 +15,8 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 
 public class UserAddRequestController implements Initializable
@@ -64,7 +67,7 @@ public class UserAddRequestController implements Initializable
     	else
     	{
     		badAddRequest.setVisible(false);
-	    	ArrayList<Object> arry=new ArrayList();
+	    	ArrayList<Object> arry=new ArrayList<Object>();
 	        arry.add(chooseInfoCom.getValue());
 	        arry.add(desReqCha.getText());
 	        arry.add(desExtSit.getText());
@@ -83,15 +86,18 @@ public class UserAddRequestController implements Initializable
 			}  
     	}
     }
-    @FXML
-    void setfields(MouseEvent event)
-    {
-
-    }
     public void setOnSucsess()
     {
 		goodAddRe.setVisible(true);
     }
+    @FXML
+    void attachFile(MouseEvent event)
+    {
+    	FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        File file = chooser.showOpenDialog(new Stage());
+    }
+
     @FXML
     void backToHome(MouseEvent event) throws IOException 
     {

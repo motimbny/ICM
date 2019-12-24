@@ -2,6 +2,7 @@ package boundries;
 import java.io.IOException;
 import java.sql.Connection;
 
+import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
 import controllers.loginSController;
 import controllers.serverController;
@@ -46,6 +47,14 @@ public class mainServerABS extends AbstractServer
 		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
 		    	   try {
 					client.sendToClient(userShowRequestsSController.showRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
+		       case AddRequest:
+		       {
+		    	   UserSAddRequestController UserSAddRequestController=new UserSAddRequestController(dbm,connection);
+		    	   try {
+					client.sendToClient(UserSAddRequestController.submitRequest());
 				} catch (IOException e) {}
 		    	   break;
 		       }

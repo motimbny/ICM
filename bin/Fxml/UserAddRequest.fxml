@@ -78,7 +78,7 @@
                </font>
             </Button>
             <TextArea fx:id="desExtSit" layoutX="242.0" layoutY="149.0" prefHeight="78.0" prefWidth="386.0" />
-            <ChoiceBox fx:id="chooseInfoCom" layoutX="242.0" layoutY="108.0" onMouseClicked="#setfields" prefHeight="31.0" prefWidth="386.0" />
+            <ChoiceBox fx:id="chooseInfoCom" layoutX="242.0" layoutY="108.0" prefHeight="31.0" prefWidth="386.0" />
             <Label layoutX="48.0" layoutY="111.0" text="*Choose Information System">
                <font>
                   <Font size="14.0" />
@@ -108,7 +108,7 @@
                </font>
             </Label>
             <Label layoutX="523.0" layoutY="501.0" text="* Necessary fields" />
-            <Button fx:id="addAttachmentsUserAddReq" layoutX="241.0" layoutY="502.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="152.0" text="Add attachments">
+            <Button fx:id="addAttachmentsUserAddReq" layoutX="241.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#attachFile" prefHeight="31.0" prefWidth="152.0" text="Add attachments">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -90,7 +90,10 @@ public class MainAllControllers
 	{
 		((LoginController) WindowToShow.controller).setVisibleLbl();
 	}
-	
+	public void goodRequeSend()
+	{
+		((UserAddRequestController) WindowToShow.controller).setOnSucsess();
+	}
 	
 	public void setUser(User user)
 	{

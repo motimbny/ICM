@@ -30,11 +30,16 @@ public class mainClientABS extends AbstractClient
 					MainAllControllers.setWindowVar("userHome");
 					MainAllControllers.changeWin();
 					  MainAllControllers.setUser((User)msg);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
+				} catch (IOException e) 
+				{
 					e.printStackTrace();
 				} 
-              }
+         }
+		 if(msg instanceof Boolean)
+		 {
+			 MainAllControllers.goodRequeSend();
+			 
+		 }
 			else
 			{
 				 MainAllControllers.badUser();		 

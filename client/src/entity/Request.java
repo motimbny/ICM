@@ -33,7 +33,7 @@ public class Request implements Serializable {
     	this.comments=comments;
     	this.userSubFullName=userSubFullName;
     	this.userSubposition=userSubposition;
-    	this.userSubposition=userSubposition;
+    	this.userSubemail=userSubFullName+"@braude.ac.il";
     	this.reqDate=reqDate;
     	this.addDocuments=addDocuments;
     	this.id=MainToRun.NUM_OF_REQUEST;
