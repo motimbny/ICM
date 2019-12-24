@@ -2,6 +2,7 @@ package boundries;
 import java.io.IOException;
 import java.sql.Connection;
 
+import controllers.UserShowRequestsSController;
 import controllers.loginSController;
 import controllers.serverController;
 import entity.DBmessage;
@@ -38,6 +39,14 @@ public class mainServerABS extends AbstractServer
 					client.sendToClient(loginSController.CheckLogIn());
 				    } 
 		    	   catch (IOException e) {}
+		    	   break;
+		       }
+		       case ShowReqUser:
+		       {
+		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(userShowRequestsSController.showRequest());
+				} catch (IOException e) {}
 		    	   break;
 		       }
 			default:

@@ -1,5 +1,7 @@
 package entity;
 
+import java.io.IOException;
+
 import controllers.CCEvaluationReportController;
 import controllers.CCRequestMoreInfoController;
 import controllers.CCShowRequestsController;
@@ -16,7 +18,7 @@ public class WindowToShow {
 	public Object controller;
 	private String pathfxml, windowName;
 
-	public void setWindowToShow(String str) {
+	public void setWindowToShow(String str) throws IOException {
 		switch (str) 
 		{
 		case "login":
@@ -93,7 +95,7 @@ public class WindowToShow {
 		windowName = "ICM-UserHome";
 	}	
 	
-	public void initUserShowRequests() {
+	public void initUserShowRequests() throws IOException {
 		UserShowRequestsController controller = new UserShowRequestsController(); // UserShowRequestsController
 		pathfxml = "/Fxml/UserShowRequests.fxml";
 		windowName = "ICM-UserShowRequests";

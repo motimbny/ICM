@@ -23,14 +23,14 @@ public class loginSController
 	public User CheckLogIn()
 	{
     	Statement stmt;
-    	User toSend;
+    	User toSend=null;
   		try 
   		  {
   			stmt = connection.createStatement();
   			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE userName='"+user+ "'");
   	 		if(rs.next()==false)
   	 		{
-  	 			return null;                              //user not in database
+  	 			return toSend;                              //user not in database
   	 		}
   	 		else
   	 		{
@@ -46,7 +46,7 @@ public class loginSController
   		     {
   		    	e.printStackTrace();
   		     }
-		return null;
+		return toSend;
 	}
 
 }
