@@ -1,5 +1,7 @@
 package controllers;
+import Enums.MessageType;
 import Enums.StageName;
+import entity.DBmessage;
 import entity.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +14,10 @@ public class UserShowRequestsController {
 	public UserShowRequestsController()
 	{
 		MainAllControllers=MainAllControllers.getInstance();
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType, );
+    	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
+		
 	}
 	
 	private MainAllControllers MainAllControllers;
