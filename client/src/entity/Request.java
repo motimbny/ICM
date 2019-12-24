@@ -2,10 +2,14 @@ package entity;
 
 import java.io.Serializable;
 
+import Enums.StageName;
+
 @SuppressWarnings("serial")
 public class Request implements Serializable {
 	private String infoSystem;
-	private String currentStatus;
+	private String currentStatus; //status= in process/ suspended/ finished
+	private StageName currentStage;  //stage= execution/testing etc... 
+	private Stage[] reqStages= new Stage[5];
 	private String wantedChange;
 	private String reasonForRequest;
 	private String comments;
@@ -102,6 +106,24 @@ public class Request implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+	
+	public StageName getCurrentStage() {
+		return currentStage;
+	}
+
+	public void setCurrentStage(StageName currentStage) {
+		this.currentStage = currentStage;
+	}
+
+	public Stage[] getReqStages() 
+	{
+		return reqStages;
+	}
+
+	public void setReqStages(Stage[] reqStages) 
+	{
+		this.reqStages = reqStages;
 	}
 
 }

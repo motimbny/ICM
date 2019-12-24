@@ -1,4 +1,5 @@
 package controllers;
+import Enums.StageName;
 import entity.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,7 +44,7 @@ public class UserShowRequestsController {
     private TableColumn<Request, String> RequestStatus;
 
     @FXML
-    private TableColumn<Request, String> RequestStage;
+    private TableColumn<Request, StageName> RequestStage;
 
     @FXML
     private TableColumn<Request, Integer> TimeLeft;
