@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -44,7 +45,7 @@ public class UserHomeController implements Initializable
     private MainAllControllers MainAllControllers;
 
     @FXML
-    void addreBTNE(MouseEvent event)
+    void addreBTNE(MouseEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("UserAddRequest");
     	MainAllControllers.changeWin();
@@ -58,7 +59,7 @@ public class UserHomeController implements Initializable
     }
 
     @FXML
-    void logoutBTNE(MouseEvent event)
+    void logoutBTNE(MouseEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();

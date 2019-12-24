@@ -50,7 +50,7 @@ public class MainAllControllers
 			}
 		});
     }
-    public void setWindowVar(String str)
+    public void setWindowVar(String str) throws IOException
     {
     	this.WindowToShow.setWindowToShow(str);
     }

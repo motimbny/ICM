@@ -1,4 +1,6 @@
 package controllers;
+import java.io.IOException;
+
 import Enums.MessageType;
 import Enums.StageName;
 import entity.DBmessage;
@@ -16,8 +18,8 @@ public class UserShowRequestsController {
 	{
 		MainAllControllers=MainAllControllers.getInstance();
 		DBmessage dbm;
-    	dbm=new DBmessage(MessageType,);   
-    	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
+    	//dbm=new DBmessage(MessageType,);   
+    //	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
 		
 	}
 	
@@ -57,7 +59,7 @@ public class UserShowRequestsController {
     private TableColumn<Request, Integer> TimeLeft;
     
     @FXML
-    void goAddReqPage(ActionEvent event) 
+    void goAddReqPage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("UserAddRequest");
     	MainAllControllers.changeWin();
@@ -69,14 +71,14 @@ public class UserShowRequestsController {
     }
 
     @FXML
-    void goHomePage(ActionEvent event) 
+    void goHomePage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("userHome");
     	MainAllControllers.changeWin();
     }
 
     @FXML
-    void goLogoutPage(ActionEvent event) 
+    void goLogoutPage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
@@ -89,7 +91,7 @@ public class UserShowRequestsController {
     }
 
     @FXML
-    void goShowReqPage(ActionEvent event) 
+    void goShowReqPage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("UserShowRequests");
     	MainAllControllers.changeWin();

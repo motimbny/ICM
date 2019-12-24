@@ -93,7 +93,7 @@ public class UserAddRequestController implements Initializable
 		goodAddRe.setVisible(true);
     }
     @FXML
-    void backToHome(MouseEvent event) 
+    void backToHome(MouseEvent event) throws IOException 
     {
         	MainAllControllers.setWindowVar("userHome");
         	MainAllControllers.changeWin();
@@ -123,7 +123,7 @@ public class UserAddRequestController implements Initializable
     	//mainallcontrollers.setWindow();
     }
     @FXML
-    void logut(MouseEvent event)
+    void logut(MouseEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
