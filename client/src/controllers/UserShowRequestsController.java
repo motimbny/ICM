@@ -9,13 +9,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+
 public class UserShowRequestsController {
 
 	public UserShowRequestsController()
 	{
 		MainAllControllers=MainAllControllers.getInstance();
 		DBmessage dbm;
-    	dbm=new DBmessage(MessageType, );
+    	dbm=new DBmessage(MessageType,);   
     	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
 		
 	}
