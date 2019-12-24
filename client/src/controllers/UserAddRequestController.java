@@ -66,11 +66,13 @@ public class UserAddRequestController implements Initializable
     		badAddRequest.setVisible(false);
 	    	ArrayList<Object> arry=new ArrayList();
 	        arry.add(chooseInfoCom.getValue());
-	        arry.add(desExtSit.getText());
 	        arry.add(desReqCha.getText());
+	        arry.add(desExtSit.getText());
 	        arry.add(expChaBen.getText());
 	        arry.add(MorInfoAdd.getText());
-	    	DBmessage dbm=new DBmessage(MessageType.Login, arry);
+	        arry.add(MainAllControllers.user.getName());
+	        arry.add(MainAllControllers.user.getPosition());
+	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
 	    	{
 				MainAllControllers.mcABS.sendToServer(dbm);

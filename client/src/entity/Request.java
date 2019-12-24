@@ -3,13 +3,14 @@ package entity;
 import java.io.Serializable;
 
 import Enums.StageName;
+import boundries.MainToRun;
 
 @SuppressWarnings("serial")
 public class Request implements Serializable {
 	private String infoSystem;
 	private String currentStatus; //status= in process/ suspended/ finished
 	private StageName currentStage;  //stage= execution/testing etc... 
-	private Stage[] reqStages= new Stage[5];
+	private Stage[] reqStages;
 	private String wantedChange;
 	private String reasonForRequest;
 	private String comments;
@@ -19,7 +20,25 @@ public class Request implements Serializable {
 	private String userSubemail;
 	private String reqDate;
 	private int id;
-
+    public Request(String infoSystem,String currentStatus,StageName currentStage,String wantedChange,
+    		String reasonForRequest,String comments,String userSubFullName,String userSubposition,
+    		String reqDate,int addDocuments)
+    {
+    	this.reqStages= new Stage[5];
+    	this.infoSystem=infoSystem;
+    	this.currentStatus=currentStatus;
+    	this.currentStage=currentStage;
+    	this.wantedChange=wantedChange;
+    	this.reasonForRequest=reasonForRequest;
+    	this.comments=comments;
+    	this.userSubFullName=userSubFullName;
+    	this.userSubposition=userSubposition;
+    	this.userSubposition=userSubposition;
+    	this.reqDate=reqDate;
+    	this.addDocuments=addDocuments;
+    	this.id=MainToRun.NUM_OF_REQUEST;
+    	MainToRun.NUM_OF_REQUEST++;;
+    }
 	public String getInfoSystem() {
 		return infoSystem;
 	}

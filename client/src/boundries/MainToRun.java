@@ -6,6 +6,7 @@ import javafx.stage.Stage;
 
 public class MainToRun extends Application
 {
+	public static int NUM_OF_REQUEST=0;
 	@Override
 	public void start(Stage stage) throws Exception 
 	{
