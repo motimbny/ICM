@@ -1,5 +1,8 @@
 package controllers;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import Enums.StageName;
@@ -7,21 +10,13 @@ import entity.DBmessage;
 import entity.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
 
-public class UserShowRequestsController {
-
-	public UserShowRequestsController()
-	{
-		MainAllControllers=MainAllControllers.getInstance();
-		DBmessage dbm;
-    	//dbm=new DBmessage(MessageType,);   
-    //	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
-		
-	}
+public class UserShowRequestsController implements Initializable  {
 	
 	private MainAllControllers MainAllControllers;
 	
@@ -101,5 +96,19 @@ public class UserShowRequestsController {
     {
     	requestsTable.getItems();
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) 
+	{
+		MainAllControllers=MainAllControllers.getInstance();
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user);
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.ShowReqUser, arry);   
+    	try {
+			MainAllControllers.mcABS.sendToServer(dbm);
+		} catch (IOException e) {}
+		
+	}
 
 }
