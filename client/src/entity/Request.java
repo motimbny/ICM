@@ -18,7 +18,7 @@ public class Request implements Serializable {
 	private String userSubposition;
 	private String userSubemail;
 	private String reqDate;
-	private String id;
+	private int id;
 
 	public String getInfoSystem() {
 		return infoSystem;
@@ -100,11 +100,11 @@ public class Request implements Serializable {
 		this.reqDate = reqDate;
 	}
 
-	public String getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	

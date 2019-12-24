@@ -8,5 +8,6 @@ public enum MessageType
 		Exception,
 		SetDB,
 		DBStatus,
+		ShowReqUser,
 		INSERT;
 }

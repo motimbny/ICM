@@ -90,8 +90,7 @@ public class UserShowRequestsController {
     
     public void setTextInTable()
     {
-    	
-    	
+    	requestsTable.getItems();
     }
 
 }
