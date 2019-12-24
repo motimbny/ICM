@@ -10,6 +10,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -26,7 +27,7 @@ public class LoginController
     @FXML
     private TextField UserNameField;
     @FXML
-    private TextField PasswordField;
+    private PasswordField passF;
     @FXML
     private Label baduserpass;
     @FXML
@@ -40,7 +41,7 @@ public class LoginController
 		MainAllControllers.setMainAbs();
     	ArrayList<Object> arry=new ArrayList();
     	arry.add(UserNameField.getText());
-    	arry.add(PasswordField.getText());
+    	arry.add(passF.getText());
     	DBmessage dbm;
     	dbm=new DBmessage(MessageType.Login, arry);
     	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
