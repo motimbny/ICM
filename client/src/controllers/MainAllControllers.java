@@ -14,9 +14,9 @@ public class MainAllControllers
 {
 	public mainClientABS mcABS;       //singleton of one 
 	public Stage window;
-	User user;
+	public User user;
 	Scene s;
-    Pane pane;
+	Pane pane;
     private static MainAllControllers mac=new MainAllControllers();
 	public WindowToShow WindowToShow;
 	private MainAllControllers() 

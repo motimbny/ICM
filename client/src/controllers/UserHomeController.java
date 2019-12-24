@@ -1,15 +1,20 @@
 package controllers;
 
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class UserHomeController 
+
+
+public class UserHomeController implements Initializable
 {
     public UserHomeController()
     {
-    	MainAllControllers=MainAllControllers.getInstance();
+    	MainAllControllers=controllers.MainAllControllers.getInstance();
     }
     @FXML
     private Button homeBTN;
@@ -28,9 +33,14 @@ public class UserHomeController
 
     @FXML
     private Button logoutBTN;
+    
     @FXML
     private Label helloUser;
     
+    @FXML
+    private Label reqExNum;
+    
+      
     private MainAllControllers MainAllControllers;
 
     @FXML
@@ -66,5 +76,20 @@ public class UserHomeController
     {
     	
     }
+    
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		helloUser.setText("Hello "+MainAllControllers.user.getName());
+	}
+	
+	/*public void initialize(URL location, ResourceBundle resources)
+	{
+		reqExNum.setText();
+		for number of requests
+	}*/
+	
+ 
+    
 
 }
