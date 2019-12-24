@@ -57,7 +57,8 @@ public class MainAllControllers
     public void changeWin()
     {
     	changeWindow(this);
-    }
+    } 
+    
 	public void setWindow() 
 	{
 		loadScene();
