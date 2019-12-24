@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.useraddreController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserAddRequestController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -23,7 +23,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="addreBTN" mnemonicParsing="false" onMouseClicked="#backToRequest" prefHeight="46.0" prefWidth="140.0" text="    Add request">
+            <Button fx:id="addreBTN" mnemonicParsing="false" onMouseClicked="#backToRequest" prefHeight="46.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="    Add request">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0" stylesheets="@../../../../../Desktop/ICM/style.css">
+      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
             <Button fx:id="submitRequestUserAddReq" layoutX="495.0" layoutY="545.0" mnemonicParsing="false" onMouseClicked="#submitRequest" prefHeight="39.0" prefWidth="152.0" text="Submit request">
                <font>
@@ -121,11 +121,11 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="badAddRequest" layoutX="495.0" layoutY="525.0" text="Please fill all fields necessary" />
-            <Label fx:id="goodAddRe" layoutX="502.0" layoutY="525.0" text="request was submitted" />
+            <Label fx:id="badAddRequest" layoutX="495.0" layoutY="525.0" style="-fx-text-fill: red;" text="Please fill all fields necessary" visible="false" />
+            <Label fx:id="goodAddRe" layoutX="502.0" layoutY="525.0" style="-fx-text-fill: red;" text="request was submitted" visible="false" />
          </children>
       </Pane>
-      <Pane prefHeight="116.0" prefWidth="140.0" stylesheets="@../../../../../Desktop/ICM/style.css">
+      <Pane prefHeight="116.0" prefWidth="140.0">
          <children>
             <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="4.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>

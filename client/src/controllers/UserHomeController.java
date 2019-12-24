@@ -2,6 +2,7 @@ package controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 public class UserHomeController 
@@ -27,11 +28,16 @@ public class UserHomeController
 
     @FXML
     private Button logoutBTN;
+    @FXML
+    private Label helloUser;
+    
     private MainAllControllers MainAllControllers;
 
     @FXML
     void addreBTNE(MouseEvent event)
     {
+    	MainAllControllers.setWindowVar("UserAddRequest");
+    	MainAllControllers.changeWin();
           
     }
 
@@ -52,7 +58,7 @@ public class UserHomeController
     @FXML
     void personBTNE(MouseEvent event) 
     {
-
+         
     }
 
     @FXML

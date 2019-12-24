@@ -66,7 +66,7 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label layoutX="187.0" layoutY="140.0" text="Hello &lt;user name&gt;">
+            <Label fx:id="helloUser" layoutX="187.0" layoutY="140.0" text="Hello &lt;user name&gt;">
                <font>
                   <Font size="36.0" />
                </font>
