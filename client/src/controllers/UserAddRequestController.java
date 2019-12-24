@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import Enums.MessageType;
@@ -13,12 +14,12 @@ import javafx.scene.input.MouseEvent;
 
 public class UserAddRequestController 
 {
+	private MainAllControllers MainAllControllers;
 	public UserAddRequestController()
 	{
-		badAddRequest.setVisible(false);
-		goodAddRe.setVisible(false);
-		addreBTN.setStyle("-fx-border-color: black;");
+    	MainAllControllers=MainAllControllers.getInstance();
 	}
+	
     @FXML
     private Button homeBTN;
     @FXML
@@ -66,7 +67,14 @@ public class UserAddRequestController
 	        arry.add(expChaBen.getText());
 	        arry.add(MorInfoAdd.getText());
 	    	DBmessage dbm=new DBmessage(MessageType.Login, arry);
-	    	//mainallcontrollers.mcABS.sendtoserver(dbm);  
+	    	try
+	    	{
+				MainAllControllers.mcABS.sendToServer(dbm);
+			} 
+	    	catch (IOException e) 
+	    	{
+				e.printStackTrace();
+			}  
     	}
     }
     public void setOnSucsess()
@@ -76,8 +84,8 @@ public class UserAddRequestController
     @FXML
     void backToHome(MouseEvent event) 
     {
-    	//mainallcontrollers.setWindowVar("userhome");
-    	//mainallcontrollers.setWindow();
+        	MainAllControllers.setWindowVar("userHome");
+        	MainAllControllers.changeWin();
     }
     @FXML
     void backToRequest(MouseEvent event)
@@ -106,7 +114,8 @@ public class UserAddRequestController
     @FXML
     void logut(MouseEvent event)
     {
-    	//mainallcontrollers.setWindowVar("login");
-    	//mainallcontrollers.setWindow();
+    	MainAllControllers.setWindowVar("login");
+    	MainAllControllers.changeWin();
+    	MainAllControllers.user=null;
     }
 }
