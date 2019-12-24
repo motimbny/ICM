@@ -91,6 +91,7 @@ public class MainAllControllers
 		((LoginController) WindowToShow.controller).setVisibleLbl();
 	}
 	
+	
 	public void setUser(User user)
 	{
 		this.user=user;
