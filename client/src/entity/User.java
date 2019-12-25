@@ -9,10 +9,12 @@ public class User implements Serializable
 	private String Name;
 	private String Password;
 	private Position job;
+	private String strPosition;
 	public User(String Name,String Password,String job)
 	{
 		this.Name=Name;
 		this.Password=Password;
+		this.strPosition=job;
 		if(job.equals("ITMember"))
 			this.job =Position.ITMember;
 		switch(job)
@@ -42,6 +44,10 @@ public class User implements Serializable
 	public String getName() 
 	{
 		return Name;
+	}
+	public String getstrPosition() 
+	{
+		return strPosition;
 	}
 	public Position getPosition()
 	{

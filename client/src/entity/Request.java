@@ -13,6 +13,7 @@ public class Request implements Serializable {
 	private Stage[] reqStages;
 	private String wantedChange;
 	private String reasonForRequest;
+	private String desExtSit;
 	private String comments;
 	private int addDocuments;   // 1-if added, 0 if not
 	private String userSubFullName;
@@ -20,15 +21,16 @@ public class Request implements Serializable {
 	private String userSubemail;
 	private String reqDate;
 	private int id;
-    public Request(String infoSystem,String currentStatus,StageName currentStage,String wantedChange,
+	public  Request(String infoSystem,String currentStatus,StageName currentStage,String wantedChange,String desExtSit,
     		String reasonForRequest,String comments,String userSubFullName,String userSubposition,
     		String reqDate,int addDocuments)
-    {
-    	this.reqStages= new Stage[5];
+	{
+		this.reqStages= new Stage[5];
     	this.infoSystem=infoSystem;
     	this.currentStatus=currentStatus;
     	this.currentStage=currentStage;
     	this.wantedChange=wantedChange;
+    	this.desExtSit=desExtSit;
     	this.reasonForRequest=reasonForRequest;
     	this.comments=comments;
     	this.userSubFullName=userSubFullName;
@@ -38,7 +40,7 @@ public class Request implements Serializable {
     	this.addDocuments=addDocuments;
     	this.id=MainToRun.NUM_OF_REQUEST;
     	MainToRun.NUM_OF_REQUEST++;;
-    }
+	}
 	public String getInfoSystem() {
 		return infoSystem;
 	}
@@ -143,6 +145,12 @@ public class Request implements Serializable {
 	public void setReqStages(Stage[] reqStages) 
 	{
 		this.reqStages = reqStages;
+	}
+	public String getDesExtSit() {
+		return desExtSit;
+	}
+	public void setDesExtSit(String desExtSit) {
+		this.desExtSit = desExtSit;
 	}
 
 }

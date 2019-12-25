@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Enums.MessageType;
+import Enums.Position;
 import entity.DBmessage;
 import entity.ServerFile;
 import javafx.fxml.FXML;
@@ -78,7 +79,7 @@ public class UserAddRequestController implements Initializable
 	        arry.add(expChaBen.getText());
 	        arry.add(MorInfoAdd.getText());
 	        arry.add(MainAllControllers.user.getName());
-	        arry.add(MainAllControllers.user.getPosition());
+	        arry.add(MainAllControllers.user.getstrPosition());
 	        arry.add(fileOfUser);
 	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
