@@ -18,6 +18,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 
 public class UserShowRequestsController implements Initializable  {
@@ -71,8 +72,10 @@ public class UserShowRequestsController implements Initializable  {
     }
 
     @FXML
-    void goHelpPage(ActionEvent event) {
-
+    void goHelpPage(ActionEvent event) throws IOException 
+    {
+    	MainAllControllers.setWindowVar("UserHelp");
+    	MainAllControllers.changeWin();
     }
 
     @FXML
@@ -91,8 +94,10 @@ public class UserShowRequestsController implements Initializable  {
     }
 
     @FXML
-    void goPersonalPage(ActionEvent event) {
-
+    void goPersonalPage(ActionEvent event) throws IOException
+    {
+    	MainAllControllers.setWindowVar("UserPersonalInfo");
+    	MainAllControllers.changeWin();
     }
 
     @FXML

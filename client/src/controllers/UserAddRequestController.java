@@ -125,10 +125,10 @@ public class UserAddRequestController implements Initializable
         	MainAllControllers.changeWin();
     }
     @FXML
-    void backToRequest(MouseEvent event)
+    void backToRequest(MouseEvent event) throws IOException
     {
-    	//mainallcontrollers.setWindowVar("userrequests");
-    	//mainallcontrollers.setWindow();
+    	MainAllControllers.setWindowVar("UserAddRequest");
+    	MainAllControllers.setWindow();
     }
     @FXML
     void backTohelp(MouseEvent event) throws IOException
@@ -143,9 +143,10 @@ public class UserAddRequestController implements Initializable
     	MainAllControllers.setWindow();
     }
     @FXML
-    void backTorAddequest(MouseEvent event) 
+    void backTorAddequest(MouseEvent event) throws IOException 
     {
-    	
+    	MainAllControllers.setWindowVar("UserShowRequests");
+    	MainAllControllers.setWindow();
     }
     @FXML
     void logut(MouseEvent event) throws IOException

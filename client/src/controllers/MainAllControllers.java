@@ -94,7 +94,7 @@ public class MainAllControllers
 	}
 	public void goodRequeSend()
 	{
-		((UserAddRequestController) WindowToShow.controller).setOnSucsess();
+		((UserAddRequestController) WindowToShow.controller).setOnSucsess();		
 	}
 	public void showUserReq(ArrayList<RequestUser> list)
 	{

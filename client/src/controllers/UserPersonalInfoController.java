@@ -77,11 +77,14 @@ public class UserPersonalInfoController implements Initializable{
     @FXML
     void personBTNE(MouseEvent event) throws IOException 
     {
-    	    	
+    	MainAllControllers.setWindowVar("UserPersonalInfo");
+    	MainAllControllers.changeWin();   	
     }
     @FXML
-    void showreBTNE(MouseEvent event) {
-
+    void showreBTNE(MouseEvent event) throws IOException
+    {
+    	MainAllControllers.setWindowVar("UserShowRequests");
+    	MainAllControllers.changeWin();
     }
 
     private MainAllControllers MainAllControllers;

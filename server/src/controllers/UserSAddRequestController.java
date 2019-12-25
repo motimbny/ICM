@@ -47,12 +47,14 @@ public class UserSAddRequestController
  			ps.setString(12, request.getUserSubemail());
  			ps.setString(13, request.getReqDate());
  			ps.executeUpdate();	
+ 			ps.close();
  		  }
  		 catch (SQLException e) 
  		     {
  		    	e.printStackTrace();
  		    	return false;
  		     }
+ 		
 		return true;
    }
    public void saveFileToServerFolder(Object msg)

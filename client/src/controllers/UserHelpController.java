@@ -54,7 +54,8 @@ public class UserHelpController
     @FXML
     void helpBTNE(MouseEvent event) throws IOException 
     {
-    	
+    	MainAllControllers.setWindowVar("UserHelp");
+    	MainAllControllers.changeWin();
     }
 
     @FXML
@@ -74,8 +75,10 @@ public class UserHelpController
     }
 
     @FXML
-    void showreBTNE(MouseEvent event) {
-
+    void showreBTNE(MouseEvent event) throws IOException 
+    {
+    	MainAllControllers.setWindowVar("UserShowRequests");
+    	MainAllControllers.changeWin();
     }
 
 }
