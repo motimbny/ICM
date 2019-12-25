@@ -1,19 +1,20 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class UserHelpController 
-{
-	 private MainAllControllers MainAllControllers;
-	 public UserHelpController()
+public class UserPersonalInfoController implements Initializable{
+	 public UserPersonalInfoController()
 	    {
 	    	MainAllControllers=controllers.MainAllControllers.getInstance();
 	    }
-	
 
     @FXML
     private Button homeBTN;
@@ -34,6 +35,15 @@ public class UserHelpController
     private Button logoutBTN;
 
     @FXML
+    private Label UserName;
+
+    @FXML
+    private Label email;
+
+    @FXML
+    private Label position;
+
+    @FXML
     void addreBTNE(MouseEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("UserAddRequest");
@@ -42,9 +52,10 @@ public class UserHelpController
     }
 
     @FXML
-    void helpBTNE(MouseEvent event) throws IOException 
+    void helpBTNE(MouseEvent event)throws IOException 
     {
-    	
+    	MainAllControllers.setWindowVar("UserHelp");
+    	MainAllControllers.changeWin();
     }
 
     @FXML
@@ -56,16 +67,22 @@ public class UserHelpController
     }
 
     @FXML
-    void personBTNE(MouseEvent event)throws IOException 
+    void personBTNE(MouseEvent event) throws IOException 
     {
-    	MainAllControllers.setWindowVar("UserPersonalInfo");
-    	MainAllControllers.changeWin();
-    	
+    	    	
     }
-
     @FXML
     void showreBTNE(MouseEvent event) {
 
     }
+
+    private MainAllControllers MainAllControllers;
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		UserName.setText("User name: "+MainAllControllers.user.getName());
+		email.setText("email: "+MainAllControllers.user.getName()+"@braude.ac.il");
+		position.setText("Position: "+MainAllControllers.user.getPosition());
+		
+	}
 
 }

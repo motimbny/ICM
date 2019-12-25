@@ -13,6 +13,7 @@ import controllers.TesterSubmitReportController;
 import controllers.UserAddRequestController;
 import controllers.UserHelpController;
 import controllers.UserHomeController;
+import controllers.UserPersonalInfoController;
 import controllers.UserShowRequestsController;
 
 public class WindowToShow {
@@ -34,6 +35,9 @@ public class WindowToShow {
 		case "UserAddRequest":
 			initUserAddRequest();
 			break;
+		case "UserPersonalInfo":
+			initUserPersonalInfo();
+			break;	
 		case "UserHelp":
 			initUserHelp();
 			break;
@@ -62,6 +66,7 @@ public class WindowToShow {
 	}
 
 
+	
 	public String getPathfxml() {
 		return pathfxml;
 	}
@@ -107,11 +112,17 @@ public class WindowToShow {
 	}
 
 	public void initUserAddRequest() {
-		UserAddRequestController controller = new UserAddRequestController(); // UserAddRequestController
+		UserAddRequestController controller = new UserAddRequestController(); 
 		pathfxml = "/Fxml/UserAddRequest.fxml";
 		windowName = "ICM-UserAddRequest";
 	}
 	
+	private void initUserPersonalInfo() {
+		UserPersonalInfoController controller = new UserPersonalInfoController(); 
+		pathfxml = "/Fxml/UserPersonalInfo.fxml";
+		windowName = "ICM-UserPersonalInfo";
+		
+	}
 
 	private void initUserHelp() {
 		UserHelpController controller = new UserHelpController(); // UserAddRequestController
