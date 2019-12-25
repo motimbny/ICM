@@ -33,17 +33,10 @@ public class UserShowRequestsSController
 		{
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT id, currentStatus, currentStage FROM request WHERE userSubFullName='"+user+ "'");
-			if(rs.next()==false)
-  	 		{
-  	 			return toSend;
-  	 		}
-			else
-			{
-				int i=0;
 				while(rs.next()!=false)
 				{
 					StageName name=null;
-					switch(rs.getString(i+2))
+					switch(rs.getString(3))
 					{
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
@@ -61,18 +54,15 @@ public class UserShowRequestsSController
 						name=StageName.closing;
 						break;		
 					}
-					RequestUser toAdd=new RequestUser(rs.getInt(i),rs.getString(i+1),name);
+					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name);
 					toSend.add(toAdd);
-					i+=3;
 				}
 				return toSend;
-			}
 		} 
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-		}
-		
+		}	
 		return null;
 	}
 	

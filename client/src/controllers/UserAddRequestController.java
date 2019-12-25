@@ -81,6 +81,7 @@ public class UserAddRequestController implements Initializable
 	        arry.add(MainAllControllers.user.getName());
 	        arry.add(MainAllControllers.user.getstrPosition());
 	        arry.add(fileOfUser);
+	       // System.out.println(fileOfUser.getFileName());
 	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
 	    	{

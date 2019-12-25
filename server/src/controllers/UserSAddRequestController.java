@@ -20,9 +20,12 @@ public class UserSAddRequestController
 	{
 		this.connection=connection;
 		ArrayList<Object> arry=dbm.getObjs();
+		//ServerFile sf=(ServerFile)arry.get(8);
+		//System.out.println("add"+sf.getFileName());
+		//int addDoc;
 		request=new Request((String)arry.get(0),"pending",StageName.meaningAssessment,(String)arry.get(1), (String)arry.get(2),
 				             (String)arry.get(3), (String)arry.get(4), (String)arry.get(5), (String)arry.get(6) ,
-				             java.time.LocalDate.now().toString(),0);
+				             java.time.LocalDate.now().toString(),0);	
 	}
 	public boolean submitRequest()
 	{

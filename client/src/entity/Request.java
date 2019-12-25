@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import Enums.StageName;
 import boundries.MainToRun;
+import boundries.mainServer;
 
 @SuppressWarnings("serial")
 public class Request implements Serializable {
@@ -38,8 +39,8 @@ public class Request implements Serializable {
     	this.userSubemail=userSubFullName+"@braude.ac.il";
     	this.reqDate=reqDate;
     	this.addDocuments=addDocuments;
-    	this.id=MainToRun.NUM_OF_REQUEST;
-    	MainToRun.NUM_OF_REQUEST++;;
+    	this.id=mainServer.NUM_OF_REQUEST;
+    	mainServer.NUM_OF_REQUEST++;;
 	}
 	public String getInfoSystem() {
 		return infoSystem;

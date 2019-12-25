@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 
 public class mainServer extends Application
 {
+	public static int NUM_OF_REQUEST=0;
      serverController controller;
      Pane pane;
      Scene s1;
