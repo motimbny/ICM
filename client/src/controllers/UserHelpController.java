@@ -42,6 +42,16 @@ public class UserHelpController
     }
 
     @FXML
+    void homeBack(MouseEvent event) throws IOException
+    {
+    	MainAllControllers.setWindowVar("userHome");
+    	MainAllControllers.changeWin();
+          
+    }
+
+
+
+    @FXML
     void helpBTNE(MouseEvent event) throws IOException 
     {
     	

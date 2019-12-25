@@ -57,6 +57,14 @@ public class UserPersonalInfoController implements Initializable{
     	MainAllControllers.setWindowVar("UserHelp");
     	MainAllControllers.changeWin();
     }
+    
+    @FXML
+    void backHome(MouseEvent event) throws IOException {
+
+    	MainAllControllers.setWindowVar("userHome");
+    	MainAllControllers.changeWin();
+    }
+
 
     @FXML
     void logoutBTNE(MouseEvent event) throws IOException

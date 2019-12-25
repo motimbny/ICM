@@ -130,22 +130,21 @@ public class UserAddRequestController implements Initializable
     	//mainallcontrollers.setWindow();
     }
     @FXML
-    void backTohelp(MouseEvent event)
+    void backTohelp(MouseEvent event) throws IOException
     {
-    	//mainallcontrollers.setWindowVar("help");
-    	//mainallcontrollers.setWindow();
+    	MainAllControllers.setWindowVar("Userhelp");
+    	MainAllControllers.setWindow();
     }
     @FXML
-    void backToinfo(MouseEvent event)
+    void backToinfo(MouseEvent event) throws IOException
     {
-    	//mainallcontrollers.setWindowVar("userinfo");
-    	//mainallcontrollers.setWindow();
+    	MainAllControllers.setWindowVar("UserPersonalInfo");
+    	MainAllControllers.setWindow();
     }
     @FXML
     void backTorAddequest(MouseEvent event) 
     {
-    	//mainallcontrollers.setWindowVar("useraddrequest");
-    	//mainallcontrollers.setWindow();
+    	
     }
     @FXML
     void logut(MouseEvent event) throws IOException
