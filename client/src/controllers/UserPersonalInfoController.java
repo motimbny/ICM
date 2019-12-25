@@ -81,7 +81,7 @@ public class UserPersonalInfoController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		UserName.setText("User name: "+MainAllControllers.user.getName());
 		email.setText("email: "+MainAllControllers.user.getName()+"@braude.ac.il");
-		position.setText("Position: "+MainAllControllers.user.getPosition());
+		position.setText("Position: "+MainAllControllers.user.getstrPosition());
 		
 	}
 
