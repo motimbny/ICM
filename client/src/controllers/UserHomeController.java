@@ -76,8 +76,10 @@ public class UserHomeController implements Initializable
     }
 
     @FXML
-    void showreBTNE(MouseEvent event) 
+    void showreBTNE(MouseEvent event) throws IOException 
     {
+    	MainAllControllers.setWindowVar("UserShowRequests");
+    	MainAllControllers.changeWin();
     	
     }
     

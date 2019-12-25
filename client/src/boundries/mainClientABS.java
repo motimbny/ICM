@@ -1,10 +1,12 @@
 package boundries;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import Enums.Position;
 import controllers.MainAllControllers;
 import entity.DBmessage;
+import entity.RequestUser;
 import entity.User;
 import javafx.event.ActionEvent;
 import ocsf.client.AbstractClient;
@@ -40,10 +42,23 @@ public class mainClientABS extends AbstractClient
 			 MainAllControllers.goodRequeSend();
 			 
 		 }
+		 if(msg instanceof ArrayList<?>)
+		 {
+			 
+			 ArrayList<?> send=(ArrayList<?>) msg;
+			 if(send.get(0).equals("UserShowRequests"))
+			 {
+				 send.remove(0);
+				 MainAllControllers.showUserReq((ArrayList<RequestUser>)send);
+			 }
+			
+		 }
+		 
 			else
 			{
 				 MainAllControllers.badUser();		 
-			}  			 	
+			}  
+		 
 	}
 	public void handleMessageFromClientUI(DBmessage msg)  
 	  {

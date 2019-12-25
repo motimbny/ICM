@@ -8,17 +8,26 @@ import Enums.MessageType;
 import Enums.StageName;
 import entity.DBmessage;
 import entity.Request;
+import entity.RequestUser;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 
 public class UserShowRequestsController implements Initializable  {
 	
+	private ObservableList<RequestUser> rows; //= FXCollections.observableArrayList();
 	private MainAllControllers MainAllControllers;
+	public UserShowRequestsController()
+	{
+    	MainAllControllers=MainAllControllers.getInstance();
+	}
 	
     @FXML
     private Button homeBTN;
@@ -39,19 +48,20 @@ public class UserShowRequestsController implements Initializable  {
     private Button logoutBTN;
 
     @FXML
-    private TableView<Request> requestsTable = new TableView<Request>();
+    private TableView<RequestUser> requestsTable;
     
     @FXML
-    private TableColumn<Request, String> RequestID;
+    private TableColumn<RequestUser, Integer> id;
 
     @FXML
-    private TableColumn<Request, String> RequestStatus;
+    private TableColumn<RequestUser, String> currentStatus;
 
     @FXML
-    private TableColumn<Request, StageName> RequestStage;
+    private TableColumn<RequestUser, StageName> currentStage;
 
     @FXML
-    private TableColumn<Request, Integer> TimeLeft;
+    private TableColumn<RequestUser, Integer> timeLeft;
+    
     
     @FXML
     void goAddReqPage(ActionEvent event) throws IOException 
@@ -92,23 +102,36 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.changeWin();
     }
     
-    public void setTextInTable()
+    public void setTextInTable(ArrayList<RequestUser> list)
     {
-    	requestsTable.getItems();
+    	
+    	rows= FXCollections.observableArrayList();
+    	for(RequestUser r:list)
+    		rows.add(r);		
+    	requestsTable.setItems(rows);
     }
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) 
-	{
-		MainAllControllers=MainAllControllers.getInstance();
+    public void requestServer()
+    {
+    	
 		ArrayList<Object> arry=new ArrayList<Object>();
-		arry.add(MainAllControllers.user);
+		arry.add(MainAllControllers.user.getName());
 		DBmessage dbm;
     	dbm=new DBmessage(MessageType.ShowReqUser, arry);   
     	try {
 			MainAllControllers.mcABS.sendToServer(dbm);
 		} catch (IOException e) {}
-		
+    }
+    
+	@Override
+	public void initialize(URL location, ResourceBundle resources) 
+	{
+
+		id.setCellValueFactory(new PropertyValueFactory<>("id"));
+		currentStatus.setCellValueFactory(new PropertyValueFactory<>("currentStatus"));
+		currentStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
+		timeLeft.setCellValueFactory(new PropertyValueFactory<>("timeLeft"));
+		requestServer();
 	}
 
 }

@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import boundries.mainClientABS;
 import javafx.application.Platform;
@@ -8,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import entity.RequestUser;
 import entity.User;
 import entity.WindowToShow;
 public class MainAllControllers 
@@ -93,6 +95,10 @@ public class MainAllControllers
 	public void goodRequeSend()
 	{
 		((UserAddRequestController) WindowToShow.controller).setOnSucsess();
+	}
+	public void showUserReq(ArrayList<RequestUser> list)
+	{
+		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}
 	
 	public void setUser(User user)
