@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -25,24 +26,30 @@ public class UserSAddRequestController
 	}
    public boolean submitRequest()
    {
-	   Statement stmt;
+	   PreparedStatement ps;
  		try 
  		  {
- 			stmt = connection.createStatement();
- 			int rs = stmt.executeUpdate("INSERT INTO request VALUES(1,"+request.getId()+",2,"+request.getInfoSystem()+
- 					",3,"+request.getCurrentStatus()+",4,"+request.getCurrentStatus()+",5,"+request.getWantedChange()
- 					+",6,"+request.getReasonForRequest()+",7,"+request.getComments()+",8,"+request.getAddDocuments()
- 					+",9,"+request.getUserSubFullName()+",10,"+request.getUserSubposition()+",11,"+request.getUserSubemail()+");");
- 	 		if(rs==0)
- 	 			return false;
- 	 		else
- 	 			return true;
+ 			ps = connection.prepareStatement("INSERT INTO request VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+ 			ps.setInt(1, request.getId());
+ 			ps.setString(2, request.getInfoSystem());
+ 			ps.setString(3, request.getCurrentStatus());
+ 			ps.setString(4, request.getCurrentStage().toString());
+ 			ps.setString(5, request.getWantedChange());
+ 			ps.setString(6, request.getReasonForRequest());
+ 			ps.setString(7, request.getComments());
+ 			ps.setInt(8, request.getAddDocuments());
+ 			ps.setString(9, request.getUserSubFullName());
+ 			ps.setString(10, request.getUserSubposition());
+ 			ps.setString(11, request.getUserSubemail());
+ 			ps.setString(12, request.getReqDate());
+ 			ps.executeUpdate();	
  		  }
- 		
  		 catch (SQLException e) 
  		     {
  		    	e.printStackTrace();
+ 		    	return false;
  		     }
-		return false;
+		return true;
    }
+
 }
