@@ -31,7 +31,6 @@ public class UserAddRequestController implements Initializable
 	{
     	MainAllControllers=MainAllControllers.getInstance();
 	}
-	
     @FXML
     private Button homeBTN;
     @FXML
@@ -148,6 +147,7 @@ public class UserAddRequestController implements Initializable
     	MainAllControllers.setWindowVar("UserShowRequests");
     	MainAllControllers.setWindow();
     }
+    
     @FXML
     void logut(MouseEvent event) throws IOException
     {
