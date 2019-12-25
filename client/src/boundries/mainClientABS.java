@@ -24,8 +24,6 @@ public class mainClientABS extends AbstractClient
 	@Override
 	protected void handleMessageFromServer(Object msg)
 	{
-		if(msg instanceof DBSmessage)
-		{
 			DBSmessage dbs=(DBSmessage)msg;
 			switch(dbs.getType()) 
 			{
@@ -60,11 +58,6 @@ public class mainClientABS extends AbstractClient
 				}
 				break;
 			}
-         }
-		else
-			{
-				 MainAllControllers.badUser();		 
-			}  
 		 this.connectionClosed();		 
 	}
 	public void openConToServer()
