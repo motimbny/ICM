@@ -13,7 +13,6 @@ public class MainToRun extends Application
 		MainAllControllers mc =MainAllControllers.getInstance();
 		mc.initMainAllControllers(stage);
 	}
-
 	public static void main(String[] args)
 	{
 		launch(args);
