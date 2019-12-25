@@ -4,8 +4,11 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import Enums.MessageTypeS;
 import entity.ConnectToDB;
+import entity.DBSmessage;
 import entity.DBmessage;
 import entity.User;
 
@@ -20,24 +23,27 @@ public class loginSController
 		this.password=((String)msg.getObjs().get(1));
 		this.connection=connection;
 	}
-	public User CheckLogIn()
+	public DBSmessage CheckLogIn()
 	{
     	Statement stmt;
+    	DBSmessage dbs;
     	User toSend=null;
+    	boolean flag=false;
+    	ArrayList<Object> arry=new ArrayList<Object>();
   		try 
   		  {
   			stmt = connection.createStatement();
   			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE userName='"+user+ "'");
   	 		if(rs.next()==false)
   	 		{
-  	 			return toSend;                              //user not in database
+  	 			flag=false;
   	 		}
   	 		else
   	 		{
   	 			if(password.equals(rs.getString(2)))           //change to number of col
   	 			{
   	 				toSend=new User(rs.getString(1),rs.getString(2),rs.getString(3));
-  	 				return toSend;
+  	 				flag=true;
   	 			}
   	 		}
   			 rs.close();
@@ -46,7 +52,14 @@ public class loginSController
   		     {
   		    	e.printStackTrace();
   		     }
-		return toSend;
+  		    if(flag==false)
+  		    	dbs=new DBSmessage(MessageTypeS.LoginFail,null);
+  		    else
+  		    {
+                arry.add(toSend);
+        	    dbs=new DBSmessage(MessageTypeS.Login,arry);
+  		    }
+			return dbs;
 	}
 
 }

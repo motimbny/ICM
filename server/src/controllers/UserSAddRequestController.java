@@ -7,10 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import Enums.MessageTypeS;
 import Enums.StageName;
+import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Request;
 import entity.ServerFile;
+import entity.User;
 
 public class UserSAddRequestController
 {
@@ -27,9 +31,12 @@ public class UserSAddRequestController
 				             (String)arry.get(3), (String)arry.get(4), (String)arry.get(5), (String)arry.get(6) ,
 				             java.time.LocalDate.now().toString(),0);	
 	}
-	public boolean submitRequest()
+	public DBSmessage submitRequest()
 	{
 	   PreparedStatement ps;
+	   DBSmessage dbs;
+	   boolean flag=false;
+   	   ArrayList<Object> arry=new ArrayList<Object>();
  		try 
  		  {
  			ps = connection.prepareStatement("INSERT INTO request VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -52,10 +59,12 @@ public class UserSAddRequestController
  		 catch (SQLException e) 
  		     {
  		    	e.printStackTrace();
- 		    	return false;
+ 		    	flag=false;
  		     }
- 		
-		return true;
+ 		flag=true;
+ 		arry.add(flag);
+    	dbs=new DBSmessage(MessageTypeS.AddRequest, arry);
+		return dbs;
    }
    public void saveFileToServerFolder(Object msg)
    {

@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import Enums.MessageTypeS;
 import Enums.StageName;
+import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Request;
 import entity.RequestUser;
@@ -24,11 +26,11 @@ public class UserShowRequestsSController
 		this.connection=connection;
 	}
 	
-	public ArrayList<Object> showRequest()
+	public DBSmessage showRequest()
 	{
 		Statement stmt;
+		DBSmessage dbs;
 		ArrayList<Object> toSend= new ArrayList<Object>();
-		toSend.add("UserShowRequests");
 		try 
 		{
 			stmt = connection.createStatement();
@@ -57,7 +59,8 @@ public class UserShowRequestsSController
 					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name);
 					toSend.add(toAdd);
 				}
-				return toSend;
+				dbs=new DBSmessage(MessageTypeS.ShowReqUser,toSend);
+				return dbs;
 		} 
 		catch (SQLException e)
 		{

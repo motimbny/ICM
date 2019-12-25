@@ -107,12 +107,12 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.changeWin();
     }
     
-    public void setTextInTable(ArrayList<RequestUser> list)
+    public void setTextInTable(ArrayList<Object> list)
     {
     	
     	rows= FXCollections.observableArrayList();
-    	for(RequestUser r:list)
-    		rows.add(r);		
+    	for(Object r:list)
+    		rows.add((RequestUser)r);		
     	requestsTable.setItems(rows);
     }
 
@@ -124,7 +124,7 @@ public class UserShowRequestsController implements Initializable  {
 		DBmessage dbm;
     	dbm=new DBmessage(MessageType.ShowReqUser, arry);   
     	try {
-			MainAllControllers.mcABS.sendToServer(dbm);
+    		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
     }
     

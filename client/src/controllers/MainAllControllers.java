@@ -38,8 +38,7 @@ public class MainAllControllers
     	this.window=window;
     	WindowToShow=new WindowToShow();
     	WindowToShow.setWindowToShow("login");
-    	setWindow();
-    	
+    	setWindow();  	
     }
     protected static void changeWindow(MainAllControllers MainAllControllers) 
     {
@@ -88,6 +87,11 @@ public class MainAllControllers
 	     window.setScene(s);
 	     window.show();
 	}
+	public void sendToAbsServer(Object msg) throws IOException
+	{
+		mcABS.openConToServer();
+		mcABS.sendToServer(msg);
+	}
 	public void badUser()
 	{
 		((LoginController) WindowToShow.controller).setVisibleLbl();
@@ -96,7 +100,7 @@ public class MainAllControllers
 	{
 		((UserAddRequestController) WindowToShow.controller).setOnSucsess();		
 	}
-	public void showUserReq(ArrayList<RequestUser> list)
+	public void showUserReq(ArrayList<Object> list)
 	{
 		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}

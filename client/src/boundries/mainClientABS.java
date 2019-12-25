@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import Enums.Position;
 import controllers.MainAllControllers;
+import entity.DBSmessage;
 import entity.DBmessage;
 import entity.RequestUser;
 import entity.User;
@@ -17,48 +18,62 @@ public class mainClientABS extends AbstractClient
 	public mainClientABS(String host, int port) throws IOException
 	{
 		super(host, port);
-		MainAllControllers=MainAllControllers.getInstance();
-		openConnection();
+		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
 	
-
 	@Override
 	protected void handleMessageFromServer(Object msg)
 	{
-		if(msg instanceof User)
+		if(msg instanceof DBSmessage)
 		{
-				try 
+			DBSmessage dbs=(DBSmessage)msg;
+			switch(dbs.getType()) 
+			{
+			case Login:
 				{
-					MainAllControllers.setWindowVar("userHome");
-					MainAllControllers.changeWin();
-					  MainAllControllers.setUser((User)msg);
-				} catch (IOException e) 
+					User set=(User)dbs.getObjs().get(0);
+					try 
+						{
+							MainAllControllers.setWindowVar("userHome");
+							MainAllControllers.changeWin();
+							MainAllControllers.setUser(set);
+						} catch (IOException e) 
+						{
+							e.printStackTrace();
+						} 
+					}
+				   break;
+			case LoginFail:
 				{
-					e.printStackTrace();
-				} 
+					MainAllControllers.badUser();
+				}
+				break;
+			case AddRequest:
+				{
+					 MainAllControllers.goodRequeSend();
+				}
+				break;
+			case ShowReqUser:
+				{
+					ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				   MainAllControllers.showUserReq(((ArrayList<Object>)send));
+				}
+				break;
+			}
          }
-		 if(msg instanceof Boolean)
-		 {
-			 MainAllControllers.goodRequeSend();
-			 
-		 }
-		 if(msg instanceof ArrayList<?>)
-		 {
-			 
-			 ArrayList<?> send=(ArrayList<?>) msg;
-			 if(send.get(0).equals("UserShowRequests"))
-			 {
-				 send.remove(0);
-				 MainAllControllers.showUserReq((ArrayList<RequestUser>)send);
-			 }
-			
-		 }
-		 
-			else
+		else
 			{
 				 MainAllControllers.badUser();		 
 			}  
-		 
+		 this.connectionClosed();		 
+	}
+	public void openConToServer()
+	{
+		try 
+		{
+			openConnection();
+		} 
+		catch (IOException e){}
 	}
 	public void handleMessageFromClientUI(DBmessage msg)  
 	  {

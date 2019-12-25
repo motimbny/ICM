@@ -44,7 +44,7 @@ public class LoginController
     	arry.add(passF.getText());
     	DBmessage dbm;
     	dbm=new DBmessage(MessageType.Login, arry);
-    	MainAllControllers.mcABS.sendToServer(dbm);       //this line will send DBmessage to server
+    	MainAllControllers.sendToAbsServer(dbm);
     }
     @FXML
     void forgotpass(MouseEvent event)

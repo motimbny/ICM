@@ -84,7 +84,7 @@ public class UserAddRequestController implements Initializable
 	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
 	    	{
-				MainAllControllers.mcABS.sendToServer(dbm);
+				MainAllControllers.sendToAbsServer(dbm);
 			} 
 	    	catch (IOException e) 
 	    	{
