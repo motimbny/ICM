@@ -132,7 +132,7 @@ public class UserAddRequestController implements Initializable
     @FXML
     void backTohelp(MouseEvent event) throws IOException
     {
-    	MainAllControllers.setWindowVar("Userhelp");
+    	MainAllControllers.setWindowVar("UserHelp");
     	MainAllControllers.setWindow();
     }
     @FXML
