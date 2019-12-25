@@ -1,16 +1,17 @@
 package controllers;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
 import Enums.StageName;
 import entity.DBmessage;
 import entity.Request;
-import entity.User;
+import entity.ServerFile;
 
 public class UserSAddRequestController
 {
@@ -23,6 +24,11 @@ public class UserSAddRequestController
 		request=new Request((String)arry.get(0),"pending",StageName.meaningAssessment,(String)arry.get(1),
 				             (String)arry.get(3), (String)arry.get(4), (String)arry.get(5), (String)arry.get(6) ,
 				             java.time.LocalDate.now().toString(),0);
+        System.out.println(request.getInfoSystem());
+		if(!arry.get(7).equals(null))
+		{
+			saveFileToServerFolder(arry.get(7));
+		}
 	}
    public boolean submitRequest()
    {
@@ -50,6 +56,25 @@ public class UserSAddRequestController
  		    	return false;
  		     }
 		return true;
+   }
+   public void saveFileToServerFolder(Object msg)
+   {
+	   int fileSize =((ServerFile)msg).getSize(); 
+		  ServerFile newMsg= (ServerFile)msg; 	
+		  String path="server/";
+		  try{
+			  File newFile = new File(path+""+newMsg.getFileName());
+			  byte [] mybytearray  =newMsg.getMybytearray();
+			  FileOutputStream fos = new FileOutputStream(newFile);
+			  BufferedOutputStream bos = new BufferedOutputStream(fos);
+			  bos.write (mybytearray,0,newMsg.getSize());
+			  bos.flush();
+			  fos.flush();
+			 }
+			catch (Exception e)
+		     {
+				System.out.println("Error send (Files)msg) to Server");
+			 }
    }
 
 }

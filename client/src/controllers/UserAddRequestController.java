@@ -1,6 +1,8 @@
 package controllers;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -8,6 +10,7 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
+import entity.ServerFile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -21,6 +24,7 @@ import javafx.stage.Stage;
 
 public class UserAddRequestController implements Initializable
 {
+	private ServerFile fileOfUser=null;
 	private MainAllControllers MainAllControllers;
 	public UserAddRequestController()
 	{
@@ -75,6 +79,7 @@ public class UserAddRequestController implements Initializable
 	        arry.add(MorInfoAdd.getText());
 	        arry.add(MainAllControllers.user.getName());
 	        arry.add(MainAllControllers.user.getPosition());
+	        arry.add(fileOfUser);
 	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
 	    	{
@@ -91,11 +96,24 @@ public class UserAddRequestController implements Initializable
 		goodAddRe.setVisible(true);
     }
     @FXML
-    void attachFile(MouseEvent event)
+    private void attachFile(MouseEvent event)
     {
     	FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File file = chooser.showOpenDialog(new Stage());
+        fileOfUser= new ServerFile(file.getName()+MainAllControllers.user.getName());
+  	    String LocalfilePath=file.getName()+MainAllControllers.user.getName();	
+  	     try{ 		      
+  		      byte [] mybytearray  = new byte [(int)file.length()];
+  		      FileInputStream fis = new FileInputStream(file);
+  		      BufferedInputStream bis = new BufferedInputStream(fis);			     
+  		      fileOfUser.initArray(mybytearray.length);
+  		      fileOfUser.setSize(mybytearray.length); 
+  		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length);
+  		    }
+  		catch (Exception e) {
+  			System.out.println("Error send File to Server");
+  		}
     }
 
     @FXML
