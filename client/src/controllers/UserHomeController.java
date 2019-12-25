@@ -53,9 +53,10 @@ public class UserHomeController implements Initializable
     }
 
     @FXML
-    void helpBTNE(MouseEvent event) 
+    void helpBTNE(MouseEvent event) throws IOException 
     {
-
+    	MainAllControllers.setWindowVar("UserHelp");
+    	MainAllControllers.changeWin();
     }
 
     @FXML
