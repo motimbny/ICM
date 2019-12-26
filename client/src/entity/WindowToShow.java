@@ -8,6 +8,9 @@ import controllers.CCShowRequestsController;
 import controllers.LoginController;
 import controllers.PerformanceLeaderHomeController;
 import controllers.PerformanceLeaderShowRequestsController;
+import controllers.SupervisorEmployeesListController;
+import controllers.SupervisorHomeController;
+import controllers.SupervisorShowRequestsController;
 import controllers.TesterShowRequestsController;
 import controllers.TesterSubmitReportController;
 import controllers.UserAddRequestController;
@@ -40,6 +43,15 @@ public class WindowToShow {
 			break;	
 		case "UserHelp":
 			initUserHelp();
+			break;
+		case "SupervisorHome":
+			initSupervisorHome();
+			break;
+		case "SupervisorShowRequests":
+			initSupervisorShowRequests();
+			break;
+		case "SupervisorEmployeesList":
+			initSupervisorEmployeesList();
 			break;
 		case "TesterSubmitReport":
 			initTesterSubmitReport();
@@ -154,4 +166,23 @@ public class WindowToShow {
 		pathfxml = "/Fxml/PerformanceLeaderHome.fxml";
 		windowName = "ICM-PerformanceLeaderHome";
 	}
+	
+	public void initSupervisorHome() {
+		SupervisorHomeController controller = new SupervisorHomeController(); // SupervisorHomeController
+		pathfxml = "/Fxml/SupervisorHome.fxml";
+		windowName = "ICM-SupervisorHome";
+	}
+	
+	public void initSupervisorShowRequests() {
+		SupervisorShowRequestsController controller = new SupervisorShowRequestsController(); // SupervisorShowRequestsController
+		pathfxml = "/Fxml/SupervisorShowRequests.fxml";
+		windowName = "ICM-SupervisorShowRequests";
+	}
+	
+	public void initSupervisorEmployeesList() {
+		SupervisorEmployeesListController controller = new SupervisorEmployeesListController(); // SupervisorEmployeesListController
+		pathfxml = "/Fxml/SupervisorEmployeesList.fxml";
+		windowName = "ICM-SupervisorEmployeesList";
+	}
+	
 }

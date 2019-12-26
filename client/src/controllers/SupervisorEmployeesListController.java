@@ -1,10 +1,20 @@
 package controllers;
+import java.io.IOException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 
-public class SupervisorEmployeesListController {
+public class SupervisorEmployeesListController 
+{
+	private MainAllControllers MainAllControllers;
+	public SupervisorEmployeesListController()
+	{
+		MainAllControllers=controllers.MainAllControllers.getInstance();
+	}
 
     @FXML
     private Button homeBTN;
@@ -28,37 +38,57 @@ public class SupervisorEmployeesListController {
     private TableView<?> employeesTable;
 
     @FXML
+    private TableColumn<?, ?> EmployeeID;
+
+    @FXML
+    private TableColumn<?, ?> EmployeeName;
+
+    @FXML
+    private TableColumn<?, ?> NumberOfProjects;
+
+    @FXML
     private Button chooseRequestBTN;
 
     @FXML
-    void goEmployeesMangPage(ActionEvent event) {
+    void chooseEmployee(MouseEvent event) {
 
     }
 
     @FXML
-    void goHelpPage(ActionEvent event) {
+    void goEmployeesMangPage(MouseEvent event) {
 
     }
 
     @FXML
-    void goHomePage(ActionEvent event) {
+    void goHelpPage(MouseEvent event) {
 
     }
 
     @FXML
-    void goLogoutPage(ActionEvent event) {
+    void goHomePage(MouseEvent event) throws IOException 
+    {
+    	MainAllControllers.setWindowVar("SupervisorHome");
+    	MainAllControllers.changeWin();
+    }
+
+    @FXML
+    void goLogoutPage(MouseEvent event) throws IOException 
+    {
+    	MainAllControllers.setWindowVar("login");
+    	MainAllControllers.changeWin();
+    	MainAllControllers.user=null;
+    }
+
+    @FXML
+    void goPersonalPage(MouseEvent event) {
 
     }
 
     @FXML
-    void goPersonalPage(ActionEvent event) {
-
+    void goShowReqPage(MouseEvent event) throws IOException 
+    {
+    	MainAllControllers.setWindowVar("SupervisorShowRequests");
+    	MainAllControllers.changeWin();
     }
-
-    @FXML
-    void goShowReqPage(ActionEvent event) {
-
-    }
-
 }
 
