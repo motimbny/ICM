@@ -1,5 +1,5 @@
 .root { 
-    -fx-background-image:url("/Images/ba.jpg");
+	-fx-background-image:url("/Images/baS.jpg");
     -fx-background-size: 100% 100%; 
     -fx-base: white;
     -fx-control-inner-background: derive(-fx-base,50%);
@@ -65,11 +65,7 @@
 	-fx-border-radius: 5 5 5 5; 
     -fx-background-radius: 5 5 5 5; 
 }
-#wrongLbl
-{
-	    -fx-text-fill: red;
-	
-}
+
 #loginMainScreen
 {
 	-fx-border-color: #3C3C3C;
@@ -85,6 +81,20 @@
     -fx-background-radius: 5 5 5 5;
 }
 #submitRequestUserAddReq
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#ApproveTesterShowReq
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#FailureTesterShowReq
 {
 	-fx-border-color: #3C3C3C;
 	-fx-border-width: 0.5px;
@@ -127,9 +137,53 @@
     -fx-background-radius: 5 5 5 5;
 	-fx-font-size:16px;
 }
+#SubmitPerformanceLeaderShowReq
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+	-fx-font-size:16px;
+}
+#ChangePerformanceLeaderShowReq
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+	-fx-font-size:16px;
+}
 #EmployeesManagment
 {
 	-fx-font-size:10px;
+}
+#SuprvisorCloseRequest
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#SuprvisorSuspendRequest
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#SuprvisorUpdateRequest
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#SuprvisorExtensionRequest
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
 }
 #saveUpdateReq
 {

@@ -15,8 +15,6 @@ public class User implements Serializable
 		this.Name=Name;
 		this.Password=Password;
 		this.strPosition=job;
-		if(job.equals("ITMember"))
-			this.job =Position.ITMember;
 		switch(job)
 		{
 			case "ITMember":

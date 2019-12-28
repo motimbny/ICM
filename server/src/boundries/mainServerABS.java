@@ -42,12 +42,28 @@ public class mainServerABS extends AbstractServer
 		    	   catch (IOException e) {}
 		    	   break;
 		       }
+		       case homeRequestNum:
+		       {
+		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(userShowRequestsSController.numOfRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
 		       case ShowReqUser:
+		       {	   
+		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(userShowRequestsSController.showRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
+		       case SearchReqUser:
 		       {
 		    	   
 		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
 		    	   try {
-					client.sendToClient(userShowRequestsSController.showRequest());
+					client.sendToClient(userShowRequestsSController.showSPRequest());
 				} catch (IOException e) {}
 		    	   break;
 		       }

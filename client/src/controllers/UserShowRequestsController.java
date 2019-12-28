@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
@@ -62,8 +63,23 @@ public class UserShowRequestsController implements Initializable  {
 
     @FXML
     private TableColumn<RequestUser, Integer> timeLeft;
-    
-    
+    @FXML
+    private Button search;
+
+    @FXML
+    private TextField requestIdTo;
+    @FXML
+    void searchRequest(MouseEvent event)
+    {
+    	ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user.getName());
+		arry.add(Integer.parseInt(requestIdTo.getText()));
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.SearchReqUser, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+    }
     @FXML
     void goAddReqPage(ActionEvent event) throws IOException 
     {
@@ -118,7 +134,6 @@ public class UserShowRequestsController implements Initializable  {
 
     public void requestServer()
     {
-    	
 		ArrayList<Object> arry=new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName());
 		DBmessage dbm;
@@ -137,6 +152,10 @@ public class UserShowRequestsController implements Initializable  {
 		currentStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
 		timeLeft.setCellValueFactory(new PropertyValueFactory<>("timeLeft"));
 		requestServer();
+	}
+	public void clearTable()
+	{
+		requestsTable.getItems().clear();
 	}
 
 }

@@ -29,10 +29,19 @@ public class mainClientABS extends AbstractClient
 			{
 			case Login:
 				{
+					String topen="";
 					User set=(User)dbs.getObjs().get(0);
+					switch (set.getstrPosition())
+					{
+					case "ITMember":
+						topen="SupervisorHome";
+						break;
+					case "student":
+						topen="userHome";
+					}
 					try 
 						{
-							MainAllControllers.setWindowVar("userHome");
+							MainAllControllers.setWindowVar(topen);
 							MainAllControllers.changeWin();
 							MainAllControllers.setUser(set);
 						} catch (IOException e) 
@@ -46,6 +55,11 @@ public class mainClientABS extends AbstractClient
 					MainAllControllers.badUser();
 				}
 				break;
+			case homeRequestNum:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.setHomeUserNum((int)send.get(0));
+			}
 			case AddRequest:
 				{
 					 MainAllControllers.goodRequeSend();
@@ -57,6 +71,12 @@ public class mainClientABS extends AbstractClient
 				   MainAllControllers.showUserReq(((ArrayList<Object>)send));
 				}
 				break;
+			case SearchReqUser:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+			     MainAllControllers.showUserSPReq(((ArrayList<Object>)send));
+			}
+			break;
 			}
 		 this.connectionClosed();		 
 	}

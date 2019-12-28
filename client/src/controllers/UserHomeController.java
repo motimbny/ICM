@@ -2,7 +2,11 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -82,20 +86,22 @@ public class UserHomeController implements Initializable
     	MainAllControllers.changeWin();
     	
     }
-    
+    void setRequestNumber(int num)
+    {
+    	reqExNum.setText(Integer.toString(num));
+    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		helloUser.setText("Hello "+MainAllControllers.user.getName());
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user.getName());
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.homeRequestNum, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
 	}
-	
-	/*public void initialize(URL location, ResourceBundle resources)
-	{
-		reqExNum.setText();
-		for number of requests
-	}*/
-	
- 
-    
+	  
 
 }

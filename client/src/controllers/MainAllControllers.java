@@ -96,6 +96,10 @@ public class MainAllControllers
 	{
 		((LoginController) WindowToShow.controller).setVisibleLbl();
 	}
+	public void setHomeUserNum(int num)
+	{
+		((UserHomeController) WindowToShow.controller).setRequestNumber(num);
+	}
 	public void goodRequeSend()
 	{
 		((UserAddRequestController) WindowToShow.controller).setOnSucsess();		
@@ -104,7 +108,11 @@ public class MainAllControllers
 	{
 		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}
-	
+	public void showUserSPReq(ArrayList<Object> list)
+	{
+		((UserShowRequestsController) WindowToShow.controller).clearTable();
+		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
+	}
 	public void setUser(User user)
 	{
 		this.user=user;
