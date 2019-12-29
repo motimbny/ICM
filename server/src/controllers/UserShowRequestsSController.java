@@ -124,8 +124,10 @@ public class UserShowRequestsSController
 		{
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM request WHERE userSubFullName='"+user+ "'");
-			rs.next();
-			toSend.add(rs.getInt(1));
+			if(!rs.next())
+				toSend.add(0);
+			else
+			    toSend.add(rs.getInt(1));
 			dbs=new DBSmessage(MessageTypeS.homeRequestNum,toSend);
 				return dbs;
 		} 

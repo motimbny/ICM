@@ -86,12 +86,12 @@
                   <Font name="System Bold" size="34.0" />
                </font>
             </Label>
-            <Button fx:id="search" layoutX="341.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#searchRequest" prefHeight="27.0" prefWidth="79.0" styleClass="buttonBlackBorder" text="Search" />
+            <Button fx:id="search" layoutX="466.0" layoutY="122.0" mnemonicParsing="false" onMouseClicked="#searchRequest" prefHeight="27.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="Search" />
             <Label layoutX="40.0" layoutY="127.0" text="Search request id:">
                <font>
                   <Font size="14.0" />
                </font></Label>
-            <TextField fx:id="requestIdTo" layoutX="171.0" layoutY="123.0" promptText="Enter request id here..." />
+            <TextField fx:id="requestIdTo" layoutX="171.0" layoutY="123.0" prefHeight="25.0" prefWidth="277.0" promptText="Enter request id here..." />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
