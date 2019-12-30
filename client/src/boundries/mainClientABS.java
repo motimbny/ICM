@@ -33,7 +33,7 @@ public class mainClientABS extends AbstractClient
 					User set=(User)dbs.getObjs().get(0);
 					switch (set.getstrPosition())
 					{
-					case "ITMember":
+					case "supervisor":
 						topen="SupervisorHome";
 						break;
 					case "student":
