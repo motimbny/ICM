@@ -9,7 +9,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.serverController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.serverController">
    <children>
       <Button fx:id="connect" layoutX="52.0" layoutY="340.0" mnemonicParsing="false" onMouseClicked="#connect" prefHeight="38.0" prefWidth="200.0" text="Connect" />
       <Button fx:id="disconnect" layoutX="52.0" layoutY="455.0" mnemonicParsing="false" onMouseClicked="#disconnect" prefHeight="38.0" prefWidth="200.0" text="Disconnect" />
