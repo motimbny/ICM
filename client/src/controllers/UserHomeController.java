@@ -76,7 +76,6 @@ public class UserHomeController implements Initializable
     {
     	MainAllControllers.setWindowVar("UserPersonalInfo");
     	MainAllControllers.changeWin();
-    	
     }
 
     @FXML

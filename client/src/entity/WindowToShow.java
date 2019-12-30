@@ -5,6 +5,9 @@ import java.io.IOException;
 import controllers.CCEvaluationReportController;
 import controllers.CCRequestMoreInfoController;
 import controllers.CCShowRequestsController;
+import controllers.ITHelpController;
+import controllers.ITHomeController;
+import controllers.ITPersonalInfoController;
 import controllers.LoginController;
 import controllers.PerformanceLeaderHomeController;
 import controllers.PerformanceLeaderShowRequestsController;
@@ -28,8 +31,7 @@ public class WindowToShow {
 	private String pathfxml, windowName;
 
 	public void setWindowToShow(String str) throws IOException {
-		switch (str) 
-		{
+		switch (str) {
 		case "login":
 			initLogin();
 			break;
@@ -44,7 +46,7 @@ public class WindowToShow {
 			break;
 		case "UserPersonalInfo":
 			initUserPersonalInfo();
-			break;	
+			break;
 		case "UserHelp":
 			initUserHelp();
 			break;
@@ -66,6 +68,18 @@ public class WindowToShow {
 		case "SupervisorEmployeesManagment":
 			initSupervisorEmployeesManagment();
 			break;
+		case "ITHome":
+			initITHome();
+			break;
+		case "ITPersonalInfo":
+			initITPersonalInfo();
+			break;
+		case "ITHelp":
+			initITHelp();
+			break;
+
+			
+			
 		case "TesterSubmitReport":
 			initTesterSubmitReport();
 			break;
@@ -90,8 +104,6 @@ public class WindowToShow {
 		}
 	}
 
-
-	
 	public String getPathfxml() {
 		return pathfxml;
 	}
@@ -99,7 +111,8 @@ public class WindowToShow {
 	public String getWindowName() {
 		return windowName;
 	}
-	//------------------------------------------------------------------//
+
+	// ------------------------------------------------------------------//
 	public void initLogin() {
 		LoginController controller = new LoginController();
 		pathfxml = "/Fxml/Login.fxml";
@@ -123,13 +136,13 @@ public class WindowToShow {
 		pathfxml = "/Fxml/ControlCommeteeShowRequests.fxml";
 		windowName = "ICM-ShowRequests";
 	}
-	
+
 	public void initUserHome() {
 		UserHomeController controller = new UserHomeController(); // UserHomeController
 		pathfxml = "/Fxml/UserHome.fxml";
 		windowName = "ICM-UserHome";
-	}	
-	
+	}
+
 	public void initUserShowRequests() throws IOException {
 		UserShowRequestsController controller = new UserShowRequestsController(); // UserShowRequestsController
 		pathfxml = "/Fxml/UserShowRequests.fxml";
@@ -137,61 +150,61 @@ public class WindowToShow {
 	}
 
 	public void initUserAddRequest() {
-		UserAddRequestController controller = new UserAddRequestController(); 
+		UserAddRequestController controller = new UserAddRequestController();
 		pathfxml = "/Fxml/UserAddRequest.fxml";
 		windowName = "ICM-UserAddRequest";
 	}
-	
+
 	private void initUserPersonalInfo() {
-		UserPersonalInfoController controller = new UserPersonalInfoController(); 
+		UserPersonalInfoController controller = new UserPersonalInfoController();
 		pathfxml = "/Fxml/UserPersonalInfo.fxml";
 		windowName = "ICM-UserPersonalInfo";
-		
+
 	}
 
 	private void initUserHelp() {
 		UserHelpController controller = new UserHelpController(); // UserAddRequestController
 		pathfxml = "/Fxml/UserHelp.fxml";
 		windowName = "ICM-UserHelp";
-		
+
 	}
-	
+
 	public void initTesterSubmitReport() {
 		TesterSubmitReportController controller = new TesterSubmitReportController(); // TesterSubmitReportController
 		pathfxml = "/Fxml/TesterSubmitReport.fxml";
 		windowName = "ICM-TesterSubmitReport";
 	}
-	
+
 	public void initTesterShowRequests() {
 		TesterShowRequestsController controller = new TesterShowRequestsController(); // TesterShowRequestsController
 		pathfxml = "/Fxml/TesterShowRequests.fxml";
 		windowName = "ICM-TesterShowRequests";
 	}
-	
+
 	public void initPerformanceLeaderShowRequests() {
 		PerformanceLeaderShowRequestsController controller = new PerformanceLeaderShowRequestsController(); // PerformanceLeaderShowRequestsController
 		pathfxml = "/Fxml/PerformanceLeaderShowRequests.fxml";
 		windowName = "ICM-PerformanceLeaderShowRequests";
 	}
-	
+
 	public void initPerformanceLeaderHome() {
 		PerformanceLeaderHomeController controller = new PerformanceLeaderHomeController(); // PerformanceLeaderHomeController
 		pathfxml = "/Fxml/PerformanceLeaderHome.fxml";
 		windowName = "ICM-PerformanceLeaderHome";
 	}
-	
+
 	public void initSupervisorHome() {
 		SupervisorHomeController controller = new SupervisorHomeController(); // SupervisorHomeController
 		pathfxml = "/Fxml/SupervisorHome.fxml";
 		windowName = "ICM-SupervisorHome";
 	}
-	
+
 	public void initSupervisorShowRequests() throws IOException {
 		SupervisorShowRequestsController controller = new SupervisorShowRequestsController(); // SupervisorShowRequestsController
 		pathfxml = "/Fxml/SupervisorShowRequests.fxml";
 		windowName = "ICM-SupervisorShowRequests";
 	}
-	
+
 	public void initSupervisorEmployeesList() {
 		SupervisorEmployeesListController controller = new SupervisorEmployeesListController(); // SupervisorEmployeesListController
 		pathfxml = "/Fxml/SupervisorEmployeesList.fxml";
@@ -203,7 +216,7 @@ public class WindowToShow {
 		pathfxml = "/Fxml/SupervisorHelp.fxml";
 		windowName = "ICM-SupervisorHelp";
 	}
-	
+
 	public void initSupervisorPersonalInfo() {
 		SupervisorPersonalInfoController controller = new SupervisorPersonalInfoController(); // SupervisorPersonalInfoController
 		pathfxml = "/Fxml/SupervisorPersonalInfo.fxml";
@@ -220,6 +233,24 @@ public class WindowToShow {
 		SupervisorExtentionRequestController controller = new SupervisorExtentionRequestController(); // SupervisorExtentionRequestController
 		pathfxml = "/Fxml/SupervisorExtentionRequest.fxml";
 		windowName = "ICM-SupervisorExtentionRequest";
+	}
+
+	public void initITHome() {
+		ITHomeController controller = new ITHomeController();
+		pathfxml = "/Fxml/ITHome.fxml";
+		windowName = "ICM-ITHome";
+	}
+
+	public void initITPersonalInfo() {
+		ITPersonalInfoController controller = new ITPersonalInfoController();
+		pathfxml = "/Fxml/ITPersonalInfo.fxml";
+		windowName = "ICM-ITPersonalInfo";
+	}
+	
+	public void initITHelp() {
+		ITHelpController controller = new ITHelpController();
+		pathfxml = "/Fxml/ITHelp.fxml";
+		windowName = "ICM-ITHelp";
 	}
 
 }
