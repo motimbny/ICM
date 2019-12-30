@@ -1,13 +1,16 @@
 package boundries;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
-
 import controllers.SupervisorShowRequestsSController;
 import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
 import controllers.loginSController;
 import controllers.serverController;
 import entity.DBmessage;
+import entity.ServerFile;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -30,6 +33,32 @@ public class mainServerABS extends AbstractServer
 		@Override
 		protected void handleMessageFromClient(Object msg, ConnectionToClient client)
 		{
+			if(msg instanceof ServerFile)
+			{
+				  int fileSize =((ServerFile)msg).getSize(); 
+				  System.out.println("Message received: " + msg + " from " + client);
+				  System.out.println("length "+ fileSize);
+				 
+				  
+				  ServerFile msg1= (ServerFile)msg;
+				  String LocalfilePath="serverfile/";
+					
+				  try{
+
+					      File newFile = new File (LocalfilePath+msg1.getFileName());
+					      		      
+					      byte [] mybytearray  = msg1.getMybytearray();		  
+					      FileOutputStream fos = new FileOutputStream(newFile);
+						  BufferedOutputStream bos = new BufferedOutputStream(fos);
+						  bos.write(mybytearray,0,msg1.getSize());
+					      bos.flush();
+					      fos.flush();
+					    }
+					catch (Exception e) {
+						System.out.println("Error send ((Files)msg) to Server");
+					}
+				
+			}
 		    DBmessage dbm=(DBmessage)msg;
 		    switch(dbm.getType()) 
 		    {
