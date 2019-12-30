@@ -117,4 +117,8 @@ public class MainAllControllers
 	{
 		this.user=user;
 	}
+	public void setHomeSupervisorNum(int num)
+	{
+		((SupervisorHomeController) WindowToShow.controller).setRequestNumber(num);
+	}
 }

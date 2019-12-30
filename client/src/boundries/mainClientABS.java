@@ -60,6 +60,12 @@ public class mainClientABS extends AbstractClient
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.setHomeUserNum((int)send.get(0));
 			}
+			case supervisorHomeRequestNum:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.setHomeSupervisorNum((int)send.get(0));
+			}
+			break;
 			case AddRequest:
 				{
 					 MainAllControllers.goodRequeSend();

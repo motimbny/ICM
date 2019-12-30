@@ -2,8 +2,11 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -86,10 +89,22 @@ public class SupervisorHomeController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    void setRequestNumber(int num)
+    {
+    	ExistingRequests.setText("Existing Requests : "+Integer.toString(num));
+    }
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
-		helloSupervisor.setText("Hello "+MainAllControllers.user.getName());
+		helloSupervisor.setText("   Hello "+MainAllControllers.user.getName());
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user.getName());
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.supervisorHomeRequestNum, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
 	}
 
 }

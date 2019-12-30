@@ -2,6 +2,7 @@ package boundries;
 import java.io.IOException;
 import java.sql.Connection;
 
+import controllers.SupervisorShowRequestsSController;
 import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
 import controllers.loginSController;
@@ -75,6 +76,14 @@ public class mainServerABS extends AbstractServer
 				} catch (IOException e) {}
 		    	   break;
 		       }
+		       case supervisorHomeRequestNum:
+		       {
+		    	   SupervisorShowRequestsSController supervisorShowRequestsSController = new SupervisorShowRequestsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(supervisorShowRequestsSController.numOfRequest());
+				} catch (IOException e) {}
+		       }
+		       break;
 			default:
 				break;
 		    }
