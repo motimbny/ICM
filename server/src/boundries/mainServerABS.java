@@ -84,6 +84,14 @@ public class mainServerABS extends AbstractServer
 				} catch (IOException e) {}
 		       }
 		       break;
+		       case SearchReqSupervisor:
+		       {
+		    	   SupervisorShowRequestsSController supervisorShowRequestsSController=new SupervisorShowRequestsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(supervisorShowRequestsSController.showSPRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
 			default:
 				break;
 		    }

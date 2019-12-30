@@ -121,4 +121,9 @@ public class MainAllControllers
 	{
 		((SupervisorHomeController) WindowToShow.controller).setRequestNumber(num);
 	}
+	public void showSupervisorSPReq(ArrayList<Object> list)
+	{
+		((SupervisorShowRequestsController) WindowToShow.controller).clearTable();
+		((SupervisorShowRequestsController) WindowToShow.controller).setTextInTable(list);
+	}
 }

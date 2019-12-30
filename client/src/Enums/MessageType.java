@@ -6,6 +6,7 @@ public enum MessageType
 		homeRequestNum,
 		supervisorHomeRequestNum,
 		ShowReqUser,
+		SearchReqSupervisor,
 		SearchReqUser,
 		AddRequest,
 }

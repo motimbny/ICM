@@ -1,18 +1,24 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
 import entity.RequestUser;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorShowRequestsController 
+public class SupervisorShowRequestsController implements Initializable
 {
 	private ObservableList<RequestUser> rows;
 	private MainAllControllers MainAllControllers;
@@ -63,7 +69,6 @@ public class SupervisorShowRequestsController
 	@FXML
 	private Button SuprvisorExtensionRequestBTN;
 
-
     @FXML
     private Button search;
 
@@ -71,12 +76,14 @@ public class SupervisorShowRequestsController
     private TextField requestIdTo;
 	
 	@FXML
-	void UpdateRequest(MouseEvent event) {
+	void UpdateRequest(MouseEvent event) 
+	{
 
 	}
 
 	@FXML
-	void closeRequest(MouseEvent event) {
+	void closeRequest(MouseEvent event) 
+	{
 
 	}
 
@@ -124,19 +131,51 @@ public class SupervisorShowRequestsController
 	}
 
 	@FXML
-	void suspendRequest(MouseEvent event) {
+	void suspendRequest(MouseEvent event) 
+	{
 
 	}
 
 	@FXML
-	void viewExtensionReport(MouseEvent event) {
+	void viewExtensionReport(MouseEvent event) 
+	{
 
 	}
 	
 
     @FXML
-    void showRequestDetails(MouseEvent event) {
+    void showRequestDetails(MouseEvent event) 
+    {
 
     }
+    
+    @FXML
+    void searchRequest(MouseEvent event) 
+    {
+    	ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user.getName());
+		arry.add(Integer.parseInt(requestIdTo.getText()));
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.SearchReqSupervisor, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+    }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public void clearTable()
+	{
+		requestTable.getItems().clear();
+	}
+	
+	 public void setTextInTable(ArrayList<Object> list)
+	 {
+		 
+	 }
 
 }
