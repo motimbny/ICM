@@ -117,7 +117,6 @@ public class UserAddRequestController implements Initializable
   		      fileOfUser.initArray(mybytearray.length);
   		      fileOfUser.setSize(mybytearray.length); 
   		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length); 	
-  		     // MainAllControllers.sendToAbsServer(fileOfUser);
   		    }
   		catch (Exception e) {
   			System.out.println("Error send File to Server");
