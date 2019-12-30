@@ -62,9 +62,11 @@ public class UserAddRequestController implements Initializable
     @FXML
     private Label goodAddRe;
     @FXML
+    private Label fileName;
+    @FXML
     void submitRequest(MouseEvent event) 
     {
-    	if(desExtSit.getText().equals("")||desReqCha.getText().equals("")||expChaBen.getText().equals(""))
+    	if(desExtSit.getText().equals("")||desReqCha.getText().equals("")||expChaBen.getText().equals("")||chooseInfoCom.getSelectionModel().isEmpty())
     	{
     		badAddRequest.setVisible(true);
     	}
@@ -102,6 +104,8 @@ public class UserAddRequestController implements Initializable
     	FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File file = chooser.showOpenDialog(new Stage());
+        fileName.setText("+"+file.getName());
+        fileName.setVisible(true);
         fileOfUser= new ServerFile(file.getName()+MainAllControllers.user.getName());
   	    String LocalfilePath=file.getName()+MainAllControllers.user.getName();	
   	     try{ 		      
@@ -110,7 +114,7 @@ public class UserAddRequestController implements Initializable
   		      BufferedInputStream bis = new BufferedInputStream(fis);			     
   		      fileOfUser.initArray(mybytearray.length);
   		      fileOfUser.setSize(mybytearray.length); 
-  		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length);
+  		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length); 		     
   		    }
   		catch (Exception e) {
   			System.out.println("Error send File to Server");
