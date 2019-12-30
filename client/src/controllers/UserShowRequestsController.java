@@ -24,7 +24,7 @@ import javafx.scene.input.MouseEvent;
 
 public class UserShowRequestsController implements Initializable  {
 	
-	private ObservableList<RequestUser> rows; //= FXCollections.observableArrayList();
+	private ObservableList<RequestUser> rows; 
 	private MainAllControllers MainAllControllers;
 	public UserShowRequestsController()
 	{

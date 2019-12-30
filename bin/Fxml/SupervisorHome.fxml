@@ -70,7 +70,7 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label fx:id="helloSupervisor" layoutX="140.0" layoutY="153.0" text="Hello &lt;Superviser Name&gt;">
+            <Label fx:id="helloSupervisor" layoutX="140.0" layoutY="153.0" text="Hello &lt;Superviser Name&gt;" textAlignment="CENTER">
                <font>
                   <Font size="36.0" />
                </font>
@@ -80,7 +80,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="ExistingRequests" layoutX="272.0" layoutY="238.0" prefHeight="46.0" prefWidth="148.0">
+            <Label fx:id="ExistingRequests" layoutX="272.0" layoutY="238.0" prefHeight="46.0" prefWidth="179.0">
                <font>
                   <Font size="16.0" />
                </font></Label>

@@ -2,16 +2,19 @@ package controllers;
 
 import java.io.IOException;
 
+import entity.RequestUser;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 public class SupervisorShowRequestsController 
 {
-
+	private ObservableList<RequestUser> rows;
 	private MainAllControllers MainAllControllers;
 	public SupervisorShowRequestsController()
 	{
@@ -60,6 +63,13 @@ public class SupervisorShowRequestsController
 	@FXML
 	private Button SuprvisorExtensionRequestBTN;
 
+
+    @FXML
+    private Button search;
+
+    @FXML
+    private TextField requestIdTo;
+	
 	@FXML
 	void UpdateRequest(MouseEvent event) {
 
@@ -122,5 +132,11 @@ public class SupervisorShowRequestsController
 	void viewExtensionReport(MouseEvent event) {
 
 	}
+	
+
+    @FXML
+    void showRequestDetails(MouseEvent event) {
+
+    }
 
 }
