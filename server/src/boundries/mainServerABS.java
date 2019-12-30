@@ -33,7 +33,7 @@ public class mainServerABS extends AbstractServer
 		@Override
 		protected void handleMessageFromClient(Object msg, ConnectionToClient client)
 		{
-			if(msg instanceof ServerFile)
+			/*if(msg instanceof ServerFile)
 			{
 				  int fileSize =((ServerFile)msg).getSize(); 
 				  System.out.println("Message received: " + msg + " from " + client);
@@ -58,7 +58,7 @@ public class mainServerABS extends AbstractServer
 						System.out.println("Error send ((Files)msg) to Server");
 					}
 				
-			}
+			}*/
 		    DBmessage dbm=(DBmessage)msg;
 		    switch(dbm.getType()) 
 		    {

@@ -20,16 +20,22 @@ public class UserSAddRequestController
 {
 	private Request request;
 	private Connection connection;
+	private ServerFile sf;
 	public UserSAddRequestController(DBmessage dbm,Connection connection)
 	{
+		int addDoc=0;
 		this.connection=connection;
 		ArrayList<Object> arry=dbm.getObjs();
-		//ServerFile sf=(ServerFile)arry.get(8);
-		//System.out.println("add"+sf.getFileName());
-		//int addDoc;
+		if(arry.size()==8)
+		{
+		 sf=(ServerFile)arry.get(7);
+		System.out.println("add"+sf.getFileName());
+		addDoc=1;
+		saveFileToServerFolder();
+		}
 		request=new Request((String)arry.get(0),"pending",StageName.meaningAssessment,(String)arry.get(1), (String)arry.get(2),
 				             (String)arry.get(3), (String)arry.get(4), (String)arry.get(5), (String)arry.get(6) ,
-				             java.time.LocalDate.now().toString(),0);	
+				             java.time.LocalDate.now().toString(),addDoc);	
 	}
 	public DBSmessage submitRequest()
 	{
@@ -66,24 +72,24 @@ public class UserSAddRequestController
     	dbs=new DBSmessage(MessageTypeS.AddRequest, arry);
 		return dbs;
    }
-   public void saveFileToServerFolder(Object msg)
+   public void saveFileToServerFolder()
    {
-	   int fileSize =((ServerFile)msg).getSize(); 
-		  ServerFile newMsg= (ServerFile)msg; 	
-		  String path="server/";
+	   int fileSize =sf.getSize(); 
+		  System.out.println("Message received: " + sf);
+		  System.out.println("length "+ fileSize); 
+		  String LocalfilePath="serverfile/";	
 		  try{
-			  File newFile = new File(path+""+newMsg.getFileName());
-			  byte [] mybytearray  =newMsg.getMybytearray();
-			  FileOutputStream fos = new FileOutputStream(newFile);
-			  BufferedOutputStream bos = new BufferedOutputStream(fos);
-			  bos.write (mybytearray,0,newMsg.getSize());
-			  bos.flush();
-			  fos.flush();
-			 }
-			catch (Exception e)
-		     {
-				System.out.println("Error send (Files)msg) to Server");
-			 }
+			      File newFile = new File (LocalfilePath+sf.getFileName());     		      
+			      byte [] mybytearray  = sf.getMybytearray();		  
+			      FileOutputStream fos = new FileOutputStream(newFile);
+				  BufferedOutputStream bos = new BufferedOutputStream(fos);
+				  bos.write(mybytearray,0,sf.getSize());
+			      bos.flush();
+			      fos.flush();
+			    }
+			catch (Exception e) {
+				System.out.println("Error send ((Files)msg) to Server");
+			}
    }
 
 }

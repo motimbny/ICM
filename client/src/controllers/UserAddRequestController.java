@@ -81,8 +81,8 @@ public class UserAddRequestController implements Initializable
 	        arry.add(MorInfoAdd.getText());
 	        arry.add(MainAllControllers.user.getName());
 	        arry.add(MainAllControllers.user.getstrPosition());
-	        arry.add(fileOfUser);
-	       // System.out.println(fileOfUser.getFileName());
+	        if(!fileOfUser.equals(null))
+	           arry.add(fileOfUser);
 	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
 	    	{
@@ -107,7 +107,6 @@ public class UserAddRequestController implements Initializable
         fileName.setText("+"+file.getName());
         fileName.setVisible(true);
         fileOfUser= new ServerFile(MainAllControllers.user.getName()+"-"+file.getName());
-  	   // String LocalfilePath=file.getName()+MainAllControllers.user.getName();	
   	    String LocalfilePath=file.getPath();
 
         try{ 	
@@ -118,8 +117,7 @@ public class UserAddRequestController implements Initializable
   		      fileOfUser.initArray(mybytearray.length);
   		      fileOfUser.setSize(mybytearray.length); 
   		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length); 	
-  		      MainAllControllers.sendToAbsServer(fileOfUser);
-  		 
+  		     // MainAllControllers.sendToAbsServer(fileOfUser);
   		    }
   		catch (Exception e) {
   			System.out.println("Error send File to Server");
