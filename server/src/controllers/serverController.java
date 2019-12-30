@@ -1,7 +1,15 @@
 package controllers;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+import Enums.MessageTypeS;
+import boundries.mainServer;
 import boundries.mainServerABS;
 import entity.ConnectToDB;
+import entity.DBSmessage;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -42,8 +50,35 @@ public class serverController
 		  mainServerABS.connectToDb(connecti.Connect());
  	      mainServerABS.startServer();
     	}
+    	mainServer.NUM_OF_REQUEST=getNumOfRequest();
     }
-    @FXML
+    private int getNumOfRequest()
+    {
+    	Statement stmt;
+		DBSmessage dbs;
+		ResultSet rs = null;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connecti.Connect().createStatement();
+			rs = stmt.executeQuery("SELECT COUNT(*) FROM request");
+			rs.next();
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}	
+		try
+		{
+			return rs.getInt(1);
+		} 
+		catch (SQLException e)
+		{
+		   System.out.println("Cant count number of request");
+		}
+		return 0;
+	}
+	@FXML
     void disconnect(MouseEvent event)
     {
     	mainServerABS.stopServer();
