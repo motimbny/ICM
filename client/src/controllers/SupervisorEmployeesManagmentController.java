@@ -1,21 +1,20 @@
 package controllers;
+
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorEmployeesListController 
+public class SupervisorEmployeesManagmentController 
 {
 	private MainAllControllers MainAllControllers;
-	public SupervisorEmployeesListController()
+	public SupervisorEmployeesManagmentController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
-
     @FXML
     private Button homeBTN;
 
@@ -35,24 +34,25 @@ public class SupervisorEmployeesListController
     private Button logoutBTN;
 
     @FXML
-    private TableView<?> employeesTable;
-
+    private TableView<?> EmployeesTable;
+    
     @FXML
     private TableColumn<?, ?> EmployeeID;
 
     @FXML
-    private TableColumn<?, ?> EmployeeName;
+    private TableColumn<?, ?> FirstName;
+
+    @FXML
+    private TableColumn<?, ?> LastName;
+
+    @FXML
+    private TableColumn<?, ?> Email;
 
     @FXML
     private TableColumn<?, ?> NumberOfProjects;
 
     @FXML
-    private Button chooseRequestBTN;
-
-    @FXML
-    void chooseEmployee(MouseEvent event) {
-
-    }
+    private Button setEmployeePermissionBTN;
 
     @FXML
     void goEmployeesMangPage(MouseEvent event) throws IOException 
@@ -91,10 +91,15 @@ public class SupervisorEmployeesListController
     }
 
     @FXML
+    void goSetEmployeePermission(MouseEvent event) {
+
+    }
+
+    @FXML
     void goShowReqPage(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
     }
-}
 
+}

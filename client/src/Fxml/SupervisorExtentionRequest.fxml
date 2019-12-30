@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -70,7 +70,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0" stylesheets="@../../../../../Desktop/ICM/style.css">
+      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
             <Label layoutX="168.0" layoutY="38.0" text="Extension Request">
                <font>
@@ -89,7 +89,7 @@
             <TextArea editable="false" layoutX="201.0" layoutY="248.0" prefHeight="127.0" prefWidth="343.0" />
          </children>
       </Pane>
-      <Pane prefHeight="116.0" prefWidth="140.0" stylesheets="@../../../../../Desktop/ICM/style.css">
+      <Pane prefHeight="116.0" prefWidth="140.0">
          <children>
             <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="4.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>

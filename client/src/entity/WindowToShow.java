@@ -9,7 +9,11 @@ import controllers.LoginController;
 import controllers.PerformanceLeaderHomeController;
 import controllers.PerformanceLeaderShowRequestsController;
 import controllers.SupervisorEmployeesListController;
+import controllers.SupervisorEmployeesManagmentController;
+import controllers.SupervisorExtentionRequestController;
+import controllers.SupervisorHelpController;
 import controllers.SupervisorHomeController;
+import controllers.SupervisorPersonalInfoController;
 import controllers.SupervisorShowRequestsController;
 import controllers.TesterShowRequestsController;
 import controllers.TesterSubmitReportController;
@@ -52,6 +56,15 @@ public class WindowToShow {
 			break;
 		case "SupervisorEmployeesList":
 			initSupervisorEmployeesList();
+			break;
+		case "SupervisorHelp":
+			initSupervisorHelp();
+			break;
+		case "SupervisorPersonalInfo":
+			initSupervisorPersonalInfo();
+			break;
+		case "SupervisorEmployeesManagment":
+			initSupervisorEmployeesManagment();
 			break;
 		case "TesterSubmitReport":
 			initTesterSubmitReport();
@@ -173,7 +186,7 @@ public class WindowToShow {
 		windowName = "ICM-SupervisorHome";
 	}
 	
-	public void initSupervisorShowRequests() {
+	public void initSupervisorShowRequests() throws IOException {
 		SupervisorShowRequestsController controller = new SupervisorShowRequestsController(); // SupervisorShowRequestsController
 		pathfxml = "/Fxml/SupervisorShowRequests.fxml";
 		windowName = "ICM-SupervisorShowRequests";
@@ -184,5 +197,29 @@ public class WindowToShow {
 		pathfxml = "/Fxml/SupervisorEmployeesList.fxml";
 		windowName = "ICM-SupervisorEmployeesList";
 	}
+
+	public void initSupervisorHelp() {
+		SupervisorHelpController controller = new SupervisorHelpController(); // SupervisorHelpController
+		pathfxml = "/Fxml/SupervisorHelp.fxml";
+		windowName = "ICM-SupervisorHelp";
+	}
 	
+	public void initSupervisorPersonalInfo() {
+		SupervisorPersonalInfoController controller = new SupervisorPersonalInfoController(); // SupervisorPersonalInfoController
+		pathfxml = "/Fxml/SupervisorPersonalInfo.fxml";
+		windowName = "ICM-SupervisorPersonalInfo";
+	}
+
+	public void initSupervisorEmployeesManagment() {
+		SupervisorEmployeesManagmentController controller = new SupervisorEmployeesManagmentController(); // SupervisorEmployeesManagmentController
+		pathfxml = "/Fxml/SupervisorEmployeesManagment.fxml";
+		windowName = "ICM-SupervisorEmployeesManagment";
+	}
+
+	public void initSupervisorExtentionRequest() {
+		SupervisorExtentionRequestController controller = new SupervisorExtentionRequestController(); // SupervisorExtentionRequestController
+		pathfxml = "/Fxml/SupervisorExtentionRequest.fxml";
+		windowName = "ICM-SupervisorExtentionRequest";
+	}
+
 }

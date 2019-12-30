@@ -1,21 +1,19 @@
 package controllers;
+
 import java.io.IOException;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorEmployeesListController 
+public class SupervisorHelpController 
 {
-	private MainAllControllers MainAllControllers;
-	public SupervisorEmployeesListController()
-	{
-		MainAllControllers=controllers.MainAllControllers.getInstance();
-	}
 
+	private MainAllControllers MainAllControllers;
+	public SupervisorHelpController() 
+	{
+		MainAllControllers = controllers.MainAllControllers.getInstance();
+	}
     @FXML
     private Button homeBTN;
 
@@ -35,26 +33,6 @@ public class SupervisorEmployeesListController
     private Button logoutBTN;
 
     @FXML
-    private TableView<?> employeesTable;
-
-    @FXML
-    private TableColumn<?, ?> EmployeeID;
-
-    @FXML
-    private TableColumn<?, ?> EmployeeName;
-
-    @FXML
-    private TableColumn<?, ?> NumberOfProjects;
-
-    @FXML
-    private Button chooseRequestBTN;
-
-    @FXML
-    void chooseEmployee(MouseEvent event) {
-
-    }
-
-    @FXML
     void goEmployeesMangPage(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
@@ -62,21 +40,21 @@ public class SupervisorEmployeesListController
     }
 
     @FXML
-    void goHelpPage(MouseEvent event) throws IOException 
+    void helpBTNE(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("SupervisorHelp");
     	MainAllControllers.changeWin();
     }
 
     @FXML
-    void goHomePage(MouseEvent event) throws IOException 
+    void homeBack(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("SupervisorHome");
     	MainAllControllers.changeWin();
     }
 
     @FXML
-    void goLogoutPage(MouseEvent event) throws IOException 
+    void logoutBTNE(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
@@ -84,17 +62,17 @@ public class SupervisorEmployeesListController
     }
 
     @FXML
-    void goPersonalPage(MouseEvent event) throws IOException 
+    void personBTNE(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("SupervisorPersonalInfo");
     	MainAllControllers.changeWin();
     }
 
     @FXML
-    void goShowReqPage(MouseEvent event) throws IOException 
+    void showreBTNE(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
     }
-}
 
+}

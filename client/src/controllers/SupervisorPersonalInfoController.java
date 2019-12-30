@@ -1,19 +1,19 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorShowRequestsController 
+public class SupervisorPersonalInfoController implements Initializable 
 {
-
 	private MainAllControllers MainAllControllers;
-	public SupervisorShowRequestsController()
+	public SupervisorPersonalInfoController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
@@ -37,37 +37,19 @@ public class SupervisorShowRequestsController
 	private Button logoutBTN;
 
 	@FXML
-	private TableView<?> requestTable;
+	private Label UserName;
 
 	@FXML
-	private TableColumn<?, ?> RequestID;
+	private Label email;
 
 	@FXML
-	private TableColumn<?, ?> RequestStatus;
+	private Label position;
 
 	@FXML
-	private TableColumn<?, ?> RequestProcessStage;
-
-	@FXML
-	private Button SuprvisorUpdateRequestBTN;
-
-	@FXML
-	private Button SuprvisorCloseRequestBTN;
-
-	@FXML
-	private Button SuprvisorSuspendRequestBTN;
-
-	@FXML
-	private Button SuprvisorExtensionRequestBTN;
-
-	@FXML
-	void UpdateRequest(MouseEvent event) {
-
-	}
-
-	@FXML
-	void closeRequest(MouseEvent event) {
-
+	void backHome(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorHome");
+    	MainAllControllers.changeWin();
 	}
 
 	@FXML
@@ -78,21 +60,14 @@ public class SupervisorShowRequestsController
 	}
 
 	@FXML
-	void goHelpPage(MouseEvent event) throws IOException 
+	void helpBTNE(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("SupervisorHelp");
     	MainAllControllers.changeWin();
 	}
 
 	@FXML
-	void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorHome");
-    	MainAllControllers.changeWin();
-	}
-
-	@FXML
-	void goLogoutPage(MouseEvent event) throws IOException 
+	void logoutBTNE(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
@@ -100,27 +75,25 @@ public class SupervisorShowRequestsController
 	}
 
 	@FXML
-	void goPersonalPage(MouseEvent event) throws IOException 
+	void personBTNE(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("SupervisorPersonalInfo");
     	MainAllControllers.changeWin();
 	}
 
 	@FXML
-	void goShowReqPage(MouseEvent event) throws IOException 
+	void showreBTNE(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
 	}
 
-	@FXML
-	void suspendRequest(MouseEvent event) {
-
+	@Override
+	public void initialize(URL location, ResourceBundle resources) 
+	{
+		UserName.setText("User name: " + MainAllControllers.user.getName());
+		email.setText("email: " + MainAllControllers.user.getName() + "@braude.ac.il");
+		position.setText("Position: " + MainAllControllers.user.getstrPosition());	
 	}
-
-	@FXML
-	void viewExtensionReport(MouseEvent event) {
-
-	}
-
+	
 }

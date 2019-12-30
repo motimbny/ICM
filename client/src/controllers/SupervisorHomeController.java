@@ -41,27 +41,27 @@ public class SupervisorHomeController implements Initializable
 	private Label helloSupervisor;
 
 	@FXML
-	private Label pendingRequests;
-
-	@FXML
 	private Label ExistingRequests;
 
 	@FXML
-	private Label NewRequests;
-
-	@FXML
-	void goEmployeesMangPage(MouseEvent event) {
-
+	void goEmployeesMangPage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
+    	MainAllControllers.changeWin();
 	}
 
 	@FXML
-	void goHelpPage(MouseEvent event) {
-
+	void goHelpPage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorHelp");
+    	MainAllControllers.changeWin();
 	}
 
 	@FXML
-	void goHomePage(MouseEvent event) {
-
+	void goHomePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorHome");
+    	MainAllControllers.changeWin();
 	}
 
 	@FXML
@@ -73,8 +73,10 @@ public class SupervisorHomeController implements Initializable
 	}
 
 	@FXML
-	void goPersonalPage(MouseEvent event) {
-
+	void goPersonalPage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorPersonalInfo");
+    	MainAllControllers.changeWin();
 	}
 
 	@FXML

@@ -6,79 +6,69 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class UserHelpController 
-{
-	 private MainAllControllers MainAllControllers;
-	 public UserHelpController()
-	    {
-	    	MainAllControllers=controllers.MainAllControllers.getInstance();
-	    }
-	
+public class UserHelpController {
+	private MainAllControllers MainAllControllers;
 
-    @FXML
-    private Button homeBTN;
+	public UserHelpController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
+	}
 
-    @FXML
-    private Button addreBTN;
+	@FXML
+	private Button homeBTN;
 
-    @FXML
-    private Button showreBTN;
+	@FXML
+	private Button addreBTN;
 
-    @FXML
-    private Button personBTN;
+	@FXML
+	private Button showreBTN;
 
-    @FXML
-    private Button helpBTN;
+	@FXML
+	private Button personBTN;
 
-    @FXML
-    private Button logoutBTN;
+	@FXML
+	private Button helpBTN;
 
-    @FXML
-    void addreBTNE(MouseEvent event) throws IOException
-    {
-    	MainAllControllers.setWindowVar("UserAddRequest");
-    	MainAllControllers.changeWin();
-          
-    }
+	@FXML
+	private Button logoutBTN;
 
-    @FXML
-    void homeBack(MouseEvent event) throws IOException
-    {
-    	MainAllControllers.setWindowVar("userHome");
-    	MainAllControllers.changeWin();
-          
-    }
+	@FXML
+	void addreBTNE(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("UserAddRequest");
+		MainAllControllers.changeWin();
 
+	}
 
+	@FXML
+	void homeBack(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("userHome");
+		MainAllControllers.changeWin();
 
-    @FXML
-    void helpBTNE(MouseEvent event) throws IOException 
-    {
-    	MainAllControllers.setWindowVar("UserHelp");
-    	MainAllControllers.changeWin();
-    }
+	}
 
-    @FXML
-    void logoutBTNE(MouseEvent event) throws IOException
-    {
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
-    }
+	@FXML
+	void helpBTNE(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("UserHelp");
+		MainAllControllers.changeWin();
+	}
 
-    @FXML
-    void personBTNE(MouseEvent event)throws IOException 
-    {
-    	MainAllControllers.setWindowVar("UserPersonalInfo");
-    	MainAllControllers.changeWin();
-    	
-    }
+	@FXML
+	void logoutBTNE(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.user = null;
+	}
 
-    @FXML
-    void showreBTNE(MouseEvent event) throws IOException 
-    {
-    	MainAllControllers.setWindowVar("UserShowRequests");
-    	MainAllControllers.changeWin();
-    }
+	@FXML
+	void personBTNE(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("UserPersonalInfo");
+		MainAllControllers.changeWin();
+
+	}
+
+	@FXML
+	void showreBTNE(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("UserShowRequests");
+		MainAllControllers.changeWin();
+	}
 
 }

@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorHomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorHomeController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
-            <Button fx:id="homeBTN" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="47.0" prefWidth="140.0" text="      Home        ">
+            <Button fx:id="homeBTN" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="47.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="      Home        ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -75,14 +75,12 @@
                   <Font size="36.0" />
                </font>
             </Label>
-            <Label fx:id="pendingRequests" layoutX="264.0" layoutY="241.0" prefHeight="21.0" prefWidth="140.0" text="Pending Requests :   000 " />
             <Label layoutX="281.0" layoutY="35.0" text="Home">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="ExistingRequests" layoutX="264.0" layoutY="279.0" prefHeight="21.0" prefWidth="140.0" text="Existing Requests :    000" />
-            <Label fx:id="NewRequests" layoutX="266.0" layoutY="320.0" prefHeight="21.0" prefWidth="140.0" text="New Requests :   000 " />
+            <Label fx:id="ExistingRequests" layoutX="261.0" layoutY="241.0" prefHeight="21.0" prefWidth="140.0" text="Existing Requests :    000" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
