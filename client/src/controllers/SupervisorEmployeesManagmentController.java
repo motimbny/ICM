@@ -132,7 +132,6 @@ public class SupervisorEmployeesManagmentController implements Initializable
     	EmployeesTable.setItems(rows);		
 	}
 
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
