@@ -11,4 +11,5 @@ public enum MessageTypeS
 	SearchReqSupervisor,
 	SearchReqUser,
 	AddRequest,
+	showRequestDetailsUser
 }

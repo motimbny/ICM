@@ -7,6 +7,7 @@ import java.sql.Connection;
 
 import controllers.ShowEmployeeListController;
 import controllers.SupervisorShowRequestsSController;
+import controllers.UserRequestDetailsSController;
 import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
 import controllers.loginSController;
@@ -62,6 +63,14 @@ public class mainServerABS extends AbstractServer
 		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
 		    	   try {
 					client.sendToClient(userShowRequestsSController.showRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
+		       case showRequestDetailsUser:
+		       {	   
+		    	   UserRequestDetailsSController userRequestDetailsSController=new UserRequestDetailsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(userRequestDetailsSController.showRequestDetails());
 				} catch (IOException e) {}
 		    	   break;
 		       }

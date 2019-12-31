@@ -21,6 +21,7 @@ public class MainAllControllers
 	Pane pane;
     private static MainAllControllers mac=new MainAllControllers();
 	public WindowToShow WindowToShow;
+	public int request;
 	private MainAllControllers() 
 	{
 		this.mac=mac;
@@ -107,6 +108,10 @@ public class MainAllControllers
 	public void showUserReq(ArrayList<Object> list)
 	{
 		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
+	}
+	public void showUserReqDetails(ArrayList<Object> list)
+	{
+		((UserRequestDetailsController) WindowToShow.controller).setTextInFields(list);
 	}
 	public void showUserSPReq(ArrayList<Object> list)
 	{

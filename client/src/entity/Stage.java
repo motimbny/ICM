@@ -2,7 +2,7 @@ package entity;
 
 import Enums.StageName;
 
-public class Stage {
+public class Stage { 
 	
 	private StageName stagename;
 	private User ITHundler;

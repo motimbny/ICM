@@ -42,6 +42,17 @@ public class Request implements Serializable {
     	this.id=mainServer.NUM_OF_REQUEST;
     	mainServer.NUM_OF_REQUEST++;;
 	}
+	public Request(int id, String userSubFullName, String infoSystem, String currentStatus, StageName currentStage, String desExtSit,
+			String wantedChange) 
+	{
+		this.id=id;
+		this.userSubFullName=userSubFullName;
+		this.infoSystem=infoSystem;
+		this.currentStatus=currentStatus;
+		this.currentStage=currentStage;
+		this.desExtSit=desExtSit;
+		this.wantedChange=wantedChange;
+	}
 	public String getInfoSystem() {
 		return infoSystem;
 	}
@@ -153,5 +164,6 @@ public class Request implements Serializable {
 	public void setDesExtSit(String desExtSit) {
 		this.desExtSit = desExtSit;
 	}
+	
 
 }

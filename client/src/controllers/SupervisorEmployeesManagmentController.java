@@ -58,7 +58,7 @@ public class SupervisorEmployeesManagmentController implements Initializable
     private TableColumn<ITemployee, String> employeeLastName;
 
     @FXML
-    private TableColumn<ITemployee, String> employeeMail;
+    private TableColumn<ITemployee, String> employeeMail; 
 
     @FXML
     private TableColumn<ITemployee, Integer> numOfProjects;

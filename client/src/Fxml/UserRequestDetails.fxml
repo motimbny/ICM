@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserRequestDetailsController">
    <children>
@@ -72,29 +73,24 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label fx:id="reqNumber" layoutX="71.0" layoutY="26.0" text="request number : ">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Label>
             <Label layoutX="72.0" layoutY="81.0" prefHeight="20.0" prefWidth="116.0" text="Applicant name :">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="ApplicantNameField" layoutX="205.0" layoutY="82.0" prefHeight="23.0" prefWidth="432.0" />
+            <TextField fx:id="ApplicantNameField" editable="false" layoutX="205.0" layoutY="82.0" prefHeight="23.0" prefWidth="432.0" />
             <Label layoutX="71.0" layoutY="125.0" prefHeight="20.0" prefWidth="141.0" text="Information system : ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="InformationSystemField" layoutX="205.0" layoutY="125.0" prefHeight="23.0" prefWidth="432.0" />
+            <TextField fx:id="InformationSystemField" editable="false" layoutX="205.0" layoutY="125.0" prefHeight="23.0" prefWidth="432.0" />
             <Label layoutX="71.0" layoutY="171.0" prefHeight="20.0" prefWidth="109.0" text="Request stage : ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="requestStatusField" layoutX="489.0" layoutY="171.0" prefHeight="23.0" prefWidth="147.0" />
+            <TextField fx:id="requestStatusField" editable="false" layoutX="489.0" layoutY="171.0" prefHeight="23.0" prefWidth="147.0" />
             <Label layoutX="387.0" layoutY="172.0" prefHeight="20.0" prefWidth="109.0" text="Request status : ">
                <font>
                   <Font size="14.0" />
@@ -105,19 +101,24 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="DescriptionExistingSituationField" layoutX="72.0" layoutY="284.0" prefHeight="88.0" prefWidth="566.0" />
+            <TextArea fx:id="DescriptionExistingSituationField" layoutX="72.0" layoutY="284.0" prefHeight="88.0" prefWidth="566.0" wrapText="true" />
             <Label layoutX="72.0" layoutY="391.0" prefHeight="20.0" prefWidth="227.0" text="Description of the request : ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextArea fx:id="DescriptionOfRequestField" layoutX="73.0" layoutY="416.0" prefHeight="116.0" prefWidth="566.0" />
-            <TextField fx:id="RequestStageField" layoutX="171.0" layoutY="169.0" prefHeight="23.0" prefWidth="174.0" />
+            <TextArea fx:id="DescriptionOfRequestField" layoutX="73.0" layoutY="416.0" prefHeight="116.0" prefWidth="566.0" wrapText="true" />
+            <TextField fx:id="RequestStageField" editable="false" layoutX="171.0" layoutY="169.0" prefHeight="23.0" prefWidth="174.0" />
             <Button fx:id="BackToShow" layoutX="515.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="23.0" prefWidth="123.0" text="Back to all requests">
                <font>
                   <Font size="12.0" />
                </font>
             </Button>
+            <Text fx:id="requestIdField" layoutX="73.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Req" wrappingWidth="423.7805480957031">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

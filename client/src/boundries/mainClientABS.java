@@ -85,6 +85,12 @@ public class mainClientABS extends AbstractClient
 				   MainAllControllers.showUserReq(((ArrayList<Object>)send));
 				}
 				break;
+			case showRequestDetailsUser:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+			   MainAllControllers.showUserReqDetails(send);
+			}
+			break;
 			case SearchReqUser:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

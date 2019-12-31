@@ -12,7 +12,7 @@ public class User implements Serializable
 	private String strPosition;
 	public User(String Name,String Password,String job)
 	{
-		this.Name=Name;
+		this.Name=Name; 
 		this.Password=Password;
 		this.strPosition=job;
 		switch(job)

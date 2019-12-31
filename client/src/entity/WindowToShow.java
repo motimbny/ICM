@@ -35,7 +35,7 @@ public class WindowToShow {
 		switch (str) {
 		case "login":
 			initLogin();
-			break;
+			break; 
 		case "userHome":
 			initUserHome();
 			break;

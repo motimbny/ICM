@@ -129,6 +129,7 @@ public class UserShowRequestsController implements Initializable  {
     	requestsTable.setOnMouseClicked((MouseEvent ev ) -> {
             if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
                 try {
+                	MainAllControllers.request=requestsTable.getItems().get(requestsTable.getSelectionModel().getSelectedIndex()).getId();
 					MainAllControllers.setWindowVar("UserRequestDetails");
 					MainAllControllers.changeWin();
 				} catch (IOException e) {
@@ -168,9 +169,16 @@ public class UserShowRequestsController implements Initializable  {
 		timeLeft.setCellValueFactory(new PropertyValueFactory<>("timeLeft"));
 		requestServer();
 	}
+	
 	public void clearTable()
 	{
 		requestsTable.getItems().clear();
 	}
+	public TableView<RequestUser> getRequestsTable() {
+		return requestsTable;
+	}
+
+	
+	
 
 }
