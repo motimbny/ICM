@@ -97,6 +97,12 @@ public class mainClientABS extends AbstractClient
 			     MainAllControllers.showUserSPReq(((ArrayList<Object>)send));
 			}
 			break;
+			case ShowEmployeeList:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.showSuperviserEmployeeList(send);
+			}
+			break;
 			}
 		 this.connectionClosed();		 
 	}

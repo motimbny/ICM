@@ -1,16 +1,27 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
+import entity.ITemployee;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorEmployeesManagmentController 
+public class SupervisorEmployeesManagmentController implements Initializable 
 {
 	private MainAllControllers MainAllControllers;
+	private ObservableList<ITemployee> rows; 
 	public SupervisorEmployeesManagmentController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
@@ -34,26 +45,37 @@ public class SupervisorEmployeesManagmentController
     private Button logoutBTN;
 
     @FXML
-    private TableView<?> EmployeesTable;
+    private TableView<ITemployee> EmployeesTable;
     
-    @FXML
-    private TableColumn<?, ?> EmployeeID;
 
     @FXML
-    private TableColumn<?, ?> FirstName;
+    private TableColumn<ITemployee, Integer> employeeId;
 
     @FXML
-    private TableColumn<?, ?> LastName;
+    private TableColumn<ITemployee, String> employeeName;
 
     @FXML
-    private TableColumn<?, ?> Email;
+    private TableColumn<ITemployee, String> employeeLastName;
 
     @FXML
-    private TableColumn<?, ?> NumberOfProjects;
+    private TableColumn<ITemployee, String> employeeMail;
+
+    @FXML
+    private TableColumn<ITemployee, Integer> numOfProjects;
 
     @FXML
     private Button setEmployeePermissionBTN;
-
+    
+    public void requestServer()
+    {
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.ShowEmployeeList, null);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+    }
+    
+	
     @FXML
     void goEmployeesMangPage(MouseEvent event) throws IOException 
     {
@@ -101,5 +123,26 @@ public class SupervisorEmployeesManagmentController
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
     }
+
+	public void setTextInTable(ArrayList<Object> list)
+	{
+		rows= FXCollections.observableArrayList();
+    	for(Object r:list)
+    		rows.add((ITemployee)r);		
+    	EmployeesTable.setItems(rows);		
+	}
+
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+		employeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
+		employeeName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
+		employeeLastName.setCellValueFactory(new PropertyValueFactory<>("employeeLastName"));
+		employeeMail.setCellValueFactory(new PropertyValueFactory<>("employeeMail"));
+		numOfProjects.setCellValueFactory(new PropertyValueFactory<>("numOfProjects"));
+		requestServer();
+		
+	}
 
 }

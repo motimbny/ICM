@@ -7,6 +7,7 @@ public enum MessageTypeS
 	homeRequestNum,
 	supervisorHomeRequestNum,
 	ShowReqUser,
+	ShowEmployeeList,
 	SearchReqSupervisor,
 	SearchReqUser,
 	AddRequest,

@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
+
+import controllers.ShowEmployeeListController;
 import controllers.SupervisorShowRequestsSController;
 import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
 import controllers.loginSController;
 import controllers.serverController;
+import entity.DBSmessage;
 import entity.DBmessage;
 import entity.ServerFile;
 import ocsf.server.AbstractServer;
@@ -63,11 +66,18 @@ public class mainServerABS extends AbstractServer
 		    	   break;
 		       }
 		       case SearchReqUser:
-		       {
-		    	   
+		       {   
 		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
 		    	   try {
 					client.sendToClient(userShowRequestsSController.showSPRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
+		       case ShowEmployeeList:
+		       {	   
+		    	   ShowEmployeeListController ShowEmployeeListController=new ShowEmployeeListController(dbm,connection);
+		    	   try {
+					client.sendToClient(ShowEmployeeListController.showEmployee());
 				} catch (IOException e) {}
 		    	   break;
 		       }
@@ -94,7 +104,7 @@ public class mainServerABS extends AbstractServer
 					client.sendToClient(supervisorShowRequestsSController.showSPRequest());
 				} catch (IOException e) {}
 		    	   break;
-		       }
+		       }    
 			default:
 				break;
 		    }

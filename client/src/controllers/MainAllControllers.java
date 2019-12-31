@@ -126,4 +126,9 @@ public class MainAllControllers
 		((SupervisorShowRequestsController) WindowToShow.controller).clearTable();
 		((SupervisorShowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}
+	public void showSuperviserEmployeeList(ArrayList<Object> list)
+	{
+		((SupervisorEmployeesManagmentController) WindowToShow.controller).setTextInTable(list);
+		
+	}
 }
