@@ -24,6 +24,7 @@ import controllers.UserAddRequestController;
 import controllers.UserHelpController;
 import controllers.UserHomeController;
 import controllers.UserPersonalInfoController;
+import controllers.UserRequestDetailsController;
 import controllers.UserShowRequestsController;
 
 public class WindowToShow {
@@ -40,6 +41,9 @@ public class WindowToShow {
 			break;
 		case "UserShowRequests":
 			initUserShowRequests();
+			break;
+		case "UserRequestDetails":
+			initUserRequestDetails();
 			break;
 		case "UserAddRequest":
 			initUserAddRequest();
@@ -104,6 +108,8 @@ public class WindowToShow {
 		}
 	}
 
+	
+		
 	public String getPathfxml() {
 		return pathfxml;
 	}
@@ -160,6 +166,12 @@ public class WindowToShow {
 		pathfxml = "/Fxml/UserPersonalInfo.fxml";
 		windowName = "ICM-UserPersonalInfo";
 
+	}
+	
+	private void initUserRequestDetails() {
+		UserRequestDetailsController controller = new UserRequestDetailsController(); // UserRequestDetailsController
+		pathfxml = "/Fxml/UserRequestDetails.fxml";
+		windowName = "ICM-UserRequestDetails";
 	}
 
 	private void initUserHelp() {

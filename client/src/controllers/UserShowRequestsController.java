@@ -19,6 +19,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 
@@ -121,6 +122,20 @@ public class UserShowRequestsController implements Initializable  {
     {
     	MainAllControllers.setWindowVar("UserShowRequests");
     	MainAllControllers.changeWin();
+    }
+    
+    @FXML
+    void showReqT(MouseEvent event)  {
+    	requestsTable.setOnMouseClicked((MouseEvent ev ) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                try {
+					MainAllControllers.setWindowVar("UserRequestDetails");
+					MainAllControllers.changeWin();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}                
+            }
+        });
     }
     
     public void setTextInTable(ArrayList<Object> list)
