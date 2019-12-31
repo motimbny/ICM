@@ -12,6 +12,7 @@ import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
 import controllers.loginSController;
 import controllers.serverController;
+import controllers.superviserRequestShowController;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.ServerFile;
@@ -104,16 +105,24 @@ public class mainServerABS extends AbstractServer
 		    	   try {
 					client.sendToClient(supervisorShowRequestsSController.numOfRequest());
 				} catch (IOException e) {}
+			       break;
 		       }
-		       break;
 		       case SearchReqSupervisor:
 		       {
-		    	   SupervisorShowRequestsSController supervisorShowRequestsSController=new SupervisorShowRequestsSController(dbm,connection);
+		    	   superviserRequestShowController superviserRequestShowController=new superviserRequestShowController(dbm,connection);
 		    	   try {
-					client.sendToClient(supervisorShowRequestsSController.showSPRequest());
-				} catch (IOException e) {}
-		    	   break;
-		       }    
+						client.sendToClient(superviserRequestShowController.getSPRequestToShow());
+					} catch (IOException e) {}
+			       break;
+		       } 
+		       case superviserRequestShow:
+		       {
+		    	   superviserRequestShowController superviserRequestShowController=new superviserRequestShowController(dbm,connection);
+		    	   try {
+						client.sendToClient(superviserRequestShowController.getRequestToShow());
+					} catch (IOException e) {}
+			       break;
+		       }
 			default:
 				break;
 		    }

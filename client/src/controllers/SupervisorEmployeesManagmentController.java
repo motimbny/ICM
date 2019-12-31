@@ -126,7 +126,8 @@ public class SupervisorEmployeesManagmentController implements Initializable
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1) 
+	{
 
 		employeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
 		employeeName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));

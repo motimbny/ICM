@@ -136,4 +136,8 @@ public class MainAllControllers
 		((SupervisorEmployeesManagmentController) WindowToShow.controller).setTextInTable(list);
 		
 	}
+	public void showSuperviserRequestList(ArrayList<Object> list)
+	{
+		((SupervisorShowRequestsController) WindowToShow.controller).setTextInTable(list);
+	}
 }

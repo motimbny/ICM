@@ -11,5 +11,6 @@ public enum MessageType
 		ShowEmployeeList,
 		SearchReqUser,
 		AddRequest,
-		showRequestDetailsUser
+		showRequestDetailsUser,
+		superviserRequestShow,
 }

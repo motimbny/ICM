@@ -72,14 +72,26 @@ public class UserShowRequestsController implements Initializable  {
     @FXML
     void searchRequest(MouseEvent event)
     {
-    	ArrayList<Object> arry=new ArrayList<Object>();
-		arry.add(MainAllControllers.user.getName());
-		arry.add(Integer.parseInt(requestIdTo.getText()));
-		DBmessage dbm;
-    	dbm=new DBmessage(MessageType.SearchReqUser, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
+    	if(requestIdTo.getText().equals(""))
+    	{
+    		try {
+				MainAllControllers.setWindowVar("UserShowRequests");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+        	MainAllControllers.changeWin();
+    	}
+    	else
+    	{
+	    	ArrayList<Object> arry=new ArrayList<Object>();
+			arry.add(MainAllControllers.user.getName());
+			arry.add(Integer.parseInt(requestIdTo.getText()));
+			DBmessage dbm;
+	    	dbm=new DBmessage(MessageType.SearchReqUser, arry);   
+	    	try {
+	    		MainAllControllers.sendToAbsServer(dbm);
+			} catch (IOException e) {}
+    	}
     }
     @FXML
     void goAddReqPage(ActionEvent event) throws IOException 

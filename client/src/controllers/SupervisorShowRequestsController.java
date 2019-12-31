@@ -7,7 +7,10 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
+import entity.ITemployee;
 import entity.RequestUser;
+import entity.requestSuper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,11 +19,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
 public class SupervisorShowRequestsController implements Initializable
 {
-	private ObservableList<RequestUser> rows;
+	private ObservableList<requestSuper> rows;
 	private MainAllControllers MainAllControllers;
 	public SupervisorShowRequestsController()
 	{
@@ -46,16 +50,16 @@ public class SupervisorShowRequestsController implements Initializable
 	private Button logoutBTN;
 
 	@FXML
-	private TableView<?> requestTable;
+	private TableView<requestSuper> requestTable;
 
 	@FXML
-	private TableColumn<?, ?> RequestID;
+	private TableColumn<requestSuper, Integer> RequestID;
 
 	@FXML
-	private TableColumn<?, ?> RequestStatus;
+	private TableColumn<requestSuper, String> RequestStatus;
 
 	@FXML
-	private TableColumn<?, ?> RequestProcessStage;
+	private TableColumn<requestSuper, String> RequestProcessStage;
 
 	@FXML
 	private Button SuprvisorUpdateRequestBTN;
@@ -152,22 +156,46 @@ public class SupervisorShowRequestsController implements Initializable
     @FXML
     void searchRequest(MouseEvent event) 
     {
-    	ArrayList<Object> arry=new ArrayList<Object>();
-		arry.add(MainAllControllers.user.getName());
-		arry.add(Integer.parseInt(requestIdTo.getText()));
+    	if(requestIdTo.getText().equals(""))
+    	{
+    		try 
+    		{
+				MainAllControllers.setWindowVar("SupervisorShowRequests");
+			} catch (IOException e)
+    		{
+				e.printStackTrace();
+			}
+        	MainAllControllers.changeWin();
+    	}
+    	else
+    	{
+	    	ArrayList<Object> arry=new ArrayList<Object>();
+			arry.add(Integer.parseInt(requestIdTo.getText()));
+			DBmessage dbm;
+	    	dbm=new DBmessage(MessageType.SearchReqSupervisor, arry);   
+	    	try {
+	    		MainAllControllers.sendToAbsServer(dbm);
+			} catch (IOException e) {}
+    	}
+    }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		RequestID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		RequestStatus.setCellValueFactory(new PropertyValueFactory<>("currentStatus"));
+		RequestProcessStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
+		requestServer();
+		
+	}
+	public void requestServer()
+    {
 		DBmessage dbm;
-    	dbm=new DBmessage(MessageType.SearchReqSupervisor, arry);   
+    	dbm=new DBmessage(MessageType.superviserRequestShow, null);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
     }
-
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
-	
 	public void clearTable()
 	{
 		requestTable.getItems().clear();
@@ -175,7 +203,10 @@ public class SupervisorShowRequestsController implements Initializable
 	
 	 public void setTextInTable(ArrayList<Object> list)
 	 {
-		 
+		 rows= FXCollections.observableArrayList();
+	    	for(Object r:list)
+	    		rows.add((requestSuper)r);		
+	    	requestTable.setItems(rows);	
 	 }
 
 }
