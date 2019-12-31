@@ -66,6 +66,21 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
+            <Label fx:id="UserName" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="140.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="191.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="position" alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="243.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
