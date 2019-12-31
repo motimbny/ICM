@@ -27,6 +27,7 @@ public class UserAddRequestController implements Initializable
 {
 	private ServerFile fileOfUser=null;
 	private MainAllControllers MainAllControllers;
+	private boolean flag=false;
 	public UserAddRequestController()
 	{
     	MainAllControllers=MainAllControllers.getInstance();
@@ -81,7 +82,7 @@ public class UserAddRequestController implements Initializable
 	        arry.add(MorInfoAdd.getText());
 	        arry.add(MainAllControllers.user.getName());
 	        arry.add(MainAllControllers.user.getstrPosition());
-	        if(!fileOfUser.equals(null))
+	        if(flag==true)
 	           arry.add(fileOfUser);
 	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
@@ -117,6 +118,7 @@ public class UserAddRequestController implements Initializable
   		      fileOfUser.initArray(mybytearray.length);
   		      fileOfUser.setSize(mybytearray.length); 
   		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length); 	
+  		      flag=true;
   		    }
   		catch (Exception e) {
   			System.out.println("Error send File to Server");

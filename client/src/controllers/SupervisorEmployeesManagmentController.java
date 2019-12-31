@@ -62,9 +62,6 @@ public class SupervisorEmployeesManagmentController implements Initializable
 
     @FXML
     private TableColumn<ITemployee, Integer> numOfProjects;
-
-    @FXML
-    private Button setEmployeePermissionBTN;
     
     public void requestServer()
     {
@@ -112,10 +109,6 @@ public class SupervisorEmployeesManagmentController implements Initializable
     	MainAllControllers.changeWin();
     }
 
-    @FXML
-    void goSetEmployeePermission(MouseEvent event) {
-
-    }
 
     @FXML
     void goShowReqPage(MouseEvent event) throws IOException 

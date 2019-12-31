@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorEmployeesManagmentController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorEmployeesManagmentController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -86,7 +86,11 @@
                   <TableColumn fx:id="numOfProjects" prefWidth="125.0" text="Number Of Projects" />
               </columns>
             </TableView>
-            <Button fx:id="setEmployeePermissionBTN" layoutX="267.0" layoutY="493.0" mnemonicParsing="false" onMouseClicked="#goSetEmployeePermission" prefHeight="46.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="Set employee permission" />
+            <Label layoutX="288.0" layoutY="508.0" prefHeight="25.0" prefWidth="359.0" text="*Double press employee to manage premissions">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
