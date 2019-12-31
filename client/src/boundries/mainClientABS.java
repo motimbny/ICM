@@ -38,14 +38,19 @@ public class mainClientABS extends AbstractClient
 						break;
 					case "IT-manager":
 						topen="ITmanHome";
-					case "IT-employee":
+						break;
+					case "IT":
 						topen="ITHome";
+						break;
 					case "student":
 						topen="userHome";
+						break;
 					case "lecturer":
 						topen="userHome";
+						break;
 					case "college-emp":
 						topen="userHome";
+						break;
 					}
 					try 
 						{

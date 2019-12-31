@@ -17,7 +17,7 @@ public class User implements Serializable
 		this.strPosition=job;
 		switch(job)
 		{
-			case "ITMember":
+			case "IT":
 				this.job =Position.ITMember;
 			    break;
 			case "student":

@@ -2,15 +2,17 @@ package entity;
 
 import java.io.IOException;
 
-import controllers.CCEvaluationReportController;
-import controllers.CCRequestMoreInfoController;
-import controllers.CCShowRequestsController;
+import controllers.ITCCCEvaluationReportController;
+import controllers.ITCCCRequestMoreInfoController;
+import controllers.ITExtensionRequestController;
+import controllers.ITHandleRequestController;
 import controllers.ITHelpController;
 import controllers.ITHomeController;
+import controllers.ITMeaningAssessmentEvaluationReportController;
 import controllers.ITPersonalInfoController;
+import controllers.ITTestFailurReportController;
+import controllers.ITshowRequestsController;
 import controllers.LoginController;
-import controllers.PerformanceLeaderHomeController;
-import controllers.PerformanceLeaderShowRequestsController;
 import controllers.SupervisorEmployeesListController;
 import controllers.SupervisorEmployeesManagmentController;
 import controllers.SupervisorExtentionRequestController;
@@ -18,8 +20,6 @@ import controllers.SupervisorHelpController;
 import controllers.SupervisorHomeController;
 import controllers.SupervisorPersonalInfoController;
 import controllers.SupervisorShowRequestsController;
-import controllers.TesterShowRequestsController;
-import controllers.TesterSubmitReportController;
 import controllers.UserAddRequestController;
 import controllers.UserHelpController;
 import controllers.UserHomeController;
@@ -81,30 +81,29 @@ public class WindowToShow {
 		case "ITHelp":
 			initITHelp();
 			break;
-
+		case "ITshowRequests":
+			initITshowRequests();
+			break;	
+		case "ITHandleRequest":
+			initITHandleRequest();
+			break;
+		case "ITTestFailurReport":
+			initITTestFailurReport();
+			break;
+		case "ITCCCEvaluationReport":
+			initITCCCEvaluationReport();
+			break;
+		case "ITCCCRequestMoreInfo":
+			initITCCCRequestMoreInfo();
+			break;
+		case "ITExtensionRequest":
+			initITExtensionRequest();
+			break;
+		case "ITMeaningAssessmentEvaluationReport":
+			initITMeaningAssessmentEvaluationReport();
+			break;
 			
-			
-		case "TesterSubmitReport":
-			initTesterSubmitReport();
-			break;
-		case "TesterShowRequests":
-			initTesterShowRequests();
-			break;
-		case "PerformanceLeaderShowRequests":
-			initPerformanceLeaderShowRequests();
-			break;
-		case "PerformanceLeaderHome":
-			initPerformanceLeaderHome();
-			break;
-		case "CCEvaluationReport":
-			initCCEvaluationReport();
-			break;
-		case "CCRequestMoreInfo":
-			initCCRequestMoreInfo();
-			break;
-		case "CCShowRequests":
-			initCCShowRequests();
-			break;
+		
 		}
 	}
 
@@ -123,24 +122,6 @@ public class WindowToShow {
 		LoginController controller = new LoginController();
 		pathfxml = "/Fxml/Login.fxml";
 		windowName = "ICM-Login";
-	}
-
-	public void initCCEvaluationReport() {
-		CCEvaluationReportController controller = new CCEvaluationReportController(); // CCEvaluationReport
-		pathfxml = "/Fxml/ControlCommeteeEvaluationReport.fxml";
-		windowName = "ICM-EvaluationReport";
-	}
-
-	public void initCCRequestMoreInfo() {
-		CCRequestMoreInfoController controller = new CCRequestMoreInfoController(); // CCRequestMoreInfo
-		pathfxml = "/Fxml/ControlCommeteeRequestMoreInfo.fxml";
-		windowName = "ICM-RequestMoreInformation";
-	}
-
-	public void initCCShowRequests() {
-		CCShowRequestsController controller = new CCShowRequestsController(); // CCShowRequests
-		pathfxml = "/Fxml/ControlCommeteeShowRequests.fxml";
-		windowName = "ICM-ShowRequests";
 	}
 
 	public void initUserHome() {
@@ -179,30 +160,6 @@ public class WindowToShow {
 		pathfxml = "/Fxml/UserHelp.fxml";
 		windowName = "ICM-UserHelp";
 
-	}
-
-	public void initTesterSubmitReport() {
-		TesterSubmitReportController controller = new TesterSubmitReportController(); // TesterSubmitReportController
-		pathfxml = "/Fxml/TesterSubmitReport.fxml";
-		windowName = "ICM-TesterSubmitReport";
-	}
-
-	public void initTesterShowRequests() {
-		TesterShowRequestsController controller = new TesterShowRequestsController(); // TesterShowRequestsController
-		pathfxml = "/Fxml/TesterShowRequests.fxml";
-		windowName = "ICM-TesterShowRequests";
-	}
-
-	public void initPerformanceLeaderShowRequests() {
-		PerformanceLeaderShowRequestsController controller = new PerformanceLeaderShowRequestsController(); // PerformanceLeaderShowRequestsController
-		pathfxml = "/Fxml/PerformanceLeaderShowRequests.fxml";
-		windowName = "ICM-PerformanceLeaderShowRequests";
-	}
-
-	public void initPerformanceLeaderHome() {
-		PerformanceLeaderHomeController controller = new PerformanceLeaderHomeController(); // PerformanceLeaderHomeController
-		pathfxml = "/Fxml/PerformanceLeaderHome.fxml";
-		windowName = "ICM-PerformanceLeaderHome";
 	}
 
 	public void initSupervisorHome() {
@@ -264,5 +221,53 @@ public class WindowToShow {
 		pathfxml = "/Fxml/ITHelp.fxml";
 		windowName = "ICM-ITHelp";
 	}
-
+	
+	public void initITshowRequests()
+	{
+		ITshowRequestsController controller = new ITshowRequestsController();
+		pathfxml = "/Fxml/ITshowRequest.fxml";
+		windowName = "ICM-ITshowRequests";
+	}
+	
+	public void initITTestFailurReport()
+	{
+		ITTestFailurReportController controller = new ITTestFailurReportController();
+		pathfxml = "/Fxml/ITTestFailurReport.fxml";
+		windowName = "ICM-ITTestFailurReport";	
+	}
+	
+	public void initITCCCEvaluationReport()
+	{
+		ITCCCEvaluationReportController controller = new ITCCCEvaluationReportController();
+		pathfxml = "/Fxml/ITCCCEvaluationReport.fxml";
+		windowName = "ICM-ITCCCEvaluationReport";
+	}
+	
+	public void initITCCCRequestMoreInfo()
+	{
+		ITCCCRequestMoreInfoController controller = new ITCCCRequestMoreInfoController();
+		pathfxml = "/Fxml/ITCCCRequestMoreInfo.fxml";
+		windowName = "ICM-ITCCCRequestMoreInfo";		
+	}
+	
+	public void initITExtensionRequest()
+	{
+		ITExtensionRequestController controller = new ITExtensionRequestController();
+		pathfxml = "/Fxml/ITExtensionRequest.fxml";
+		windowName = "ICM-ITExtensionRequest";		
+	}
+	
+	public void initITMeaningAssessmentEvaluationReport()
+	{
+		ITMeaningAssessmentEvaluationReportController controller = new ITMeaningAssessmentEvaluationReportController();
+		pathfxml = "/Fxml/ITMeaningAssessmentEvaluationReport.fxml";
+		windowName = "ICM-ITMeaningAssessmentEvaluationReport";		
+	}
+	
+	public void initITHandleRequest()
+	{
+		ITHandleRequestController controller = new ITHandleRequestController();
+		pathfxml = "/Fxml/ITHandleRequest.fxml";
+		windowName = "ICM-ITHandleRequest";	
+	}
 }

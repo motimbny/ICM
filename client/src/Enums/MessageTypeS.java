@@ -6,6 +6,7 @@ public enum MessageTypeS
 	LoginFail,
 	homeRequestNum,
 	supervisorHomeRequestNum,
+	IThomeRequestNum,
 	ShowReqUser,
 	ShowEmployeeList,
 	SearchReqSupervisor,

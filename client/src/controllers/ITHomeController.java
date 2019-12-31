@@ -1,13 +1,19 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class ITHomeController 
+public class ITHomeController //implements Initializable
 {	
 	private MainAllControllers MainAllControllers;
     public ITHomeController()
@@ -58,8 +64,10 @@ public class ITHomeController
 	}
 
 	@FXML
-	void goShowReq(MouseEvent event) {
-
+	void goShowReq(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITshowRequests");
+    	MainAllControllers.changeWin();
 	}
 
 	@FXML
@@ -69,5 +77,21 @@ public class ITHomeController
     	MainAllControllers.changeWin();
     	MainAllControllers.user=null;
 	}
+ /*   void setRequestNumber(int num)
+    {
+    	ExistingReq.setText(Integer.toString(num));
+    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		helloIT.setText("Hello "+MainAllControllers.user.getName());
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user.getName());
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.IThomeRequestNum, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+	}*/
 
 }

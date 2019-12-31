@@ -6,28 +6,30 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
-public class ITHelpController {
-
+public class ITExtensionRequestController 
+{
 	private MainAllControllers MainAllControllers;
-    public ITHelpController()
+    public ITExtensionRequestController()
     {
     	MainAllControllers=controllers.MainAllControllers.getInstance();
     }
-    
-	@FXML
-	private Button homeBTN;
+    @FXML
+    private Button homeBTN;
 
-	@FXML
-	private Button showRequestBTN;
+    @FXML
+    private Button showRequestBTN;
 
-	@FXML
-	private Button personalInfoBTN;
+    @FXML
+    private Button personalInfoBTN;
 
-	@FXML
-	private Button helpBTN;
+    @FXML
+    private Button helpBTN;
 
-	@FXML
-	private Button logoutBTN;
+    @FXML
+    private Button logoutBTN;
+
+    @FXML
+    private Button submitExtensionRequestBTN;
 
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
@@ -64,4 +66,10 @@ public class ITHelpController {
     	MainAllControllers.changeWin();
     	MainAllControllers.user=null;
 	}
+
+    @FXML
+    void submitExtensionRequest(MouseEvent event) {
+
+    }
+
 }

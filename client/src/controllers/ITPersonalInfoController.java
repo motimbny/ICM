@@ -64,8 +64,10 @@ public class ITPersonalInfoController implements Initializable
 	}
 
 	@FXML
-	void goShowReq(MouseEvent event) {
-
+	void goShowReq(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITshowRequests");
+    	MainAllControllers.changeWin();
 	}
 
 	@FXML
