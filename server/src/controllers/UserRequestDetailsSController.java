@@ -56,7 +56,7 @@ public class UserRequestDetailsSController {
 						name=StageName.closing;
 						break;		
 					}
-					tosend=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(5),rs.getString(6));
+					tosend=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7));
 					toSendA.add(tosend);
 				}
 				dbs=new DBSmessage(MessageTypeS.showRequestDetailsUser,toSendA);
