@@ -15,4 +15,6 @@ public enum MessageType
 		AddRequest,
 		showRequestDetailsUser,
 		superviserRequestShow,
+		suspendRequest,
+		closeRequest,
 }

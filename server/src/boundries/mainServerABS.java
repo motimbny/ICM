@@ -132,6 +132,22 @@ public class mainServerABS extends AbstractServer
 					} catch (IOException e) {}
 			       break;
 		       }
+		       case suspendRequest:
+		       {   
+		    	   superviserRequestShowController superviserRequestShowController=new superviserRequestShowController(dbm,connection);
+		    	   try {
+						client.sendToClient(superviserRequestShowController.updateSuspendRequest());
+					} catch (IOException e) {}
+			       break;
+		       }
+		       case closeRequest:
+		       {
+		    	   superviserRequestShowController superviserRequestShowController=new superviserRequestShowController(dbm,connection);
+		    	   try {
+						client.sendToClient(superviserRequestShowController.updatecloseRequest());
+					} catch (IOException e) {}
+			       break;
+		       }
 		       case ShowReqIT:
 		       {	   
 		    	   ITShowRequestsSController itShowRequestsSController=new ITShowRequestsSController(dbm,connection);

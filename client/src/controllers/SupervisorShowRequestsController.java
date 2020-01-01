@@ -10,6 +10,7 @@ import entity.DBmessage;
 import entity.requestSuper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -22,6 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -90,10 +92,17 @@ public class SupervisorShowRequestsController implements Initializable
 		Stage popupwindow=new Stage();   
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
 		popupwindow.setTitle("Alert pop up");      
-		Label label1= new Label("Are you sure you want to close request?");    
+		Label label1= new Label("Are you sure you want to close request?");  
+		label1.setFont(new Font("Arial", 14));
 		Button button1= new Button("Yes");  
 		Button button2= new Button("No"); 
-		button1.setOnAction(e -> popupwindow.close());
+		button1.addEventHandler(ActionEvent.ACTION, (e)->popupwindow.close());
+		button1.addEventHandler(ActionEvent.ACTION, (e)->{
+    		if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("WaitingCloser"))
+    		{
+    			this.closeRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
+    		}
+    	    });
 		button2.setOnAction(e -> popupwindow.close());
 		button1.setStyle("-fx-border-color:green");
 		button2.setStyle("-fx-border-color:red");
@@ -101,7 +110,7 @@ public class SupervisorShowRequestsController implements Initializable
 		layout.getStylesheets().add("CSS/it.css");
 		layout.getChildren().addAll(label1, button1,button2);     
 		layout.setAlignment(Pos.CENTER);     
-		Scene scene1= new Scene(layout, 250, 200);     
+		Scene scene1= new Scene(layout, 350, 250);     
 		popupwindow.setScene(scene1);     
 		popupwindow.showAndWait();
 	}
@@ -145,22 +154,69 @@ public class SupervisorShowRequestsController implements Initializable
 	@FXML
 	void suspendRequest(MouseEvent event) 
 	{
-
+		Stage popupwindow=new Stage();   
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Alert pop up");      
+		Label label1= new Label("Are you sure you want to suspend the request?"); 
+		label1.setFont(new Font("Arial", 14));
+		Button button1= new Button("Yes");  
+		Button button2= new Button("No"); 
+		button1.addEventHandler(ActionEvent.ACTION, (e)->popupwindow.close());
+    	button1.addEventHandler(ActionEvent.ACTION, (e)->{
+    		if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("Active"))
+    		{
+    			this.suspendRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
+    		}
+    	    });
+		button2.setOnAction(e -> popupwindow.close());
+		button1.setStyle("-fx-border-color:green");
+		button2.setStyle("-fx-border-color:red");
+		VBox layout= new VBox(10);     
+		layout.getStylesheets().add("CSS/it.css");
+		layout.getChildren().addAll(label1, button1,button2);     
+		layout.setAlignment(Pos.CENTER);     
+		Scene scene1= new Scene(layout, 350, 250);     
+		popupwindow.setScene(scene1);     
+		popupwindow.showAndWait();
 	}
 
+	private void suspendRequest(int id) 
+	{
+		System.out.println("here s");
+		ArrayList<Object> arry=new ArrayList<Object>();
+		int idadd=id;
+		DBmessage dbm;
+		arry.add(idadd);
+    	dbm=new DBmessage(MessageType.suspendRequest, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+		
+	}
+	private void closeRequest(int id) 
+	{
+		System.out.println("here s");
+		ArrayList<Object> arry=new ArrayList<Object>();
+		int idadd=id;
+		DBmessage dbm;
+		arry.add(idadd);
+    	dbm=new DBmessage(MessageType.closeRequest, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+		
+	}
 	@FXML
 	void viewExtensionReport(MouseEvent event) 
 	{
 
 	}
 	
-
     @FXML
     void showRequestDetails(MouseEvent event) 
     {
-
-    }
-    
+       
+    }   
     @FXML
     void searchRequest(MouseEvent event) 
     {

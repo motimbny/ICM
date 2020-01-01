@@ -83,7 +83,7 @@ public class serverController
     {
     	mainServerABS.stopServer();
     }
-    public void showOnScreen(String str)
+    public  void showOnScreen(String str)
     {
     	messagebox.setText(str);
     }
