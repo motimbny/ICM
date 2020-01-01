@@ -80,7 +80,12 @@ public class SupervisorShowRequestsController implements Initializable
 
     @FXML
     private TextField requestIdTo;
-	
+    @FXML
+    private Label susNot;
+
+    @FXML
+    private Label closeNot;
+
 	@FXML
 	void UpdateRequest(MouseEvent event) 
 	{
@@ -102,6 +107,8 @@ public class SupervisorShowRequestsController implements Initializable
     		{
     			this.closeRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
     		}
+    		else
+    			closeNot.setVisible(true);
     	    });
 		button2.setOnAction(e -> popupwindow.close());
 		button1.setStyle("-fx-border-color:green");
@@ -114,7 +121,12 @@ public class SupervisorShowRequestsController implements Initializable
 		popupwindow.setScene(scene1);     
 		popupwindow.showAndWait();
 	}
-
+    @FXML
+    void visNot(MouseEvent event) 
+    {
+    	closeNot.setVisible(false);
+        susNot.setVisible(false);
+    }
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -167,6 +179,8 @@ public class SupervisorShowRequestsController implements Initializable
     		{
     			this.suspendRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
     		}
+    		else
+    			susNot.setVisible(true);
     	    });
 		button2.setOnAction(e -> popupwindow.close());
 		button1.setStyle("-fx-border-color:green");

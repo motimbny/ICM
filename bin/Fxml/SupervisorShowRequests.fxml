@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorShowRequestsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorShowRequestsController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -69,7 +69,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMousePressed="#showRequestDetails" prefHeight="350.0" prefWidth="597.0">
+            <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMouseExited="#visNot" onMousePressed="#showRequestDetails" prefHeight="350.0" prefWidth="597.0">
                <columns>
                   <TableColumn fx:id="RequestID" prefWidth="190.77774047851562" text="Request id" />
                   <TableColumn fx:id="RequestStatus" prefWidth="202.44439697265625" text="Request status" />
@@ -87,6 +87,16 @@
                </font>
             </Label>
             <TextField fx:id="requestIdTo" layoutX="180.0" layoutY="82.0" prefHeight="25.0" prefWidth="277.0" promptText="Enter request id here..." />
+            <Label fx:id="susNot" layoutX="273.0" layoutY="508.0" style="-fx-text-fill: red;" text="Action not allowed" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="closeNot" layoutX="476.0" layoutY="508.0" style="-fx-text-fill: red;" text="Action not allowed" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
