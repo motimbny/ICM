@@ -63,42 +63,63 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label layoutX="191.0" layoutY="34.0" prefHeight="58.0" prefWidth="307.0" text="Handle Request">
+            <Label layoutX="191.0" layoutY="42.0" prefHeight="58.0" prefWidth="307.0" text="Handle Request">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Button fx:id="TestApprovalBTN" layoutX="161.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#TestApproval" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Test Approval" />
-            <Button fx:id="ReqForTimeExtensionBTN" layoutX="221.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#ReqForTimeExtension" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Request for time extension" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="ReportFailureBTN" layoutX="292.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#ReportFailure" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Report Failure" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="ShowRequestDetailsBTN" layoutX="351.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#ShowRequestDetails" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Show request details" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="ViewEvaluationReportBTN" layoutX="351.0" layoutY="392.0" mnemonicParsing="false" onMouseClicked="#ViewEvaluationReport" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="View evaluation report" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="CreateEvaluationReportBTN" layoutX="221.0" layoutY="392.0" mnemonicParsing="false" onMouseClicked="#CreateEvaluationReport" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Create Evaluation Report" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="ChangePerformanceLeaderShowReq" layoutX="417.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#changeCompleted" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Change completed" textAlignment="CENTER" wrapText="true" />
-            <TextField fx:id="timeEstimatedPerformance" layoutX="354.0" layoutY="212.0" prefHeight="31.0" prefWidth="140.0" promptText="Enter as dd/hh/mm" />
-            <Button fx:id="SubmitTimeEstimateBTN" layoutX="354.0" layoutY="244.0" mnemonicParsing="false" onMouseClicked="#SubmitTimeEstimatePerformance" prefHeight="31.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="submit time estimate" />
-            <TextField fx:id="timeEstimatedEvaluation" layoutX="163.0" layoutY="212.0" prefHeight="31.0" prefWidth="140.0" promptText="Enter as dd/hh/mm" />
-            <Button fx:id="SubmitTimeEstimateBTN1" layoutX="163.0" layoutY="244.0" mnemonicParsing="false" onMouseClicked="#SubmitTimeEstimateEvaluation" prefHeight="31.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="submit time estimate" />
-            <Label layoutX="173.0" layoutY="186.0" prefHeight="25.0" prefWidth="120.0" text="Evaluation stage">
+            <Text fx:id="requestIdField" layoutX="203.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Req" textAlignment="CENTER" wrappingWidth="269.7805480957031">
                <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="272.0" layoutY="165.0" prefHeight="25.0" prefWidth="105.0" text="Time estimate:">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label layoutX="355.0" layoutY="187.0" prefHeight="25.0" prefWidth="140.0" text="Performance stage">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Text fx:id="requestIdField" layoutX="194.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Req" textAlignment="CENTER" wrappingWidth="269.7805480957031">
-               <font>
-                  <Font size="18.0" />
+                  <Font size="20.0" />
                </font>
             </Text>
+            <Button fx:id="ShowRequestDetailsBTN" layoutX="183.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#ShowRequestDetails" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Show request details" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="ReqForTimeExtensionBTN" layoutX="350.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#ReqForTimeExtension" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Request for time extension" textAlignment="CENTER" wrapText="true" />
+            <Pane fx:id="TestStage" layoutX="184.0" layoutY="337.0" prefHeight="151.0" prefWidth="307.0" visible="false">
+               <children>
+                  <Button fx:id="TestApprovalBTN" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#TestApproval" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Test Approval" />
+                  <Button fx:id="ReportFailureBTN" layoutX="167.0" layoutY="38.0" mnemonicParsing="false" onMouseClicked="#ReportFailure" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Report Failure" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </Pane>
+            <Pane fx:id="EvaluationStage" layoutX="184.0" layoutY="333.0" prefHeight="151.0" prefWidth="307.0" visible="false">
+               <children>
+                  <Label layoutX="8.0" layoutY="29.0" prefHeight="25.0" prefWidth="120.0" text="Evaluation stage">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="timeEstimatedEvaluation" layoutX="-1.0" layoutY="56.0" prefHeight="31.0" prefWidth="140.0" promptText="Enter as dd/hh/mm" />
+                  <Label layoutX="11.0" layoutY="12.0" prefHeight="25.0" prefWidth="105.0" text="Time estimate:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="SubmitTimeEstimateBTN1" layoutX="-1.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#SubmitTimeEstimateEvaluation" prefHeight="31.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="submit time estimate" />
+                  <Button fx:id="CreateEvaluationReportBTN" layoutX="167.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#CreateEvaluationReport" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Create Evaluation Report" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </Pane>
+            <Pane fx:id="PerformanceStage" layoutX="184.0" layoutY="333.0" prefHeight="151.0" prefWidth="307.0" visible="false">
+               <children>
+                  <Label layoutX="11.0" layoutY="12.0" prefHeight="25.0" prefWidth="105.0" text="Time estimate:">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="2.0" layoutY="30.0" prefHeight="25.0" prefWidth="140.0" text="Performance stage">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="timeEstimatedPerformance" layoutX="-1.0" layoutY="55.0" prefHeight="31.0" prefWidth="140.0" promptText="Enter as dd/hh/mm" />
+                  <Button fx:id="SubmitTimeEstimateBTN" layoutX="-1.0" layoutY="90.0" mnemonicParsing="false" onMouseClicked="#SubmitTimeEstimatePerformance" prefHeight="31.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="submit time estimate" />
+                  <Button fx:id="ChangePerformanceLeaderShowReq" layoutX="167.0" layoutY="45.0" mnemonicParsing="false" onMouseClicked="#changeCompleted" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Change completed" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </Pane>
+            <Pane fx:id="examinationAndDecisionStage" layoutX="184.0" layoutY="333.0" prefHeight="151.0" prefWidth="307.0" visible="false">
+               <children>
+                  <Button fx:id="ViewEvaluationReportBTN" layoutX="84.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#ViewEvaluationReport" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="View evaluation report" textAlignment="CENTER" wrapText="true" />
+               </children>
+            </Pane>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

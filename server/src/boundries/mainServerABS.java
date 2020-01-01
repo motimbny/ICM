@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 
+import controllers.ITHandleRequestSController;
 import controllers.ITRequestDetailsSController;
 import controllers.ITShowRequestsSController;
 import controllers.ShowEmployeeListController;
@@ -92,6 +93,13 @@ public class mainServerABS extends AbstractServer
 					client.sendToClient(itRequestDetailsSController.showRequestDetails());
 				} catch (IOException e) {}
 		    	   break;
+		       }
+		       case ITjobInReq:
+		       {	   
+		    	   ITHandleRequestSController itHandleRequestSController=new ITHandleRequestSController(dbm,connection);
+		    	   try {
+					client.sendToClient(itHandleRequestSController.getITjob());
+				} catch (IOException e) {}
 		       }
 		       case SearchReqUser:
 		       {   

@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
+import entity.Request;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -105,12 +106,17 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 		int s=MainAllControllers.request;
 		arry.add(s); //request id
 		requestID.setText(""+s);
-	
-		/*	DBmessage dbm;
-    	dbm=new DBmessage(MessageType.showRequestDetailsIT, arry);   
+	/*	DBmessage dbm;
+    	dbm=new DBmessage(MessageType.ITEvaluationReport1, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}*/
 	}
+	
+    void setTextInFields(ArrayList<Object> listR)
+    {
+    	Request req=(Request)listR.get(0);	
+    	Location.setText(req.getInfoSystem());	
+    }
 
 }

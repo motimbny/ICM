@@ -101,6 +101,12 @@ public class mainClientABS extends AbstractClient
 			   MainAllControllers.showITReq(((ArrayList<Object>)send));
 			}
 			break;
+			case ITjobInReq:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+			   MainAllControllers.getITjobInReq(((ArrayList<Object>)send));
+			}
+			break;
 			case showRequestDetailsUser:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

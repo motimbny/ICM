@@ -169,9 +169,9 @@ public class ITshowRequestsController implements Initializable
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName());
 		DBmessage dbm;
-		dbm = new DBmessage(MessageType.ShowReqIT, arry); //
+		dbm = new DBmessage(MessageType.ShowReqIT, arry); 
 		try {
-			MainAllControllers.sendToAbsServer(dbm); //
+			MainAllControllers.sendToAbsServer(dbm); 
 		} catch (IOException e) {
 		}
 	}
