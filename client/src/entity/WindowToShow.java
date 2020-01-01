@@ -71,6 +71,9 @@ public class WindowToShow
 		case "SupervisorEmployeesManagment":
 			initSupervisorEmployeesManagment();
 			break;
+		case "SupervisorExtentionRequest":
+			initSupervisorExtentionRequest();
+			break;
 		case "ITHome":
 			initITHome();
 			break;

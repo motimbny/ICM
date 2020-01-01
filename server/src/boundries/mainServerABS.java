@@ -15,6 +15,7 @@ import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
 import controllers.loginSController;
 import controllers.serverController;
+import controllers.superviserEvluationReportcontroller;
 import controllers.superviserRequestShowController;
 import entity.DBSmessage;
 import entity.DBmessage;
@@ -178,6 +179,14 @@ public class mainServerABS extends AbstractServer
 		    	   ITShowRequestsSController itShowRequestsSController=new ITShowRequestsSController(dbm,connection);
 		    	   try {
 					client.sendToClient(itShowRequestsSController.showRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
+		       case superviserEvluationReport:
+		       {
+		    	   superviserEvluationReportcontroller superviserEvluationReportcontroller=new superviserEvluationReportcontroller(dbm,connection);
+		    	   try {
+					client.sendToClient(superviserEvluationReportcontroller.getReport());
 				} catch (IOException e) {}
 		    	   break;
 		       }

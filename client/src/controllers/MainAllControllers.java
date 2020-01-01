@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import entity.RequestUser;
 import entity.User;
 import entity.WindowToShow;
+import entity.evluationReport;
 public class MainAllControllers 
 {
 	public mainClientABS mcABS;       //singleton of one 
@@ -162,5 +163,10 @@ public class MainAllControllers
 	public void showSuperviserRequestList(ArrayList<Object> list)
 	{
 		((SupervisorShowRequestsController) WindowToShow.controller).setTextInTable(list);
+	}
+	public void showSuperviserReportEV(ArrayList<Object> list)
+	{
+		((SupervisorExtentionRequestController) WindowToShow.controller).setToFields((evluationReport) list.get(0));
+		
 	}
 }

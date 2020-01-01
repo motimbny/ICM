@@ -221,9 +221,11 @@ public class SupervisorShowRequestsController implements Initializable
 		
 	}
 	@FXML
-	void viewExtensionReport(MouseEvent event) 
+	void viewExtensionReport(MouseEvent event) throws IOException 
 	{
-
+		MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+		MainAllControllers.setWindowVar("SupervisorExtentionRequest");
+    	MainAllControllers.changeWin();
 	}
 	
     @FXML

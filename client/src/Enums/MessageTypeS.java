@@ -20,4 +20,5 @@ public enum MessageTypeS
 	closeRequest,
 	showRequestDetailsIT,
 	ITjobInReq,
+	superviserEvluationReport
 }
