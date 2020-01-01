@@ -33,9 +33,6 @@ public class SupervisorEmployeesManagmentController implements Initializable
     private Button showreBTN;
 
     @FXML
-    private Button EmployeesManagmentBTN;
-
-    @FXML
     private Button personBTN;
 
     @FXML
@@ -72,13 +69,6 @@ public class SupervisorEmployeesManagmentController implements Initializable
 		} catch (IOException e) {}
     }
     
-	
-    @FXML
-    void goEmployeesMangPage(MouseEvent event) throws IOException 
-    {
-    	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
-    	MainAllControllers.changeWin();
-    }
 
     @FXML
     void goHelpPage(MouseEvent event) throws IOException 

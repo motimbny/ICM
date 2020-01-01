@@ -15,12 +15,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class SupervisorShowRequestsController implements Initializable
 {
@@ -36,9 +42,6 @@ public class SupervisorShowRequestsController implements Initializable
 
 	@FXML
 	private Button showreBTN;
-
-	@FXML
-	private Button EmployeesManagmentBTN;
 
 	@FXML
 	private Button personBTN;
@@ -84,18 +87,22 @@ public class SupervisorShowRequestsController implements Initializable
 	{
 
 	}
-
 	@FXML
 	void closeRequest(MouseEvent event) 
 	{
-
-	}
-
-	@FXML
-	void goEmployeesMangPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
-    	MainAllControllers.changeWin();
+		Stage popupwindow=new Stage();   
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Alert pop up");      
+		Label label1= new Label("Are you sure you want to close request?");    
+		Button button1= new Button("Yes");    
+		button1.setOnAction(e -> popupwindow.close());
+		VBox layout= new VBox(10);     
+		layout.setStyle("it.css");
+		layout.getChildren().addAll(label1, button1);     
+		layout.setAlignment(Pos.CENTER);     
+		Scene scene1= new Scene(layout, 250, 200);     
+		popupwindow.setScene(scene1);     
+		popupwindow.showAndWait();
 	}
 
 	@FXML

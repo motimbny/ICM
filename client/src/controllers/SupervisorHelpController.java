@@ -21,9 +21,6 @@ public class SupervisorHelpController
     private Button showreBTN;
 
     @FXML
-    private Button EmployeesManagmentBTN;
-
-    @FXML
     private Button personBTN;
 
     @FXML
@@ -32,13 +29,7 @@ public class SupervisorHelpController
     @FXML
     private Button logoutBTN;
 
-    @FXML
-    void goEmployeesMangPage(MouseEvent event) throws IOException 
-    {
-    	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
-    	MainAllControllers.changeWin();
-    }
-
+  
     @FXML
     void helpBTNE(MouseEvent event) throws IOException 
     {

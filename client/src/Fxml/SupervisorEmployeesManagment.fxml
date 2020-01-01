@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -28,15 +29,6 @@
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Images/document.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
-            <Button fx:id="EmployeesManagmentBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMangPage" prefHeight="46.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Employees managment" textOverrun="CLIP">
-               <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/management.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -86,10 +78,13 @@
                   <TableColumn fx:id="numOfProjects" prefWidth="125.0" text="Number Of Projects" />
               </columns>
             </TableView>
-            <Label layoutX="288.0" layoutY="508.0" prefHeight="25.0" prefWidth="359.0" text="*Double press employee to manage premissions">
+            <Label layoutX="363.0" layoutY="503.0" prefHeight="25.0" prefWidth="261.0" text="*Double press employee choose">
                <font>
                   <Font size="16.0" />
                </font>
+               <effect>
+                  <Glow />
+               </effect>
             </Label>
          </children>
       </Pane>

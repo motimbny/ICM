@@ -28,8 +28,7 @@ public class SupervisorHomeController implements Initializable
 	@FXML
 	private Button showreBTN;
 
-	@FXML
-	private Button EmployeesManagmentBTN;
+	
 
 	@FXML
 	private Button personBTN;
@@ -46,12 +45,7 @@ public class SupervisorHomeController implements Initializable
 	@FXML
 	private Label ExistingRequests;
 
-	@FXML
-	void goEmployeesMangPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
-    	MainAllControllers.changeWin();
-	}
+	
 
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 

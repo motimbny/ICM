@@ -25,9 +25,6 @@ public class SupervisorPersonalInfoController implements Initializable
 	private Button showreBTN;
 
 	@FXML
-	private Button EmployeesManagmentBTN;
-
-	@FXML
 	private Button personBTN;
 
 	@FXML
@@ -52,12 +49,6 @@ public class SupervisorPersonalInfoController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
-	@FXML
-	void goEmployeesMangPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
-    	MainAllControllers.changeWin();
-	}
 
 	@FXML
 	void helpBTNE(MouseEvent event) throws IOException 

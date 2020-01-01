@@ -24,9 +24,6 @@ public class SupervisorRequestDetailsController {
     private Button showreBTN;
 
     @FXML
-    private Button EmployeesManagmentBTN;
-
-    @FXML
     private Button personBTN;
 
     @FXML
@@ -66,13 +63,6 @@ public class SupervisorRequestDetailsController {
     void BackToS(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
-    	MainAllControllers.changeWin();
-	}
-
-    @FXML
-    void goEmployeesMangPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorEmployeesManagment");
     	MainAllControllers.changeWin();
 	}
 

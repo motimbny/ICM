@@ -30,15 +30,6 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="EmployeesManagmentBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMangPage" prefHeight="46.0" prefWidth="140.0" text="Employees managment" textOverrun="CLIP">
-               <graphic>
-                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Images/management.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </Button>
             <Button fx:id="personBTN" mnemonicParsing="false" onMouseClicked="#goPersonalPage" prefHeight="46.0" prefWidth="140.0" text="  Personal info ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
