@@ -79,19 +79,19 @@ public class ITHomeController implements Initializable
 	}
     void setRequestNumber(int num)
     {
-    	ExistingReq.setText(Integer.toString(num));
+    	ExistingReq.setText("Existing requests: "+Integer.toString(num));
     }
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		helloIT.setText("Hello "+MainAllControllers.user.getName());
-		/*ArrayList<Object> arry=new ArrayList<Object>();
+		ArrayList<Object> arry=new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName());
 		DBmessage dbm;
     	dbm=new DBmessage(MessageType.IThomeRequestNum, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}*/
+		} catch (IOException e) {}
 	}
 
 }

@@ -8,6 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITHandleRequestController">
    <children>
@@ -67,12 +68,6 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="211.0" layoutY="108.0" text="Request ID">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="ReqID" editable="false" layoutX="303.0" layoutY="108.0" />
             <Button fx:id="TestApprovalBTN" layoutX="161.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#TestApproval" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Test Approval" />
             <Button fx:id="ReqForTimeExtensionBTN" layoutX="221.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#ReqForTimeExtension" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Request for time extension" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="ReportFailureBTN" layoutX="292.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#ReportFailure" prefHeight="64.0" prefWidth="101.0" styleClass="buttonBlackBorder" text="Report Failure" textAlignment="CENTER" wrapText="true" />
@@ -99,6 +94,11 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <Text fx:id="requestIdField" layoutX="194.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Req" textAlignment="CENTER" wrappingWidth="269.7805480957031">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

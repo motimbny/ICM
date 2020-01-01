@@ -134,7 +134,7 @@ public class ITshowRequestsController implements Initializable
 
 	@FXML
 	void showRequestDetails(MouseEvent event) {
-	/*	requestTable.setOnMouseClicked((MouseEvent ev) -> {
+		requestTable.setOnMouseClicked((MouseEvent ev) -> {
 			if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
 				try {
 					MainAllControllers.request = requestTable.getItems()
@@ -146,7 +146,6 @@ public class ITshowRequestsController implements Initializable
 				}
 			}
 		});
-		*/
 	}
 
 	public void setTextInTable(ArrayList<Object> list) 

@@ -79,7 +79,7 @@ public class ITShowRequestsSController
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, currentStatus, currentStage FROM requeststages WHERE itAppraiser='"+user+ "' OR itCCC1='"+user+"' OR itCCC2='"+user+"' OR itCCC3='"+user+"' OR itPerformanceLeader='"+user+"' OR itTester='"+user+"' AND id="+userIdReq+"");
+			ResultSet rs = stmt.executeQuery("SELECT id, currentStatus, currentStage FROM requeststages WHERE ( itAppraiser='"+user+ "' OR itCCC1='"+user+"' OR itCCC2='"+user+"' OR itCCC3='"+user+"' OR itPerformanceLeader='"+user+"' OR itTester='"+user+"' ) AND id="+userIdReq+"");
 				while(rs.next()!=false)
 				{
 					StageName name=null;
@@ -105,6 +105,29 @@ public class ITShowRequestsSController
 					toSend.add(toAdd);
 				}
 				dbs=new DBSmessage(MessageTypeS.SearchReqIT,toSend);
+				return dbs;
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}	
+		return null;
+	}
+	
+	public DBSmessage numOfRequest()
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM requeststages WHERE itAppraiser='"+user+"' OR itCCC1='"+user+"' OR itCCC2='"+user+"' OR itCCC3='"+user+"' OR itPerformanceLeader='"+user+"' OR itTester='"+user+"'");
+			if(!rs.next())
+				toSend.add(0);
+			else
+			    toSend.add(rs.getInt(1));
+			dbs=new DBSmessage(MessageTypeS.IThomeRequestNum,toSend);
 				return dbs;
 		} 
 		catch (SQLException e)

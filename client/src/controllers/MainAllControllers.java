@@ -101,6 +101,10 @@ public class MainAllControllers
 	{
 		((UserHomeController) WindowToShow.controller).setRequestNumber(num);
 	}
+	public void setHomeITNum(int num)
+	{
+		((ITHomeController) WindowToShow.controller).setRequestNumber(num);
+	}
 	public void goodRequeSend()
 	{
 		((UserAddRequestController) WindowToShow.controller).setOnSucsess();		
@@ -116,6 +120,10 @@ public class MainAllControllers
 	public void showUserReqDetails(ArrayList<Object> list)
 	{
 		((UserRequestDetailsController) WindowToShow.controller).setTextInFields(list);
+	}
+	public void showITReqDetails(ArrayList<Object> list)
+	{
+		((ITRequestDetailsController) WindowToShow.controller).setTextInFields(list);
 	}
 	public void showUserSPReq(ArrayList<Object> list)
 	{

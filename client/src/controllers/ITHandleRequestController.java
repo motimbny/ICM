@@ -1,13 +1,21 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
+import entity.Request;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 
-public class ITHandleRequestController 
+public class ITHandleRequestController implements Initializable  
 {
 	private MainAllControllers MainAllControllers;
     public ITHandleRequestController()
@@ -30,7 +38,7 @@ public class ITHandleRequestController
     private Button logoutBTN;
 
     @FXML
-    private TextField ReqID;
+    private Text requestIdField;
 
     @FXML
     private Button TestApprovalBTN;
@@ -68,7 +76,6 @@ public class ITHandleRequestController
     @FXML
     void CreateEvaluationReport(MouseEvent event) throws IOException 
     {
-  	  //send req id
     	MainAllControllers.setWindowVar("ITMeaningAssessmentEvaluationReport");
     	MainAllControllers.changeWin();
     }
@@ -90,8 +97,10 @@ public class ITHandleRequestController
     }
 
     @FXML
-    void ShowRequestDetails(MouseEvent event) {
-
+    void ShowRequestDetails(MouseEvent event) throws IOException 
+    {
+  	MainAllControllers.setWindowVar("ITRequestDetails");
+  	MainAllControllers.changeWin();
     }
 
     @FXML
@@ -156,6 +165,13 @@ public class ITHandleRequestController
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
     	MainAllControllers.user=null;
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		int s=MainAllControllers.request;
+		requestIdField.setText("Request ID: "+s);
 	}
 
 }

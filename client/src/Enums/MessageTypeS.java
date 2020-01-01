@@ -18,4 +18,5 @@ public enum MessageTypeS
 	superviserRequestShow,
 	suspendRequest,
 	closeRequest,
+	showRequestDetailsIT,
 }

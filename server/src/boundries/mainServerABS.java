@@ -5,6 +5,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 
+import controllers.ITRequestDetailsSController;
 import controllers.ITShowRequestsSController;
 import controllers.ShowEmployeeListController;
 import controllers.SupervisorShowRequestsSController;
@@ -60,6 +61,14 @@ public class mainServerABS extends AbstractServer
 				} catch (IOException e) {}
 		    	   break;
 		       }
+		       case IThomeRequestNum:
+		       {
+		    	   ITShowRequestsSController itShowRequestsSController=new ITShowRequestsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(itShowRequestsSController.numOfRequest());
+				} catch (IOException e) {}
+		    	   break;
+		       }
 		       case ShowReqUser:
 		       {	   
 		    	   UserShowRequestsSController userShowRequestsSController=new UserShowRequestsSController(dbm,connection);
@@ -73,6 +82,14 @@ public class mainServerABS extends AbstractServer
 		    	   UserRequestDetailsSController userRequestDetailsSController=new UserRequestDetailsSController(dbm,connection);
 		    	   try {
 					client.sendToClient(userRequestDetailsSController.showRequestDetails());
+				} catch (IOException e) {}
+		    	   break;
+		       }
+		       case showRequestDetailsIT:
+		       {	   
+		    	   ITRequestDetailsSController itRequestDetailsSController=new ITRequestDetailsSController(dbm,connection);
+		    	   try {
+					client.sendToClient(itRequestDetailsSController.showRequestDetails());
 				} catch (IOException e) {}
 		    	   break;
 		       }

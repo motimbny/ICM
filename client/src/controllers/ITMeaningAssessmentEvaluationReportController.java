@@ -1,14 +1,20 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class ITMeaningAssessmentEvaluationReportController 
+public class ITMeaningAssessmentEvaluationReportController implements Initializable
 {
 	private MainAllControllers MainAllControllers;
     public ITMeaningAssessmentEvaluationReportController()
@@ -91,5 +97,20 @@ public class ITMeaningAssessmentEvaluationReportController
     void submitEvaluationReport(MouseEvent event) {
 
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{	
+		ArrayList<Object> arry=new ArrayList<Object>();
+		int s=MainAllControllers.request;
+		arry.add(s); //request id
+		requestID.setText(""+s);
+	
+		/*	DBmessage dbm;
+    	dbm=new DBmessage(MessageType.showRequestDetailsIT, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}*/
+	}
 
 }
