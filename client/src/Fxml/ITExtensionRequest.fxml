@@ -83,16 +83,27 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="138.0" layoutY="285.0" text="Reason">
+            <Label layoutX="138.0" layoutY="328.0" text="Reason">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField editable="false" layoutX="237.0" layoutY="146.0" />
-            <TextField editable="false" layoutX="238.0" layoutY="193.0" />
-            <TextField editable="false" layoutX="238.0" layoutY="239.0" />
-            <TextArea editable="false" layoutX="238.0" layoutY="287.0" prefHeight="169.0" prefWidth="343.0" />
-            <Button fx:id="submitExtensionRequestBTN" layoutX="481.0" layoutY="475.0" mnemonicParsing="false" onMouseClicked="#submitExtensionRequest" prefHeight="27.0" prefWidth="100.0" styleClass="buttonBlackBorder" text="submit" />
+            <TextField fx:id="RequestID" editable="false" layoutX="237.0" layoutY="146.0" />
+            <TextField fx:id="ReqStage" editable="false" layoutX="238.0" layoutY="193.0" />
+            <TextField fx:id="itHandler" editable="false" layoutX="238.0" layoutY="239.0" />
+            <TextArea fx:id="Reason" editable="false" layoutX="238.0" layoutY="330.0" prefHeight="169.0" prefWidth="343.0" />
+            <Button fx:id="submitExtensionRequestBTN" layoutX="481.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#submitExtensionRequest" prefHeight="27.0" prefWidth="100.0" styleClass="buttonBlackBorder" text="submit" />
+            <Button fx:id="BackToShow" layoutX="136.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="23.0" prefWidth="123.0" styleClass="buttonBlackBorder" text="Back to all requests">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="138.0" layoutY="281.0" prefHeight="25.0" prefWidth="100.0" text="Time to add">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="timeToAdd" editable="false" layoutX="238.0" layoutY="282.0" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

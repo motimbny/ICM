@@ -186,6 +186,7 @@ public class ITHandleRequestController implements Initializable {
 	public void setPane(ArrayList<Object> list)
 	{
 		String job = (String)list.get(0);
+		MainAllControllers.itHandlejob=job;
 		switch(job)
 		{
 		case "Appraiser":

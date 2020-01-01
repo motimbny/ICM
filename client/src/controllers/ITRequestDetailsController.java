@@ -57,9 +57,6 @@ public class ITRequestDetailsController implements Initializable
     private TextField InformationSystemField;
 
     @FXML
-    private TextField ITHandlerField;
-
-    @FXML
     private TextField requestStatusField;
 
     @FXML

@@ -19,6 +19,7 @@ public enum MessageTypeS
 	suspendRequest,
 	closeRequest,
 	showRequestDetailsIT,
-	ITjobInReq,
-	superviserEvluationReport
+	superviserEvluationReport,
+	ITjobInReq, ITgetReqStage,
+
 }

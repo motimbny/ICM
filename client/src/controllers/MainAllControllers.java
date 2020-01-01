@@ -23,7 +23,7 @@ public class MainAllControllers
     private static MainAllControllers mac=new MainAllControllers();
 	public WindowToShow WindowToShow;
 	public int request;
-	public String itHandle;
+	public String itHandlejob;
 	
 	private MainAllControllers() 
 	{
@@ -123,6 +123,10 @@ public class MainAllControllers
 	public void getITjobInReq(ArrayList<Object> list)
 	{
 		((ITHandleRequestController) WindowToShow.controller).setPane(list);
+	}
+	public void getITReqStage(ArrayList<Object> list)
+	{
+		((ITExtensionRequestController) WindowToShow.controller).setTextInFields(list);
 	}
 	public void showUserReqDetails(ArrayList<Object> list)
 	{

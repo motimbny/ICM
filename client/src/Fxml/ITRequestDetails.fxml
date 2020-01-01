@@ -63,51 +63,30 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label fx:id="UserName" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="140.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="191.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="position" alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="243.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <Label fx:id="reqNumber" layoutX="46.0" layoutY="38.0" text="request number : ">
+            <Label fx:id="reqNumber" layoutX="46.0" layoutY="48.0" text="request number : ">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="93.0" prefHeight="20.0" prefWidth="116.0" text="Applicant name :">
+            <Label layoutX="47.0" layoutY="118.0" prefHeight="20.0" prefWidth="116.0" text="Applicant name :">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="ApplicantNameField" layoutX="180.0" layoutY="94.0" prefHeight="23.0" prefWidth="432.0" />
-            <Label layoutX="46.0" layoutY="137.0" prefHeight="20.0" prefWidth="141.0" text="Information system : ">
+            <TextField fx:id="ApplicantNameField" layoutX="180.0" layoutY="119.0" prefHeight="23.0" prefWidth="432.0" />
+            <Label layoutX="46.0" layoutY="162.0" prefHeight="20.0" prefWidth="141.0" text="Information system : ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="InformationSystemField" layoutX="181.0" layoutY="137.0" prefHeight="23.0" prefWidth="432.0" />
-            <TextField fx:id="ITHandlerField" layoutX="181.0" layoutY="179.0" prefHeight="23.0" prefWidth="432.0" />
-            <Label layoutX="48.0" layoutY="180.0" prefHeight="20.0" prefWidth="73.0" text="IT handler : ">
+            <TextField fx:id="InformationSystemField" layoutX="181.0" layoutY="162.0" prefHeight="23.0" prefWidth="432.0" />
+            <Label layoutX="47.0" layoutY="217.0" prefHeight="20.0" prefWidth="109.0" text="Request stage : ">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label layoutX="47.0" layoutY="222.0" prefHeight="20.0" prefWidth="109.0" text="Request stage : ">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <TextField fx:id="requestStatusField" layoutX="491.0" layoutY="221.0" prefHeight="23.0" prefWidth="123.0" />
-            <Label layoutX="390.0" layoutY="222.0" prefHeight="20.0" prefWidth="109.0" text="Request status : ">
+            <TextField fx:id="requestStatusField" layoutX="491.0" layoutY="216.0" prefHeight="23.0" prefWidth="123.0" />
+            <Label layoutX="390.0" layoutY="217.0" prefHeight="20.0" prefWidth="109.0" text="Request status : ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -124,7 +103,7 @@
                </font>
             </Label>
             <TextArea fx:id="DescriptionOfRequestField" layoutX="48.0" layoutY="428.0" prefHeight="116.0" prefWidth="566.0" />
-            <TextField fx:id="RequestStageField" layoutX="182.0" layoutY="221.0" prefHeight="23.0" prefWidth="174.0" />
+            <TextField fx:id="RequestStageField" layoutX="182.0" layoutY="216.0" prefHeight="23.0" prefWidth="174.0" />
             <Button fx:id="BackToShow" layoutX="490.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="23.0" prefWidth="123.0" text="Back to all requests">
                <font>
                   <Font size="12.0" />

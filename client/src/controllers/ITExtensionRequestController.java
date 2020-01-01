@@ -1,18 +1,27 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class ITExtensionRequestController 
+public class ITExtensionRequestController implements Initializable 
 {
 	private MainAllControllers MainAllControllers;
     public ITExtensionRequestController()
     {
     	MainAllControllers=controllers.MainAllControllers.getInstance();
     }
+
     @FXML
     private Button homeBTN;
 
@@ -29,7 +38,32 @@ public class ITExtensionRequestController
     private Button logoutBTN;
 
     @FXML
+    private TextField RequestID;
+
+    @FXML
+    private TextField ReqStage;
+
+    @FXML
+    private TextField itHandler;
+
+    @FXML
+    private TextArea Reason;
+
+    @FXML
     private Button submitExtensionRequestBTN;
+
+    @FXML
+    private Button BackToShow;
+
+    @FXML
+    private TextField timeToAdd;
+
+    @FXML
+    void BackToS(MouseEvent event) throws IOException 
+    {
+		MainAllControllers.setWindowVar("ITHandleRequest");
+		MainAllControllers.changeWin();
+    }
 
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
@@ -68,8 +102,40 @@ public class ITExtensionRequestController
 	}
 
     @FXML
-    void submitExtensionRequest(MouseEvent event) {
+    void submitExtensionRequest(MouseEvent event) 
+    {
+    	if(Reason.getText().equals("")||timeToAdd.getText().equals(""))
+    	{
+    		
+    	}
+    	else
+    	{
+    		
+    	}
+    	
 
     }
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) 
+	{
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user.getName());
+		arry.add(MainAllControllers.request); //request id
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.ITgetReqStage, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+		
+	}
+	
+	void setTextInFields(ArrayList<Object> list)
+	{
+		System.out.println((String)list.get(0));
+		RequestID.setText(""+MainAllControllers.request);
+		itHandler.setText(MainAllControllers.user.getName());
+		ReqStage.setText((String)list.get(0));
+	}
 
 }
