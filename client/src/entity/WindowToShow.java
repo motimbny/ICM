@@ -14,7 +14,6 @@ import controllers.ITRequestDetailsController;
 import controllers.ITTestFailurReportController;
 import controllers.ITshowRequestsController;
 import controllers.LoginController;
-import controllers.SupervisorEmployeesListController;
 import controllers.SupervisorEmployeesManagmentController;
 import controllers.SupervisorExtentionRequestController;
 import controllers.SupervisorHelpController;
@@ -28,11 +27,13 @@ import controllers.UserPersonalInfoController;
 import controllers.UserRequestDetailsController;
 import controllers.UserShowRequestsController;
 
-public class WindowToShow {
+public class WindowToShow
+{
 	public Object controller;
 	private String pathfxml, windowName;
 
-	public void setWindowToShow(String str) throws IOException {
+	public void setWindowToShow(String str) throws IOException
+	{
 		switch (str) {
 		case "login":
 			initLogin();
@@ -60,9 +61,6 @@ public class WindowToShow {
 			break;
 		case "SupervisorShowRequests":
 			initSupervisorShowRequests();
-			break;
-		case "SupervisorEmployeesList":
-			initSupervisorEmployeesList();
 			break;
 		case "SupervisorHelp":
 			initSupervisorHelp();
@@ -109,10 +107,7 @@ public class WindowToShow {
 			
 		
 		}
-	}
-
-	
-		
+	}	
 	public String getPathfxml() {
 		return pathfxml;
 	}
@@ -178,11 +173,6 @@ public class WindowToShow {
 		windowName = "ICM-SupervisorShowRequests";
 	}
 
-	public void initSupervisorEmployeesList() {
-		SupervisorEmployeesListController controller = new SupervisorEmployeesListController(); // SupervisorEmployeesListController
-		pathfxml = "/Fxml/SupervisorEmployeesList.fxml";
-		windowName = "ICM-SupervisorEmployeesList";
-	}
 
 	public void initSupervisorHelp() {
 		SupervisorHelpController controller = new SupervisorHelpController(); // SupervisorHelpController
