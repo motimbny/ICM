@@ -91,7 +91,7 @@
             <TextField fx:id="RequestID" editable="false" layoutX="237.0" layoutY="146.0" />
             <TextField fx:id="ReqStage" editable="false" layoutX="238.0" layoutY="193.0" />
             <TextField fx:id="itHandler" editable="false" layoutX="238.0" layoutY="239.0" />
-            <TextArea fx:id="Reason" editable="false" layoutX="238.0" layoutY="330.0" prefHeight="169.0" prefWidth="343.0" />
+            <TextArea fx:id="Reason" layoutX="238.0" layoutY="330.0" prefHeight="169.0" prefWidth="343.0" />
             <Button fx:id="submitExtensionRequestBTN" layoutX="481.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#submitExtensionRequest" prefHeight="27.0" prefWidth="100.0" styleClass="buttonBlackBorder" text="submit" />
             <Button fx:id="BackToShow" layoutX="136.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="23.0" prefWidth="123.0" styleClass="buttonBlackBorder" text="Back to all requests">
                <font>
@@ -103,7 +103,9 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="timeToAdd" editable="false" layoutX="238.0" layoutY="282.0" />
+            <TextField fx:id="timeToAdd" layoutX="238.0" layoutY="282.0" />
+            <Label fx:id="requestWasSubmitted" layoutX="472.0" layoutY="552.0" prefHeight="17.0" prefWidth="123.0" style="-fx-text-fill: green;" text="request was submitted" visible="false" />
+            <Label fx:id="fillAllFields" layoutX="503.0" layoutY="552.0" prefHeight="17.0" prefWidth="75.0" style="-fx-text-fill: Red;" text="fill all fields" visible="false" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

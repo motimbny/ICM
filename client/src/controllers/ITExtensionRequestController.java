@@ -10,6 +10,7 @@ import entity.DBmessage;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -57,6 +58,12 @@ public class ITExtensionRequestController implements Initializable
 
     @FXML
     private TextField timeToAdd;
+    
+    @FXML
+    private Label requestWasSubmitted;
+
+    @FXML
+    private Label fillAllFields;
 
     @FXML
     void BackToS(MouseEvent event) throws IOException 
@@ -106,11 +113,27 @@ public class ITExtensionRequestController implements Initializable
     {
     	if(Reason.getText().equals("")||timeToAdd.getText().equals(""))
     	{
-    		
+    		fillAllFields.setVisible(true);
     	}
     	else
     	{
-    		
+    		ArrayList<Object> arry=new ArrayList<Object>();
+	        arry.add(RequestID.getText());
+	        arry.add(ReqStage.getText());
+	        arry.add(itHandler.getText()); 
+	        arry.add(timeToAdd.getText());
+    		arry.add(Reason.getText());
+	       
+	    	DBmessage dbm=new DBmessage(MessageType.AddExtensionRequest, arry);
+	    	try
+	    	{
+				MainAllControllers.sendToAbsServer(dbm);
+			} 
+	    	catch (IOException e) 
+	    	{
+				e.printStackTrace();
+			} 
+    		requestWasSubmitted.setVisible(true);
     	}
     	
 

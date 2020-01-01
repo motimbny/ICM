@@ -20,6 +20,6 @@ public enum MessageTypeS
 	closeRequest,
 	showRequestDetailsIT,
 	superviserEvluationReport,
-	ITjobInReq, ITgetReqStage,
+	ITjobInReq, ITgetReqStage, AddExtensionRequest,
 
 }
