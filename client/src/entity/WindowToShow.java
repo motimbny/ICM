@@ -10,6 +10,7 @@ import controllers.ITHelpController;
 import controllers.ITHomeController;
 import controllers.ITMeaningAssessmentEvaluationReportController;
 import controllers.ITPersonalInfoController;
+import controllers.ITRequestDetailsController;
 import controllers.ITTestFailurReportController;
 import controllers.ITshowRequestsController;
 import controllers.LoginController;
@@ -101,6 +102,9 @@ public class WindowToShow {
 			break;
 		case "ITMeaningAssessmentEvaluationReport":
 			initITMeaningAssessmentEvaluationReport();
+			break;
+		case "ITRequestDetails":
+			initITRequestDetails();
 			break;
 			
 		
@@ -269,5 +273,12 @@ public class WindowToShow {
 		ITHandleRequestController controller = new ITHandleRequestController();
 		pathfxml = "/Fxml/ITHandleRequest.fxml";
 		windowName = "ICM-ITHandleRequest";	
+	}
+	
+	public void initITRequestDetails()
+	{
+		ITRequestDetailsController controller = new ITRequestDetailsController();
+		pathfxml = "/Fxml/ITRequestDetails.fxml";
+		windowName = "ICM-ITRequestDetails";			
 	}
 }

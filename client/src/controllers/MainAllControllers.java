@@ -109,6 +109,10 @@ public class MainAllControllers
 	{
 		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}
+	public void showITReq(ArrayList<Object> list)
+	{
+		((ITshowRequestsController) WindowToShow.controller).setTextInTable(list);
+	}
 	public void showUserReqDetails(ArrayList<Object> list)
 	{
 		((UserRequestDetailsController) WindowToShow.controller).setTextInFields(list);
@@ -117,6 +121,11 @@ public class MainAllControllers
 	{
 		((UserShowRequestsController) WindowToShow.controller).clearTable();
 		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
+	}
+	public void showITSPReq(ArrayList<Object> list)
+	{
+		((ITshowRequestsController) WindowToShow.controller).clearTable();
+		((ITshowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}
 	public void setUser(User user)
 	{

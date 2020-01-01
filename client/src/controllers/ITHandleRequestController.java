@@ -66,18 +66,27 @@ public class ITHandleRequestController
     private Button SubmitTimeEstimateBTN1;
 
     @FXML
-    void CreateEvaluationReport(MouseEvent event) {
-
+    void CreateEvaluationReport(MouseEvent event) throws IOException 
+    {
+  	  //send req id
+    	MainAllControllers.setWindowVar("ITMeaningAssessmentEvaluationReport");
+    	MainAllControllers.changeWin();
     }
 
     @FXML
-    void ReportFailure(MouseEvent event) {
-
+    void ReportFailure(MouseEvent event) throws IOException 
+    {
+    	  //send req id
+    	MainAllControllers.setWindowVar("ITTestFailurReport");
+    	MainAllControllers.changeWin();
     }
 
     @FXML
-    void ReqForTimeExtension(MouseEvent event) {
-
+    void ReqForTimeExtension(MouseEvent event) throws IOException 
+    {
+    	  //send req id
+    	MainAllControllers.setWindowVar("ITExtensionRequest");
+    	MainAllControllers.changeWin();
     }
 
     @FXML
@@ -101,8 +110,11 @@ public class ITHandleRequestController
     }
 
     @FXML
-    void ViewEvaluationReport(MouseEvent event) {
-
+    void ViewEvaluationReport(MouseEvent event) throws IOException 
+    {
+  //send req id
+    	MainAllControllers.setWindowVar("ITCCCEvaluationReport");
+    	MainAllControllers.changeWin();
     }
 
     @FXML

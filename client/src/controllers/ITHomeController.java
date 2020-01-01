@@ -13,7 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class ITHomeController //implements Initializable
+public class ITHomeController implements Initializable
 {	
 	private MainAllControllers MainAllControllers;
     public ITHomeController()
@@ -77,7 +77,7 @@ public class ITHomeController //implements Initializable
     	MainAllControllers.changeWin();
     	MainAllControllers.user=null;
 	}
- /*   void setRequestNumber(int num)
+    void setRequestNumber(int num)
     {
     	ExistingReq.setText(Integer.toString(num));
     }
@@ -85,13 +85,13 @@ public class ITHomeController //implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		helloIT.setText("Hello "+MainAllControllers.user.getName());
-		ArrayList<Object> arry=new ArrayList<Object>();
+		/*ArrayList<Object> arry=new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName());
 		DBmessage dbm;
     	dbm=new DBmessage(MessageType.IThomeRequestNum, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
-	}*/
+		} catch (IOException e) {}*/
+	}
 
 }
