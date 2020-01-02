@@ -19,7 +19,6 @@ public class superviserEvluationReportcontroller
 	{
 		this.connection=connection;
 		this.numReport=(int) dbm.getObjs().get(0);
-		System.out.println(numReport);
 	}
 	public DBSmessage getReport()
 	{
@@ -34,7 +33,6 @@ public class superviserEvluationReportcontroller
 			if(rs.next()!=false)
 				ev=new evluationReport(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5));
 			toSend.add(ev);
-			System.out.println(ev);
 			dbs=new DBSmessage(MessageTypeS.superviserEvluationReport,toSend);
 				return dbs;
 		} 

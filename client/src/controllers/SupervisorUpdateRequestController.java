@@ -25,77 +25,54 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class SupervisorUpdateRequestController implements Initializable{
-
+public class SupervisorUpdateRequestController implements Initializable
+{
 	private MainAllControllers MainAllControllers;
 	private ArrayList<Object> list;
 	public SupervisorUpdateRequestController()
 	{
-		System.out.println("3");
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
-
     @FXML
     private Button homeBTN;
-
     @FXML
     private Button showreBTN;
-
     @FXML
     private Button personBTN;
-
     @FXML
     private Button helpBTN;
-
     @FXML
     private Button logoutBTN;
-
     @FXML
     private Button requestInfoBTN;
-
     @FXML
     private Button saveUpdateReq;
-
     @FXML
     private TextField requestID;
-
     @FXML
     private Button changeApprieserBTN;
-
     @FXML
     private TextField apprieserName;
-
     @FXML
     private Button changeExecuterBTN;
-
     @FXML
     private TextField executerName;
-
     @FXML
     private Button changeTesterBTN;
-
     @FXML
     private TextField testerName;
-
     @FXML
     private Button approveApprieserBTN;
-
     @FXML
     private TextField evluation;
-
     @FXML
     private TextField execution;
-
     @FXML
     private ComboBox<Integer> examination;
-
     @FXML
     private ComboBox<Integer> test;
-
     @FXML
     private Button BackToShow;
-
-
 	    @FXML
 	    void BackToS(MouseEvent event) throws IOException 
 		{
@@ -187,29 +164,21 @@ public class SupervisorUpdateRequestController implements Initializable{
 		popupwindow.setScene(scene1);     
 		popupwindow.showAndWait();
     }
-    private void changeExecuter(String name,String Position) {
-    	String change=executerName.getText();
+    private void changeExecuter(String name,String Position) 
+    {
     	int id=(Integer.parseInt(requestID.getText()));
-
     	ArrayList<Object> arry=new ArrayList<Object>();
 		DBmessage dbm;
 		arry.add(id);
 		arry.add(name);
 		arry.add(Position);
-
     	dbm=new DBmessage(MessageType.changeExecuter, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
-		
 	}
-
-    
-
-
 	public void setToFields(updateRequest ev)
 	{
-		System.out.println("im here again "+ev.getId());
 		this.requestID.setText(Integer.toString(ev.getId()));
 		this.apprieserName.setText(ev.getApprieser());
 		this.executerName.setText(ev.getExecuter());
@@ -245,8 +214,8 @@ public class SupervisorUpdateRequestController implements Initializable{
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
 	}
-
-	public void setListOfIT(ArrayList<Object> arrayList) {
+	public void setListOfIT(ArrayList<Object> arrayList)
+	{
 		this.list=arrayList;
 	}
 }

@@ -1,0 +1,141 @@
+.root { 
+    -fx-background-image:url("/Images/ba.jpeg");
+    -fx-background-size: 100% 100%; 
+    -fx-base: white;
+    -fx-control-inner-background: derive(-fx-base,50%);
+    -fx-control-inner-background-alt: derive(-fx-control-inner-background, 30%);
+}
+
+.label{
+    -fx-text-fill: black;
+	
+}
+
+.separator *.line { 
+    -fx-background-color: #3C3C3C;
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+}
+
+.button
+{
+	-fx-text-fill:black;
+	-fx-background-color:white;
+	-fx-border-width:4px;
+   
+} 
+
+.button:hover
+{
+	 -fx-background-color: orange;
+	 -fx-text-fill: white;
+}
+
+.table-view{
+    -fx-background-color: derive(-fx-base, 10%);
+    -fx-selection-bar-non-focused: derive(-fx-base, 85%);
+}
+
+.table-view .column-header .label{
+    -fx-font-weight: none;
+}
+
+.combo-table-view{/*optional */
+    /*i only use this style when a table-view has to emulate a combo-box or auto-complete look, by making the non focused color same as the focused one*/
+    -fx-selection-bar: -fx-accent;
+    -fx-selection-bar-non-focused: -fx-accent;
+}
+
+.table-row-cell:even{
+    -fx-control-inner-background: derive(-fx-base, 23%);
+}
+
+.table-row-cell:odd{
+    -fx-control-inner-background: derive(-fx-base, 0%);
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}
+
+.buttonBlackBorder
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5; 
+}
+#wrongLbl
+{
+	    -fx-text-fill: red;
+	
+}
+#loginMainScreen
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 1px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5; 
+}
+#ClickMainScreen
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 1px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#submitRequestUserAddReq
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#SendTesterSUbmitReport
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#ViewEvaluationReports
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#ApproveCCEvaluationReport
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#DenyCCEvaluationReport
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+}
+#sendCCRequireMoreInfo
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+	-fx-font-size:16px;
+}
+#EmployeesManagment
+{
+	-fx-font-size:10px;
+}
+#saveUpdateReq
+{
+	-fx-border-color: #3C3C3C;
+	-fx-border-width: 0.5px;
+	-fx-border-radius: 5 5 5 5; 
+    -fx-background-radius: 5 5 5 5;
+	-fx-font-size:16px;
+}

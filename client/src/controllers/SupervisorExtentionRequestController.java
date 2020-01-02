@@ -111,7 +111,6 @@ public class SupervisorExtentionRequestController implements Initializable
 	}
 	public void setToFields(evluationReport ev)
 	{
-		System.out.println("im here again "+ev.getId());
 		this.requestID.setText(Integer.toString(ev.getId()));
 		this.requestSTG.setText(ev.getStage());
 		this.requestIT.setText(ev.getItHandler());
