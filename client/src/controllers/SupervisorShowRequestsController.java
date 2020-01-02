@@ -86,11 +86,7 @@ public class SupervisorShowRequestsController implements Initializable
     @FXML
     private Label closeNot;
 
-	@FXML
-	void UpdateRequest(MouseEvent event) 
-	{
-
-	}
+	
 	@FXML
 	void closeRequest(MouseEvent event) 
 	{
@@ -105,6 +101,8 @@ public class SupervisorShowRequestsController implements Initializable
 		button1.addEventHandler(ActionEvent.ACTION, (e)->{
     		if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("WaitingCloser"))
     		{
+    			String x=requestTable.getId();
+    				
     			this.closeRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
     		}
     		else
@@ -175,8 +173,11 @@ public class SupervisorShowRequestsController implements Initializable
 		Button button2= new Button("No"); 
 		button1.addEventHandler(ActionEvent.ACTION, (e)->popupwindow.close());
     	button1.addEventHandler(ActionEvent.ACTION, (e)->{
-    		if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("Active"))
+    		if(requestTable.getSelectionModel().getSelectedIndex()==-1)
+    			susNot.setVisible(true);
+    		else if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("Active"))
     		{
+    			
     			this.suspendRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
     		}
     		else
@@ -196,7 +197,6 @@ public class SupervisorShowRequestsController implements Initializable
 
 	private void suspendRequest(int id) 
 	{
-		System.out.println("here s");
 		ArrayList<Object> arry=new ArrayList<Object>();
 		int idadd=id;
 		DBmessage dbm;
@@ -223,9 +223,27 @@ public class SupervisorShowRequestsController implements Initializable
 	@FXML
 	void viewExtensionReport(MouseEvent event) throws IOException 
 	{
+		try {
 		MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
 		MainAllControllers.setWindowVar("SupervisorExtentionRequest");
     	MainAllControllers.changeWin();
+		}
+		catch(Exception e)
+		{}
+	}
+	
+	@FXML
+	void UpdateRequest(MouseEvent event) throws IOException
+	{
+		try {
+			MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+			MainAllControllers.setWindowVar("SupervisorUpdateRequest");
+	    	MainAllControllers.changeWin();
+		}
+		catch (Exception e) {
+			
+		}
+		
 	}
 	
     @FXML

@@ -13,6 +13,7 @@ import entity.RequestUser;
 import entity.User;
 import entity.WindowToShow;
 import entity.evluationReport;
+import entity.updateRequest;
 public class MainAllControllers 
 {
 	public mainClientABS mcABS;       //singleton of one 
@@ -173,4 +174,15 @@ public class MainAllControllers
 		((SupervisorExtentionRequestController) WindowToShow.controller).setToFields((evluationReport) list.get(0));
 		
 	}
+	public void SupervisorUpdateRequest(ArrayList<Object> list) {
+		
+		((SupervisorUpdateRequestController) WindowToShow.controller).setToFields((updateRequest) list.get(0));
+		
+	}
+	public void getListOfIT(ArrayList<Object> arrayList) {
+		
+		((SupervisorUpdateRequestController) WindowToShow.controller).setListOfIT(arrayList);
+
+	}
+	
 }

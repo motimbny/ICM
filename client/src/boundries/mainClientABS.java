@@ -106,11 +106,18 @@ public class mainClientABS extends AbstractClient
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 			   MainAllControllers.getITjobInReq(((ArrayList<Object>)send));
 			}
+			
 			break;
 			case ITgetReqStage:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 			   MainAllControllers.getITReqStage(((ArrayList<Object>)send));
+			}
+			break;
+			case getListOfIT:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+			   MainAllControllers.getListOfIT(((ArrayList<Object>)send));
 			}
 			break;
 			case showRequestDetailsUser:
@@ -155,6 +162,12 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.showSuperviserRequestList(send);
 			}
 			break;
+			case SupervisorUpdateRequest:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.SupervisorUpdateRequest(send);
+			}
+			break;
 			case superviserEvluationReport:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -162,6 +175,7 @@ public class mainClientABS extends AbstractClient
 			}
 			break;
 			}
+			
 		 this.connectionClosed();		 
 	}
 	public void openConToServer()

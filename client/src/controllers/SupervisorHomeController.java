@@ -1,13 +1,18 @@
 package controllers;
 
+
+
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
-import javafx.event.ActionEvent;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -17,6 +22,14 @@ import javafx.scene.input.MouseEvent;
 public class SupervisorHomeController implements Initializable 
 {
 	private MainAllControllers MainAllControllers;
+	
+	@FXML private Label time;
+
+	private int minute;
+	private int hour;
+	private int second;
+	private Thread clock;
+		
 	public SupervisorHomeController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
@@ -99,6 +112,14 @@ public class SupervisorHomeController implements Initializable
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
+    	
+ 
+	 
+    	
+    
+    	   
 	}
 
 }
+
+

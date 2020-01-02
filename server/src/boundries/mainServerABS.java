@@ -1,7 +1,4 @@
 package boundries;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Connection;
 
@@ -11,6 +8,7 @@ import controllers.ITRequestDetailsSController;
 import controllers.ITShowRequestsSController;
 import controllers.ShowEmployeeListController;
 import controllers.SupervisorShowRequestsSController;
+import controllers.SupervisorUpdateRequestSController;
 import controllers.UserRequestDetailsSController;
 import controllers.UserSAddRequestController;
 import controllers.UserShowRequestsSController;
@@ -18,9 +16,10 @@ import controllers.loginSController;
 import controllers.serverController;
 import controllers.superviserEvluationReportcontroller;
 import controllers.superviserRequestShowController;
-import entity.DBSmessage;
+
+
 import entity.DBmessage;
-import entity.ServerFile;
+
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -43,6 +42,7 @@ public class mainServerABS extends AbstractServer
 		@Override
 		protected void handleMessageFromClient(Object msg, ConnectionToClient client)
 		{
+			
 		    DBmessage dbm=(DBmessage)msg;
 		    switch(dbm.getType()) 
 		    {
@@ -167,13 +167,24 @@ public class mainServerABS extends AbstractServer
 			       break;
 		       }
 		       case suspendRequest:
-		       {   
+		       {    
 		    	   superviserRequestShowController superviserRequestShowController=new superviserRequestShowController(dbm,connection);
 		    	   try {
 						client.sendToClient(superviserRequestShowController.updateSuspendRequest());
 					} catch (IOException e) {}
 			       break;
 		       }
+		       case changeExecuter:
+		       {   
+		    	  
+		    	   SupervisorUpdateRequestSController supervisorUpdateRequestController=new SupervisorUpdateRequestSController(dbm,connection);
+		    	   try {
+						client.sendToClient(supervisorUpdateRequestController.updatechangeExecuter());
+					} catch (IOException e) {}
+			       break;
+		       }
+		       
+		       
 		       case closeRequest:
 		       {
 		    	   superviserRequestShowController superviserRequestShowController=new superviserRequestShowController(dbm,connection);
@@ -182,6 +193,8 @@ public class mainServerABS extends AbstractServer
 					} catch (IOException e) {}
 			       break;
 		       }
+		       
+		      
 		       case ShowReqIT:
 		       {	   
 		    	   ITShowRequestsSController itShowRequestsSController=new ITShowRequestsSController(dbm,connection);
@@ -195,6 +208,17 @@ public class mainServerABS extends AbstractServer
 		    	   superviserEvluationReportcontroller superviserEvluationReportcontroller=new superviserEvluationReportcontroller(dbm,connection);
 		    	   try {
 					client.sendToClient(superviserEvluationReportcontroller.getReport());
+				} catch (IOException e) {}
+		    	   break;
+		       }
+		       case SupervisorUpdateRequest:
+		       {
+
+		    	   SupervisorUpdateRequestSController supervisorUpdateRequest=new SupervisorUpdateRequestSController(dbm,connection);
+		    	   try {
+					client.sendToClient(supervisorUpdateRequest.getReport());
+					client.sendToClient(supervisorUpdateRequest.getListOfIT());
+
 				} catch (IOException e) {}
 		    	   break;
 		       }

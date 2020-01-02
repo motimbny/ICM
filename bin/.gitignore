@@ -1,8 +1,9 @@
-/entity/
-/controllers/
-/Images/
 /CSS/
 /Fxml/
-/boundries/
+/Images/
 /Enums/
+/boundries/
+/controllers/
+/entity/
+/mysql-connector-java-8.0.13.jar
 /ocsf/

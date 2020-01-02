@@ -20,13 +20,13 @@ import controllers.SupervisorHelpController;
 import controllers.SupervisorHomeController;
 import controllers.SupervisorPersonalInfoController;
 import controllers.SupervisorShowRequestsController;
+import controllers.SupervisorUpdateRequestController;
 import controllers.UserAddRequestController;
 import controllers.UserHelpController;
 import controllers.UserHomeController;
 import controllers.UserPersonalInfoController;
 import controllers.UserRequestDetailsController;
 import controllers.UserShowRequestsController;
-
 public class WindowToShow
 {
 	public Object controller;
@@ -64,6 +64,9 @@ public class WindowToShow
 			break;
 		case "SupervisorHelp":
 			initSupervisorHelp();
+			break;
+		case "SupervisorUpdateRequest":
+			initSupervisorUpdateRequest();
 			break;
 		case "SupervisorPersonalInfo":
 			initSupervisorPersonalInfo();
@@ -181,6 +184,11 @@ public class WindowToShow
 		SupervisorHelpController controller = new SupervisorHelpController(); // SupervisorHelpController
 		pathfxml = "/Fxml/SupervisorHelp.fxml";
 		windowName = "ICM-SupervisorHelp";
+	}
+	public void initSupervisorUpdateRequest() {
+		SupervisorUpdateRequestController controller = new SupervisorUpdateRequestController(); // SupervisorUpdateRequestController
+		pathfxml = "/Fxml/SupervisorUpdateRequest.fxml";
+		windowName = "ICM-SupervisorUpdateRequest";
 	}
 
 	public void initSupervisorPersonalInfo() {

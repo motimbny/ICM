@@ -71,6 +71,7 @@ public class superviserRequestShowController
 	public DBSmessage updateSuspendRequest() 
 	{
 		int num=(int) msg.getObjs().get(0);
+		System.out.println(num);
 		Statement stmt;
 		try 
 		{
@@ -87,6 +88,9 @@ public class superviserRequestShowController
 		}
 		return getRequestToShow();
 	}
+	
+
+	
 	public DBSmessage updatecloseRequest() 
 	{
 		int num=(int) msg.getObjs().get(0);
@@ -106,5 +110,8 @@ public class superviserRequestShowController
 		}
 		return getRequestToShow();
 	}
+	
+
+	
 
 }
