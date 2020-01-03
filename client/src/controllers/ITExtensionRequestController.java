@@ -111,32 +111,34 @@ public class ITExtensionRequestController implements Initializable
     @FXML
     void submitExtensionRequest(MouseEvent event) 
     {
+    	
     	if(Reason.getText().equals("")||timeToAdd.getText().equals(""))
     	{
     		fillAllFields.setVisible(true);
     	}
     	else
     	{
-    		ArrayList<Object> arry=new ArrayList<Object>();
+    		
+    		fillAllFields.setVisible(false);
+    		ArrayList<Object> arry=new ArrayList<Object>(); 
+    		arry.add(itHandler.getText()); 
 	        arry.add(RequestID.getText());
 	        arry.add(ReqStage.getText());
-	        arry.add(itHandler.getText()); 
 	        arry.add(timeToAdd.getText());
     		arry.add(Reason.getText());
-	       
-	    	DBmessage dbm=new DBmessage(MessageType.AddExtensionRequest, arry);
-	    	try
-	    	{
-				MainAllControllers.sendToAbsServer(dbm);
-			} 
-	    	catch (IOException e) 
-	    	{
-				e.printStackTrace();
-			} 
-    		requestWasSubmitted.setVisible(true);
+    		DBmessage dbm;
+        	dbm=new DBmessage(MessageType.AddExtensionRequest, arry);   
+        	try {
+        	
+        		MainAllControllers.sendToAbsServer(dbm);
+    		} catch (IOException e) {}
     	}
-    	
 
+    }
+    public void setOnSucsess(int num)
+    {
+    	
+    	requestWasSubmitted.setVisible(true);
     }
 
 	@Override
@@ -150,12 +152,10 @@ public class ITExtensionRequestController implements Initializable
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
-		
 	}
 	
 	void setTextInFields(ArrayList<Object> list)
 	{
-		System.out.println((String)list.get(0));
 		RequestID.setText(""+MainAllControllers.request);
 		itHandler.setText(MainAllControllers.user.getName());
 		ReqStage.setText((String)list.get(0));

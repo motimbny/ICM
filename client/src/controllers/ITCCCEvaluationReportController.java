@@ -1,14 +1,22 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
+import entity.Evluationreport;
+import entity.Request;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class ITCCCEvaluationReportController 
+public class ITCCCEvaluationReportController implements Initializable 
 {
 	private MainAllControllers MainAllControllers;
     public ITCCCEvaluationReportController()
@@ -106,9 +114,33 @@ public class ITCCCEvaluationReportController
     @FXML
     void requireMoreInfo(MouseEvent event) throws IOException 
     {
-    	//we need to send request id
     	MainAllControllers.setWindowVar("ITCCCRequestMoreInfo");
     	MainAllControllers.changeWin();
     }
+
+    void setTextInFields(Evluationreport ev)
+    {
+    	System.out.println(""+ev.getRequestID()+" "+ev.getLocation()+" "+ev.getTimeEstimated());
+    	requestID.setText(""+ev.getRequestID());
+    	Location.setText(ev.getLocation());
+    	timeEstimated.setText(""+ev.getTimeEstimated());
+    	descriptionOfChangeRequired.setText(ev.getDescriptionOfChangeRequired());
+    	resultOfChange.setText(ev.getResultOfChange());
+    	constraintsAndRisks.setText(ev.getConstraintsAndRisks());
+    	
+    }
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{	
+		ArrayList<Object> arry=new ArrayList<Object>();
+		int s=MainAllControllers.request;
+		arry.add(s);//request id
+		requestID.setText(""+s);
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.ITshowEvaluationReport, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+	}
 
 }

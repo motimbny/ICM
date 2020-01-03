@@ -2,14 +2,14 @@ package entity;
 
 import java.io.Serializable;
 
-public class evluationReport implements Serializable
+public class extensionrequest implements Serializable
 {
 	private String stage;
 	private String itHandler;
 	private String reason;
 	private int time;
 	private int id;
-  public evluationReport(int id,String stage,String itHandler,String reason,int time)
+  public extensionrequest(int id,String stage,String itHandler,String reason,int time)
   {
 	  this.id=id;
 	  this.stage=stage;

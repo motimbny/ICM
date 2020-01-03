@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
-import entity.evluationReport;
+import entity.extensionrequest;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -15,10 +15,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorExtentionRequestController implements Initializable
+public class SupervisorExtensionRequestController implements Initializable
 {
 	private MainAllControllers MainAllControllers;
-	public SupervisorExtentionRequestController()
+	public SupervisorExtensionRequestController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
@@ -109,14 +109,13 @@ public class SupervisorExtentionRequestController implements Initializable
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
 	}
-	public void setToFields(evluationReport ev)
+	public void setToFields(extensionrequest ev)
 	{
 		this.requestID.setText(Integer.toString(ev.getId()));
 		this.requestSTG.setText(ev.getStage());
 		this.requestIT.setText(ev.getItHandler());
 		this.requestEXp.setText(ev.getReason());
 		this.requestTime.setText(Integer.toString(ev.getTime()));
-		
 	}
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
@@ -124,7 +123,7 @@ public class SupervisorExtentionRequestController implements Initializable
 		DBmessage dbm;
 		ArrayList<Object> arry=new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
-    	dbm=new DBmessage(MessageType.superviserEvluationReport, arry);   
+    	dbm=new DBmessage(MessageType.superviserExtensionRequest, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}

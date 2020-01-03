@@ -8,7 +8,7 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
-import entity.evluationReport;
+import entity.extensionrequest;
 import entity.updateRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

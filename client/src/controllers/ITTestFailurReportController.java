@@ -1,14 +1,22 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class ITTestFailurReportController 
+public class ITTestFailurReportController implements Initializable 
 {
 
 	private MainAllControllers MainAllControllers;
@@ -40,6 +48,21 @@ public class ITTestFailurReportController
     @FXML
     private TextArea ReportSummry;
 
+    @FXML
+    private Label fillAllFields;
+
+    @FXML
+    private Label reportWasSubmitted;
+
+    @FXML
+    private Button BackToShow;
+
+    @FXML
+    void BackToS(MouseEvent event) throws IOException 
+    {
+		MainAllControllers.setWindowVar("ITHandleRequest");
+		MainAllControllers.changeWin();
+    }
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -77,8 +100,36 @@ public class ITTestFailurReportController
     }
 
     @FXML
-    void submitFailurReport(MouseEvent event) {
-
+    void submitFailurReport(MouseEvent event) 
+    {
+    	if(ReportSummry.getText().equals(""))
+    	{
+    		fillAllFields.setVisible(true);
+    	}
+    	else
+    	{
+    		fillAllFields.setVisible(false);
+        	ArrayList<Object> arr=new ArrayList<Object>();
+        	arr.add(ReqID.getText());
+        	arr.add(ReportSummry.getText());
+        	DBmessage dbm=new DBmessage(MessageType.ITFailurReport, arr);
+        	try {
+				MainAllControllers.sendToAbsServer(dbm);
+			} catch (IOException e) {}
+    	}
+    }
+    
+    public void setOnSucsess()
+    {
+    	reportWasSubmitted.setVisible(true);
     }
 
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{	
+		ArrayList<Object> arry=new ArrayList<Object>();
+		int s=MainAllControllers.request;
+		arry.add(s);//request id
+		ReqID.setText(""+s);
+	}
 }

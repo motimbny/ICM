@@ -11,6 +11,7 @@ import entity.Request;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -57,6 +58,12 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 
     @FXML
     private Button submitEvaluationReportBTN;
+    
+    @FXML
+    private Label requestWasSubmitted;
+
+    @FXML
+    private Label fillAllFields;
 
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
@@ -95,7 +102,24 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	}
 
     @FXML
-    void submitEvaluationReport(MouseEvent event) {
+    void submitEvaluationReport(MouseEvent event) 
+    {
+    	if(timeEstimated.getText().equals("")||constraintsAndRisks.getText().equals("")||resultOfChange.getText().equals("")||descriptionOfChangeRequired.getText().equals(""))
+    	{
+    		fillAllFields.setVisible(true);
+    	}
+    	else
+    	{
+    		fillAllFields.setVisible(false);
+    		ArrayList<Object> arry=new ArrayList<Object>();
+    		arry.add(requestID.getText());
+    		arry.add(Location.getText());
+    		arry.add(timeEstimated.getText());
+    		arry.add(descriptionOfChangeRequired.getText());
+    		arry.add(resultOfChange.getText());
+    		arry.add(constraintsAndRisks.getText());
+    		
+    	}
 
     }
 
@@ -106,16 +130,16 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 		int s=MainAllControllers.request;
 		arry.add(s); //request id
 		requestID.setText(""+s);
-	/*	DBmessage dbm;
-    	dbm=new DBmessage(MessageType.ITEvaluationReport1, arry);   
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.ITgetLocation, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}*/
+		} catch (IOException e) {}
 	}
 	
-    void setTextInFields(ArrayList<Object> listR)
+    void setTextInFields(ArrayList<Object> list)
     {
-    	Request req=(Request)listR.get(0);	
+    	Request req=(Request)list.get(0);	
     	Location.setText(req.getInfoSystem());	
     }
 

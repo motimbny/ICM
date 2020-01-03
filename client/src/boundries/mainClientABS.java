@@ -7,6 +7,7 @@ import Enums.Position;
 import controllers.MainAllControllers;
 import entity.DBSmessage;
 import entity.DBmessage;
+import entity.Evluationreport;
 import entity.RequestUser;
 import entity.User;
 import javafx.event.ActionEvent;
@@ -73,11 +74,13 @@ public class mainClientABS extends AbstractClient
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.setHomeUserNum((int)send.get(0));
 			}
+			break;
 			case IThomeRequestNum:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.setHomeITNum((int)send.get(0));
 			}
+			break;
 			case supervisorHomeRequestNum:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -88,6 +91,12 @@ public class mainClientABS extends AbstractClient
 				{
 					 MainAllControllers.goodRequeSend();
 				}
+				break;
+			case AddExtensionRequest:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.submitExtensionRequest((int)send.get(0));
+			}
 				break;
 			case ShowReqUser:
 				{
@@ -111,7 +120,28 @@ public class mainClientABS extends AbstractClient
 			case ITgetReqStage:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-			   MainAllControllers.getITReqStage(((ArrayList<Object>)send));
+			   MainAllControllers.getITReqStage(send);
+			}
+			break;
+			case ITgetLocation:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+			   MainAllControllers.getITReqStage(send);
+			}
+			break;
+			case ITshowEvaluationReport:
+			{
+				System.out.println("1");
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				Evluationreport temp=(Evluationreport)send.get(0);
+				System.out.println(""+temp.getRequestID()+" "+temp.getLocation()+" "+temp.getConstraintsAndRisks());
+				MainAllControllers.showITEvaluationReport(send);
+			}
+			break;
+			case ITFailurReport:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.getITReqStage(send);
 			}
 			break;
 			case getListOfIT:
@@ -168,13 +198,14 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.SupervisorUpdateRequest(send);
 			}
 			break;
-			case superviserEvluationReport:
+			case superviserExtensionRequest:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-				MainAllControllers.showSuperviserReportEV(send);
+				MainAllControllers.showSuperviserExtensionRequest(send);
 			}
 			break;
-			}
+			} 
+				
 			
 		 this.connectionClosed();		 
 	}

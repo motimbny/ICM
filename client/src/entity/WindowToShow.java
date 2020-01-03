@@ -15,7 +15,7 @@ import controllers.ITTestFailurReportController;
 import controllers.ITshowRequestsController;
 import controllers.LoginController;
 import controllers.SupervisorEmployeesManagmentController;
-import controllers.SupervisorExtentionRequestController;
+import controllers.SupervisorExtensionRequestController;
 import controllers.SupervisorHelpController;
 import controllers.SupervisorHomeController;
 import controllers.SupervisorPersonalInfoController;
@@ -204,7 +204,7 @@ public class WindowToShow
 	}
 
 	public void initSupervisorExtentionRequest() {
-		SupervisorExtentionRequestController controller = new SupervisorExtentionRequestController(); // SupervisorExtentionRequestController
+		SupervisorExtensionRequestController controller = new SupervisorExtensionRequestController(); // SupervisorExtentionRequestController
 		pathfxml = "/Fxml/SupervisorExtentionRequest.fxml";
 		windowName = "ICM-SupervisorExtentionRequest";
 	}

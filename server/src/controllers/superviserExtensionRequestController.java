@@ -9,13 +9,13 @@ import java.util.ArrayList;
 import Enums.MessageTypeS;
 import entity.DBSmessage;
 import entity.DBmessage;
-import entity.evluationReport;
+import entity.extensionrequest;
 
-public class superviserEvluationReportcontroller
+public class superviserExtensionRequestController
 {
     private Connection connection;
     private int numReport;
-	public superviserEvluationReportcontroller(DBmessage dbm, Connection connection) 
+	public superviserExtensionRequestController(DBmessage dbm, Connection connection) 
 	{
 		this.connection=connection;
 		this.numReport=(int) dbm.getObjs().get(0);
@@ -24,16 +24,16 @@ public class superviserEvluationReportcontroller
 	{
 		Statement stmt;
 		DBSmessage dbs;
-		evluationReport ev = null;
+		extensionrequest ev = null;
 		ArrayList<Object> toSend= new ArrayList<Object>();
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM evluationreport WHERE id='"+numReport+ "'");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM extensionrequest WHERE id='"+numReport+ "'");
 			if(rs.next()!=false)
-				ev=new evluationReport(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5));
+				ev=new extensionrequest(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5));
 			toSend.add(ev);
-			dbs=new DBSmessage(MessageTypeS.superviserEvluationReport,toSend);
+			dbs=new DBSmessage(MessageTypeS.superviserExtensionRequest,toSend);
 				return dbs;
 		} 
 		catch (SQLException e)

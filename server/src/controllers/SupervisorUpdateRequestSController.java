@@ -10,7 +10,7 @@ import Enums.MessageTypeS;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.ITemployee;
-import entity.evluationReport;
+import entity.extensionrequest;
 import entity.updateRequest;
 
 public class SupervisorUpdateRequestSController 

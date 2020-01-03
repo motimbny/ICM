@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -14,13 +15,23 @@ public class ITExtensionRequestSController {
 	private String user;
 	private int reqId;
 	private Connection connection;
+	private String stage;
+	private String reason;
+	private int timeToAdd;
 
 	public ITExtensionRequestSController(DBmessage msg, Connection connection) {
 		ArrayList<Object> arry = msg.getObjs();
 		this.user = (String) arry.get(0);
 		this.reqId = (int) arry.get(1);
 		this.connection = connection;
+		if(arry.size()==5)
+		{
+			this.stage=(String) arry.get(2);
+			this.timeToAdd=(int) arry.get(3);
+			this.reason=(String) arry.get(4);
+		}
 	}
+	
 	
 	public DBSmessage getITreqStage() {
 		Statement stmt;
@@ -42,6 +53,32 @@ public class ITExtensionRequestSController {
 			e.printStackTrace();
 		}
 		return null;
-
 	}
+
+	public DBSmessage submitRequest()
+	{
+	
+	   PreparedStatement ps;
+	   DBSmessage dbs;
+   	   ArrayList<Object> arry=new ArrayList<Object>();
+ 		try 
+ 		  {
+ 			ps = connection.prepareStatement("INSERT INTO extensionrequest VALUES(?,?,?,?,?)");
+ 			ps.setInt(1, this.reqId);
+ 			ps.setString(2, this.stage);
+ 			ps.setString(3, this.user);
+ 			ps.setInt(4, this.timeToAdd);
+ 			ps.setString(5, this.reason);
+ 			ps.executeUpdate();	
+ 			ps.close();
+ 			arry.add(1);
+ 		  }
+ 		 catch (SQLException e) 
+ 		     {
+ 		    	e.printStackTrace();
+ 		    	arry.add(0);
+ 		     }
+    	dbs=new DBSmessage(MessageTypeS.AddExtensionRequest, arry);
+		return dbs;
+   }
 }

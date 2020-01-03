@@ -9,10 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import entity.Evluationreport;
 import entity.RequestUser;
 import entity.User;
 import entity.WindowToShow;
-import entity.evluationReport;
+import entity.extensionrequest;
 import entity.updateRequest;
 public class MainAllControllers 
 {
@@ -113,6 +114,10 @@ public class MainAllControllers
 	{
 		((UserAddRequestController) WindowToShow.controller).setOnSucsess();		
 	}
+	public void submitExtensionRequest(int num)
+	{
+		((ITExtensionRequestController) WindowToShow.controller).setOnSucsess(num);		
+	}
 	public void showUserReq(ArrayList<Object> list)
 	{
 		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
@@ -128,6 +133,14 @@ public class MainAllControllers
 	public void getITReqStage(ArrayList<Object> list)
 	{
 		((ITExtensionRequestController) WindowToShow.controller).setTextInFields(list);
+	}
+	public void submitFailurReport(ArrayList<Object> list)
+	{
+		((ITTestFailurReportController) WindowToShow.controller).setOnSucsess();
+	}
+	public void getITReqLocation(ArrayList<Object> list)
+	{
+		((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).setTextInFields(list);
 	}
 	public void showUserReqDetails(ArrayList<Object> list)
 	{
@@ -169,9 +182,9 @@ public class MainAllControllers
 	{
 		((SupervisorShowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}
-	public void showSuperviserReportEV(ArrayList<Object> list)
+	public void showSuperviserExtensionRequest(ArrayList<Object> list)
 	{
-		((SupervisorExtentionRequestController) WindowToShow.controller).setToFields((evluationReport) list.get(0));
+		((SupervisorExtensionRequestController) WindowToShow.controller).setToFields((extensionrequest) list.get(0));
 		
 	}
 	public void SupervisorUpdateRequest(ArrayList<Object> list) {
@@ -182,7 +195,10 @@ public class MainAllControllers
 	public void getListOfIT(ArrayList<Object> arrayList) {
 		
 		((SupervisorUpdateRequestController) WindowToShow.controller).setListOfIT(arrayList);
-
+	}
+	public void showITEvaluationReport(ArrayList<Object> arrayList) {
+		System.out.println();
+		((ITCCCEvaluationReportController) WindowToShow.controller).setTextInFields((Evluationreport) arrayList.get(0));
 	}
 	
 }
