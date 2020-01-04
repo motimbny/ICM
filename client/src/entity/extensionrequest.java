@@ -9,13 +9,15 @@ public class extensionrequest implements Serializable
 	private String reason;
 	private int time;
 	private int id;
-  public extensionrequest(int id,String stage,String itHandler,String reason,int time)
+	private String status;
+  public extensionrequest(int id,String stage,String itHandler,String reason,int time,String status)
   {
 	  this.id=id;
 	  this.stage=stage;
 	  this.itHandler=itHandler;
 	  this.time=time;
 	  this.reason=reason;
+	  this.status=status;
   }
   public String getStage() {
 		return stage;

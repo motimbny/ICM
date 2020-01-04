@@ -146,6 +146,7 @@ public class mainClientABS extends AbstractClient
 			break;
 			case getListOfIT:
 			{
+				System.out.println("im here getlist"+dbs.getObjs().size());
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 			   MainAllControllers.getListOfIT(((ArrayList<Object>)send));
 			}
@@ -198,14 +199,31 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.SupervisorUpdateRequest(send);
 			}
 			break;
+			case showRequestDetailsSuperviser:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.SupervisorRequestDetailes(send);
+			}
+			break;
+			case SupervisorTimeRequest:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.SupervisorTimeRequest(send);
+			}
+			break;
+			case superviserExtensionRequestAnswer:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.showSuperviserExtensionRequestAnswer(send);
+			}
+			break;
 			case superviserExtensionRequest:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.showSuperviserExtensionRequest(send);
 			}
 			break;
-			} 
-				
+			}
 			
 		 this.connectionClosed();		 
 	}

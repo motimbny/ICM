@@ -85,7 +85,12 @@ public class SupervisorUpdateRequestController implements Initializable
 	    	MainAllControllers.setWindowVar("SupervisorShowRequests");
 	    	MainAllControllers.changeWin();
 		}
-
+	    @FXML
+	    void requestInfoWindow(MouseEvent event) throws IOException
+	    {
+	    	MainAllControllers.setWindowVar("SupervisorRequestDetalies");
+	    	MainAllControllers.changeWin();
+	    }
     @FXML
  	void goHelpPage(MouseEvent event) throws IOException 
  	{
@@ -124,17 +129,20 @@ public class SupervisorUpdateRequestController implements Initializable
 
     @FXML
     void changeApprieser(MouseEvent event) {
+    	listOfIt();
     	showListOfIT("itAppraiser");
     }
 
     @FXML
     void changeTester(MouseEvent event) {
+    	listOfIt();
     	showListOfIT("itTester");
 
     }
     
     @FXML
     private void changeExecuter(MouseEvent event) {
+    	listOfIt();
     	showListOfIT("itPerformanceLeader");
     	
     }
@@ -195,24 +203,20 @@ public class SupervisorUpdateRequestController implements Initializable
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
-		examination.getItems().add(1);
-		examination.getItems().add(2);
-		examination.getItems().add(3);
-		examination.getItems().add(4);
-		examination.getItems().add(5);
-		examination.getItems().add(6);
-		examination.getItems().add(7);
-		test.getItems().add(1);
-		test.getItems().add(2);
-		test.getItems().add(3);
-		test.getItems().add(4);
-		test.getItems().add(5);
-		test.getItems().add(6);
-		test.getItems().add(7);
 		DBmessage dbm;
 		ArrayList<Object> arry=new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
     	dbm=new DBmessage(MessageType.SupervisorUpdateRequest, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+	}
+	public void listOfIt()
+	{
+		DBmessage dbm;
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+    	dbm=new DBmessage(MessageType.SupervisorListIt, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}

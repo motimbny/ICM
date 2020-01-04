@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import entity.DBmessage;
 import entity.Evluationreport;
 import entity.RequestUser;
 import entity.User;
@@ -26,7 +27,7 @@ public class MainAllControllers
 	public WindowToShow WindowToShow;
 	public int request;
 	public String itHandlejob;
-	
+	public String nowWin;
 	private MainAllControllers() 
 	{
 		this.mac=mac;
@@ -192,13 +193,26 @@ public class MainAllControllers
 		((SupervisorUpdateRequestController) WindowToShow.controller).setToFields((updateRequest) list.get(0));
 		
 	}
-	public void getListOfIT(ArrayList<Object> arrayList) {
-		
+	public void getListOfIT(ArrayList<Object> arrayList) 
+	{
 		((SupervisorUpdateRequestController) WindowToShow.controller).setListOfIT(arrayList);
 	}
 	public void showITEvaluationReport(ArrayList<Object> arrayList) {
 		System.out.println();
 		((ITCCCEvaluationReportController) WindowToShow.controller).setTextInFields((Evluationreport) arrayList.get(0));
+	}
+	public void SupervisorRequestDetailes(ArrayList<Object> list)
+	{
+		((SupervisorRequestDetailsController) WindowToShow.controller).setTextInFields(list);		
+	}
+	public void SupervisorTimeRequest(ArrayList<Object> list)
+	{
+		((SupervisorTimeRequestController) WindowToShow.controller).setToFields((updateRequest) list.get(0));
+	}
+	public void showSuperviserExtensionRequestAnswer(ArrayList<Object> send) 
+	{
+		((SupervisorExtensionRequestController) WindowToShow.controller).showAnswer();
+	
 	}
 	
 }

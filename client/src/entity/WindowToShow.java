@@ -24,7 +24,9 @@ import controllers.SupervisorExtensionRequestController;
 import controllers.SupervisorHelpController;
 import controllers.SupervisorHomeController;
 import controllers.SupervisorPersonalInfoController;
+import controllers.SupervisorRequestDetailsController;
 import controllers.SupervisorShowRequestsController;
+import controllers.SupervisorTimeRequestController;
 import controllers.SupervisorUpdateRequestController;
 import controllers.UserAddRequestController;
 import controllers.UserHelpController;
@@ -82,6 +84,12 @@ public class WindowToShow
 		case "SupervisorExtentionRequest":
 			initSupervisorExtentionRequest();
 			break;
+		case "SupervisorRequestDetalies":
+			initSupervisorShowRequestDetailes();
+			break;
+		case "SupervisorTimeRequest":
+	     	initSupervisorTimeRequest();
+		break;
 		case "ITHome":
 			initITHome();
 			break;
@@ -219,6 +227,12 @@ public class WindowToShow
 		windowName = "ICM-UserHelp";
 
 	}
+	private void initSupervisorTimeRequest()
+	{
+		SupervisorTimeRequestController controller = new SupervisorTimeRequestController(); // SupervisorHomeController
+		pathfxml = "/Fxml/SuperviserTimeManage.fxml";
+		windowName = "ICM-SupervisorRequestTime";
+	}
 
 	public void initSupervisorHome() {
 		SupervisorHomeController controller = new SupervisorHomeController(); // SupervisorHomeController
@@ -232,7 +246,11 @@ public class WindowToShow
 		windowName = "ICM-SupervisorShowRequests";
 	}
 
-
+	public void initSupervisorShowRequestDetailes() throws IOException {
+		SupervisorRequestDetailsController controller = new SupervisorRequestDetailsController(); // SupervisorShowRequestsController
+		pathfxml = "/Fxml/SupervisorRequestDetails.fxml";
+		windowName = "ICM-SupervisorRequestDetails";
+	}
 	public void initSupervisorHelp() {
 		SupervisorHelpController controller = new SupervisorHelpController(); // SupervisorHelpController
 		pathfxml = "/Fxml/SupervisorHelp.fxml";

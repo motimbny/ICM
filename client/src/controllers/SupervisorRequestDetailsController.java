@@ -1,15 +1,23 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
+import entity.Request;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorRequestDetailsController {
+public class SupervisorRequestDetailsController implements Initializable
+{
 
 	private MainAllControllers MainAllControllers;
 	public SupervisorRequestDetailsController()
@@ -42,9 +50,6 @@ public class SupervisorRequestDetailsController {
     private TextField InformationSystemField;
 
     @FXML
-    private TextField ITHandlerField;
-
-    @FXML
     private TextField requestStatusField;
 
     @FXML
@@ -62,8 +67,16 @@ public class SupervisorRequestDetailsController {
     @FXML
     void BackToS(MouseEvent event) throws IOException 
 	{
-    	MainAllControllers.setWindowVar("SupervisorShowRequests");
-    	MainAllControllers.changeWin();
+    	try {
+    		if(MainAllControllers.nowWin.equals("ITRequestSuperviser"))
+			     MainAllControllers.setWindowVar("SupervisorUpdateRequest");
+    		else
+    			MainAllControllers.setWindowVar("SupervisorTimeRequest");
+	    	MainAllControllers.changeWin();
+		}
+		catch (Exception e) {
+			
+		}
 	}
 
     @FXML
@@ -99,6 +112,30 @@ public class SupervisorRequestDetailsController {
 	{
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
+	}
+    void setTextInFields(ArrayList<Object> listR)
+    {
+    	Request req=(Request)listR.get(0);	  	
+    	ApplicantNameField.setText(req.getUserSubFullName());
+    	InformationSystemField.setText(req.getInfoSystem());
+    	requestStatusField.setText(req.getCurrentStatus());
+    	RequestStageField.setText(req.getCurrentStage().toString());
+    	DescriptionExistingSituationField.setText(req.getDesExtSit());
+    	DescriptionOfRequestField.setText(req.getWantedChange());   	
+    }
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1)
+	{
+		ArrayList<Object> arry=new ArrayList<Object>();
+		int s=MainAllControllers.request;
+		arry.add(s);//request id
+		reqNumber.setText("Request number: "+s);
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.showRequestDetailsSuperviser, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+		
 	}
 
 }

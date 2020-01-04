@@ -11,6 +11,7 @@ import entity.extensionrequest;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -55,18 +56,33 @@ public class SupervisorExtensionRequestController implements Initializable
 
     @FXML
     private TextArea requestEXp;
-
+    @FXML
+    private Label answer;
     @FXML
     private TextField requestTime;
     @FXML
     void approveEX(MouseEvent event) 
     {
-
+    	DBmessage dbm;
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		arry.add("approve");
+    	dbm=new DBmessage(MessageType.superviserExtensionRequestAnswer, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
     }
     @FXML
     void denyEXT(MouseEvent event) 
     {
-
+    	DBmessage dbm;
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		arry.add("denied");
+    	dbm=new DBmessage(MessageType.superviserExtensionRequestAnswer, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
     }
     @FXML
     void backToShow(MouseEvent event) throws IOException 
@@ -127,6 +143,10 @@ public class SupervisorExtensionRequestController implements Initializable
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
+	}
+	public void showAnswer()
+	{
+		answer.setVisible(true);	
 	}
 
 }

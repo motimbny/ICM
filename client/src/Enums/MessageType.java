@@ -25,5 +25,7 @@ public enum MessageType
 		ITEvaluationReport1, ITjobInReq, ITgetReqStage, AddExtensionRequest,
 		ITSubmitEvaluationReport, ITgetLocation, ITshowEvaluationReport,
 		ITFailurReport,
+		showRequestDetailsSuperviser,
+		SupervisorTimeRequest, SupervisorListIt,superviserExtensionRequestAnswer
 
 }

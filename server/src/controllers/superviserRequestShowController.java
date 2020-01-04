@@ -110,8 +110,5 @@ public class superviserRequestShowController
 		}
 		return getRequestToShow();
 	}
-	
-
-	
 
 }

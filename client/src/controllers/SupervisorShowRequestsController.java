@@ -77,7 +77,8 @@ public class SupervisorShowRequestsController implements Initializable
 
     @FXML
     private Button search;
-
+    @FXML
+    private Button SuprvisorTime;
     @FXML
     private TextField requestIdTo;
     @FXML
@@ -160,6 +161,14 @@ public class SupervisorShowRequestsController implements Initializable
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
 	}
+	 @FXML
+	    void viewTime(MouseEvent event) throws IOException
+	 {
+			MainAllControllers.nowWin="TimeRequestSuperviser";
+		 MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+		 MainAllControllers.setWindowVar("SupervisorTimeRequest");
+	    MainAllControllers.changeWin();
+	 }
 
 	@FXML
 	void suspendRequest(MouseEvent event) 
@@ -223,7 +232,8 @@ public class SupervisorShowRequestsController implements Initializable
 	@FXML
 	void viewExtensionReport(MouseEvent event) throws IOException 
 	{
-		try {
+		try 
+		{
 		MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
 		MainAllControllers.setWindowVar("SupervisorExtentionRequest");
     	MainAllControllers.changeWin();
@@ -235,7 +245,9 @@ public class SupervisorShowRequestsController implements Initializable
 	@FXML
 	void UpdateRequest(MouseEvent event) throws IOException
 	{
-		try {
+		try
+		{
+			MainAllControllers.nowWin="ITRequestSuperviser";
 			MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
 			MainAllControllers.setWindowVar("SupervisorUpdateRequest");
 	    	MainAllControllers.changeWin();
@@ -245,12 +257,6 @@ public class SupervisorShowRequestsController implements Initializable
 		}
 		
 	}
-	
-    @FXML
-    void showRequestDetails(MouseEvent event) 
-    {
-       
-    }   
     @FXML
     void searchRequest(MouseEvent event) 
     {
