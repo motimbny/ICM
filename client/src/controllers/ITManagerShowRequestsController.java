@@ -1,7 +1,9 @@
 package controllers;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
@@ -9,14 +11,16 @@ import entity.requestSuper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-public class ITManagerShowRequestsController {
-	
+public class ITManagerShowRequestsController implements Initializable
+{	
 	private ObservableList<requestSuper> rows;
 	private MainAllControllers MainAllControllers;
 	public ITManagerShowRequestsController()
@@ -52,16 +56,16 @@ public class ITManagerShowRequestsController {
     private Button logoutBTN;
 
     @FXML
-    private TableView<?> requestTable;
+    private TableView<requestSuper> requestTable;
 
     @FXML
-    private TableColumn<?, ?> RequestID;
+    private TableColumn<requestSuper, Integer> RequestID;
 
     @FXML
-    private TableColumn<?, ?> RequestStatus;
+    private TableColumn<requestSuper, Integer> RequestStatus;
 
     @FXML
-    private TableColumn<?, ?> RequestProcessStage;
+    private TableColumn<requestSuper, Integer> RequestProcessStage;
 
     @FXML
     private Button RenewRequestRequestBTN;
@@ -108,12 +112,14 @@ public class ITManagerShowRequestsController {
     	MainAllControllers.changeWin();
 	}
     @FXML
-    void messagePage(MouseEvent event) {
+    void messagePage(MouseEvent event) 
+    {
 
     }
 
     @FXML
-    void gogenerateReport(MouseEvent event) {
+    void gogenerateReport(MouseEvent event) 
+    {
 
     }
 
@@ -126,13 +132,14 @@ public class ITManagerShowRequestsController {
 	}
 
     @FXML
-    void renewRequest(MouseEvent event) {
-
+    void renewRequest(MouseEvent event)
+    {
+        
     }
 
     @FXML
-    void searchRequest(MouseEvent event) {
-  /*  	{
+    void searchRequest(MouseEvent event) 
+    {
     		if (requestIdTo.getText().equals("")) 
     		{
     			try {
@@ -144,30 +151,49 @@ public class ITManagerShowRequestsController {
     		} else 
     		{
     			ArrayList<Object> arry = new ArrayList<Object>();
-    			arry.add(MainAllControllers.user.getName());
     			arry.add(Integer.parseInt(requestIdTo.getText()));
     			DBmessage dbm;
-    			dbm = new DBmessage(MessageType.SearchReqITManager, arry); 
+    			dbm = new DBmessage(MessageType.SearchReqManager, arry); 
     			try {
     				MainAllControllers.sendToAbsServer(dbm);
     			} catch (IOException e) {
     			}
     		}
-    	}
-*/
     }
 
     @FXML
-    void showRequestDetails(MouseEvent event) {
+    void showRequestDetails(MouseEvent event)
+    {
 
     }
 
-	/*public void setTextInTable(ArrayList<Object> list) {	
-			 rows= FXCollections.observableArrayList();
-		    	for(Object r:list)
-		    		rows.add((requestSuper)r);		
-		    	requestTable.setItems(rows);	
-		 }
-		*/
+	@Override
+	public void initialize(URL location, ResourceBundle resources)
+	{
+		RequestID.setCellValueFactory(new PropertyValueFactory<>("id"));
+		RequestStatus.setCellValueFactory(new PropertyValueFactory<>("currentStatus"));
+		RequestProcessStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
+		requestServer();
+		
 	}
+	public void requestServer()
+    {
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.MangerRequestShow, null);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+    }
+	public void clearTable()
+	{
+		requestTable.getItems().clear();
+	}
+	 public void setTextTable(ArrayList<Object> list)
+	 {
+		 rows= FXCollections.observableArrayList();
+	    	for(Object r:list)
+	    		rows.add((requestSuper)r);		
+	    	requestTable.setItems(rows);	
+	 }
+}
 

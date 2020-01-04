@@ -137,5 +137,28 @@ public class UserShowRequestsSController
 		}	
 		return null;
 	}
+
+	public Object MnumOfRequest() 
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM request");
+			if(!rs.next())
+				toSend.add(0);
+			else
+			    toSend.add(rs.getInt(1));
+			dbs=new DBSmessage(MessageTypeS.MhomeRequestNum,toSend);
+				return dbs;
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}	
+		return null;
+	}
 	
 }

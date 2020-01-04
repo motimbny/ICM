@@ -75,6 +75,12 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.setHomeUserNum((int)send.get(0));
 			}
 			break;
+			case MhomeRequestNum:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.setHomeMangerNum((int)send.get(0));
+			}
+			break;
 			case IThomeRequestNum:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -181,16 +187,28 @@ public class mainClientABS extends AbstractClient
 			     MainAllControllers.showUserSPReq(((ArrayList<Object>)send));
 			}
 			break;
+			case SearchReqManager:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+			     MainAllControllers.showManSPReq(send);
+			}
+			break;
 			case ShowEmployeeList:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-				MainAllControllers.showSuperviserEmployeeList(send);
+				MainAllControllers.showManagerEmployeeList(send);
 			}
 			break;
 			case superviserRequestShow:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.showSuperviserRequestList(send);
+			}
+			break;
+			case MangerRequestShow:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.showMangerRequestList(send);
 			}
 			break;
 			case SupervisorUpdateRequest:

@@ -13,8 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
-public class ITManagerHomeController implements Initializable  {
-
+public class ITManagerHomeController implements Initializable 
+{
 	private MainAllControllers MainAllControllers;
 	public ITManagerHomeController()
 	{
@@ -113,8 +113,16 @@ public class ITManagerHomeController implements Initializable  {
     }
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1) 
+	{
 		helloITmanager.setText("Hello "+MainAllControllers.user.getName());
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.user.getName());
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.MhomeRequestNum, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
 	}
 
 }

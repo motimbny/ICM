@@ -64,6 +64,14 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			case MhomeRequestNum: {
+				UserShowRequestsSController userShowRequestsSController = new UserShowRequestsSController(dbm, connection);
+				try {
+					client.sendToClient(userShowRequestsSController.MnumOfRequest());
+				} catch (IOException e) {
+				}
+				break;
+			}
 			case IThomeRequestNum: {
 				ITShowRequestsSController itShowRequestsSController = new ITShowRequestsSController(dbm, connection);
 				try {
@@ -195,11 +203,30 @@ public class mainServerABS extends AbstractServer {
 	
 				break;
 			}
+			case SearchReqManager: {
+				superviserRequestShowController ManagerRequestShowController = new superviserRequestShowController(dbm,
+						connection);
+				try {
+					client.sendToClient(ManagerRequestShowController.MgetSPRequestToShow());
+				} catch (IOException e) {
+				}
+	
+				break;
+			}
 			case superviserRequestShow: {
 				superviserRequestShowController superviserRequestShowController = new superviserRequestShowController(dbm,
 						connection);
 				try {
 					client.sendToClient(superviserRequestShowController.getRequestToShow());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			case MangerRequestShow: {
+				superviserRequestShowController ManagerRequestShowController = new superviserRequestShowController(dbm,
+						connection);
+				try {
+					client.sendToClient(ManagerRequestShowController.MgetRequestToShow());
 				} catch (IOException e) {
 				}
 				break;

@@ -26,6 +26,8 @@ public enum MessageType
 		ITSubmitEvaluationReport, ITgetLocation, ITshowEvaluationReport,
 		ITFailurReport,
 		showRequestDetailsSuperviser,
-		SupervisorTimeRequest, SupervisorListIt,superviserExtensionRequestAnswer
+		SupervisorTimeRequest, SupervisorListIt,superviserExtensionRequestAnswer,
+		MhomeRequestNum,
+		MangerRequestShow, SearchReqManager
 
 }

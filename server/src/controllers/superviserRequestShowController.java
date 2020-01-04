@@ -110,5 +110,52 @@ public class superviserRequestShowController
 		}
 		return getRequestToShow();
 	}
+	public DBSmessage MgetRequestToShow() 
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request");
+				while(rs.next()!=false)
+				{
+					requestSuper toAdd=new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
+					toSend.add(toAdd);
+				}
+				dbs=new DBSmessage(MessageTypeS.MangerRequestShow,toSend);
+				return dbs;
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public Object MgetSPRequestToShow()
+	{
+		int num=(int) msg.getObjs().get(0);
+		Statement stmt;
+		DBSmessage dbs;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request WHERE id="+num+"");
+				while(rs.next()!=false)
+				{
+					requestSuper toAdd=new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
+					toSend.add(toAdd);
+				}
+				dbs=new DBSmessage(MessageTypeS.SearchReqManager,toSend);
+				return dbs;
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
 
 }

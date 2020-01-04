@@ -19,7 +19,6 @@ import controllers.ITRequestDetailsController;
 import controllers.ITTestFailurReportController;
 import controllers.ITshowRequestsController;
 import controllers.LoginController;
-import controllers.SupervisorEmployeesManagmentController;
 import controllers.SupervisorExtensionRequestController;
 import controllers.SupervisorHelpController;
 import controllers.SupervisorHomeController;
@@ -77,9 +76,6 @@ public class WindowToShow
 			break;
 		case "SupervisorPersonalInfo":
 			initSupervisorPersonalInfo();
-			break;
-		case "SupervisorEmployeesManagment":
-			initSupervisorEmployeesManagment();
 			break;
 		case "SupervisorExtentionRequest":
 			initSupervisorExtentionRequest();
@@ -266,12 +262,6 @@ public class WindowToShow
 		SupervisorPersonalInfoController controller = new SupervisorPersonalInfoController(); // SupervisorPersonalInfoController
 		pathfxml = "/Fxml/SupervisorPersonalInfo.fxml";
 		windowName = "ICM-SupervisorPersonalInfo";
-	}
-
-	public void initSupervisorEmployeesManagment() {
-		SupervisorEmployeesManagmentController controller = new SupervisorEmployeesManagmentController(); // SupervisorEmployeesManagmentController
-		pathfxml = "/Fxml/SupervisorEmployeesManagment.fxml";
-		windowName = "ICM-SupervisorEmployeesManagment";
 	}
 
 	public void initSupervisorExtentionRequest() {

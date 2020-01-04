@@ -174,9 +174,9 @@ public class MainAllControllers
 		((SupervisorShowRequestsController) WindowToShow.controller).clearTable();
 		((SupervisorShowRequestsController) WindowToShow.controller).setTextInTable(list);
 	}
-	public void showSuperviserEmployeeList(ArrayList<Object> list)
+	public void showManagerEmployeeList(ArrayList<Object> list)
 	{
-		((SupervisorEmployeesManagmentController) WindowToShow.controller).setTextInTable(list);
+		((ITManagerEmployeesManagmentController) WindowToShow.controller).setTextInTable(list);
 		
 	}
 	public void showSuperviserRequestList(ArrayList<Object> list)
@@ -212,7 +212,19 @@ public class MainAllControllers
 	public void showSuperviserExtensionRequestAnswer(ArrayList<Object> send) 
 	{
 		((SupervisorExtensionRequestController) WindowToShow.controller).showAnswer();
-	
+	}
+	public void setHomeMangerNum(int num) 
+	{
+		((ITManagerHomeController) WindowToShow.controller).setRequestNumber(num);
+	}
+	public void showMangerRequestList(ArrayList<Object> list)
+	{
+		((ITManagerShowRequestsController)WindowToShow.controller).setTextTable(list);
+	}
+	public void showManSPReq(ArrayList<Object> list) 
+	{
+		((ITManagerShowRequestsController) WindowToShow.controller).clearTable();
+		((ITManagerShowRequestsController) WindowToShow.controller).setTextTable(list);
 	}
 	
 }

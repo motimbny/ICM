@@ -28,5 +28,7 @@ public enum MessageTypeS
 	ITFailurReport,
 	showRequestDetailsSuperviser,
 	SupervisorTimeRequest,
-	SupervisorListIt,superviserExtensionRequestAnswer
+	SupervisorListIt,superviserExtensionRequestAnswer,
+	MhomeRequestNum,
+	MangerRequestShow,SearchReqManager
 }
