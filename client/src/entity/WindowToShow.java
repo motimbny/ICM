@@ -8,6 +8,11 @@ import controllers.ITExtensionRequestController;
 import controllers.ITHandleRequestController;
 import controllers.ITHelpController;
 import controllers.ITHomeController;
+import controllers.ITManagerEmployeesManagmentController;
+import controllers.ITManagerHelpController;
+import controllers.ITManagerHomeController;
+import controllers.ITManagerPersonalInfoController;
+import controllers.ITManagerShowRequestsController;
 import controllers.ITMeaningAssessmentEvaluationReportController;
 import controllers.ITPersonalInfoController;
 import controllers.ITRequestDetailsController;
@@ -110,10 +115,58 @@ public class WindowToShow
 		case "ITRequestDetails":
 			initITRequestDetails();
 			break;
+		case "ITManagerHelp":
+			initITManagerHelp();
+			break;
+		case "ITManagerHome":
+			initITManagerHome();
+			break;
+		case "ITManagerPersonalInfo":
+			initITManagerPersonalInfo();
+			break;
+		case "ITManagerShowRequests":
+			initITManagerShowRequests();
+			break;
+		case "ITManagerEmployeesManagment":
+			initITManagerEmployeesManagment();
+			break;
 			
-		
 		}
-	}	
+	}
+
+	private void initITManagerEmployeesManagment() {
+		ITManagerEmployeesManagmentController controller = new ITManagerEmployeesManagmentController();
+		pathfxml = "/Fxml/ITManagerEmployeesManagment.fxml";
+		windowName = "ICM-ITManagerEmployeesManagment";
+		
+	}
+
+	private void initITManagerShowRequests() {
+		ITManagerShowRequestsController controller = new ITManagerShowRequestsController();
+		pathfxml = "/Fxml/ITManagerShowRequests.fxml";
+		windowName = "ICM-ITManagerShowRequests";
+		
+	}
+
+	private void initITManagerPersonalInfo() {
+		ITManagerPersonalInfoController controller = new ITManagerPersonalInfoController();
+		pathfxml = "/Fxml/ITManagerPersonalInfo.fxml";
+		windowName = "ICM-ITManagerPersonalInfo";
+		
+	}
+
+	private void initITManagerHome() {
+		ITManagerHomeController controller = new ITManagerHomeController();
+		pathfxml = "/Fxml/ITManagerHome.fxml";
+		windowName = "ICM-ITManagerHome";
+		
+	}
+	private void initITManagerHelp() {
+		ITManagerHelpController controller = new ITManagerHelpController();
+		pathfxml = "/Fxml/ITManagerHelp.fxml";
+		windowName = "ICM-ITManagerHelp";
+		
+	}
 	public String getPathfxml() {
 		return pathfxml;
 	}

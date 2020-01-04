@@ -29,6 +29,10 @@ public class User implements Serializable
 			case "CollegeEmployee":
 			    this.job =Position.CollegeEmployee;
 			    break;
+			case "IT-manager":
+				this.job =Position.ITManager;
+			    break;
+			    
 		}			
 	}
 	public String getPassword() 

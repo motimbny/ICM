@@ -8,11 +8,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerHomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerPersonalInfoController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
-            <Button fx:id="homeBTN" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="47.0" prefWidth="140.0" styleClass="buttonBlackBorder" text=" Home   ">
+            <Button fx:id="homeBTN" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="47.0" prefWidth="140.0" text=" Home   ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -57,7 +57,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="personalInfoBTN" mnemonicParsing="false" onMouseClicked="#goPersonalInfo" prefHeight="46.0" prefWidth="140.0" text="Personal info">
+            <Button fx:id="personalInfoBTN" mnemonicParsing="false" onMouseClicked="#goPersonalInfo" prefHeight="46.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Personal info">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,21 +88,30 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label fx:id="helloITmanager" alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="142.0" prefHeight="53.0" prefWidth="457.0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="274.0" layoutY="21.0" text="Home">
-               <font>
-                  <Font name="System Bold" size="40.0" />
-               </font>
-            </Label>
-            <Label fx:id="ExistingReq" contentDisplay="CENTER" layoutX="274.0" layoutY="223.0" prefHeight="46.0" prefWidth="177.0" text="Existing Requests : " textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
+            <Pane prefHeight="600.0" prefWidth="661.0">
+               <children>
+                  <Label layoutX="148.0" layoutY="24.0" text="Personal Information">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="UserName" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="109.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="160.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="position" alignment="CENTER" contentDisplay="CENTER" layoutX="185.0" layoutY="212.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

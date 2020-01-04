@@ -38,7 +38,7 @@ public class mainClientABS extends AbstractClient
 						topen="SupervisorHome";
 						break;
 					case "IT-manager":
-						topen="ITmanHome";
+						topen="ITManagerHome";
 						break;
 					case "IT":
 						topen="ITHome";

@@ -2,17 +2,19 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerHomeController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerEmployeesManagmentController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
-            <Button fx:id="homeBTN" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="47.0" prefWidth="140.0" styleClass="buttonBlackBorder" text=" Home   ">
+            <Button fx:id="homeBTN" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="47.0" prefWidth="140.0" text=" Home   ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -39,7 +41,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="employeesMangBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMang" prefHeight="46.0" prefWidth="140.0" text="Managment ">
+            <Button fx:id="employeesMangBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMang" prefHeight="46.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Managment ">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,21 +90,20 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label fx:id="helloITmanager" alignment="CENTER" contentDisplay="CENTER" layoutX="92.0" layoutY="142.0" prefHeight="53.0" prefWidth="457.0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-            <Label layoutX="274.0" layoutY="21.0" text="Home">
+            <Label layoutX="118.0" layoutY="30.0" text="Employees managment">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="ExistingReq" contentDisplay="CENTER" layoutX="274.0" layoutY="223.0" prefHeight="46.0" prefWidth="177.0" text="Existing Requests : " textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
+            <TableView fx:id="EmployeesTable" layoutX="58.0" layoutY="112.0" prefHeight="360.0" prefWidth="558.0">
+              <columns>
+                <TableColumn fx:id="employeeId" prefWidth="81.0" text="Employee ID" />
+                <TableColumn fx:id="employeeName" prefWidth="117.33331298828125" text="First Name" />
+                  <TableColumn fx:id="employeeLastName" prefWidth="108.66668701171875" text="Last Name" />
+                  <TableColumn fx:id="employeeMail" prefWidth="126.3333740234375" text="Email" />
+                  <TableColumn fx:id="numOfProjects" prefWidth="125.0" text="Number Of Projects" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

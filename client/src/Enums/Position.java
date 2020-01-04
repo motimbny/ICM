@@ -5,5 +5,6 @@ public enum Position
 		ITMember,
 		student,
 		lecturer,
-		CollegeEmployee
+		CollegeEmployee, 
+		ITManager
 }
