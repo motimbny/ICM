@@ -4,12 +4,16 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
 import entity.extensionrequest;
 import entity.updateRequest;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +22,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
@@ -137,29 +143,26 @@ public class SupervisorUpdateRequestController implements Initializable
     	Stage popupwindow=new Stage();   
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
 		popupwindow.setTitle("List of IT");      
-		Label label1= new Label("Please choose your choice:"); 
-		label1.setFont(new Font("Arial", 14));
-		Button[] button= new Button[list.size()]; 
-		int i=0;
-		for(Object name:list)
-		{
-			int num=i+1;
-			button[i]=new Button(num+". "+name.toString());
-			button[i].addEventHandler(ActionEvent.ACTION, (e)->popupwindow.close());
-			button[i].addEventHandler(ActionEvent.ACTION, (e)->{
-    			
-    			this.changeExecuter((String)name,NameOfPositionChange);
-    	
-    	    });
-			i++;
-		}
-
+		Label label1= new Label("Please choose "+NameOfPositionChange+":"); 
+		label1.setFont(new Font("Arial", 16));
+		TableView<String> EmployeesTable=new TableView<>();
+		TableColumn<String, String> employeeName = new TableColumn<>();
+		EmployeesTable.getColumns().addAll(employeeName);
+		Collection<String> rows = new ArrayList<>();
+		employeeName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+	    for(Object r:list)
+	    	rows.add(r.toString());
+        ObservableList<String> details = FXCollections.observableArrayList(rows);
+	    EmployeesTable.setItems(details);
+	    EmployeesTable.setOnMouseClicked((MouseEvent ev ) ->
+	    	{
+	            this.changeExecuter(EmployeesTable.getSelectionModel().getSelectedItem(),NameOfPositionChange);
+	            popupwindow.close(); 
+	        });
 		VBox layout= new VBox(10);     
 		layout.getStylesheets().add("CSS/it.css");
-		layout.getChildren().add(label1);
-		for(Button button1:button)
-			layout.getChildren().add(button1);
-		layout.setAlignment(Pos.CENTER);     
+		layout.getChildren().addAll(label1,EmployeesTable);
+		layout.setAlignment(Pos.CENTER); 
 		Scene scene1= new Scene(layout, 350, 250);     
 		popupwindow.setScene(scene1);     
 		popupwindow.showAndWait();
