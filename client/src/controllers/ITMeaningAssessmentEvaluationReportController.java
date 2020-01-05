@@ -102,7 +102,7 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	}
 
     @FXML
-    void submitEvaluationReport(MouseEvent event) 
+    void submitEvaluationReport(MouseEvent event) throws IOException 
     {
     	if(timeEstimated.getText().equals("")||constraintsAndRisks.getText().equals("")||resultOfChange.getText().equals("")||descriptionOfChangeRequired.getText().equals(""))
     	{
@@ -110,10 +110,10 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     	}
     	else
     	{
-    		//ма воеш
+   
     		fillAllFields.setVisible(false);
     		ArrayList<Object> arry=new ArrayList<Object>();
-    		arry.add(requestID.getText());
+    		arry.add(Integer.parseInt(requestID.getText()));
     		arry.add(Location.getText());
     		arry.add(timeEstimated.getText());
     		arry.add(descriptionOfChangeRequired.getText());
@@ -125,7 +125,8 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 				MainAllControllers.sendToAbsServer(dbm);
 			} catch (IOException e) {
 			}
-    		
+			MainAllControllers.setWindowVar("ITshowRequests");
+	    	MainAllControllers.changeWin();
     	}
 
     }

@@ -45,27 +45,23 @@ public class ITMeaningAssessmentEvaluationReportSController {
 	}
 
 	public DBSmessage submitEvaluationReport() {
-
 		Statement stmt;
 		DBSmessage dbs;
 		ArrayList<Object> toSend = new ArrayList<Object>();
 		try {
 			stmt = connection.createStatement();
-			PreparedStatement req = connection.prepareStatement("INSERT INTO evluationreport VALUES(?,?,?,?,?)");
-			System.out.println(msg.getObjs().get(0));
-			System.out.println(msg.getObjs().get(1));
-			System.out.println(msg.getObjs().get(2));
-			System.out.println(msg.getObjs().get(3));
-			req.setInt(1,(int) msg.getObjs().get(4));
+			PreparedStatement req = connection.prepareStatement("INSERT INTO evluationreport VALUES(?,?,?,?,?,?)");
+			req.setInt(1,(int) msg.getObjs().get(0));
 			req.setString(2,(String) msg.getObjs().get(1));
 			req.setString(3,(String) msg.getObjs().get(2));
 			req.setString(4,(String) msg.getObjs().get(3));
 			req.setString(5,(String) msg.getObjs().get(4));
+			req.setString(6,(String) msg.getObjs().get(5));
 			req.executeUpdate();	
  			req.close();
-
-			///dbs = new DBSmessage(MessageTypeS.submitEvaluationReport, toSend);
-		//	return dbs;
+ 			stmt.executeUpdate("UPDATE request SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

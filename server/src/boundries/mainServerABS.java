@@ -217,7 +217,6 @@ public class mainServerABS extends AbstractServer {
 			case submitEvaluationReport: {
 				ITMeaningAssessmentEvaluationReportSController ITMeaningAssessmentEvaluationReportSController = new ITMeaningAssessmentEvaluationReportSController(dbm, connection);
 				try {
-					System.out.println("lalala");
 					client.sendToClient(ITMeaningAssessmentEvaluationReportSController.submitEvaluationReport());
 				} catch (IOException e) {
 				}
