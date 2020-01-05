@@ -21,7 +21,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
+/**
+ * User  add request screen Controller 
+ * @author SHIRA
+ */
 
 public class UserAddRequestController implements Initializable
 {
@@ -32,6 +35,9 @@ public class UserAddRequestController implements Initializable
 	{ 
     	MainAllControllers=MainAllControllers.getInstance();
 	}
+	/**
+     * buttons and labels of User add request screen
+     */
     @FXML
     private Button homeBTN;
     @FXML
@@ -64,6 +70,8 @@ public class UserAddRequestController implements Initializable
     private Label goodAddRe;
     @FXML
     private Label fileName;
+    
+    
     @FXML
     void submitRequest(MouseEvent event) 
     {
@@ -124,38 +132,66 @@ public class UserAddRequestController implements Initializable
   			System.out.println("Error send File to Server");
   		}
     }
-
+    /**
+     * Mouse click event, if "Home" button clicked, open the screen of "Home"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void backToHome(MouseEvent event) throws IOException 
     {
         	MainAllControllers.setWindowVar("userHome");
         	MainAllControllers.changeWin();
     }
+    /**
+	 * Mouse click event, if "Add request" button clicked, open the screen of "Add new request"
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void backToRequest(MouseEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("UserAddRequest");
     	MainAllControllers.setWindow();
     }
+    /**
+     * Mouse click event, if "help" button clicked, open the screen of "help"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void backTohelp(MouseEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("UserHelp");
     	MainAllControllers.setWindow();
     }
+    /**
+     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void backToinfo(MouseEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("UserPersonalInfo");
     	MainAllControllers.setWindow();
     }
+    /**
+     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void backTorAddequest(MouseEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("UserShowRequests");
     	MainAllControllers.setWindow();
     }
-    
+    /**
+     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void logut(MouseEvent event) throws IOException
     {

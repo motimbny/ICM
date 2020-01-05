@@ -21,7 +21,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-
+/**
+ * User show requests screen Controller 
+ * @author SHIRA
+ */
 
 public class UserShowRequestsController implements Initializable  {
 	
@@ -31,7 +34,9 @@ public class UserShowRequestsController implements Initializable  {
 	{
     	MainAllControllers=MainAllControllers.getInstance();
 	}
-	
+	/**
+     * buttons and labels of User show requests screen
+     */
     @FXML
     private Button homeBTN;
 
@@ -93,27 +98,44 @@ public class UserShowRequestsController implements Initializable  {
 			} catch (IOException e) {}
     	}
     }
+    /**
+	 * Mouse click event, if "Add request" button clicked, open the screen of "Add new request"
+	 * @param event
+	 * @throws IOException
+	 */
     @FXML
     void goAddReqPage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("UserAddRequest");
     	MainAllControllers.changeWin();
     }
-
+    /**
+     * Mouse click event, if "help" button clicked, open the screen of "help"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void goHelpPage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("UserHelp");
     	MainAllControllers.changeWin();
     }
-
+    /**
+     * Mouse click event, if "Home" button clicked, open the screen of "Home"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void goHomePage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("userHome");
     	MainAllControllers.changeWin();
     }
-
+    /**
+     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void goLogoutPage(ActionEvent event) throws IOException 
     {
@@ -121,14 +143,22 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.changeWin();
     	MainAllControllers.user=null;
     }
-
+    /**
+     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void goPersonalPage(ActionEvent event) throws IOException
     {
     	MainAllControllers.setWindowVar("UserPersonalInfo");
     	MainAllControllers.changeWin();
     }
-
+    /**
+     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
+     * @param event
+     * @throws IOException
+     */
     @FXML
     void goShowReqPage(ActionEvent event) throws IOException 
     {
