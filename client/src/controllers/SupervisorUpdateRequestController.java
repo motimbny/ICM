@@ -164,7 +164,27 @@ public class SupervisorUpdateRequestController implements Initializable
 	    EmployeesTable.setItems(details);
 	    EmployeesTable.setOnMouseClicked((MouseEvent ev ) ->
 	    	{
-	            this.changeExecuter(EmployeesTable.getSelectionModel().getSelectedItem(),NameOfPositionChange);
+	    		switch (NameOfPositionChange) {
+				case "itAppraiser":
+				{
+					apprieserName.setText(EmployeesTable.getSelectionModel().getSelectedItem());
+				}
+				break;
+				case "itTester":
+				{
+					testerName.setText(EmployeesTable.getSelectionModel().getSelectedItem());
+				}
+				break;
+				case "itPerformanceLeader":
+				{
+					executerName.setText(EmployeesTable.getSelectionModel().getSelectedItem());
+				}
+				break;
+
+				default:
+					break;
+				}
+	            //this.changeExecuter(EmployeesTable.getSelectionModel().getSelectedItem(),NameOfPositionChange);
 	            popupwindow.close(); 
 	        });
 		VBox layout= new VBox(10);     
@@ -175,14 +195,15 @@ public class SupervisorUpdateRequestController implements Initializable
 		popupwindow.setScene(scene1);     
 		popupwindow.showAndWait();
     }
-    private void changeExecuter(String name,String Position) 
+    private void changeExecuter() 
     {
     	int id=(Integer.parseInt(requestID.getText()));
     	ArrayList<Object> arry=new ArrayList<Object>();
 		DBmessage dbm;
 		arry.add(id);
-		arry.add(name);
-		arry.add(Position);
+		arry.add(executerName.getText());
+		arry.add(testerName.getText());
+		arry.add(apprieserName.getText());
     	dbm=new DBmessage(MessageType.changeExecuter, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
@@ -225,4 +246,14 @@ public class SupervisorUpdateRequestController implements Initializable
 	{
 		this.list=arrayList;
 	}
+	
+
+    @FXML
+    void SaveChanges(MouseEvent event) {
+    	changeExecuter();
+    	
+    
+    	
+
+    }
 }

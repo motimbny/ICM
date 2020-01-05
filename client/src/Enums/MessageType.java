@@ -13,6 +13,7 @@ public enum MessageType
 		SearchReqUser,
 		SearchReqIT,
 		AddRequest,
+		addTimeEstimated,
 		showRequestDetailsUser,
 		superviserRequestShow,
 		suspendRequest,
@@ -28,6 +29,7 @@ public enum MessageType
 		showRequestDetailsSuperviser,
 		SupervisorTimeRequest, SupervisorListIt,superviserExtensionRequestAnswer,
 		MhomeRequestNum,
+		submitEvaluationReport,
 		MangerRequestShow, SearchReqManager
 
 }

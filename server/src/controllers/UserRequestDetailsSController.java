@@ -40,6 +40,9 @@ public class UserRequestDetailsSController {
 					StageName name=null;
 					switch(rs.getString(5))
 					{
+					case "supervisorApprovel":
+						name=StageName.supervisorApprovel;
+						break;
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
 						break;

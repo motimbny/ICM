@@ -12,10 +12,11 @@ import entity.DBmessage;
 import entity.ITemployee;
 import entity.extensionrequest;
 import entity.updateRequest;
+import javafx.scene.input.MouseEvent;
 
 public class SupervisorUpdateRequestSController 
 {
-
+		private int flag=0;
 	   private Connection connection;
 	   private ArrayList<Object> list;
 	    private DBmessage msg;
@@ -37,7 +38,15 @@ public class SupervisorUpdateRequestSController
 				stmt = connection.createStatement();
 				ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id='"+numReport+ "'");
 				if(rs.next()!=false)
+				{
 					up=new updateRequest(rs.getInt(1),rs.getString(4), rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11), rs.getInt(12),rs.getInt(13));
+					if(rs.getString(3).equals("supervisorApprovel")&&flag==1)
+					{
+						stmt.executeUpdate("UPDATE request SET currentStage='meaningAssessment' WHERE id="+numReport+"");
+						stmt.executeUpdate("UPDATE requeststages SET currentStage='meaningAssessment' WHERE id="+numReport+"");
+
+					}
+				}
 				toSend.add(up);
 				dbs=new DBSmessage(MessageTypeS.SupervisorUpdateRequest,toSend);
 					return dbs;
@@ -51,13 +60,20 @@ public class SupervisorUpdateRequestSController
 		public DBSmessage updatechangeExecuter() 
 		{
 			int num=(int) msg.getObjs().get(0);
-			String change=(String)msg.getObjs().get(1);
-			String position=(String)msg.getObjs().get(2);
+			String changeexecuter=(String)msg.getObjs().get(1);
+			String changetester=(String)msg.getObjs().get(2);
+			String changeapprieser=(String)msg.getObjs().get(3);
+
 			Statement stmt;
 			try 
 			{
 				stmt = connection.createStatement();
-				int rs = stmt.executeUpdate("UPDATE requeststages SET "+position+"='"+change+"' WHERE id="+num+"");
+				stmt.executeUpdate("UPDATE requeststages SET itPerformanceLeader='"+changeexecuter+"' WHERE id="+num+"");
+				stmt.executeUpdate("UPDATE requeststages SET itTester='"+changetester+"' WHERE id="+num+"");
+				stmt.executeUpdate("UPDATE requeststages SET itAppraiser='"+changeapprieser+"' WHERE id="+num+"");
+				flag=1;
+			
+				
 			} 
 			catch (SQLException e)
 			{

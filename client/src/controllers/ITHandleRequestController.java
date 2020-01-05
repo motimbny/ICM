@@ -113,6 +113,16 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	void SubmitTimeEstimateEvaluation(MouseEvent event) {
+	String time=timeEstimatedEvaluation.getText();
+	ArrayList<Object> arry = new ArrayList<Object>();
+	arry.add( MainAllControllers.request);
+	arry.add(Integer.parseInt(timeEstimatedEvaluation.getText()));
+	DBmessage dbm;
+	dbm = new DBmessage(MessageType.addTimeEstimated, arry); 
+	try {
+		MainAllControllers.sendToAbsServer(dbm); 
+	} catch (IOException e) {
+	}
 
 	}
 

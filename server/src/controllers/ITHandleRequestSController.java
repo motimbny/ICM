@@ -17,15 +17,19 @@ public class ITHandleRequestSController {
 	private String user;
 	private int reqId;
 	private Connection connection;
-
+	private DBmessage msg; 
 	public ITHandleRequestSController(DBmessage msg, Connection connection) {
-		ArrayList<Object> arry = msg.getObjs();
-		this.user = (String) arry.get(0);
-		this.reqId = (int) arry.get(1);
+	
 		this.connection = connection;
+		this.msg=msg;
+
 	}
 
 	public DBSmessage getITjob() {
+		
+		ArrayList<Object> arry = msg.getObjs();
+		this.user = (String) arry.get(0);
+		this.reqId = (int) arry.get(1);
 		Statement stmt;
 		DBSmessage dbs;
 		ArrayList<Object> toSend = new ArrayList<Object>();
@@ -54,5 +58,24 @@ public class ITHandleRequestSController {
 		}
 		return null;
 
+	}
+
+	public Object addTimeEstimated() {
+		int id=(int) msg.getObjs().get(0) ;
+		int timeEstimatedEvaluation=(int)msg.getObjs().get(1);
+		Statement stmt;
+		try 
+		{
+			stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
+		} 
+		
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+		
+		
 	}
 }

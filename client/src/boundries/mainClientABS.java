@@ -3,6 +3,8 @@ package boundries;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter.DEFAULT;
+
 import Enums.Position;
 import controllers.MainAllControllers;
 import entity.DBSmessage;
@@ -193,6 +195,8 @@ public class mainClientABS extends AbstractClient
 			     MainAllControllers.showManSPReq(send);
 			}
 			break;
+			
+			
 			case ShowEmployeeList:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -241,7 +245,10 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.showSuperviserExtensionRequest(send);
 			}
 			break;
+			default:
+				break;
 			}
+			
 			
 		 this.connectionClosed();		 
 	}
@@ -262,6 +269,7 @@ public class mainClientABS extends AbstractClient
 	    catch(IOException e)
 	    {
 	    }
+	  
 	 }
     
 

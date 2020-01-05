@@ -110,6 +110,7 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     	}
     	else
     	{
+    		//ма воеш
     		fillAllFields.setVisible(false);
     		ArrayList<Object> arry=new ArrayList<Object>();
     		arry.add(requestID.getText());
@@ -118,6 +119,12 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     		arry.add(descriptionOfChangeRequired.getText());
     		arry.add(resultOfChange.getText());
     		arry.add(constraintsAndRisks.getText());
+    		DBmessage dbm;
+			dbm = new DBmessage(MessageType.submitEvaluationReport, arry); 
+			try {
+				MainAllControllers.sendToAbsServer(dbm);
+			} catch (IOException e) {
+			}
     		
     	}
 

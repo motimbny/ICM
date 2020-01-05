@@ -113,6 +113,7 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			
 			case ITgetReqStage: {
 				ITExtensionRequestSController itExtensionRequestSController = new ITExtensionRequestSController(dbm,
 						connection);
@@ -211,6 +212,15 @@ public class mainServerABS extends AbstractServer {
 				} catch (IOException e) {
 				}
 	
+				break;
+			}
+			case submitEvaluationReport: {
+				ITMeaningAssessmentEvaluationReportSController ITMeaningAssessmentEvaluationReportSController = new ITMeaningAssessmentEvaluationReportSController(dbm, connection);
+				try {
+					System.out.println("lalala");
+					client.sendToClient(ITMeaningAssessmentEvaluationReportSController.submitEvaluationReport());
+				} catch (IOException e) {
+				}
 				break;
 			}
 			case superviserRequestShow: {
@@ -327,6 +337,17 @@ public class mainServerABS extends AbstractServer {
 					connection);
 			try {
 				client.sendToClient(itExtensionRequestSController.submitRequest());
+			} catch (IOException e) {
+			}
+			break;
+		}
+		
+		case addTimeEstimated: {
+			ITHandleRequestSController ITHandleRequestController = new ITHandleRequestSController(dbm,
+					connection);
+			try {
+				
+				client.sendToClient(ITHandleRequestController.addTimeEstimated());
 			} catch (IOException e) {
 			}
 			break;

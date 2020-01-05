@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Random;
 
 import Enums.MessageTypeS;
 import Enums.StageName;
@@ -21,6 +22,7 @@ public class UserSAddRequestController
 	private Request request;
 	private Connection connection;
 	private ServerFile sf;
+	private ArrayList<Object> listOfIT;
 	public UserSAddRequestController(DBmessage dbm,Connection connection)
 	{
 		int addDoc=0;
@@ -33,34 +35,56 @@ public class UserSAddRequestController
 		addDoc=1;
 		saveFileToServerFolder();
 		}
-		request=new Request((String)arry.get(0),"pending",StageName.meaningAssessment,(String)arry.get(1), (String)arry.get(2),
+		request=new Request((String)arry.get(0),"pending",StageName.supervisorApprovel,(String)arry.get(1), (String)arry.get(2),
 				             (String)arry.get(3), (String)arry.get(4), (String)arry.get(5), (String)arry.get(6) ,
 				             java.time.LocalDate.now().toString(),addDoc);	
+		SupervisorUpdateRequestSController getListOfIT=new SupervisorUpdateRequestSController(dbm,connection);
+		listOfIT=getListOfIT.getListOfIT().getObjs();
 	}
 	public DBSmessage submitRequest()
 	{
-	   PreparedStatement ps;
+	   PreparedStatement req;
+	   PreparedStatement requeststages;
 	   DBSmessage dbs;
+	  Random rand = new Random();
+	    
 	   boolean flag=false;
    	   ArrayList<Object> arry=new ArrayList<Object>();
  		try 
  		  {
- 			ps = connection.prepareStatement("INSERT INTO request VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
- 			ps.setInt(1, request.getId());
- 			ps.setString(2, request.getInfoSystem());
- 			ps.setString(3, request.getCurrentStatus());
- 			ps.setString(4, request.getCurrentStage().toString());
- 			ps.setString(5, request.getDesExtSit());
- 			ps.setString(6, request.getWantedChange());
- 			ps.setString(7, request.getReasonForRequest());
- 			ps.setString(8, request.getComments());
- 			ps.setInt(9, request.getAddDocuments());
- 			ps.setString(10, request.getUserSubFullName());
- 			ps.setString(11, request.getUserSubposition());                          
- 			ps.setString(12, request.getUserSubemail());
- 			ps.setString(13, request.getReqDate());
- 			ps.executeUpdate();	
- 			ps.close();
+ 			req = connection.prepareStatement("INSERT INTO request VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+ 			req.setInt(1, request.getId());
+ 			req.setString(2, request.getInfoSystem());
+ 			req.setString(3, request.getCurrentStatus());
+ 			req.setString(4, request.getCurrentStage().toString());
+ 			req.setString(5, request.getDesExtSit());
+ 			req.setString(6, request.getWantedChange());
+ 			req.setString(7, request.getReasonForRequest());
+ 			req.setString(8, request.getComments());
+ 			req.setInt(9, request.getAddDocuments());
+ 			req.setString(10, request.getUserSubFullName());
+ 			req.setString(11, request.getUserSubposition());                          
+ 			req.setString(12, request.getUserSubemail());
+ 			req.setString(13, request.getReqDate());
+ 			req.executeUpdate();	
+ 			req.close();
+ 			requeststages = connection.prepareStatement("INSERT INTO requeststages VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
+ 			requeststages.setInt(1, request.getId());
+ 			requeststages.setString(2, request.getCurrentStatus());
+ 			requeststages.setString(3,request.getCurrentStage().toString() );
+ 			requeststages.setString(4,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setString(5,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setString(6, listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setString(7, listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setString(8,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setString(9, listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setInt(10, 0);
+ 			requeststages.setInt(11,0);                          
+ 			requeststages.setInt(12, 0);
+ 			requeststages.setInt(13, 0);
+ 			requeststages.executeUpdate();	
+ 			requeststages.close();
+ 			
  		  }
  		 catch (SQLException e) 
  		     {
