@@ -133,7 +133,7 @@
             </Label>
 
             <Label fx:id="stagenotmatch" blendMode="RED" layoutX="408.0" layoutY="524.0" prefHeight="46.0" prefWidth="202.0" text="cannot update employees at this stage" textAlignment="CENTER" visible="false" wrapText="true" />
-
+</Label>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
