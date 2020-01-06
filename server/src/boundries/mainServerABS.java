@@ -45,7 +45,6 @@ public class mainServerABS extends AbstractServer {
 		this.connection = connection;
 		IsDBConnected = true;
 	}
-//jj
 	@Override
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 
@@ -491,6 +490,14 @@ public class mainServerABS extends AbstractServer {
 			}
 
 			break;
+		}
+		case SwitchPositions:
+		{
+			ShowEmployeeListController ShowEmployeeListController = new ShowEmployeeListController(dbm, connection);
+			try {
+				client.sendToClient(ShowEmployeeListController.SwitceEmployee());
+			} catch (IOException e) {
+			}
 		}
 		default:
 			break;

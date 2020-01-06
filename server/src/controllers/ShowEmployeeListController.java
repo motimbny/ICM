@@ -16,15 +16,19 @@ import entity.RequestUser;
 public class ShowEmployeeListController 
 {
 	private Connection connection;
-	public ShowEmployeeListController(DBmessage msg,Connection connection)
+	private DBmessage db;
+	private ArrayList<Object> toSend;
+	public ShowEmployeeListController(DBmessage db,Connection connection)
 	{
+		this.db=db;
 		this.connection=connection;
+		toSend= new ArrayList<Object>();
 	}
 	public DBSmessage showEmployee()
 	{
+		
 		Statement stmt;
 		DBSmessage dbs;
-		ArrayList<Object> toSend= new ArrayList<Object>();
 		try 
 		{
 			stmt = connection.createStatement();
@@ -35,6 +39,7 @@ public class ShowEmployeeListController
 					toSend.add(toAdd);
 				}
 				dbs=new DBSmessage(MessageTypeS.ShowEmployeeList,toSend);
+				System.out.println(toSend.get(0));
 				return dbs;
 		} 
 		catch (SQLException e)
@@ -42,6 +47,22 @@ public class ShowEmployeeListController
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public DBSmessage SwitceEmployee()
+	{
+		Statement stmt;
+		String nameIT=(String) db.getObjs().get(0);
+		String pos=(String) db.getObjs().get(1);	
+		try {
+			stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE user SET position='"+pos+"' WHERE userName='"+nameIT+"'");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		toSend.add(1);
+		System.out.println(toSend.size());
+		return showEmployee();
 	}
 	
 }

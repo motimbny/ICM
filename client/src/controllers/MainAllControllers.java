@@ -188,7 +188,13 @@ public class MainAllControllers
 	}
 	public void showManagerEmployeeList(ArrayList<Object> list)
 	{
-		((ITManagerEmployeesManagmentController) WindowToShow.controller).setTextInTable(list);
+        if(list.get(0) instanceof Integer)
+        {
+            ((ITManagerEmployeesManagmentController) WindowToShow.controller).setVisable();
+             list.remove(0);
+        }
+        ((ITManagerEmployeesManagmentController) WindowToShow.controller).setTextInTable(list);
+
 	}
 	public void showSuperviserRequestList(ArrayList<Object> list)
 	{

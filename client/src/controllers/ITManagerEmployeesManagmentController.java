@@ -13,6 +13,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -49,6 +51,10 @@ public class ITManagerEmployeesManagmentController implements Initializable
 
     @FXML
     private Button logoutBTN;
+    @FXML
+    private Button changePos;
+    @FXML
+    private ChoiceBox<String> combo;
 
     @FXML
     private TableView<ITemployee> EmployeesTable;
@@ -67,7 +73,8 @@ public class ITManagerEmployeesManagmentController implements Initializable
 
     @FXML
     private TableColumn<ITemployee, Integer> numOfProjects;
-    
+    @FXML
+    private Label submitChnage;
     @FXML
     void goEmployeesMang(MouseEvent event) throws IOException 
 	{
@@ -138,11 +145,30 @@ public class ITManagerEmployeesManagmentController implements Initializable
     	MainAllControllers.setWindowVar("ITManagerMessages");
     	MainAllControllers.changeWin();
 	}
-
-
+    @FXML
+    void changep(MouseEvent event) 
+    {
+    	ArrayList<Object> arry=new ArrayList<Object>();
+		DBmessage dbm;
+		String nameIT=EmployeesTable.getItems().get(EmployeesTable.getSelectionModel().getSelectedIndex()).getEmployeeName();
+		String pos=combo.getValue();
+		arry.add(nameIT);
+		arry.add(pos);
+    	dbm=new DBmessage(MessageType.SwitchPositions, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+    }
+     public void setVisable()
+     {
+    	 submitChnage.setVisible(true);
+     }
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
 	{
+		combo.getItems().add("superviser");
+		combo.getItems().add("CEO");
+		combo.getItems().add("CC");
 		employeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
 		employeeName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
 		employeeLastName.setCellValueFactory(new PropertyValueFactory<>("employeeLastName"));

@@ -10,7 +10,6 @@ import Enums.MessageTypeS;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Messages;
-import entity.requestSuper;
 
 public class MessagesShowController
 {
@@ -52,8 +51,6 @@ public class MessagesShowController
 		String towho=(String) db.getObjs().get(0);
 		String senyby=(String) db.getObjs().get(1);
 		String subject=(String) db.getObjs().get(2);
-		System.out.println(towho+" "+senyby+" "+subject);
-		ArrayList<Object> toSend= new ArrayList<Object>();
 		try 
 		{
 			stmt = connection.createStatement();
