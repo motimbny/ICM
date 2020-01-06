@@ -132,11 +132,11 @@ public class ITManagerShowRequestsController implements Initializable
 
    
     @FXML
-    void gogenerateReport(MouseEvent event) 
-    {
-
-    }
-
+    void gogenerateReport(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITManagerReports");
+    	MainAllControllers.changeWin();
+	}
     @FXML
     void logoutPage(MouseEvent event)throws IOException 
 	{

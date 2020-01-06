@@ -13,6 +13,7 @@ import controllers.ITManagerHelpController;
 import controllers.ITManagerHomeController;
 import controllers.ITManagerMessagesController;
 import controllers.ITManagerPersonalInfoController;
+import controllers.ITManagerReportsController;
 import controllers.ITManagerShowRequestsController;
 import controllers.ITMeaningAssessmentEvaluationReportController;
 import controllers.ITPersonalInfoController;
@@ -138,7 +139,9 @@ public class WindowToShow
 		case "ITManagerMessages":
 			initITManagerMessages();
 			break;
-			
+		case "ITManagerReports":
+			initITManagerReports();
+			break;
 		}
 	}
 
@@ -352,6 +355,12 @@ public class WindowToShow
 		ITManagerHelpController controller = new ITManagerHelpController();
 		pathfxml = "/Fxml/ITManagerHelp.fxml";
 		windowName = "ICM-ITManagerHelp";
+		
+	}
+	private void initITManagerReports() {
+		ITManagerReportsController controller = new ITManagerReportsController();
+		pathfxml = "/Fxml/ITManagerReports.fxml";
+		windowName = "ICM-ITManagerReports";
 		
 	}
 }

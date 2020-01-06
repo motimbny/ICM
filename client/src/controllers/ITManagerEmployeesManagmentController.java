@@ -126,9 +126,11 @@ public class ITManagerEmployeesManagmentController implements Initializable
     	EmployeesTable.setItems(rows);		
 	}
     @FXML
-    void gogenerateReport(MouseEvent event) {
-
-    }
+    void gogenerateReport(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITManagerReports");
+    	MainAllControllers.changeWin();
+	}
 
     @FXML
     void messagePage(MouseEvent event) throws IOException 
