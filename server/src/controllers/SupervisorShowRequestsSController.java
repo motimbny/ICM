@@ -25,11 +25,6 @@ public class SupervisorShowRequestsSController
 		this.connection=connection;
 	}
 	
-	
-	
-	
-	
-	
 	public DBSmessage showSPRequest()
 	{
 		Statement stmt;

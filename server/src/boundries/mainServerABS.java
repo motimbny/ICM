@@ -11,6 +11,7 @@ import controllers.ITMeaningAssessmentEvaluationReportSController;
 import controllers.ITRequestDetailsSController;
 import controllers.ITShowRequestsSController;
 import controllers.ITTestFailurReportSController;
+import controllers.MessagesShowController;
 import controllers.ShowEmployeeListController;
 import controllers.SupervisorShowRequestsSController;
 import controllers.SupervisorUpdateRequestSController;
@@ -269,6 +270,15 @@ public class mainServerABS extends AbstractServer {
 	
 				break;
 			}
+			case MangerShowMessages:
+				{
+					MessagesShowController MessagesShowController = new MessagesShowController(dbm,connection);
+					try {
+						client.sendToClient(MessagesShowController.MgetMessagesToShow());
+						} catch (IOException e) {
+							}
+							break;
+						}
 			case changeExecuter: {
 	
 				SupervisorUpdateRequestSController supervisorUpdateRequestController = new SupervisorUpdateRequestSController(

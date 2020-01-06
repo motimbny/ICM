@@ -33,6 +33,6 @@ public enum MessageType
 		MhomeRequestNum,
 		submitEvaluationReport,
 		renewRequest,
-		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo
+		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo ,MangerShowMessages
 
 }
