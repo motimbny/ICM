@@ -59,6 +59,7 @@ public class ITRequestDetailsSController
 					toSendA.add(tosend);
 				}
 				dbs=new DBSmessage(MessageTypeS.showRequestDetailsIT,toSendA);
+				rs.close();
 				return dbs;
 		} 
 		catch (SQLException e)

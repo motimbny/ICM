@@ -82,7 +82,6 @@ public class ITCCCEvaluationReportController implements Initializable
     	dbm=new DBmessage(MessageType.approveEvaluationReport, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
-
         	MainAllControllers.setWindowVar("ITshowRequests");
         	MainAllControllers.changeWin();
 		} catch (IOException e) {}
@@ -90,7 +89,15 @@ public class ITCCCEvaluationReportController implements Initializable
 
     @FXML
     void denyEvaluationReport(MouseEvent event) {
-
+    	ArrayList<Object> arry=new ArrayList<Object>();
+    	arry.add(MainAllControllers.request);//request id
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.denyEvaluationReport, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+        	MainAllControllers.setWindowVar("ITshowRequests");
+        	MainAllControllers.changeWin();
+		} catch (IOException e) {}
     }
 
 	@FXML

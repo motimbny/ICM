@@ -72,5 +72,24 @@ public class ITCCCEvaluationReportSController {
 		return null;
 		
 		}
+
+	public Object denyEvaluationReport() {
+		int numReport=idReq;
+		Statement stmt;
+		DBSmessage dbs;
+		updateRequest up = null;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();	
+			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id="+numReport+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id="+numReport+"");
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}	
+		return null;
+	}
 	
 }

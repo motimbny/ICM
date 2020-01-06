@@ -117,11 +117,36 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
-			
+			case denyEvaluationReport: {
+				ITCCCEvaluationReportSController ITCCCEvaluationReportSController = new ITCCCEvaluationReportSController(dbm, connection);
+				try {
+					client.sendToClient(ITCCCEvaluationReportSController.denyEvaluationReport());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			case ITchangeCompleted:
+			{
+				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm, connection);
+				try {
+					client.sendToClient(itHandleRequestSController.saveChangeCompleted());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			case ITTestApproval:
+			{
+				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm, connection);
+				try {
+					client.sendToClient(itHandleRequestSController.saveTestApproval());
+				} catch (IOException e) {
+				}
+				break;
+			}
 			case ITsubmitRequireMoreInfo: {
 				ITCCCRequestMoreInfoSController ITCCCRequestMoreInfoSController = new ITCCCRequestMoreInfoSController(dbm, connection);
 				try {
-					client.sendToClient(ITCCCRequestMoreInfoSController.submitApproveEvaluationReport());
+					client.sendToClient(ITCCCRequestMoreInfoSController.submitEvaluationReport());
 				} catch (IOException e) {
 				}
 				break;
@@ -198,6 +223,15 @@ public class mainServerABS extends AbstractServer {
 	
 				break;
 			}
+			case ITShowEmployeeList: {
+				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm, connection);
+				try {
+					client.sendToClient(itHandleRequestSController.getListOfIT());
+				} catch (IOException e) {
+				}
+	
+				break;
+			}
 			case AddRequest: {
 				UserSAddRequestController UserSAddRequestController = new UserSAddRequestController(dbm, connection);
 				try {
@@ -239,6 +273,16 @@ public class mainServerABS extends AbstractServer {
 				ITMeaningAssessmentEvaluationReportSController ITMeaningAssessmentEvaluationReportSController = new ITMeaningAssessmentEvaluationReportSController(dbm, connection);
 				try {
 					client.sendToClient(ITMeaningAssessmentEvaluationReportSController.submitEvaluationReport());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			case ITSaveTester:
+			{
+				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm,
+						connection);
+				try {
+					client.sendToClient(itHandleRequestSController.saveTester());
 				} catch (IOException e) {
 				}
 				break;

@@ -67,8 +67,8 @@ public class ITExtensionRequestSController {
  			ps.setInt(1, this.reqId);
  			ps.setString(2, this.stage);
  			ps.setString(3, this.user);
- 			ps.setInt(4, this.timeToAdd);
- 			ps.setString(5, this.reason);
+ 			ps.setString(4, this.reason);
+ 			ps.setInt(5, this.timeToAdd);
  			ps.executeUpdate();	
  			ps.close();
  			arry.add(1);

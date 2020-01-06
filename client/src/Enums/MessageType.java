@@ -35,7 +35,8 @@ public enum MessageType
 		renewRequest,
 		MangerShowMessages,
 		MangerUpdateMessages,
-		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo, addTimeEstimatedPerformance, showRequestDetailsITManager
-
-
+		showRequestDetailsITManager,
+		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo,
+		addTimeEstimatedPerformance, ITchangeCompleted, 
+		ITTestApproval, denyEvaluationReport, ITShowEmployeeList, ITSaveTester
 }

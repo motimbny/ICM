@@ -3,24 +3,36 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import Enums.Position;
 import entity.DBmessage;
 import entity.Request;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class ITHandleRequestController implements Initializable {
 	private MainAllControllers MainAllControllers;
-
+	private ArrayList<Object> list;
 	public ITHandleRequestController() {
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
@@ -87,10 +99,70 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	private Pane examinationAndDecisionStage;
-	
+
+    @FXML
+    private Button AppointmentTesterBTN;
+
     @FXML
     private Label timeWasSubmitted;
-
+    
+    @FXML
+    void AppointmentTester(MouseEvent event) throws IOException {
+    	listOfIt();
+    	showListOfIT("itTester");
+    }
+    private void showListOfIT(String NameOfPositionChange)
+    {
+    	Stage popupwindow=new Stage();   
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("List of IT");      
+		Label label1= new Label("Please choose "+NameOfPositionChange+":"); 
+		label1.setFont(new Font("Arial", 16));
+		TableView<String> EmployeesTable=new TableView<>();
+		TableColumn<String, String> employeeName = new TableColumn<>();
+		EmployeesTable.getColumns().addAll(employeeName);
+		Collection<String> rows = new ArrayList<>();
+		employeeName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
+		while(list==null) {}
+	    for(Object r:list)
+	    	rows.add(r.toString());
+        ObservableList<String> details = FXCollections.observableArrayList(rows);
+	    EmployeesTable.setItems(details);
+	    EmployeesTable.setOnMouseClicked((MouseEvent ev ) ->
+	    	{	DBmessage dbm;
+	    		ArrayList<Object> arry=new ArrayList<Object>();
+			    arry.add(MainAllControllers.request);
+			    arry.add(EmployeesTable.getSelectionModel().getSelectedItem());
+		    	dbm=new DBmessage(MessageType.ITSaveTester, arry);   
+		    	try {
+		    		MainAllControllers.sendToAbsServer(dbm);
+				} catch (IOException e) {}
+	            popupwindow.close(); 
+	        });
+		VBox layout= new VBox(10);     
+		layout.getStylesheets().add("CSS/it.css");
+		layout.getChildren().addAll(label1,EmployeesTable);
+		layout.setAlignment(Pos.CENTER); 
+		Scene scene1= new Scene(layout, 350, 250);     
+		popupwindow.setScene(scene1);     
+		popupwindow.showAndWait();
+    }
+	public void listOfIt()
+	{
+		DBmessage dbm;
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+    	dbm=new DBmessage(MessageType.ITShowEmployeeList, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+	}
+	
+	public void setListOfIT(ArrayList<Object> arrayList)
+	{
+		this.list=arrayList;
+	}
+    
 	@FXML
 	void CreateEvaluationReport(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITMeaningAssessmentEvaluationReport");
@@ -148,7 +220,15 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	void TestApproval(MouseEvent event) {
-
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		DBmessage dbm;
+		dbm=new DBmessage(MessageType.ITTestApproval, arry); 
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+	    	MainAllControllers.setWindowVar("ITshowRequests");
+	    	MainAllControllers.changeWin();
+		} catch (IOException e) {}
 	}
 
 	@FXML
@@ -159,7 +239,15 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	void changeCompleted(MouseEvent event) {
-
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		DBmessage dbm;
+		dbm=new DBmessage(MessageType.ITchangeCompleted, arry); 
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+	    	MainAllControllers.setWindowVar("ITshowRequests");
+	    	MainAllControllers.changeWin();
+		} catch (IOException e) {}
 	}
 
 	@FXML
@@ -219,6 +307,10 @@ public class ITHandleRequestController implements Initializable {
 			break;
 		case "ControlCommitte":
 			examinationAndDecisionStage.setVisible(true);
+			break;
+		case "CEOControlCommitte":
+			examinationAndDecisionStage.setVisible(true);
+			AppointmentTesterBTN.setVisible(true);
 			break;
 		case "PerformanceLeader":
 			PerformanceStage.setVisible(true);

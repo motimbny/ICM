@@ -189,7 +189,6 @@ public class MainAllControllers
 	public void showManagerEmployeeList(ArrayList<Object> list)
 	{
 		((ITManagerEmployeesManagmentController) WindowToShow.controller).setTextInTable(list);
-		
 	}
 	public void showSuperviserRequestList(ArrayList<Object> list)
 	{
@@ -208,6 +207,14 @@ public class MainAllControllers
 	public void getListOfIT(ArrayList<Object> arrayList) 
 	{
 		((SupervisorUpdateRequestController) WindowToShow.controller).setListOfIT(arrayList);
+	}
+	public void getListOfITCEO(ArrayList<Object> arrayList) 
+	{
+		((ITHandleRequestController) WindowToShow.controller).setListOfIT(arrayList);
+	}
+	public void saveTesterSuccssesful(ArrayList<Object> arrayList) 
+	{
+		((ITHandleRequestController) WindowToShow.controller).setOnSucsess();
 	}
 	public void showITEvaluationReport(ArrayList<Object> arrayList) {
 		((ITCCCEvaluationReportController) WindowToShow.controller).setTextInFields((Evluationreport) arrayList.get(0));

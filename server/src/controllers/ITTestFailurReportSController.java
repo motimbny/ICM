@@ -30,6 +30,7 @@ public class ITTestFailurReportSController {
 	public DBSmessage submitFailurReport() {
 		PreparedStatement ps;
 		DBSmessage dbs;
+		Statement stmt;
 		ArrayList<Object> arr = new ArrayList<Object>();
 		try {
 			ps = connection.prepareStatement("INSERT INTO failurreport VALUES(?,?,?)");
@@ -38,6 +39,9 @@ public class ITTestFailurReportSController {
 			ps.setString(3, this.summry);
 			ps.executeUpdate();
 			ps.close();
+			stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE request SET currentStage='execution' WHERE id="+this.idReq+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='execution' WHERE id="+this.idReq+"");
 		} catch (SQLException e) {}
 		arr.add(1);
 		dbs = new DBSmessage(MessageTypeS.ITFailurReport, arr);

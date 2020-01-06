@@ -222,6 +222,18 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.showManagerEmployeeList(send);
 			}
 			break;
+			case ITShowEmployeeList:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.getListOfITCEO(((ArrayList<Object>)send));
+			}
+			break;
+			case ITSaveTester:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.saveTesterSuccssesful(((ArrayList<Object>)send));
+			}
+			break;
 			case superviserRequestShow:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

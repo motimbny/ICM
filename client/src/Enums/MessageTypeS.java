@@ -35,6 +35,7 @@ public enum MessageTypeS
 	SupervisorListIt,superviserExtensionRequestAnswer,
 	MhomeRequestNum,
 	MangerRequestShow,SearchReqManager,renewRequest,MangerShowMessages,MangerUpdateMessages,
-	ITsubmitRequireMoreInfo, addTimeEstimatedPerformance, showRequestDetailsITManager
+	ITsubmitRequireMoreInfo, addTimeEstimatedPerformance, showRequestDetailsITManager,
+	ITShowEmployeeList, ITSaveTester
 
 }
