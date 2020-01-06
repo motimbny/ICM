@@ -64,6 +64,15 @@ public class ITCCCEvaluationReportController implements Initializable
 
     @FXML
     private TextField requestID;
+    
+    @FXML
+    private Button BackToShow;
+
+    @FXML
+    void BackToS(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHandleRequest");
+		MainAllControllers.changeWin();
+    }
 
     @FXML
     void approveEvaluationReport(MouseEvent event) {
@@ -77,7 +86,6 @@ public class ITCCCEvaluationReportController implements Initializable
         	MainAllControllers.setWindowVar("ITshowRequests");
         	MainAllControllers.changeWin();
 		} catch (IOException e) {}
-//jj
     }
 
     @FXML

@@ -64,6 +64,16 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 
     @FXML
     private Label fillAllFields;
+    
+    @FXML
+    private Button BackToShow;
+
+    @FXML
+    void BackToS(MouseEvent event) throws IOException 
+    {
+		MainAllControllers.setWindowVar("ITHandleRequest");
+		MainAllControllers.changeWin();
+    }
 
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 

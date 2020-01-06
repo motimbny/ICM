@@ -61,6 +61,8 @@ public class ITHandleRequestSController {
 	}
 
 	public Object addTimeEstimated() {
+		ArrayList<Object> arry=new ArrayList<Object>();
+		DBSmessage dbs;
 		int id=(int) msg.getObjs().get(0) ;
 		int timeEstimatedEvaluation=(int)msg.getObjs().get(1);
 		Statement stmt;
@@ -68,14 +70,35 @@ public class ITHandleRequestSController {
 		{
 			stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
+			arry.add(1);
 		} 
 		
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
-		return null;
+    	dbs=new DBSmessage(MessageTypeS.addTimeEstimated, arry);
+		return dbs;	
+	}
+	
+	public Object addTimeEstimatedPerformance() {
+		ArrayList<Object> arry=new ArrayList<Object>();
+		DBSmessage dbs;
+		int id=(int) msg.getObjs().get(0) ;
+		int timeEstimatedPerform=(int)msg.getObjs().get(1);
+		Statement stmt;
+		try 
+		{
+			stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE requeststages SET timePerform="+timeEstimatedPerform+" WHERE id="+id+"");
+			arry.add(1);
+		} 
 		
-		
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+    	dbs=new DBSmessage(MessageTypeS.addTimeEstimatedPerformance, arry);
+		return dbs;	
 	}
 }

@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 
 import controllers.ITCCCEvaluationReportSController;
-
+import controllers.ITCCCRequestMoreInfoSController;
 import controllers.ITExtensionRequestSController;
 import controllers.ITHandleRequestSController;
 import controllers.ITMeaningAssessmentEvaluationReportSController;
@@ -117,14 +117,14 @@ public class mainServerABS extends AbstractServer {
 				break;
 			}
 			
-	/*		case submitRequireMoreInfo: {
+			case ITsubmitRequireMoreInfo: {
 				ITCCCRequestMoreInfoSController ITCCCRequestMoreInfoSController = new ITCCCRequestMoreInfoSController(dbm, connection);
 				try {
-					client.sendToClient(ITCCCRequestMoreInfoSController.approveEvaluationReport());
+					client.sendToClient(ITCCCRequestMoreInfoSController.submitApproveEvaluationReport());
 				} catch (IOException e) {
 				}
 				break;
-			}*/
+			}
 			case ITjobInReq: {
 				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm, connection);
 				try {
@@ -376,6 +376,16 @@ public class mainServerABS extends AbstractServer {
 			try {
 				
 				client.sendToClient(ITHandleRequestController.addTimeEstimated());
+			} catch (IOException e) {
+			}
+			break;
+		}
+		case addTimeEstimatedPerformance: {
+			ITHandleRequestSController ITHandleRequestController = new ITHandleRequestSController(dbm,
+					connection);
+			try {
+				
+				client.sendToClient(ITHandleRequestController.addTimeEstimatedPerformance());
 			} catch (IOException e) {
 			}
 			break;

@@ -58,6 +58,9 @@ public class ITTestFailurReportController implements Initializable
     private Button BackToShow;
 
     @FXML
+    private TextField date;
+    
+    @FXML
     void BackToS(MouseEvent event) throws IOException 
     {
 		MainAllControllers.setWindowVar("ITHandleRequest");
@@ -111,6 +114,7 @@ public class ITTestFailurReportController implements Initializable
     		fillAllFields.setVisible(false);
         	ArrayList<Object> arr=new ArrayList<Object>();
         	arr.add(ReqID.getText());
+        	arr.add(date.getText());
         	arr.add(ReportSummry.getText());
         	DBmessage dbm=new DBmessage(MessageType.ITFailurReport, arr);
         	try {
@@ -131,5 +135,7 @@ public class ITTestFailurReportController implements Initializable
 		int s=MainAllControllers.request;
 		arry.add(s);//request id
 		ReqID.setText(""+s);
+		LocalDate myObj = LocalDate.now();
+		date.setText("" + myObj);
 	}
 }

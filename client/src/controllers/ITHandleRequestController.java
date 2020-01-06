@@ -12,6 +12,7 @@ import entity.Request;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -86,6 +87,9 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	private Pane examinationAndDecisionStage;
+	
+    @FXML
+    private Label timeWasSubmitted;
 
 	@FXML
 	void CreateEvaluationReport(MouseEvent event) throws IOException {
@@ -121,14 +125,25 @@ public class ITHandleRequestController implements Initializable {
 	dbm = new DBmessage(MessageType.addTimeEstimated, arry); 
 	try {
 		MainAllControllers.sendToAbsServer(dbm); 
-	} catch (IOException e) {
+	} catch (IOException e) {}
 	}
-
-	}
+	
+    public void setOnSucsess()
+    {	
+    	timeWasSubmitted.setVisible(true);
+    }
 
 	@FXML
 	void SubmitTimeEstimatePerformance(MouseEvent event) {
-
+		String time=timeEstimatedPerformance.getText();
+		ArrayList<Object> arry = new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		arry.add(Integer.parseInt(timeEstimatedPerformance.getText()));
+		DBmessage dbm;
+		dbm = new DBmessage(MessageType.addTimeEstimatedPerformance, arry); 
+		try {
+			MainAllControllers.sendToAbsServer(dbm); 
+		} catch (IOException e) {}
 	}
 
 	@FXML

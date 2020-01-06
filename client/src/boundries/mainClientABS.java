@@ -146,7 +146,13 @@ public class mainClientABS extends AbstractClient
 			case ITFailurReport:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-				MainAllControllers.getITReqStage(send);
+				MainAllControllers.submitFailurReport(send);
+			}
+			break;
+			case ITsubmitRequireMoreInfo:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.submitRequireMoreInfo(send);
 			}
 			break;
 			case getListOfIT:
@@ -197,6 +203,19 @@ public class mainClientABS extends AbstractClient
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 			  MainAllControllers.submitEvaluationReport(send);
 			}
+			break;
+			case addTimeEstimated:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.submitEvaluationTime(send);
+			}
+			break;
+			case addTimeEstimatedPerformance:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.submitEvaluationTime(send);
+			}
+			break;
 			case ShowEmployeeList:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

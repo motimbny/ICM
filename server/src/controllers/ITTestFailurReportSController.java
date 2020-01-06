@@ -16,12 +16,14 @@ public class ITTestFailurReportSController {
 
 	private int idReq;
 	private String summry;
+	private String date;
 	private Connection connection;
 
 	public ITTestFailurReportSController(DBmessage msg, Connection connection) {
 		ArrayList<Object> arry = msg.getObjs();
-		this.idReq = (int) arry.get(0);
-		this.summry = (String) arry.get(1);
+		this.idReq = Integer.parseInt((String)msg.getObjs().get(0));
+		this.date=(String) arry.get(1);
+		this.summry = (String) arry.get(2);
 		this.connection = connection;
 	}
 
@@ -30,9 +32,10 @@ public class ITTestFailurReportSController {
 		DBSmessage dbs;
 		ArrayList<Object> arr = new ArrayList<Object>();
 		try {
-			ps = connection.prepareStatement("INSERT INTO failurreport VALUES(?,?)");
+			ps = connection.prepareStatement("INSERT INTO failurreport VALUES(?,?,?)");
 			ps.setInt(1, this.idReq);
-			ps.setString(2, this.summry);
+			ps.setString(2, this.date);
+			ps.setString(3, this.summry);
 			ps.executeUpdate();
 			ps.close();
 		} catch (SQLException e) {}

@@ -91,8 +91,16 @@
                   <Font size="12.0" />
                </font>
             </Button>
-            <Label fx:id="requestWasSubmitted" layoutX="511.0" layoutY="496.0" prefHeight="17.0" prefWidth="123.0" style="-fx-text-fill: green;" text="request was submitted" visible="false" />
-            <Label fx:id="fillAllFields" layoutX="539.0" layoutY="496.0" prefHeight="17.0" prefWidth="75.0" style="-fx-text-fill: Red;" text="fill all fields" visible="false" />
+            <Label fx:id="requestWasSubmitted" layoutX="538.0" layoutY="496.0" prefHeight="17.0" prefWidth="75.0" style="-fx-text-fill: green;" text="submitted!" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="fillAllFields" layoutX="536.0" layoutY="496.0" prefHeight="17.0" prefWidth="75.0" style="-fx-text-fill: Red;" text="fill all fields" visible="false">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

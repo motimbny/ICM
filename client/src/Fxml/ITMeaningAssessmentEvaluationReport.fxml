@@ -88,6 +88,11 @@
             </Label>
             <Label fx:id="requestWasSubmitted" layoutX="489.0" layoutY="543.0" prefHeight="17.0" prefWidth="123.0" style="-fx-text-fill: green;" text="request was submitted" visible="false" />
             <Label fx:id="fillAllFields" layoutX="520.0" layoutY="543.0" prefHeight="17.0" prefWidth="75.0" style="-fx-text-fill: Red;" text="fill all fields" visible="false" />
+            <Button fx:id="BackToShow" layoutX="75.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="27.0" prefWidth="75.0" styleClass="buttonBlackBorder" text="Back">
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

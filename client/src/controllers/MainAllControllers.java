@@ -139,6 +139,10 @@ public class MainAllControllers
 	{
 		((ITTestFailurReportController) WindowToShow.controller).setOnSucsess();
 	}
+	public void submitRequireMoreInfo(ArrayList<Object> list)
+	{
+		((ITCCCRequestMoreInfoController) WindowToShow.controller).setOnSucsess();
+	}
 	public void getITReqLocation(ArrayList<Object> list)
 	{
 		((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).setTextInFields(list);
@@ -146,6 +150,10 @@ public class MainAllControllers
 	public void submitEvaluationReport(ArrayList<Object> list)
 	{
 		((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).setOnSucsess();
+	}
+	public void submitEvaluationTime(ArrayList<Object> list)
+	{
+		((ITHandleRequestController) WindowToShow.controller).setOnSucsess();
 	}
 	public void showUserReqDetails(ArrayList<Object> list)
 	{
@@ -202,7 +210,6 @@ public class MainAllControllers
 		((SupervisorUpdateRequestController) WindowToShow.controller).setListOfIT(arrayList);
 	}
 	public void showITEvaluationReport(ArrayList<Object> arrayList) {
-		System.out.println("here");
 		((ITCCCEvaluationReportController) WindowToShow.controller).setTextInFields((Evluationreport) arrayList.get(0));
 	}
 	public void SupervisorRequestDetailes(ArrayList<Object> list)

@@ -75,12 +75,12 @@
             </Label>
             <TextField fx:id="ReqID" editable="false" layoutX="127.0" layoutY="137.0" />
             <Button fx:id="submitFailurReportBTN" layoutX="443.0" layoutY="466.0" mnemonicParsing="false" onMouseClicked="#submitFailurReport" prefHeight="31.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="submit failur report" />
-            <Label layoutX="127.0" layoutY="182.0" prefHeight="25.0" prefWidth="127.0" text="Report summry">
+            <Label layoutX="127.0" layoutY="221.0" prefHeight="25.0" prefWidth="127.0" text="Report summry">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextArea fx:id="ReportSummry" layoutX="127.0" layoutY="209.0" prefHeight="243.0" prefWidth="471.0" />
+            <TextArea fx:id="ReportSummry" layoutX="127.0" layoutY="248.0" prefHeight="208.0" prefWidth="471.0" />
             <Label fx:id="fillAllFields" layoutX="480.0" layoutY="505.0" prefHeight="17.0" prefWidth="75.0" style="-fx-text-fill: Red;" text="fill all fields" visible="false" />
             <Label fx:id="reportWasSubmitted" layoutX="464.0" layoutY="504.0" prefHeight="17.0" prefWidth="123.0" style="-fx-text-fill: green;" text="report was submitted" visible="false" />
             <Button fx:id="BackToShow" layoutX="128.0" layoutY="466.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="31.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="Back to all requests">
@@ -88,6 +88,12 @@
                   <Font size="12.0" />
                </font>
             </Button>
+            <Label layoutX="128.0" layoutY="168.0" text="Date">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="date" editable="false" layoutX="127.0" layoutY="189.0" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
