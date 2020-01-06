@@ -77,7 +77,7 @@ public class ITCCCEvaluationReportController implements Initializable
         	MainAllControllers.setWindowVar("ITshowRequests");
         	MainAllControllers.changeWin();
 		} catch (IOException e) {}
-
+//jj
     }
 
     @FXML
