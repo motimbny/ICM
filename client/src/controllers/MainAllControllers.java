@@ -143,6 +143,10 @@ public class MainAllControllers
 	{
 		((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).setTextInFields(list);
 	}
+	public void submitEvaluationReport(ArrayList<Object> list)
+	{
+		((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).setOnSucsess();
+	}
 	public void showUserReqDetails(ArrayList<Object> list)
 	{
 		((UserRequestDetailsController) WindowToShow.controller).setTextInFields(list);
@@ -198,7 +202,7 @@ public class MainAllControllers
 		((SupervisorUpdateRequestController) WindowToShow.controller).setListOfIT(arrayList);
 	}
 	public void showITEvaluationReport(ArrayList<Object> arrayList) {
-		System.out.println();
+		System.out.println("here");
 		((ITCCCEvaluationReportController) WindowToShow.controller).setTextInFields((Evluationreport) arrayList.get(0));
 	}
 	public void SupervisorRequestDetailes(ArrayList<Object> list)

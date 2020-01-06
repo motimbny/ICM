@@ -1,6 +1,8 @@
 package entity;
 
-public class Evluationreport 
+import java.io.Serializable;
+
+public class Evluationreport implements Serializable 
 {
 	private int requestID;
 	private String Location;

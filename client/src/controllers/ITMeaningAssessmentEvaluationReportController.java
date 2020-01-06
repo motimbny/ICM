@@ -110,7 +110,6 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     	}
     	else
     	{
-   
     		fillAllFields.setVisible(false);
     		ArrayList<Object> arry=new ArrayList<Object>();
     		arry.add(Integer.parseInt(requestID.getText()));
@@ -120,17 +119,19 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     		arry.add(resultOfChange.getText());
     		arry.add(constraintsAndRisks.getText());
     		DBmessage dbm;
-			dbm = new DBmessage(MessageType.submitEvaluationReport, arry); 
+			dbm = new DBmessage(MessageType.ITSubmitEvaluationReport, arry); 
 			try {
 				MainAllControllers.sendToAbsServer(dbm);
 			} catch (IOException e) {
 			}
-			MainAllControllers.setWindowVar("ITshowRequests");
-	    	MainAllControllers.changeWin();
     	}
-
     }
 
+    public void setOnSucsess()
+    {	
+    	requestWasSubmitted.setVisible(true);
+    }
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{	
@@ -147,8 +148,7 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	
     void setTextInFields(ArrayList<Object> list)
     {
-    	Request req=(Request)list.get(0);	
-    	Location.setText(req.getInfoSystem());	
+    	Location.setText((String)list.get(0));
     }
 
 }

@@ -134,15 +134,12 @@ public class mainClientABS extends AbstractClient
 			case ITgetLocation:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-			   MainAllControllers.getITReqStage(send);
+			   MainAllControllers.getITReqLocation(send);
 			}
 			break;
 			case ITshowEvaluationReport:
 			{
-				System.out.println("1");
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-				Evluationreport temp=(Evluationreport)send.get(0);
-				System.out.println(""+temp.getRequestID()+" "+temp.getLocation()+" "+temp.getConstraintsAndRisks());
 				MainAllControllers.showITEvaluationReport(send);
 			}
 			break;
@@ -195,8 +192,11 @@ public class mainClientABS extends AbstractClient
 			     MainAllControllers.showManSPReq(send);
 			}
 			break;
-			
-			
+			case ITSubmitEvaluationReport:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+			  MainAllControllers.submitEvaluationReport(send);
+			}
 			case ShowEmployeeList:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

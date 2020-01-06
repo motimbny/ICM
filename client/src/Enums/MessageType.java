@@ -30,6 +30,7 @@ public enum MessageType
 		SupervisorTimeRequest, SupervisorListIt,superviserExtensionRequestAnswer,
 		MhomeRequestNum,
 		submitEvaluationReport,
-		MangerRequestShow, SearchReqManager,renewRequest
+		renewRequest,
+		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo
 
 }

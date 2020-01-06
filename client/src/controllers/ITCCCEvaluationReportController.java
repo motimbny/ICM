@@ -120,7 +120,6 @@ public class ITCCCEvaluationReportController implements Initializable
 
     void setTextInFields(Evluationreport ev)
     {
-    	System.out.println(""+ev.getRequestID()+" "+ev.getLocation()+" "+ev.getTimeEstimated());
     	requestID.setText(""+ev.getRequestID());
     	Location.setText(ev.getLocation());
     	timeEstimated.setText(""+ev.getTimeEstimated());
