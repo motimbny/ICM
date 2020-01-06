@@ -10,14 +10,22 @@ import entity.DBmessage;
 import entity.requestSuper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class ITManagerShowRequestsController implements Initializable
 {	
@@ -75,7 +83,11 @@ public class ITManagerShowRequestsController implements Initializable
 
     @FXML
     private TextField requestIdTo;
+    @FXML
+    private Label selectR;
 
+    @FXML
+    private Label okR;
     @FXML
     void goEmployeesMang(MouseEvent event)throws IOException 
 	{
@@ -134,10 +146,54 @@ public class ITManagerShowRequestsController implements Initializable
     @FXML
     void renewRequest(MouseEvent event)
     {
-        
+    	Stage popupwindow=new Stage();   
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Alert pop up");      
+		Label label1= new Label("Are you sure you want to renew the request?"); 
+		label1.setFont(new Font("Arial", 14));
+		Button button1= new Button("Yes");  
+		Button button2= new Button("No"); 
+		button1.addEventHandler(ActionEvent.ACTION, (e)->popupwindow.close());
+    	button1.addEventHandler(ActionEvent.ACTION, (e)->{
+    		if(requestTable.getSelectionModel().getSelectedIndex()==-1)
+    			selectR.setVisible(true);
+    		else if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("Suspend"))
+    		{
+    			
+    			this.renewRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
+    		}
+    		else
+    			selectR.setVisible(true);
+    	    });
+		button2.setOnAction(e -> popupwindow.close());
+		button1.setStyle("-fx-border-color:green");
+		button2.setStyle("-fx-border-color:red");
+		VBox layout= new VBox(10);     
+		layout.getStylesheets().add("CSS/it.css");
+		layout.getChildren().addAll(label1, button1,button2);     
+		layout.setAlignment(Pos.CENTER);     
+		Scene scene1= new Scene(layout, 350, 250);     
+		popupwindow.setScene(scene1);     
+		popupwindow.showAndWait();	
+    	
     }
-
+    private void renewRequest(int id) 
+    {
+    	ArrayList<Object> arry=new ArrayList<Object>();
+		int idadd=id;
+		DBmessage dbm;
+		arry.add(idadd);
+    	dbm=new DBmessage(MessageType.renewRequest, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+	}
     @FXML
+    void visable(MouseEvent event)
+    {
+    	selectR.setVisible(false);
+    }
+	@FXML
     void searchRequest(MouseEvent event) 
     {
     		if (requestIdTo.getText().equals("")) 

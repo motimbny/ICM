@@ -157,5 +157,23 @@ public class superviserRequestShowController
 		}
 		return null;
 	}
-
+	public Object updaterenewRequest() 
+	{
+		int num=(int) msg.getObjs().get(0);
+		Statement stmt;
+		try 
+		{
+			stmt = connection.createStatement();
+			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+num+"");
+				if(rs==1)
+				{
+					System.out.println("updateSuspendRequest");
+				}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return MgetRequestToShow();
+	}
 }

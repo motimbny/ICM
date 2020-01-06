@@ -32,5 +32,5 @@ public enum MessageTypeS
 	SupervisorTimeRequest,
 	SupervisorListIt,superviserExtensionRequestAnswer,
 	MhomeRequestNum,
-	MangerRequestShow,SearchReqManager
+	MangerRequestShow,SearchReqManager,renewRequest
 }

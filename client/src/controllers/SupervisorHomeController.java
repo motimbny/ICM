@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
-
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -22,9 +22,7 @@ import javafx.scene.input.MouseEvent;
 public class SupervisorHomeController implements Initializable 
 {
 	private MainAllControllers MainAllControllers;
-	
 	@FXML private Label time;
-
 	private int minute;
 	private int hour;
 	private int second;
@@ -112,11 +110,6 @@ public class SupervisorHomeController implements Initializable
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
-    	
- 
-	 
-    	
-    
     	   
 	}
 

@@ -361,6 +361,16 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}
+		case renewRequest:
+		{
+			superviserRequestShowController ManagerRequestShowController = new superviserRequestShowController(dbm,connection);
+			try {
+				client.sendToClient(ManagerRequestShowController.updaterenewRequest());
+			} catch (IOException e) {
+			}
+
+			break;
+		}
 		default:
 			break;
 		}
