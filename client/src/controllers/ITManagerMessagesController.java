@@ -17,10 +17,13 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class ITManagerMessagesController implements Initializable
 {
+	String sentby;
+	String subject;
 	private ObservableList<Messages> rows;
 	private MainAllControllers MainAllControllers;
 	public ITManagerMessagesController()
@@ -122,7 +125,28 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.setWindowVar("ITManagerMessages");
     	MainAllControllers.changeWin();
 	}
-
+    @FXML
+    void UpdateR(MouseEvent event)
+    {
+    	MessageTable.setOnMouseClicked((MouseEvent ev ) -> 
+    	{
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                sentby=MessageTable.getItems().get(MessageTable.getSelectionModel().getSelectedIndex()).getSentBy();
+				subject=MessageTable.getItems().get(MessageTable.getSelectionModel().getSelectedIndex()).getSubject();                
+            DBmessage dbm;
+    		String user;
+    		user=MainAllControllers.user.getName();
+    		ArrayList<Object> arry=new ArrayList<Object>();
+            arry.add(user);
+            arry.add(sentby);
+            arry.add(subject);
+        	dbm=new DBmessage(MessageType.MangerUpdateMessages, arry);   
+        	try {
+        		MainAllControllers.sendToAbsServer(dbm);
+    		} catch (IOException e) {}
+            }
+        });
+    }
     @FXML
     void showMessage(MouseEvent event) {
 

@@ -413,6 +413,15 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}
+		case MangerUpdateMessages:
+		{
+			MessagesShowController MessagesShowController = new MessagesShowController(dbm,connection);
+			try {
+				client.sendToClient(MessagesShowController.MUpdateMessagesToShow());
+				} catch (IOException e) {
+					}
+					break;
+		}
 		case renewRequest:
 		{
 			superviserRequestShowController ManagerRequestShowController = new superviserRequestShowController(dbm,connection);
