@@ -100,11 +100,14 @@ public class ITHandleRequestController implements Initializable {
 	@FXML
 	private Pane examinationAndDecisionStage;
 
+
     @FXML
     private Button AppointmentTesterBTN;
 
+
     @FXML
     private Label timeWasSubmitted;
+
     
     @FXML
     void AppointmentTester(MouseEvent event) throws IOException {
@@ -163,6 +166,10 @@ public class ITHandleRequestController implements Initializable {
 		this.list=arrayList;
 	}
     
+
+	@FXML
+	private Label stagenotmatch;
+
 	@FXML
 	void CreateEvaluationReport(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITMeaningAssessmentEvaluationReport");
@@ -189,6 +196,7 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	void SubmitTimeEstimateEvaluation(MouseEvent event) {
+		
 	String time=timeEstimatedEvaluation.getText();
 	ArrayList<Object> arry = new ArrayList<Object>();
 	arry.add( MainAllControllers.request);
@@ -204,6 +212,8 @@ public class ITHandleRequestController implements Initializable {
     {	
     	timeWasSubmitted.setVisible(true);
     }
+
+
 
 	@FXML
 	void SubmitTimeEstimatePerformance(MouseEvent event) {
@@ -286,22 +296,20 @@ public class ITHandleRequestController implements Initializable {
 		int s = MainAllControllers.request;
 		requestIdField.setText("Request ID: " + s);
 		ArrayList<Object> arry = new ArrayList<Object>();
-		arry.add(MainAllControllers.user.getName()); //it name
-		arry.add(s);  //request id
+		arry.add(MainAllControllers.user.getName()); // it name
+		arry.add(s); // request id
 		DBmessage dbm;
-		dbm = new DBmessage(MessageType.ITjobInReq, arry); 
+		dbm = new DBmessage(MessageType.ITjobInReq, arry);
 		try {
-			MainAllControllers.sendToAbsServer(dbm); 
+			MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {
-		}		
+		}
 	}
 
-	public void setPane(ArrayList<Object> list)
-	{
-		String job = (String)list.get(0);
-		MainAllControllers.itHandlejob=job;
-		switch(job)
-		{
+	public void setPane(ArrayList<Object> list) {
+		String job = (String) list.get(0);
+		MainAllControllers.itHandlejob = job;
+		switch (job) {
 		case "Appraiser":
 			EvaluationStage.setVisible(true);
 			break;
@@ -319,5 +327,10 @@ public class ITHandleRequestController implements Initializable {
 			TestStage.setVisible(true);
 			break;
 		}
+	}
+
+	public void setvisable() {
+		stagenotmatch.setVisible(true);
+		
 	}
 }

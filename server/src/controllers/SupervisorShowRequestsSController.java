@@ -17,16 +17,19 @@ public class SupervisorShowRequestsSController
 	private Connection connection;
 	private String user;
 	private int userIdReq;
+	private DBmessage msg;
 	
 	public SupervisorShowRequestsSController(DBmessage msg,Connection connection)
 	{
-		ArrayList<Object> arry=msg.getObjs();
-		this.user=(String)arry.get(0);
+		this.msg=msg;
+		
 		this.connection=connection;
 	}
-	
+
 	public DBSmessage showSPRequest()
 	{
+		ArrayList<Object> arry=msg.getObjs();
+		this.user=(String)arry.get(0);
 		Statement stmt;
 		DBSmessage dbs;
 		ArrayList<Object> toSend= new ArrayList<Object>();
@@ -90,5 +93,40 @@ public class SupervisorShowRequestsSController
 			e.printStackTrace();
 		}	
 		return null;
+	}
+
+
+	public DBSmessage viewExtensionReport() {
+		Statement stmt;
+		DBSmessage dbs;
+		int timeEvaluation;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			int id=(int)msg.getObjs().get(0);
+			ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+"");
+				while(rs.next()!=false)
+				{
+					
+					timeEvaluation=rs.getInt(10);
+					System.out.println("time: "+timeEvaluation);
+					if(timeEvaluation==0)
+					{
+						dbs=new DBSmessage(MessageTypeS.viewTime,null);
+						return dbs;
+					}
+				}
+				toSend.add(userIdReq);
+				dbs=new DBSmessage(MessageTypeS.viewTime,toSend);
+				return dbs;
+		}
+		catch (SQLException e)
+		{
+
+			e.printStackTrace();
+		}
+		return null;
+		
 	}
 }

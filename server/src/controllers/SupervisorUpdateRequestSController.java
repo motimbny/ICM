@@ -61,15 +61,13 @@ public class SupervisorUpdateRequestSController
 		{
 			int num=(int) msg.getObjs().get(0);
 			String changeexecuter=(String)msg.getObjs().get(1);
-			String changetester=(String)msg.getObjs().get(2);
-			String changeapprieser=(String)msg.getObjs().get(3);
+			String changeapprieser=(String)msg.getObjs().get(2);
 
 			Statement stmt;
 			try 
 			{
 				stmt = connection.createStatement();
 				stmt.executeUpdate("UPDATE requeststages SET itPerformanceLeader='"+changeexecuter+"' WHERE id="+num+"");
-				stmt.executeUpdate("UPDATE requeststages SET itTester='"+changetester+"' WHERE id="+num+"");
 				stmt.executeUpdate("UPDATE requeststages SET itAppraiser='"+changeapprieser+"' WHERE id="+num+"");
 				flag=1;
 			
@@ -91,6 +89,35 @@ public class SupervisorUpdateRequestSController
 			{		
 				stmt = connection.createStatement();
 				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='regular'");
+				while(rs.next()!=false)
+				{
+					listOfIT.add(rs.getString(2).toString());
+				}
+				dbs=new DBSmessage(MessageTypeS.getListOfIT,listOfIT);
+				return dbs;
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}	
+			return null;
+		}
+		public DBSmessage getCC() 
+		{
+			Statement stmt;
+			DBSmessage dbs;
+			updateRequest up = null;
+			ArrayList<Object> listOfIT= new ArrayList<Object>();
+			try 
+			{		
+				stmt = connection.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CEO'");
+				while(rs.next()!=false)
+				{
+					listOfIT.add(rs.getString(2).toString());
+				}
+				stmt = connection.createStatement();
+				rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CC'");
 				while(rs.next()!=false)
 				{
 					listOfIT.add(rs.getString(2).toString());

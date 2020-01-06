@@ -18,6 +18,7 @@ public enum MessageTypeS
 	showRequestDetailsUser,
 	submitRequireMoreInfo,
 	superviserRequestShow,
+	viewTime,
 	suspendRequest,
 	closeRequest,
 	approveEvaluationReport,

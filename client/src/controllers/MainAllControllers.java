@@ -248,9 +248,19 @@ public class MainAllControllers
 		((ITManagerShowRequestsController) WindowToShow.controller).clearTable();
 		((ITManagerShowRequestsController) WindowToShow.controller).setTextTable(list);
 	}
+
 	public void ManagerShowMessage(ArrayList<Object> list) 
 		{
 			((ITManagerMessagesController)WindowToShow.controller).setTextTable(list);
 		}
+
+	public void addTimeEstimated(Object object) {
+		
+		((ITHandleRequestController) WindowToShow.controller).setvisable();
+	}
+	public void setvisable() {
+		((SupervisorShowRequestsController) WindowToShow.controller).setvisable();
+		
+	}
 	
 }

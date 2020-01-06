@@ -121,11 +121,19 @@
                   <Button fx:id="AppointmentTesterBTN" layoutX="167.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#AppointmentTester" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Appointment tester" textAlignment="CENTER" visible="false" wrapText="true" />
                </children>
             </Pane>
+
             <Label fx:id="timeWasSubmitted" layoutX="260.0" layoutY="463.0" prefHeight="25.0" prefWidth="170.0" style="-fx-text-fill: green;" text="action was successful" visible="false">
+
+
+            <Label fx:id="timeWasSubmitted" layoutX="260.0" layoutY="463.0" prefHeight="25.0" prefWidth="170.0" style="-fx-text-fill: green;" text="action was successful">
+
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+
+            <Label fx:id="stagenotmatch" blendMode="RED" layoutX="408.0" layoutY="524.0" prefHeight="46.0" prefWidth="202.0" text="cannot update employees at this stage" textAlignment="CENTER" visible="false" wrapText="true" />
+
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

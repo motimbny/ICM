@@ -33,7 +33,7 @@ public class superviserExtensionRequestController
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM extensionrequest WHERE id='"+numReport+ "'");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM rextensionrequest WHERE id='"+numReport+ "'");
 			if(rs.next()!=false)
 				ev=new extensionrequest(rs.getInt(1),rs.getString(2), rs.getString(3),rs.getString(4),rs.getInt(5),rs.getString(6));
 			toSend.add(ev);

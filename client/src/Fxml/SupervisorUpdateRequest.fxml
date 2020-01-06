@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorUpdateRequestController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorUpdateRequestController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -60,7 +60,7 @@
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
+      <Pane layoutX="125.0" layoutY="7.0" prefHeight="600.0" prefWidth="661.0">
          <children>
             <Label layoutX="187.0" layoutY="14.0" text="Update Request">
                <font>
@@ -90,12 +90,9 @@
             <Button fx:id="changeApprieserBTN" layoutX="329.0" layoutY="220.0" mnemonicParsing="false" onMouseClicked="#changeApprieser" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Change" />
             <TextField fx:id="apprieserName" layoutX="172.0" layoutY="220.0" prefHeight="34.0" prefWidth="149.0" />
             <Label layoutX="173.0" layoutY="196.0" text="apprieser" />
-            <Button fx:id="changeExecuterBTN" layoutX="329.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#changeExecuter" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Change" />
-            <TextField fx:id="executerName" layoutX="172.0" layoutY="269.0" prefHeight="34.0" prefWidth="149.0" />
-            <Label layoutX="176.0" layoutY="252.0" text="executer" />
-            <Button fx:id="changeTesterBTN" layoutX="329.0" layoutY="328.0" mnemonicParsing="false" onMouseClicked="#changeTester" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Change" />
-            <TextField fx:id="testerName" layoutX="172.0" layoutY="328.0" prefHeight="34.0" prefWidth="149.0" />
-            <Label layoutX="174.0" layoutY="313.0" text="tester" />
+            <Button fx:id="changeExecuterBTN" layoutX="329.0" layoutY="283.0" mnemonicParsing="false" onMouseClicked="#changeExecuter" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Change" />
+            <TextField fx:id="executerName" layoutX="172.0" layoutY="286.0" prefHeight="34.0" prefWidth="149.0" />
+            <Label layoutX="175.0" layoutY="262.0" text="executer" />
             <Label layoutX="68.0" layoutY="152.0" text="Process Employees:">
                <font>
                   <Font name="System Bold" size="16.0" />

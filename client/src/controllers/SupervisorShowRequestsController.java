@@ -27,15 +27,14 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class SupervisorShowRequestsController implements Initializable
-{
+public class SupervisorShowRequestsController implements Initializable {
 	private ObservableList<requestSuper> rows;
 	private MainAllControllers MainAllControllers;
-	public SupervisorShowRequestsController()
-	{
-		MainAllControllers=controllers.MainAllControllers.getInstance();
+
+	public SupervisorShowRequestsController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
-	
+
 	@FXML
 	private Button homeBTN;
 
@@ -75,242 +74,248 @@ public class SupervisorShowRequestsController implements Initializable
 	@FXML
 	private Button SuprvisorExtensionRequestBTN;
 
-    @FXML
-    private Button search;
-    @FXML
-    private Button SuprvisorTime;
-    @FXML
-    private TextField requestIdTo;
-    @FXML
-    private Label susNot;
-
-    @FXML
-    private Label closeNot;
-
-	
 	@FXML
-	void closeRequest(MouseEvent event) 
-	{
-		Stage popupwindow=new Stage();   
+	private Button search;
+	@FXML
+	private Button SuprvisorTime;
+	@FXML
+	private TextField requestIdTo;
+	@FXML
+	private Label susNot;
+
+	@FXML
+	private Label closeNot;
+	@FXML
+	private Label stagenotmatch;
+
+	@FXML
+	void closeRequest(MouseEvent event) {
+		Stage popupwindow = new Stage();
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
-		popupwindow.setTitle("Alert pop up");      
-		Label label1= new Label("Are you sure you want to close request?");  
+		popupwindow.setTitle("Alert pop up");
+		Label label1 = new Label("Are you sure you want to close request?");
 		label1.setFont(new Font("Arial", 14));
-		Button button1= new Button("Yes");  
-		Button button2= new Button("No"); 
-		button1.addEventHandler(ActionEvent.ACTION, (e)->popupwindow.close());
-		button1.addEventHandler(ActionEvent.ACTION, (e)->{
-    		if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("WaitingCloser"))
-    		{
-    			String x=requestTable.getId();
-    				
-    			this.closeRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
-    		}
-    		else
-    			closeNot.setVisible(true);
-    	    });
+		Button button1 = new Button("Yes");
+		Button button2 = new Button("No");
+		button1.addEventHandler(ActionEvent.ACTION, (e) -> popupwindow.close());
+		button1.addEventHandler(ActionEvent.ACTION, (e) -> {
+			if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus()
+					.contentEquals("WaitingCloser")) {
+				String x = requestTable.getId();
+
+				this.closeRequest(
+						requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
+			} else
+				closeNot.setVisible(true);
+		});
 		button2.setOnAction(e -> popupwindow.close());
 		button1.setStyle("-fx-border-color:green");
 		button2.setStyle("-fx-border-color:red");
-		VBox layout= new VBox(10);     
+		VBox layout = new VBox(10);
 		layout.getStylesheets().add("CSS/it.css");
-		layout.getChildren().addAll(label1, button1,button2);     
-		layout.setAlignment(Pos.CENTER);     
-		Scene scene1= new Scene(layout, 350, 250);     
-		popupwindow.setScene(scene1);     
+		layout.getChildren().addAll(label1, button1, button2);
+		layout.setAlignment(Pos.CENTER);
+		Scene scene1 = new Scene(layout, 350, 250);
+		popupwindow.setScene(scene1);
 		popupwindow.showAndWait();
 	}
-    @FXML
-    void visNot(MouseEvent event) 
-    {
-    	closeNot.setVisible(false);
-        susNot.setVisible(false);
-    }
+
 	@FXML
-	void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorHelp");
-    	MainAllControllers.changeWin();
+	void visNot(MouseEvent event) {
+		closeNot.setVisible(false);
+		susNot.setVisible(false);
 	}
 
 	@FXML
-	void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorHome");
-    	MainAllControllers.changeWin();
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("SupervisorHelp");
+		MainAllControllers.changeWin();
 	}
 
 	@FXML
-	void goLogoutPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("SupervisorHome");
+		MainAllControllers.changeWin();
 	}
 
 	@FXML
-	void goPersonalPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorPersonalInfo");
-    	MainAllControllers.changeWin();
+	void goLogoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.user = null;
 	}
 
 	@FXML
-	void goShowReqPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("SupervisorShowRequests");
-    	MainAllControllers.changeWin();
+	void goPersonalPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("SupervisorPersonalInfo");
+		MainAllControllers.changeWin();
 	}
-	 @FXML
+
+	@FXML
+	void goShowReqPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("SupervisorShowRequests");
+		MainAllControllers.changeWin();
+	}
+
+	@FXML
 	    void viewTime(MouseEvent event) throws IOException
 	 {
-			MainAllControllers.nowWin="TimeRequestSuperviser";
-		 MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
-		 MainAllControllers.setWindowVar("SupervisorTimeRequest");
-	    MainAllControllers.changeWin();
-	 }
-
-	@FXML
-	void suspendRequest(MouseEvent event) 
-	{
-		Stage popupwindow=new Stage();   
-		popupwindow.initModality(Modality.APPLICATION_MODAL);
-		popupwindow.setTitle("Alert pop up");      
-		Label label1= new Label("Are you sure you want to suspend the request?"); 
-		label1.setFont(new Font("Arial", 14));
-		Button button1= new Button("Yes");  
-		Button button2= new Button("No"); 
-		button1.addEventHandler(ActionEvent.ACTION, (e)->popupwindow.close());
-    	button1.addEventHandler(ActionEvent.ACTION, (e)->{
-    		if(requestTable.getSelectionModel().getSelectedIndex()==-1)
-    			susNot.setVisible(true);
-    		else if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().contentEquals("Active"))
-    		{
-    			
-    			this.suspendRequest(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
-    		}
-    		else
-    			susNot.setVisible(true);
-    	    });
-		button2.setOnAction(e -> popupwindow.close());
-		button1.setStyle("-fx-border-color:green");
-		button2.setStyle("-fx-border-color:red");
-		VBox layout= new VBox(10);     
-		layout.getStylesheets().add("CSS/it.css");
-		layout.getChildren().addAll(label1, button1,button2);     
-		layout.setAlignment(Pos.CENTER);     
-		Scene scene1= new Scene(layout, 350, 250);     
-		popupwindow.setScene(scene1);     
-		popupwindow.showAndWait();
-	}
-
-	private void suspendRequest(int id) 
-	{
-		ArrayList<Object> arry=new ArrayList<Object>();
-		int idadd=id;
-		DBmessage dbm;
-		arry.add(idadd);
-    	dbm=new DBmessage(MessageType.suspendRequest, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
-		
-	}
-	private void closeRequest(int id) 
-	{
-		System.out.println("here s");
-		ArrayList<Object> arry=new ArrayList<Object>();
-		int idadd=id;
-		DBmessage dbm;
-		arry.add(idadd);
-    	dbm=new DBmessage(MessageType.closeRequest, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
-		
-	}
-	@FXML
-	void viewExtensionReport(MouseEvent event) throws IOException 
-	{
-		try 
-		{
-		MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
-		MainAllControllers.setWindowVar("SupervisorExtentionRequest");
-    	MainAllControllers.changeWin();
-		}
-		catch(Exception e)
-		{}
-	}
-	
-	@FXML
-	void UpdateRequest(MouseEvent event) throws IOException
-	{
-		try
-		{
-			MainAllControllers.nowWin="ITRequestSuperviser";
-			MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
-			MainAllControllers.setWindowVar("SupervisorUpdateRequest");
-	    	MainAllControllers.changeWin();
-		}
-		catch (Exception e) {
-			
-		}
-		
-	}
-    @FXML
-    void searchRequest(MouseEvent event) 
-    {
-    	if(requestIdTo.getText().equals(""))
-    	{
-    		try 
-    		{
-				MainAllControllers.setWindowVar("SupervisorShowRequests");
-			} catch (IOException e)
-    		{
-				e.printStackTrace();
-			}
-        	MainAllControllers.changeWin();
-    	}
-    	else
-    	{
-	    	ArrayList<Object> arry=new ArrayList<Object>();
-			arry.add(Integer.parseInt(requestIdTo.getText()));
+			ArrayList<Object> arry=new ArrayList<Object>();
+			System.out.println(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
+			int idadd=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+			System.out.println("hello");
 			DBmessage dbm;
-	    	dbm=new DBmessage(MessageType.SearchReqSupervisor, arry);   
+			arry.add(idadd);
+	    	dbm=new DBmessage(MessageType.viewTime, arry);   
 	    	try {
 	    		MainAllControllers.sendToAbsServer(dbm);
 			} catch (IOException e) {}
-    	}
-    }
+			
+	 }
+
+	@FXML
+	void suspendRequest(MouseEvent event) {
+		Stage popupwindow = new Stage();
+		popupwindow.initModality(Modality.APPLICATION_MODAL);
+		popupwindow.setTitle("Alert pop up");
+		Label label1 = new Label("Are you sure you want to suspend the request?");
+		label1.setFont(new Font("Arial", 14));
+		Button button1 = new Button("Yes");
+		Button button2 = new Button("No");
+		button1.addEventHandler(ActionEvent.ACTION, (e) -> popupwindow.close());
+		button1.addEventHandler(ActionEvent.ACTION, (e) -> {
+			if (requestTable.getSelectionModel().getSelectedIndex() == -1)
+				susNot.setVisible(true);
+			else if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus()
+					.contentEquals("Active")) {
+
+				this.suspendRequest(
+						requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
+			} else
+				susNot.setVisible(true);
+		});
+		button2.setOnAction(e -> popupwindow.close());
+		button1.setStyle("-fx-border-color:green");
+		button2.setStyle("-fx-border-color:red");
+		VBox layout = new VBox(10);
+		layout.getStylesheets().add("CSS/it.css");
+		layout.getChildren().addAll(label1, button1, button2);
+		layout.setAlignment(Pos.CENTER);
+		Scene scene1 = new Scene(layout, 350, 250);
+		popupwindow.setScene(scene1);
+		popupwindow.showAndWait();
+	}
+
+	private void suspendRequest(int id) {
+		ArrayList<Object> arry = new ArrayList<Object>();
+		int idadd = id;
+		DBmessage dbm;
+		arry.add(idadd);
+		dbm = new DBmessage(MessageType.suspendRequest, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+
+	}
+
+	private void closeRequest(int id) {
+
+		ArrayList<Object> arry = new ArrayList<Object>();
+		int idadd = id;
+		DBmessage dbm;
+		arry.add(idadd);
+		dbm = new DBmessage(MessageType.closeRequest, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+
+	}
+
+	@FXML
+	void viewExtensionReport(MouseEvent event) throws IOException {
+		try {
+			MainAllControllers.request = requestTable.getItems()
+					.get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+			MainAllControllers.setWindowVar("SupervisorExtentionRequest");
+			MainAllControllers.changeWin();
+		} catch (Exception e) {
+		}
+	}
+
+	@FXML
+	void UpdateRequest(MouseEvent event) throws IOException {
+		try {
+			if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage()
+					.equals("supervisorApprovel")) {
+				MainAllControllers.nowWin = "ITRequestSuperviser";
+				MainAllControllers.request = requestTable.getItems()
+						.get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+				MainAllControllers.setWindowVar("SupervisorUpdateRequest");
+				MainAllControllers.changeWin();
+			} else
+				stagenotmatch.setVisible(true);
+
+		} catch (Exception e) {
+
+		}
+
+	}
+
+	@FXML
+	void searchRequest(MouseEvent event) {
+		if (requestIdTo.getText().equals("")) {
+			try {
+				MainAllControllers.setWindowVar("SupervisorShowRequests");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			MainAllControllers.changeWin();
+		} else {
+			ArrayList<Object> arry = new ArrayList<Object>();
+			arry.add(Integer.parseInt(requestIdTo.getText()));
+			DBmessage dbm;
+			dbm = new DBmessage(MessageType.SearchReqSupervisor, arry);
+			try {
+				MainAllControllers.sendToAbsServer(dbm);
+			} catch (IOException e) {
+			}
+		}
+	}
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
+	public void initialize(URL location, ResourceBundle resources) {
 		RequestID.setCellValueFactory(new PropertyValueFactory<>("id"));
 		RequestStatus.setCellValueFactory(new PropertyValueFactory<>("currentStatus"));
 		RequestProcessStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
 		requestServer();
-		
+
 	}
-	public void requestServer()
-    {
+
+	public void requestServer() {
 		DBmessage dbm;
-    	dbm=new DBmessage(MessageType.superviserRequestShow, null);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
-    }
-	public void clearTable()
-	{
+		dbm = new DBmessage(MessageType.superviserRequestShow, null);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+	}
+
+	public void clearTable() {
 		requestTable.getItems().clear();
 	}
-	
-	 public void setTextInTable(ArrayList<Object> list)
-	 {
-		 rows= FXCollections.observableArrayList();
-	    	for(Object r:list)
-	    		rows.add((requestSuper)r);		
-	    	requestTable.setItems(rows);	
-	 }
+
+	public void setTextInTable(ArrayList<Object> list) {
+		rows = FXCollections.observableArrayList();
+		for (Object r : list)
+			rows.add((requestSuper) r);
+		requestTable.setItems(rows);
+	}
+
+	public void setvisable() {
+		stagenotmatch.setVisible(true);
+		
+	}
 
 }

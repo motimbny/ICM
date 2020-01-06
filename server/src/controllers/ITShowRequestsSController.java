@@ -41,6 +41,9 @@ public class ITShowRequestsSController
 					StageName name=null;
 					switch(rs.getString(3))
 					{
+					case "supervisorApprovel":
+						name=StageName.supervisorApprovel;
+						break;
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
 						break;

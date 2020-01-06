@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -22,12 +24,16 @@ public class UserSAddRequestController
 	private Request request;
 	private Connection connection;
 	private ServerFile sf;
+	private String CEO;
+	private String CCC2;
+	private String CCC3;
 	private ArrayList<Object> listOfIT;
+	private ArrayList<Object> arry;
 	public UserSAddRequestController(DBmessage dbm,Connection connection)
 	{
 		int addDoc=0;
 		this.connection=connection;
-		ArrayList<Object> arry=dbm.getObjs();
+		arry=dbm.getObjs();
 		if(arry.size()==8)
 		{
 		 sf=(ServerFile)arry.get(7);
@@ -40,6 +46,37 @@ public class UserSAddRequestController
 				             java.time.LocalDate.now().toString(),addDoc);	
 		SupervisorUpdateRequestSController getListOfIT=new SupervisorUpdateRequestSController(dbm,connection);
 		listOfIT=getListOfIT.getListOfIT().getObjs();
+		this.CEO=(String)getListOfIT.getCC().getObjs().get(0);
+		this.CCC2=(String)getListOfIT.getCC().getObjs().get(1);
+		this.CCC3=(String)getListOfIT.getCC().getObjs().get(2);
+
+	}
+	private void setCC() {
+
+		Statement stmt;
+		DBSmessage dbs;
+		   int id=(int)arry.get(0);
+		   try {
+			   stmt = connection.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CEO'");
+				if(rs.next()!=false)
+				{
+					this.CEO=rs.getString(2);
+				}
+				   stmt = connection.createStatement();
+				   rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CC'");
+				   if(rs.next()!=false)
+					   this.CCC2=rs.getString(2);
+				   if(rs.next()!=false)
+					   this.CCC3=rs.getString(2);
+		   }
+		   catch (SQLException e) 
+		     {
+		    	e.printStackTrace();
+		    	
+		     }
+			
+		
 	}
 	public DBSmessage submitRequest()
 	{
@@ -73,9 +110,9 @@ public class UserSAddRequestController
  			requeststages.setString(2, request.getCurrentStatus());
  			requeststages.setString(3,request.getCurrentStage().toString() );
  			requeststages.setString(4,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
- 			requeststages.setString(5,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
- 			requeststages.setString(6, listOfIT.get(rand.nextInt(listOfIT.size())).toString());
- 			requeststages.setString(7, listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setString(5,this.CEO);
+ 			requeststages.setString(6, this.CCC2);
+ 			requeststages.setString(7, this.CCC3);
  			requeststages.setString(8,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
  			requeststages.setString(9, listOfIT.get(rand.nextInt(listOfIT.size())).toString());
  			requeststages.setInt(10, 0);

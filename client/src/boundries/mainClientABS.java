@@ -112,6 +112,13 @@ public class mainClientABS extends AbstractClient
 				   MainAllControllers.showUserReq(((ArrayList<Object>)send));
 				}
 				break;
+	/*		case addTimeEstimated:
+			{
+			
+			   MainAllControllers.addTimeEstimated(null);
+			}
+			break;
+			*/	
 			case ShowReqIT:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -143,6 +150,25 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.showITEvaluationReport(send);
 			}
 			break;
+			case viewTime:
+			{
+				if(dbs.getObjs()==null)
+					MainAllControllers.setvisable();
+				else
+				{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();	
+				
+					try {
+						MainAllControllers.request = (int)send.get(0);
+						MainAllControllers.setWindowVar("SupervisorTimeRequest");
+						MainAllControllers.changeWin();
+					} catch (Exception e) {
+					}
+				}
+			
+			}
+			break;
+			
 			case ITFailurReport:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -157,7 +183,6 @@ public class mainClientABS extends AbstractClient
 			break;
 			case getListOfIT:
 			{
-				System.out.println("im here getlist"+dbs.getObjs().size());
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 			   MainAllControllers.getListOfIT(((ArrayList<Object>)send));
 			}

@@ -63,16 +63,42 @@ public class ITHandleRequestSController {
 	}
 
 	public Object addTimeEstimated() {
+
 		ArrayList<Object> arry=new ArrayList<Object>();
 		DBSmessage dbs;
+
 		int id=(int) msg.getObjs().get(0) ;
 		int timeEstimatedEvaluation=(int)msg.getObjs().get(1);
+		String stage;
 		Statement stmt;
 		try 
 		{
+		
 			stmt = connection.createStatement();
+
 			stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
 			arry.add(1);
+
+			ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+"");
+			while (rs.next() != false)
+			{
+				stage=rs.getString(3);
+				System.out.println(stage);
+				if(stage.equals("meaningAssessment"))
+				{
+					stmt = connection.createStatement();
+					System.out.println("hello22");
+					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
+
+				}
+				else
+				{
+					 dbs = new DBSmessage(MessageTypeS.addTimeEstimated, null);
+					return dbs;
+				}
+			}
+		
+
 		} 
 		
 		catch (SQLException e)

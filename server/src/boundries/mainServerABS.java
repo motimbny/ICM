@@ -2,9 +2,10 @@ package boundries;
 
 import java.io.IOException;
 import java.sql.Connection;
-
 import controllers.ITCCCEvaluationReportSController;
+
 import controllers.ITCCCRequestMoreInfoSController;
+
 import controllers.ITExtensionRequestSController;
 import controllers.ITHandleRequestSController;
 import controllers.ITManagerRequestDetailsSController;
@@ -44,7 +45,7 @@ public class mainServerABS extends AbstractServer {
 		this.connection = connection;
 		IsDBConnected = true;
 	}
-
+//jj
 	@Override
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 
@@ -117,6 +118,7 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+
 			case denyEvaluationReport: {
 				ITCCCEvaluationReportSController ITCCCEvaluationReportSController = new ITCCCEvaluationReportSController(dbm, connection);
 				try {
@@ -143,10 +145,24 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+
 			case ITsubmitRequireMoreInfo: {
 				ITCCCRequestMoreInfoSController ITCCCRequestMoreInfoSController = new ITCCCRequestMoreInfoSController(dbm, connection);
 				try {
 					client.sendToClient(ITCCCRequestMoreInfoSController.submitEvaluationReport());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}}
+			break;
+
+			case viewTime: {
+				SupervisorShowRequestsSController SupervisorShowRequestsSController = new SupervisorShowRequestsSController(dbm, connection);
+
+				try {
+
+					client.sendToClient(SupervisorShowRequestsSController.viewExtensionReport());
+
 				} catch (IOException e) {
 				}
 				break;

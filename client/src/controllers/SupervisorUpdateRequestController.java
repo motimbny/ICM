@@ -63,10 +63,8 @@ public class SupervisorUpdateRequestController implements Initializable
     private Button changeExecuterBTN;
     @FXML
     private TextField executerName;
-    @FXML
-    private Button changeTesterBTN;
-    @FXML
-    private TextField testerName;
+  
+
     @FXML
     private Button approveApprieserBTN;
     @FXML
@@ -133,12 +131,7 @@ public class SupervisorUpdateRequestController implements Initializable
     	showListOfIT("itAppraiser");
     }
 
-    @FXML
-    void changeTester(MouseEvent event) {
-    	listOfIt();
-    	showListOfIT("itTester");
-
-    }
+  
     
     @FXML
     private void changeExecuter(MouseEvent event) {
@@ -171,11 +164,7 @@ public class SupervisorUpdateRequestController implements Initializable
 					apprieserName.setText(EmployeesTable.getSelectionModel().getSelectedItem());
 				}
 				break;
-				case "itTester":
-				{
-					testerName.setText(EmployeesTable.getSelectionModel().getSelectedItem());
-				}
-				break;
+			
 				case "itPerformanceLeader":
 				{
 					executerName.setText(EmployeesTable.getSelectionModel().getSelectedItem());
@@ -203,7 +192,6 @@ public class SupervisorUpdateRequestController implements Initializable
 		DBmessage dbm;
 		arry.add(id);
 		arry.add(executerName.getText());
-		arry.add(testerName.getText());
 		arry.add(apprieserName.getText());
     	dbm=new DBmessage(MessageType.changeExecuter, arry);   
     	try {
@@ -215,7 +203,6 @@ public class SupervisorUpdateRequestController implements Initializable
 		this.requestID.setText(Integer.toString(ev.getId()));
 		this.apprieserName.setText(ev.getApprieser());
 		this.executerName.setText(ev.getExecuter());
-		this.testerName.setText(ev.getTester());
 		this.evluation.setText(Integer.toString(ev.getEvaluation()));
 		this.examination.getSelectionModel().select(ev.getEvaluation()-1);;
 		this.test.getSelectionModel().select((ev.getTest()-1));
@@ -250,9 +237,9 @@ public class SupervisorUpdateRequestController implements Initializable
 	
 
     @FXML
-    void SaveChanges(MouseEvent event) {
+    void SaveChanges(MouseEvent event) throws IOException {
     	changeExecuter();
-    	
+    	goShowReqPage(event);
     
     	
 
