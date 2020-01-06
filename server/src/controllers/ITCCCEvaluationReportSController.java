@@ -33,11 +33,11 @@ public class ITCCCEvaluationReportSController {
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, Location, timeEstimated, descriptionOfChangeRequired,"
-					+ " resultOfChange, constraintsAndRisks FROM evluationreport WHERE id='"+idReq+ "'");
+			ResultSet rs = stmt.executeQuery("SELECT id, location, timeEstimated, description,"
+					+ " result, constraints FROM evluationreport WHERE id='"+idReq+ "'");
 				while(rs.next()!=false)
 				{
-					Evluationreport evtoSend=new Evluationreport(rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4), rs.getString(5), rs.getString(6));
+					Evluationreport evtoSend=new Evluationreport(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6));
 					toSend.add(evtoSend);
 				}
 				dbs=new DBSmessage(MessageTypeS.ITshowEvaluationReport,toSend);

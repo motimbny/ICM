@@ -18,34 +18,28 @@ public class ITExtensionRequestSController {
 	private String stage;
 	private String reason;
 	private int timeToAdd;
+	private DBmessage db; 
 
 	public ITExtensionRequestSController(DBmessage msg, Connection connection) {
-		ArrayList<Object> arry = msg.getObjs();
-		this.user = (String) arry.get(0);
-		this.reqId = (int) arry.get(1);
+		this.db=msg;
 		this.connection = connection;
-		if(arry.size()==5)
-		{
-			this.stage=(String) arry.get(2);
-			this.timeToAdd=(int) arry.get(3);
-			this.reason=(String) arry.get(4);
-		}
 	}
-	
-	
+		
 	public DBSmessage getITreqStage() {
+		ArrayList<Object> arr = db.getObjs();
+		this.user=(String)arr.get(0);
+		this.reqId= (int) arr.get(1);
 		Statement stmt;
 		DBSmessage dbs;
 		ArrayList<Object> toSend = new ArrayList<Object>();
 		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(
-					"SELECT id, currentStage FROM requeststages WHERE ( itAppraiser='"
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE ( itAppraiser='"
 							+ user + "' OR itCCC1='" + user + "' OR itCCC2='" + user + "' OR itCCC3='" + user
 							+ "' OR itPerformanceLeader='" + user + "' OR itTester='" + user + "' ) AND id=" + reqId+ "");
 			while (rs.next() != false) 
 			{
-				toSend.add(rs.getString(2));
+				toSend.add(rs.getString(1));
 			}
 			dbs = new DBSmessage(MessageTypeS.ITgetReqStage, toSend);
 			return dbs;
@@ -57,18 +51,24 @@ public class ITExtensionRequestSController {
 
 	public DBSmessage submitRequest()
 	{
-	
+		ArrayList<Object> arr = db.getObjs();
+		this.reqId=Integer.parseInt((String)arr.get(0));
+		this.stage=(String)arr.get(1);
+		this.user=(String)arr.get(2);
+		this.timeToAdd=Integer.parseInt((String)arr.get(3));
+		this.reason=(String)arr.get(4);
 	   PreparedStatement ps;
 	   DBSmessage dbs;
    	   ArrayList<Object> arry=new ArrayList<Object>();
  		try 
  		  {
- 			ps = connection.prepareStatement("INSERT INTO extensionrequest VALUES(?,?,?,?,?)");
+ 			ps = connection.prepareStatement("INSERT INTO extensionrequest VALUES(?,?,?,?,?,?)");
  			ps.setInt(1, this.reqId);
  			ps.setString(2, this.stage);
  			ps.setString(3, this.user);
  			ps.setString(4, this.reason);
  			ps.setInt(5, this.timeToAdd);
+ 			ps.setString(6, "null");
  			ps.executeUpdate();	
  			ps.close();
  			arry.add(1);

@@ -6,12 +6,12 @@ public class Evluationreport implements Serializable
 {
 	private int requestID;
 	private String Location;
-	private int timeEstimated;
+	private String timeEstimated;
 	private String descriptionOfChangeRequired;
 	private String resultOfChange;
 	private String constraintsAndRisks;
 	
-	public Evluationreport(int requestID, String Location, int timeEstimated, String descriptionOfChangeRequired, String resultOfChange, String constraintsAndRisks)
+	public Evluationreport(int requestID, String Location, String timeEstimated, String descriptionOfChangeRequired, String resultOfChange, String constraintsAndRisks)
 	{
 		this.requestID=requestID;
 		this.Location=Location;
@@ -33,10 +33,10 @@ public class Evluationreport implements Serializable
 	public void setLocation(String location) {
 		Location = location;
 	}
-	public int getTimeEstimated() {
+	public String getTimeEstimated() {
 		return timeEstimated;
 	}
-	public void setTimeEstimated(int timeEstimated) {
+	public void setTimeEstimated(String timeEstimated) {
 		this.timeEstimated = timeEstimated;
 	}
 	public String getDescriptionOfChangeRequired() {

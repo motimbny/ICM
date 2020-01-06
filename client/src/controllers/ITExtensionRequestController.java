@@ -118,12 +118,11 @@ public class ITExtensionRequestController implements Initializable
     	}
     	else
     	{
-    		
     		fillAllFields.setVisible(false);
     		ArrayList<Object> arry=new ArrayList<Object>(); 
-    		arry.add(itHandler.getText()); 
 	        arry.add(RequestID.getText());
 	        arry.add(ReqStage.getText());
+	        arry.add(itHandler.getText()); 
 	        arry.add(timeToAdd.getText());
     		arry.add(Reason.getText());
     		DBmessage dbm;
