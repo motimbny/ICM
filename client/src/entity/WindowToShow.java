@@ -14,6 +14,7 @@ import controllers.ITManagerHomeController;
 import controllers.ITManagerMessagesController;
 import controllers.ITManagerPersonalInfoController;
 import controllers.ITManagerReportsController;
+import controllers.ITManagerRequestDetailsController;
 import controllers.ITManagerShowRequestsController;
 import controllers.ITMeaningAssessmentEvaluationReportController;
 import controllers.ITPersonalInfoController;
@@ -142,8 +143,15 @@ public class WindowToShow
 		case "ITManagerReports":
 			initITManagerReports();
 			break;
+		case "ITManagerRequestDetails":
+			initITManagerRequestDetails();
+			break;
+			
 		}
 	}
+
+
+
 
 
 	public String getPathfxml() {
@@ -334,33 +342,34 @@ public class WindowToShow
 	private void initITManagerShowRequests() {
 		ITManagerShowRequestsController controller = new ITManagerShowRequestsController();
 		pathfxml = "/Fxml/ITManagerShowRequests.fxml";
-		windowName = "ICM-ITManagerShowRequests";
-		
+		windowName = "ICM-ITManagerShowRequests";	
 	}
 
 	private void initITManagerPersonalInfo() {
 		ITManagerPersonalInfoController controller = new ITManagerPersonalInfoController();
 		pathfxml = "/Fxml/ITManagerPersonalInfo.fxml";
-		windowName = "ICM-ITManagerPersonalInfo";
-		
+		windowName = "ICM-ITManagerPersonalInfo";	
 	}
 
 	private void initITManagerHome() {
 		ITManagerHomeController controller = new ITManagerHomeController();
 		pathfxml = "/Fxml/ITManagerHome.fxml";
-		windowName = "ICM-ITManagerHome";
-		
+		windowName = "ICM-ITManagerHome";	
 	}
 	private void initITManagerHelp() {
 		ITManagerHelpController controller = new ITManagerHelpController();
 		pathfxml = "/Fxml/ITManagerHelp.fxml";
-		windowName = "ICM-ITManagerHelp";
-		
+		windowName = "ICM-ITManagerHelp";		
 	}
 	private void initITManagerReports() {
 		ITManagerReportsController controller = new ITManagerReportsController();
 		pathfxml = "/Fxml/ITManagerReports.fxml";
 		windowName = "ICM-ITManagerReports";
+	}
+	private void initITManagerRequestDetails() {
+		ITManagerRequestDetailsController controller = new ITManagerRequestDetailsController();
+		pathfxml = "/Fxml/ITManagerRequestDetails.fxml";
+		windowName = "ICM-ITManagerRequestDetails";
 		
 	}
 }

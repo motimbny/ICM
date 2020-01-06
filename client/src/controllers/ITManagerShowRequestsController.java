@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -222,7 +223,17 @@ public class ITManagerShowRequestsController implements Initializable
     @FXML
     void showRequestDetails(MouseEvent event)
     {
-
+    	requestTable.setOnMouseClicked((MouseEvent ev ) -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+                try {
+                	MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+					MainAllControllers.setWindowVar("ITManagerRequestDetails");
+					MainAllControllers.changeWin();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}                
+            }
+        });
     }
 
 	@Override
