@@ -12,6 +12,7 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Evluationreport;
 import entity.Request;
+import entity.updateRequest;
 
 public class ITCCCEvaluationReportSController {
 	private int idReq;
@@ -48,5 +49,28 @@ public class ITCCCEvaluationReportSController {
 		}	
 		return dbs;
 	}
+
+	public DBSmessage approveEvaluationReport() {
+			
+		int numReport=idReq;
+		Statement stmt;
+		DBSmessage dbs;
+		updateRequest up = null;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			
+			stmt.executeUpdate("UPDATE request SET currentStage='execution' WHERE id="+numReport+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='execution' WHERE id="+numReport+"");
+
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}	
+		return null;
+		
+		}
 	
 }

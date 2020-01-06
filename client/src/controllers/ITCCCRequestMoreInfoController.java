@@ -1,10 +1,14 @@
 package controllers;
 
 import java.io.IOException;
+
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+
+import java.util.ArrayList;
+
 
 import Enums.MessageType;
 import entity.DBmessage;
@@ -101,7 +105,8 @@ public class ITCCCRequestMoreInfoController implements Initializable
     	MainAllControllers.user=null;
 	}
 
-    @FXML
+ /*   @FXML
+
     void submitRequireMoreInfo(MouseEvent event) 
     {
     	if (requiredInformation.getText().equals(""))
@@ -121,6 +126,16 @@ public class ITCCCRequestMoreInfoController implements Initializable
 				MainAllControllers.sendToAbsServer(dbm);
 			} catch (IOException e) {}	
     	}
+*/
+    void submitRequireMoreInfo(MouseEvent event) {
+      	ArrayList<Object> arry=new ArrayList<Object>();
+    	arry.add(MainAllControllers.request);//request id
+		DBmessage dbm;
+    	dbm=new DBmessage(MessageType.submitRequireMoreInfo, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+    		goShowReq(event);
+		} catch (IOException e) {}
 
     }
     

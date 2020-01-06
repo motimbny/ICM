@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.sql.Connection;
 
 import controllers.ITCCCEvaluationReportSController;
+
 import controllers.ITExtensionRequestSController;
 import controllers.ITHandleRequestSController;
 import controllers.ITMeaningAssessmentEvaluationReportSController;
@@ -105,6 +106,24 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			
+			case approveEvaluationReport: {
+				ITCCCEvaluationReportSController ITCCCEvaluationReportSController = new ITCCCEvaluationReportSController(dbm, connection);
+				try {
+					client.sendToClient(ITCCCEvaluationReportSController.approveEvaluationReport());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			
+	/*		case submitRequireMoreInfo: {
+				ITCCCRequestMoreInfoSController ITCCCRequestMoreInfoSController = new ITCCCRequestMoreInfoSController(dbm, connection);
+				try {
+					client.sendToClient(ITCCCRequestMoreInfoSController.approveEvaluationReport());
+				} catch (IOException e) {
+				}
+				break;
+			}*/
 			case ITjobInReq: {
 				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm, connection);
 				try {
