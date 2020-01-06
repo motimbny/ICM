@@ -80,9 +80,12 @@ public class ITManagerHelpController {
     }
     
     @FXML
-    void messagePage(MouseEvent event) {
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITManagerMessages");
+    	MainAllControllers.changeWin();
+	}
 
-    }
 
     @FXML
     void logoutPage(MouseEvent event) throws IOException 

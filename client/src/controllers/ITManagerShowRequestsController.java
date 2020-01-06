@@ -124,11 +124,13 @@ public class ITManagerShowRequestsController implements Initializable
     	MainAllControllers.changeWin();
 	}
     @FXML
-    void messagePage(MouseEvent event) 
-    {
+    void messagePage(MouseEvent event)	throws IOException 
+    	{
+        	MainAllControllers.setWindowVar("ITManagerMessages");
+        	MainAllControllers.changeWin();
+    	}
 
-    }
-
+   
     @FXML
     void gogenerateReport(MouseEvent event) 
     {

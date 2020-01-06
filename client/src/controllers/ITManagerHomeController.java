@@ -96,9 +96,12 @@ public class ITManagerHomeController implements Initializable
     }
     
     @FXML
-    void messagePage(MouseEvent event) {
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITManagerMessages");
+    	MainAllControllers.changeWin();
+	}
 
-    }
 
     @FXML
     void logoutPage(MouseEvent event) throws IOException 

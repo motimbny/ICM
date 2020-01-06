@@ -1,19 +1,16 @@
 package controllers;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
 
-public class ITManagerPersonalInfoController implements Initializable {
-
+public class ITManagerMessagesController {
 	private MainAllControllers MainAllControllers;
-	public ITManagerPersonalInfoController()
+	public ITManagerMessagesController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
@@ -30,7 +27,7 @@ public class ITManagerPersonalInfoController implements Initializable {
     private Button employeesMangBTN;
 
     @FXML
-    private Button logoutBTN1;
+    private Button MessageBTN;
 
     @FXML
     private Button personalInfoBTN;
@@ -39,22 +36,25 @@ public class ITManagerPersonalInfoController implements Initializable {
     private Button helpBTN;
 
     @FXML
-    private Button MessageBTN;
-    
-    @FXML
     private Button logoutBTN;
 
     @FXML
-    private Label UserName;
+    private TableView<?> MessageTable;
 
     @FXML
-    private Label email;
+    private TableColumn<?, ?> SentBy;
 
     @FXML
-    private Label position;
+    private TableColumn<?, ?> messSubject;
 
     @FXML
-    void goEmployeesMang(MouseEvent event) throws IOException 
+    private TableColumn<?, ?> MessageContent;
+
+    @FXML
+    private TableColumn<?, ?> Date;
+
+    @FXML
+    void goEmployeesMang(MouseEvent event)  throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITManagerEmployeesManagment");
     	MainAllControllers.changeWin();
@@ -65,8 +65,7 @@ public class ITManagerPersonalInfoController implements Initializable {
 	{
     	MainAllControllers.setWindowVar("ITManagerHelp");
     	MainAllControllers.changeWin();
-	
-    }
+	}
 
     @FXML
     void goHomePage(MouseEvent event) throws IOException 
@@ -76,23 +75,16 @@ public class ITManagerPersonalInfoController implements Initializable {
 	}
 
     @FXML
-    void goPersonalInfo(MouseEvent event) throws IOException 
+    void goPersonalInfo(MouseEvent event)  throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITManagerPersonalInfo");
     	MainAllControllers.changeWin();
 	}
 
     @FXML
-    void goShowReq(MouseEvent event) throws IOException 
+    void goShowReq(MouseEvent event)  throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITManagerShowRequests");
-    	MainAllControllers.changeWin();
-	}
-    
-    @FXML
-    void messagePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerMessages");
     	MainAllControllers.changeWin();
 	}
 
@@ -109,12 +101,16 @@ public class ITManagerPersonalInfoController implements Initializable {
     	MainAllControllers.user=null;
 	}
 
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		UserName.setText("User name: " + MainAllControllers.user.getName());
-		email.setText("email: " + MainAllControllers.user.getName() + "@braude.ac.il");
-		position.setText("Position: " + MainAllControllers.user.getstrPosition());
-		
+    @FXML
+    void messagePage(MouseEvent event)throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITManagerMessages");
+    	MainAllControllers.changeWin();
 	}
+
+    @FXML
+    void showMessage(MouseEvent event) {
+
+    }
 
 }

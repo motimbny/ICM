@@ -11,6 +11,7 @@ import controllers.ITHomeController;
 import controllers.ITManagerEmployeesManagmentController;
 import controllers.ITManagerHelpController;
 import controllers.ITManagerHomeController;
+import controllers.ITManagerMessagesController;
 import controllers.ITManagerPersonalInfoController;
 import controllers.ITManagerShowRequestsController;
 import controllers.ITMeaningAssessmentEvaluationReportController;
@@ -134,43 +135,14 @@ public class WindowToShow
 		case "ITManagerEmployeesManagment":
 			initITManagerEmployeesManagment();
 			break;
+		case "ITManagerMessages":
+			initITManagerMessages();
+			break;
 			
 		}
 	}
 
-	private void initITManagerEmployeesManagment() {
-		ITManagerEmployeesManagmentController controller = new ITManagerEmployeesManagmentController();
-		pathfxml = "/Fxml/ITManagerEmployeesManagment.fxml";
-		windowName = "ICM-ITManagerEmployeesManagment";
-		
-	}
 
-	private void initITManagerShowRequests() {
-		ITManagerShowRequestsController controller = new ITManagerShowRequestsController();
-		pathfxml = "/Fxml/ITManagerShowRequests.fxml";
-		windowName = "ICM-ITManagerShowRequests";
-		
-	}
-
-	private void initITManagerPersonalInfo() {
-		ITManagerPersonalInfoController controller = new ITManagerPersonalInfoController();
-		pathfxml = "/Fxml/ITManagerPersonalInfo.fxml";
-		windowName = "ICM-ITManagerPersonalInfo";
-		
-	}
-
-	private void initITManagerHome() {
-		ITManagerHomeController controller = new ITManagerHomeController();
-		pathfxml = "/Fxml/ITManagerHome.fxml";
-		windowName = "ICM-ITManagerHome";
-		
-	}
-	private void initITManagerHelp() {
-		ITManagerHelpController controller = new ITManagerHelpController();
-		pathfxml = "/Fxml/ITManagerHelp.fxml";
-		windowName = "ICM-ITManagerHelp";
-		
-	}
 	public String getPathfxml() {
 		return pathfxml;
 	}
@@ -342,5 +314,44 @@ public class WindowToShow
 		ITRequestDetailsController controller = new ITRequestDetailsController();
 		pathfxml = "/Fxml/ITRequestDetails.fxml";
 		windowName = "ICM-ITRequestDetails";			
+	}
+	private void initITManagerMessages() {
+		ITManagerMessagesController controller = new ITManagerMessagesController();
+		pathfxml = "/Fxml/ITManagerMessages.fxml";
+		windowName = "ICM-ITManagerMessages";
+	}
+
+	private void initITManagerEmployeesManagment() {
+		ITManagerEmployeesManagmentController controller = new ITManagerEmployeesManagmentController();
+		pathfxml = "/Fxml/ITManagerEmployeesManagment.fxml";
+		windowName = "ICM-ITManagerEmployeesManagment";
+		
+	}
+
+	private void initITManagerShowRequests() {
+		ITManagerShowRequestsController controller = new ITManagerShowRequestsController();
+		pathfxml = "/Fxml/ITManagerShowRequests.fxml";
+		windowName = "ICM-ITManagerShowRequests";
+		
+	}
+
+	private void initITManagerPersonalInfo() {
+		ITManagerPersonalInfoController controller = new ITManagerPersonalInfoController();
+		pathfxml = "/Fxml/ITManagerPersonalInfo.fxml";
+		windowName = "ICM-ITManagerPersonalInfo";
+		
+	}
+
+	private void initITManagerHome() {
+		ITManagerHomeController controller = new ITManagerHomeController();
+		pathfxml = "/Fxml/ITManagerHome.fxml";
+		windowName = "ICM-ITManagerHome";
+		
+	}
+	private void initITManagerHelp() {
+		ITManagerHelpController controller = new ITManagerHelpController();
+		pathfxml = "/Fxml/ITManagerHelp.fxml";
+		windowName = "ICM-ITManagerHelp";
+		
 	}
 }

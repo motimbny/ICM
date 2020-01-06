@@ -131,9 +131,12 @@ public class ITManagerEmployeesManagmentController implements Initializable
     }
 
     @FXML
-    void messagePage(MouseEvent event) {
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("ITManagerMessages");
+    	MainAllControllers.changeWin();
+	}
 
-    }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
