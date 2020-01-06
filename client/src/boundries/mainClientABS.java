@@ -246,6 +246,12 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.SupervisorRequestDetailes(send);
 			}
 			break;
+			case showRequestDetailsITManager:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.ITManagerRequestDetailes(send);
+			}
+			break;
 			case SupervisorTimeRequest:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

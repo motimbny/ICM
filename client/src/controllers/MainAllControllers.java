@@ -216,6 +216,10 @@ public class MainAllControllers
 	{
 		((SupervisorRequestDetailsController) WindowToShow.controller).setTextInFields(list);		
 	}
+	public void ITManagerRequestDetailes(ArrayList<Object> list)
+	{
+		((ITManagerRequestDetailsController) WindowToShow.controller).setTextInFields(list);		
+	}
 	public void SupervisorTimeRequest(ArrayList<Object> list)
 	{
 		((SupervisorTimeRequestController) WindowToShow.controller).setToFields((updateRequest) list.get(0));

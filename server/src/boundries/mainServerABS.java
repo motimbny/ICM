@@ -7,6 +7,7 @@ import controllers.ITCCCEvaluationReportSController;
 import controllers.ITCCCRequestMoreInfoSController;
 import controllers.ITExtensionRequestSController;
 import controllers.ITHandleRequestSController;
+import controllers.ITManagerRequestDetailsSController;
 import controllers.ITMeaningAssessmentEvaluationReportSController;
 import controllers.ITRequestDetailsSController;
 import controllers.ITShowRequestsSController;
@@ -390,6 +391,18 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}
+		case showRequestDetailsITManager:
+			{
+				ITManagerRequestDetailsSController iTManagerRequestDetailsSController = new ITManagerRequestDetailsSController(dbm,
+					connection);
+			try {
+				
+				client.sendToClient(iTManagerRequestDetailsSController.showRequestDetails());
+			} catch (IOException e) {
+			}
+			break;
+		}
+			
 		case showRequestDetailsSuperviser:
 		{
 			superviserExtensionRequestController superviserExtensionRequestController = new superviserExtensionRequestController(

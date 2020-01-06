@@ -34,7 +34,7 @@ public enum MessageType
 		submitEvaluationReport,
 		renewRequest,
 		MangerShowMessages,
-		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo, addTimeEstimatedPerformance
+		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo, addTimeEstimatedPerformance, showRequestDetailsITManager
 
 
 }

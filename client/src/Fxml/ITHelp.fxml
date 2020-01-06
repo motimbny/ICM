@@ -66,42 +66,42 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="98.0" prefHeight="30.0" prefWidth="234.0" text="To show all requests :">
+            <Label layoutX="38.0" layoutY="98.0" prefHeight="30.0" prefWidth="234.0" text="To show all requests :">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <Label layoutX="33.0" layoutY="128.0" prefHeight="30.0" prefWidth="520.0" text="Click on &quot;Show requests&quot; -&gt; All open requests will be displayed before you">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
             <Label layoutX="115.0" layoutY="282.0" prefHeight="30.0" prefWidth="483.0" text="If you have more questions - feel free to email us ">
                <font>
-                  <Font size="20.0" />
+                  <Font name="System Bold Italic" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="153.0" layoutY="314.0" prefHeight="30.0" prefWidth="140.0" text="moti@braude.ac.il">
+            <Label layoutX="181.0" layoutY="323.0" prefHeight="30.0" prefWidth="140.0" text="moti@braude.ac.il">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="153.0" layoutY="344.0" prefHeight="30.0" prefWidth="140.0" text="shira@braude.ac.il">
+            <Label layoutX="181.0" layoutY="353.0" prefHeight="30.0" prefWidth="140.0" text="shira@braude.ac.il">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="152.0" layoutY="374.0" prefHeight="30.0" prefWidth="140.0" text="gefen@braude.ac.il">
+            <Label layoutX="180.0" layoutY="383.0" prefHeight="30.0" prefWidth="140.0" text="gefen@braude.ac.il">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="160.0" layoutY="404.0" prefHeight="30.0" prefWidth="130.0" text="adi@braude.ac.il">
+            <Label layoutX="188.0" layoutY="413.0" prefHeight="30.0" prefWidth="130.0" text="adi@braude.ac.il">
                <font>
-                  <Font size="15.0" />
+                  <Font size="13.0" />
                </font>
             </Label>
-            <ImageView fitHeight="136.0" fitWidth="189.0" layoutX="324.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="136.0" fitWidth="189.0" layoutX="324.0" layoutY="316.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Images/hackaton.jpg" />
                </image>

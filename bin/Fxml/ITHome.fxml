@@ -61,7 +61,7 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label fx:id="helloIT" layoutX="137.0" layoutY="141.0" text="Hello &lt;ITmember Name&gt;" textAlignment="CENTER">
+            <Label fx:id="helloIT" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="141.0" prefHeight="53.0" prefWidth="356.0" textAlignment="CENTER" textOverrun="CENTER_WORD_ELLIPSIS">
                <font>
                   <Font size="36.0" />
                </font>
@@ -71,7 +71,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="ExistingReq" layoutX="252.0" layoutY="222.0" prefHeight="46.0" prefWidth="198.0" text="Existing Requests : ">
+            <Label fx:id="ExistingReq" layoutX="271.0" layoutY="222.0" prefHeight="46.0" prefWidth="163.0" text="Existing Requests : ">
                <font>
                   <Font size="16.0" />
                </font>
