@@ -66,11 +66,12 @@ public class ITCCCEvaluationReportController implements Initializable
     private TextField requestID;
     
     @FXML
-    private Button BackToShow;
+    private Button backBTN;
 
     @FXML
-    void BackToS(MouseEvent event) throws IOException {
-		MainAllControllers.setWindowVar("ITHandleRequest");
+    void back(MouseEvent event) throws IOException 
+    {
+    	MainAllControllers.setWindowVar("ITHandleRequest");
 		MainAllControllers.changeWin();
     }
 
@@ -159,7 +160,16 @@ public class ITCCCEvaluationReportController implements Initializable
 		ArrayList<Object> arry=new ArrayList<Object>();
 		int s=MainAllControllers.request;
 		arry.add(s);//request id
+		String job=MainAllControllers.itHandlejob;
 		requestID.setText(""+s);
+		if(job.equals("CEOControlCommitte"))
+		{
+			requireMoreInfoBTN.setVisible(true);
+			DenyCCEvaluationReport.setVisible(true);
+			ApproveCCEvaluationReport.setVisible(true);
+		}
+		else
+			backBTN.setVisible(true);
 		DBmessage dbm;
     	dbm=new DBmessage(MessageType.ITshowEvaluationReport, arry);   
     	try {

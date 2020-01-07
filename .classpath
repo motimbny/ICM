@@ -8,5 +8,11 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="lib" path="mysql-connector-java-8.0.13.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gefen/Documents/לימודים/סמסטר 5/שיטות הנדסיות לפיתוח מערכות תכנה/‏‏תיקיה חדשה/commons-email-1.5/commons-email-1.5.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gefen/Documents/לימודים/סמסטר 5/שיטות הנדסיות לפיתוח מערכות תכנה/‏‏תיקיה חדשה/commons-email-1.5/commons-email-1.5-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gefen/Documents/לימודים/סמסטר 5/שיטות הנדסיות לפיתוח מערכות תכנה/‏‏תיקיה חדשה/commons-email-1.5/commons-email-1.5-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gefen/Documents/לימודים/סמסטר 5/שיטות הנדסיות לפיתוח מערכות תכנה/‏‏תיקיה חדשה/commons-email-1.5/commons-email-1.5-tests.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gefen/Documents/לימודים/סמסטר 5/שיטות הנדסיות לפיתוח מערכות תכנה/‏‏תיקיה חדשה/commons-email-1.5/commons-email-1.5-test-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Gefen/Documents/לימודים/סמסטר 5/שיטות הנדסיות לפיתוח מערכות תכנה/‏‏תיקיה חדשה/javax.mail.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
