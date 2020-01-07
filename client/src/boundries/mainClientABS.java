@@ -103,6 +103,7 @@ public class mainClientABS extends AbstractClient
 			break;
 			case AddRequest:
 				{
+					System.out.println("im here");
 					 MainAllControllers.goodRequeSend();
 				}
 				break;

@@ -88,7 +88,7 @@ public class SupervisorUpdateRequestSController
 			try 
 			{		
 				stmt = connection.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='regular'");
+				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT'");
 				while(rs.next()!=false)
 				{
 					listOfIT.add(rs.getString(2).toString());

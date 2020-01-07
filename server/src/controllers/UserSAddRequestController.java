@@ -51,8 +51,8 @@ public class UserSAddRequestController
 		this.CCC3=(String)getListOfIT.getCC().getObjs().get(2);
 
 	}
-	private void setCC() {
-
+	private void setCC() 
+	{
 		Statement stmt;
 		DBSmessage dbs;
 		   int id=(int)arry.get(0);
@@ -74,17 +74,14 @@ public class UserSAddRequestController
 		     {
 		    	e.printStackTrace();
 		    	
-		     }
-			
-		
+		     }	
 	}
 	public DBSmessage submitRequest()
 	{
 	   PreparedStatement req;
 	   PreparedStatement requeststages;
 	   DBSmessage dbs;
-	  Random rand = new Random();
-	    
+	   Random rand = new Random();    
 	   boolean flag=false;
    	   ArrayList<Object> arry=new ArrayList<Object>();
  		try 
@@ -120,8 +117,7 @@ public class UserSAddRequestController
  			requeststages.setInt(12, 0);
  			requeststages.setInt(13, 0);
  			requeststages.executeUpdate();	
- 			requeststages.close();
- 			
+ 			requeststages.close();	
  		  }
  		 catch (SQLException e) 
  		     {
