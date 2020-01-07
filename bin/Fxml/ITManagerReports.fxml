@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -96,50 +95,30 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="chooseTypeOfReport" layoutX="270.0" layoutY="120.0" prefHeight="27.0" prefWidth="271.0" />
-            <Label layoutX="69.0" layoutY="119.0" prefHeight="27.0" prefWidth="197.0" text="Choose type of report">
+            <ChoiceBox fx:id="chooseTypeOfReport" layoutX="242.0" layoutY="93.0" prefHeight="27.0" prefWidth="252.0" />
+            <Label layoutX="45.0" layoutY="87.0" prefHeight="27.0" prefWidth="197.0" text="Choose type of report">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="70.0" layoutY="174.0" prefHeight="27.0" prefWidth="129.0" text="Choose Date">
+            <Label layoutX="45.0" layoutY="120.0" prefHeight="27.0" prefWidth="129.0" text="Choose Date">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="71.0" layoutY="213.0" prefHeight="25.0" prefWidth="59.0" text="From : ">
+            <Label layoutX="45.0" layoutY="154.0" prefHeight="25.0" prefWidth="59.0" text="From : ">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <DatePicker fx:id="dateFrom" layoutX="122.0" layoutY="212.0" prefHeight="27.0" prefWidth="168.0" />
-            <Label layoutX="337.0" layoutY="214.0" prefHeight="25.0" prefWidth="33.0" text="To : ">
+            <DatePicker fx:id="dateFrom" layoutX="109.0" layoutY="153.0" prefHeight="27.0" prefWidth="129.0" />
+            <Label layoutX="256.0" layoutY="154.0" prefHeight="25.0" prefWidth="33.0" text="To : ">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <DatePicker fx:id="DateTo" layoutX="373.0" layoutY="212.0" prefHeight="27.0" prefWidth="168.0" />
-            <Label layoutX="74.0" layoutY="265.0" prefHeight="27.0" prefWidth="72.0" text="Include">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <CheckBox fx:id="MedianChoose" layoutX="74.0" layoutY="297.0" mnemonicParsing="false" text="Median">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="StandardChoose" layoutX="74.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" text="Standard deviation">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </CheckBox>
-            <CheckBox fx:id="FrequencyChoose" layoutX="74.0" layoutY="351.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="197.0" text="Frequency distribution">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </CheckBox>
-            <Button fx:id="generateReport" alignment="CENTER" layoutX="435.0" layoutY="451.0" mnemonicParsing="false" onMouseClicked="#generateReportClick" prefHeight="46.0" prefWidth="168.0" styleClass="buttonBlackBorder" text="generate report" textAlignment="CENTER">
+            <DatePicker fx:id="DateTo" layoutX="292.0" layoutY="153.0" prefHeight="27.0" prefWidth="129.0" />
+            <Button fx:id="generateReport" alignment="CENTER" layoutX="472.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#generateReportClick" prefHeight="46.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="generate report" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

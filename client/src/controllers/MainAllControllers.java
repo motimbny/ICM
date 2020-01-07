@@ -28,13 +28,21 @@ public class MainAllControllers
 	public int request;
 	public String itHandlejob;
 	public String nowWin;
+	public String host;
+	public int port;
+	private boolean isConnected=false;
 	private MainAllControllers() 
 	{
 		this.mac=mac;
 	}
 	public void setMainAbs() throws IOException
 	{
-		mcABS=new mainClientABS("",5555);
+		   mcABS=new mainClientABS(host,port);
+		   isConnected=true;
+	}
+	public boolean getisConnect()
+	{
+		return isConnected;
 	}
 	public static MainAllControllers getInstance()
 	{

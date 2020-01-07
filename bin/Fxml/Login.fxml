@@ -9,17 +9,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/login.css" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoginController">
    <children>
-      <Label layoutX="212.0" layoutY="212.0" text="User Name:">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Label layoutX="214.0" layoutY="263.0" text="Password:">
-         <font>
-            <Font size="16.0" />
-         </font></Label>
-      <Button fx:id="loginMainScreen" layoutX="303.0" layoutY="310.0" mnemonicParsing="false" onMouseClicked="#Login" prefHeight="33.0" prefWidth="266.0" text="Login" />
       <Button layoutX="680.0" layoutY="520.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="83.0">
          <graphic>
             <ImageView fx:id="help" fitHeight="33.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
@@ -43,7 +34,6 @@
             <Image url="@../Images/logo.JPG" />
          </image>
       </ImageView>
-      <TextField fx:id="UserNameField" layoutX="302.0" layoutY="212.0" prefHeight="33.0" prefWidth="266.0" />
       <Label fx:id="baduserpass" layoutX="295.0" layoutY="348.0" prefHeight="25.0" prefWidth="266.0" text="User name/Password is incorrect" visible="false">
          <font>
             <Font size="16.0" />
@@ -54,6 +44,31 @@
             <Font size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="passF" layoutX="303.0" layoutY="263.0" prefHeight="33.0" prefWidth="266.0" />
+      <Pane fx:id="connectPane" layoutX="334.0" layoutY="216.0" prefHeight="200.0" prefWidth="171.0">
+         <children>
+            <TextField fx:id="portTO" layoutX="3.0" layoutY="40.0" text="5555" />
+            <TextField fx:id="hostTO" layoutX="3.0" layoutY="84.0" />
+            <Label layoutX="29.0" layoutY="23.0" text="Port to connect:" />
+            <Label layoutX="29.0" layoutY="66.0" text="Host to connect:" />
+            <Button layoutX="5.0" layoutY="120.0" mnemonicParsing="false" onMousePressed="#connectTOhoPo" prefHeight="25.0" prefWidth="149.0" styleClass="buttonBlackBorder" text="Connect" />
+         </children>
+      </Pane>
+      <Pane fx:id="signPane" layoutX="192.0" layoutY="182.0" prefHeight="200.0" prefWidth="455.0" visible="false">
+         <children>
+            <Label layoutX="34.0" layoutY="58.0" text="User Name:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="36.0" layoutY="109.0" text="Password:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="loginMainScreen" layoutX="125.0" layoutY="156.0" mnemonicParsing="false" onMouseClicked="#Login" prefHeight="33.0" prefWidth="266.0" text="Login" />
+            <TextField fx:id="UserNameField" layoutX="124.0" layoutY="58.0" prefHeight="33.0" prefWidth="266.0" />
+            <PasswordField fx:id="passF" layoutX="125.0" layoutY="109.0" prefHeight="33.0" prefWidth="266.0" />
+         </children>
+      </Pane>
    </children>
 </Pane>
