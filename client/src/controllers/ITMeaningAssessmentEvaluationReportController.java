@@ -135,6 +135,7 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 			} catch (IOException e) {
 			}
     	}
+    	goShowReq(event);
     }
 
     public void setOnSucsess()

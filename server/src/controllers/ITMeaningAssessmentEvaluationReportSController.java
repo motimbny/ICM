@@ -64,6 +64,8 @@ public class ITMeaningAssessmentEvaluationReportSController {
  			req.close();
  			stmt.executeUpdate("UPDATE request SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE requeststages SET timeExaminationDecision=7 WHERE id="+reqId+"");
+
 			arry.add(1);
 		} catch (SQLException e) {
 			e.printStackTrace();

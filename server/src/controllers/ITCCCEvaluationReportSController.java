@@ -64,6 +64,7 @@ public class ITCCCEvaluationReportSController {
 			stmt.executeUpdate("UPDATE request SET currentStage='execution' WHERE id="+numReport+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='execution' WHERE id="+numReport+"");
 
+
 		} 
 		catch (SQLException e)
 		{

@@ -52,9 +52,7 @@ public class ITExtensionRequestSController {
 	public DBSmessage submitRequest()
 	{
 		ArrayList<Object> arr = db.getObjs();
-		System.out.println("7777");
 		this.reqId=(int)arr.get(0);
-		System.out.println("0000");
 		this.stage=(String)arr.get(1);
 		this.user=(String)arr.get(2);
 		this.timeToAdd=(int)arr.get(3);
@@ -64,7 +62,7 @@ public class ITExtensionRequestSController {
    	   ArrayList<Object> arry=new ArrayList<Object>();
  		try 
  		  {
- 			System.out.println("lalala");
+
  			ps = connection.prepareStatement("INSERT INTO extensionrequest VALUES(?,?,?,?,?,?)");
  			ps.setInt(1, this.reqId);
  			ps.setString(2, this.stage);

@@ -97,48 +97,7 @@ public class ITHandleRequestSController {
 			e.printStackTrace();
 		}
 		return null;
-	/*	ArrayList<Object> arry=new ArrayList<Object>();
-		DBSmessage dbs;
 
-		int id=(int) msg.getObjs().get(0) ;
-		//int timeEstimatedEvaluation=(int)msg.getObjs().get(1);
-		String stage;
-		Statement stmt;
-		try 
-		{
-		לבדוק אם שמרתי את הפונקציה אצלי ולשנות!1
-			stmt = connection.createStatement();
-			//stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
-			arry.add(id);
-
-			ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+"");
-			while (rs.next() != false)
-			{
-				stage=rs.getString(3);
-				System.out.println(stage);
-				if(stage.equals("meaningAssessment"))
-				{
-					stmt = connection.createStatement();
-					System.out.println("hello22");
-					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
-
-				}
-				else
-				{
-					 dbs = new DBSmessage(MessageTypeS.addTimeEstimated, null);
-					return dbs;
-				}
-			}
-		
-
-		} 
-		
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-    	dbs=new DBSmessage(MessageTypeS.addTimeEstimated, arry);
-		return dbs;	*/
 	}
 	
 	public Object addTimeEstimatedPerformance() {
@@ -169,7 +128,9 @@ public class ITHandleRequestSController {
 		try {
 			stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE request SET currentStage='testing' WHERE id="+reqId+"");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' AND WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE requeststages SET timeTest=7 WHERE id="+reqId+"");
+
 		} catch (SQLException e) {}
 		return null;
 	}
