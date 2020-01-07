@@ -169,6 +169,7 @@ public class ITManagerEmployeesManagmentController implements Initializable
 		combo.getItems().add("superviser");
 		combo.getItems().add("CEO");
 		combo.getItems().add("CC");
+		combo.getItems().add("IT-operator");
 		employeeId.setCellValueFactory(new PropertyValueFactory<>("employeeId"));
 		employeeName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
 		employeeLastName.setCellValueFactory(new PropertyValueFactory<>("employeeLastName"));

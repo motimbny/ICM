@@ -42,6 +42,9 @@ public class mainClientABS extends AbstractClient
 					case "IT-manager":
 						topen="ITManagerHome";
 						break;
+					case "IT-operator":
+						topen="ITHome";
+						break;
 					case "IT":
 						topen="ITHome";
 						break;
