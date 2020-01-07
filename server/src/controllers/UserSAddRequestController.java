@@ -78,6 +78,7 @@ public class UserSAddRequestController
 	}
 	public DBSmessage submitRequest()
 	{
+		int c1,c2,c3;
 	   PreparedStatement req;
 	   PreparedStatement requeststages;
 	   DBSmessage dbs;
@@ -105,13 +106,20 @@ public class UserSAddRequestController
  			requeststages = connection.prepareStatement("INSERT INTO requeststages VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)");
  			requeststages.setInt(1, request.getId());
  			requeststages.setString(2, request.getCurrentStatus());
- 			requeststages.setString(3,request.getCurrentStage().toString() );
- 			requeststages.setString(4,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			requeststages.setString(3,request.getCurrentStage().toString());
+ 			c1=rand.nextInt(listOfIT.size());
+ 			requeststages.setString(4,listOfIT.get(c1).toString());
  			requeststages.setString(5,this.CEO);
  			requeststages.setString(6, this.CCC2);
  			requeststages.setString(7, this.CCC3);
- 			requeststages.setString(8,listOfIT.get(rand.nextInt(listOfIT.size())).toString());
- 			requeststages.setString(9, listOfIT.get(rand.nextInt(listOfIT.size())).toString());
+ 			c2=rand.nextInt(listOfIT.size());
+ 			while(c1==c2)
+ 	 			c2=rand.nextInt(listOfIT.size());	
+ 			requeststages.setString(8,listOfIT.get(c2).toString());
+ 			c3=rand.nextInt(listOfIT.size());
+ 			while(c1==c3||c2==c3)
+ 	 			c3=rand.nextInt(listOfIT.size());
+ 			requeststages.setString(9, listOfIT.get(c3).toString());
  			requeststages.setInt(10, 0);
  			requeststages.setInt(11,0);                          
  			requeststages.setInt(12, 0);
