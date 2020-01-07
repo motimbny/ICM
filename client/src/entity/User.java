@@ -20,6 +20,15 @@ public class User implements Serializable
 			case "IT":
 				this.job =Position.ITMember;
 			    break;
+			case "CC":
+				this.job =Position.ITMember;
+			    break;
+			case "CEO":
+				this.job =Position.ITMember;
+			    break;
+			case "superviser":
+				this.job =Position.ITMember;
+			    break;
 			case "student":
 			    this.job =Position.student;
 			    break;
