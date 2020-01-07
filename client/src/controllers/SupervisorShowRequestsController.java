@@ -75,6 +75,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	private Button SuprvisorExtensionRequestBTN;
 
 	@FXML
+    private Button MessageBTN;
+
+	@FXML
 	private Button search;
 	@FXML
 	private Button SuprvisorTime;
@@ -156,6 +159,12 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.setWindowVar("SupervisorShowRequests");
 		MainAllControllers.changeWin();
 	}
+	 @FXML
+	    void messagePage(MouseEvent event) throws IOException 
+		{
+	    	MainAllControllers.setWindowVar("SupervisorMessages");
+	    	MainAllControllers.changeWin();
+		}
 
 	@FXML
 	    void viewTime(MouseEvent event) throws IOException

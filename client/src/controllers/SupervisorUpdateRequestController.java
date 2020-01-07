@@ -48,6 +48,8 @@ public class SupervisorUpdateRequestController implements Initializable
     @FXML
     private Button helpBTN;
     @FXML
+    private Button MessageBTN;
+    @FXML
     private Button logoutBTN;
     @FXML
     private Button requestInfoBTN;
@@ -117,7 +119,12 @@ public class SupervisorUpdateRequestController implements Initializable
      	MainAllControllers.setWindowVar("SupervisorPersonalInfo");
      	MainAllControllers.changeWin();
  	}
-
+ 	@FXML
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorMessages");
+    	MainAllControllers.changeWin();
+	}
     @FXML
 	void goShowReqPage(MouseEvent event) throws IOException 
 	{

@@ -39,7 +39,9 @@ public class SupervisorHomeController implements Initializable
 	@FXML
 	private Button showreBTN;
 
-	
+	@FXML
+    private Button MessageBTN;
+
 
 	@FXML
 	private Button personBTN;
@@ -93,7 +95,12 @@ public class SupervisorHomeController implements Initializable
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
 	}
-
+	@FXML
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorMessages");
+    	MainAllControllers.changeWin();
+	}
     void setRequestNumber(int num)
     {
     	ExistingRequests.setText("Existing Requests : "+Integer.toString(num));

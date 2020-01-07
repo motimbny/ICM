@@ -36,6 +36,9 @@ public class SupervisorTimeRequestController implements Initializable
 
     @FXML
     private Button logoutBTN;
+    
+    @FXML
+    private Button MessageBTN;
 
     @FXML
     private Button requestInfoBTN;
@@ -100,6 +103,12 @@ public class SupervisorTimeRequestController implements Initializable
 	void goShowReqPage(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
+    	MainAllControllers.changeWin();
+	}
+    @FXML
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorMessages");
     	MainAllControllers.changeWin();
 	}
 

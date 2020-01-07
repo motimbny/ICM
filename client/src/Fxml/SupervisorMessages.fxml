@@ -4,14 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorEmployeesManagmentController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SupervisorMessagesController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -73,28 +72,23 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label layoutX="118.0" layoutY="30.0" text="Employees managment">
-               <font>
-                  <Font name="System Bold" size="40.0" />
-               </font>
-            </Label>
-            <TableView fx:id="EmployeesTable" layoutX="58.0" layoutY="112.0" prefHeight="360.0" prefWidth="558.0">
-              <columns>
-                <TableColumn fx:id="employeeId" prefWidth="81.0" text="Employee ID" />
-                <TableColumn fx:id="employeeName" prefWidth="117.33331298828125" text="First Name" />
-                  <TableColumn fx:id="employeeLastName" prefWidth="108.66668701171875" text="Last Name" />
-                  <TableColumn fx:id="employeeMail" prefWidth="126.3333740234375" text="Email" />
-                  <TableColumn fx:id="numOfProjects" prefWidth="125.0" text="Number Of Projects" />
-              </columns>
-            </TableView>
-            <Label layoutX="363.0" layoutY="503.0" prefHeight="25.0" prefWidth="261.0" text="*Double press employee choose">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <effect>
-                  <Glow />
-               </effect>
-            </Label>
+            <Pane prefHeight="600.0" prefWidth="661.0">
+               <children>
+                  <Label layoutX="253.0" layoutY="21.0" prefHeight="58.0" prefWidth="187.0" text="Messages">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="MessageTable" layoutX="32.0" layoutY="100.0" onMouseClicked="#UpdateR" prefHeight="401.0" prefWidth="597.0">
+                     <columns>
+                        <TableColumn fx:id="SentBy" prefWidth="95.0" text="Sent by" />
+                        <TableColumn fx:id="messSubject" prefWidth="141.33331298828125" text="Subject" />
+                        <TableColumn fx:id="MessageContent" prefWidth="254.66668701171875" text="Message content" />
+                        <TableColumn fx:id="Date" prefWidth="107.0" text="Date" />
+                     </columns>
+                  </TableView>
+               </children>
+            </Pane>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

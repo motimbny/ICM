@@ -34,6 +34,9 @@ public class SupervisorPersonalInfoController implements Initializable
 	private Button logoutBTN;
 
 	@FXML
+	private Button MessageBTN;
+	
+	@FXML
 	private Label UserName;
 
 	@FXML
@@ -78,7 +81,14 @@ public class SupervisorPersonalInfoController implements Initializable
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
 	}
-
+	
+    @FXML
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorMessages");
+    	MainAllControllers.changeWin();
+	}
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{

@@ -25,6 +25,7 @@ import controllers.LoginController;
 import controllers.SupervisorExtensionRequestController;
 import controllers.SupervisorHelpController;
 import controllers.SupervisorHomeController;
+import controllers.SupervisorMessagesController;
 import controllers.SupervisorPersonalInfoController;
 import controllers.SupervisorRequestDetailsController;
 import controllers.SupervisorShowRequestsController;
@@ -88,7 +89,10 @@ public class WindowToShow
 			break;
 		case "SupervisorTimeRequest":
 	     	initSupervisorTimeRequest();
-		break;
+	     	break;
+		case "SupervisorMessages":
+	     	initSupervisorMessages();
+	     	break;
 		case "ITHome":
 			initITHome();
 			break;
@@ -149,9 +153,6 @@ public class WindowToShow
 			
 		}
 	}
-
-
-
 
 
 	public String getPathfxml() {
@@ -251,6 +252,13 @@ public class WindowToShow
 		SupervisorExtensionRequestController controller = new SupervisorExtensionRequestController(); // SupervisorExtentionRequestController
 		pathfxml = "/Fxml/SupervisorExtentionRequest.fxml";
 		windowName = "ICM-SupervisorExtentionRequest";
+	}
+	
+	private void initSupervisorMessages() {
+		SupervisorMessagesController controller = new SupervisorMessagesController(); // SupervisorHelpController
+		pathfxml = "/Fxml/SupervisorMessages.fxml";
+		windowName = "ICM-SupervisorMessages";
+		
 	}
 
 	public void initITHome() {

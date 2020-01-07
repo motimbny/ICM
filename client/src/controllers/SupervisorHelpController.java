@@ -24,6 +24,9 @@ public class SupervisorHelpController
     private Button personBTN;
 
     @FXML
+    private Button MessageBTN;
+    
+    @FXML
     private Button helpBTN;
 
     @FXML
@@ -58,6 +61,13 @@ public class SupervisorHelpController
     	MainAllControllers.setWindowVar("SupervisorPersonalInfo");
     	MainAllControllers.changeWin();
     }
+    
+    @FXML
+    void messagePage(MouseEvent event) throws IOException 
+	{
+    	MainAllControllers.setWindowVar("SupervisorMessages");
+    	MainAllControllers.changeWin();
+	}
 
     @FXML
     void showreBTNE(MouseEvent event) throws IOException 
