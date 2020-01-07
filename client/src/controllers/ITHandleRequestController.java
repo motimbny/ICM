@@ -107,6 +107,8 @@ public class ITHandleRequestController implements Initializable {
 
     @FXML
     private Label timeWasSubmitted;
+	@FXML
+	private Label stagenotmatch;
 
     
     @FXML
@@ -167,8 +169,7 @@ public class ITHandleRequestController implements Initializable {
 	}
     
 
-	@FXML
-	private Label stagenotmatch;
+
 
 	@FXML
 	void CreateEvaluationReport(MouseEvent event) throws IOException {
@@ -196,7 +197,6 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	void SubmitTimeEstimateEvaluation(MouseEvent event) {
-		
 	String time=timeEstimatedEvaluation.getText();
 	ArrayList<Object> arry = new ArrayList<Object>();
 	arry.add( MainAllControllers.request);
@@ -293,6 +293,7 @@ public class ITHandleRequestController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+	
 		int s = MainAllControllers.request;
 		requestIdField.setText("Request ID: " + s);
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -330,6 +331,8 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	public void setvisable() {
+		System.out.println("im here");
+
 		stagenotmatch.setVisible(true);
 		
 	}

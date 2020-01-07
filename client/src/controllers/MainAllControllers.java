@@ -265,8 +265,9 @@ public class MainAllControllers
 		((ITHandleRequestController) WindowToShow.controller).setvisable();
 	}
 	public void setvisable() {
+
 		((SupervisorShowRequestsController) WindowToShow.controller).setvisable();
-		
+	
 	}
 	
 }

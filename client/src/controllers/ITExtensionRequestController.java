@@ -120,10 +120,10 @@ public class ITExtensionRequestController implements Initializable
     	{
     		fillAllFields.setVisible(false);
     		ArrayList<Object> arry=new ArrayList<Object>(); 
-	        arry.add(RequestID.getText());
+	        arry.add(Integer.parseInt(RequestID.getText()));
 	        arry.add(ReqStage.getText());
 	        arry.add(itHandler.getText()); 
-	        arry.add(timeToAdd.getText());
+	        arry.add(Integer.parseInt(timeToAdd.getText()));
     		arry.add(Reason.getText());
     		DBmessage dbm;
         	dbm=new DBmessage(MessageType.AddExtensionRequest, arry);   
@@ -136,6 +136,7 @@ public class ITExtensionRequestController implements Initializable
     }
     public void setOnSucsess(int num)
     {	
+    	if(num==1)
     	requestWasSubmitted.setVisible(true);
     }
 

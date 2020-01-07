@@ -63,10 +63,6 @@ public class ITHandleRequestSController {
 	}
 
 	public Object addTimeEstimated() {
-
-		ArrayList<Object> arry=new ArrayList<Object>();
-		DBSmessage dbs;
-
 		int id=(int) msg.getObjs().get(0) ;
 		int timeEstimatedEvaluation=(int)msg.getObjs().get(1);
 		String stage;
@@ -75,9 +71,45 @@ public class ITHandleRequestSController {
 		{
 		
 			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+"");
+			while (rs.next() != false)
+			{
+				stage=rs.getString(3);
+				System.out.println(stage);
+				if(stage.equals("meaningAssessment"))
+				{
+					stmt = connection.createStatement();
+					System.out.println("hello22");
+					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
 
-			stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
-			arry.add(1);
+				}
+				else
+				{
+					System.out.println("server 88");
+					DBSmessage dbs = new DBSmessage(MessageTypeS.addTimeEstimated, null);
+					return dbs;
+				}
+			}
+		}
+
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	/*	ArrayList<Object> arry=new ArrayList<Object>();
+		DBSmessage dbs;
+
+		int id=(int) msg.getObjs().get(0) ;
+		//int timeEstimatedEvaluation=(int)msg.getObjs().get(1);
+		String stage;
+		Statement stmt;
+		try 
+		{
+		לבדוק אם שמרתי את הפונקציה אצלי ולשנות!1
+			stmt = connection.createStatement();
+			//stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
+			arry.add(id);
 
 			ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+"");
 			while (rs.next() != false)
@@ -106,7 +138,7 @@ public class ITHandleRequestSController {
 			e.printStackTrace();
 		}
     	dbs=new DBSmessage(MessageTypeS.addTimeEstimated, arry);
-		return dbs;	
+		return dbs;	*/
 	}
 	
 	public Object addTimeEstimatedPerformance() {
