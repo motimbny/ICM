@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerHelpController">
+   <children>
+      <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
+         <children>
+            <Button fx:id="homeBTN" mnemonicParsing="false" onMouseClicked="#goHomePage" prefHeight="47.0" prefWidth="140.0" text=" Home   ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="showRequestBTN" mnemonicParsing="false" onMouseClicked="#goShowReq" prefHeight="46.0" prefWidth="140.0" text="Show requests">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/document.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="generateReportBTN1" mnemonicParsing="false" onMouseClicked="#gogenerateReport" prefHeight="46.0" prefWidth="140.0" text="Reports ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/list.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="employeesMangBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMang" prefHeight="46.0" prefWidth="140.0" text="Managment ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/management.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="MessageBTN" mnemonicParsing="false" onMouseClicked="#messagePage" prefHeight="46.0" prefWidth="140.0" text="Messages">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/email.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="personalInfoBTN" mnemonicParsing="false" onMouseClicked="#goPersonalInfo" prefHeight="46.0" prefWidth="140.0" text="Personal info">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/user.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="helpBTN" mnemonicParsing="false" onMouseClicked="#goHelpPage" prefHeight="46.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="       Help      ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/info.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="logoutBTN" mnemonicParsing="false" onMouseClicked="#logoutPage" prefHeight="46.0" prefWidth="140.0" text="   Log-Out     ">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </VBox>
+      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
+         <children>
+            <Pane prefHeight="600.0" prefWidth="661.0">
+               <children>
+                  <Label layoutX="286.0" layoutY="25.0" text="Help">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="41.0" layoutY="98.0" prefHeight="30.0" prefWidth="290.0" text=" How can I show all requests ?">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="128.0" prefHeight="30.0" prefWidth="442.0" text="Click on &quot;Show requests&quot; -&gt; All open requests will be displayed before you">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="114.0" layoutY="396.0" prefHeight="30.0" prefWidth="483.0" text="If you have more questions - feel free to email us ">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="175.0" layoutY="428.0" prefHeight="30.0" prefWidth="117.0" text="moti@braude.ac.il">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="175.0" layoutY="458.0" prefHeight="30.0" prefWidth="117.0" text="shira@braude.ac.il">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="174.0" layoutY="488.0" prefHeight="30.0" prefWidth="117.0" text="gefen@braude.ac.il">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="182.0" layoutY="518.0" prefHeight="30.0" prefWidth="102.0" text="adi@braude.ac.il">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="136.0" fitWidth="189.0" layoutX="323.0" layoutY="427.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/hackaton.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="48.0" layoutY="164.0" prefHeight="30.0" prefWidth="472.0" text="How can I generate a report or show all reports ?">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="38.0" layoutY="193.0" prefHeight="30.0" prefWidth="612.0" text="Click on &quot;Reports&quot; -&gt; choose type of report -&gt; select dates to show -&gt; choose what will the report include">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="49.0" layoutY="232.0" prefHeight="30.0" prefWidth="358.0" text="How can I manage employees ?">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="40.0" layoutY="262.0" prefHeight="30.0" prefWidth="442.0" text="Click on &quot;managment&quot; -&gt; Click on the relevant employee -&gt; ">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="50.0" layoutY="300.0" prefHeight="30.0" prefWidth="269.0" text="How can I show massages :">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="42.0" layoutY="330.0" prefHeight="30.0" prefWidth="393.0" text="Click on &quot;Massages&quot; -&gt; all massages that sent to you will appear">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
+      <Pane prefHeight="116.0" prefWidth="140.0">
+         <children>
+            <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="4.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/logo.JPG" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+   </children>
+</Pane>
