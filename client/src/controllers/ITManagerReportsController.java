@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -19,7 +22,6 @@ public class ITManagerReportsController implements Initializable
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
-
     @FXML
     private Button homeBTN;
 
@@ -64,12 +66,24 @@ public class ITManagerReportsController implements Initializable
 
     @FXML
     private Button generateReport;
+    @FXML
+    private PieChart ActiveSuClo;
 
     @FXML
-    void generateReportClick(MouseEvent event) {
-
+    void generateReportClick(MouseEvent event) 
+    {
+    	makeActiveSuClo();
     }
-
+    public void makeActiveSuClo()
+    {
+    	PieChart.Data slice1 = new PieChart.Data("Active", 213);
+    	PieChart.Data slice2 = new PieChart.Data("Susspend"  , 67);
+    	PieChart.Data slice3 = new PieChart.Data("Closed" , 36);
+    	ActiveSuClo.getData().add(slice1);
+    	ActiveSuClo.getData().add(slice2);
+    	ActiveSuClo.getData().add(slice3);
+    	ActiveSuClo.setVisible(true);
+    }
     @FXML
     void goEmployeesMang(MouseEvent event) throws IOException 
 	{
@@ -129,7 +143,8 @@ public class ITManagerReportsController implements Initializable
 	}
 
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	public void initialize(URL arg0, ResourceBundle arg1) 
+	{
 		chooseTypeOfReport.getItems().add("Activity");
 		chooseTypeOfReport.getItems().add("Performence");
 		chooseTypeOfReport.getItems().add("Delays in execution");
