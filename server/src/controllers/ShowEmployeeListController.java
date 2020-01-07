@@ -18,28 +18,108 @@ public class ShowEmployeeListController
 	private Connection connection;
 	private DBmessage db;
 	private ArrayList<Object> toSend;
+	private ITemployee superviser,ceo,cc,cc2,person;
 	public ShowEmployeeListController(DBmessage db,Connection connection)
 	{
 		this.db=db;
 		this.connection=connection;
 		toSend= new ArrayList<Object>();
+		superviser=findsuperviser();
+		ceo=findceo();
+		cc=findcc();
+		cc2=findcc2();
+		System.out.println(cc.getEmployeeName()+" "+cc2.getEmployeeName());
+	}
+	private ITemployee findcc2() 
+	{
+		Statement stmt;
+		ITemployee toAdd=null;
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CC' AND employeeName != '"+cc.getEmployeeName()+"'");
+				while(rs.next()!=false)
+				{
+				  toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
+				}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return toAdd;
+	}
+	private ITemployee findcc()
+	{
+		Statement stmt;
+		ITemployee toAdd=null;
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CC'");
+				while(rs.next()!=false)
+				{
+				  toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
+				}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return toAdd;
+	}
+	private ITemployee findceo() 
+	{
+		Statement stmt;
+		ITemployee toAdd=null;
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CEO'");
+				while(rs.next()!=false)
+				{
+				  toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
+				}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return toAdd;
+	}
+	private ITemployee findsuperviser()
+	{
+		Statement stmt;
+		ITemployee toAdd=null;
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='superviser'");
+				while(rs.next()!=false)
+				{
+				  toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
+				}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return toAdd;
 	}
 	public DBSmessage showEmployee()
-	{
-		
+	{	
 		Statement stmt;
 		DBSmessage dbs;
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='regular'");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='regular' OR  employeePos='superviser' OR employeePos='CEO' OR employeePos='CC'");
 				while(rs.next()!=false)
 				{
 					ITemployee toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
 					toSend.add(toAdd);
 				}
 				dbs=new DBSmessage(MessageTypeS.ShowEmployeeList,toSend);
-				System.out.println(toSend.get(0));
 				return dbs;
 		} 
 		catch (SQLException e)
@@ -52,17 +132,55 @@ public class ShowEmployeeListController
 	{
 		Statement stmt;
 		String nameIT=(String) db.getObjs().get(0);
-		String pos=(String) db.getObjs().get(1);	
+		String pos=(String) db.getObjs().get(1);
+		person=getperson(nameIT);
+		String posit="regular";
 		try {
 			stmt = connection.createStatement();
+		     if(nameIT.equals(cc2.getEmployeeName())||nameIT.equals(cc.getEmployeeName())||nameIT.equals(superviser.getEmployeeName())||nameIT.equals(ceo.getEmployeeName()))
+		    	 posit=person.getEmployeePos();    
 			stmt.executeUpdate("UPDATE user SET position='"+pos+"' WHERE userName='"+nameIT+"'");
+			stmt.executeUpdate("UPDATE itemployees SET employeePos='"+pos+"' WHERE employeeName='"+nameIT+"'");
+			if(pos.equals("CEO"))
+			{
+				stmt.executeUpdate("UPDATE user SET position='"+posit+"' WHERE userName='"+ceo.getEmployeeName()+"'");
+				stmt.executeUpdate("UPDATE itemployees SET employeePos='"+posit+"' WHERE employeeName='"+ceo.getEmployeeName()+"'");
+			}
+			if(pos.equals("superviser"))
+			{
+				stmt.executeUpdate("UPDATE user SET position='"+posit+"'  WHERE userName='"+superviser.getEmployeeName()+"'");
+				stmt.executeUpdate("UPDATE itemployees SET employeePos='"+posit+"' WHERE employeeName='"+superviser.getEmployeeName()+"'");
+			}
+			if(pos.equals("CC"))
+			{
+				stmt.executeUpdate("UPDATE user SET position='"+posit+"'  WHERE userName='"+cc.getEmployeeName()+"'");
+				stmt.executeUpdate("UPDATE itemployees SET employeePos='"+posit+"' WHERE employeeName='"+cc.getEmployeeName()+"'");
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		toSend.add(1);
-		System.out.println(toSend.size());
 		return showEmployee();
+	}
+	private ITemployee getperson(String nameIT) 
+	{
+		Statement stmt;
+		ITemployee toAdd=null;
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeeName='"+nameIT+"'");
+				while(rs.next()!=false)
+				{
+				  toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
+				}
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return toAdd;
 	}
 	
 }

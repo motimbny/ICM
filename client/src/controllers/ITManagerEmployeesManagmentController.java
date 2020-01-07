@@ -72,7 +72,7 @@ public class ITManagerEmployeesManagmentController implements Initializable
     private TableColumn<ITemployee, String> employeeMail;
 
     @FXML
-    private TableColumn<ITemployee, Integer> numOfProjects;
+    private TableColumn<ITemployee, String> employeePos;
     @FXML
     private Label submitChnage;
     @FXML
@@ -173,7 +173,7 @@ public class ITManagerEmployeesManagmentController implements Initializable
 		employeeName.setCellValueFactory(new PropertyValueFactory<>("employeeName"));
 		employeeLastName.setCellValueFactory(new PropertyValueFactory<>("employeeLastName"));
 		employeeMail.setCellValueFactory(new PropertyValueFactory<>("employeeMail"));
-		numOfProjects.setCellValueFactory(new PropertyValueFactory<>("numOfProjects"));
+		employeePos.setCellValueFactory(new PropertyValueFactory<>("employeePos"));
 		requestServer();
 		
 	}
