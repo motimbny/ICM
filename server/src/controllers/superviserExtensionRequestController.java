@@ -61,6 +61,14 @@ public class superviserExtensionRequestController
 					StageName name=null;
 					switch(rs.getString(5))
 					{
+					case "supervisorApprovel":
+						name=StageName.supervisorApprovel;
+						break;
+					case "waitingEvaluationTime":
+						name=StageName.waitingEvaluationTime;
+						break;
+					case "waitingSupervisorApproveEvaluationTime":
+						name=StageName.waitingSupervisorApproveEvaluationTime;
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
 						break;
