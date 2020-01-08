@@ -11,6 +11,7 @@ import java.util.Date;
 
 import Enums.MessageTypeS;
 import Enums.StageName;
+import entity.ConnectToDB;
 import entity.DBSmessage;
 import entity.Request;
 import entity.RequestUser;
@@ -24,6 +25,7 @@ public class CheckExceptionsRequest
    {
 	   this.toCheck=toCheck;
 	   this.connection=connection;
+	   getRequest();
    }
    public void getRequest()
    {
@@ -121,14 +123,16 @@ public class CheckExceptionsRequest
 		break;	   
 	   }
 		try {
+			System.out.println("im here");
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery("SELECT "+topick+","+topick2+" FROM requesttime WHERE id="+toCheck+"");
 			while(rs.next()!=false)
 			{
+				System.out.println("im here 2");
 				d1=rs.getDate(1);
 				d2=rs.getDate(2);
 			}
-			if(!topick1.equals(""))
+			if(topick1.equals(""))
 			{
 				ds = stmt.executeQuery("SELECT "+topick1+" FROM requeststages WHERE id="+toCheck+"");
 				while(ds.next()!=false)
@@ -153,4 +157,11 @@ public class CheckExceptionsRequest
 			}
 		}
      }
+   public static void main(String[]args) throws SQLException
+   {
+	   ConnectToDB connection=new ConnectToDB("Aa123456","root","project");
+	   CheckExceptionsRequest ch=new CheckExceptionsRequest(17, connection.Connect());
+	   ch.checkException();
+	   
+   }
 }
