@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Enums.MessageTypeS;
 import entity.DBSmessage;
@@ -95,10 +97,14 @@ public class superviserRequestShowController
 	{
 		int num=(int) msg.getObjs().get(0);
 		Statement stmt;
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try 
 		{
 			stmt = connection.createStatement();
 			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Closed' WHERE id="+num+"");
+			stmt.executeUpdate("UPDATE request SET currentStage='Closed' WHERE id="+num+"");
+			stmt.executeUpdate("UPDATE requesttime SET closingEND='"+formatter.format(date)+"' WHERE id="+num+"");
 				if(rs==1)
 				{
 					System.out.println("updateSuspendRequest");

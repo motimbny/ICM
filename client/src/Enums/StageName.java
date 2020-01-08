@@ -8,7 +8,9 @@ public enum StageName {
 	meaningAssessment,
 	examinationAndDecision,
 	waitingExecutionTime,
+	waitingSupervisorApproveExecutionTime,
 	execution,
 	testing,
-	closing
+	closing,
+	Closed
 }
