@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Enums.MessageTypeS;
 import entity.DBSmessage;
@@ -50,7 +52,8 @@ public class ITMeaningAssessmentEvaluationReportSController {
 		Statement stmt;
 		DBSmessage dbs;
 		ArrayList<Object> arry=new ArrayList<Object>();
-		
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			stmt = connection.createStatement();
 			PreparedStatement req = connection.prepareStatement("INSERT INTO evluationreport VALUES(?,?,?,?,?,?)");
@@ -65,7 +68,8 @@ public class ITMeaningAssessmentEvaluationReportSController {
  			stmt.executeUpdate("UPDATE request SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
 			stmt.executeUpdate("UPDATE requeststages SET timeExaminationDecision=7 WHERE id="+reqId+"");
-
+			stmt.executeUpdate("UPDATE requesttime SET meaningAssessmentEND='"+formatter.format(date)+"' WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisionStart='"+formatter.format(date)+"' WHERE id="+reqId+"");
 			arry.add(1);
 		} catch (SQLException e) {
 			e.printStackTrace();

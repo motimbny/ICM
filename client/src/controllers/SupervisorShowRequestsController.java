@@ -102,8 +102,9 @@ public class SupervisorShowRequestsController implements Initializable {
 		Button button2 = new Button("No");
 		button1.addEventHandler(ActionEvent.ACTION, (e) -> popupwindow.close());
 		button1.addEventHandler(ActionEvent.ACTION, (e) -> {
-			if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus()
-					.contentEquals("WaitingCloser")) {
+			if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage()
+					.contentEquals("closing")) {
+				
 				String x = requestTable.getId();
 
 				this.closeRequest(

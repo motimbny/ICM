@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Enums.MessageTypeS;
 import Enums.StageName;
@@ -96,34 +98,50 @@ public class ITHandleRequestSController {
 	}
 
 	public Object addTimeEstimatedPerformance() {
-		ArrayList<Object> arry = new ArrayList<Object>();
-		DBSmessage dbs;
+		ArrayList<Object> arr = new ArrayList<Object>();
 		int id = (int) msg.getObjs().get(0);
 		int timeEstimatedPerform = (int) msg.getObjs().get(1);
 		Statement stmt;
+		String stage;
 		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE requeststages SET timePerform=" + timeEstimatedPerform + " WHERE id=" + id + "");
-			arry.add(1);
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id=" + id + "");
+			while (rs.next() != false) 
+			{
+				stage = rs.getString(1);
+				if (stage.equals("waitingExecutionTime")) 
+				{
+					stmt = connection.createStatement();
+					stmt.executeUpdate("UPDATE requeststages SET timePerform=" + timeEstimatedPerform + " WHERE id=" + id + "");
+					stmt.executeUpdate("UPDATE request SET currentStage='waitingSupervisorApproveExecutionTime' WHERE id=" + id + "");
+					stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingSupervisorApproveExecutionTime' WHERE id=" + id + "");
+					arr.add(1);
+				}
+				else
+				{
+					arr.add(0);
+				}	
+			}
+			DBSmessage dbs = new DBSmessage(MessageTypeS.addTimeEstimatedPerformance, arr);
+			return dbs;
 		}
-
-		catch (SQLException e) {
-			e.printStackTrace();
-		}
-		dbs = new DBSmessage(MessageTypeS.addTimeEstimatedPerformance, arry);
-		return dbs;
+		catch (SQLException e) {}
+		return null;
 	}
 
 	public Object saveChangeCompleted() {
 		ArrayList<Object> arry = msg.getObjs();
 		this.reqId = (int) arry.get(0);
 		Statement stmt;
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE request SET currentStage='testing' WHERE id=" + reqId + "");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' AND WHERE id=" + reqId + "");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET timeTest=7 WHERE id=" + reqId + "");
-
+			stmt.executeUpdate("UPDATE requesttime SET executionEND='"+formatter.format(date)+"' WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE requesttime SET testingStart='"+formatter.format(date)+"' WHERE id="+reqId+"");
 		} catch (SQLException e) {
 		}
 		return null;
@@ -133,10 +151,13 @@ public class ITHandleRequestSController {
 		ArrayList<Object> arry = msg.getObjs();
 		this.reqId = (int) arry.get(0);
 		Statement stmt;
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id=" + reqId + "");
+			stmt.executeUpdate("UPDATE requesttime SET testingExepted='"+formatter.format(date)+"' WHERE id="+reqId+"");
 		} catch (SQLException e) {
 		}
 		return null;

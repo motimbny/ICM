@@ -106,13 +106,19 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	private Label successful;
+
+	@FXML
+	private Label l1;
+
+	@FXML
+	private Label l2;
 	
     @FXML
-    private Label l1;
+    private Label l3;
 
     @FXML
-    private Label l2;
-
+    private Label l4;
+	
 	@FXML
 	void AppointTester(MouseEvent event) {
 		listOfIt();
@@ -289,16 +295,6 @@ public class ITHandleRequestController implements Initializable {
 		MainAllControllers.logOutUser();
 	}
 
-	/*
-	 * @FXML
-	 * 
-	 * public void setvisable() { System.out.println("im here");
-	 * 
-	 * stagenotmatch.setVisible(true);
-	 * 
-	 * }
-	 */
-
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -320,28 +316,95 @@ public class ITHandleRequestController implements Initializable {
 		MainAllControllers.itHandlejob = job;
 		switch (job) {
 		case "Appraiser":
-			EvaluationStage.setVisible(true);
-			if(list.get(1).equals("meaningAssessment"))
-			{
+		{	EvaluationStage.setVisible(true);
+			if (list.get(1).equals("waitingEvaluationTime")) {
+				CreateEvaluationReportBTN.setVisible(false);
+				SubmitTimeEstimateBTN.setVisible(true);
+				timeEstimatedEvaluation.setVisible(true);
+				l1.setVisible(true);
+				l2.setVisible(true);
+			}
+			else if (list.get(1).equals("meaningAssessment")) {
 				CreateEvaluationReportBTN.setVisible(true);
 				SubmitTimeEstimateBTN.setVisible(false);
 				timeEstimatedEvaluation.setVisible(false);
 				l1.setVisible(false);
 				l2.setVisible(false);
+			} else {
+				ReqForTimeExtensionBTN.setVisible(false);
+				CreateEvaluationReportBTN.setVisible(false);
+				SubmitTimeEstimateBTN.setVisible(false);
+				timeEstimatedEvaluation.setVisible(false);
+				l1.setVisible(false);
+				l2.setVisible(false);
 			}
+		}
 			break;
 		case "ControlCommitte":
-			examinationAndDecisionStage.setVisible(true);
+		{	examinationAndDecisionStage.setVisible(true);
+			if (list.get(1).equals("examinationAndDecision"))
+				ViewEvaluationReportBTN.setVisible(true);
+			else {
+				ViewEvaluationReportBTN.setVisible(false);
+				ReqForTimeExtensionBTN.setVisible(false);
+			}
+		}
 			break;
 		case "CEOControlCommitte":
-			examinationAndDecisionStage.setVisible(true);
-			AppointTesterBTN.setVisible(true);
+		{	examinationAndDecisionStage.setVisible(true);
+			if (list.get(1).equals("examinationAndDecision")) {
+				ViewEvaluationReportBTN.setVisible(true);
+				AppointTesterBTN.setVisible(true);
+			} else {
+				AppointTesterBTN.setVisible(false);
+				ViewEvaluationReportBTN.setVisible(false);
+				ReqForTimeExtensionBTN.setVisible(false);
+			}
+		}
 			break;
 		case "PerformanceLeader":
+		{
 			PerformanceStage.setVisible(true);
+			if (list.get(1).equals("waitingExecutionTime"))
+			{
+				changeCompletedBTN.setVisible(false);
+				timeEstimatedPerformance.setVisible(true);
+				SubmitTimeEstimatePerformanceBTN.setVisible(true);
+				l3.setVisible(true);
+				l4.setVisible(true);
+			}
+			else if (list.get(1).equals("execution"))
+			{
+				changeCompletedBTN.setVisible(true);
+				timeEstimatedPerformance.setVisible(false);
+				SubmitTimeEstimatePerformanceBTN.setVisible(false);
+				l3.setVisible(false);
+				l4.setVisible(false);
+			}
+			else
+			{
+				ReqForTimeExtensionBTN.setVisible(false);
+				changeCompletedBTN.setVisible(false);
+				timeEstimatedPerformance.setVisible(false);
+				SubmitTimeEstimatePerformanceBTN.setVisible(false);
+				l3.setVisible(false);
+				l4.setVisible(false);
+			}
+		}
 			break;
 		case "Tester":
 			TestStage.setVisible(true);
+			if (list.get(1).equals("testing"))
+			{
+				ReportFailureBTN.setVisible(true);
+				TestApprovalBTN.setVisible(true);
+			}
+			else
+			{
+				ReportFailureBTN.setVisible(false);
+				TestApprovalBTN.setVisible(false);
+				ReqForTimeExtensionBTN.setVisible(false);
+			}
 			break;
 		}
 	}

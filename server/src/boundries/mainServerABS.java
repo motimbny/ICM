@@ -182,11 +182,9 @@ public class mainServerABS extends AbstractServer {
 			case ITsubmitRequireMoreInfo: {
 				ITCCCRequestMoreInfoSController ITCCCRequestMoreInfoSController = new ITCCCRequestMoreInfoSController(dbm, connection);
 				try {
-					client.sendToClient(ITCCCRequestMoreInfoSController.submitEvaluationReport());
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}}
+					client.sendToClient(ITCCCRequestMoreInfoSController.submitRequireMoreInfo());
+				} catch (IOException e) {}
+				}
 			break;
 
 			case viewTime: {
@@ -483,12 +481,34 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}	
+		case SupervisorApproveExecutionTime:
+		{
+			SupervisorUpdateRequestSController SupervisorUpdateTimeRequest = new SupervisorUpdateRequestSController(dbm,
+					connection);
+			try {
+				client.sendToClient(SupervisorUpdateTimeRequest.saveApproveEx());
+
+			} catch (IOException e) {
+			}
+			break;
+		}
 		case SupervisorDenyEvluationTime:
 		{
 			SupervisorUpdateRequestSController SupervisorUpdateTimeRequest = new SupervisorUpdateRequestSController(dbm,
 					connection);
 			try {
 				client.sendToClient(SupervisorUpdateTimeRequest.saveDenyEv());
+
+			} catch (IOException e) {
+			}
+			break;
+		}
+		case SupervisorDenyExecutionTime:
+		{
+			SupervisorUpdateRequestSController SupervisorUpdateTimeRequest = new SupervisorUpdateRequestSController(dbm,
+					connection);
+			try {
+				client.sendToClient(SupervisorUpdateTimeRequest.saveDenyEx());
 
 			} catch (IOException e) {
 			}

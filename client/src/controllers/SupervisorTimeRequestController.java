@@ -85,12 +85,26 @@ public class SupervisorTimeRequestController implements Initializable {
 
 	@FXML
 	void approveExwcution(MouseEvent event) {
-
+		DBmessage dbm;
+		ArrayList<Object> arry = new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		dbm = new DBmessage(MessageType.SupervisorApproveExecutionTime, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
 
 	@FXML
 	void denyExwcution(MouseEvent event) {
-
+		DBmessage dbm;
+		ArrayList<Object> arry = new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		dbm = new DBmessage(MessageType.SupervisorDenyExecutionTime, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
 
 	@FXML
@@ -162,7 +176,7 @@ public class SupervisorTimeRequestController implements Initializable {
 			approveEvluationBTN.setVisible(true);
 			dentEvluationBTN.setVisible(true);
 		}
-		if ((!(list.get(2).equals(0))) && (list.get(3).equals("waitingExecutionTime"))) {
+		if ((!(list.get(2).equals(0))) && (list.get(3).equals("waitingSupervisorApproveExecutionTime"))) {
 			approveExwcutionBTN.setVisible(true);
 			denyExwcutionBTN.setVisible(true);
 		}

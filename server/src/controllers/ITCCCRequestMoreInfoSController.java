@@ -26,7 +26,7 @@ public class ITCCCRequestMoreInfoSController {
 		this.connection = connection;
 	}
 
-	public Object submitEvaluationReport() {
+	public Object submitRequireMoreInfo() {
 		Statement stmt;
 		PreparedStatement ps;
 		DBSmessage dbs = null;

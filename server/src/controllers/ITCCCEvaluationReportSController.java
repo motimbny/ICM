@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Enums.MessageTypeS;
 import Enums.StageName;
@@ -50,21 +52,20 @@ public class ITCCCEvaluationReportSController {
 		return dbs;
 	}
 
-	public DBSmessage approveEvaluationReport() {
-			
-		int numReport=idReq;
+	public DBSmessage approveEvaluationReport() 
+	{
 		Statement stmt;
 		DBSmessage dbs;
 		updateRequest up = null;
 		ArrayList<Object> toSend= new ArrayList<Object>();
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try 
 		{
 			stmt = connection.createStatement();
-			
-			stmt.executeUpdate("UPDATE request SET currentStage='execution' WHERE id="+numReport+"");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='execution' WHERE id="+numReport+"");
-
-
+			stmt.executeUpdate("UPDATE request SET currentStage='waitingExecutionTime' WHERE id="+idReq+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingExecutionTime' WHERE id="+idReq+"");
+			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisiondEND='"+formatter.format(date)+"' WHERE id="+idReq+"");
 		} 
 		catch (SQLException e)
 		{
@@ -75,16 +76,18 @@ public class ITCCCEvaluationReportSController {
 		}
 
 	public Object denyEvaluationReport() {
-		int numReport=idReq;
 		Statement stmt;
 		DBSmessage dbs;
 		updateRequest up = null;
 		ArrayList<Object> toSend= new ArrayList<Object>();
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try 
 		{
 			stmt = connection.createStatement();	
-			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id="+numReport+"");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id="+numReport+"");
+			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id="+idReq+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id="+idReq+"");
+			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisiondEND='"+formatter.format(date)+"' WHERE id="+idReq+"");
 		} 
 		catch (SQLException e)
 		{
