@@ -338,7 +338,16 @@ public class mainServerABS extends AbstractServer {
 						} catch (IOException e) {
 							}
 							break;
+			}
+			case SuperviserShowMessages:
+			{
+				MessagesShowController SuperviserShowMessages = new MessagesShowController(dbm,connection);
+				try {
+					client.sendToClient(SuperviserShowMessages.SgetMessagesToShow());
+					} catch (IOException e) {
 						}
+						break;
+			}
 			case changeExecuter: {
 	
 				SupervisorUpdateRequestSController supervisorUpdateRequestController = new SupervisorUpdateRequestSController(
@@ -477,6 +486,15 @@ public class mainServerABS extends AbstractServer {
 			MessagesShowController MessagesShowController = new MessagesShowController(dbm,connection);
 			try {
 				client.sendToClient(MessagesShowController.MUpdateMessagesToShow());
+				} catch (IOException e) {
+					}
+					break;
+		}
+		case SuperviserUpdateMessages:
+		{
+			MessagesShowController MessagesShowController = new MessagesShowController(dbm,connection);
+			try {
+				client.sendToClient(MessagesShowController.SUpdateMessagesToShow());
 				} catch (IOException e) {
 					}
 					break;

@@ -20,9 +20,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
-public class SupervisorMessagesController  //implements Initializable
+public class SupervisorMessagesController  implements Initializable
 {
-
 	private MainAllControllers MainAllControllers;
 	String sentby;
 	String subject;
@@ -66,23 +65,26 @@ public class SupervisorMessagesController  //implements Initializable
 
     @FXML
     void UpdateR(MouseEvent event) {
-    	MessageTable.setOnMouseClicked((MouseEvent ev ) -> 
+		MessageTable.setOnMouseClicked((MouseEvent ev ) -> 
     	{
-            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
-            	sentby=MessageTable.getItems().get(MessageTable.getSelectionModel().getSelectedIndex()).getSentBy();
-            	subject=MessageTable.getItems().get(MessageTable.getSelectionModel().getSelectedIndex()).getSubject();                
-            DBmessage dbm;
-    		String user;
-    		user=MainAllControllers.user.getName();
-    		ArrayList<Object> arry=new ArrayList<Object>();
-            arry.add(user);
-            arry.add(SentBy);
-            arry.add(messSubject);
-        	dbm=new DBmessage(MessageType.MangerUpdateMessages, arry);   
-        	try {
-        		MainAllControllers.sendToAbsServer(dbm);
-    		} catch (IOException e) {}
-            }
+            if (ev.getButton().equals(MouseButton.PRIMARY) && ev.getClickCount() == 2)
+            {
+                sentby=MessageTable.getItems().get(MessageTable.getSelectionModel().getSelectedIndex()).getSentBy();
+				subject=MessageTable.getItems().get(MessageTable.getSelectionModel().getSelectedIndex()).getSubject();                
+	            DBmessage dbm;
+	    		String user;
+	    		user=MainAllControllers.user.getName();
+	    		ArrayList<Object> arry=new ArrayList<Object>();
+	            arry.add(user);
+	            arry.add(sentby);
+	            arry.add(subject);
+	        	dbm=new DBmessage(MessageType.SuperviserUpdateMessages, arry);   
+	        	try
+	        	{
+	        		MainAllControllers.sendToAbsServer(dbm);
+	    		} 
+	        	catch (IOException e) {}
+	        }
         });
     }
 
@@ -130,8 +132,9 @@ public class SupervisorMessagesController  //implements Initializable
     	MainAllControllers.changeWin();
 	}
 
-	/*@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) 
+	{
    		SentBy.setCellValueFactory(new PropertyValueFactory<>("sentBy"));
 		messSubject.setCellValueFactory(new PropertyValueFactory<>("subject"));
 		MessageContent.setCellValueFactory(new PropertyValueFactory<>("messageCon"));
@@ -165,7 +168,7 @@ public class SupervisorMessagesController  //implements Initializable
 		user=MainAllControllers.user.getName();
 		ArrayList<Object> arry=new ArrayList<Object>();
         arry.add(user);
-    	dbm=new DBmessage(MessageType.MangerShowMessages, arry);   
+    	dbm=new DBmessage(MessageType.SuperviserShowMessages, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
@@ -180,8 +183,6 @@ public class SupervisorMessagesController  //implements Initializable
 	    	}
 	    	MessageTable.setItems(rows);
 	 }
-
-	*/	
-	}
+}
 
 

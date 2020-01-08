@@ -277,5 +277,9 @@ public class MainAllControllers
 		((SupervisorShowRequestsController) WindowToShow.controller).setvisable();
 	
 	}
+	public void SuperviserShowMessage(ArrayList<Object> list)
+	{
+		((SupervisorMessagesController)WindowToShow.controller).setTextTable(list);	
+	}
 	
 }

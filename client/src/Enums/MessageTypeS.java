@@ -37,6 +37,7 @@ public enum MessageTypeS
 	MhomeRequestNum,
 	MangerRequestShow,SearchReqManager,renewRequest,MangerShowMessages,MangerUpdateMessages,
 	ITsubmitRequireMoreInfo, addTimeEstimatedPerformance, showRequestDetailsITManager,
-	ITShowEmployeeList, ITSaveTester,SwitchPositions
+	ITShowEmployeeList, ITSaveTester,SwitchPositions,
+	SuperviserShowMessages,SuperviserUpdateMessages
 
 }

@@ -47,7 +47,6 @@ public class MessagesShowController
 	public DBSmessage MUpdateMessagesToShow()
 	{
 	    Statement stmt;
-	    System.out.println("hi im here");
 		String towho=(String) db.getObjs().get(0);
 		String senyby=(String) db.getObjs().get(1);
 		String subject=(String) db.getObjs().get(2);
@@ -62,5 +61,47 @@ public class MessagesShowController
 			e.printStackTrace();
 		}
 		return MgetMessagesToShow();
+	}
+	public DBSmessage SgetMessagesToShow() 
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		String towho=(String) db.getObjs().get(0);
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM messages WHERE toWho='"+towho+"'");
+				while(rs.next()!=false)
+				{
+					Messages toAdd=new Messages(rs.getString(2), rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6));
+					toSend.add(toAdd);
+				}
+				dbs=new DBSmessage(MessageTypeS.SuperviserShowMessages,toSend);
+				return dbs;
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
+	}
+	public DBSmessage SUpdateMessagesToShow() 
+	{
+		    Statement stmt;
+			String towho=(String) db.getObjs().get(0);
+			String senyby=(String) db.getObjs().get(1);
+			String subject=(String) db.getObjs().get(2);
+			try 
+			{
+				stmt = connection.createStatement();
+				stmt.executeUpdate("UPDATE messages SET read1=1 WHERE toWho='"+towho+"' AND sentBy='"+senyby+"' AND subject='"+subject+"' ");
+
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
+			return SgetMessagesToShow();
 	}
 }

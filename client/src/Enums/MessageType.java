@@ -39,5 +39,6 @@ public enum MessageType
 		showRequestDetailsITManager,
 		MangerRequestShow, SearchReqManager, ITsubmitRequireMoreInfo,
 		addTimeEstimatedPerformance, ITchangeCompleted, 
-		ITTestApproval, denyEvaluationReport, ITShowEmployeeList, ITSaveTester, SwitchPositions
+		ITTestApproval, denyEvaluationReport, ITShowEmployeeList, ITSaveTester, SwitchPositions,
+		SuperviserShowMessages, SuperviserUpdateMessages
 }

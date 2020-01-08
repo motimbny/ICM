@@ -323,6 +323,12 @@ public class mainClientABS extends AbstractClient
 					MainAllControllers.ManagerShowMessage(send);
 				}
 			break;
+			case SuperviserShowMessages:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.SuperviserShowMessage(send);
+			}
+		break;
 			default:
 				break;
 			}
