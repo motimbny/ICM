@@ -38,6 +38,7 @@ public enum MessageTypeS
 	MangerRequestShow,SearchReqManager,renewRequest,MangerShowMessages,MangerUpdateMessages,
 	ITsubmitRequireMoreInfo, addTimeEstimatedPerformance, showRequestDetailsITManager,
 	ITShowEmployeeList, ITSaveTester,SwitchPositions,
-	SuperviserShowMessages,SuperviserUpdateMessages, ITaddTimeEstimated, SupervisorApproveEvluationTime, approveTime, 
+	SuperviserShowMessages,SuperviserUpdateMessages, ITaddTimeEstimated, SupervisorApproveEvluationTime, 
+	approveTime, SupervisorDenyEvluationTime, 
 
 }

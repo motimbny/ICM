@@ -483,6 +483,17 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}	
+		case SupervisorDenyEvluationTime:
+		{
+			SupervisorUpdateRequestSController SupervisorUpdateTimeRequest = new SupervisorUpdateRequestSController(dbm,
+					connection);
+			try {
+				client.sendToClient(SupervisorUpdateTimeRequest.saveDenyEv());
+
+			} catch (IOException e) {
+			}
+			break;
+		}
 		case AddExtensionRequest: {
 			ITExtensionRequestSController itExtensionRequestSController = new ITExtensionRequestSController(dbm,
 					connection);

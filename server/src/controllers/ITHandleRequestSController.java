@@ -37,21 +37,22 @@ public class ITHandleRequestSController {
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(
-					"SELECT id, itAppraiser, itCCC1, itCCC2, itCCC3, itPerformanceLeader, itTester FROM requeststages WHERE ( itAppraiser='"
+					"SELECT id, currentStage, itAppraiser, itCCC1, itCCC2, itCCC3, itPerformanceLeader, itTester FROM requeststages WHERE ( itAppraiser='"
 							+ user + "' OR itCCC1='" + user + "' OR itCCC2='" + user + "' OR itCCC3='" + user
 							+ "' OR itPerformanceLeader='" + user + "' OR itTester='" + user + "' ) AND id=" + reqId
 							+ "");
 			while (rs.next() != false) {
-				if (rs.getString(2).equals(user))
+				if (rs.getString(3).equals(user))
 					toSend.add("Appraiser");
-				else if (rs.getString(3).equals(user))
+				else if (rs.getString(4).equals(user))
 					toSend.add("CEOControlCommitte");
-				else if (rs.getString(4).equals(user) || rs.getString(5).equals(user))
+				else if (rs.getString(5).equals(user) || rs.getString(6).equals(user))
 					toSend.add("ControlCommitte");
-				else if (rs.getString(6).equals(user))
-					toSend.add("PerformanceLeader");
 				else if (rs.getString(7).equals(user))
+					toSend.add("PerformanceLeader");
+				else if (rs.getString(8).equals(user))
 					toSend.add("Tester");
+			toSend.add(rs.getString(2));
 			}
 			dbs = new DBSmessage(MessageTypeS.ITjobInReq, toSend);
 			return dbs;

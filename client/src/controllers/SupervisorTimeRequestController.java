@@ -95,7 +95,14 @@ public class SupervisorTimeRequestController implements Initializable {
 
 	@FXML
 	void dentEvluation(MouseEvent event) {
-
+		DBmessage dbm;
+		ArrayList<Object> arry = new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		dbm = new DBmessage(MessageType.SupervisorDenyEvluationTime, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
 
 	@FXML
@@ -151,7 +158,7 @@ public class SupervisorTimeRequestController implements Initializable {
 		this.requestID.setText("" + list.get(0));
 		this.evluation.setText("" + list.get(1));
 		this.execution.setText("" + list.get(2));
-		if ((!(list.get(1).equals(0))) && (list.get(3).equals("waitingEvaluationTime"))) {
+		if ((!(list.get(1).equals(0))) && (list.get(3).equals("waitingSupervisorApproveEvaluationTime"))) {
 			approveEvluationBTN.setVisible(true);
 			dentEvluationBTN.setVisible(true);
 		}

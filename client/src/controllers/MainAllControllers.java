@@ -265,8 +265,7 @@ public class MainAllControllers
 	}
 	public void SupervisorSaveTimeEv(ArrayList<Object> list)
 	{
-	//	((SupervisorTimeRequestController) WindowToShow.controller).setOnSucsess();
-		((ITHandleRequestController) WindowToShow.controller).startEvaluate();
+		((SupervisorTimeRequestController) WindowToShow.controller).setOnSucsess();
 	}
 	public void showSuperviserExtensionRequestAnswer(ArrayList<Object> send) 
 	{

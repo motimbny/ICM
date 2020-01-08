@@ -106,6 +106,12 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	private Label successful;
+	
+    @FXML
+    private Label l1;
+
+    @FXML
+    private Label l2;
 
 	@FXML
 	void AppointTester(MouseEvent event) {
@@ -202,10 +208,6 @@ public class ITHandleRequestController implements Initializable {
 			MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {
 		}
-	}
-
-	public void startEvaluate() {
-		CreateEvaluationReportBTN.setVisible(true);
 	}
 
 	@FXML
@@ -319,6 +321,14 @@ public class ITHandleRequestController implements Initializable {
 		switch (job) {
 		case "Appraiser":
 			EvaluationStage.setVisible(true);
+			if(list.get(1).equals("meaningAssessment"))
+			{
+				CreateEvaluationReportBTN.setVisible(true);
+				SubmitTimeEstimateBTN.setVisible(false);
+				timeEstimatedEvaluation.setVisible(false);
+				l1.setVisible(false);
+				l2.setVisible(false);
+			}
 			break;
 		case "ControlCommitte":
 			examinationAndDecisionStage.setVisible(true);

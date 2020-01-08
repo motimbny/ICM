@@ -185,4 +185,19 @@ public class SupervisorUpdateRequestSController
 			
 			return null;
 		}
+		public DBSmessage saveDenyEv() {
+			int id=(int)list.get(0);
+			Statement stmt;
+			DBSmessage dbs;
+			ArrayList<Object> toSend= new ArrayList<Object>();
+			try {
+				stmt = connection.createStatement();
+				stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingEvaluationTime' WHERE id="+id+"");
+				stmt.executeUpdate("UPDATE request SET currentStage='waitingEvaluationTime' WHERE id="+id+"");
+				toSend.add(1);
+				dbs=new DBSmessage(MessageTypeS.SupervisorDenyEvluationTime,toSend);
+				return dbs;
+			} catch (SQLException e) {}
+			return null;
+		}
 }

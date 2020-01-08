@@ -91,12 +91,12 @@
                <children>
                   <Button fx:id="SubmitTimeEstimateBTN" layoutX="2.0" layoutY="72.0" mnemonicParsing="false" onMouseClicked="#SubmitTimeEstimateEvaluation" prefHeight="33.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="submit time estimate" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="CreateEvaluationReportBTN" layoutX="167.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#CreateEvaluationReport" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Create Evaluation Report" textAlignment="CENTER" visible="false" wrapText="true" />
-                  <Label layoutX="21.0" text="Time estimate:">
+                  <Label fx:id="l1" layoutX="21.0" text="Time estimate:">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="19.0" text="Evaluation stage">
+                  <Label fx:id="l2" layoutX="14.0" layoutY="19.0" text="Evaluation stage">
                      <font>
                         <Font size="16.0" />
                      </font>

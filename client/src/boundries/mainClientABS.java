@@ -322,6 +322,12 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.SupervisorSaveTimeEv(send);
 			}
 			break;
+			case SupervisorDenyEvluationTime:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.SupervisorSaveTimeEv(send);
+			}
+			break;
 			case superviserExtensionRequestAnswer:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
