@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Enums.MessageTypeS;
 import entity.DBSmessage;
@@ -31,6 +33,8 @@ public class SupervisorUpdateRequestSController
 			int numReport=(int)list.get(0);
 			Statement stmt;
 			DBSmessage dbs;
+			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			updateRequest up = null;
 			ArrayList<Object> toSend= new ArrayList<Object>();
 			try 
@@ -43,8 +47,10 @@ public class SupervisorUpdateRequestSController
 					if(rs.getString(3).equals("supervisorApprovel")&&flag==1)
 					{
 						stmt.executeUpdate("UPDATE request SET currentStage='meaningAssessment' WHERE id="+numReport+"");
+						stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+numReport+"");
 						stmt.executeUpdate("UPDATE requeststages SET currentStage='meaningAssessment' WHERE id="+numReport+"");
-
+						stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+numReport+"");
+						stmt.executeUpdate("UPDATE requesttime SET meaningAssessmentStart='"+formatter.format(date)+"' WHERE id="+numReport+"");
 					}
 				}
 				toSend.add(up);
@@ -62,16 +68,14 @@ public class SupervisorUpdateRequestSController
 			int num=(int) msg.getObjs().get(0);
 			String changeexecuter=(String)msg.getObjs().get(1);
 			String changeapprieser=(String)msg.getObjs().get(2);
-
 			Statement stmt;
 			try 
 			{
 				stmt = connection.createStatement();
 				stmt.executeUpdate("UPDATE requeststages SET itPerformanceLeader='"+changeexecuter+"' WHERE id="+num+"");
 				stmt.executeUpdate("UPDATE requeststages SET itAppraiser='"+changeapprieser+"' WHERE id="+num+"");
-				flag=1;
-			
-				
+				//stmt.executeUpdate("UPDATE requeststages SET itAppraiser='"+changeapprieser+"' WHERE id="+num+"");
+				flag=1;	
 			} 
 			catch (SQLException e)
 			{

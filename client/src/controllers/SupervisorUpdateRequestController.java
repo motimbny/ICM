@@ -181,7 +181,6 @@ public class SupervisorUpdateRequestController implements Initializable
 				default:
 					break;
 				}
-	            //this.changeExecuter(EmployeesTable.getSelectionModel().getSelectedItem(),NameOfPositionChange);
 	            popupwindow.close(); 
 	        });
 		VBox layout= new VBox(10);     
@@ -244,11 +243,9 @@ public class SupervisorUpdateRequestController implements Initializable
 	
 
     @FXML
-    void SaveChanges(MouseEvent event) throws IOException {
+    void SaveChanges(MouseEvent event) throws IOException 
+    {
     	changeExecuter();
     	goShowReqPage(event);
-    
-    	
-
     }
 }

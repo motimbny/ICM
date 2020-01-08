@@ -127,7 +127,7 @@ public class UserSAddRequestController
  			requeststages.setInt(13, 0);
  			requeststages.executeUpdate();	
  			requeststages.close();
- 			reqTime = connection.prepareStatement("INSERT INTO requesttime VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+ 			reqTime = connection.prepareStatement("INSERT INTO requesttime VALUES(?,?,?,?,?,?,?,?,?,?)");
  			reqTime.setInt(1, request.getId());
  			reqTime.setDate(2, null);
  			reqTime.setDate(3, null);
@@ -138,7 +138,6 @@ public class UserSAddRequestController
  			reqTime.setDate(8, null);
  			reqTime.setDate(9, null);
  			reqTime.setDate(10, null);
- 			reqTime.setDate(11, null);
  			reqTime.executeUpdate();	
  			reqTime.close();
  		  }
