@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import Enums.MessageType;
 import boundries.mainClientABS;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -106,6 +107,15 @@ public class MainAllControllers
 	{
 		mcABS.openConToServer();
 		mcABS.sendToServer(msg);
+	}
+	public void logOutUser() throws IOException
+	{
+		DBmessage dbm;
+		ArrayList<Object> arry=new ArrayList<Object>();
+		arry.add(user);
+		dbm= new DBmessage(MessageType.logout,arry);
+		this.sendToAbsServer(dbm);
+		user=null;
 	}
 	public void badUser()
 	{
@@ -280,6 +290,10 @@ public class MainAllControllers
 	public void SuperviserShowMessage(ArrayList<Object> list)
 	{
 		((SupervisorMessagesController)WindowToShow.controller).setTextTable(list);	
+	}
+	public void UserConnected() 
+	{
+		((LoginController) WindowToShow.controller).setVisibleLblCon();
 	}
 	
 }

@@ -143,7 +143,7 @@ public class ITManagerShowRequestsController implements Initializable
 	{
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
 	}
 
     @FXML

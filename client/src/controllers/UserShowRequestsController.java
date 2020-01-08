@@ -141,7 +141,7 @@ public class UserShowRequestsController implements Initializable  {
     {
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
     }
     /**
      * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"

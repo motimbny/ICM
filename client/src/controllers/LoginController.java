@@ -47,6 +47,8 @@ public class LoginController implements Initializable
     @FXML
     private TextField hostTO;
     @FXML
+    private Label logedallready;
+    @FXML
     private Pane signPane;
     private MainAllControllers MainAllControllers;
     @FXML
@@ -86,5 +88,9 @@ public class LoginController implements Initializable
 			connectPane.setVisible(false);
 			signPane.setVisible(true);
 		}
+	}
+	public void setVisibleLblCon() 
+	{
+		logedallready.setVisible(true);
 	}
 }

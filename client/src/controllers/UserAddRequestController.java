@@ -198,7 +198,7 @@ public class UserAddRequestController implements Initializable
     {
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
     }
 	@Override
 	public void initialize(URL location, ResourceBundle resources)

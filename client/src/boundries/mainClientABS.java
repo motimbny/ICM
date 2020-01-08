@@ -80,6 +80,10 @@ public class mainClientABS extends AbstractClient
 					MainAllControllers.badUser();
 				}
 				break;
+			case LoginFailConnected:
+			{
+				MainAllControllers.UserConnected();
+			}
 			case homeRequestNum:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

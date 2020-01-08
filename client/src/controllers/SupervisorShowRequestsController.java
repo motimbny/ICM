@@ -145,7 +145,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	void goLogoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
-		MainAllControllers.user = null;
+    	MainAllControllers.logOutUser();
 	}
 
 	@FXML

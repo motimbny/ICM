@@ -75,7 +75,7 @@ public class ITPersonalInfoController implements Initializable
 	{
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
 	}
 
 	@Override

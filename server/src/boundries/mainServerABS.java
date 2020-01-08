@@ -2,6 +2,9 @@ package boundries;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.ArrayList;
+
+import Enums.MessageTypeS;
 import controllers.ITCCCEvaluationReportSController;
 
 import controllers.ITCCCRequestMoreInfoSController;
@@ -24,9 +27,9 @@ import controllers.loginSController;
 import controllers.serverController;
 import controllers.superviserExtensionRequestController;
 import controllers.superviserRequestShowController;
-
+import entity.DBSmessage;
 import entity.DBmessage;
-
+import entity.User;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
 
@@ -35,16 +38,38 @@ public class mainServerABS extends AbstractServer {
 	private Connection connection;
 	private boolean IsDBConnected = false;
 	private serverController serverController;
-
+    private ArrayList<User> logged;
 	public mainServerABS(int port, serverController serverController) {
 		super(port);
 		this.serverController = serverController;
+		logged=new ArrayList<User>();
 	}
-
-	public void connectToDb(Connection connection) {
+    public boolean checkUserConnected(User toadd)
+    {
+    	if(logged.size()==0)
+    	{
+    		logged.add(toadd);
+    		return true;
+    	}
+		for(User i:logged)
+		{
+			if(toadd.getName().equals(i.getName()))
+				return false;
+		}
+		logged.add(toadd);
+		return true;
+    }
+	public void connectToDb(Connection connection) 
+	{
 		this.connection = connection;
 		IsDBConnected = true;
 	}
+	 public void removeConnected(User toadd)
+	    {
+			for(User i:logged)
+				if(toadd.getName().equals(i.getName()))
+					logged.remove(i);
+	    }
 	@Override
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 
@@ -54,10 +79,19 @@ public class mainServerABS extends AbstractServer {
 			case Login: {
 				loginSController loginSController = new loginSController(dbm, connection);
 				try {
-					client.sendToClient(loginSController.CheckLogIn());
+					DBSmessage dbs=loginSController.CheckLogIn();
+					User toadd=(User) dbs.getObjs().get(0);
+					if(checkUserConnected(toadd)==false)
+						dbs.setType(MessageTypeS.LoginFailConnected);
+					client.sendToClient(dbs);
 				} catch (IOException e) {
 				}
 				break;
+			}
+			case logout:
+			{
+				User toremove=(User) dbm.getObjs().get(0);
+				this.removeConnected(toremove);
 			}
 			case homeRequestNum: {
 				UserShowRequestsSController userShowRequestsSController = new UserShowRequestsSController(dbm, connection);

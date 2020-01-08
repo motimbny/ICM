@@ -94,6 +94,6 @@ public class ITManagerHelpController {
 	{
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
 	}
 }

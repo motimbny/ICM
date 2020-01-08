@@ -75,7 +75,7 @@ public class ITHomeController implements Initializable
 	{
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
 	}
     void setRequestNumber(int num)
     {

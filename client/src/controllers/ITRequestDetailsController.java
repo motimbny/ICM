@@ -111,7 +111,7 @@ public class ITRequestDetailsController implements Initializable
 	{
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
 	}
 	
     void setTextInFields(ArrayList<Object> listR)

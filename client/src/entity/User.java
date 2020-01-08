@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import Enums.Position;
 
-public class User implements Serializable
+public class User implements Serializable 
 {	
 	private String Name;
 	private String Password;

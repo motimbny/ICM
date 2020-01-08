@@ -112,7 +112,7 @@ public class SupervisorExtensionRequestController implements Initializable
 	{
     	MainAllControllers.setWindowVar("login");
     	MainAllControllers.changeWin();
-    	MainAllControllers.user=null;
+    	MainAllControllers.logOutUser();
 	}
 	 @FXML
 	 void messagePage(MouseEvent event) throws IOException 

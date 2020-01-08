@@ -104,7 +104,7 @@ public class ITshowRequestsController implements Initializable
 	void logoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
-		MainAllControllers.user = null;
+    	MainAllControllers.logOutUser();
 	}
 
 	@FXML
