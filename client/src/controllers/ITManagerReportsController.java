@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -18,6 +19,7 @@ import javafx.scene.input.MouseEvent;
 public class ITManagerReportsController implements Initializable
 {
 	private MainAllControllers MainAllControllers;
+	private ArrayList<Integer> arryAcSuCo;
 	public ITManagerReportsController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
@@ -56,15 +58,6 @@ public class ITManagerReportsController implements Initializable
     private DatePicker DateTo;
 
     @FXML
-    private CheckBox MedianChoose;
-
-    @FXML
-    private CheckBox StandardChoose;
-
-    @FXML
-    private CheckBox FrequencyChoose;
-
-    @FXML
     private Button generateReport;
     @FXML
     private PieChart ActiveSuClo;
@@ -72,16 +65,30 @@ public class ITManagerReportsController implements Initializable
     @FXML
     void generateReportClick(MouseEvent event) 
     {
-    	makeActiveSuClo();
+    	if(chooseTypeOfReport.getValue().equals("Activity"))
+    	{
+    		makeActiveSuClo();
+    	}
+    	if(chooseTypeOfReport.getValue().equals("Performence"))
+    	{
+    		
+    	}
+    	else
+        {
+    		
+    	}
     }
     public void makeActiveSuClo()
     {
-    	PieChart.Data slice1 = new PieChart.Data("Active", 213);
-    	PieChart.Data slice2 = new PieChart.Data("Susspend"  , 67);
-    	PieChart.Data slice3 = new PieChart.Data("Closed" , 36);
-    	ActiveSuClo.getData().add(slice1);
-    	ActiveSuClo.getData().add(slice2);
-    	ActiveSuClo.getData().add(slice3);
+    	ArrayList<String> arry=new ArrayList<String>();
+    	arry.add("Active");
+    	arry.add("susspened");
+    	arry.add("Closed");
+    	for(int i:arryAcSuCo)
+    	{
+    	    PieChart.Data slice1 = new PieChart.Data(arry.get(i),i+10);
+    	    ActiveSuClo.getData().add(slice1);
+    	}
     	ActiveSuClo.setVisible(true);
     }
     @FXML
