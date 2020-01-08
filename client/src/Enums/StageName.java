@@ -4,6 +4,7 @@ public enum StageName {
 	
 	supervisorApprovel,
 	waitingEvaluationTime,
+	waitingSupervisorApproveEvaluationTime,
 	meaningAssessment,
 	examinationAndDecision,
 	waitingExecutionTime,

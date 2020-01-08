@@ -169,17 +169,28 @@ public class SupervisorShowRequestsController implements Initializable {
 	@FXML
 	void viewTime(MouseEvent event) throws IOException {
 		ArrayList<Object> arry = new ArrayList<Object>();
-		System.out.println(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
 		int idadd = requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
-		System.out.println("hello");
 		DBmessage dbm;
 		arry.add(idadd);
-		dbm = new DBmessage(MessageType.viewTime, arry);
+		dbm = new DBmessage(MessageType.approveTime, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {
 		}
 
+	}
+
+	public void setTimeWindow(ArrayList<Object> list) throws IOException {
+		if(list.get(1).equals(1))
+		{
+			MainAllControllers.request = (int)list.get(0);
+			MainAllControllers.setWindowVar("SupervisorTimeRequest");
+			MainAllControllers.changeWin();
+		}
+		else if(list.get(1).equals(0))
+		{
+			stagenotmatch.setVisible(true);
+		}
 	}
 
 	@FXML

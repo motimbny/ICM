@@ -237,7 +237,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	@FXML
-	void ViewEvaluationReportBTN(MouseEvent event) throws IOException {
+	void ViewEvaluationReport(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITCCCEvaluationReport");
 		MainAllControllers.changeWin();
 	}

@@ -181,7 +181,15 @@ public class mainClientABS extends AbstractClient
 			
 			}
 			break;
-			
+			case approveTime:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				try {
+					MainAllControllers.ReqTimeSupervisor(send);
+				} catch (IOException e) {
+				}
+			}
+			break;
 			case ITFailurReport:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

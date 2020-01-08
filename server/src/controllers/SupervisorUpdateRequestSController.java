@@ -39,7 +39,7 @@ public class SupervisorUpdateRequestSController
 			{
 				stmt = connection.createStatement();
 				ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id='"+numReport+ "'");
-				if(rs.next()!=false)
+				while(rs.next()!=false)
 				{
 					up=new updateRequest(rs.getInt(1),rs.getString(4), rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11), rs.getInt(12),rs.getInt(13));
 					if(rs.getString(3).equals("supervisorApprovel")&&flag==1)
@@ -47,13 +47,15 @@ public class SupervisorUpdateRequestSController
 						stmt.executeUpdate("UPDATE request SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
 						stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+numReport+"");
 						stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
-						stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+numReport+"");
-						
+						stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+numReport+"");			
 					}
+					toSend.add(numReport);
+					toSend.add(rs.getString(4));
+					toSend.add(rs.getString(8));
 				}
-				toSend.add(up);
+				//toSend.add(up);
 				dbs=new DBSmessage(MessageTypeS.SupervisorUpdateRequest,toSend);
-					return dbs;
+				return dbs;
 			} 
 			catch (SQLException e)
 			{
@@ -72,7 +74,6 @@ public class SupervisorUpdateRequestSController
 				stmt = connection.createStatement();
 				stmt.executeUpdate("UPDATE requeststages SET itPerformanceLeader='"+changeexecuter+"' WHERE id="+num+"");
 				stmt.executeUpdate("UPDATE requeststages SET itAppraiser='"+changeapprieser+"' WHERE id="+num+"");
-				//stmt.executeUpdate("UPDATE requeststages SET itAppraiser='"+changeapprieser+"' WHERE id="+num+"");
 				flag=1;	
 			} 
 			catch (SQLException e)

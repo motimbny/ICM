@@ -204,15 +204,11 @@ public class SupervisorUpdateRequestController implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
 	}
-	public void setToFields(updateRequest ev)
+	public void setToFields(ArrayList<Object> list)
 	{
-		this.requestID.setText(Integer.toString(ev.getId()));
-		this.apprieserName.setText(ev.getApprieser());
-		this.executerName.setText(ev.getExecuter());
-		this.evluation.setText(Integer.toString(ev.getEvaluation()));
-		this.examination.getSelectionModel().select(ev.getEvaluation()-1);;
-		this.test.getSelectionModel().select((ev.getTest()-1));
-		this.execution.setText(Integer.toString(ev.getExecution()));
+		this.requestID.setText(""+list.get(0));
+		this.apprieserName.setText((String)list.get(1));
+		this.executerName.setText((String)list.get(2));
 	}
     
 	@Override

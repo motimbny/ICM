@@ -110,7 +110,6 @@ public class SupervisorShowRequestsSController
 				{
 					
 					timeEvaluation=rs.getInt(10);
-					System.out.println("time: "+timeEvaluation);
 					if(timeEvaluation==0)
 					{
 						dbs=new DBSmessage(MessageTypeS.viewTime,null);
@@ -126,7 +125,33 @@ public class SupervisorShowRequestsSController
 
 			e.printStackTrace();
 		}
+		return null;	
+	}
+	
+	public DBSmessage approvevTime()
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		int reqId=(int)msg.getObjs().get(0);
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try {
+			toSend.add(reqId);
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id="+reqId+"");
+			while(rs.next()!=false)
+			{
+				if(rs.getString(1).equals("waitingSupervisorApproveEvaluationTime"))
+				{
+					toSend.add(1);
+				}
+				else
+				{
+					toSend.add(0);
+				}
+				dbs=new DBSmessage(MessageTypeS.approveTime,toSend);
+				return dbs;
+			}
+		} catch (SQLException e) {}
 		return null;
-		
 	}
 }

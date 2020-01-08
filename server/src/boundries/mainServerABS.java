@@ -200,6 +200,14 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			case approveTime:
+			{
+				SupervisorShowRequestsSController SupervisorShowRequestsSController = new SupervisorShowRequestsSController(dbm, connection);
+				try {
+					client.sendToClient(SupervisorShowRequestsSController.approvevTime());
+				} catch (IOException e) {}
+				break;
+			}
 			case ITjobInReq: {
 				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm, connection);
 				try {

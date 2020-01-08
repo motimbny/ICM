@@ -71,38 +71,22 @@ public class ITHandleRequestSController {
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id=" + id + "");
-			while (rs.next() != false) {
+			while (rs.next() != false) 
+			{
 				stage = rs.getString(1);
 				if (stage.equals("waitingEvaluationTime")) 
 				{
 					stmt = connection.createStatement();
 					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation=" + timeEstimatedEvaluation+ " WHERE id=" + id + "");
+					stmt.executeUpdate("UPDATE request SET currentStage='waitingSupervisorApproveEvaluationTime' WHERE id=" + id + "");
+					stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingSupervisorApproveEvaluationTime' WHERE id=" + id + "");
 					arr.add(1);
 				} else
 					arr.add(0);
-				DBSmessage dbs = new DBSmessage(MessageTypeS.ITaddTimeEstimated, arr);
-				return dbs;
+				
 			}
-
-			/*
-			 * PreparedStatement req =
-			 * connection.prepareStatement("INSERT INTO timetoapprove VALUES(?,?,?)");
-			 * req.setInt(1, id); req.setInt(2, timeEstimatedEvaluation); req.setInt(3, 0);
-			 * req.executeUpdate(); req.close(); arr.add(1); DBSmessage dbs = new
-			 * DBSmessage(MessageTypeS.ITaddTimeEstimated, arr); return dbs;
-			 */
-			/*
-			 * stmt = connection.createStatement();
-			 * stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="
-			 * +timeEstimatedEvaluation+" WHERE id="+id+""); DBSmessage dbs = new
-			 * DBSmessage(MessageTypeS.addTimeEstimated, null); return dbs; ResultSet rs =
-			 * stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+""); while
-			 * (rs.next() != false) { stage=rs.getString(3);
-			 * if(stage.equals("meaningAssessment")) { stmt = connection.createStatement();
-			 * stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="
-			 * +timeEstimatedEvaluation+" WHERE id="+id+""); } else { DBSmessage dbs = new
-			 * DBSmessage(MessageTypeS.addTimeEstimated, null); return dbs; } }
-			 */
+			DBSmessage dbs = new DBSmessage(MessageTypeS.ITaddTimeEstimated, arr);
+			return dbs;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

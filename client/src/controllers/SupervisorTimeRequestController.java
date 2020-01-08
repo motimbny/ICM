@@ -67,9 +67,9 @@ public class SupervisorTimeRequestController implements Initializable {
 
 	@FXML
 	private Button BackToShow;
-	
-    @FXML
-    private Label saved;
+
+	@FXML
+	private Label saved;
 
 	@FXML
 	void approveEvluation(MouseEvent event) {
@@ -79,7 +79,8 @@ public class SupervisorTimeRequestController implements Initializable {
 		dbm = new DBmessage(MessageType.SupervisorApproveEvluationTime, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
+		} catch (IOException e) {
+		}
 	}
 
 	@FXML
@@ -88,12 +89,12 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	@FXML
-	void dentExwcution(MouseEvent event) {
+	void denyExwcution(MouseEvent event) {
 
 	}
 
 	@FXML
-	void denyEvluation(MouseEvent event) {
+	void dentEvluation(MouseEvent event) {
 
 	}
 
@@ -147,15 +148,14 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	public void setToFields(ArrayList<Object> list) {
-		this.requestID.setText(""+list.get(0));
-		this.evluation.setText(""+list.get(1));
-		this.execution.setText(""+list.get(2));
-		if((!(list.get(1).equals(0)))&&(list.get(3).equals("waitingEvaluationTime"))) 
-		{
+		this.requestID.setText("" + list.get(0));
+		this.evluation.setText("" + list.get(1));
+		this.execution.setText("" + list.get(2));
+		if ((!(list.get(1).equals(0))) && (list.get(3).equals("waitingEvaluationTime"))) {
 			approveEvluationBTN.setVisible(true);
-			dentEvluationBTN.setVisible(true);}
-		if((!(list.get(2).equals(0)))&&(list.get(3).equals("waitingExecutionTime")))
-		{
+			dentEvluationBTN.setVisible(true);
+		}
+		if ((!(list.get(2).equals(0))) && (list.get(3).equals("waitingExecutionTime"))) {
 			approveExwcutionBTN.setVisible(true);
 			denyExwcutionBTN.setVisible(true);
 		}

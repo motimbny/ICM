@@ -229,7 +229,7 @@ public class MainAllControllers
 	}
 	public void SupervisorUpdateRequest(ArrayList<Object> list) {
 		
-		((SupervisorUpdateRequestController) WindowToShow.controller).setToFields((updateRequest) list.get(0));
+		((SupervisorUpdateRequestController) WindowToShow.controller).setToFields(list);
 		
 	}
 	public void getListOfIT(ArrayList<Object> arrayList) 
@@ -247,6 +247,10 @@ public class MainAllControllers
 	public void showITEvaluationReport(ArrayList<Object> arrayList) {
 		((ITCCCEvaluationReportController) WindowToShow.controller).setTextInFields((Evluationreport) arrayList.get(0));
 	}
+	public void ReqTimeSupervisor(ArrayList<Object> list) throws IOException
+	{
+		((SupervisorShowRequestsController) WindowToShow.controller).setTimeWindow(list);		
+	}
 	public void SupervisorRequestDetailes(ArrayList<Object> list)
 	{
 		((SupervisorRequestDetailsController) WindowToShow.controller).setTextInFields(list);		
@@ -261,7 +265,7 @@ public class MainAllControllers
 	}
 	public void SupervisorSaveTimeEv(ArrayList<Object> list)
 	{
-		((SupervisorTimeRequestController) WindowToShow.controller).setOnSucsess();
+	//	((SupervisorTimeRequestController) WindowToShow.controller).setOnSucsess();
 		((ITHandleRequestController) WindowToShow.controller).startEvaluate();
 	}
 	public void showSuperviserExtensionRequestAnswer(ArrayList<Object> send) 
