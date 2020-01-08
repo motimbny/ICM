@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -124,7 +125,29 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <PieChart fx:id="ActiveSuClo" layoutX="291.0" layoutY="237.0" prefHeight="257.0" prefWidth="341.0" />
+            <Pane layoutX="23.0" layoutY="200.0" prefHeight="371.0" prefWidth="617.0">
+               <children>
+                  <PieChart fx:id="ActiveSuClo" layoutY="9.0" prefHeight="234.0" prefWidth="314.0" />
+                  <Label layoutX="414.0" layoutY="28.0" text="median:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="347.0" layoutY="61.0" text="Standard deviation">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="322.0" layoutY="98.0" text="Frequency distribution:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField editable="false" layoutX="471.0" layoutY="26.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <TextField editable="false" layoutX="471.0" layoutY="59.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <TextField editable="false" layoutX="471.0" layoutY="96.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+               </children>
+            </Pane>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

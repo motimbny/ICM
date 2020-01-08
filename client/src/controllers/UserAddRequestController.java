@@ -95,7 +95,6 @@ public class UserAddRequestController implements Initializable
 	    	DBmessage dbm=new DBmessage(MessageType.AddRequest, arry);
 	    	try
 	     	{
-	    		System.out.println("im here server");
 				MainAllControllers.sendToAbsServer(dbm);
 			} 
 	    	catch (IOException e) 

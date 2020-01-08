@@ -81,6 +81,7 @@ public class UserSAddRequestController
 		int c1,c2,c3;
 	   PreparedStatement req;
 	   PreparedStatement requeststages;
+	   PreparedStatement reqTime;
 	   DBSmessage dbs;
 	   Random rand = new Random();    
 	   boolean flag=false;
@@ -125,7 +126,21 @@ public class UserSAddRequestController
  			requeststages.setInt(12, 0);
  			requeststages.setInt(13, 0);
  			requeststages.executeUpdate();	
- 			requeststages.close();	
+ 			requeststages.close();
+ 			reqTime = connection.prepareStatement("INSERT INTO requesttime VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+ 			reqTime.setInt(1, request.getId());
+ 			reqTime.setDate(2, null);
+ 			reqTime.setDate(3, null);
+ 			reqTime.setDate(4, null);
+ 			reqTime.setDate(5, null);
+ 			reqTime.setDate(6, null);
+ 			reqTime.setDate(7, null);
+ 			reqTime.setDate(8, null);
+ 			reqTime.setDate(9, null);
+ 			reqTime.setDate(10, null);
+ 			reqTime.setDate(11, null);
+ 			reqTime.executeUpdate();	
+ 			reqTime.close();
  		  }
  		 catch (SQLException e) 
  		     {
