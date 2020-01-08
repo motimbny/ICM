@@ -42,14 +42,6 @@ public class SupervisorShowRequestsSController
 					StageName name=null;
 					switch(rs.getString(3))
 					{
-					case "supervisorApprovel":
-						name=StageName.supervisorApprovel;
-						break;
-					case "waitingEvaluationTime":
-						name=StageName.waitingEvaluationTime;
-						break;
-					case "waitingSupervisorApproveEvaluationTime":
-						name=StageName.waitingSupervisorApproveEvaluationTime;
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
 						break;
@@ -152,10 +144,10 @@ public class SupervisorShowRequestsSController
 				{
 					toSend.add(1);
 				}
+				else if(rs.getString(1).equals("waitingSupervisorApproveExecutionTime"))
+					toSend.add(1);
 				else
-				{
 					toSend.add(0);
-				}
 				dbs=new DBSmessage(MessageTypeS.approveTime,toSend);
 				return dbs;
 			}
