@@ -104,6 +104,8 @@ public class superviserRequestShowController
 			stmt = connection.createStatement();
 			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Closed' WHERE id="+num+"");
 			stmt.executeUpdate("UPDATE request SET currentStage='Closed' WHERE id="+num+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStatus='Closed' WHERE id="+num+"");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='Closed' WHERE id="+num+"");
 			stmt.executeUpdate("UPDATE requesttime SET closingEND='"+formatter.format(date)+"' WHERE id="+num+"");
 				if(rs==1)
 				{

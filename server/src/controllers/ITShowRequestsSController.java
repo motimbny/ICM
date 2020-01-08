@@ -35,7 +35,7 @@ public class ITShowRequestsSController
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, currentStatus, currentStage FROM requeststages WHERE itAppraiser='"+user+ "' OR itCCC1='"+user+"' OR itCCC2='"+user+"' OR itCCC3='"+user+"' OR itPerformanceLeader='"+user+"' OR itTester='"+user+"'"); 
+			ResultSet rs = stmt.executeQuery("SELECT id, currentStatus, currentStage FROM requeststages WHERE ( itAppraiser='"+user+ "' OR itCCC1='"+user+"' OR itCCC2='"+user+"' OR itCCC3='"+user+"' OR itPerformanceLeader='"+user+"' OR itTester='"+user+"' ) AND currentStatus <> 'Closed'"); 
 				while(rs.next()!=false)
 				{
 					StageName name=null;
@@ -97,14 +97,29 @@ public class ITShowRequestsSController
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, currentStatus, currentStage FROM requeststages WHERE ( itAppraiser='"+user+ "' OR itCCC1='"+user+"' OR itCCC2='"+user+"' OR itCCC3='"+user+"' OR itPerformanceLeader='"+user+"' OR itTester='"+user+"' ) AND id="+userIdReq+"");
+			ResultSet rs = stmt.executeQuery("SELECT id, currentStatus, currentStage FROM requeststages WHERE ( itAppraiser='"+user+ "' OR itCCC1='"+user+"' OR itCCC2='"+user+"' OR itCCC3='"+user+"' OR itPerformanceLeader='"+user+"' OR itTester='"+user+"' ) AND id="+userIdReq+" AND currentStatus <> 'Closed'");
 				while(rs.next()!=false)
 				{
 					StageName name=null;
 					switch(rs.getString(3))
 					{
+					case "supervisorApprovel":
+						name=StageName.supervisorApprovel;
+						break;
+					case "waitingEvaluationTime":
+						name=StageName.waitingEvaluationTime;
+						break;
+					case "waitingSupervisorApproveEvaluationTime":
+						name=StageName.waitingSupervisorApproveEvaluationTime;
+						break;
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
+						break;
+					case "waitingExecutionTime":
+						name=StageName.waitingExecutionTime;
+					break;
+					case "waitingSupervisorApproveExecutionTime":
+						name=StageName.waitingSupervisorApproveExecutionTime;
 						break;
 					case "examinationAndDecision":
 						name=StageName.examinationAndDecision;
@@ -117,7 +132,10 @@ public class ITShowRequestsSController
 						break;		
 					case "closing":
 						name=StageName.closing;
-						break;		
+						break;	
+					case "Closed":
+						name=StageName.Closed;
+						break;	
 					}
 					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name);
 					toSend.add(toAdd);

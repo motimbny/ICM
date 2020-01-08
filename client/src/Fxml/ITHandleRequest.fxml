@@ -108,12 +108,12 @@
                <children>
                   <Button fx:id="SubmitTimeEstimatePerformanceBTN" layoutX="2.0" layoutY="72.0" mnemonicParsing="false" onMouseClicked="#SubmitTimeEstimatePerformance" prefHeight="33.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="submit time estimate" textAlignment="CENTER" wrapText="true" />
                   <Button fx:id="changeCompletedBTN" layoutX="167.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#changeCompleted" prefHeight="76.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="change Completed" textAlignment="CENTER" wrapText="true" />
-                  <Label layoutX="21.0" text="Time estimate:">
+                  <Label fx:id="l3" layoutX="21.0" text="Time estimate:">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="4.0" layoutY="19.0" text="Performance stage">
+                  <Label fx:id="l4" layoutX="4.0" layoutY="19.0" text="Performance stage">
                      <font>
                         <Font size="16.0" />
                      </font>
