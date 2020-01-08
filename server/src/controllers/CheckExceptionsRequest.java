@@ -13,20 +13,57 @@ import Enums.MessageTypeS;
 import Enums.StageName;
 import entity.ConnectToDB;
 import entity.DBSmessage;
+import entity.ITemployee;
 import entity.Request;
 import entity.RequestUser;
+import entity.User;
 
 public class CheckExceptionsRequest 
 {
    private int toCheck; 
    private Request req;
    private Connection connection;
+   private User superviser,manager;
    public CheckExceptionsRequest(int toCheck,Connection connection)
    {
 	   this.toCheck=toCheck;
 	   this.connection=connection;
 	   getRequest();
+	   findsuperviser();
+	   findmanager();
    }
+   private void findsuperviser()
+	{
+		Statement stmt;
+		User toAdd=null;
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE position='superviser'");
+				while(rs.next()!=false)
+				{
+				  superviser=new User(rs.getString(1),Integer.toString(rs.getInt(2)),rs.getString(3));
+				}
+				rs.close();
+		}
+		catch(Exception e) {}	
+	}
+   private void findmanager()
+	{
+		Statement stmt;
+		User toAdd=null;
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE position='IT-manager'");
+				while(rs.next()!=false)
+				{
+				  manager=new User(rs.getString(1),Integer.toString(rs.getInt(2)),rs.getString(3));
+				}
+				rs.close();
+		}
+		catch(Exception e) {}	
+	}
    public void getRequest()
    {
 		Statement stmt;
@@ -147,21 +184,46 @@ public class CheckExceptionsRequest
 		}
 		if(!topick1.equals(""))
 		{
-		int diffrence=(d2.getDay()-d1.getDay())-dif;
+		int diffrence=(d2.getDate()-d1.getDate())-dif;
+		System.out.println(diffrence);
 		if(diffrence>0)
 			{
 				reqToAdd = connection.prepareStatement("INSERT INTO exceptionrequest VALUES(?,?,?)");
 				reqToAdd.setInt(1, req.getId());
 				reqToAdd.setString(2,stag);
 				reqToAdd.setInt(3,diffrence);
+				reqToAdd.executeUpdate();	
+				reqToAdd.close();
+				System.out.println("im in");
 			}
 		}
+		sendMessageToManager(stag);
+		sendMessageToSuperviser(stag);
      }
-   public static void main(String[]args) throws SQLException
+   public void sendMessageToManager(String stag) throws SQLException
    {
-	   ConnectToDB connection=new ConnectToDB("Aa123456","root","project");
-	   CheckExceptionsRequest ch=new CheckExceptionsRequest(17, connection.Connect());
-	   ch.checkException();
-	   
+	   PreparedStatement mToAdd;
+	   mToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
+	   mToAdd.setString(1,manager.getName());
+	   mToAdd.setString(2,"System ICM");
+	   mToAdd.setString(3,stag);
+	   mToAdd.setString(4,stag+"was late");
+	   mToAdd.setString(5,java.time.LocalDate.now().toString());
+	   mToAdd.setInt(6,0);
+	   mToAdd.executeUpdate();	
+	   mToAdd.close();
+	}
+   public void sendMessageToSuperviser(String stag) throws SQLException
+   {
+	   PreparedStatement sToAdd;
+	   sToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
+	   sToAdd.setString(1,superviser.getName());
+	   sToAdd.setString(2,"System ICM");
+	   sToAdd.setString(3,stag);
+	   sToAdd.setString(4,stag+"was late");
+	   sToAdd.setString(5,java.time.LocalDate.now().toString());
+	   sToAdd.setInt(6,0);
+	   sToAdd.executeUpdate();	
+	   sToAdd.close();
    }
 }
