@@ -42,8 +42,23 @@ public class SupervisorShowRequestsSController
 					StageName name=null;
 					switch(rs.getString(3))
 					{
+					case "supervisorApprovel":
+						name=StageName.supervisorApprovel;
+						break;
+					case "waitingEvaluationTime":
+						name=StageName.waitingEvaluationTime;
+						break;
+					case "waitingSupervisorApproveEvaluationTime":
+						name=StageName.waitingSupervisorApproveEvaluationTime;
+						break;
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
+						break;
+					case "waitingExecutionTime":
+						name=StageName.waitingExecutionTime;
+					break;
+					case "waitingSupervisorApproveExecutionTime":
+						name=StageName.waitingSupervisorApproveExecutionTime;
 						break;
 					case "examinationAndDecision":
 						name=StageName.examinationAndDecision;
@@ -56,7 +71,10 @@ public class SupervisorShowRequestsSController
 						break;		
 					case "closing":
 						name=StageName.closing;
-						break;		
+						break;	
+					case "Closed":
+						name=StageName.Closed;
+						break;
 					}
 					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name);
 					toSend.add(toAdd);

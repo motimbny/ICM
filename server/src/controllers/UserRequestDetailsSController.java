@@ -48,8 +48,15 @@ public class UserRequestDetailsSController {
 						break;
 					case "waitingSupervisorApproveEvaluationTime":
 						name=StageName.waitingSupervisorApproveEvaluationTime;
+						break;
 					case "meaningAssessment":
 						name=StageName.meaningAssessment;
+						break;
+					case "waitingExecutionTime":
+						name=StageName.waitingExecutionTime;
+					break;
+					case "waitingSupervisorApproveExecutionTime":
+						name=StageName.waitingSupervisorApproveExecutionTime;
 						break;
 					case "examinationAndDecision":
 						name=StageName.examinationAndDecision;
@@ -62,6 +69,9 @@ public class UserRequestDetailsSController {
 						break;		
 					case "closing":
 						name=StageName.closing;
+						break;	
+					case "Closed":
+						name=StageName.Closed;
 						break;		
 					}
 					tosend=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7));

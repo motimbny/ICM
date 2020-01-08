@@ -160,12 +160,10 @@ public class CheckExceptionsRequest
 		break;	   
 	   }
 		try {
-			System.out.println("im here");
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery("SELECT "+topick+","+topick2+" FROM requesttime WHERE id="+toCheck+"");
 			while(rs.next()!=false)
 			{
-				System.out.println("im here 2");
 				d1=rs.getDate(1);
 				d2=rs.getDate(2);
 			}
@@ -185,16 +183,15 @@ public class CheckExceptionsRequest
 		if(!topick1.equals(""))
 		{
 		int diffrence=(d2.getDate()-d1.getDate())-dif;
-		System.out.println(diffrence);
 		if(diffrence>0)
 			{
+			    diffrence-=dif;
 				reqToAdd = connection.prepareStatement("INSERT INTO exceptionrequest VALUES(?,?,?)");
 				reqToAdd.setInt(1, req.getId());
 				reqToAdd.setString(2,stag);
 				reqToAdd.setInt(3,diffrence);
 				reqToAdd.executeUpdate();	
 				reqToAdd.close();
-				System.out.println("im in");
 			}
 		}
 		sendMessageToManager(stag);
