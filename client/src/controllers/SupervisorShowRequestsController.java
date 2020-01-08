@@ -75,7 +75,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	private Button SuprvisorExtensionRequestBTN;
 
 	@FXML
-    private Button MessageBTN;
+	private Button MessageBTN;
 
 	@FXML
 	private Button search;
@@ -145,7 +145,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	void goLogoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+		MainAllControllers.logOutUser();
 	}
 
 	@FXML
@@ -159,28 +159,28 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.setWindowVar("SupervisorShowRequests");
 		MainAllControllers.changeWin();
 	}
-	 @FXML
-	    void messagePage(MouseEvent event) throws IOException 
-		{
-	    	MainAllControllers.setWindowVar("SupervisorMessages");
-	    	MainAllControllers.changeWin();
-		}
 
 	@FXML
-	    void viewTime(MouseEvent event) throws IOException
-	 {
-			ArrayList<Object> arry=new ArrayList<Object>();
-			System.out.println(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
-			int idadd=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
-			System.out.println("hello");
-			DBmessage dbm;
-			arry.add(idadd);
-	    	dbm=new DBmessage(MessageType.viewTime, arry);   
-	    	try {
-	    		MainAllControllers.sendToAbsServer(dbm);
-			} catch (IOException e) {}
-			
-	 }
+	void messagePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("SupervisorMessages");
+		MainAllControllers.changeWin();
+	}
+
+	@FXML
+	void viewTime(MouseEvent event) throws IOException {
+		ArrayList<Object> arry = new ArrayList<Object>();
+		System.out.println(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId());
+		int idadd = requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+		System.out.println("hello");
+		DBmessage dbm;
+		arry.add(idadd);
+		dbm = new DBmessage(MessageType.viewTime, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+
+	}
 
 	@FXML
 	void suspendRequest(MouseEvent event) {
@@ -324,7 +324,7 @@ public class SupervisorShowRequestsController implements Initializable {
 
 	public void setvisable() {
 		stagenotmatch.setVisible(true);
-		
+
 	}
 
 }

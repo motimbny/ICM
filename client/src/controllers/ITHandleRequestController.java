@@ -33,6 +33,7 @@ import javafx.stage.Stage;
 public class ITHandleRequestController implements Initializable {
 	private MainAllControllers MainAllControllers;
 	private ArrayList<Object> list;
+
 	public ITHandleRequestController() {
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
@@ -56,120 +57,114 @@ public class ITHandleRequestController implements Initializable {
 	private Text requestIdField;
 
 	@FXML
-	private Button TestApprovalBTN;
+	private Button ShowRequestDetailsBTN;
 
 	@FXML
 	private Button ReqForTimeExtensionBTN;
 
 	@FXML
-	private Button ReportFailureBTN;
-
-	@FXML
-	private Button ShowRequestDetailsBTN;
-
-	@FXML
-	private Button ViewEvaluationReportBTN;
-
-	@FXML
-	private Button CreateEvaluationReportBTN;
-
-	@FXML
-	private Button ChangePerformanceLeaderShowReq;
-
-	@FXML
-	private TextField timeEstimatedPerformance;
-
-	@FXML
-	private Button SubmitTimeEstimateBTN;
-
-	@FXML
-	private TextField timeEstimatedEvaluation;
-
-	@FXML
-	private Button SubmitTimeEstimateBTN1;
-
-	@FXML
 	private Pane TestStage;
+
+	@FXML
+	private Button TestApprovalBTN;
+
+	@FXML
+	private Button ReportFailureBTN;
 
 	@FXML
 	private Pane EvaluationStage;
 
 	@FXML
+	private Button SubmitTimeEstimateBTN;
+
+	@FXML
+	private Button CreateEvaluationReportBTN;
+
+	@FXML
+	private TextField timeEstimatedEvaluation;
+
+	@FXML
 	private Pane PerformanceStage;
+
+	@FXML
+	private Button changeCompletedBTN;
+
+	@FXML
+	private Button SubmitTimeEstimatePerformanceBTN;
+
+	@FXML
+	private TextField timeEstimatedPerformance;
 
 	@FXML
 	private Pane examinationAndDecisionStage;
 
-
-    @FXML
-    private Button AppointmentTesterBTN;
-
-
-    @FXML
-    private Label timeWasSubmitted;
 	@FXML
-	private Label stagenotmatch;
+	private Button ViewEvaluationReportBTN;
 
-    
-    @FXML
-    void AppointmentTester(MouseEvent event) throws IOException {
-    	listOfIt();
-    	showListOfIT("itTester");
-    }
-    private void showListOfIT(String NameOfPositionChange)
-    {
-    	Stage popupwindow=new Stage();   
+	@FXML
+	private Button AppointTesterBTN;
+
+	@FXML
+	private Label successful;
+
+	@FXML
+	void AppointTester(MouseEvent event) {
+		listOfIt();
+		showListOfIT("itTester");
+	}
+
+	private void showListOfIT(String NameOfPositionChange) {
+		Stage popupwindow = new Stage();
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
-		popupwindow.setTitle("List of IT");      
-		Label label1= new Label("Please choose "+NameOfPositionChange+":"); 
+		popupwindow.setTitle("List of IT");
+		Label label1 = new Label("Please choose " + NameOfPositionChange + ":");
 		label1.setFont(new Font("Arial", 16));
-		TableView<String> EmployeesTable=new TableView<>();
+		TableView<String> EmployeesTable = new TableView<>();
 		TableColumn<String, String> employeeName = new TableColumn<>();
 		EmployeesTable.getColumns().addAll(employeeName);
 		Collection<String> rows = new ArrayList<>();
 		employeeName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-		while(list==null) {}
-	    for(Object r:list)
-	    	rows.add(r.toString());
-        ObservableList<String> details = FXCollections.observableArrayList(rows);
-	    EmployeesTable.setItems(details);
-	    EmployeesTable.setOnMouseClicked((MouseEvent ev ) ->
-	    	{	DBmessage dbm;
-	    		ArrayList<Object> arry=new ArrayList<Object>();
-			    arry.add(MainAllControllers.request);
-			    arry.add(EmployeesTable.getSelectionModel().getSelectedItem());
-		    	dbm=new DBmessage(MessageType.ITSaveTester, arry);   
-		    	try {
-		    		MainAllControllers.sendToAbsServer(dbm);
-				} catch (IOException e) {}
-	            popupwindow.close(); 
-	        });
-		VBox layout= new VBox(10);     
+		while (list == null) {
+		}
+		for (Object r : list)
+			rows.add(r.toString());
+		ObservableList<String> details = FXCollections.observableArrayList(rows);
+		EmployeesTable.setItems(details);
+		EmployeesTable.setOnMouseClicked((MouseEvent ev) -> {
+			DBmessage dbm;
+			ArrayList<Object> arry = new ArrayList<Object>();
+			arry.add(MainAllControllers.request);
+			arry.add(EmployeesTable.getSelectionModel().getSelectedItem());
+			dbm = new DBmessage(MessageType.ITSaveTester, arry);
+			try {
+				MainAllControllers.sendToAbsServer(dbm);
+			} catch (IOException e) {
+			}
+			popupwindow.close();
+		});
+		VBox layout = new VBox(10);
 		layout.getStylesheets().add("CSS/it.css");
-		layout.getChildren().addAll(label1,EmployeesTable);
-		layout.setAlignment(Pos.CENTER); 
-		Scene scene1= new Scene(layout, 350, 250);     
-		popupwindow.setScene(scene1);     
+		layout.getChildren().addAll(label1, EmployeesTable);
+		layout.setAlignment(Pos.CENTER);
+		Scene scene1 = new Scene(layout, 350, 250);
+		popupwindow.setScene(scene1);
 		popupwindow.showAndWait();
-    }
-	public void listOfIt()
-	{
+	}
+
+	public void listOfIt() {
 		DBmessage dbm;
-		ArrayList<Object> arry=new ArrayList<Object>();
+		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
-    	dbm=new DBmessage(MessageType.ITShowEmployeeList, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
+		dbm = new DBmessage(MessageType.ITShowEmployeeList, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
-	
-	public void setListOfIT(ArrayList<Object> arrayList)
-	{
-		this.list=arrayList;
+
+	public void setListOfIT(ArrayList<Object> arrayList) {
+		this.list = arrayList;
 	}
-    
-
-
 
 	@FXML
 	void CreateEvaluationReport(MouseEvent event) throws IOException {
@@ -197,67 +192,68 @@ public class ITHandleRequestController implements Initializable {
 
 	@FXML
 	void SubmitTimeEstimateEvaluation(MouseEvent event) {
-	String time=timeEstimatedEvaluation.getText();
-	ArrayList<Object> arry = new ArrayList<Object>();
-	arry.add( MainAllControllers.request);
-	arry.add(Integer.parseInt(timeEstimatedEvaluation.getText()));
-	DBmessage dbm;
-	dbm = new DBmessage(MessageType.addTimeEstimated, arry); 
-	try {
-		MainAllControllers.sendToAbsServer(dbm); 
-	} catch (IOException e) {}
+		String time = timeEstimatedEvaluation.getText();
+		ArrayList<Object> arry = new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		arry.add(Integer.parseInt(timeEstimatedEvaluation.getText()));
+		DBmessage dbm;
+		dbm = new DBmessage(MessageType.ITaddTimeEstimated, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
-	
-    public void setOnSucsess()
-    {	
-    	timeWasSubmitted.setVisible(true);
-    }
 
-
+	public void startEvaluate() {
+		CreateEvaluationReportBTN.setVisible(true);
+	}
 
 	@FXML
 	void SubmitTimeEstimatePerformance(MouseEvent event) {
-		String time=timeEstimatedPerformance.getText();
+		String time = timeEstimatedPerformance.getText();
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
 		arry.add(Integer.parseInt(timeEstimatedPerformance.getText()));
 		DBmessage dbm;
-		dbm = new DBmessage(MessageType.addTimeEstimatedPerformance, arry); 
+		dbm = new DBmessage(MessageType.addTimeEstimatedPerformance, arry);
 		try {
-			MainAllControllers.sendToAbsServer(dbm); 
-		} catch (IOException e) {}
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
 
 	@FXML
 	void TestApproval(MouseEvent event) {
-		ArrayList<Object> arry=new ArrayList<Object>();
+		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
 		DBmessage dbm;
-		dbm=new DBmessage(MessageType.ITTestApproval, arry); 
+		dbm = new DBmessage(MessageType.ITTestApproval, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-	    	MainAllControllers.setWindowVar("ITshowRequests");
-	    	MainAllControllers.changeWin();
-		} catch (IOException e) {}
+			MainAllControllers.setWindowVar("ITshowRequests");
+			MainAllControllers.changeWin();
+		} catch (IOException e) {
+		}
 	}
 
 	@FXML
-	void ViewEvaluationReport(MouseEvent event) throws IOException {
+	void ViewEvaluationReportBTN(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITCCCEvaluationReport");
 		MainAllControllers.changeWin();
 	}
 
 	@FXML
 	void changeCompleted(MouseEvent event) {
-		ArrayList<Object> arry=new ArrayList<Object>();
+		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
 		DBmessage dbm;
-		dbm=new DBmessage(MessageType.ITchangeCompleted, arry); 
+		dbm = new DBmessage(MessageType.ITchangeCompleted, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-	    	MainAllControllers.setWindowVar("ITshowRequests");
-	    	MainAllControllers.changeWin();
-		} catch (IOException e) {}
+			MainAllControllers.setWindowVar("ITshowRequests");
+			MainAllControllers.changeWin();
+		} catch (IOException e) {
+		}
 	}
 
 	@FXML
@@ -288,12 +284,22 @@ public class ITHandleRequestController implements Initializable {
 	void logoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+		MainAllControllers.logOutUser();
 	}
+
+	/*
+	 * @FXML
+	 * 
+	 * public void setvisable() { System.out.println("im here");
+	 * 
+	 * stagenotmatch.setVisible(true);
+	 * 
+	 * }
+	 */
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-	
+
 		int s = MainAllControllers.request;
 		requestIdField.setText("Request ID: " + s);
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -319,7 +325,7 @@ public class ITHandleRequestController implements Initializable {
 			break;
 		case "CEOControlCommitte":
 			examinationAndDecisionStage.setVisible(true);
-			AppointmentTesterBTN.setVisible(true);
+			AppointTesterBTN.setVisible(true);
 			break;
 		case "PerformanceLeader":
 			PerformanceStage.setVisible(true);
@@ -330,10 +336,8 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
-	public void setvisable() {
-		System.out.println("im here");
-
-		stagenotmatch.setVisible(true);
-		
+	public void setOnSucsess() {
+		successful.setVisible(true);
 	}
+
 }

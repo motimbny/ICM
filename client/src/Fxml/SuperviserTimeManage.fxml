@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -86,28 +85,27 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="saveUpdateReq" layoutX="506.0" layoutY="522.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="126.0" text="Save">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
             <Label layoutX="181.0" layoutY="90.0" prefHeight="25.0" prefWidth="76.0" text="Request id">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
             <TextField fx:id="requestID" editable="false" layoutX="268.0" layoutY="90.0" prefHeight="25.0" prefWidth="126.0" style="-fx-background-color: #e0e0d1;" />
-            <Button layoutX="407.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" styleClass="buttonBlackBorder" text="Deny" />
-            <TextField fx:id="evluation" layoutX="171.0" layoutY="206.0" prefHeight="34.0" prefWidth="149.0" />
-            <Label layoutX="174.0" layoutY="180.0" text="evluation stage" />
-            <Button layoutX="331.0" layoutY="206.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" styleClass="buttonBlackBorder" text="Approve" />
-            <Button layoutX="401.0" layoutY="326.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Deny" />
-            <TextField fx:id="execution" layoutX="171.0" layoutY="326.0" prefHeight="34.0" prefWidth="149.0" />
-            <Label layoutX="169.0" layoutY="309.0" text="execution stage" />
-            <Button layoutX="331.0" layoutY="326.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="64.0" styleClass="buttonBlackBorder" text="Approve" />
-            <Label layoutX="175.0" layoutY="369.0" text="Test stage" />
-            <Label layoutX="171.0" layoutY="249.0" text="examination stage" />
-            <Label layoutX="32.0" layoutY="139.0" text="Process Stages:">
+            <Button fx:id="dentEvluationBTN" layoutX="422.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#dentEvluation" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Deny" />
+            <TextField fx:id="evluation" layoutX="175.0" layoutY="213.0" prefHeight="34.0" prefWidth="149.0" />
+            <Label layoutX="177.0" layoutY="191.0" text="evluation stage">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Button fx:id="approveEvluationBTN" layoutX="335.0" layoutY="213.0" mnemonicParsing="false" onMouseClicked="#approveEvluation" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Approve" />
+            <Button fx:id="denyExwcutionBTN" layoutX="422.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#denyExwcution" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Deny" />
+            <TextField fx:id="execution" layoutX="175.0" layoutY="299.0" prefHeight="34.0" prefWidth="149.0" />
+            <Label layoutX="176.0" layoutY="280.0" text="execution stage">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <Button fx:id="approveExwcutionBTN" layoutX="335.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#approveExwcution" prefHeight="34.0" prefWidth="76.0" styleClass="buttonBlackBorder" text="Approve" />
+            <Label layoutX="256.0" layoutY="150.0" text="Process Stages:">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
@@ -119,13 +117,16 @@
                   </ImageView>
                </graphic>
             </Label>
-            <ComboBox fx:id="examination" layoutX="171.0" layoutY="266.0" prefHeight="34.0" prefWidth="150.0" />
-            <ComboBox fx:id="test" layoutX="171.0" layoutY="386.0" prefHeight="34.0" prefWidth="150.0" />
             <Button fx:id="BackToShow" layoutX="51.0" layoutY="522.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="25.0" prefWidth="126.0" styleClass="buttonBlackBorder" text="Back">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
+            <Label fx:id="saved" layoutX="393.0" layoutY="258.0" style="-fx-text-fill: green;" text="saved!" visible="false">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

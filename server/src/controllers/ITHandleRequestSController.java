@@ -19,14 +19,15 @@ public class ITHandleRequestSController {
 	private String user;
 	private int reqId;
 	private Connection connection;
-	private DBmessage msg; 
+	private DBmessage msg;
+
 	public ITHandleRequestSController(DBmessage msg, Connection connection) {
 		this.connection = connection;
-		this.msg=msg;
+		this.msg = msg;
 	}
 
 	public DBSmessage getITjob() {
-		
+
 		ArrayList<Object> arry = msg.getObjs();
 		this.user = (String) arry.get(0);
 		this.reqId = (int) arry.get(1);
@@ -40,11 +41,10 @@ public class ITHandleRequestSController {
 							+ user + "' OR itCCC1='" + user + "' OR itCCC2='" + user + "' OR itCCC3='" + user
 							+ "' OR itPerformanceLeader='" + user + "' OR itTester='" + user + "' ) AND id=" + reqId
 							+ "");
-			while (rs.next() != false) 
-			{
+			while (rs.next() != false) {
 				if (rs.getString(2).equals(user))
 					toSend.add("Appraiser");
-				else if(rs.getString(3).equals(user))
+				else if (rs.getString(3).equals(user))
 					toSend.add("CEOControlCommitte");
 				else if (rs.getString(4).equals(user) || rs.getString(5).equals(user))
 					toSend.add("ControlCommitte");
@@ -63,62 +63,70 @@ public class ITHandleRequestSController {
 	}
 
 	public Object addTimeEstimated() {
-		int id=(int) msg.getObjs().get(0) ;
-		int timeEstimatedEvaluation=(int)msg.getObjs().get(1);
+		int id = (int) msg.getObjs().get(0);
+		int timeEstimatedEvaluation = (int) msg.getObjs().get(1);
 		String stage;
+		ArrayList<Object> arr = new ArrayList<Object>();
 		Statement stmt;
-		try 
-		{
-		
+		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+"");
-			while (rs.next() != false)
-			{
-				stage=rs.getString(3);
-				System.out.println(stage);
-				if(stage.equals("meaningAssessment"))
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id=" + id + "");
+			while (rs.next() != false) {
+				stage = rs.getString(1);
+				if (stage.equals("waitingEvaluationTime")) 
 				{
 					stmt = connection.createStatement();
-					System.out.println("hello22");
-					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="+timeEstimatedEvaluation+" WHERE id="+id+"");
-
-				}
-				else
-				{
-					System.out.println("server 88");
-					DBSmessage dbs = new DBSmessage(MessageTypeS.addTimeEstimated, null);
-					return dbs;
-				}
+					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation=" + timeEstimatedEvaluation+ " WHERE id=" + id + "");
+					arr.add(1);
+				} else
+					arr.add(0);
+				DBSmessage dbs = new DBSmessage(MessageTypeS.ITaddTimeEstimated, arr);
+				return dbs;
 			}
-		}
 
-		catch (SQLException e)
-		{
+			/*
+			 * PreparedStatement req =
+			 * connection.prepareStatement("INSERT INTO timetoapprove VALUES(?,?,?)");
+			 * req.setInt(1, id); req.setInt(2, timeEstimatedEvaluation); req.setInt(3, 0);
+			 * req.executeUpdate(); req.close(); arr.add(1); DBSmessage dbs = new
+			 * DBSmessage(MessageTypeS.ITaddTimeEstimated, arr); return dbs;
+			 */
+			/*
+			 * stmt = connection.createStatement();
+			 * stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="
+			 * +timeEstimatedEvaluation+" WHERE id="+id+""); DBSmessage dbs = new
+			 * DBSmessage(MessageTypeS.addTimeEstimated, null); return dbs; ResultSet rs =
+			 * stmt.executeQuery("SELECT * FROM requeststages WHERE id="+id+""); while
+			 * (rs.next() != false) { stage=rs.getString(3);
+			 * if(stage.equals("meaningAssessment")) { stmt = connection.createStatement();
+			 * stmt.executeUpdate("UPDATE requeststages SET timeEvaluation="
+			 * +timeEstimatedEvaluation+" WHERE id="+id+""); } else { DBSmessage dbs = new
+			 * DBSmessage(MessageTypeS.addTimeEstimated, null); return dbs; } }
+			 */
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 
 	}
-	
+
 	public Object addTimeEstimatedPerformance() {
-		ArrayList<Object> arry=new ArrayList<Object>();
+		ArrayList<Object> arry = new ArrayList<Object>();
 		DBSmessage dbs;
-		int id=(int) msg.getObjs().get(0) ;
-		int timeEstimatedPerform=(int)msg.getObjs().get(1);
+		int id = (int) msg.getObjs().get(0);
+		int timeEstimatedPerform = (int) msg.getObjs().get(1);
 		Statement stmt;
-		try 
-		{
+		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE requeststages SET timePerform="+timeEstimatedPerform+" WHERE id="+id+"");
+			stmt.executeUpdate("UPDATE requeststages SET timePerform=" + timeEstimatedPerform + " WHERE id=" + id + "");
 			arry.add(1);
-		} 
-		
-		catch (SQLException e)
-		{
+		}
+
+		catch (SQLException e) {
 			e.printStackTrace();
 		}
-    	dbs=new DBSmessage(MessageTypeS.addTimeEstimatedPerformance, arry);
-		return dbs;	
+		dbs = new DBSmessage(MessageTypeS.addTimeEstimatedPerformance, arry);
+		return dbs;
 	}
 
 	public Object saveChangeCompleted() {
@@ -127,71 +135,63 @@ public class ITHandleRequestSController {
 		Statement stmt;
 		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE request SET currentStage='testing' WHERE id="+reqId+"");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' AND WHERE id="+reqId+"");
-			stmt.executeUpdate("UPDATE requeststages SET timeTest=7 WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE request SET currentStage='testing' WHERE id=" + reqId + "");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' AND WHERE id=" + reqId + "");
+			stmt.executeUpdate("UPDATE requeststages SET timeTest=7 WHERE id=" + reqId + "");
 
-		} catch (SQLException e) {}
+		} catch (SQLException e) {
+		}
 		return null;
 	}
-	
-	public Object saveTestApproval()
-	{
+
+	public Object saveTestApproval() {
 		ArrayList<Object> arry = msg.getObjs();
 		this.reqId = (int) arry.get(0);
 		Statement stmt;
 		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id="+reqId+"");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id="+reqId+"");
-		} catch (SQLException e) {}
+			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id=" + reqId + "");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id=" + reqId + "");
+		} catch (SQLException e) {
+		}
 		return null;
 	}
-	
-	public DBSmessage getListOfIT() 
-	{
+
+	public DBSmessage getListOfIT() {
 		Statement stmt;
 		DBSmessage dbs;
 		updateRequest up = null;
-		ArrayList<Object> listOfIT= new ArrayList<Object>();
-		try 
-		{		
+		ArrayList<Object> listOfIT = new ArrayList<Object>();
+		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='regular'");
-			while(rs.next()!=false)
-			{
+			while (rs.next() != false) {
 				listOfIT.add(rs.getString(2).toString());
 			}
-			dbs=new DBSmessage(MessageTypeS.ITShowEmployeeList,listOfIT);
+			dbs = new DBSmessage(MessageTypeS.ITShowEmployeeList, listOfIT);
 			return dbs;
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 		return null;
 	}
-	
-	public DBSmessage saveTester()
-	{
+
+	public DBSmessage saveTester() {
 		DBSmessage dbs;
 		Statement stmt;
-		ArrayList<Object> send= new ArrayList<Object>();
+		ArrayList<Object> send = new ArrayList<Object>();
 		ArrayList<Object> arry = msg.getObjs();
 		this.reqId = (int) arry.get(0);
-		String itTester=(String) arry.get(1);
-		try 
-		{		
+		String itTester = (String) arry.get(1);
+		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE requeststages SET itTester='"+itTester+"' WHERE id="+reqId+"");
+			stmt.executeUpdate("UPDATE requeststages SET itTester='" + itTester + "' WHERE id=" + reqId + "");
 			send.add(1);
-			dbs=new DBSmessage(MessageTypeS.ITSaveTester,send);
+			dbs = new DBSmessage(MessageTypeS.ITSaveTester, send);
 			return dbs;
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
-		}	
+		}
 		return null;
 	}
 }

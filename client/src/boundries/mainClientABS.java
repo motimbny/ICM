@@ -126,13 +126,12 @@ public class mainClientABS extends AbstractClient
 				   MainAllControllers.showUserReq(((ArrayList<Object>)send));
 				}
 				break;
-	/*		case addTimeEstimated:
+			case ITaddTimeEstimated:
 			{
-			
-			   MainAllControllers.addTimeEstimated(null);
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				 MainAllControllers.submitEstimatedTime(send); 
 			}
-			break;
-			*/	
+			break;	
 			case ShowReqIT:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -243,18 +242,18 @@ public class mainClientABS extends AbstractClient
 			  MainAllControllers.submitEvaluationReport(send);
 			}
 			break;
-			case addTimeEstimated:
+	/*		case addTimeEstimated:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.submitEvaluationTime(send);
 			}
-			break;
-			case addTimeEstimatedPerformance:
+			break;*/
+			/*case addTimeEstimatedPerformance:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.submitEvaluationTime(send);
 			}
-			break;
+			break;*/
 			case ShowEmployeeList:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
@@ -307,6 +306,12 @@ public class mainClientABS extends AbstractClient
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.SupervisorTimeRequest(send);
+			}
+			break;
+			case SupervisorApproveEvluationTime:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.SupervisorSaveTimeEv(send);
 			}
 			break;
 			case superviserExtensionRequestAnswer:

@@ -464,6 +464,17 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}
+		case SupervisorApproveEvluationTime:
+		{
+			SupervisorUpdateRequestSController SupervisorUpdateTimeRequest = new SupervisorUpdateRequestSController(dbm,
+					connection);
+			try {
+				client.sendToClient(SupervisorUpdateTimeRequest.saveApproveEv());
+
+			} catch (IOException e) {
+			}
+			break;
+		}	
 		case AddExtensionRequest: {
 			ITExtensionRequestSController itExtensionRequestSController = new ITExtensionRequestSController(dbm,
 					connection);
@@ -474,7 +485,7 @@ public class mainServerABS extends AbstractServer {
 			break;
 		}
 		
-		case addTimeEstimated: {
+		case ITaddTimeEstimated: {
 			ITHandleRequestSController ITHandleRequestController = new ITHandleRequestSController(dbm,
 					connection);
 			try {

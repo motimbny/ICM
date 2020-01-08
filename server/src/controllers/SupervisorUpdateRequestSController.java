@@ -33,8 +33,6 @@ public class SupervisorUpdateRequestSController
 			int numReport=(int)list.get(0);
 			Statement stmt;
 			DBSmessage dbs;
-			Date date = new Date();
-			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 			updateRequest up = null;
 			ArrayList<Object> toSend= new ArrayList<Object>();
 			try 
@@ -46,11 +44,11 @@ public class SupervisorUpdateRequestSController
 					up=new updateRequest(rs.getInt(1),rs.getString(4), rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11), rs.getInt(12),rs.getInt(13));
 					if(rs.getString(3).equals("supervisorApprovel")&&flag==1)
 					{
-						stmt.executeUpdate("UPDATE request SET currentStage='meaningAssessment' WHERE id="+numReport+"");
+						stmt.executeUpdate("UPDATE request SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
 						stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+numReport+"");
-						stmt.executeUpdate("UPDATE requeststages SET currentStage='meaningAssessment' WHERE id="+numReport+"");
+						stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
 						stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+numReport+"");
-						stmt.executeUpdate("UPDATE requesttime SET meaningAssessmentStart='"+formatter.format(date)+"' WHERE id="+numReport+"");
+						
 					}
 				}
 				toSend.add(up);
@@ -137,25 +135,53 @@ public class SupervisorUpdateRequestSController
 		}
 		public DBSmessage getTimeReport() 
 		{
-			int numReport=(int)list.get(0);
+			int id=(int)list.get(0);
 			Statement stmt;
 			DBSmessage dbs;
-			updateRequest up = null;
+		//	updateRequest up = null;
 			ArrayList<Object> toSend= new ArrayList<Object>();
 			try 
 			{
 				stmt = connection.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id='"+numReport+ "'");
-				if(rs.next()!=false)
+				ResultSet rs = stmt.executeQuery("SELECT * FROM requeststages WHERE id='"+id+ "'");
+				while(rs.next()!=false)
+				{
+					toSend.add(rs.getInt(1));
+					toSend.add(rs.getInt(10));
+					toSend.add(rs.getInt(12));
+					toSend.add(rs.getString(3));
+				}
+			/*	if(rs.next()!=false)
 					up=new updateRequest(rs.getInt(1),rs.getString(4), rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11), rs.getInt(12),rs.getInt(13));
-				toSend.add(up);
+				toSend.add(up);*/
 				dbs=new DBSmessage(MessageTypeS.SupervisorTimeRequest,toSend);
-					return dbs;
+				return dbs;
 			} 
 			catch (SQLException e)
 			{
 				e.printStackTrace();
 			}	
+			return null;
+		}
+		
+		public DBSmessage saveApproveEv()
+		{
+			int id=(int)list.get(0);
+			Statement stmt;
+			DBSmessage dbs;
+			ArrayList<Object> toSend= new ArrayList<Object>();
+			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+			try {
+				stmt = connection.createStatement();
+				stmt.executeUpdate("UPDATE requeststages SET currentStage='meaningAssessment' WHERE id="+id+"");
+				stmt.executeUpdate("UPDATE request SET currentStage='meaningAssessment' WHERE id="+id+"");
+				stmt.executeUpdate("UPDATE requesttime SET meaningAssessmentStart='"+formatter.format(date)+"' WHERE id="+id+"");
+				toSend.add(1);
+				dbs=new DBSmessage(MessageTypeS.SupervisorApproveEvluationTime,toSend);
+				return dbs;
+			} catch (SQLException e) {}
+			
 			return null;
 		}
 }

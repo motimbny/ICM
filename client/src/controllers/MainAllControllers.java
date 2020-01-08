@@ -137,6 +137,10 @@ public class MainAllControllers
 	{
 		((ITExtensionRequestController) WindowToShow.controller).setOnSucsess(num);		
 	}
+	public void submitEstimatedTime(ArrayList<Object> list)
+	{
+		((ITHandleRequestController) WindowToShow.controller).setOnSucsess();		
+	}
 	public void showUserReq(ArrayList<Object> list)
 	{
 		((UserShowRequestsController) WindowToShow.controller).setTextInTable(list);
@@ -169,10 +173,10 @@ public class MainAllControllers
 	{
 		((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).setOnSucsess();
 	}
-	public void submitEvaluationTime(ArrayList<Object> list)
+/*	public void submitEvaluationTime(ArrayList<Object> list)
 	{
 		((ITHandleRequestController) WindowToShow.controller).setOnSucsess();
-	}
+	}*/
 	public void showUserReqDetails(ArrayList<Object> list)
 	{
 		((UserRequestDetailsController) WindowToShow.controller).setTextInFields(list);
@@ -253,7 +257,12 @@ public class MainAllControllers
 	}
 	public void SupervisorTimeRequest(ArrayList<Object> list)
 	{
-		((SupervisorTimeRequestController) WindowToShow.controller).setToFields((updateRequest) list.get(0));
+		((SupervisorTimeRequestController) WindowToShow.controller).setToFields(list);
+	}
+	public void SupervisorSaveTimeEv(ArrayList<Object> list)
+	{
+		((SupervisorTimeRequestController) WindowToShow.controller).setOnSucsess();
+		((ITHandleRequestController) WindowToShow.controller).startEvaluate();
 	}
 	public void showSuperviserExtensionRequestAnswer(ArrayList<Object> send) 
 	{
@@ -278,10 +287,10 @@ public class MainAllControllers
 			((ITManagerMessagesController)WindowToShow.controller).setTextTable(list);
 		}
 
-	public void addTimeEstimated(Object object) {
+/*	public void addTimeEstimated(Object object) {
 		
 		((ITHandleRequestController) WindowToShow.controller).setvisable();
-	}
+	}*/
 	public void setvisable() {
 
 		((SupervisorShowRequestsController) WindowToShow.controller).setvisable();
