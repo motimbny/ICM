@@ -83,6 +83,11 @@ public class superviserRequestShowController
 				{
 					System.out.println("updateSuspendRequest");
 				}
+			int ds = stmt.executeUpdate("UPDATE requeststages SET currentStatus='Suspend' WHERE id="+num+"");
+				if(rs==1)
+				{
+					System.out.println("updateSuspendRequeststages");
+				}
 		} 
 		catch (SQLException e)
 		{
@@ -176,6 +181,11 @@ public class superviserRequestShowController
 				if(rs==1)
 				{
 					System.out.println("updateSuspendRequest");
+				}
+				int ds = stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+num+"");
+				if(rs==1)
+				{
+					System.out.println("updateSuspendRequeststages");
 				}
 		} 
 		catch (SQLException e)
