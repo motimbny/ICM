@@ -307,5 +307,15 @@ public class MainAllControllers
 	{
 		((LoginController) WindowToShow.controller).setVisibleLblCon();
 	}
+	public void makeActiveSuClo(ArrayList<Object> arrayList) {
+		
+		((ITManagerReportsController) WindowToShow.controller).setActiveSuClo(arrayList);
+
+		
+	}
+	public void makePerformenct(ArrayList<Object> send) {
+		((ITManagerReportsController) WindowToShow.controller).setmakePerformenct(send);
+		
+	}
 	
 }

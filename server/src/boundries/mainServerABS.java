@@ -11,6 +11,7 @@ import controllers.ITCCCRequestMoreInfoSController;
 
 import controllers.ITExtensionRequestSController;
 import controllers.ITHandleRequestSController;
+import controllers.ITManagerReportsSController;
 import controllers.ITManagerRequestDetailsSController;
 import controllers.ITMeaningAssessmentEvaluationReportSController;
 import controllers.ITRequestDetailsSController;
@@ -223,6 +224,24 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			case makeActiveSuClo: {
+				ITManagerReportsSController ITManagerReportsSController = new ITManagerReportsSController(dbm, connection);
+				try {
+					client.sendToClient(ITManagerReportsSController.makeActiveSuClo());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			case makePerformenct: {
+				ITManagerReportsSController ITManagerReportsSController = new ITManagerReportsSController(dbm, connection);
+				try {
+					client.sendToClient(ITManagerReportsSController.makePerformenct());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			
+			
 			
 			case ITgetReqStage: {
 				ITExtensionRequestSController itExtensionRequestSController = new ITExtensionRequestSController(dbm,

@@ -176,6 +176,19 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.showITEvaluationReport(send);
 			}
 			break;
+			case makeActiveSuClo:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.makeActiveSuClo(send);
+			}
+			break;
+			case makePerformenct:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.makePerformenct(send);
+			}
+			break;
+			
 			case viewTime:
 			{
 				if(dbs.getObjs()==null)

@@ -1,12 +1,16 @@
 package controllers;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.time.Clock;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 import Enums.MessageTypeS;
 import entity.DBSmessage;
 import entity.DBmessage;
@@ -63,13 +67,16 @@ public class ITExtensionRequestSController {
  		try 
  		  {
 
- 			ps = connection.prepareStatement("INSERT INTO extensionrequest VALUES(?,?,?,?,?,?)");
+ 			ps = connection.prepareStatement("INSERT INTO extensionrequest VALUES(?,?,?,?,?,?,?)");
  			ps.setInt(1, this.reqId);
  			ps.setString(2, this.stage);
  			ps.setString(3, this.user);
  			ps.setString(4, this.reason);
  			ps.setInt(5, this.timeToAdd);
  			ps.setString(6, "null");
+ 			Date date = new Date();
+			SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+ 			ps.setString(7, formatter.format(date));
  			ps.executeUpdate();	
  			ps.close();
  			arry.add(1);

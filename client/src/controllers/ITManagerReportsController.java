@@ -1,9 +1,13 @@
 package controllers;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
+import Enums.MessageType;
+import entity.DBmessage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -22,6 +26,8 @@ public class ITManagerReportsController implements Initializable
 	private MainAllControllers MainAllControllers;
 	private ArrayList<Integer> arryAcSuCo;
 	private ArrayList<Integer> arryDelaysInfo;
+
+
 	public ITManagerReportsController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
@@ -52,7 +58,9 @@ public class ITManagerReportsController implements Initializable
 
 	    @FXML
 	    private ChoiceBox<String> chooseTypeOfReport;
-
+	    @FXML
+	    private ChoiceBox<String> choosestatus;
+	    
 	    @FXML
 	    private DatePicker dateFrom;
 
@@ -100,12 +108,22 @@ public class ITManagerReportsController implements Initializable
 
 	    @FXML
 	    private TextField timeOfDelays;
+	    @FXML
+	    private TextField frequency;
+	    @FXML
+	    private TextField deniedreq;
+	    @FXML
+	    private TextField allreq;
+	    
 
    
 
     @FXML
     void generateReportClick(MouseEvent event) throws IOException 
     {
+    	delaysInExecution.setVisible(false);
+		performence.setVisible(false);
+    	activity.setVisible(false);
     	if(chooseTypeOfReport.getValue().equals("Activity"))
     	{
     		makeActiveSuClo();
@@ -140,23 +158,91 @@ public class ITManagerReportsController implements Initializable
     	delayspie.setVisible(true);
 	}
 	private void makePerformenct() {
-    	performence.setVisible(true);
-		
+    	
+		DBmessage dbm;
+		String start,end;
+		start=this.dateFrom.getValue().toString();
+		end=this.DateTo.getValue().toString();
+    	ArrayList<Object> arry=new ArrayList<Object>();
+    	arry.add(start);
+    	arry.add(end);
+		dbm = new DBmessage(MessageType.makePerformenct, arry); 
+		try {
+			MainAllControllers.sendToAbsServer(dbm); 
+		} catch (IOException e) {
+		}
 	}
 	public void makeActiveSuClo()
     {
-    	ArrayList<String> arry=new ArrayList<String>();
+		DBmessage dbm;
+		String start,end;
+		start=this.dateFrom.getValue().toString();
+		end=this.DateTo.getValue().toString();
+		
+    	ArrayList<Object> arry=new ArrayList<Object>();
+    	arry.add(start);
+    	arry.add(end);
+		dbm = new DBmessage(MessageType.makeActiveSuClo, arry); 
+		try {
+			MainAllControllers.sendToAbsServer(dbm); 
+		} catch (IOException e) {
+		}
+    	
+    	
+    }
+	public void setActiveSuClo(ArrayList<Object> send)
+	{
+    	int devesion,avrg=0;
+
+		int failur=(int)send.get(0);
+		int suc=(int)send.get(1);
+		int susp=(int)send.get(2);
+		int allreq=(int)send.get(3);
+	 	ArrayList<String> arry=new ArrayList<String>();
+    	arry.add("failur");
     	arry.add("Active");
     	arry.add("susspened");
-    	arry.add("Closed");
-    	for(int i:arryAcSuCo)
+    	if(failur>suc&&failur<susp)
+    		this.medinT.setText(""+failur);
+    	else if(suc>failur&&suc<susp)
+    		this.medinT.setText(""+suc);
+    	else if(susp>failur&&susp<suc)
+    		this.medinT.setText(""+susp);
+    	if(failur<suc&&failur>susp)
+    		this.medinT.setText(""+failur);
+    	else if(suc<failur&&suc>susp)
+    		this.medinT.setText(""+suc);
+    	else if(susp<failur&&susp>suc)
+    		this.medinT.setText(""+susp);
+    	else
     	{
-    	    PieChart.Data slice1 = new PieChart.Data(arry.get(i),i+10);
-    	    ActiveSuClo.getData().add(slice1);
+        	avrg=(susp+suc+failur)/3;
+
+    		this.medinT.setText(""+avrg);
     	}
-    	ActiveSuClo.setVisible(true);
-    }
-    @FXML
+    	avrg=(susp+suc+failur)/3;
+    	devesion=(int) Math.sqrt((Math.pow(failur-avrg, 2)+Math.pow(suc-avrg, 2)+Math.pow(susp-avrg, 2))/3);
+    	avrg=(susp+suc+failur)/3;
+    	this.devesionT.setText(""+devesion);
+    	this.frequency.setText(""+avrg);
+    	this.deniedreq.setText(""+failur);
+    	this.allreq.setText(""+allreq);
+    	this.choosestatus.getItems().add("failur");
+    	this.choosestatus.getItems().add("succes");
+    	this.choosestatus.getItems().add("susppend");
+   	    PieChart.Data slice1 = new PieChart.Data("failur",failur);
+   	    PieChart.Data slice2 = new PieChart.Data("succes",suc);
+   	    PieChart.Data slice3 = new PieChart.Data("susppend",susp);
+   	    ActiveSuClo.getData().add(slice1);
+   	    ActiveSuClo.getData().add(slice2);
+   	    ActiveSuClo.getData().add(slice3);
+	
+	delayspie.setVisible(true);
+    	
+	}
+ 
+  
+	@FXML
     void goEmployeesMang(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITManagerEmployeesManagment");
@@ -220,7 +306,12 @@ public class ITManagerReportsController implements Initializable
 		chooseTypeOfReport.getItems().add("Activity");
 		chooseTypeOfReport.getItems().add("Performence");
 		chooseTypeOfReport.getItems().add("Delays in execution");
+
+
 		
+	}
+	public void setmakePerformenct(ArrayList<Object> send) {
+		this.days.setText(""+send.get(0));
 	}
 
 
