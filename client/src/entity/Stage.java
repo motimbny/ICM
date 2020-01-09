@@ -1,7 +1,11 @@
 package entity;
 
 import Enums.StageName;
-
+/**
+ * Stage class 
+ * @author SHIRA
+ *
+ */
 public class Stage { 
 	
 	private StageName stagename;

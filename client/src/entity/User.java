@@ -3,7 +3,11 @@ package entity;
 import java.io.Serializable;
 
 import Enums.Position;
-
+/**
+ * User class contain all fields of user
+ * @author SHIRA
+ *
+ */
 public class User implements Serializable 
 {	
 	private String Name;

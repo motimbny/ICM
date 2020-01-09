@@ -1,5 +1,5 @@
 package entity;
-
+ 
 import java.io.IOException;
 
 import controllers.ITCCCEvaluationReportController;
@@ -37,11 +37,21 @@ import controllers.UserHomeController;
 import controllers.UserPersonalInfoController;
 import controllers.UserRequestDetailsController;
 import controllers.UserShowRequestsController;
+/**
+ * WindowTOShow class initialize the window that are going to appear
+ * Make a controller, load the FXML screen and set name to the window.
+ * @author SHIRA
+ *
+ */
 public class WindowToShow
 {
 	public Object controller;
 	private String pathfxml, windowName;
-
+/**
+ * Set the initialize method for each screen
+ * @param str is the screen that are going to initialize
+ * @throws IOException
+ */
 	public void setWindowToShow(String str) throws IOException
 	{
 		switch (str) {
@@ -165,7 +175,7 @@ public class WindowToShow
 
 	// ------------------------------------------------------------------//
 	public void initLogin() {
-		LoginController controller = new LoginController();
+		LoginController controller = new LoginController();//LoginController
 		pathfxml = "/Fxml/Login.fxml";
 		windowName = "ICM-Login";
 	}

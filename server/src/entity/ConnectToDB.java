@@ -2,7 +2,11 @@ package entity;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+/**
+ * Connection to the DataBase
+ * @author SHIRA
+ *
+ */
 public class ConnectToDB 
 {
 	private String password;

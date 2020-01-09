@@ -32,7 +32,11 @@ import entity.DBmessage;
 import entity.User;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
-
+/**
+ * The handler of the sending and receiving data to/from Client
+ * @author SHIRA
+ *
+ */
 public class mainServerABS extends AbstractServer {
 	Object controller;
 	private Connection connection;
@@ -70,6 +74,11 @@ public class mainServerABS extends AbstractServer {
 				if(toadd.getName().equals(i.getName()))
 					logged.remove(i);
 	    }
+	/**
+	 *  Handles a message sent from the Client to this Server.
+	 *  @param msg - the message sent. 
+	 *  @param client
+	 */
 	@Override
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
 

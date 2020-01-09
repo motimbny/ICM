@@ -1,7 +1,11 @@
 package entity;
 
 import java.io.Serializable;
-
+/**
+ * Messages class contain all fields of message 
+ * @author SHIRA
+ *
+ */
 public class Messages implements Serializable
 {
 	private String sentBy;

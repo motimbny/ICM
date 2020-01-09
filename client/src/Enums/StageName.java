@@ -1,5 +1,9 @@
 package Enums;
-
+/**
+ * Stage name
+ * @author SHIRA
+ *
+ */
 public enum StageName {
 	
 	supervisorApprovel,

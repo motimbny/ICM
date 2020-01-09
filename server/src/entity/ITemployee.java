@@ -1,7 +1,11 @@
 package entity;
 
 import java.io.Serializable;
-
+/**
+ * ITemployee class contain all fields of the IT employee
+ * @author SHIRA
+ *
+ */
 public class ITemployee implements Serializable
 {
 	private int employeeId;

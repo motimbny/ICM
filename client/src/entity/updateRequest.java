@@ -1,7 +1,11 @@
 package entity;
 
 import java.io.Serializable;
-
+/**
+ * updateRequest contain all fields of update request
+ * @author SHIRA
+ *
+ */
 public class updateRequest implements Serializable
 {
 	private String apprieser;

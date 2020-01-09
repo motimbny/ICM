@@ -3,7 +3,11 @@ package entity;
 import java.io.Serializable;
 
 import Enums.StageName;
-
+/**
+ * RequestUser class contain the fields of user request 
+ * @author SHIRA
+ *
+ */
 public class RequestUser implements Serializable  {
 
 	private int id;
