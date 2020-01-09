@@ -12,7 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-
+/**
+ * IT home screen Controller 
+ * @author SHIRA
+ */
 public class ITHomeController implements Initializable
 {	
 	private MainAllControllers MainAllControllers;
@@ -42,34 +45,56 @@ public class ITHomeController implements Initializable
 	@FXML
 	private Label ExistingReq;
 
+	 /**
+     * Mouse click event, if "help" button clicked, open the screen of "help"
+     * @param event
+     * @throws IOException
+     */
+
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITHelp");
     	MainAllControllers.changeWin();
 	}
-
+	 /**
+     * Mouse click event, if "Home" button clicked, open the screen of "Home"
+     * @param event
+     * @throws IOException
+     */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITHome");
     	MainAllControllers.changeWin();
 	}
-
+	 /**
+     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
+     * @param event
+     * @throws IOException
+     */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITPersonalInfo");
     	MainAllControllers.changeWin();
 	}
-
+	 /**
+     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
+     * @param event
+     * @throws IOException
+     */
 	@FXML
 	void goShowReq(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITshowRequests");
     	MainAllControllers.changeWin();
 	}
-
+	 /**
+     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
+     * @param event
+     * @throws IOException
+     */
 	@FXML
 	void logoutPage(MouseEvent event) throws IOException 
 	{
@@ -77,6 +102,10 @@ public class ITHomeController implements Initializable
     	MainAllControllers.changeWin();
     	MainAllControllers.logOutUser();
 	}
+	/**
+	 * This function set number of request in the screen
+	 * @param num
+	 */
     void setRequestNumber(int num)
     {
     	ExistingReq.setText("Existing requests: "+Integer.toString(num));

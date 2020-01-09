@@ -15,9 +15,7 @@ public class UserHelpController {
 	public UserHelpController() {
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
-	/**
-     * buttons and labels of User help screen
-     */
+	
 	@FXML
 	private Button homeBTN;
 

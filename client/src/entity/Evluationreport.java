@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Evluationreport implements Serializable 
 {

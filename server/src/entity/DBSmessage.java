@@ -5,7 +5,13 @@ import java.util.ArrayList;
 
 import Enums.MessageType;
 import Enums.MessageTypeS;
-
+/**
+ * DBmessage - Server
+ * Object that will use to communicate between the Client and the Server.
+ * Implements Serializable, could be sent by socket
+ * @author SHIRA
+ *
+ */
 public class DBSmessage implements Serializable
 	{
 

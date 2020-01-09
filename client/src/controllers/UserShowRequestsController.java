@@ -34,9 +34,7 @@ public class UserShowRequestsController implements Initializable  {
 	{
     	MainAllControllers=MainAllControllers.getInstance();
 	}
-	/**
-     * buttons and labels of User show requests screen
-     */
+	
     @FXML
     private Button homeBTN;
 

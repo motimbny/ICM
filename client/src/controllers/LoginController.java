@@ -18,7 +18,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-
+/**
+ * Login screen 
+ * @author SHIRA
+ *
+ */
 public class LoginController implements Initializable
 {
 	public LoginController()
@@ -50,7 +54,9 @@ public class LoginController implements Initializable
     private Label logedallready;
     @FXML
     private Pane signPane;
+    
     private MainAllControllers MainAllControllers;
+    
     @FXML
     void Login(MouseEvent event) throws IOException 
     {

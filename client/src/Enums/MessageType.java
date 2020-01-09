@@ -1,5 +1,5 @@
 package Enums;
-
+/** Type of the request of Client */
 public enum MessageType
 {
 		Login,logout,

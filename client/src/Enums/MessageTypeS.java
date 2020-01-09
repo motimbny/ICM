@@ -1,5 +1,5 @@
 package Enums;
-
+/** Type of the respond of Server */
 public enum MessageTypeS 
 {
 	Login,LoginFailConnected,

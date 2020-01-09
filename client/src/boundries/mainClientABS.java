@@ -15,15 +15,29 @@ import entity.User;
 import javafx.event.ActionEvent;
 import ocsf.client.AbstractClient;
 
+/**
+ * The handler of the sending and receiving data to/from Server
+ * @author SHIRA
+ *
+ */
 public class mainClientABS extends AbstractClient
 {
     private MainAllControllers MainAllControllers;
+    /**
+	 * By constructing new instance of this class,
+	 * the connection to the Server will be created.
+	 * @param host	-	The host to connect to.
+	 * @param port	-	The port to connect on.
+	 */
 	public mainClientABS(String host, int port) throws IOException
 	{
 		super(host, port);
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
-	
+	/**
+	 * Handles a message sent from the server to this client.
+	 * @param msg - the message sent. 
+	 */
 	@Override
 	protected void handleMessageFromServer(Object msg)
 	{
@@ -367,7 +381,12 @@ public class mainClientABS extends AbstractClient
 		} 
 		catch (IOException e){}
 	}
-	public void handleMessageFromClientUI(DBmessage msg)  
+	/**
+	 * Will send the message from the GUI to the server
+	 * @param msg	-	DBMessage object which includes the message to the server
+	 * @throws IOException
+	 */
+	public void handleMessageFromClientUI(DBmessage msg) throws IOException 
 	  {
 	    try
 	    {

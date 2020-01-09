@@ -22,9 +22,7 @@ public class UserHomeController implements Initializable
     {
     	MainAllControllers=controllers.MainAllControllers.getInstance();
     }
-    /**
-     * buttons and labels of User home screen
-     */
+    
     @FXML
     private Button homeBTN;
 

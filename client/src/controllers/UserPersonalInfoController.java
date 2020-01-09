@@ -19,9 +19,7 @@ public class UserPersonalInfoController implements Initializable
 	{
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
-	/**
-     * buttons and labels of User personal information screen
-     */
+	
 	@FXML
 	private Button homeBTN;
 

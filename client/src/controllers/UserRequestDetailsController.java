@@ -26,9 +26,7 @@ public class UserRequestDetailsController implements Initializable
 	{
     	MainAllControllers=MainAllControllers.getInstance();
 	}
-	/**
-     * buttons and labels of User request details screen
-     */
+	
     @FXML
     private Button homeBTN;
 
