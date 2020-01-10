@@ -232,6 +232,15 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			case makeDelays: {
+				ITManagerReportsSController ITManagerReportsSController = new ITManagerReportsSController(dbm, connection);
+				try {
+					client.sendToClient(ITManagerReportsSController.makeDelays());
+				} catch (IOException e) {
+				}
+				break;
+			}
+			
 			case makePerformenct: {
 				ITManagerReportsSController ITManagerReportsSController = new ITManagerReportsSController(dbm, connection);
 				try {

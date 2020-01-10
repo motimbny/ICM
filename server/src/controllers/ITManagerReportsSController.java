@@ -7,8 +7,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+
+import javax.print.attribute.HashAttributeSet;
 
 import Enums.MessageTypeS;
 import Enums.StageName;
@@ -107,6 +112,71 @@ public class ITManagerReportsSController {
 		}
 		return null;
 
+	}
+
+	public Object makeDelays() {
+		System.out.println("here");
+
+		Statement stmt;
+		DBSmessage dbs;
+		ArrayList<Object> toSendA = new ArrayList<Object>();
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+	toSendA.add(0);
+		ArrayList<Object> arry = msg.getObjs();
+		String start = (String) arry.get(0);
+		String end = (String) arry.get(1);
+
+		try {
+			System.out.println(start);
+			System.out.println(end);
+			stmt = connection.createStatement();
+			ResultSet rs = stmt
+					.executeQuery("SELECT * FROM exceptionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
+			while (rs.next() != false) 
+			{
+				String [] dateParts = rs.getString(4).split("-");
+				int month = Integer.parseInt(dateParts[1]);
+				int days=(int)toSendA.get(month)+rs.getInt(3);
+				toSendA.set(month, days);
+				int sum=(int)toSendA.get(month+12);
+				sum++;
+				toSendA.set(month+12, sum);
+				System.out.println();
+				toSendA.size();
+				
+			}
+			dbs = new DBSmessage(MessageTypeS.makeDelays, toSendA);
+			return dbs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+		
+		
+		
+		
 	}
 
 }

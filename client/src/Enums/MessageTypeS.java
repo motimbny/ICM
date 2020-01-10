@@ -39,6 +39,6 @@ public enum MessageTypeS
 	ITsubmitRequireMoreInfo, addTimeEstimatedPerformance, showRequestDetailsITManager,
 	ITShowEmployeeList, ITSaveTester,SwitchPositions,
 	SuperviserShowMessages,SuperviserUpdateMessages, ITaddTimeEstimated, SupervisorApproveEvluationTime, 
-	approveTime, SupervisorDenyEvluationTime, SupervisorApproveExecutionTime, makeActiveSuClo, makePerformenct, 
+	approveTime, SupervisorDenyEvluationTime, SupervisorApproveExecutionTime, makeActiveSuClo, makePerformenct, makeDelays, 
 
 }

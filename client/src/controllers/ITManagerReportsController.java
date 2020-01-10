@@ -17,7 +17,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 
@@ -114,8 +117,14 @@ public class ITManagerReportsController implements Initializable
 	    private TextField deniedreq;
 	    @FXML
 	    private TextField allreq;
-	    
+	    @FXML
+	    private TableView<?> table;
 
+	    @FXML
+	    private TableColumn<?, ?> Month;
+
+	    @FXML
+	    private TableColumn<?, ?> Days;
    
 
     @FXML
@@ -145,17 +154,18 @@ public class ITManagerReportsController implements Initializable
     }
     private void makeDelays() {
 		
-    	ArrayList<String> arryInfo=new ArrayList<String>();
-    	arryInfo.add("Moodle");
-    	arryInfo.add("Info system");
-    	arryInfo.add("Libary");
-    	arryInfo.add("Computers");
-    	for(int i:arryDelaysInfo)
-    	{
-    	    PieChart.Data slice1 = new PieChart.Data(arryInfo.get(i),i+10);
-    	    ActiveSuClo.getData().add(slice1);
-    	}
-    	delayspie.setVisible(true);
+    	DBmessage dbm;
+		String start,end;
+		start=this.dateFrom.getValue().toString();
+		end=this.DateTo.getValue().toString();
+    	ArrayList<Object> arry=new ArrayList<Object>();
+    	arry.add(start);
+    	arry.add(end);
+		dbm = new DBmessage(MessageType.makeDelays, arry); 
+		try {
+			MainAllControllers.sendToAbsServer(dbm); 
+		} catch (IOException e) {
+		}
 	}
 	private void makePerformenct() {
     	
@@ -190,6 +200,8 @@ public class ITManagerReportsController implements Initializable
     	
     	
     }
+	
+
 	public void setActiveSuClo(ArrayList<Object> send)
 	{
     	int devesion,avrg=0;
@@ -313,6 +325,69 @@ public class ITManagerReportsController implements Initializable
 	public void setmakePerformenct(ArrayList<Object> send) {
 		this.days.setText(""+send.get(0));
 	}
+	public void setmakeDelays(ArrayList<Object> send) {
+		for(Object a:send)
+			System.out.print(a+",");
+		int[] daysReq=new int[12];
+		int[] freq=new int[12];
+		int numOfDelay=0;
+		int numOfDays=0;
+		int i=0;
+		
+		for(i=0;i<12;i++)
+		{
+			daysReq[i]=(int)send.get(i);		
+			freq[i]=(int)send.get(i+12);
+		}
+		for(i=0;i<12;i++)
+		{
+			numOfDays+=daysReq[i];	
+			numOfDelay+=freq[i];
+		}
+		this.numberOfDelays.setText(""+numOfDelay);
+		this.timeOfDelays.setText(""+numOfDays);
+
+		int sor=sort(daysReq);
+		this.medinDelay.setText(""+sor);
+		float avrg=0;
+		for(int j=0;j<12;j++)
+		{
+			avrg+=(float)daysReq[j];
+
+		}
+			
+		avrg=(float)avrg/12;
+		float sum=0;
+		for(int j=0;j<12;j++)
+			sum+=(float)Math.pow(daysReq[j]-avrg, 2);
+		this.devesionDelay.setText(String.format("%.2f", Math.sqrt(sum/12)));
+
+		
+		
+		
+		
+		
+	}
+	private int sort(int[] arr) {
+	
+
+			for (int  i=arr.length-1 ; i > 0 ; i-- ) {
+			    for (int j=0 ; j < i ; j++ )  {
+				if (arr[j] > arr[j+1])
+				    swap(arr, j, j+1);
+			    }
+			 
+			}
+			   return arr[6];
+
+		
+	}
+		public void swap(int[] arr, int i, int j)  {
+		     int temp = arr[i];
+		     arr[i] = arr[j];
+		     arr[j] = temp;
+		}
+
 
 
 }

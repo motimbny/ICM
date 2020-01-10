@@ -317,5 +317,9 @@ public class MainAllControllers
 		((ITManagerReportsController) WindowToShow.controller).setmakePerformenct(send);
 		
 	}
+	public void makemakeDelays(ArrayList<Object> send) {
+	
+		((ITManagerReportsController) WindowToShow.controller).setmakeDelays(send);		
+	}
 	
 }

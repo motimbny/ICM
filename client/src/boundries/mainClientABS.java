@@ -188,6 +188,13 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.makePerformenct(send);
 			}
 			break;
+			case makeDelays:
+			{
+				
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.makemakeDelays(send);
+			}
+			break;
 			
 			case viewTime:
 			{

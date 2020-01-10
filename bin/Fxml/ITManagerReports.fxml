@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -180,7 +182,7 @@
             </Pane>
             <Pane fx:id="delaysInExecution" layoutX="56.0" layoutY="191.0" prefHeight="388.0" prefWidth="570.0" visible="false">
                <children>
-                  <PieChart fx:id="delayspie" layoutX="99.0" layoutY="121.0" prefHeight="260.0" prefWidth="427.0" />
+                  <PieChart fx:id="delayspie" layoutX="259.0" layoutY="114.0" prefHeight="260.0" prefWidth="296.0" />
                   <Label layoutX="106.0" layoutY="16.0" text="Median:">
                      <font>
                         <Font size="14.0" />
@@ -191,14 +193,13 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="14.0" layoutY="86.0" text="Frequency distribution:">
+                  <Label layoutX="63.0" layoutY="94.0" prefHeight="20.0" prefWidth="150.0" text="Frequency distribution">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <TextField fx:id="medinDelay" editable="false" layoutX="163.0" layoutY="14.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
                   <TextField fx:id="devesionDelay" editable="false" layoutX="163.0" layoutY="47.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <TextField fx:id="frequencyDelay" editable="false" layoutX="163.0" layoutY="84.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
                   <Label layoutX="351.0" layoutY="14.0" text="Number of delays:">
                      <font>
                         <Font size="14.0" />
@@ -211,6 +212,12 @@
                      </font>
                   </Label>
                   <TextField fx:id="timeOfDelays" editable="false" layoutX="357.0" layoutY="79.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <TableView fx:id="table" layoutX="31.0" layoutY="130.0" prefHeight="200.0" prefWidth="236.0">
+                    <columns>
+                      <TableColumn fx:id="Month" prefWidth="75.0" text="Month" />
+                      <TableColumn fx:id="Days" prefWidth="75.0" text="days" />
+                    </columns>
+                  </TableView>
                </children>
             </Pane>
          </children>
