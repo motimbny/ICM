@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.Date;
@@ -186,10 +187,13 @@ public class CheckExceptionsRequest
 		if(diffrence>0)
 			{
 			    diffrence-=dif;
-				reqToAdd = connection.prepareStatement("INSERT INTO exceptionrequest VALUES(?,?,?)");
+				reqToAdd = connection.prepareStatement("INSERT INTO exceptionrequest VALUES(?,?,?,?)");
 				reqToAdd.setInt(1, req.getId());
 				reqToAdd.setString(2,stag);
 				reqToAdd.setInt(3,diffrence);
+				   SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+				    Date date = new Date();  
+				    reqToAdd.setString(3,formatter.format(date)); 
 				reqToAdd.executeUpdate();	
 				reqToAdd.close();
 			}
