@@ -325,6 +325,7 @@ public class ITManagerReportsController implements Initializable
 	public void setmakePerformenct(ArrayList<Object> send) {
 		this.days.setText(""+send.get(0));
 	}
+	
 	public void setmakeDelays(ArrayList<Object> send) {
 		for(Object a:send)
 			System.out.print(a+",");
