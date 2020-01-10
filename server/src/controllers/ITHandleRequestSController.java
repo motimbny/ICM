@@ -166,11 +166,14 @@ public class ITHandleRequestSController {
 	public DBSmessage getListOfIT() {
 		Statement stmt;
 		DBSmessage dbs;
+		ArrayList<Object> arry = msg.getObjs();
+		this.reqId = (int) arry.get(0);
 		updateRequest up = null;
 		ArrayList<Object> listOfIT = new ArrayList<Object>();
 		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='regular'");
+		//ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT' OR employeePos='IT-operator'");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE (employeePos='IT' OR employeePos='IT-operator') AND employeeName <> (SELECT itAppraiser FROM requeststages WHERE id="+reqId+") AND employeeName <> (SELECT itPerformanceLeader FROM requeststages WHERE id="+reqId+") AND employeeName <> (SELECT itTester FROM requeststages WHERE id="+reqId+") ");
 			while (rs.next() != false) {
 				listOfIT.add(rs.getString(2).toString());
 			}

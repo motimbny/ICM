@@ -84,6 +84,7 @@ public class SupervisorUpdateRequestSController
 		}
 		public DBSmessage getListOfIT() 
 		{
+			int reqId=(int) msg.getObjs().get(0);
 			Statement stmt;
 			DBSmessage dbs;
 			updateRequest up = null;
@@ -91,7 +92,8 @@ public class SupervisorUpdateRequestSController
 			try 
 			{		
 				stmt = connection.createStatement();
-				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT' OR employeePos='IT-operator'");
+				//ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT' OR employeePos='IT-operator'");
+				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE (employeePos='IT' OR employeePos='IT-operator') AND employeeName <> (SELECT itAppraiser FROM requeststages WHERE id="+reqId+") AND employeeName <> (SELECT itPerformanceLeader FROM requeststages WHERE id="+reqId+") AND employeeName <> (SELECT itTester FROM requeststages WHERE id="+reqId+") ");
 				while(rs.next()!=false)
 				{
 					listOfIT.add(rs.getString(2).toString());

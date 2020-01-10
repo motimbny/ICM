@@ -41,6 +41,7 @@ public class ITCCCRequestMoreInfoSController {
 
 			stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE request SET currentStage='meaningAssessment' WHERE id=" + idReq + "");
+			stmt.executeUpdate("DELETE FROM evluationreport WHERE id="+idReq+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='meaningAssessment' WHERE id=" + idReq + "");
 			dbs = new DBSmessage(MessageTypeS.ITsubmitRequireMoreInfo, toSend);
 		} catch (SQLException e) {

@@ -136,8 +136,7 @@ public class ITHandleRequestController implements Initializable {
 		EmployeesTable.getColumns().addAll(employeeName);
 		Collection<String> rows = new ArrayList<>();
 		employeeName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-		while (list == null) {
-		}
+		while (list == null) {}
 		for (Object r : list)
 			rows.add(r.toString());
 		ObservableList<String> details = FXCollections.observableArrayList(rows);
