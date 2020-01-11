@@ -166,6 +166,7 @@ public class ITManagerReportsSController {
 				System.out.println();
 				toSendA.size();
 				
+				
 			}
 			dbs = new DBSmessage(MessageTypeS.makeDelays, toSendA);
 			return dbs;
