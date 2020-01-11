@@ -37,7 +37,6 @@ public class UserSAddRequestController
 		if(arry.size()==8)
 		{
 		 sf=(ServerFile)arry.get(7);
-		System.out.println("add"+sf.getFileName());
 		addDoc=1;
 		saveFileToServerFolder();
 		}
@@ -45,7 +44,7 @@ public class UserSAddRequestController
 				             (String)arry.get(3), (String)arry.get(4), (String)arry.get(5), (String)arry.get(6) ,
 				             java.time.LocalDate.now().toString(),addDoc);	
 		SupervisorUpdateRequestSController getListOfIT=new SupervisorUpdateRequestSController(dbm,connection);
-		listOfIT=getListOfIT.getListOfIT().getObjs();
+		listOfIT=getListOfIT.getListOfITforUserAdd().getObjs();
 		this.CEO=(String)getListOfIT.getCC().getObjs().get(0);
 		this.CCC2=(String)getListOfIT.getCC().getObjs().get(1);
 		this.CCC3=(String)getListOfIT.getCC().getObjs().get(2);

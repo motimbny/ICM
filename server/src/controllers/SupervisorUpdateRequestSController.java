@@ -107,6 +107,29 @@ public class SupervisorUpdateRequestSController
 			}	
 			return null;
 		}
+		public DBSmessage getListOfITforUserAdd() 
+		{
+			Statement stmt;
+			DBSmessage dbs;
+			updateRequest up = null;
+			ArrayList<Object> listOfIT= new ArrayList<Object>();
+			try 
+			{		
+				stmt = connection.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT' OR employeePos='IT-operator'");
+				while(rs.next()!=false)
+				{
+					listOfIT.add(rs.getString(2).toString());
+				}
+				dbs=new DBSmessage(MessageTypeS.getListOfIT,listOfIT);
+				return dbs;
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}	
+			return null;
+		}
 		public DBSmessage getCC() 
 		{
 			Statement stmt;

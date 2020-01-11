@@ -81,8 +81,8 @@ public class mainServerABS extends AbstractServer {
 	 *  @param client
 	 */
 	@Override
-	protected void handleMessageFromClient(Object msg, ConnectionToClient client) {
-
+	protected void handleMessageFromClient(Object msg, ConnectionToClient client)
+	{
 		DBmessage dbm = (DBmessage) msg;
 		switch (dbm.getType()) 
 		{
@@ -325,7 +325,6 @@ public class mainServerABS extends AbstractServer {
 				break;
 			}
 			case AddRequest: {
-
 				UserSAddRequestController UserSAddRequestController = new UserSAddRequestController(dbm, connection);
 				try {
 					client.sendToClient(UserSAddRequestController.submitRequest());
