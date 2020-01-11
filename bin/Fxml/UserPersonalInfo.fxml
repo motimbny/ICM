@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.231" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserPersonalInfoController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.UserPersonalInfoController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -70,21 +70,51 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="UserName" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="109.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+            <Label fx:id="UserName" layoutX="168.0" layoutY="127.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="184.0" layoutY="160.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+            <Label fx:id="email" layoutX="167.0" layoutY="175.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="position" alignment="CENTER" contentDisplay="CENTER" layoutX="185.0" layoutY="212.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+            <Label fx:id="position" layoutX="168.0" layoutY="227.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <Label layoutX="54.0" layoutY="126.0" text="User name: ">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="102.0" layoutY="175.0" text="Email:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="76.0" layoutY="227.0" text="Position:">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="studentIMG" fitHeight="150.0" fitWidth="200.0" layoutX="389.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../Images/student.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lecturerIMG" fitHeight="150.0" fitWidth="200.0" layoutX="397.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../Images/lecturer.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="empIMG" fitHeight="166.0" fitWidth="173.0" layoutX="383.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../Images/emp.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

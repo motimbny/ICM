@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 /**
  * User personal information screen Controller 
@@ -46,6 +47,15 @@ public class UserPersonalInfoController implements Initializable
 
 	@FXML
 	private Label position;
+	 @FXML
+	    private ImageView studentIMG;
+
+	    @FXML
+	    private ImageView lecturerIMG;
+
+	    @FXML
+	    private ImageView empIMG;
+
 
 	/**
 	 * Mouse click event, if "Add request" button clicked, open the screen of "Add new request"
@@ -118,10 +128,28 @@ public class UserPersonalInfoController implements Initializable
  */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		UserName.setText("User name: " + MainAllControllers.user.getName());
-		email.setText("email: " + MainAllControllers.user.getName() + "@braude.ac.il");
-		position.setText("Position: " + MainAllControllers.user.getstrPosition());
+		UserName.setText(MainAllControllers.user.getName());
+		email.setText(MainAllControllers.user.getName() + "@braude.ac.il");
+		position.setText(MainAllControllers.user.getstrPosition());
+        switch (MainAllControllers.user.getstrPosition())
+        {
+	        case "lecturer":
+	        {
+	        	lecturerIMG.setVisible(true);
 
+	        }
+	        break;
+	        case "student":
+	        {
+	        	studentIMG.setVisible(true);
+	        }
+	        break;
+	        case "CollegeEmployee":
+	        {
+	        	empIMG.setVisible(true);
+	        }
+	        break;
+        }
 	}
 
 }

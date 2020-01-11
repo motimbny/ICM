@@ -66,21 +66,26 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="UserName" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="140.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+            <Label fx:id="UserName" layoutX="184.0" layoutY="146.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="email" alignment="CENTER" contentDisplay="CENTER" layoutX="225.0" layoutY="191.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+            <Label fx:id="email" layoutX="184.0" layoutY="197.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="position" alignment="CENTER" contentDisplay="CENTER" layoutX="226.0" layoutY="243.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
+            <Label fx:id="position" layoutX="185.0" layoutY="249.0" prefHeight="30.0" prefWidth="273.0" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="446.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/it.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
@@ -92,5 +97,20 @@
             </ImageView>
          </children>
       </Pane>
+      <Label layoutX="209.0" layoutY="146.0" text="User name: ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="257.0" layoutY="195.0" text="Email:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="231.0" layoutY="247.0" text="Position:">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Label>
    </children>
 </Pane>

@@ -112,9 +112,9 @@ public class ITManagerPersonalInfoController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		UserName.setText("User name: " + MainAllControllers.user.getName());
-		email.setText("email: " + MainAllControllers.user.getName() + "@braude.ac.il");
-		position.setText("Position: " + MainAllControllers.user.getstrPosition());
+		UserName.setText(MainAllControllers.user.getName());
+		email.setText(MainAllControllers.user.getName() + "@braude.ac.il");
+		position.setText(MainAllControllers.user.getstrPosition());
 		
 	}
 

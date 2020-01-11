@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -79,7 +80,7 @@
                         <Font name="System Bold" size="40.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="MessageTable" layoutX="32.0" layoutY="100.0" onMouseClicked="#UpdateR" prefHeight="401.0" prefWidth="597.0">
+                  <TableView fx:id="MessageTable" layoutX="32.0" layoutY="100.0" onMouseClicked="#UpdateR" prefHeight="381.0" prefWidth="597.0">
                      <columns>
                         <TableColumn fx:id="SentBy" prefWidth="95.0" text="Sent by" />
                         <TableColumn fx:id="messSubject" prefWidth="141.33331298828125" text="Subject" />
@@ -87,6 +88,14 @@
                         <TableColumn fx:id="Date" prefWidth="107.0" text="Date" />
                      </columns>
                   </TableView>
+                  <Label layoutX="357.0" layoutY="491.0" text="Double click to mark message as read">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
                </children>
             </Pane>
          </children>
