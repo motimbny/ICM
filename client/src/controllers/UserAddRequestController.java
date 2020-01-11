@@ -35,7 +35,6 @@ public class UserAddRequestController implements Initializable
 	{ 
     	MainAllControllers=MainAllControllers.getInstance();
 	}
-	
     @FXML
     private Button homeBTN;
     @FXML
