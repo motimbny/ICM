@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.UIManager;
+
 import Enums.MessageType;
 import Enums.StageName;
 import entity.DBmessage;
@@ -16,6 +18,7 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 /**
  * User request details screen Controller 
@@ -157,14 +160,26 @@ public class UserRequestDetailsController implements Initializable
     {
     	 if(req.getCurrentStage().equals(StageName.supervisorApprovel)||req.getCurrentStage().equals(StageName.waitingEvaluationTime)
     			 ||req.getCurrentStage().equals(StageName.waitingSupervisorApproveEvaluationTime)||req.getCurrentStage().equals(StageName.meaningAssessment))
+    	 {
+        	 progressB.setStyle("-fx-accent:green");
          	progressB.setProgress(0.25);
+    	 }
     	 else if(req.getCurrentStage().equals(StageName.waitingExecutionTime)||req.getCurrentStage().equals(StageName.waitingSupervisorApproveExecutionTime)
     			 ||req.getCurrentStage().equals(StageName.waitingSupervisorApproveExecutionTime)||req.getCurrentStage().equals(StageName.examinationAndDecision))
-          	progressB.setProgress(0.5);
+    	 {
+        	 progressB.setStyle("-fx-accent:green");
+         	progressB.setProgress(0.5);
+    	 }
     	 else if(req.getCurrentStage().equals(StageName.execution)||req.getCurrentStage().equals(StageName.testing))
-    		 progressB.setProgress(0.75);
+    	 {
+        	 progressB.setStyle("-fx-accent:green");
+         	progressB.setProgress(0.75);
+    	 }
     	 else if(req.getCurrentStage().equals(StageName.closing)||req.getCurrentStage().equals(StageName.Closed))
-    		 progressB.setProgress(1);
+    	 {
+        	 progressB.setStyle("-fx-accent:red");
+         	progressB.setProgress(1);
+    	 }
     }
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
