@@ -76,7 +76,7 @@ public class SupervisorShowRequestsSController
 						name=StageName.Closed;
 						break;
 					}
-					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name);
+					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name,0);
 					toSend.add(toAdd);
 				}
 				dbs=new DBSmessage(MessageTypeS.SearchReqUser,toSend);

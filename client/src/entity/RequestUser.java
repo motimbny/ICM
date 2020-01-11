@@ -15,12 +15,12 @@ public class RequestUser implements Serializable  {
 	private StageName currentStage;  //stage= execution/testing etc... 
 	private int timeLeft;
 	
-	public RequestUser(int id,String currentStatus,StageName currentStage) 
+	public RequestUser(int id,String currentStatus,StageName currentStage, int timeLeft) 
 	{
 		this.id=id;
 		this.currentStatus=currentStatus;
 		this.currentStage=currentStage;
-		this.timeLeft=0;
+		this.timeLeft=timeLeft;
 	}
 
 	public int getId() {

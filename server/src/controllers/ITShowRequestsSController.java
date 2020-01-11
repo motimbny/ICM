@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import Enums.MessageTypeS;
 import Enums.StageName;
@@ -30,6 +33,8 @@ public class ITShowRequestsSController
 	public DBSmessage showRequest()
 	{
 		Statement stmt;
+		Statement stmt1;
+		Statement stmt2;
 		DBSmessage dbs;
 		ArrayList<Object> toSend= new ArrayList<Object>();
 		try 
@@ -39,43 +44,79 @@ public class ITShowRequestsSController
 				while(rs.next()!=false)
 				{
 					StageName name=null;
+					String timeStage = "";
+					String startTime= "";
 					switch(rs.getString(3))
 					{
 					case "supervisorApprovel":
-						name=StageName.supervisorApprovel;
+						name = StageName.supervisorApprovel;
 						break;
 					case "waitingEvaluationTime":
-						name=StageName.waitingEvaluationTime;
+						name = StageName.waitingEvaluationTime;
 						break;
 					case "waitingSupervisorApproveEvaluationTime":
-						name=StageName.waitingSupervisorApproveEvaluationTime;
+						name = StageName.waitingSupervisorApproveEvaluationTime;
 						break;
 					case "meaningAssessment":
-						name=StageName.meaningAssessment;
+						name = StageName.meaningAssessment;
+						timeStage = "timeEvaluation";
+						startTime="meaningAssessmentStart";
 						break;
 					case "waitingExecutionTime":
-						name=StageName.waitingExecutionTime;
-					break;
+						name = StageName.waitingExecutionTime;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
+						break;
 					case "waitingSupervisorApproveExecutionTime":
-						name=StageName.waitingSupervisorApproveExecutionTime;
+						name = StageName.waitingSupervisorApproveExecutionTime;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
 						break;
 					case "examinationAndDecision":
-						name=StageName.examinationAndDecision;
+						name = StageName.examinationAndDecision;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
 						break;
 					case "execution":
-						name=StageName.execution;
-						break;	
+						name = StageName.execution;
+						timeStage = "timePerform";
+						startTime="executiondStart";
+						break;
 					case "testing":
-						name=StageName.testing;
-						break;		
+						name = StageName.testing;
+						timeStage = "timeTest";
+						startTime="testingStart";
+						break;
 					case "closing":
-						name=StageName.closing;
-						break;	
+						name = StageName.closing;
+						break;
 					case "Closed":
-						name=StageName.Closed;
-						break;	
+						name = StageName.Closed;
+						break;
 					}
-					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name);
+					int id = rs.getInt(1), x = 0, timeleft;
+					Date today = new Date();
+					DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
+					Date start = null;
+					if (timeStage.equals(""))
+						timeleft = 0;
+					else {
+						stmt1 = connection.createStatement();
+						ResultSet daters = stmt1
+								.executeQuery("SELECT " + timeStage + " FROM requeststages WHERE id=" + id + "");
+						while (daters.next() != false) {
+							x = daters.getInt(1);
+						}
+						stmt2 = connection.createStatement();
+						ResultSet startrs = stmt2
+								.executeQuery("SELECT " + startTime + " FROM requesttime WHERE id=" + id + "");
+						while (startrs.next() != false) {
+							start = startrs.getDate(1);
+						}
+						float diffrence = (today.getDate() - start.getDate());
+						timeleft = (int) (x - diffrence);
+					}
+					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name,timeleft);
 					toSend.add(toAdd);
 				}
 				dbs=new DBSmessage(MessageTypeS.ShowReqIT,toSend);
@@ -92,6 +133,8 @@ public class ITShowRequestsSController
 	public DBSmessage showSPRequest()
 	{
 		Statement stmt;
+		Statement stmt1;
+		Statement stmt2;
 		DBSmessage dbs;
 		ArrayList<Object> toSend= new ArrayList<Object>();
 		try 
@@ -101,43 +144,79 @@ public class ITShowRequestsSController
 				while(rs.next()!=false)
 				{
 					StageName name=null;
+					String timeStage = "";
+					String startTime= "";
 					switch(rs.getString(3))
 					{
 					case "supervisorApprovel":
-						name=StageName.supervisorApprovel;
+						name = StageName.supervisorApprovel;
 						break;
 					case "waitingEvaluationTime":
-						name=StageName.waitingEvaluationTime;
+						name = StageName.waitingEvaluationTime;
 						break;
 					case "waitingSupervisorApproveEvaluationTime":
-						name=StageName.waitingSupervisorApproveEvaluationTime;
+						name = StageName.waitingSupervisorApproveEvaluationTime;
 						break;
 					case "meaningAssessment":
-						name=StageName.meaningAssessment;
+						name = StageName.meaningAssessment;
+						timeStage = "timeEvaluation";
+						startTime="meaningAssessmentStart";
 						break;
 					case "waitingExecutionTime":
-						name=StageName.waitingExecutionTime;
-					break;
+						name = StageName.waitingExecutionTime;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
+						break;
 					case "waitingSupervisorApproveExecutionTime":
-						name=StageName.waitingSupervisorApproveExecutionTime;
+						name = StageName.waitingSupervisorApproveExecutionTime;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
 						break;
 					case "examinationAndDecision":
-						name=StageName.examinationAndDecision;
+						name = StageName.examinationAndDecision;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
 						break;
 					case "execution":
-						name=StageName.execution;
-						break;	
+						name = StageName.execution;
+						timeStage = "timePerform";
+						startTime="executiondStart";
+						break;
 					case "testing":
-						name=StageName.testing;
-						break;		
+						name = StageName.testing;
+						timeStage = "timeTest";
+						startTime="testingStart";
+						break;
 					case "closing":
-						name=StageName.closing;
-						break;	
+						name = StageName.closing;
+						break;
 					case "Closed":
-						name=StageName.Closed;
-						break;	
+						name = StageName.Closed;
+						break;
 					}
-					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name);
+					int id = rs.getInt(1), x = 0, timeleft;
+					Date today = new Date();
+					DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
+					Date start = null;
+					if (timeStage.equals(""))
+						timeleft = 0;
+					else {
+						stmt1 = connection.createStatement();
+						ResultSet daters = stmt1
+								.executeQuery("SELECT " + timeStage + " FROM requeststages WHERE id=" + id + "");
+						while (daters.next() != false) {
+							x = daters.getInt(1);
+						}
+						stmt2 = connection.createStatement();
+						ResultSet startrs = stmt2
+								.executeQuery("SELECT " + startTime + " FROM requesttime WHERE id=" + id + "");
+						while (startrs.next() != false) {
+							start = startrs.getDate(1);
+						}
+						float diffrence = (today.getDate() - start.getDate());
+						timeleft = (int) (x - diffrence);
+					}
+					RequestUser toAdd=new RequestUser(rs.getInt(1),rs.getString(2),name,timeleft);
 					toSend.add(toAdd);
 				}
 				dbs=new DBSmessage(MessageTypeS.SearchReqIT,toSend);
