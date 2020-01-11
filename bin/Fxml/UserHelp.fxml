@@ -80,7 +80,7 @@
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="37.0" layoutY="188.0" prefHeight="30.0" prefWidth="309.0" text="How can I show my requests ? ">
+            <Label layoutX="37.0" layoutY="188.0" prefHeight="30.0" prefWidth="309.0" text="How can I see my requests ? ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

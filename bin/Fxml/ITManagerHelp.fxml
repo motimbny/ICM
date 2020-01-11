@@ -95,7 +95,7 @@
                         <Font name="System Bold" size="40.0" />
                      </font>
                   </Label>
-                  <Label layoutX="41.0" layoutY="98.0" prefHeight="30.0" prefWidth="290.0" text=" How can I show all requests ?">
+                  <Label layoutX="41.0" layoutY="98.0" prefHeight="30.0" prefWidth="290.0" text=" How can I see all requests ?">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -135,7 +135,7 @@
                         <Image url="@../Images/hackaton.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="48.0" layoutY="164.0" prefHeight="30.0" prefWidth="472.0" text="How can I generate a report or show all reports ?">
+                  <Label layoutX="48.0" layoutY="164.0" prefHeight="30.0" prefWidth="472.0" text="How can I generate a report or see all reports ?">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
@@ -150,12 +150,12 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Label layoutX="40.0" layoutY="262.0" prefHeight="30.0" prefWidth="442.0" text="Click on &quot;managment&quot; -&gt; Click on the relevant employee -&gt; ">
+                  <Label layoutX="40.0" layoutY="262.0" prefHeight="30.0" prefWidth="518.0" text="Click on &quot;managment&quot; -&gt; Choose  position -&gt; Click on the relevant employee">
                      <font>
                         <Font size="13.0" />
                      </font>
                   </Label>
-                  <Label layoutX="50.0" layoutY="300.0" prefHeight="30.0" prefWidth="269.0" text="How can I show massages :">
+                  <Label layoutX="50.0" layoutY="300.0" prefHeight="30.0" prefWidth="269.0" text="How can I see massages ?">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

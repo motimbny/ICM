@@ -75,7 +75,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <Label layoutX="33.0" layoutY="80.0" prefHeight="30.0" prefWidth="285.0" text="How can I show all requests ?">
+            <Label layoutX="33.0" layoutY="80.0" prefHeight="30.0" prefWidth="285.0" text="How can I see all requests ?">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
