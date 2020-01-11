@@ -118,7 +118,8 @@ public class ITHandleRequestController implements Initializable {
 
     @FXML
     private Label l4;
-	
+    @FXML
+    private Text positonReq;
 	@FXML
 	void AppointTester(MouseEvent event) {
 		listOfIt();
@@ -299,6 +300,7 @@ public class ITHandleRequestController implements Initializable {
 
 		int s = MainAllControllers.request;
 		requestIdField.setText("Request ID: " + s);
+		positonReq.setText("Position: "+MainAllControllers.itHandlejob);
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName()); // it name
 		arry.add(s); // request id

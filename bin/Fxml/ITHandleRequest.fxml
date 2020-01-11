@@ -126,6 +126,11 @@
                   <Font name="System Bold" size="16.0" />
                </font>
             </Label>
+            <Text fx:id="positonReq" layoutX="192.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Position:" textAlignment="CENTER" wrappingWidth="269.7805480957031">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
