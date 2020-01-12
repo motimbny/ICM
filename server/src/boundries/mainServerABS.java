@@ -86,13 +86,18 @@ public class mainServerABS extends AbstractServer {
 		DBmessage dbm = (DBmessage) msg;
 		switch (dbm.getType()) 
 		{
-			case Login: {
+			case Login: 
+			{
 				loginSController loginSController = new loginSController(dbm, connection);
 				try {
 					DBSmessage dbs=loginSController.CheckLogIn();
+					if(dbs.getType().equals(MessageTypeS.LoginFail))
+						client.sendToClient(dbs);
 					User toadd=(User) dbs.getObjs().get(0);
 					if(checkUserConnected(toadd)==false)
+					{
 						dbs.setType(MessageTypeS.LoginFailConnected);
+					}
 					client.sendToClient(dbs);
 				} catch (IOException e) {
 				}

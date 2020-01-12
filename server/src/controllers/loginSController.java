@@ -53,7 +53,9 @@ public class loginSController
   		    	e.printStackTrace();
   		     }
   		    if(flag==false)
+  		    {
   		    	dbs=new DBSmessage(MessageTypeS.LoginFail,null);
+  		    }
   		    else
   		    {
                 arry.add(toSend);
