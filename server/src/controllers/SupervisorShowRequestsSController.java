@@ -94,6 +94,7 @@ public class SupervisorShowRequestsSController
 	{
 		Statement stmt;
 		DBSmessage dbs;
+		this.user=(String)msg.getObjs().get(0);
 		ArrayList<Object> toSend= new ArrayList<Object>();
 		try 
 		{
@@ -103,6 +104,7 @@ public class SupervisorShowRequestsSController
 				toSend.add(0);
 			else
 			    toSend.add(rs.getInt(1));
+			toSend.add(numofMessages(user));
 			dbs=new DBSmessage(MessageTypeS.supervisorHomeRequestNum,toSend);
 			return dbs;
 		} 
@@ -112,7 +114,25 @@ public class SupervisorShowRequestsSController
 		}	
 		return null;
 	}
-
+	public int numofMessages(String name)
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		int num;
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM messages WHERE toWho='"+name+"' AND read1=0");
+			if (!rs.next())
+				num=0;
+			else
+				return rs.getInt(1);
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return 0;
+	}
 
 	public DBSmessage viewExtensionReport() {
 		Statement stmt;

@@ -59,7 +59,8 @@ public class SupervisorHomeController implements Initializable
 
 	@FXML
 	private Label ExistingRequests;
-
+	 @FXML
+	 private Label superMess;
 	
 	/**
      * Mouse click event, if "help" button clicked, open the screen of "help"
@@ -132,7 +133,10 @@ public class SupervisorHomeController implements Initializable
     {
     	ExistingRequests.setText("Existing Requests : "+Integer.toString(num));
     }
-	
+    void setMessagesNumber(int num)
+    {
+    	superMess.setText("You have: "+num+" unread messages");
+    }
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{

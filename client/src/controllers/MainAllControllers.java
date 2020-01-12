@@ -534,5 +534,27 @@ public class MainAllControllers
 		((ITManagerReportsController) WindowToShow.controller).setmakeDelays(send);	
 		}});
 	}
+	public void setHomeMangerNumMessages(int num)
+	{
+		Platform.runLater(new Runnable()
+		{
+		@Override
+		public void run() 
+		{
+		((ITManagerHomeController) WindowToShow.controller).setMessagesNumber(num);
+		}});
+		
+	}
+	public void setHomeSupervisorMessNum(int num) 
+	{
+		Platform.runLater(new Runnable()
+		{
+		@Override
+		public void run() 
+		{
+		((SupervisorHomeController) WindowToShow.controller).setMessagesNumber(num);
+		}});
+		
+	}
 	
 }

@@ -108,6 +108,7 @@ public class mainClientABS extends AbstractClient
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.setHomeMangerNum((int)send.get(0));
+				MainAllControllers.setHomeMangerNumMessages((int)send.get(1));
 			}
 			break;
 			case IThomeRequestNum:
@@ -120,6 +121,7 @@ public class mainClientABS extends AbstractClient
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.setHomeSupervisorNum((int)send.get(0));
+				MainAllControllers.setHomeSupervisorMessNum((int)send.get(1));
 			}
 			break;
 			case AddRequest:

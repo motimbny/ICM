@@ -53,7 +53,8 @@ public class ITManagerHomeController implements Initializable
 
     @FXML
     private Label ExistingReq;
-
+    @FXML
+    private Label newMessage;
     @FXML
     void goEmployeesMang(MouseEvent event) throws IOException 
 	{
@@ -116,7 +117,10 @@ public class ITManagerHomeController implements Initializable
     {
     	ExistingReq.setText("Existing Requests : "+num);
     }
-
+    void setMessagesNumber(int num)
+    {
+    	newMessage.setText("You have: "+num+" unread messages");
+    }
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
 	{

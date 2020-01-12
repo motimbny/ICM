@@ -250,12 +250,32 @@ public class UserShowRequestsSController {
 				toSend.add(0);
 			else
 				toSend.add(rs.getInt(1));
+			toSend.add(numofMessages(user));
 			dbs = new DBSmessage(MessageTypeS.MhomeRequestNum, toSend);
 			return dbs;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	public int numofMessages(String name)
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		int num;
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM messages WHERE toWho='"+name+"' AND read1=0");
+			if (!rs.next())
+				num=0;
+			else
+				return rs.getInt(1);
+		}
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return 0;
 	}
 
 }
