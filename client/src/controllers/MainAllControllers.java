@@ -345,13 +345,7 @@ public class MainAllControllers
 	}
 	public void getListOfIT(ArrayList<Object> arrayList) 
 	{
-		Platform.runLater(new Runnable()
-		{
-		@Override
-		public void run() 
-		{
 		((SupervisorUpdateRequestController) WindowToShow.controller).setListOfIT(arrayList);
-	}});
 		}
 		
 	public void getListOfITCEO(ArrayList<Object> arrayList) 

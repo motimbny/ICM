@@ -240,7 +240,7 @@ public class mainClientABS extends AbstractClient
 			case getListOfIT:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-			   MainAllControllers.getListOfIT(((ArrayList<Object>)send));
+			    MainAllControllers.getListOfIT(send);
 			}
 			break;
 			case showRequestDetailsUser:

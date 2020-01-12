@@ -137,9 +137,6 @@ public class SupervisorUpdateRequestController implements Initializable
     	listOfIt();
     	showListOfIT("itAppraiser");
     }
-
-  
-    
     @FXML
     private void changeExecuter(MouseEvent event) {
     	listOfIt();
