@@ -9,6 +9,7 @@ import Enums.MessageType;
 import entity.DBmessage;
 import entity.Evluationreport;
 import entity.Request;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -82,10 +83,21 @@ public class ITCCCEvaluationReportController implements Initializable
 		DBmessage dbm;
     	dbm=new DBmessage(MessageType.approveEvaluationReport, arry);   
     	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-        	MainAllControllers.setWindowVar("ITshowRequests");
-        	MainAllControllers.changeWin();
-		} catch (IOException e) {}
+			MainAllControllers.sendToAbsServer(dbm);
+			Platform.runLater(new Runnable()
+			{
+			@Override
+			public void run() 
+			{
+			try {
+			MainAllControllers.setWindowVar("ITshowRequests");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			MainAllControllers.changeWin();
+			}});
+		} catch (IOException e) {
+		}
     }
 
     @FXML
@@ -95,10 +107,21 @@ public class ITCCCEvaluationReportController implements Initializable
 		DBmessage dbm;
     	dbm=new DBmessage(MessageType.denyEvaluationReport, arry);   
     	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-        	MainAllControllers.setWindowVar("ITshowRequests");
-        	MainAllControllers.changeWin();
-		} catch (IOException e) {}
+			MainAllControllers.sendToAbsServer(dbm);
+			Platform.runLater(new Runnable()
+			{
+			@Override
+			public void run() 
+			{
+			try {
+			MainAllControllers.setWindowVar("ITshowRequests");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			MainAllControllers.changeWin();
+			}});
+		} catch (IOException e) {
+		}
     }
 
 	@FXML

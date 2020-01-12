@@ -118,6 +118,10 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     	{
     		fillAllFields.setVisible(true);
     	}
+    	if(timeEstimated.getText().matches("[0-100]"))
+    	{
+    		fillAllFields.setVisible(true);
+    	}
     	else
     	{
     		fillAllFields.setVisible(false);

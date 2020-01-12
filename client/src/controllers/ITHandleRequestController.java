@@ -269,8 +269,18 @@ public class ITHandleRequestController implements Initializable {
 		dbm = new DBmessage(MessageType.ITchangeCompleted, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
+			Platform.runLater(new Runnable()
+			{
+			@Override
+			public void run() 
+			{
+			try {
 			MainAllControllers.setWindowVar("ITshowRequests");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			MainAllControllers.changeWin();
+			}});
 		} catch (IOException e) {
 		}
 	}
