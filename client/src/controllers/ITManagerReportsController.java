@@ -21,6 +21,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
@@ -196,15 +199,15 @@ public class ITManagerReportsController implements Initializable {
 	
 	/** The medgraph. */
 	@FXML
-	private StackedBarChart<String, Integer> medgraph;
+	private BarChart<String, Integer> medgraph;
 
 	/** The devgraph. */
 	@FXML
-	private StackedBarChart<?, ?> devgraph;
+	private BarChart<?, ?> devgraph;
 
 	/** The freqgraph. */
 	@FXML
-	private StackedBarChart<?, ?> freqgraph;
+	private BarChart<String, Number> freqgraph;
 
 	/** The freqtable. */
 	@FXML
@@ -344,7 +347,7 @@ public class ITManagerReportsController implements Initializable {
 		medfail = foundmed(failure);
 		medsuc = foundmed(success);
 		medsusp = foundmed(susppend);
-		XYChart.Series<String, Integer> medf = new XYChart.Series<>();
+		XYChart.Series medf = new XYChart.Series<>();
 		medf.getData().add(new XYChart.Data<>("failure" , medfail));
 		XYChart.Series meds = new XYChart.Series();
 		meds.getData().add(new XYChart.Data<>("success" , medsuc));
@@ -361,7 +364,9 @@ public class ITManagerReportsController implements Initializable {
 		int[] d= {2,7,1,6,1,4,3,2,5,8,3,7};
 
 		int[] s= {0,0,0,0,5,8,7,1,6,3,7,2};*/
-
+		freqf.setName("failure");
+		freqs.setName("success");
+		freqsus.setName("susppend");
 		for(int i=0;i<12;i++)
 		{
 			freqf.getData().add(new XYChart.Data<>(""+i , failure[i]));
@@ -371,7 +376,6 @@ public class ITManagerReportsController implements Initializable {
 			
 			freqsus.getData().add(new XYChart.Data<>(""+i , susppend[i]));
 		}
-		
 		this.freqgraph.getData().add(freqsus);
 		this.freqgraph.getData().add(freqs);
 		this.freqgraph.getData().add(freqf);
@@ -397,7 +401,12 @@ public class ITManagerReportsController implements Initializable {
 		devs=(float)Math.sqrt(devs / 12);
 		devsus=(float)Math.sqrt(devsus / 12);
 	
-		
+		CategoryAxis xAxis = new CategoryAxis();
+	       xAxis.setLabel("status request");
+	 
+	       NumberAxis yAxis = new NumberAxis();
+		       yAxis.setLabel("Standard deviation:");
+	       this.freqgraph= new BarChart<String, Number>(xAxis, yAxis);
 		XYChart.Series avrf = new XYChart.Series<>();
 		avrf.getData().add(new XYChart.Data<>("failure" , 5));
 		XYChart.Series avrs = new XYChart.Series();
@@ -409,28 +418,7 @@ public class ITManagerReportsController implements Initializable {
 		this.devgraph.getData().add(avrs);
 		this.devgraph.getData().add(avrsus);
 		
-		/*
-		 * XYChart.Series fre = new XYChart.Series();
-		 * 
-		 * 
-		 * this.medinDelay.setText("" + medin); float avrg = 0; for (int j = 0; j < 12;
-		 * j++) { avrg += (float) daysReq[j]; }
-		 * 
-		 * avrg = (float) avrg / 12; float sum = 0; for (int j = 0; j < 12; j++) sum +=
-		 * (float) Math.pow(daysReq[j] - avrg, 2); String devesion=String.format("%.2f",
-		 * Math.sqrt(sum / 12)); this.devesionDelay.setText(devesion);
-		 * ObservableList<tablefield> rows = FXCollections.observableArrayList();
-		 * XYChart.Series dataSeries1 = new XYChart.Series();
-		 * 
-		 * 
-		 * for(int j=0;j<12;j++) { rows.add(new tablefield(months[j],
-		 * daysReq[j],freq[j])); dataSeries1.getData().add(new
-		 * XYChart.Data(""+daysReq[j], freq[j])); }
-		 * 
-		 * table.setItems(rows); dataSeries1.setName("Delays request");
-		 * 
-		 * this.Frequencygraph.getData().add(dataSeries1);
-		 */
+
 
 	}
 
