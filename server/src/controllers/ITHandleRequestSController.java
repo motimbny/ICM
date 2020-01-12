@@ -178,6 +178,8 @@ public class ITHandleRequestSController {
 				listOfIT.add(rs.getString(2).toString());
 			}
 			dbs = new DBSmessage(MessageTypeS.ITShowEmployeeList, listOfIT);
+			System.out.println("here in server second");
+
 			return dbs;
 		} catch (SQLException e) {
 			e.printStackTrace();

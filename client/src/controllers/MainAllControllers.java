@@ -350,13 +350,7 @@ public class MainAllControllers
 		
 	public void getListOfITCEO(ArrayList<Object> arrayList) 
 	{
-		Platform.runLater(new Runnable()
-		{
-		@Override
-		public void run() 
-		{
 		((ITHandleRequestController) WindowToShow.controller).setListOfIT(arrayList);
-		}});
 	}
 	public void saveTesterSuccssesful(ArrayList<Object> arrayList) 
 	{

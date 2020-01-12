@@ -301,7 +301,7 @@ public class mainClientABS extends AbstractClient
 			case ITShowEmployeeList:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-				MainAllControllers.getListOfITCEO(((ArrayList<Object>)send));
+				MainAllControllers.getListOfITCEO(send);
 			}
 			break;
 			case ITSaveTester:
