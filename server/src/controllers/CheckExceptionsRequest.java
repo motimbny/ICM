@@ -193,13 +193,14 @@ public class CheckExceptionsRequest
 				reqToAdd.setInt(3,diffrence);
 				   SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
 				    Date date = new Date();  
-				    reqToAdd.setString(3,formatter.format(date)); 
+				    reqToAdd.setString(4,formatter.format(date)); 
 				reqToAdd.executeUpdate();	
 				reqToAdd.close();
+				sendMessageToManager(stag+" "+req.getId());
+				sendMessageToSuperviser(stag+" "+req.getId());	
 			}
 		}
-		sendMessageToManager(stag);
-		sendMessageToSuperviser(stag);
+		
      }
    public void sendMessageToManager(String stag) throws SQLException
    {
@@ -208,7 +209,7 @@ public class CheckExceptionsRequest
 	   mToAdd.setString(1,manager.getName());
 	   mToAdd.setString(2,"System ICM");
 	   mToAdd.setString(3,stag);
-	   mToAdd.setString(4,stag+"was late");
+	   mToAdd.setString(4,stag+" was late");
 	   mToAdd.setString(5,java.time.LocalDate.now().toString());
 	   mToAdd.setInt(6,0);
 	   mToAdd.executeUpdate();	
@@ -221,7 +222,7 @@ public class CheckExceptionsRequest
 	   sToAdd.setString(1,superviser.getName());
 	   sToAdd.setString(2,"System ICM");
 	   sToAdd.setString(3,stag);
-	   sToAdd.setString(4,stag+"was late");
+	   sToAdd.setString(4,stag+" was late");
 	   sToAdd.setString(5,java.time.LocalDate.now().toString());
 	   sToAdd.setInt(6,0);
 	   sToAdd.executeUpdate();	

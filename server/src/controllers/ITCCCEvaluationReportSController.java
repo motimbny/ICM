@@ -63,9 +63,12 @@ public class ITCCCEvaluationReportSController {
 		try 
 		{
 			stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisiondEND='"+formatter.format(date)+"' WHERE id="+idReq+"");
+			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(idReq,connection);
+			checkExp.checkException();
 			stmt.executeUpdate("UPDATE request SET currentStage='waitingExecutionTime' WHERE id="+idReq+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingExecutionTime' WHERE id="+idReq+"");
-			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisiondEND='"+formatter.format(date)+"' WHERE id="+idReq+"");
+			
 		} 
 		catch (SQLException e)
 		{
@@ -85,9 +88,12 @@ public class ITCCCEvaluationReportSController {
 		try 
 		{
 			stmt = connection.createStatement();	
+			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisiondEND='"+formatter.format(date)+"' WHERE id="+idReq+"");
+			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(idReq,connection);
+			checkExp.checkException();
 			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id="+idReq+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id="+idReq+"");
-			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisiondEND='"+formatter.format(date)+"' WHERE id="+idReq+"");
+			
 		} 
 		catch (SQLException e)
 		{

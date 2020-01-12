@@ -137,11 +137,14 @@ public class ITHandleRequestSController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			stmt = connection.createStatement();
+			stmt.executeUpdate("UPDATE requesttime SET executionEND='"+formatter.format(date)+"' WHERE id="+reqId+"");
+			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(reqId,connection);
+			checkExp.checkException();
 			stmt.executeUpdate("UPDATE request SET currentStage='testing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET timeTest=7 WHERE id=" + reqId + "");
-			stmt.executeUpdate("UPDATE requesttime SET executionEND='"+formatter.format(date)+"' WHERE id="+reqId+"");
 			stmt.executeUpdate("UPDATE requesttime SET testingStart='"+formatter.format(date)+"' WHERE id="+reqId+"");
+			
 		} catch (SQLException e) {
 		}
 		return null;
@@ -155,9 +158,12 @@ public class ITHandleRequestSController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id=" + reqId + "");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requesttime SET testingExepted='"+formatter.format(date)+"' WHERE id="+reqId+"");
+			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(reqId,connection);
+			checkExp.checkException();
+			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id=" + reqId + "");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id=" + reqId + "");	
+			
 		} catch (SQLException e) {
 		}
 		return null;

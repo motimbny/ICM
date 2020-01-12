@@ -65,11 +65,17 @@ public class ITMeaningAssessmentEvaluationReportSController {
 			req.setString(6,(String) msg.getObjs().get(5));
 			req.executeUpdate();	
  			req.close();
+ 			
+ 			stmt.executeUpdate("UPDATE requesttime SET meaningAssessmentEND='"+formatter.format(date)+"' WHERE id="+reqId+"");
+ 			CheckExceptionsRequest checkExp = new CheckExceptionsRequest((int) msg.getObjs().get(0),connection);
+			checkExp.checkException();
  			stmt.executeUpdate("UPDATE request SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='examinationAndDecision' WHERE id="+reqId+"");
 			stmt.executeUpdate("UPDATE requeststages SET timeExaminationDecision=7 WHERE id="+reqId+"");
-			stmt.executeUpdate("UPDATE requesttime SET meaningAssessmentEND='"+formatter.format(date)+"' WHERE id="+reqId+"");
 			stmt.executeUpdate("UPDATE requesttime SET examinationAndDecisionStart='"+formatter.format(date)+"' WHERE id="+reqId+"");
+			
+			
+			
 			arry.add(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
