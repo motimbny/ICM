@@ -28,67 +28,104 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * The Class ITManagerShowRequestsController.
+ */
 public class ITManagerShowRequestsController implements Initializable
 {	
+	
+	/** The rows. */
 	private ObservableList<requestSuper> rows;
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/**
+	 * Instantiates a new IT manager show requests controller.
+	 */
 	public ITManagerShowRequestsController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
 
+    /** The home BTN. */
     @FXML
     private Button homeBTN;
 
+    /** The show request BTN 1. */
     @FXML
     private Button showRequestBTN1;
 
+    /** The generate report BTN 1. */
     @FXML
     private Button generateReportBTN1;
 
+    /** The employees mang BTN. */
     @FXML
     private Button employeesMangBTN;
 
+    /** The logout BTN 1. */
     @FXML
     private Button logoutBTN1;
 
+    /** The personal info BTN. */
     @FXML
     private Button personalInfoBTN;
 
+    /** The message BTN. */
     @FXML
     private Button messageBTN;
     
+    /** The help BTN. */
     @FXML
     private Button helpBTN;
 
+    /** The logout BTN. */
     @FXML
     private Button logoutBTN;
 
+    /** The request table. */
     @FXML
     private TableView<requestSuper> requestTable;
 
+    /** The Request ID. */
     @FXML
     private TableColumn<requestSuper, Integer> RequestID;
 
+    /** The Request status. */
     @FXML
     private TableColumn<requestSuper, Integer> RequestStatus;
 
+    /** The Request process stage. */
     @FXML
     private TableColumn<requestSuper, Integer> RequestProcessStage;
 
+    /** The Renew request request BTN. */
     @FXML
     private Button RenewRequestRequestBTN;
 
+    /** The search. */
     @FXML
     private Button search;
 
+    /** The request id to. */
     @FXML
     private TextField requestIdTo;
+    
+    /** The select R. */
     @FXML
     private Label selectR;
 
+    /** The ok R. */
     @FXML
     private Label okR;
+    
+    /**
+     * Go employees mang.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goEmployeesMang(MouseEvent event)throws IOException 
 	{
@@ -96,6 +133,12 @@ public class ITManagerShowRequestsController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Go help page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -104,6 +147,12 @@ public class ITManagerShowRequestsController implements Initializable
 	
     }
 
+    /**
+     * Go home page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goHomePage(MouseEvent event)throws IOException 
 	{
@@ -111,6 +160,12 @@ public class ITManagerShowRequestsController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Go personal info.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goPersonalInfo(MouseEvent event) throws IOException 
 	{
@@ -118,12 +173,25 @@ public class ITManagerShowRequestsController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Go show req.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goShowReq(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITManagerShowRequests");
     	MainAllControllers.changeWin();
 	}
+    
+    /**
+     * Message page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void messagePage(MouseEvent event)	throws IOException 
     	{
@@ -132,12 +200,25 @@ public class ITManagerShowRequestsController implements Initializable
     	}
 
    
+    /**
+     * Gogenerate report.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void gogenerateReport(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITManagerReports");
     	MainAllControllers.changeWin();
 	}
+    
+    /**
+     * Logout page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void logoutPage(MouseEvent event)throws IOException 
 	{
@@ -146,6 +227,11 @@ public class ITManagerShowRequestsController implements Initializable
     	MainAllControllers.logOutUser();
 	}
 
+    /**
+     * Renew request.
+     *
+     * @param event the event
+     */
     @FXML
     void renewRequest(MouseEvent event)
     {
@@ -180,6 +266,12 @@ public class ITManagerShowRequestsController implements Initializable
 		popupwindow.showAndWait();	
     	
     }
+    
+    /**
+     * Renew request.
+     *
+     * @param id the id
+     */
     private void renewRequest(int id) 
     {
     	ArrayList<Object> arry=new ArrayList<Object>();
@@ -191,11 +283,23 @@ public class ITManagerShowRequestsController implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
 	}
+    
+    /**
+     * Visable.
+     *
+     * @param event the event
+     */
     @FXML
     void visable(MouseEvent event)
     {
     	selectR.setVisible(false);
     }
+	
+	/**
+	 * Search request.
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void searchRequest(MouseEvent event) 
     {
@@ -220,6 +324,11 @@ public class ITManagerShowRequestsController implements Initializable
     		}
     }
 
+    /**
+     * Show request details.
+     *
+     * @param event the event
+     */
     @FXML
     void showRequestDetails(MouseEvent event)
     {
@@ -236,6 +345,12 @@ public class ITManagerShowRequestsController implements Initializable
         });
     }
 
+	/**
+	 * Initialize.
+	 *
+	 * @param location the location
+	 * @param resources the resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{
@@ -245,6 +360,10 @@ public class ITManagerShowRequestsController implements Initializable
 		requestServer();
 		
 	}
+	
+	/**
+	 * Request server.
+	 */
 	public void requestServer()
     {
 		DBmessage dbm;
@@ -253,11 +372,21 @@ public class ITManagerShowRequestsController implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
     }
+	
+	/**
+	 * Clear table.
+	 */
 	public void clearTable()
 	{
 		requestTable.getItems().clear();
 	}
-	 public void setTextTable(ArrayList<Object> list)
+	 
+ 	/**
+ 	 * Sets the text table.
+ 	 *
+ 	 * @param list the new text table
+ 	 */
+ 	public void setTextTable(ArrayList<Object> list)
 	 {
 		 rows= FXCollections.observableArrayList();
 	    	for(Object r:list)

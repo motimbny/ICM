@@ -22,84 +22,140 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * The Class ITshowRequestsController.
+ */
 public class ITshowRequestsController implements Initializable 
 {
+	
+	/** The rows. */
 	private ObservableList<RequestUser> rows;
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/**
+	 * Instantiates a new i tshow requests controller.
+	 */
 	public ITshowRequestsController() 
 	{
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 
+	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
 
+	/** The show request BTN. */
 	@FXML
 	private Button showRequestBTN;
 
+	/** The personal info BTN. */
 	@FXML
 	private Button personalInfoBTN;
 
+	/** The help BTN. */
 	@FXML
 	private Button helpBTN;
 
+	/** The logout BTN. */
 	@FXML
 	private Button logoutBTN;
 
+	/** The User name. */
 	@FXML
 	private Label UserName;
 
+	/** The email. */
 	@FXML
 	private Label email;
 
+	/** The position. */
 	@FXML
 	private Label position;
 
+	/** The request table. */
 	@FXML
 	private TableView<RequestUser> requestTable;
 
+	/** The id. */
 	@FXML
 	private TableColumn<RequestUser, Integer> id;
 
+	/** The current status. */
 	@FXML
 	private TableColumn<RequestUser, String> currentStatus;
 
+	/** The current stage. */
 	@FXML
 	private TableColumn<RequestUser, StageName> currentStage;
 
+	/** The time left. */
 	@FXML
 	private TableColumn<RequestUser, Integer> timeLeft;
 
+	/** The search. */
 	@FXML
 	private Button search;
 
+	/** The request id to. */
 	@FXML
 	private TextField requestIdTo;
 
+	/**
+	 * Go help page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITHelp");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go home page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITHome");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go personal info.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITPersonalInfo");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go show req.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goShowReq(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITshowRequests");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Logout page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void logoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
@@ -107,6 +163,11 @@ public class ITshowRequestsController implements Initializable
     	MainAllControllers.logOutUser();
 	}
 
+	/**
+	 * Search request.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void searchRequest(MouseEvent event) 
 	{
@@ -132,6 +193,11 @@ public class ITshowRequestsController implements Initializable
 		}
 	}
 
+	/**
+	 * Show request details.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void showRequestDetails(MouseEvent event) {
 		requestTable.setOnMouseClicked((MouseEvent ev) -> {
@@ -148,6 +214,11 @@ public class ITshowRequestsController implements Initializable
 		});
 	}
 
+	/**
+	 * Sets the text in table.
+	 *
+	 * @param list the new text in table
+	 */
 	public void setTextInTable(ArrayList<Object> list) 
 	{
 		rows = FXCollections.observableArrayList();
@@ -156,6 +227,12 @@ public class ITshowRequestsController implements Initializable
 		requestTable.setItems(rows);
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @param location the location
+	 * @param resources the resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		id.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -165,6 +242,9 @@ public class ITshowRequestsController implements Initializable
 		requestServer();
 	}
 
+	/**
+	 * Request server.
+	 */
 	public void requestServer() {
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName());
@@ -176,10 +256,18 @@ public class ITshowRequestsController implements Initializable
 		}
 	}
 
+	/**
+	 * Clear table.
+	 */
 	public void clearTable() {
 		requestTable.getItems().clear();
 	}
 
+	/**
+	 * Gets the requests table.
+	 *
+	 * @return the requests table
+	 */
 	public TableView<RequestUser> getRequestsTable() {
 		return requestTable;
 	}

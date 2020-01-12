@@ -31,66 +31,135 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * The Class SupervisorUpdateRequestController.
+ */
 public class SupervisorUpdateRequestController implements Initializable
 {
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/** The list. */
 	private ArrayList<Object> list;
+	
+	/**
+	 * Instantiates a new supervisor update request controller.
+	 */
 	public SupervisorUpdateRequestController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
+    
+    /** The home BTN. */
     @FXML
     private Button homeBTN;
+    
+    /** The showre BTN. */
     @FXML
     private Button showreBTN;
+    
+    /** The person BTN. */
     @FXML
     private Button personBTN;
+    
+    /** The help BTN. */
     @FXML
     private Button helpBTN;
+    
+    /** The Message BTN. */
     @FXML
     private Button MessageBTN;
+    
+    /** The logout BTN. */
     @FXML
     private Button logoutBTN;
+    
+    /** The request info BTN. */
     @FXML
     private Button requestInfoBTN;
+    
+    /** The save update req. */
     @FXML
     private Button saveUpdateReq;
+    
+    /** The request ID. */
     @FXML
     private TextField requestID;
+    
+    /** The change apprieser BTN. */
     @FXML
     private Button changeApprieserBTN;
+    
+    /** The apprieser name. */
     @FXML
     private TextField apprieserName;
+    
+    /** The change executer BTN. */
     @FXML
     private Button changeExecuterBTN;
+    
+    /** The executer name. */
     @FXML
     private TextField executerName;
   
 
+    /** The approve apprieser BTN. */
     @FXML
     private Button approveApprieserBTN;
+    
+    /** The evluation. */
     @FXML
     private TextField evluation;
+    
+    /** The execution. */
     @FXML
     private TextField execution;
+    
+    /** The examination. */
     @FXML
     private ComboBox<Integer> examination;
+    
+    /** The test. */
     @FXML
     private ComboBox<Integer> test;
+    
+    /** The Back to show. */
     @FXML
     private Button BackToShow;
-	    @FXML
+	    
+    	/**
+    	 * Back to S.
+    	 *
+    	 * @param event the event
+    	 * @throws IOException Signals that an I/O exception has occurred.
+    	 */
+    	@FXML
 	    void BackToS(MouseEvent event) throws IOException 
 		{
 	    	MainAllControllers.setWindowVar("SupervisorShowRequests");
 	    	MainAllControllers.changeWin();
 		}
-	    @FXML
+	    
+    	/**
+    	 * Request info window.
+    	 *
+    	 * @param event the event
+    	 * @throws IOException Signals that an I/O exception has occurred.
+    	 */
+    	@FXML
 	    void requestInfoWindow(MouseEvent event) throws IOException
 	    {
 	    	MainAllControllers.setWindowVar("SupervisorRequestDetalies");
 	    	MainAllControllers.changeWin();
 	    }
+    
+    /**
+     * Go help page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
  	void goHelpPage(MouseEvent event) throws IOException 
  	{
@@ -98,14 +167,26 @@ public class SupervisorUpdateRequestController implements Initializable
      	MainAllControllers.changeWin();
  	}
 
- 	@FXML
+ 	/**
+	  * Go home page.
+	  *
+	  * @param event the event
+	  * @throws IOException Signals that an I/O exception has occurred.
+	  */
+	 @FXML
  	void goHomePage(MouseEvent event) throws IOException 
  	{
      	MainAllControllers.setWindowVar("SupervisorHome");
      	MainAllControllers.changeWin();
  	}
 
- 	@FXML
+ 	/**
+	  * Go logout page.
+	  *
+	  * @param event the event
+	  * @throws IOException Signals that an I/O exception has occurred.
+	  */
+	 @FXML
  	void goLogoutPage(MouseEvent event) throws IOException 
  	{
      	MainAllControllers.setWindowVar("login");
@@ -113,18 +194,38 @@ public class SupervisorUpdateRequestController implements Initializable
     	MainAllControllers.logOutUser();
  	}
 
- 	@FXML
+ 	/**
+	  * Go personal page.
+	  *
+	  * @param event the event
+	  * @throws IOException Signals that an I/O exception has occurred.
+	  */
+	 @FXML
  	void goPersonalPage(MouseEvent event) throws IOException 
  	{
      	MainAllControllers.setWindowVar("SupervisorPersonalInfo");
      	MainAllControllers.changeWin();
  	}
- 	@FXML
+ 	
+	 /**
+	  * Message page.
+	  *
+	  * @param event the event
+	  * @throws IOException Signals that an I/O exception has occurred.
+	  */
+	 @FXML
     void messagePage(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("SupervisorMessages");
     	MainAllControllers.changeWin();
 	}
+    
+    /**
+     * Go show req page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
 	void goShowReqPage(MouseEvent event) throws IOException 
 	{
@@ -132,17 +233,34 @@ public class SupervisorUpdateRequestController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Change apprieser.
+     *
+     * @param event the event
+     */
     @FXML
     void changeApprieser(MouseEvent event) {
     	listOfIt();
     	showListOfIT("itAppraiser");
     }
+    
+    /**
+     * Change executer.
+     *
+     * @param event the event
+     */
     @FXML
     private void changeExecuter(MouseEvent event) {
     	listOfIt();
     	showListOfIT("itPerformanceLeader");
     	
     }
+    
+    /**
+     * Show list of IT.
+     *
+     * @param NameOfPositionChange the name of position change
+     */
     private void showListOfIT(String NameOfPositionChange)
     {
     	Stage popupwindow=new Stage();   
@@ -188,6 +306,10 @@ public class SupervisorUpdateRequestController implements Initializable
 		popupwindow.setScene(scene1);     
 		popupwindow.showAndWait();
     }
+    
+    /**
+     * Change executer.
+     */
     private void changeExecuter() 
     {
     	int id=(Integer.parseInt(requestID.getText()));
@@ -201,6 +323,12 @@ public class SupervisorUpdateRequestController implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
 	}
+	
+	/**
+	 * Sets the to fields.
+	 *
+	 * @param list the new to fields
+	 */
 	public void setToFields(ArrayList<Object> list)
 	{
 		this.requestID.setText(""+list.get(0));
@@ -208,6 +336,12 @@ public class SupervisorUpdateRequestController implements Initializable
 		this.executerName.setText((String)list.get(2));
 	}
     
+	/**
+	 * Initialize.
+	 *
+	 * @param arg0 the arg 0
+	 * @param arg1 the arg 1
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
 	{
@@ -219,6 +353,10 @@ public class SupervisorUpdateRequestController implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
 	}
+	
+	/**
+	 * List of it.
+	 */
 	public void listOfIt()
 	{
 		DBmessage dbm;
@@ -229,12 +367,24 @@ public class SupervisorUpdateRequestController implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
 	}
+	
+	/**
+	 * Sets the list of IT.
+	 *
+	 * @param arrayList the new list of IT
+	 */
 	public void setListOfIT(ArrayList<Object> arrayList)
 	{
 		this.list=arrayList;
 	}
 	
 
+    /**
+     * Save changes.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void SaveChanges(MouseEvent event) throws IOException 
     {

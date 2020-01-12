@@ -21,57 +21,86 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+
 /**
- * User show requests screen Controller 
+ * User show requests screen Controller .
+ *
  * @author SHIRA
  */
 
 public class UserShowRequestsController implements Initializable  {
 	
+	/** The rows. */
 	private ObservableList<RequestUser> rows; 
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/**
+	 * Instantiates a new user show requests controller.
+	 */
 	public UserShowRequestsController()
 	{
     	MainAllControllers=MainAllControllers.getInstance();
 	}
 	
+    /** The home BTN. */
     @FXML
     private Button homeBTN;
 
+    /** The addre BTN. */
     @FXML
     private Button addreBTN;
 
+    /** The showre BTN. */
     @FXML
     private Button showreBTN;
 
+    /** The person BTN. */
     @FXML
     private Button personBTN;
 
+    /** The help BTN. */
     @FXML
     private Button helpBTN;
 
+    /** The logout BTN. */
     @FXML
     private Button logoutBTN;
 
+    /** The requests table. */
     @FXML
     private TableView<RequestUser> requestsTable;
     
+    /** The id. */
     @FXML
     private TableColumn<RequestUser, Integer> id;
 
+    /** The current status. */
     @FXML
     private TableColumn<RequestUser, String> currentStatus;
 
+    /** The current stage. */
     @FXML
     private TableColumn<RequestUser, StageName> currentStage;
 
+    /** The time left. */
     @FXML
     private TableColumn<RequestUser, Integer> timeLeft;
+    
+    /** The search. */
     @FXML
     private Button search;
 
+    /** The request id to. */
     @FXML
     private TextField requestIdTo;
+    
+    /**
+     * Search request.
+     *
+     * @param event the event
+     */
     @FXML
     void searchRequest(MouseEvent event)
     {
@@ -96,21 +125,25 @@ public class UserShowRequestsController implements Initializable  {
 			} catch (IOException e) {}
     	}
     }
+    
     /**
-	 * Mouse click event, if "Add request" button clicked, open the screen of "Add new request"
-	 * @param event
-	 * @throws IOException
-	 */
+     * Mouse click event, if "Add request" button clicked, open the screen of "Add new request".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goAddReqPage(ActionEvent event) throws IOException 
     {
     	MainAllControllers.setWindowVar("UserAddRequest");
     	MainAllControllers.changeWin();
     }
+    
     /**
-     * Mouse click event, if "help" button clicked, open the screen of "help"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "help" button clicked, open the screen of "help".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goHelpPage(ActionEvent event) throws IOException 
@@ -118,10 +151,12 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.setWindowVar("UserHelp");
     	MainAllControllers.changeWin();
     }
+    
     /**
-     * Mouse click event, if "Home" button clicked, open the screen of "Home"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Home" button clicked, open the screen of "Home".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goHomePage(ActionEvent event) throws IOException 
@@ -129,10 +164,12 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.setWindowVar("userHome");
     	MainAllControllers.changeWin();
     }
+    
     /**
-     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goLogoutPage(ActionEvent event) throws IOException 
@@ -141,10 +178,12 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.changeWin();
     	MainAllControllers.logOutUser();
     }
+    
     /**
-     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goPersonalPage(ActionEvent event) throws IOException
@@ -152,10 +191,12 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.setWindowVar("UserPersonalInfo");
     	MainAllControllers.changeWin();
     }
+    
     /**
-     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goShowReqPage(ActionEvent event) throws IOException 
@@ -164,6 +205,11 @@ public class UserShowRequestsController implements Initializable  {
     	MainAllControllers.changeWin();
     }
     
+    /**
+     * Show req T.
+     *
+     * @param event the event
+     */
     @FXML
     void showReqT(MouseEvent event)  {
     	requestsTable.setOnMouseClicked((MouseEvent ev ) -> {
@@ -179,6 +225,11 @@ public class UserShowRequestsController implements Initializable  {
         });
     }
     
+    /**
+     * Sets the text in table.
+     *
+     * @param list the new text in table
+     */
     public void setTextInTable(ArrayList<Object> list)
     {
     	
@@ -188,6 +239,9 @@ public class UserShowRequestsController implements Initializable  {
     	requestsTable.setItems(rows);
     }
 
+    /**
+     * Request server.
+     */
     public void requestServer()
     {
 		ArrayList<Object> arry=new ArrayList<Object>();
@@ -199,6 +253,12 @@ public class UserShowRequestsController implements Initializable  {
 		} catch (IOException e) {}
     }
     
+    /**
+     * Initializes GUI components before this window open.
+     *
+     * @param location the location
+     * @param resources the resources
+     */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) 
 	{
@@ -210,10 +270,19 @@ public class UserShowRequestsController implements Initializable  {
 		requestServer();
 	}
 	
+	/**
+	 * Clear table.
+	 */
 	public void clearTable()
 	{
 		requestsTable.getItems().clear();
 	}
+	
+	/**
+	 * Gets the requests table.
+	 *
+	 * @return the requests table
+	 */
 	public TableView<RequestUser> getRequestsTable() {
 		return requestsTable;
 	}

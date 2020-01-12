@@ -17,58 +17,90 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+
+/**
+ * The Class ITCCCEvaluationReportController.
+ */
 public class ITCCCEvaluationReportController implements Initializable 
 {
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+    
+    /**
+     * Instantiates a new ITCCC evaluation report controller.
+     */
     public ITCCCEvaluationReportController()
     {
     	MainAllControllers=controllers.MainAllControllers.getInstance();
     }
+    
+    /** The home BTN. */
     @FXML
     private Button homeBTN;
 
+    /** The show request BTN. */
     @FXML
     private Button showRequestBTN;
 
+    /** The personal info BTN. */
     @FXML
     private Button personalInfoBTN;
 
+    /** The help BTN. */
     @FXML
     private Button helpBTN;
 
+    /** The logout BTN. */
     @FXML
     private Button logoutBTN;
 
+    /** The Location. */
     @FXML
     private TextField Location;
 
+    /** The description of change required. */
     @FXML
     private TextArea descriptionOfChangeRequired;
 
+    /** The result of change. */
     @FXML
     private TextArea resultOfChange;
 
+    /** The time estimated. */
     @FXML
     private TextField timeEstimated;
 
+    /** The constraints and risks. */
     @FXML
     private TextArea constraintsAndRisks;
 
+    /** The require more info BTN. */
     @FXML
     private Button requireMoreInfoBTN;
 
+    /** The Deny CC evaluation report. */
     @FXML
     private Button DenyCCEvaluationReport;
 
+    /** The Approve CC evaluation report. */
     @FXML
     private Button ApproveCCEvaluationReport;
 
+    /** The request ID. */
     @FXML
     private TextField requestID;
     
+    /** The back BTN. */
     @FXML
     private Button backBTN;
 
+    /**
+     * Back.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void back(MouseEvent event) throws IOException 
     {
@@ -76,6 +108,11 @@ public class ITCCCEvaluationReportController implements Initializable
 		MainAllControllers.changeWin();
     }
 
+    /**
+     * Approve evaluation report.
+     *
+     * @param event the event
+     */
     @FXML
     void approveEvaluationReport(MouseEvent event) {
     	ArrayList<Object> arry=new ArrayList<Object>();
@@ -100,6 +137,11 @@ public class ITCCCEvaluationReportController implements Initializable
 		}
     }
 
+    /**
+     * Deny evaluation report.
+     *
+     * @param event the event
+     */
     @FXML
     void denyEvaluationReport(MouseEvent event) {
     	ArrayList<Object> arry=new ArrayList<Object>();
@@ -124,6 +166,12 @@ public class ITCCCEvaluationReportController implements Initializable
 		}
     }
 
+	/**
+	 * Go help page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -131,6 +179,12 @@ public class ITCCCEvaluationReportController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go home page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException 
 	{
@@ -138,6 +192,12 @@ public class ITCCCEvaluationReportController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go personal info.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException 
 	{
@@ -145,6 +205,12 @@ public class ITCCCEvaluationReportController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go show req.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goShowReq(MouseEvent event) throws IOException 
 	{
@@ -152,6 +218,12 @@ public class ITCCCEvaluationReportController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Logout page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void logoutPage(MouseEvent event) throws IOException 
 	{
@@ -160,6 +232,12 @@ public class ITCCCEvaluationReportController implements Initializable
     	MainAllControllers.logOutUser();
 	}
 
+    /**
+     * Require more info.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void requireMoreInfo(MouseEvent event) throws IOException 
     {
@@ -167,6 +245,11 @@ public class ITCCCEvaluationReportController implements Initializable
     	MainAllControllers.changeWin();
     }
 
+    /**
+     * Sets the text in fields.
+     *
+     * @param ev the new text in fields
+     */
     void setTextInFields(Evluationreport ev)
     {
     	requestID.setText(""+ev.getRequestID());
@@ -177,6 +260,13 @@ public class ITCCCEvaluationReportController implements Initializable
     	constraintsAndRisks.setText(ev.getConstraintsAndRisks());
     	
     }
+	
+	/**
+	 * Initialize.
+	 *
+	 * @param location the location
+	 * @param resources the resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)
 	{	

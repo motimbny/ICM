@@ -31,102 +31,153 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
+/**
+ * The Class ITHandleRequestController.
+ */
 public class ITHandleRequestController implements Initializable {
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/** The list. */
 	private ArrayList<Object> list;
 
+	/**
+	 * Instantiates a new IT handle request controller.
+	 */
 	public ITHandleRequestController() {
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 
+	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
 
+	/** The show request BTN. */
 	@FXML
 	private Button showRequestBTN;
 
+	/** The personal info BTN. */
 	@FXML
 	private Button personalInfoBTN;
 
+	/** The help BTN. */
 	@FXML
 	private Button helpBTN;
 
+	/** The logout BTN. */
 	@FXML
 	private Button logoutBTN;
 
+	/** The request id field. */
 	@FXML
 	private Text requestIdField;
 
+	/** The Show request details BTN. */
 	@FXML
 	private Button ShowRequestDetailsBTN;
 
+	/** The Req for time extension BTN. */
 	@FXML
 	private Button ReqForTimeExtensionBTN;
 
+	/** The Test stage. */
 	@FXML
 	private Pane TestStage;
 
+	/** The Test approval BTN. */
 	@FXML
 	private Button TestApprovalBTN;
 
+	/** The Report failure BTN. */
 	@FXML
 	private Button ReportFailureBTN;
 
+	/** The Evaluation stage. */
 	@FXML
 	private Pane EvaluationStage;
 
+	/** The Submit time estimate BTN. */
 	@FXML
 	private Button SubmitTimeEstimateBTN;
 
+	/** The Create evaluation report BTN. */
 	@FXML
 	private Button CreateEvaluationReportBTN;
 
+	/** The time estimated evaluation. */
 	@FXML
 	private TextField timeEstimatedEvaluation;
 
+	/** The Performance stage. */
 	@FXML
 	private Pane PerformanceStage;
 
+	/** The change completed BTN. */
 	@FXML
 	private Button changeCompletedBTN;
 
+	/** The Submit time estimate performance BTN. */
 	@FXML
 	private Button SubmitTimeEstimatePerformanceBTN;
 
+	/** The time estimated performance. */
 	@FXML
 	private TextField timeEstimatedPerformance;
 
+	/** The examination and decision stage. */
 	@FXML
 	private Pane examinationAndDecisionStage;
 
+	/** The View evaluation report BTN. */
 	@FXML
 	private Button ViewEvaluationReportBTN;
 
+	/** The Appoint tester BTN. */
 	@FXML
 	private Button AppointTesterBTN;
 
+	/** The successful. */
 	@FXML
 	private Label successful;
 
+	/** The l 1. */
 	@FXML
 	private Label l1;
 
+	/** The l 2. */
 	@FXML
 	private Label l2;
 	
+    /** The l 3. */
     @FXML
     private Label l3;
 
+    /** The l 4. */
     @FXML
     private Label l4;
+    
+    /** The positon req. */
     @FXML
     private Text positonReq;
+	
+	/**
+	 * Appoint tester.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void AppointTester(MouseEvent event) {
 		listOfIt();
 		showListOfIT("itTester");
 	}
 
+	/**
+	 * Show list of IT.
+	 *
+	 * @param NameOfPositionChange the name of position change
+	 */
 	private void showListOfIT(String NameOfPositionChange) {
 		Stage popupwindow = new Stage();
 		popupwindow.initModality(Modality.APPLICATION_MODAL);
@@ -164,6 +215,9 @@ public class ITHandleRequestController implements Initializable {
 		popupwindow.showAndWait();
 	}
 
+	/**
+	 * List of it.
+	 */
 	public void listOfIt() {
 		DBmessage dbm;
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -175,34 +229,68 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
+	/**
+	 * Sets the list of IT.
+	 *
+	 * @param arrayList the new list of IT
+	 */
 	public void setListOfIT(ArrayList<Object> arrayList) {
 		this.list = arrayList;
 	}
 
+	/**
+	 * Creates the evaluation report.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void CreateEvaluationReport(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITMeaningAssessmentEvaluationReport");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Report failure.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void ReportFailure(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITTestFailurReport");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Req for time extension.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void ReqForTimeExtension(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITExtensionRequest");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Show request details.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void ShowRequestDetails(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITRequestDetails");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Submit time estimate evaluation.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void SubmitTimeEstimateEvaluation(MouseEvent event) {
 		String time = timeEstimatedEvaluation.getText();
@@ -217,6 +305,11 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
+	/**
+	 * Submit time estimate performance.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void SubmitTimeEstimatePerformance(MouseEvent event) {
 		String time = timeEstimatedPerformance.getText();
@@ -231,6 +324,11 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
+	/**
+	 * Test approval.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void TestApproval(MouseEvent event) {
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -255,12 +353,23 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
+	/**
+	 * View evaluation report.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void ViewEvaluationReport(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITCCCEvaluationReport");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Change completed.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void changeCompleted(MouseEvent event) {
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -285,30 +394,60 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
+	/**
+	 * Go help page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITHelp");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go home page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITHome");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go personal info.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITPersonalInfo");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go show req.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goShowReq(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITshowRequests");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Logout page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void logoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
@@ -316,6 +455,12 @@ public class ITHandleRequestController implements Initializable {
 		MainAllControllers.logOutUser();
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @param location the location
+	 * @param resources the resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
@@ -333,6 +478,11 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
+	/**
+	 * Sets the pane.
+	 *
+	 * @param list the new pane
+	 */
 	public void setPane(ArrayList<Object> list) {
 		String job = (String) list.get(0);
 		MainAllControllers.itHandlejob = job;
@@ -431,6 +581,9 @@ public class ITHandleRequestController implements Initializable {
 		}
 	}
 
+	/**
+	 * Sets the on success.
+	 */
 	public void setOnSucsess() {
 		successful.setVisible(true);
 	}

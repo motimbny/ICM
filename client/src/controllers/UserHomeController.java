@@ -18,6 +18,10 @@ import javafx.scene.input.MouseEvent;
  */
 public class UserHomeController implements Initializable
 {
+    
+    /**
+     * Instantiates a new user home controller.
+     */
     public UserHomeController()
     {
     	MainAllControllers=controllers.MainAllControllers.getInstance();
@@ -118,7 +122,7 @@ public class UserHomeController implements Initializable
     }
     
     /**
-     * 
+     * Initializes GUI components before this window open.
      */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)

@@ -20,55 +20,90 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * The Class ITManagerMessagesController.
+ */
 public class ITManagerMessagesController implements Initializable
 {
+	
+	/** The sentby. */
 	String sentby;
+	
+	/** The subject. */
 	String subject;
+	
+	/** The rows. */
 	private ObservableList<Messages> rows;
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/**
+	 * Instantiates a new IT manager messages controller.
+	 */
 	public ITManagerMessagesController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
+    
+    /** The home BTN. */
     @FXML
     private Button homeBTN;
 
+    /** The show request BTN. */
     @FXML
     private Button showRequestBTN;
 
+    /** The generate report BTN 1. */
     @FXML
     private Button generateReportBTN1;
 
+    /** The employees mang BTN. */
     @FXML
     private Button employeesMangBTN;
 
+    /** The Message BTN. */
     @FXML
     private Button MessageBTN;
 
+    /** The personal info BTN. */
     @FXML
     private Button personalInfoBTN;
 
+    /** The help BTN. */
     @FXML
     private Button helpBTN;
 
+    /** The logout BTN. */
     @FXML
     private Button logoutBTN;
 
+    /** The Message table. */
     @FXML
     private TableView<Messages> MessageTable;
 
+    /** The Sent by. */
     @FXML
     private TableColumn<Messages, String> SentBy;
 
+    /** The mess subject. */
     @FXML
     private TableColumn<Messages, String> messSubject;
 
+    /** The Message content. */
     @FXML
     private TableColumn<Messages, String> MessageContent;
 
+    /** The Date. */
     @FXML
     private TableColumn<Messages, String> Date;
 
+    /**
+     * Go employees mang.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goEmployeesMang(MouseEvent event)  throws IOException 
 	{
@@ -76,6 +111,12 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Go help page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -83,6 +124,12 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Go home page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goHomePage(MouseEvent event) throws IOException 
 	{
@@ -90,6 +137,12 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Go personal info.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goPersonalInfo(MouseEvent event)  throws IOException 
 	{
@@ -97,6 +150,12 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Go show req.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void goShowReq(MouseEvent event)  throws IOException 
 	{
@@ -104,6 +163,12 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Gogenerate report.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void gogenerateReport(MouseEvent event) throws IOException 
 	{
@@ -111,6 +176,12 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+    /**
+     * Logout page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void logoutPage(MouseEvent event) throws IOException 
 	{
@@ -119,12 +190,24 @@ public class ITManagerMessagesController implements Initializable
     	MainAllControllers.logOutUser();
 	}
 
+    /**
+     * Message page.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
     @FXML
     void messagePage(MouseEvent event)throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITManagerMessages");
     	MainAllControllers.changeWin();
 	}
+    
+    /**
+     * Update R.
+     *
+     * @param event the event
+     */
     @FXML
     void UpdateR(MouseEvent event)
     {
@@ -147,10 +230,23 @@ public class ITManagerMessagesController implements Initializable
             }
         });
     }
+    
+    /**
+     * Show message.
+     *
+     * @param event the event
+     */
     @FXML
     void showMessage(MouseEvent event) {
 
     }
+    
+    /**
+     * Initialize.
+     *
+     * @param arg0 the arg 0
+     * @param arg1 the arg 1
+     */
     @Override
    	public void initialize(URL arg0, ResourceBundle arg1)
    	{
@@ -180,7 +276,11 @@ public class ITManagerMessagesController implements Initializable
     		});
     		requestServer();	
     	}
-    	public void requestServer()
+    	
+	    /**
+	     * Request server.
+	     */
+	    public void requestServer()
         {
     		DBmessage dbm;
     		String user;
@@ -192,7 +292,13 @@ public class ITManagerMessagesController implements Initializable
         		MainAllControllers.sendToAbsServer(dbm);
     		} catch (IOException e) {}
         }
-    	 public void setTextTable(ArrayList<Object> list)
+    	 
+ 	    /**
+ 	     * Sets the text table.
+ 	     *
+ 	     * @param list the new text table
+ 	     */
+ 	    public void setTextTable(ArrayList<Object> list)
     	 {
     		 Messages toad;
     		 rows= FXCollections.observableArrayList();
