@@ -27,70 +27,109 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * The Class SupervisorShowRequestsController.
+ */
 public class SupervisorShowRequestsController implements Initializable {
+	
+	/** The rows. */
 	private ObservableList<requestSuper> rows;
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
 
+	/**
+	 * Instantiates a new supervisor show requests controller.
+	 */
 	public SupervisorShowRequestsController() {
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 
+	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
 
+	/** The showre BTN. */
 	@FXML
 	private Button showreBTN;
 
+	/** The person BTN. */
 	@FXML
 	private Button personBTN;
 
+	/** The help BTN. */
 	@FXML
 	private Button helpBTN;
 
+	/** The logout BTN. */
 	@FXML
 	private Button logoutBTN;
 
+	/** The request table. */
 	@FXML
 	private TableView<requestSuper> requestTable;
 
+	/** The Request ID. */
 	@FXML
 	private TableColumn<requestSuper, Integer> RequestID;
 
+	/** The Request status. */
 	@FXML
 	private TableColumn<requestSuper, String> RequestStatus;
 
+	/** The Request process stage. */
 	@FXML
 	private TableColumn<requestSuper, String> RequestProcessStage;
 
+	/** The Suprvisor update request BTN. */
 	@FXML
 	private Button SuprvisorUpdateRequestBTN;
 
+	/** The Suprvisor close request BTN. */
 	@FXML
 	private Button SuprvisorCloseRequestBTN;
 
+	/** The Suprvisor suspend request BTN. */
 	@FXML
 	private Button SuprvisorSuspendRequestBTN;
 
+	/** The Suprvisor extension request BTN. */
 	@FXML
 	private Button SuprvisorExtensionRequestBTN;
 
+	/** The Message BTN. */
 	@FXML
 	private Button MessageBTN;
 
+	/** The search. */
 	@FXML
 	private Button search;
+	
+	/** The Suprvisor time. */
 	@FXML
 	private Button SuprvisorTime;
+	
+	/** The request id to. */
 	@FXML
 	private TextField requestIdTo;
+	
+	/** The sus not. */
 	@FXML
 	private Label susNot;
 
+	/** The close not. */
 	@FXML
 	private Label closeNot;
+	
+	/** The stagenotmatch. */
 	@FXML
 	private Label stagenotmatch;
 
+	/**
+	 * Close request.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void closeRequest(MouseEvent event) {
 		Stage popupwindow = new Stage();
@@ -124,73 +163,96 @@ public class SupervisorShowRequestsController implements Initializable {
 		popupwindow.showAndWait();
 	}
 
+	/**
+	 * Vis not.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void visNot(MouseEvent event) {
 		closeNot.setVisible(false);
 		susNot.setVisible(false);
 	}
+	
 	/**
-     * Mouse click event, if "help" button clicked, open the screen of "help"
-     * @param event
-     * @throws IOException
-     */
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorHelp");
 		MainAllControllers.changeWin();
 	}
+	
 	/**
-     * Mouse click event, if "Home" button clicked, open the screen of "Home"
-     * @param event
-     * @throws IOException
-     */
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorHome");
 		MainAllControllers.changeWin();
 	}
-	 /**
-     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
-     * @param event
-     * @throws IOException
-     */
+	 
+ 	/**
+ 	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+ 	 *
+ 	 * @param event the event
+ 	 * @throws IOException Signals that an I/O exception has occurred.
+ 	 */
 	@FXML
 	void goLogoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
 		MainAllControllers.logOutUser();
 	}
+	
 	/**
-     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
-     * @param event
-     * @throws IOException
-     */
+	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorPersonalInfo");
 		MainAllControllers.changeWin();
 	}
+	
 	/**
-     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
-     * @param event
-     * @throws IOException
-     */
+	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goShowReqPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorShowRequests");
 		MainAllControllers.changeWin();
 	}
+	
 	/**
-     * Mouse click event, if "Messages" button clicked, open the screen of "Messages"
-     * @param event
-     * @throws IOException
-     */
+	 * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void messagePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorMessages");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * View time.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void viewTime(MouseEvent event) throws IOException {
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -205,6 +267,12 @@ public class SupervisorShowRequestsController implements Initializable {
 
 	}
 
+	/**
+	 * Sets the time window.
+	 *
+	 * @param list the new time window
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	public void setTimeWindow(ArrayList<Object> list) throws IOException {
 		if(list.get(1).equals(1))
 		{
@@ -218,6 +286,11 @@ public class SupervisorShowRequestsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Suspend request.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void suspendRequest(MouseEvent event) {
 		Stage popupwindow = new Stage();
@@ -251,6 +324,11 @@ public class SupervisorShowRequestsController implements Initializable {
 		popupwindow.showAndWait();
 	}
 
+	/**
+	 * Suspend request.
+	 *
+	 * @param id the id
+	 */
 	private void suspendRequest(int id) {
 		ArrayList<Object> arry = new ArrayList<Object>();
 		int idadd = id;
@@ -264,6 +342,11 @@ public class SupervisorShowRequestsController implements Initializable {
 
 	}
 
+	/**
+	 * Close request.
+	 *
+	 * @param id the id
+	 */
 	private void closeRequest(int id) {
 
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -278,6 +361,12 @@ public class SupervisorShowRequestsController implements Initializable {
 
 	}
 
+	/**
+	 * View extension report.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void viewExtensionReport(MouseEvent event) throws IOException {
 		try {
@@ -289,6 +378,12 @@ public class SupervisorShowRequestsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Update request.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void UpdateRequest(MouseEvent event) throws IOException {
 		try {
@@ -308,6 +403,11 @@ public class SupervisorShowRequestsController implements Initializable {
 
 	}
 
+	/**
+	 * Search request.
+	 *
+	 * @param event the event
+	 */
 	@FXML
 	void searchRequest(MouseEvent event) {
 		if (requestIdTo.getText().equals("")) {
@@ -329,6 +429,12 @@ public class SupervisorShowRequestsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @param location the location
+	 * @param resources the resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		RequestID.setCellValueFactory(new PropertyValueFactory<>("id"));
@@ -338,6 +444,9 @@ public class SupervisorShowRequestsController implements Initializable {
 
 	}
 
+	/**
+	 * Request server.
+	 */
 	public void requestServer() {
 		DBmessage dbm;
 		dbm = new DBmessage(MessageType.superviserRequestShow, null);
@@ -347,10 +456,18 @@ public class SupervisorShowRequestsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Clear table.
+	 */
 	public void clearTable() {
 		requestTable.getItems().clear();
 	}
 
+	/**
+	 * Sets the text in table.
+	 *
+	 * @param list the new text in table
+	 */
 	public void setTextInTable(ArrayList<Object> list) {
 		rows = FXCollections.observableArrayList();
 		for (Object r : list)
@@ -358,6 +475,9 @@ public class SupervisorShowRequestsController implements Initializable {
 		requestTable.setItems(rows);
 	}
 
+	/**
+	 * Setvisable.
+	 */
 	public void setvisable() {
 		stagenotmatch.setVisible(true);
 

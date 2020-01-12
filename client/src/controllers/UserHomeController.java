@@ -12,8 +12,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+
 /**
- * User home screen Controller 
+ * User home screen Controller .
+ *
  * @author SHIRA
  */
 public class UserHomeController implements Initializable
@@ -27,36 +29,47 @@ public class UserHomeController implements Initializable
     	MainAllControllers=controllers.MainAllControllers.getInstance();
     }
     
+    /** The home BTN. */
     @FXML
     private Button homeBTN;
 
+    /** The addre BTN. */
     @FXML
     private Button addreBTN;
 
+    /** The showre BTN. */
     @FXML
     private Button showreBTN;
 
+    /** The person BTN. */
     @FXML
     private Button personBTN;
 
+    /** The help BTN. */
     @FXML
     private Button helpBTN;
 
+    /** The logout BTN. */
     @FXML
     private Button logoutBTN;
     
+    /** The hello user. */
     @FXML
     private Label helloUser;
     
+    /** The req ex num. */
     @FXML
     private Label reqExNum;
     
       
+    /** The Main all controllers. */
     private MainAllControllers MainAllControllers;
+
 /**
- * Mouse click event, if "Add request" button clicked, open the screen of "Add new request"
- * @param event
- * @throws IOException
+ * Mouse click event, if "Add request" button clicked, open the screen of "Add new request".
+ *
+ * @param event the event
+ * @throws IOException Signals that an I/O exception has occurred.
  */
     @FXML
     void addreBTNE(MouseEvent event) throws IOException
@@ -65,10 +78,12 @@ public class UserHomeController implements Initializable
     	MainAllControllers.changeWin();
           
     }
+    
     /**
-     * Mouse click event, if "help" button clicked, open the screen of "help"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "help" button clicked, open the screen of "help".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
 
     @FXML
@@ -77,10 +92,12 @@ public class UserHomeController implements Initializable
     	MainAllControllers.setWindowVar("UserHelp");
     	MainAllControllers.changeWin();
     }
+    
     /**
-     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void logoutBTNE(MouseEvent event) throws IOException
@@ -89,10 +106,12 @@ public class UserHomeController implements Initializable
     	MainAllControllers.changeWin();
     	MainAllControllers.logOutUser();
     }
+    
     /**
-     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void personBTNE(MouseEvent event) throws IOException 
@@ -100,10 +119,12 @@ public class UserHomeController implements Initializable
     	MainAllControllers.setWindowVar("UserPersonalInfo");
     	MainAllControllers.changeWin();
     }
+    
     /**
-     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void showreBTNE(MouseEvent event) throws IOException 
@@ -112,9 +133,11 @@ public class UserHomeController implements Initializable
     	MainAllControllers.changeWin();
     	
     }
+    
     /**
-     * Set requests number in the screen 
-     * @param num
+     * Set requests number in the screen .
+     *
+     * @param num the new request number
      */
     void setRequestNumber(int num)
     {
@@ -123,6 +146,9 @@ public class UserHomeController implements Initializable
     
     /**
      * Initializes GUI components before this window open.
+     *
+     * @param location the location
+     * @param resources the resources
      */
 	@Override
 	public void initialize(URL location, ResourceBundle resources)

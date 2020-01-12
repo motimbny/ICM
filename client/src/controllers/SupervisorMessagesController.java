@@ -19,54 +19,84 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+
 /**
- * Supervisor messages screen controller
- * @author SHIRA
+ * Supervisor messages screen controller.
  *
+ * @author SHIRA
  */
 public class SupervisorMessagesController  implements Initializable
 {
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/** The sentby. */
 	String sentby;
+	
+	/** The subject. */
 	String subject;
+	
+	/** The rows. */
 	private ObservableList<Messages> rows;
+	
+	/**
+	 * Instantiates a new supervisor messages controller.
+	 */
 	public SupervisorMessagesController()
 	{
 		MainAllControllers=controllers.MainAllControllers.getInstance();
 	}
+    
+    /** The home BTN. */
     @FXML
     private Button homeBTN;
 
+    /** The showre BTN. */
     @FXML
     private Button showreBTN;
 
+    /** The Message BTN. */
     @FXML
     private Button MessageBTN;
 
+    /** The person BTN. */
     @FXML
     private Button personBTN;
 
+    /** The help BTN. */
     @FXML
     private Button helpBTN;
 
+    /** The logout BTN. */
     @FXML
     private Button logoutBTN;
 
+    /** The Message table. */
     @FXML
     private TableView<Messages> MessageTable;
 
+    /** The Sent by. */
     @FXML
     private TableColumn<Messages, String> SentBy;
 
+    /** The mess subject. */
     @FXML
     private TableColumn<Messages, String> messSubject;
 
+    /** The Message content. */
     @FXML
     private TableColumn<Messages, String> MessageContent;
 
+    /** The Date. */
     @FXML
     private TableColumn<Messages, String> Date;
 
+    /**
+     * Update R.
+     *
+     * @param event the event
+     */
     @FXML
     void UpdateR(MouseEvent event) {
 		MessageTable.setOnMouseClicked((MouseEvent ev ) -> 
@@ -91,10 +121,12 @@ public class SupervisorMessagesController  implements Initializable
 	        }
         });
     }
+    
     /**
-     * Mouse click event, if "help" button clicked, open the screen of "help"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "help" button clicked, open the screen of "help".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goHelpPage(MouseEvent event) throws IOException 
@@ -102,10 +134,12 @@ public class SupervisorMessagesController  implements Initializable
     	MainAllControllers.setWindowVar("SupervisorHelp");
     	MainAllControllers.changeWin();
 	}
+    
     /**
-     * Mouse click event, if "Home" button clicked, open the screen of "Home"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Home" button clicked, open the screen of "Home".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goHomePage(MouseEvent event) throws IOException 
@@ -113,10 +147,12 @@ public class SupervisorMessagesController  implements Initializable
     	MainAllControllers.setWindowVar("SupervisorHome");
     	MainAllControllers.changeWin();
 	}
+    
     /**
-     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goLogoutPage(MouseEvent event) throws IOException 
@@ -125,10 +161,12 @@ public class SupervisorMessagesController  implements Initializable
     	MainAllControllers.changeWin();
     	MainAllControllers.logOutUser();
 	}
+    
     /**
-     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goPersonalPage(MouseEvent event) throws IOException 
@@ -138,9 +176,10 @@ public class SupervisorMessagesController  implements Initializable
 	}
 
     /**
-     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void goShowReqPage(MouseEvent event)throws IOException 
@@ -148,10 +187,12 @@ public class SupervisorMessagesController  implements Initializable
     	MainAllControllers.setWindowVar("SupervisorShowRequests");
     	MainAllControllers.changeWin();
 	}
+    
     /**
-     * Mouse click event, if "Messages" button clicked, open the screen of "Messages"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
     void messagePage(MouseEvent event) throws IOException 
@@ -160,6 +201,12 @@ public class SupervisorMessagesController  implements Initializable
     	MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @param arg0 the arg 0
+	 * @param arg1 the arg 1
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
 	{
@@ -189,6 +236,10 @@ public class SupervisorMessagesController  implements Initializable
 		});
 		requestServer();	
 	}
+	
+	/**
+	 * Request server.
+	 */
 	public void requestServer()
     {
 		DBmessage dbm;
@@ -201,7 +252,13 @@ public class SupervisorMessagesController  implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
     }
-	 public void setTextTable(ArrayList<Object> list)
+	 
+ 	/**
+ 	 * Sets the text table.
+ 	 *
+ 	 * @param list the new text table
+ 	 */
+ 	public void setTextTable(ArrayList<Object> list)
 	 {
 		 Messages toad;
 		 rows= FXCollections.observableArrayList();

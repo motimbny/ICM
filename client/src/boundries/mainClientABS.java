@@ -16,19 +16,24 @@ import javafx.event.ActionEvent;
 import ocsf.client.AbstractClient;
 
 /**
- * The handler of the sending and receiving data to/from Server
- * @author SHIRA
+ * The handler of the sending and receiving data to/from Server.
  *
+ * @author SHIRA
  */
 public class mainClientABS extends AbstractClient
 {
+    
+    /** The Main all controllers. */
     private MainAllControllers MainAllControllers;
+    
     /**
-	 * By constructing new instance of this class,
-	 * the connection to the Server will be created.
-	 * @param host	-	The host to connect to.
-	 * @param port	-	The port to connect on.
-	 */
+     * By constructing new instance of this class,
+     * the connection to the Server will be created.
+     *
+     * @param host -	The host to connect to.
+     * @param port -	The port to connect on.
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	public mainClientABS(String host, int port) throws IOException
 	{
 		super(host, port);
@@ -395,6 +400,10 @@ public class mainClientABS extends AbstractClient
 			
 		 this.connectionClosed();		 
 	}
+	
+	/**
+	 * Open con to server.
+	 */
 	public void openConToServer()
 	{
 		try 
@@ -403,10 +412,12 @@ public class mainClientABS extends AbstractClient
 		} 
 		catch (IOException e){}
 	}
+	
 	/**
-	 * Will send the message from the GUI to the server
-	 * @param msg	-	DBMessage object which includes the message to the server
-	 * @throws IOException
+	 * Will send the message from the GUI to the server.
+	 *
+	 * @param msg -	DBMessage object which includes the message to the server
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void handleMessageFromClientUI(DBmessage msg) throws IOException 
 	  {

@@ -21,7 +21,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-
 /**
  * User request details screen Controller .
  *

@@ -5,39 +5,53 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+
 /**
- * User Help screen Controller 
+ * User Help screen Controller .
+ *
  * @author SHIRA
  */
 public class UserHelpController {
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
 
+	/**
+	 * Instantiates a new user help controller.
+	 */
 	public UserHelpController() {
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 	
+	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
 
+	/** The addre BTN. */
 	@FXML
 	private Button addreBTN;
 
+	/** The showre BTN. */
 	@FXML
 	private Button showreBTN;
 
+	/** The person BTN. */
 	@FXML
 	private Button personBTN;
 
+	/** The help BTN. */
 	@FXML
 	private Button helpBTN;
 
+	/** The logout BTN. */
 	@FXML
 	private Button logoutBTN;
 	
 	/**
-	 * Mouse click event, if "Add request" button clicked, open the screen of "Add new request"
-	 * @param event
-	 * @throws IOException
+	 * Mouse click event, if "Add request" button clicked, open the screen of "Add new request".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
 	void addreBTNE(MouseEvent event) throws IOException {
@@ -45,10 +59,12 @@ public class UserHelpController {
 		MainAllControllers.changeWin();
 
 	}
+    
     /**
-     * Mouse click event, if "Home" button clicked, open the screen of "Home"
-     * @param event
-     * @throws IOException
+     * Mouse click event, if "Home" button clicked, open the screen of "Home".
+     *
+     * @param event the event
+     * @throws IOException Signals that an I/O exception has occurred.
      */
 	@FXML
 	void homeBack(MouseEvent event) throws IOException {
@@ -56,42 +72,50 @@ public class UserHelpController {
 		MainAllControllers.changeWin();
 
 	}
-	 /**
-     * Mouse click event, if "help" button clicked, open the screen of "help"
-     * @param event
-     * @throws IOException
-     */
+	 
+ 	/**
+ 	 * Mouse click event, if "help" button clicked, open the screen of "help".
+ 	 *
+ 	 * @param event the event
+ 	 * @throws IOException Signals that an I/O exception has occurred.
+ 	 */
 	@FXML
 	void helpBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserHelp");
 		MainAllControllers.changeWin();
 	}
+	
 	/**
-     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields
-     * @param event
-     * @throws IOException
-     */
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void logoutBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
     	MainAllControllers.logOutUser();
 	}
-	 /**
-     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information"
-     * @param event
-     * @throws IOException
-     */
+	 
+ 	/**
+ 	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
+ 	 *
+ 	 * @param event the event
+ 	 * @throws IOException Signals that an I/O exception has occurred.
+ 	 */
 	@FXML
 	void personBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserPersonalInfo");
 		MainAllControllers.changeWin();
 	}
+	
 	/**
-     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests"
-     * @param event
-     * @throws IOException
-     */
+	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void showreBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserShowRequests");
