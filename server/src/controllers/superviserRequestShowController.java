@@ -102,6 +102,8 @@ public class superviserRequestShowController
 	{
 		int num=(int) msg.getObjs().get(0);
 		Statement stmt;
+		String name="";
+		int x=1;
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try 
@@ -112,10 +114,22 @@ public class superviserRequestShowController
 			stmt.executeUpdate("UPDATE requeststages SET currentStatus='Closed' WHERE id="+num+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='Closed' WHERE id="+num+"");
 			stmt.executeUpdate("UPDATE requesttime SET closingEND='"+formatter.format(date)+"' WHERE id="+num+"");
-				if(rs==1)
-				{
-					System.out.println("updateSuspendRequest");
-				}
+
+		
+			ResultSet rss = stmt.executeQuery("SELECT userSubFullName FROM request WHERE id="+num+ "");
+			while(rss.next()!=false)
+			{
+				name=rss.getString(1);
+			}
+			rss = stmt.executeQuery("SELECT timeTest FROM requeststages WHERE id="+num+ "");
+			while(rss.next()!=false)
+			{
+				x=rss.getInt(1);
+				if(x!=0)
+					x=1;
+			}
+			SendMail s=new SendMail(name,x,num);
+			s.sendEMail();
 		} 
 		catch (SQLException e)
 		{

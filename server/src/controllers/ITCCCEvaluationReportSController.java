@@ -81,6 +81,7 @@ public class ITCCCEvaluationReportSController {
 	public Object denyEvaluationReport() {
 		Statement stmt;
 		DBSmessage dbs;
+		String name="";
 		updateRequest up = null;
 		ArrayList<Object> toSend= new ArrayList<Object>();
 		Date date = new Date();
@@ -93,6 +94,7 @@ public class ITCCCEvaluationReportSController {
 			checkExp.checkException();
 			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id="+idReq+"");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id="+idReq+"");
+	
 			
 		} 
 		catch (SQLException e)
