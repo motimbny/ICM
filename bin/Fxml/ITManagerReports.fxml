@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.StackedBarChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
@@ -13,9 +16,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerReportsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../../client/src/CSS/it.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerReportsController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -23,7 +25,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/home.png" />
+                        <Image url="@../../client/src/Images/home.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -32,7 +34,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/document.png" />
+                        <Image url="@../../client/src/Images/document.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -41,7 +43,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/list.png" />
+                        <Image url="@../../client/src/Images/list.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -50,7 +52,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/management.png" />
+                        <Image url="@../../client/src/Images/management.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -59,7 +61,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/email.png" />
+                        <Image url="@../../client/src/Images/email.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -68,7 +70,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/user.png" />
+                        <Image url="@../../client/src/Images/user.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -77,7 +79,7 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/info.png" />
+                        <Image url="@../../client/src/Images/info.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -86,83 +88,102 @@
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Images/exit.png" />
+                        <Image url="@../../client/src/Images/exit.png" />
                      </image>
                   </ImageView>
                </graphic>
             </Button>
          </children>
       </VBox>
-      <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
+      <Pane layoutX="150.0" layoutY="-14.0" prefHeight="600.0" prefWidth="661.0">
          <children>
             <Label layoutX="272.0" layoutY="21.0" prefHeight="58.0" prefWidth="168.0" text="Reports">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="chooseTypeOfReport" layoutX="242.0" layoutY="93.0" prefHeight="27.0" prefWidth="252.0" />
-            <Label layoutX="45.0" layoutY="87.0" prefHeight="27.0" prefWidth="197.0" text="Choose type of report">
+            <ChoiceBox fx:id="chooseTypeOfReport" layoutX="240.0" layoutY="80.0" prefHeight="27.0" prefWidth="252.0" />
+            <Label layoutX="31.0" layoutY="80.0" prefHeight="27.0" prefWidth="197.0" text="Choose type of report">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="120.0" prefHeight="27.0" prefWidth="129.0" text="Choose Date">
+            <Label layoutX="31.0" layoutY="120.0" prefHeight="27.0" prefWidth="129.0" text="Choose Date">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="45.0" layoutY="154.0" prefHeight="25.0" prefWidth="59.0" text="From : ">
+            <Label layoutX="151.0" layoutY="121.0" prefHeight="25.0" prefWidth="59.0" text="From : ">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <DatePicker fx:id="dateFrom" layoutX="109.0" layoutY="153.0" prefHeight="27.0" prefWidth="129.0" />
-            <Label layoutX="256.0" layoutY="154.0" prefHeight="25.0" prefWidth="33.0" text="To : ">
+            <DatePicker fx:id="dateFrom" layoutX="198.0" layoutY="120.0" prefHeight="27.0" prefWidth="113.0" />
+            <Label layoutX="325.0" layoutY="121.0" prefHeight="25.0" prefWidth="33.0" text="To : ">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <DatePicker fx:id="DateTo" layoutX="292.0" layoutY="153.0" prefHeight="27.0" prefWidth="129.0" />
-            <Button fx:id="generateReport" alignment="CENTER" layoutX="472.0" layoutY="137.0" mnemonicParsing="false" onMouseClicked="#generateReportClick" prefHeight="46.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="generate report" textAlignment="CENTER">
+            <DatePicker fx:id="DateTo" layoutX="356.0" layoutY="120.0" prefHeight="27.0" prefWidth="113.0" />
+            <Button fx:id="generateReport" alignment="CENTER" layoutX="492.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#generateReportClick" prefHeight="37.0" prefWidth="123.0" styleClass="buttonBlackBorder" text="generate report" textAlignment="CENTER">
                <font>
-                  <Font size="18.0" />
+                  <Font size="14.0" />
                </font>
             </Button>
             <Pane fx:id="activity" layoutX="4.0" layoutY="187.0" prefHeight="407.0" prefWidth="654.0" visible="false">
                <children>
                   <PieChart fx:id="ActiveSuClo" layoutX="277.0" layoutY="144.0" prefHeight="253.0" prefWidth="363.0" />
-                  <Label layoutX="22.0" layoutY="26.0" text="Median:">
+                  <Label layoutX="377.0" layoutY="31.0" text="Median:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="20.0" layoutY="59.0" prefHeight="20.0" prefWidth="123.0" text="Standard deviation">
+                  <Label layoutX="365.0" layoutY="201.0" prefHeight="20.0" prefWidth="123.0" text="Standard deviation:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="20.0" layoutY="96.0" text="Frequency distribution:">
+                  <Label layoutX="6.0" layoutY="85.0" text="Frequency distribution:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="medinT" editable="false" layoutX="236.0" layoutY="24.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <TextField fx:id="devesionT" editable="false" layoutX="236.0" layoutY="57.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <TextField fx:id="frequency" editable="false" layoutX="235.0" layoutY="94.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <Label layoutX="20.0" layoutY="134.0" prefHeight="20.0" prefWidth="179.0" text="Numbers of denied request:">
+                  <Label layoutX="6.0" layoutY="21.0" prefHeight="20.0" prefWidth="179.0" text="Numbers of denied request:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="deniedreq" editable="false" layoutX="235.0" layoutY="132.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <Label layoutX="14.0" layoutY="174.0" text="numbers of work days on requests:">
+                  <TextField fx:id="deniedreq" editable="false" layoutX="228.0" layoutY="19.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
+                  <Label layoutX="6.0" layoutY="57.0" text="numbers of work days on requests:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="allreq" editable="false" layoutX="236.0" layoutY="172.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <Text layoutX="445.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="choose one status" wrappingWidth="129.0" />
-                  <ChoiceBox fx:id="choosestatus" layoutX="435.0" layoutY="57.0" prefWidth="150.0" />
+                  <TextField fx:id="allreq" editable="false" layoutX="228.0" layoutY="55.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
+                  <StackedBarChart fx:id="medgraph" layoutX="359.0" layoutY="44.0" prefHeight="170.0" prefWidth="284.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </StackedBarChart>
+                  <StackedBarChart fx:id="devgraph" layoutX="362.0" layoutY="247.0" prefHeight="150.0" prefWidth="252.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
+                  <StackedBarChart fx:id="freqgraph" layoutX="6.0" layoutY="114.0" prefHeight="214.0" prefWidth="332.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
                </children>
             </Pane>
             <Pane fx:id="performence" layoutX="43.0" layoutY="208.0" prefHeight="365.0" prefWidth="591.0" visible="false">
@@ -180,45 +201,63 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="delaysInExecution" layoutX="56.0" layoutY="191.0" prefHeight="388.0" prefWidth="570.0">
+            <Pane fx:id="delaysInExecution" layoutX="6.0" layoutY="164.0" prefHeight="452.0" prefWidth="638.0" visible="false">
                <children>
                   <PieChart fx:id="delayspie" layoutX="259.0" layoutY="114.0" prefHeight="260.0" prefWidth="296.0" />
-                  <Label layoutX="106.0" layoutY="16.0" text="Median:">
+                  <Label layoutX="24.0" layoutY="113.0" text="Standard deviation:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="39.0" layoutY="49.0" text="Standard deviation">
+                  <Label layoutX="33.0" layoutY="37.0" text="Number of delays:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="63.0" layoutY="94.0" prefHeight="20.0" prefWidth="150.0" text="Frequency distribution">
+                  <TextField fx:id="numberOfDelays" editable="false" layoutX="156.0" layoutY="35.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <Label layoutX="33.0" layoutY="75.0" prefHeight="20.0" prefWidth="100.0" text="Time of delays : ">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="medinDelay" editable="false" layoutX="163.0" layoutY="14.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <TextField fx:id="devesionDelay" editable="false" layoutX="163.0" layoutY="47.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <Label layoutX="351.0" layoutY="14.0" text="Number of delays:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="numberOfDelays" editable="false" layoutX="357.0" layoutY="35.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <Label layoutX="360.0" layoutY="60.0" prefHeight="20.0" prefWidth="100.0" text="Time of delays : ">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="timeOfDelays" editable="false" layoutX="357.0" layoutY="79.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <TableView fx:id="table" layoutX="2.0" layoutY="130.0" prefHeight="200.0" prefWidth="265.0">
-                    <columns>
-                      <TableColumn fx:id="Month" prefWidth="75.0" text="Month" />
-                      <TableColumn fx:id="Days" prefWidth="52.79998779296875" text="days" />
-                        <TableColumn fx:id="numOfReq" prefWidth="136.79998779296875" text="number of requesrs" />
-                    </columns>
+                  <TextField fx:id="timeOfDelays" editable="false" layoutX="156.0" layoutY="72.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <TableView fx:id="table" layoutX="14.0" layoutY="206.0" prefHeight="228.0" prefWidth="296.0">
+                     <columns>
+                        <TableColumn fx:id="month" prefWidth="61.60003662109375" text="Month" />
+                        <TableColumn fx:id="day" prefWidth="104.79998779296875" text="Number of days" />
+                        <TableColumn fx:id="num" prefWidth="144.79998779296875" text="Number of request" />
+                     </columns>
                   </TableView>
+                  <StackedBarChart fx:id="Frequencygraph" layoutX="357.0" layoutY="206.0" prefHeight="214.0" prefWidth="252.0">
+                     <xAxis>
+                        <CategoryAxis side="BOTTOM" />
+                     </xAxis>
+                     <yAxis>
+                        <NumberAxis side="LEFT" />
+                     </yAxis>
+                  </StackedBarChart>
+                  <TextField fx:id="devesionDelay" editable="false" layoutX="156.0" layoutY="110.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <TextField fx:id="medinDelay" editable="false" layoutX="156.0" layoutY="143.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <Label layoutX="33.0" layoutY="146.0" prefHeight="20.0" prefWidth="100.0" text="medin:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="33.0" layoutY="179.0" prefHeight="20.0" prefWidth="155.0" text="Frequency:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="317.0" layoutY="292.0" prefHeight="20.0" prefWidth="81.0" rotate="270.0" text="Frequency">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="461.0" layoutY="410.0" prefHeight="20.0" prefWidth="81.0" text="days">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>
@@ -227,7 +266,7 @@
          <children>
             <ImageView fitHeight="76.0" fitWidth="162.0" layoutX="4.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../Images/logo.JPG" />
+                  <Image url="@../../client/src/Images/logo.JPG" />
                </image>
             </ImageView>
          </children>

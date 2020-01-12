@@ -42,7 +42,16 @@ public class ITManagerReportsSController {
 		ArrayList<Object> arry = msg.getObjs();
 		String start = (String) arry.get(0);
 		String end = (String) arry.get(1);
-
+		ArrayList<Object> fail = new ArrayList<Object>();
+		ArrayList<Object> suc = new ArrayList<Object>();
+		ArrayList<Object> susp = new ArrayList<Object>();
+		for(int i=0;i<12;i++)
+		{
+			fail.add(0);
+			suc.add(0);
+			susp.add(0);
+		}
+			
 		int numofFailor = 0, numOfSec = 0, numOfSus = 0, AllReq = 0;
 
 		try {
@@ -50,27 +59,47 @@ public class ITManagerReportsSController {
 			ResultSet rs = stmt
 					.executeQuery("SELECT * FROM failurreport WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
-				numofFailor++;
+				
+				String [] dateParts = rs.getString(3).split("-");
+				int month = Integer.parseInt(dateParts[1]);
+			
+				int sum=(int)fail.get(month);
+				sum++;
+				fail.set(month, sum);
 			}
-			toSendA.add(numofFailor);
+		
 			rs = stmt.executeQuery("SELECT * FROM request WHERE reqDatel BETWEEN '" + start + "' AND '" + end + "'");
 
 			while (rs.next() != false) {
-				numOfSec++;
+				
+				String [] dateParts = rs.getString(13).split("-");
+				int month = Integer.parseInt(dateParts[1]);
+			
+				int sum=(int)suc.get(month);
+				sum++;
+				suc.set(month, sum);
 			}
-			toSendA.add(numOfSec);
+			
 			rs = stmt.executeQuery("SELECT * FROM suspendrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 
 			while (rs.next() != false) {
-				numOfSus++;
+				String [] dateParts = rs.getString(3).split("-");
+				int month = Integer.parseInt(dateParts[1]);
+				
+				int sum=(int)susp.get(month);
+				sum++;
+				susp.set(month, sum);
 			}
-			toSendA.add(numOfSus);
+		
 			rs = stmt.executeQuery("SELECT * FROM requesttime WHERE meaningAssessmentStart AND closingEND BETWEEN '"
 					+ start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 				AllReq += getDateDiff(rs.getDate(2), rs.getDate(10), TimeUnit.DAYS);
 
 			}
+			toSendA.add(fail);
+			toSendA.add(suc);
+			toSendA.add(susp);
 			toSendA.add(AllReq);
 			dbs = new DBSmessage(MessageTypeS.makeActiveSuClo, toSendA);
 			return dbs;
@@ -120,30 +149,9 @@ public class ITManagerReportsSController {
 		Statement stmt;
 		DBSmessage dbs;
 		ArrayList<Object> toSendA = new ArrayList<Object>();
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
-	toSendA.add(0);
+		for(int i=0;i<24;i++)
+		toSendA.add(0);
+
 		ArrayList<Object> arry = msg.getObjs();
 		String start = (String) arry.get(0);
 		String end = (String) arry.get(1);
@@ -163,10 +171,7 @@ public class ITManagerReportsSController {
 				int sum=(int)toSendA.get(month+12);
 				sum++;
 				toSendA.set(month+12, sum);
-				System.out.println();
-				toSendA.size();
-				
-				
+		
 			}
 			dbs = new DBSmessage(MessageTypeS.makeDelays, toSendA);
 			return dbs;

@@ -13,6 +13,7 @@ import java.util.function.Predicate;
 
 import Enums.MessageType;
 import entity.DBmessage;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,8 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.StackedBarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
@@ -42,9 +45,8 @@ public class ITManagerReportsController implements Initializable {
 	private ArrayList<Integer> arryAcSuCo;
 	private ArrayList<Integer> arryDelaysInfo;
 
-
 	public ITManagerReportsController() {
-		
+
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 
@@ -74,8 +76,6 @@ public class ITManagerReportsController implements Initializable {
 
 	@FXML
 	private ChoiceBox<String> chooseTypeOfReport;
-	@FXML
-	private ChoiceBox<String> choosestatus;
 
 	@FXML
 	private DatePicker dateFrom;
@@ -99,6 +99,20 @@ public class ITManagerReportsController implements Initializable {
 	private TextField devesionT;
 
 	@FXML
+	private TextField frequency;
+
+	@FXML
+	private TextField deniedreq;
+
+	@FXML
+	private TextField allreq;
+	@FXML
+	private TextField medinDelay;
+
+	@FXML
+	private ChoiceBox<?> choosestatus;
+
+	@FXML
 	private Pane performence;
 
 	@FXML
@@ -111,40 +125,51 @@ public class ITManagerReportsController implements Initializable {
 	private PieChart delayspie;
 
 	@FXML
-	private TextField medinDelay;
-
+	private TextField numberOfDelays;
 	@FXML
 	private TextField devesionDelay;
 
 	@FXML
-	private TextField frequencyDelay;
-
-	@FXML
-	private TextField numberOfDelays;
-
-	@FXML
 	private TextField timeOfDelays;
 	@FXML
-	private TextField frequency;
-	@FXML
-	private TextField deniedreq;
-	@FXML
-	private TextField allreq;
+	private StackedBarChart<Integer, Integer> Frequencygraph;
 	@FXML
 	private TableView<tablefield> table;
 
 	@FXML
-	private TableColumn<String, ?> Month;
+	private TableColumn<tablefield, String> month;
 
 	@FXML
-	private TableColumn<String, ?> Days;
+	private TableColumn<tablefield, Integer> day;
 
 	@FXML
-	private TableColumn<String, ?> numOfReq;
+	private TableColumn<tablefield, Integer> num;
+	@FXML
+	private StackedBarChart<String, Integer> medgraph;
+
+	@FXML
+	private StackedBarChart<?, ?> devgraph;
+
+	@FXML
+	private StackedBarChart<?, ?> freqgraph;
+
+	@FXML
+	private TableView<tablefield> freqtable;
+	@FXML
+	private TableColumn<tablefield, String> month1;
+
+	@FXML
+	private TableColumn<tablefield, Integer> day1;
+
+	@FXML
+	private TableColumn<tablefield, Integer> num1;
 
 	@FXML
 	void generateReportClick(MouseEvent event) throws IOException {
 
+		freqgraph.getData().clear();
+		devgraph.getData().clear();
+		medgraph.getData().clear();
 		delaysInExecution.setVisible(false);
 		performence.setVisible(false);
 		activity.setVisible(false);
@@ -165,11 +190,6 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	private void makeDelays() {
-
-    
-	
- 
-		
 		DBmessage dbm;
 		String start, end;
 		start = this.dateFrom.getValue().toString();
@@ -217,53 +237,122 @@ public class ITManagerReportsController implements Initializable {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	public void setActiveSuClo(ArrayList<Object> send) {
-		int devesion, avrg = 0;
 
-		int failur = (int) send.get(0);
-		int suc = (int) send.get(1);
-		int susp = (int) send.get(2);
+		int devesion ,medfail, medsuc, medsusp;
+		float avrgf = 0,avrgs = 0,avrgsus = 0, devf = 0,devs = 0,devsus = 0 ;
+		ArrayList<Object> failur = (ArrayList<Object>) send.get(0);
+		ArrayList<Object> suc = (ArrayList<Object>) send.get(1);
+		ArrayList<Object> susp = (ArrayList<Object>) send.get(2);
 		int allreq = (int) send.get(3);
-		ArrayList<String> arry = new ArrayList<String>();
-		arry.add("failur");
-		arry.add("Active");
-		arry.add("susspened");
-		if (failur > suc && failur < susp)
-			this.medinT.setText("" + failur);
-		else if (suc > failur && suc < susp)
-			this.medinT.setText("" + suc);
-		else if (susp > failur && susp < suc)
-			this.medinT.setText("" + susp);
-		if (failur < suc && failur > susp)
-			this.medinT.setText("" + failur);
-		else if (suc < failur && suc > susp)
-			this.medinT.setText("" + suc);
-		else if (susp < failur && susp > suc)
-			this.medinT.setText("" + susp);
-		else {
-			avrg = (susp + suc + failur) / 3;
-
-			this.medinT.setText("" + avrg);
-		}
-		avrg = (susp + suc + failur) / 3;
-		devesion = (int) Math
-				.sqrt((Math.pow(failur - avrg, 2) + Math.pow(suc - avrg, 2) + Math.pow(susp - avrg, 2)) / 3);
-		avrg = (susp + suc + failur) / 3;
-		this.devesionT.setText("" + devesion);
-		this.frequency.setText("" + avrg);
-		this.deniedreq.setText("" + failur);
 		this.allreq.setText("" + allreq);
-		this.choosestatus.getItems().add("failur");
-		this.choosestatus.getItems().add("succes");
-		this.choosestatus.getItems().add("susppend");
-		PieChart.Data slice1 = new PieChart.Data("failur", failur);
-		PieChart.Data slice2 = new PieChart.Data("succes", suc);
-		PieChart.Data slice3 = new PieChart.Data("susppend", susp);
-		ActiveSuClo.getData().add(slice1);
-		ActiveSuClo.getData().add(slice2);
-		ActiveSuClo.getData().add(slice3);
+		ArrayList<String> arry = new ArrayList<String>();
+		int[] failure = new int[12];
+		int[] success = new int[12];
+		int[] susppend = new int[12];
+		int denied = 0;
+		int numOfDays = 0;
 
-		delayspie.setVisible(true);
+		for (int i = 0; i < 12; i++) {
+			failure[i] = (int) failur.get(i);
+			denied += failure[i];
+			success[i] = (int) suc.get(i);
+
+			susppend[i] = (int) susp.get(i);
+
+		}
+		this.deniedreq.setText("" + denied);
+		medfail = foundmed(failure);
+		medsuc = foundmed(success);
+		medsusp = foundmed(susppend);
+		XYChart.Series<String, Integer> medf = new XYChart.Series<>();
+		medf.getData().add(new XYChart.Data<>("failure" , medfail));
+		XYChart.Series meds = new XYChart.Series();
+		meds.getData().add(new XYChart.Data<>("success" , medsuc));
+		XYChart.Series medsus = new XYChart.Series();
+		
+		medsus.getData().add(new XYChart.Data<>("susppend" ,medsusp));
+		this.medgraph.getData().add(meds);
+		this.medgraph.getData().add(medf);
+		this.medgraph.getData().add(medsus);
+		XYChart.Series freqs = new XYChart.Series();
+		XYChart.Series freqf = new XYChart.Series<>();
+		XYChart.Series freqsus = new XYChart.Series();
+	/*	int[] n= {1,4,3,2,5,8,3,7,2,7,1,6};
+		int[] d= {2,7,1,6,1,4,3,2,5,8,3,7};
+
+		int[] s= {0,0,0,0,5,8,7,1,6,3,7,2};*/
+
+		for(int i=0;i<12;i++)
+		{
+			freqf.getData().add(new XYChart.Data<>(""+i , failure[i]));
+			
+			freqs.getData().add(new XYChart.Data<>(""+i , success[i]));
+			
+			
+			freqsus.getData().add(new XYChart.Data<>(""+i , susppend[i]));
+		}
+		
+		this.freqgraph.getData().add(freqsus);
+		this.freqgraph.getData().add(freqs);
+		this.freqgraph.getData().add(freqf);
+		
+		for(int i=0;i<12;i++)
+		{
+			avrgf+=failure[i];
+			avrgs+=success[i];
+			avrgsus+=susppend[i];
+		}
+		avrgf=avrgf/12;
+		avrgs=avrgs/12;
+		avrgsus=avrgsus/12;
+		
+		
+		for (int j = 0; j < 12; j++)
+		{
+			devf += (float) Math.pow(failure[j] - avrgf, 2);
+			devs += (float) Math.pow(success[j] - avrgs, 2);
+			devsus += (float) Math.pow(susppend[j] - avrgsus, 2);
+		}
+		devf=(float)Math.sqrt(devf / 12);
+		devs=(float)Math.sqrt(devs / 12);
+		devsus=(float)Math.sqrt(devsus / 12);
+	
+		
+		XYChart.Series avrf = new XYChart.Series<>();
+		avrf.getData().add(new XYChart.Data<>("failure" , 5));
+		XYChart.Series avrs = new XYChart.Series();
+		avrs.getData().add(new XYChart.Data<>("success" , 5));
+		XYChart.Series avrsus = new XYChart.Series();
+		
+		avrsus.getData().add(new XYChart.Data<>("susppend" , 7));
+		this.devgraph.getData().add(avrf);
+		this.devgraph.getData().add(avrs);
+		this.devgraph.getData().add(avrsus);
+		
+		/*
+		 * XYChart.Series fre = new XYChart.Series();
+		 * 
+		 * 
+		 * this.medinDelay.setText("" + medin); float avrg = 0; for (int j = 0; j < 12;
+		 * j++) { avrg += (float) daysReq[j]; }
+		 * 
+		 * avrg = (float) avrg / 12; float sum = 0; for (int j = 0; j < 12; j++) sum +=
+		 * (float) Math.pow(daysReq[j] - avrg, 2); String devesion=String.format("%.2f",
+		 * Math.sqrt(sum / 12)); this.devesionDelay.setText(devesion);
+		 * ObservableList<tablefield> rows = FXCollections.observableArrayList();
+		 * XYChart.Series dataSeries1 = new XYChart.Series();
+		 * 
+		 * 
+		 * for(int j=0;j<12;j++) { rows.add(new tablefield(months[j],
+		 * daysReq[j],freq[j])); dataSeries1.getData().add(new
+		 * XYChart.Data(""+daysReq[j], freq[j])); }
+		 * 
+		 * table.setItems(rows); dataSeries1.setName("Delays request");
+		 * 
+		 * this.Frequencygraph.getData().add(dataSeries1);
+		 */
 
 	}
 
@@ -322,6 +411,9 @@ public class ITManagerReportsController implements Initializable {
 		chooseTypeOfReport.getItems().add("Activity");
 		chooseTypeOfReport.getItems().add("Performence");
 		chooseTypeOfReport.getItems().add("Delays in execution");
+		month.setCellValueFactory(new PropertyValueFactory<>("month"));
+		day.setCellValueFactory(new PropertyValueFactory<>("day"));
+		num.setCellValueFactory(new PropertyValueFactory<>("num"));
 
 	}
 
@@ -329,9 +421,10 @@ public class ITManagerReportsController implements Initializable {
 		this.days.setText("" + send.get(0));
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void setmakeDelays(ArrayList<Object> send) {
-		for (Object a : send)
-			System.out.print(a + ",");
+		String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
+				"October", "November", "December" };
 		int[] daysReq = new int[12];
 		int[] freq = new int[12];
 		int numOfDelay = 0;
@@ -349,39 +442,42 @@ public class ITManagerReportsController implements Initializable {
 		this.numberOfDelays.setText("" + numOfDelay);
 		this.timeOfDelays.setText("" + numOfDays);
 
-		int sor = sort(daysReq);
-		this.medinDelay.setText("" + sor);
+		int medin = foundmed(daysReq);
+		this.medinDelay.setText("" + medin);
 		float avrg = 0;
 		for (int j = 0; j < 12; j++) {
 			avrg += (float) daysReq[j];
-
 		}
 
 		avrg = (float) avrg / 12;
 		float sum = 0;
 		for (int j = 0; j < 12; j++)
 			sum += (float) Math.pow(daysReq[j] - avrg, 2);
-		this.devesionDelay.setText(String.format("%.2f", Math.sqrt(sum / 12)));
-		this.Month.setStyle("Ariel");
-		Collection<tablefield> rows = new ArrayList<>();
-		for(int j=0;j<12;j++)
-	    	rows.add(new tablefield(""+j, ""+daysReq[j],""+freq[j]));
-        ObservableList<tablefield> details = FXCollections.observableArrayList(rows);
-	    this.table.setItems(details);
+		String devesion = String.format("%.2f", Math.sqrt(sum / 12));
+		this.devesionDelay.setText(devesion);
+		ObservableList<tablefield> rows = FXCollections.observableArrayList();
+		XYChart.Series dataSeries1 = new XYChart.Series();
 
+		for (int j = 0; j < 12; j++) {
+			rows.add(new tablefield(months[j], daysReq[j], freq[j]));
+			dataSeries1.getData().add(new XYChart.Data("" + daysReq[j], freq[j]));
+		}
 
+		table.setItems(rows);
+		dataSeries1.setName("Delays request");
+
+		this.Frequencygraph.getData().add(dataSeries1);
 	}
 
-	private int sort(int[] arr) {
+	private int foundmed(int[] arr) {
 
 		for (int i = arr.length - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
 				if (arr[j] > arr[j + 1])
 					swap(arr, j, j + 1);
 			}
-
 		}
-		return arr[6];
+		return arr[(int) arr.length / 2];
 
 	}
 
@@ -390,41 +486,5 @@ public class ITManagerReportsController implements Initializable {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
-	
-	
-	public static class tablefield {
-		
-	    private final SimpleStringProperty month;
-	    private final SimpleStringProperty days;
-	    private final SimpleStringProperty num;
-	 
-	    private tablefield(String month, String days, String num) {
-	        this.month = new SimpleStringProperty(month);
-	        this.days = new SimpleStringProperty(days);
-	        this.num = new SimpleStringProperty(num);
-	    }
-	 
-	    public String getmonth() {
-	        return month.get();
-	    }
-	    public void setmonth(String fName) {
-	    	month.set(fName);
-	    }
-	        
-	    public String getdays() {
-	        return days.get();
-	    }
-	    public void setdays(String fName) {
-	    	days.set(fName);
-	    }
-	    
-	    public String getnum() {
-	        return num.get();
-	    }
-	    public void setnum(String fName) {
-	    	num.set(fName);
-	    }
-	        
-	}
-}
 
+}
