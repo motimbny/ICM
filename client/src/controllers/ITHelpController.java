@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 /**
- * User home screen Controller 
+ * IT help screen Controller 
  * @author SHIRA
  */
 public class ITHelpController {

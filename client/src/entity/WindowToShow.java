@@ -353,7 +353,7 @@ public class WindowToShow
 	private void initITManagerEmployeesManagment() {
 		ITManagerEmployeesManagmentController controller = new ITManagerEmployeesManagmentController();
 		pathfxml = "/Fxml/ITManagerEmployeesManagment.fxml";
-		windowName = "ICM-ITManagerEmployeesManagment";
+		windowName = "ICM-ITManagerEmployeesManagement";
 		
 	}
 

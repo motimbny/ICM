@@ -42,7 +42,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="employeesMangBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMang" prefHeight="46.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Managment ">
+            <Button fx:id="employeesMangBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMang" prefHeight="46.0" prefWidth="140.0" styleClass="buttonBlackBorder" text="Management">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -91,7 +91,7 @@
       </VBox>
       <Pane layoutX="140.0" prefHeight="600.0" prefWidth="661.0">
          <children>
-            <Label layoutX="118.0" layoutY="30.0" text="Employees managment">
+            <Label layoutX="118.0" layoutY="30.0" text="Employees management">
                <font>
                   <Font name="System Bold" size="40.0" />
                </font>

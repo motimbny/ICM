@@ -42,7 +42,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="employeesMangBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMang" prefHeight="46.0" prefWidth="140.0" text="Managment ">
+            <Button fx:id="employeesMangBTN" mnemonicParsing="false" onMouseClicked="#goEmployeesMang" prefHeight="46.0" prefWidth="140.0" text="Management">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
                      <image>

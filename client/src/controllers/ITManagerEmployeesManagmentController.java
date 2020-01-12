@@ -19,7 +19,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-
+/**
+ * IT manager employees management screen Controller 
+ * @author SHIRA
+ */
 public class ITManagerEmployeesManagmentController implements Initializable 
 {
 	private MainAllControllers MainAllControllers;
