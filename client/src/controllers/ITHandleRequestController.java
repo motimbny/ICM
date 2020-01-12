@@ -10,6 +10,7 @@ import Enums.MessageType;
 import Enums.Position;
 import entity.DBmessage;
 import entity.Request;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -238,8 +239,18 @@ public class ITHandleRequestController implements Initializable {
 		dbm = new DBmessage(MessageType.ITTestApproval, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-			MainAllControllers.setWindowVar("ITshowRequests");
+			Platform.runLater(new Runnable()
+			{
+			@Override
+			public void run() 
+			{
+			try {
+				MainAllControllers.setWindowVar("ITshowRequests");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			MainAllControllers.changeWin();
+			}});
 		} catch (IOException e) {
 		}
 	}
