@@ -181,12 +181,12 @@ public class UserSAddRequestController
 	
    public void saveFileToServerFolder()
    {
-	   int fileSize =sf.getSize(); 
+	      int fileSize =sf.getSize(); 
 		  System.out.println("Message received: " + sf);
 		  System.out.println("length "+ fileSize); 
 		  String LocalfilePath="serverfile/";	
 		  try{
-			      File newFile = new File (LocalfilePath+sf.getFileName());     		      
+			      File newFile = new File (LocalfilePath+sf.getFileName()); //concat(Integer.toString(request.getId())));     		      
 			      byte [] mybytearray  = sf.getMybytearray();		  
 			      FileOutputStream fos = new FileOutputStream(newFile);
 				  BufferedOutputStream bos = new BufferedOutputStream(fos);

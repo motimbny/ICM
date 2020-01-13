@@ -404,15 +404,15 @@ public class SupervisorShowRequestsController implements Initializable {
 	@FXML
 	void UpdateRequest(MouseEvent event) throws IOException {
 		try {
-			//if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage()
-					//.equals("supervisorApprovel")) {
+			if (!requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus()
+					.equals("Closed")) {
 				MainAllControllers.nowWin = "ITRequestSuperviser";
 				MainAllControllers.request = requestTable.getItems()
 						.get(requestTable.getSelectionModel().getSelectedIndex()).getId();
 				MainAllControllers.setWindowVar("SupervisorUpdateRequest");
 				MainAllControllers.changeWin();
-			//} else
-			//	stagenotmatch.setVisible(true);
+			} else
+				stagenotmatch.setVisible(true);
 
 		} catch (Exception e) {
 
