@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -11,6 +12,7 @@ import Enums.StageName;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Request;
+import entity.User;
 import entity.extensionrequest;
 
 public class superviserExtensionRequestController
@@ -18,6 +20,7 @@ public class superviserExtensionRequestController
     private Connection connection;
     private int numReport;
     private DBmessage db;
+    private User manager;
 	public superviserExtensionRequestController(DBmessage dbm, Connection connection) 
 	{
 		this.db=dbm;
@@ -110,20 +113,106 @@ public class superviserExtensionRequestController
 	public DBSmessage changeAnswer()
 	{
 		Statement stmt;
-		DBSmessage dbs;
+		DBSmessage dbs = null;
+		int id=(int) db.getObjs().get(0);
 		String ans=(String) db.getObjs().get(1);
+		String stage=(String) db.getObjs().get(2);
+		int timeToAdd=Integer.parseInt((String) db.getObjs().get(3));
+		String nameTime=null;
 		ArrayList<Object> toSend= new ArrayList<Object>();
 		try 
 		{
 			stmt = connection.createStatement();
-			int rs = stmt.executeUpdate("UPDATE extensionrequest SET status='"+ans+"' WHERE id="+numReport+"");
+			stmt.executeUpdate("UPDATE extensionrequest SET status='"+ans+"' WHERE id="+numReport+"");
+			
 			dbs=new DBSmessage(MessageTypeS.superviserExtensionRequestAnswer,toSend);
-				return dbs;
+				
 		} 
 		catch (SQLException e)
 		{
 			e.printStackTrace();
-		}	
-		return null;
+		}
+		
+		if(ans.equals("approve"))
+		{
+			try {
+				this.sendMessageToManager(" "+id);
+				
+				switch(stage)
+				{
+				case "meaningAssessment":
+					nameTime = "timeEvaluation";
+					break;
+				case "examinationAndDecision":
+					nameTime = "timeExaminationDecision";
+					break;
+				case "execution":
+					nameTime = "timePerform";
+					break;
+				case "testing":
+					nameTime = "timeTest";
+					break;
+				}
+				
+				int toUp=this.getTime(nameTime, id)+timeToAdd;
+				stmt = connection.createStatement();		
+				stmt.executeUpdate("UPDATE requeststages SET "+nameTime+"="+ toUp+" WHERE id="+id+"");
+				
+				
+			} catch (SQLException e) {	}
+			
+		}
+		
+		return dbs;
 	}
+	
+	public void sendMessageToManager(String reqid) throws SQLException
+	   {
+		findmanager();
+		   PreparedStatement mToAdd;
+		   mToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
+		   mToAdd.setString(1,manager.getName());
+		   mToAdd.setString(2,"Supervisor");
+		   mToAdd.setString(3,reqid);
+		   mToAdd.setString(4,reqid+" extension request was approved");
+		   mToAdd.setString(5,java.time.LocalDate.now().toString());
+		   mToAdd.setInt(6,0);
+		   mToAdd.executeUpdate();	
+		   mToAdd.close();
+		}
+	
+	 private void findmanager()
+		{
+			Statement stmt;
+			User toAdd=null;
+			try 
+			{
+				stmt = connection.createStatement();
+				ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE position='IT-manager'");
+					while(rs.next()!=false)
+					{
+					  manager=new User(rs.getString(1),Integer.toString(rs.getInt(2)),rs.getString(3));
+					}
+					rs.close();
+			}
+			catch(Exception e) {}	
+		}
+	 
+	 public int getTime(String stage, int id)
+	 {
+		 Statement stmt;
+		 int num=0;
+		 try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT "+stage+" FROM requeststages WHERE id="+id+"");
+				while(rs.next()!=false)
+				{
+				  num=rs.getInt(1);
+				}
+				rs.close();
+			
+			
+		} catch (SQLException e) {	}
+			return num;
+	 }
 }

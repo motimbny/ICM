@@ -308,7 +308,7 @@ public class MainAllControllers
 	
 	public void hideButtonExtension(ArrayList<Object> list)
 	{
-		boolean send=((int)list.get(0)>3) ? false : true;
+		boolean send=((int)list.get(0)>3 ||(int)list.get(0)==0) ? false : true;
 		((ITHandleRequestController) WindowToShow.controller).visableExtensionBTN(send);
 	}
 	

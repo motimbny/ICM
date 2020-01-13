@@ -109,6 +109,8 @@ public class SupervisorExtensionRequestController implements Initializable
 		ArrayList<Object> arry=new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
 		arry.add("approve");
+		arry.add(requestSTG.getText());
+		arry.add(requestTime.getText());
     	dbm=new DBmessage(MessageType.superviserExtensionRequestAnswer, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
@@ -127,6 +129,8 @@ public class SupervisorExtensionRequestController implements Initializable
 		ArrayList<Object> arry=new ArrayList<Object>();
 		arry.add(MainAllControllers.request);
 		arry.add("denied");
+		arry.add(requestSTG.getText());
+		arry.add(requestTime.getText());
     	dbm=new DBmessage(MessageType.superviserExtensionRequestAnswer, arry);   
     	try {
     		MainAllControllers.sendToAbsServer(dbm);
