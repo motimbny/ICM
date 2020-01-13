@@ -18,7 +18,7 @@ public class ShowEmployeeListController
 	private Connection connection;
 	private DBmessage db;
 	private ArrayList<Object> toSend;
-	private ITemployee superviser,ceo,cc,cc2,itop,person;
+	private ITemployee superviser,ceo,cc,cc2,person;
 	public ShowEmployeeListController(DBmessage db,Connection connection)
 	{
 		this.db=db;
@@ -28,7 +28,6 @@ public class ShowEmployeeListController
 		ceo=findceo();
 		cc=findcc();
 		cc2=findcc2();
-		itop=finditop();
 	}
 	
 	private ITemployee findcc2() 
@@ -58,25 +57,6 @@ public class ShowEmployeeListController
 		{
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='CC'");
-				while(rs.next()!=false)
-				{
-				  toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
-				}
-		} 
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-		return toAdd;
-	}
-	private ITemployee finditop()
-	{
-		Statement stmt;
-		ITemployee toAdd=null;
-		try 
-		{
-			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT-operator'");
 				while(rs.next()!=false)
 				{
 				  toAdd=new ITemployee(rs.getInt(1), rs.getString(2), rs.getString(3),rs.getString(4), rs.getInt(5),rs.getString(6));
@@ -157,7 +137,7 @@ public class ShowEmployeeListController
 		String posit="IT";
 		try {
 			stmt = connection.createStatement();
-		     if(nameIT.equals(itop.getEmployeeName())||nameIT.equals(cc2.getEmployeeName())||nameIT.equals(cc.getEmployeeName())||nameIT.equals(superviser.getEmployeeName())||nameIT.equals(ceo.getEmployeeName()))
+		     if(nameIT.equals(cc2.getEmployeeName())||nameIT.equals(cc.getEmployeeName())||nameIT.equals(superviser.getEmployeeName())||nameIT.equals(ceo.getEmployeeName()))
 		    	 posit=person.getEmployeePos();    
 			stmt.executeUpdate("UPDATE user SET position='"+pos+"' WHERE userName='"+nameIT+"'");
 			stmt.executeUpdate("UPDATE itemployees SET employeePos='"+pos+"' WHERE employeeName='"+nameIT+"'");
@@ -176,11 +156,7 @@ public class ShowEmployeeListController
 				stmt.executeUpdate("UPDATE user SET position='"+posit+"'  WHERE userName='"+cc.getEmployeeName()+"'");
 				stmt.executeUpdate("UPDATE itemployees SET employeePos='"+posit+"' WHERE employeeName='"+cc.getEmployeeName()+"'");
 			}
-			if(pos.equals("IT-operator"))
-			{
-				stmt.executeUpdate("UPDATE user SET position='"+posit+"' WHERE userName='"+itop.getEmployeeName()+"'");
-				stmt.executeUpdate("UPDATE itemployees SET employeePos='"+posit+"' WHERE employeeName='"+itop.getEmployeeName()+"'");
-			}
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -306,6 +306,12 @@ public class MainAllControllers
 		} catch (IOException e) {}
 	}
 	
+	public void hideButtonExtension(ArrayList<Object> list)
+	{
+		boolean send=((int)list.get(0)>3) ? false : true;
+		((ITHandleRequestController) WindowToShow.controller).visableExtensionBTN(send);
+	}
+	
 	/**
 	 * Show user req.
 	 *

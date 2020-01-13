@@ -41,5 +41,6 @@ public enum MessageType
 		addTimeEstimatedPerformance, ITchangeCompleted, 
 		ITTestApproval, denyEvaluationReport, ITShowEmployeeList, ITSaveTester, SwitchPositions,
 		SuperviserShowMessages, SuperviserUpdateMessages, ITaddTimeEstimated, SupervisorApproveEvluationTime, 
-		approveTime, SupervisorDenyEvluationTime, SupervisorApproveExecutionTime, SupervisorDenyExecutionTime, makeActiveSuClo, makePerformenct, makeDelays, 
+		approveTime, SupervisorDenyEvluationTime, SupervisorApproveExecutionTime, SupervisorDenyExecutionTime, 
+		makeActiveSuClo, makePerformenct, makeDelays, ITrequestDaysLeft, 
 }

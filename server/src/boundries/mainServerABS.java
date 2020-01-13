@@ -132,6 +132,15 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			case ITrequestDaysLeft:
+			{
+				ITHandleRequestSController itHandleRequestSController = new ITHandleRequestSController(dbm, connection);
+				try {
+					client.sendToClient(itHandleRequestSController.numOfDays());
+				} catch (IOException e) {
+				}
+				break;
+			}	
 			case ShowReqUser: {
 				UserShowRequestsSController userShowRequestsSController = new UserShowRequestsSController(dbm, connection);
 				try {

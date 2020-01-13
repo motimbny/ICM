@@ -61,9 +61,6 @@ public class mainClientABS extends AbstractClient
 					case "IT-manager":
 						topen="ITManagerHome";
 						break;
-					case "IT-operator":
-						topen="ITHome";
-						break;
 					case "IT":
 						topen="ITHome";
 						break;
@@ -157,7 +154,13 @@ public class mainClientABS extends AbstractClient
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				 MainAllControllers.showReqAgain(send); 
 			}
-			break;	
+			break;
+			case ITrequestDaysLeft:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				 MainAllControllers.hideButtonExtension(send); 
+			}
+			break;
 			case ShowReqIT:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

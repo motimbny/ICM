@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -185,7 +186,7 @@ public class ITHandleRequestSController {
 		try {
 			stmt = connection.createStatement();
 		//ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT' OR employeePos='IT-operator'");
-			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE (employeePos='IT' OR employeePos='IT-operator') AND employeeName <> (SELECT itAppraiser FROM requeststages WHERE id="+reqId+") AND employeeName <> (SELECT itPerformanceLeader FROM requeststages WHERE id="+reqId+")");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE (employeePos='IT') AND employeeName <> (SELECT itAppraiser FROM requeststages WHERE id="+reqId+") AND employeeName <> (SELECT itPerformanceLeader FROM requeststages WHERE id="+reqId+")");
 			while (rs.next() != false) {
 				listOfIT.add(rs.getString(2).toString());
 			}
@@ -212,6 +213,101 @@ public class ITHandleRequestSController {
 			send.add(1);
 			dbs = new DBSmessage(MessageTypeS.ITSaveTester, send);
 			return dbs;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public DBSmessage numOfDays() {
+		DBSmessage dbs;
+		Statement stmt;
+		ArrayList<Object> send = new ArrayList<Object>();
+		ArrayList<Object> arry = msg.getObjs();
+		this.reqId = (int) arry.get(0);
+		String timeStage = "";
+		String startTime= "";
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id="+reqId+""); 
+				while(rs.next()!=false)
+				{
+					StageName name=null;
+					
+					switch(rs.getString(1))
+					{
+					case "supervisorApprovel":
+						name = StageName.supervisorApprovel;
+						break;
+					case "waitingEvaluationTime":
+						name = StageName.waitingEvaluationTime;
+						break;
+					case "waitingSupervisorApproveEvaluationTime":
+						name = StageName.waitingSupervisorApproveEvaluationTime;
+						break;
+					case "meaningAssessment":
+						name = StageName.meaningAssessment;
+						timeStage = "timeEvaluation";
+						startTime="meaningAssessmentStart";
+						break;
+					case "waitingExecutionTime":
+						name = StageName.waitingExecutionTime;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
+						break;
+					case "waitingSupervisorApproveExecutionTime":
+						name = StageName.waitingSupervisorApproveExecutionTime;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
+						break;
+					case "examinationAndDecision":
+						name = StageName.examinationAndDecision;
+						timeStage = "timeExaminationDecision";
+						startTime="examinationAndDecisionStart";
+						break;
+					case "execution":
+						name = StageName.execution;
+						timeStage = "timePerform";
+						startTime="executiondStart";
+						break;
+					case "testing":
+						name = StageName.testing;
+						timeStage = "timeTest";
+						startTime="testingStart";
+						break;
+					case "closing":
+						name = StageName.closing;
+						break;
+					case "Closed":
+						name = StageName.Closed;
+						break;
+					}
+				}
+				
+			int x = 0, timeleft;
+					Date today = new Date();
+					DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
+					Date start = null;
+					if (timeStage.equals(""))
+						timeleft = 0;
+					else {
+						stmt = connection.createStatement();
+						ResultSet daters = stmt.executeQuery("SELECT " + timeStage + " FROM requeststages WHERE id=" +reqId+ "");
+						while (daters.next() != false) {
+							x = daters.getInt(1);
+						}
+						stmt = connection.createStatement();
+						ResultSet startrs = stmt.executeQuery("SELECT " + startTime + " FROM requesttime WHERE id=" + reqId + "");
+						while (startrs.next() != false) {
+							start = startrs.getDate(1);
+						}
+						float diffrence = (today.getDate() - start.getDate());
+						timeleft = (int) (x - diffrence);
+					}
+
+					send.add(timeleft);
+				dbs=new DBSmessage(MessageTypeS.ITrequestDaysLeft,send);
+				return dbs;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

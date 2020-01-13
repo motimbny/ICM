@@ -556,6 +556,7 @@ public class ITHandleRequestController implements Initializable {
 				l3.setVisible(false);
 				l4.setVisible(false);
 			}
+			
 		}
 			break;
 		case "Tester":
@@ -572,7 +573,27 @@ public class ITHandleRequestController implements Initializable {
 				ReqForTimeExtensionBTN.setVisible(false);
 			}
 			break;
+			
 		}
+		this.checkDaysLeft();
+	}
+	
+	public void checkDaysLeft()
+	{
+		int s = MainAllControllers.request;
+		ArrayList<Object> arry = new ArrayList<Object>();
+		arry.add(s); // request id
+		DBmessage dbm;
+		dbm = new DBmessage(MessageType.ITrequestDaysLeft, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+	}
+	
+	public void visableExtensionBTN(boolean con)
+	{
+		ReqForTimeExtensionBTN.setVisible(con);
 	}
 
 	/**

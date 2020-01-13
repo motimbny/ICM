@@ -278,9 +278,11 @@ public class UserAddRequestController implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		chooseInfoCom.getItems().add("Moodle");
-    	chooseInfoCom.getItems().add("Info System");
+    	chooseInfoCom.getItems().add("Information System");
     	chooseInfoCom.getItems().add("Libary");
-    	chooseInfoCom.getItems().add("Computers");
-		
+    	chooseInfoCom.getItems().add("Class Rooms With Computers");
+    	chooseInfoCom.getItems().add("College Website");
+    	chooseInfoCom.getItems().add("Computer Farm");	
+    	chooseInfoCom.getItems().add("Labs");
 	}
 }

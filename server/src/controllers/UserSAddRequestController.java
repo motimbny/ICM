@@ -107,8 +107,11 @@ public class UserSAddRequestController
  			requeststages.setInt(1, request.getId());
  			requeststages.setString(2, request.getCurrentStatus());
  			requeststages.setString(3,request.getCurrentStage().toString());
- 			c1=rand.nextInt(listOfIT.size());
- 			requeststages.setString(4,listOfIT.get(c1).toString());
+ 			//c1=rand.nextInt(listOfIT.size());
+ 			//requeststages.setString(4,listOfIT.get(c1).toString());
+ 			String name=this.getSystemIT(request.getInfoSystem());
+ 			requeststages.setString(4,name);
+ 			c1=this.findNumOfIT(name);
  			requeststages.setString(5,this.CEO);
  			requeststages.setString(6, this.CCC2);
  			requeststages.setString(7, this.CCC3);
@@ -150,6 +153,32 @@ public class UserSAddRequestController
     	dbs=new DBSmessage(MessageTypeS.AddRequest, arry);
 		return dbs;
    }
+	
+	public String getSystemIT(String system)
+	{
+		Statement stmt;
+		ResultSet rs;
+		try {
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery("SELECT employeeName FROM itsystemlist, itemployees  WHERE (systemName='"+system+"') AND (itsystemlist.employeeId=itemployees.employeeId);");
+			if(rs.next()!=false)
+			{
+				return rs.getString(1);
+			}
+		} catch (SQLException e) {}	
+			return null;
+	}
+	
+	public int findNumOfIT(String name)
+	{
+		for(int i=0; i<listOfIT.size(); i++)
+		{
+			if(listOfIT.get(i).toString().equals(name))
+				return i;
+		}
+		return 0;
+	}
+	
    public void saveFileToServerFolder()
    {
 	   int fileSize =sf.getSize(); 
