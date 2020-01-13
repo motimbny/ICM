@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -78,17 +79,17 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMouseExited="#visNot" onMousePressed="#showRequestInfo" prefHeight="350.0" prefWidth="597.0">
+            <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMouseExited="#visNot" prefHeight="306.0" prefWidth="597.0">
                <columns>
                   <TableColumn fx:id="RequestID" prefWidth="190.77774047851562" text="Request id" />
                   <TableColumn fx:id="RequestStatus" prefWidth="202.44439697265625" text="Request status" />
                   <TableColumn fx:id="RequestProcessStage" prefWidth="202.0" text="Request process stage" />
                </columns>
             </TableView>
-            <Button fx:id="SuprvisorUpdateRequestBTN" ellipsisString="" layoutX="43.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#UpdateRequest" prefHeight="32.0" prefWidth="178.0" styleClass="buttonBlackBorder" text="Update Request IT" />
-            <Button fx:id="SuprvisorCloseRequestBTN" layoutX="462.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#closeRequest" prefHeight="32.0" prefWidth="178.0" styleClass="buttonBlackBorder" text="Close Request" />
-            <Button fx:id="SuprvisorSuspendRequestBTN" layoutX="253.0" layoutY="477.0" mnemonicParsing="false" onMouseClicked="#suspendRequest" prefHeight="32.0" prefWidth="178.0" styleClass="buttonBlackBorder" text="Suspend Request" />
-            <Button fx:id="SuprvisorExtensionRequestBTN" layoutX="253.0" layoutY="521.0" mnemonicParsing="false" onMouseClicked="#viewExtensionReport" prefHeight="32.0" prefWidth="178.0" styleClass="buttonBlackBorder" text="View Extension Request" />
+            <Button fx:id="SuprvisorUpdateRequestBTN" ellipsisString="" layoutX="41.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#UpdateRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Update Request IT" />
+            <Button fx:id="SuprvisorCloseRequestBTN" layoutX="524.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#closeRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Close Request" />
+            <Button fx:id="SuprvisorSuspendRequestBTN" layoutX="284.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#suspendRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Suspend Request" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="SuprvisorExtensionRequestBTN" layoutX="404.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#viewExtensionReport" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="View Extension Request" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="search" layoutX="485.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#searchRequest" prefHeight="27.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="Search" />
             <Label layoutX="44.0" layoutY="84.0" text="Search request id:">
                <font>
@@ -96,18 +97,26 @@
                </font>
             </Label>
             <TextField fx:id="requestIdTo" layoutX="180.0" layoutY="82.0" prefHeight="25.0" prefWidth="277.0" promptText="Enter request id here..." />
-            <Label fx:id="susNot" layoutX="485.0" layoutY="527.0" style="-fx-text-fill: red;" text="Action not allowed" visible="false">
+            <Label fx:id="susNot" layoutX="283.0" layoutY="537.0" style="-fx-text-fill: red;" text="Action not allowed" visible="false">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="closeNot" layoutX="476.0" layoutY="508.0" style="-fx-text-fill: red;" text="Action not allowed" visible="false">
+            <Label fx:id="closeNot" layoutX="272.0" layoutY="524.0" prefHeight="27.0" prefWidth="155.0" style="-fx-text-fill: red;" text="Action not allowed" visible="false">
                <font>
-                  <Font size="14.0" />
+                  <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="SuprvisorTime" layoutX="43.0" layoutY="522.0" mnemonicParsing="false" onMouseClicked="#viewTime" prefHeight="32.0" prefWidth="178.0" styleClass="buttonBlackBorder" text="Update request time" />
-            <Label fx:id="stagenotmatch" layoutX="445.0" layoutY="515.0" prefHeight="46.0" prefWidth="196.0" style="-fx-text-fill: red;" text="cannot update employees at this stage" textAlignment="CENTER" visible="false" wrapText="true" />
+            <Button fx:id="SuprvisorTime" layoutX="164.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#viewTime" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Update request time" textAlignment="CENTER" wrapText="true" />
+            <Label fx:id="stagenotmatch" layoutX="272.0" layoutY="515.0" prefHeight="46.0" prefWidth="140.0" style="-fx-text-fill: red;" text="ACTION NOT ALLOWED" textAlignment="CENTER" visible="false" wrapText="true" />
+            <Label layoutX="409.0" layoutY="535.0" text="Double click to see request info">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <effect>
+                  <Glow />
+               </effect>
+            </Label>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
