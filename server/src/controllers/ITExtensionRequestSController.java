@@ -88,6 +88,7 @@ public class ITExtensionRequestSController {
 	 */
 	public DBSmessage submitRequest()
 	{
+		Statement stmt;
 		ArrayList<Object> arr = db.getObjs();
 		this.reqId=(int)arr.get(0);
 		this.stage=(String)arr.get(1);
@@ -112,6 +113,10 @@ public class ITExtensionRequestSController {
  			ps.setString(7, formatter.format(date));
  			ps.executeUpdate();	
  			ps.close();
+ 			
+ 			stmt = connection.createStatement();
+ 			stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active-Extension' WHERE id="+this.reqId+"");
+			stmt.executeUpdate("UPDATE request SET currentStatus='Active-Extension' WHERE id="+this.reqId+"");
  			arry.add(1);
  		  }
  		 catch (SQLException e) 

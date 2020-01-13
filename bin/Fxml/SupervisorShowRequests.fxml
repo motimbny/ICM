@@ -79,7 +79,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMouseExited="#visNot" prefHeight="306.0" prefWidth="597.0">
+             <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMouseExited="#visNot" onMousePressed="#showRequestInfo" prefHeight="313.0" prefWidth="597.0">
                <columns>
                   <TableColumn fx:id="RequestID" prefWidth="190.77774047851562" text="Request id" />
                   <TableColumn fx:id="RequestStatus" prefWidth="202.44439697265625" text="Request status" />
@@ -108,7 +108,7 @@
                </font>
             </Label>
             <Button fx:id="SuprvisorTime" layoutX="164.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#viewTime" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Update request time" textAlignment="CENTER" wrapText="true" />
-            <Label fx:id="stagenotmatch" layoutX="44.0" layoutY="524.0" prefHeight="46.0" prefWidth="196.0" style="-fx-text-fill: red;" text="cannot update employees at this stage" textAlignment="CENTER" visible="false" wrapText="true" />
+            <Label fx:id="stagenotmatch" layoutX="272.0" layoutY="515.0" prefHeight="46.0" prefWidth="140.0" style="-fx-text-fill: red;" text="ACTION NOT ALLOWED" textAlignment="CENTER" visible="false" wrapText="true" />
             <Label layoutX="409.0" layoutY="535.0" text="Double click to see request info">
                <font>
                   <Font size="16.0" />

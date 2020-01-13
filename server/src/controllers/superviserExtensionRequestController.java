@@ -123,8 +123,10 @@ public class superviserExtensionRequestController
 		try 
 		{
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE extensionrequest SET status='"+ans+"' WHERE id="+numReport+"");
+			stmt.executeUpdate("UPDATE extensionrequest SET status='"+ans+"' WHERE id="+id+"");
 			
+ 			stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+id+"");
+			stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+id+"");
 			dbs=new DBSmessage(MessageTypeS.superviserExtensionRequestAnswer,toSend);
 				
 		} 
@@ -160,8 +162,10 @@ public class superviserExtensionRequestController
 				
 				
 			} catch (SQLException e) {	}
-			
+				
 		}
+		
+		
 		
 		return dbs;
 	}
