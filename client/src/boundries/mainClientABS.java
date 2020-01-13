@@ -152,6 +152,12 @@ public class mainClientABS extends AbstractClient
 				 MainAllControllers.submitEstimatedTime(send); 
 			}
 			break;	
+			case ITshowReqAgain:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				 MainAllControllers.showReqAgain(send); 
+			}
+			break;	
 			case ShowReqIT:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

@@ -130,6 +130,7 @@ public class ITHandleRequestSController {
 	}
 
 	public Object saveChangeCompleted() {
+		ArrayList<Object> toSend = new ArrayList<Object>();
 		ArrayList<Object> arry = msg.getObjs();
 		this.reqId = (int) arry.get(0);
 		Statement stmt;
@@ -144,13 +145,16 @@ public class ITHandleRequestSController {
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET timeTest=7 WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requesttime SET testingStart='"+formatter.format(date)+"' WHERE id="+reqId+"");
-			
+			toSend.add(1);
+			DBSmessage dbs = new DBSmessage(MessageTypeS.ITshowReqAgain, toSend);
+			return dbs;
 		} catch (SQLException e) {
 		}
 		return null;
 	}
 
 	public Object saveTestApproval() {
+		ArrayList<Object> toSend = new ArrayList<Object>();
 		ArrayList<Object> arry = msg.getObjs();
 		this.reqId = (int) arry.get(0);
 		Statement stmt;
@@ -163,7 +167,9 @@ public class ITHandleRequestSController {
 			checkExp.checkException();
 			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id=" + reqId + "");	
-			
+			toSend.add(1);
+			DBSmessage dbs = new DBSmessage(MessageTypeS.ITshowReqAgain, toSend);
+			return dbs;
 		} catch (SQLException e) {
 		}
 		return null;

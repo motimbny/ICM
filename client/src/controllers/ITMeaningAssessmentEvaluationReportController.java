@@ -217,6 +217,11 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     	requestWasSubmitted.setVisible(true);
     }
     
+    public void showReqAgain() throws IOException
+    {
+    	MainAllControllers.setWindowVar("ITshowRequests");
+		MainAllControllers.changeWin();
+    }
 	/**
 	 * Initialize.
 	 *

@@ -299,6 +299,13 @@ public class MainAllControllers
 		}});
 	}
 	
+	public void showReqAgain(ArrayList<Object> list)
+	{
+		try {
+			((ITHandleRequestController) WindowToShow.controller).showRequests();
+		} catch (IOException e) {}
+	}
+	
 	/**
 	 * Show user req.
 	 *
@@ -409,7 +416,10 @@ public class MainAllControllers
 	 */
 	public void submitEvaluationReport(ArrayList<Object> list)
 	{
-		((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).setOnSucsess();
+		try {
+			((ITMeaningAssessmentEvaluationReportController) WindowToShow.controller).showReqAgain();
+		} catch (IOException e) {
+		}
 	}
 
 /**
