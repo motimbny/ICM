@@ -22,6 +22,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * Supervisor messages screen controller.
+ * This window is in Supervisor GUI and display the messages that sent to the Supervisor.
  *
  * @author SHIRA
  */
@@ -52,7 +53,7 @@ public class SupervisorMessagesController  implements Initializable
     @FXML
     private Button homeBTN;
 
-    /** The showre BTN. */
+    /** The show request BTN. */
     @FXML
     private Button showreBTN;
 
@@ -93,9 +94,9 @@ public class SupervisorMessagesController  implements Initializable
     private TableColumn<Messages, String> Date;
 
     /**
-     * Update R.
+     * This method change the status of the message from "UnRead" to "Read"
      *
-     * @param event the event
+     * @param event The click on the message from table
      */
     @FXML
     void UpdateR(MouseEvent event) {
@@ -125,7 +126,7 @@ public class SupervisorMessagesController  implements Initializable
     /**
      * Mouse click event, if "help" button clicked, open the screen of "help".
      *
-     * @param event the event
+     * @param event The help BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -138,7 +139,7 @@ public class SupervisorMessagesController  implements Initializable
     /**
      * Mouse click event, if "Home" button clicked, open the screen of "Home".
      *
-     * @param event the event
+     * @param event The Home BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -151,7 +152,7 @@ public class SupervisorMessagesController  implements Initializable
     /**
      * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
      *
-     * @param event the event
+     * @param event The Logout BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -165,7 +166,7 @@ public class SupervisorMessagesController  implements Initializable
     /**
      * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
      *
-     * @param event the event
+     * @param event The Personal info BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -178,7 +179,7 @@ public class SupervisorMessagesController  implements Initializable
     /**
      * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
      *
-     * @param event the event
+     * @param event The Show request BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -191,7 +192,7 @@ public class SupervisorMessagesController  implements Initializable
     /**
      * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
      *
-     * @param event the event
+     * @param event The Messages BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -202,10 +203,12 @@ public class SupervisorMessagesController  implements Initializable
 	}
 
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open. 
+	 * Set the message details in the messages table.
+	 * Change the font of the read messages
 	 *
-	 * @param arg0 the arg 0
-	 * @param arg1 the arg 1
+	 * @param location  the location
+	 * @param resources the resources
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) 
@@ -238,7 +241,7 @@ public class SupervisorMessagesController  implements Initializable
 	}
 	
 	/**
-	 * Request server.
+	 * This method crates a new DBmsg to send to server to show all of the supervisor messages
 	 */
 	public void requestServer()
     {
@@ -254,7 +257,7 @@ public class SupervisorMessagesController  implements Initializable
     }
 	 
  	/**
- 	 * Sets the text table.
+ 	 * This method set the messages on Message Table
  	 *
  	 * @param list the new text table
  	 */

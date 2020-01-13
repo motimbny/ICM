@@ -8,7 +8,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * Supervisor help screen controller.
- *
+ * This window show the Supervisor's options.
  * @author SHIRA
  */
 public class SupervisorHelpController 
@@ -29,11 +29,11 @@ public class SupervisorHelpController
     @FXML
     private Button homeBTN;
 
-    /** The showre BTN. */
+    /** The show request BTN. */
     @FXML
     private Button showreBTN;
 
-    /** The person BTN. */
+    /** The personal info BTN. */
     @FXML
     private Button personBTN;
 
@@ -52,7 +52,7 @@ public class SupervisorHelpController
     /**
      * Mouse click event, if "help" button clicked, open the screen of "help".
      *
-     * @param event the event
+     * @param event The Help BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -65,7 +65,7 @@ public class SupervisorHelpController
     /**
      * Mouse click event, if "Home" button clicked, open the screen of "Home".
      *
-     * @param event the event
+     * @param event The Home BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -78,7 +78,7 @@ public class SupervisorHelpController
     /**
      * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
      *
-     * @param event the event
+     * @param event The Logout BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -92,7 +92,7 @@ public class SupervisorHelpController
     /**
      * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
      *
-     * @param event the event
+     * @param event The Personal info BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -105,7 +105,7 @@ public class SupervisorHelpController
     /**
      * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
      *
-     * @param event the event
+     * @param event The Messages BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -118,7 +118,7 @@ public class SupervisorHelpController
     /**
      * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
      *
-     * @param event the event
+     * @param event The Show request BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML

@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * Supervisor personal information screen controller.
+ * This window is in Supervisor GUI and display the personal information of the supervisor.
  *
  * @author SHIRA
  */
@@ -33,11 +34,11 @@ public class SupervisorPersonalInfoController implements Initializable
 	@FXML
 	private Button homeBTN;
 
-	/** The showre BTN. */
+	/** The show request BTN. */
 	@FXML
 	private Button showreBTN;
 
-	/** The person BTN. */
+	/** The personal info BTN. */
 	@FXML
 	private Button personBTN;
 
@@ -68,7 +69,7 @@ public class SupervisorPersonalInfoController implements Initializable
 	 /**
  	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
  	 *
- 	 * @param event the event
+ 	 * @param event The Home BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	@FXML
@@ -81,7 +82,7 @@ public class SupervisorPersonalInfoController implements Initializable
 	/**
 	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event	The Help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -94,7 +95,7 @@ public class SupervisorPersonalInfoController implements Initializable
  	/**
  	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
  	 *
- 	 * @param event the event
+ 	 * @param event The Logout BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	@FXML
@@ -108,7 +109,7 @@ public class SupervisorPersonalInfoController implements Initializable
  	/**
  	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
  	 *
- 	 * @param event the event
+ 	 * @param event The Personal info BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	@FXML
@@ -121,7 +122,7 @@ public class SupervisorPersonalInfoController implements Initializable
  	/**
  	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
  	 *
- 	 * @param event the event
+ 	 * @param event The Show request BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	@FXML
@@ -134,7 +135,7 @@ public class SupervisorPersonalInfoController implements Initializable
  	/**
  	 * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
  	 *
- 	 * @param event the event
+ 	 * @param event The Messages BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
     @FXML
@@ -145,8 +146,11 @@ public class SupervisorPersonalInfoController implements Initializable
 	}
     
 	/**
-	 * Initialize.
-	 *
+	/**
+	 * Initializes GUI components before this window open. Get the relevant
+	 * information from DB and set the supervisor information on the screen: user name,
+	 * email and position.
+	 * 
 	 * @param location the location
 	 * @param resources the resources
 	 */

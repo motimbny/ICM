@@ -20,6 +20,8 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * Supervisor extension request screen controller.
+ * This window is in Supervisor GUI, and opened if the supervisor press on request from
+ * table and click on View extension request BTN
  *
  * @author SHIRA
  */
@@ -41,11 +43,11 @@ public class SupervisorExtensionRequestController implements Initializable
     @FXML
     private Button homeBTN;
 
-    /** The showre BTN. */
+    /** The show request BTN. */
     @FXML
     private Button showreBTN;
 
-    /** The person BTN. */
+    /** The personal info BTN. */
     @FXML
     private Button personBTN;
 
@@ -85,7 +87,7 @@ public class SupervisorExtensionRequestController implements Initializable
     @FXML
     private TextField requestIT;
 
-    /** The request E xp. */
+    /** The request Exp. */
     @FXML
     private TextArea requestEXp;
     
@@ -98,9 +100,10 @@ public class SupervisorExtensionRequestController implements Initializable
     private TextField requestTime;
     
     /**
-     * Approve EX.
+     * If the supervisor press on Approve BTN, the relevant details of
+     * the request will update and will save in DB
      *
-     * @param event the event
+     * @param event The Approve BTN
      */
     @FXML
     void approveEX(MouseEvent event) 
@@ -118,7 +121,8 @@ public class SupervisorExtensionRequestController implements Initializable
     }
     
     /**
-     * Deny EXT.
+     * If the supervisor press on Deny BTN, the relevant details of
+     * the request will update and will save in DB 
      *
      * @param event the event
      */
@@ -138,9 +142,9 @@ public class SupervisorExtensionRequestController implements Initializable
     }
     
     /**
-     * Back to show.
+     * Mouse click event, if "Show request" button clicked, open the screen of "Show request".
      *
-     * @param event the event
+     * @param event The Show request BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -153,7 +157,7 @@ public class SupervisorExtensionRequestController implements Initializable
     /**
      * Mouse click event, if "help" button clicked, open the screen of "help".
      *
-     * @param event the event
+     * @param event The Help BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -166,7 +170,7 @@ public class SupervisorExtensionRequestController implements Initializable
     /**
      * Mouse click event, if "Home" button clicked, open the screen of "Home".
      *
-     * @param event the event
+     * @param event The Home BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
 	@FXML
@@ -179,7 +183,7 @@ public class SupervisorExtensionRequestController implements Initializable
  	/**
  	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
  	 *
- 	 * @param event the event
+ 	 * @param event The Logout BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	@FXML
@@ -193,7 +197,7 @@ public class SupervisorExtensionRequestController implements Initializable
  	/**
  	 * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
  	 *
- 	 * @param event the event
+ 	 * @param event The Messages BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	 @FXML
@@ -206,7 +210,7 @@ public class SupervisorExtensionRequestController implements Initializable
  	/**
  	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
  	 *
- 	 * @param event the event
+ 	 * @param event The Personal info BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	@FXML
@@ -219,7 +223,7 @@ public class SupervisorExtensionRequestController implements Initializable
  	/**
  	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
  	 *
- 	 * @param event the event
+ 	 * @param event The Show requests BTN
  	 * @throws IOException Signals that an I/O exception has occurred.
  	 */
 	@FXML
@@ -230,9 +234,9 @@ public class SupervisorExtensionRequestController implements Initializable
 	}
 	
 	/**
-	 * Sets the to fields.
+	 * This method sets the request details in relevant fields
 	 *
-	 * @param ev the new to fields
+	 * @param ev The Extension request object
 	 */
 	public void setToFields(extensionrequest ev)
 	{
@@ -246,8 +250,8 @@ public class SupervisorExtensionRequestController implements Initializable
   	/**
   	 * Initializes GUI components before this window open.
   	 *
-  	 * @param arg0 the arg 0
-  	 * @param arg1 the arg 1
+  	 * @param arg0 the location
+  	 * @param arg1 the resources
   	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1)
@@ -262,7 +266,7 @@ public class SupervisorExtensionRequestController implements Initializable
 	}
 	
 	/**
-	 * Show answer.
+	 * This method set the answer label visible.
 	 */
 	public void showAnswer()
 	{

@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * The Class SupervisorTimeRequestController.
+ * This window is in Supervisor GUI and display after "Update request time" pressed .
  */
 public class SupervisorTimeRequestController implements Initializable {
 	
@@ -35,7 +36,7 @@ public class SupervisorTimeRequestController implements Initializable {
 	@FXML
 	private Button homeBTN;
 
-	/** The showre BTN. */
+	/** The show request BTN. */
 	@FXML
 	private Button showreBTN;
 
@@ -75,7 +76,7 @@ public class SupervisorTimeRequestController implements Initializable {
 	@FXML
 	private Button approveEvluationBTN;
 
-	/** The deny exwcution BTN. */
+	/** The deny execution BTN. */
 	@FXML
 	private Button denyExwcutionBTN;
 
@@ -83,7 +84,7 @@ public class SupervisorTimeRequestController implements Initializable {
 	@FXML
 	private TextField execution;
 
-	/** The approve exwcution BTN. */
+	/** The approve execution BTN. */
 	@FXML
 	private Button approveExwcutionBTN;
 
@@ -96,9 +97,10 @@ public class SupervisorTimeRequestController implements Initializable {
 	private Label saved;
 
 	/**
-	 * Approve evluation.
+	 * This method crates a new DBmsg to send to server after "Approve" BTN clicked
+	 * to approve and update the evaluation time of the request
 	 *
-	 * @param event the event
+	 * @param event The Approve BTN
 	 */
 	@FXML
 	void approveEvluation(MouseEvent event) {
@@ -113,9 +115,10 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * Approve exwcution.
+	 * This method crates a new DBmsg to send to server after "Approve" BTN clicked
+	 * to approve and update the execution time of the request
 	 *
-	 * @param event the event
+	 * @param event The Approve BTN
 	 */
 	@FXML
 	void approveExwcution(MouseEvent event) {
@@ -130,9 +133,10 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * Deny exwcution.
+	 * This method crates a new DBmsg to send to server after "Deny" BTN clicked
+	 * to deny and update the execution time of the request
 	 *
-	 * @param event the event
+	 * @param event The Deny BTN
 	 */
 	@FXML
 	void denyExwcution(MouseEvent event) {
@@ -147,7 +151,8 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * Dent evluation.
+	 * This method crates a new DBmsg to send to server after "Deny" BTN clicked
+	 * to deny and update the evaluation time of the request
 	 *
 	 * @param event the event
 	 */
@@ -175,36 +180,36 @@ public class SupervisorTimeRequestController implements Initializable {
 		MainAllControllers.changeWin();
 	}
 
-	/**
-	 * Go help page.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+	   /**
+     * Mouse click event, if "help" button clicked, open the screen of "help".
+     *
+     * @param event The help BTN
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorHelp");
 		MainAllControllers.changeWin();
 	}
 
-	/**
-	 * Go home page.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+    /**
+     * Mouse click event, if "Home" button clicked, open the screen of "Home".
+     *
+     * @param event The Home BTN
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorHome");
 		MainAllControllers.changeWin();
 	}
 
-	/**
-	 * Go logout page.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+    /**
+     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+     *
+     * @param event The Logout BTN
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	@FXML
 	void goLogoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
@@ -212,36 +217,36 @@ public class SupervisorTimeRequestController implements Initializable {
 		MainAllControllers.logOutUser();
 	}
 
-	/**
-	 * Go personal page.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+    /**
+     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
+     *
+     * @param event The Personal info BTN
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	@FXML
 	void goPersonalPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorPersonalInfo");
 		MainAllControllers.changeWin();
 	}
 
-	/**
-	 * Go show req page.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+    /**
+     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
+     *
+     * @param event The Show request BTN
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	@FXML
 	void goShowReqPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorShowRequests");
 		MainAllControllers.changeWin();
 	}
 
-	/**
-	 * Message page.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+    /**
+     * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
+     *
+     * @param event The Messages BTN
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
 	@FXML
 	void messagePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorMessages");
