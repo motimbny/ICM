@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -52,6 +53,7 @@ public class SupervisorUpdateRequestSController
 					toSend.add(numReport);
 					toSend.add(rs.getString(4));
 					toSend.add(rs.getString(8));
+					toSend.add(rs.getString(3));
 				}
 				//toSend.add(up);
 				dbs=new DBSmessage(MessageTypeS.SupervisorUpdateRequest,toSend);
@@ -257,5 +259,29 @@ public class SupervisorUpdateRequestSController
 				return dbs;
 			} catch (SQLException e) {}
 			return null;
+		}
+		public void updatechangeSaveInTable() {
+			int num=(int) msg.getObjs().get(0);
+			String changeexecuter=(String)msg.getObjs().get(1);
+			String changeapprieser=(String)msg.getObjs().get(2);
+			Statement stmt;
+			try 
+			{
+				stmt = connection.createStatement();
+				stmt.executeUpdate("UPDATE requeststages SET itPerformanceLeader='"+changeexecuter+"' WHERE id="+num+"");
+				stmt.executeUpdate("UPDATE requeststages SET itAppraiser='"+changeapprieser+"' WHERE id="+num+"");
+				flag=1;	
+				
+				PreparedStatement req = connection.prepareStatement("INSERT INTO updates VALUES(?,?,?)");
+				req.setString(1,(String)msg.getObjs().get(3));
+				req.setString(2,"employee changed "+java.time.LocalDate.now().toString());
+				req.setString(3,java.time.LocalDate.now().toString());
+				req.executeUpdate();	
+	 			req.close();
+			} 
+			catch (SQLException e)
+			{
+				e.printStackTrace();
+			}
 		}
 }

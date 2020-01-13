@@ -104,6 +104,8 @@ public class SupervisorRequestDetailsController implements Initializable
     	try {
     		if(MainAllControllers.nowWin.equals("ITRequestSuperviser"))
 			     MainAllControllers.setWindowVar("SupervisorUpdateRequest");
+    		else if(MainAllControllers.nowWin.equals("SupervisorShowRequests"))
+        			MainAllControllers.setWindowVar("SupervisorShowRequests");
     		else
     			MainAllControllers.setWindowVar("SupervisorTimeRequest");
 	    	MainAllControllers.changeWin();

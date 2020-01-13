@@ -450,6 +450,13 @@ public class mainServerABS extends AbstractServer {
 	
 				break;
 			}
+			case changeExecuter2: {
+				
+				SupervisorUpdateRequestSController supervisorUpdateRequestController = new SupervisorUpdateRequestSController(
+						dbm, connection);
+				supervisorUpdateRequestController.updatechangeSaveInTable();
+				break;
+			}
 		case closeRequest: {
 			superviserRequestShowController superviserRequestShowController = new superviserRequestShowController(dbm,
 					connection);

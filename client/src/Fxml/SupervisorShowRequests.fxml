@@ -78,7 +78,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMouseExited="#visNot" prefHeight="350.0" prefWidth="597.0">
+            <TableView fx:id="requestTable" layoutX="43.0" layoutY="120.0" onMouseExited="#visNot" onMousePressed="#showRequestInfo" prefHeight="350.0" prefWidth="597.0">
                <columns>
                   <TableColumn fx:id="RequestID" prefWidth="190.77774047851562" text="Request id" />
                   <TableColumn fx:id="RequestStatus" prefWidth="202.44439697265625" text="Request status" />

@@ -21,6 +21,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -210,7 +211,23 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.changeWin();
 		MainAllControllers.logOutUser();
 	}
-	
+	  @FXML
+	    void showRequestInfo(MouseEvent event) 
+	    {
+		  requestTable.setOnMouseClicked((MouseEvent ev ) -> {
+	            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
+	                try {
+	                	MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+	                	MainAllControllers.nowWin="SupervisorShowRequests";
+						MainAllControllers.setWindowVar("SupervisorRequestDetalies");
+						MainAllControllers.changeWin();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}                
+	            }
+	        });
+	    }
+
 	/**
 	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
 	 *
@@ -387,15 +404,15 @@ public class SupervisorShowRequestsController implements Initializable {
 	@FXML
 	void UpdateRequest(MouseEvent event) throws IOException {
 		try {
-			if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage()
-					.equals("supervisorApprovel")) {
+			//if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage()
+					//.equals("supervisorApprovel")) {
 				MainAllControllers.nowWin = "ITRequestSuperviser";
 				MainAllControllers.request = requestTable.getItems()
 						.get(requestTable.getSelectionModel().getSelectedIndex()).getId();
 				MainAllControllers.setWindowVar("SupervisorUpdateRequest");
 				MainAllControllers.changeWin();
-			} else
-				stagenotmatch.setVisible(true);
+			//} else
+			//	stagenotmatch.setVisible(true);
 
 		} catch (Exception e) {
 

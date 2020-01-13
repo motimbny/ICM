@@ -101,7 +101,8 @@ public class ITshowRequestsController implements Initializable
 	/** The request id to. */
 	@FXML
 	private TextField requestIdTo;
-
+	 @FXML
+	    private Label susNotAllowed;
 	/**
 	 * Go help page.
 	 *
@@ -202,18 +203,28 @@ public class ITshowRequestsController implements Initializable
 	void showRequestDetails(MouseEvent event) {
 		requestTable.setOnMouseClicked((MouseEvent ev) -> {
 			if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
-				try {
-					MainAllControllers.request = requestTable.getItems()
-							.get(requestTable.getSelectionModel().getSelectedIndex()).getId();
-					MainAllControllers.setWindowVar("ITHandleRequest");
-					MainAllControllers.changeWin();
-				} catch (IOException e) {
-					e.printStackTrace();
+				if(!requestTable.getItems()
+						.get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().equals("Suspend"))
+				{
+					try {
+						
+						MainAllControllers.request = requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+						MainAllControllers.setWindowVar("ITHandleRequest");
+						MainAllControllers.changeWin();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 				}
+				else
+					susNotAllowed.setVisible(true);
 			}
 		});
 	}
-
+	  @FXML
+	    void visableSus(MouseEvent event) 
+	  {
+		  susNotAllowed.setVisible(false);
+	    }
 	/**
 	 * Sets the text in table.
 	 *

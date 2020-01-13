@@ -127,6 +127,13 @@ public class SupervisorUpdateRequestController implements Initializable
     /** The Back to show. */
     @FXML
     private Button BackToShow;
+    @FXML
+    private Label labelUpdate;
+
+    @FXML
+    private Button updateBtn;
+    
+	private String currentStage;
 	    
     	/**
     	 * Back to S.
@@ -255,7 +262,22 @@ public class SupervisorUpdateRequestController implements Initializable
     	showListOfIT("itPerformanceLeader");
     	
     }
-    
+    @FXML
+    void UpdateChange(MouseEvent event) throws IOException
+    {
+    	int id=(Integer.parseInt(requestID.getText()));
+    	ArrayList<Object> arry=new ArrayList<Object>();
+		DBmessage dbm;
+		arry.add(id);
+		arry.add(executerName.getText());
+		arry.add(apprieserName.getText());
+		arry.add(MainAllControllers.user.getName());
+    	dbm=new DBmessage(MessageType.changeExecuter2, arry);   
+    	try {
+    		MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {}
+    	goShowReqPage(event);
+    }
     /**
      * Show list of IT.
      *
@@ -334,6 +356,12 @@ public class SupervisorUpdateRequestController implements Initializable
 		this.requestID.setText(""+list.get(0));
 		this.apprieserName.setText((String)list.get(1));
 		this.executerName.setText((String)list.get(2));
+		this.currentStage=(String)list.get(3);
+		if(!this.currentStage.equals("supervisorApprovel"))
+		{
+			updateBtn.setVisible(true);
+			saveUpdateReq.setVisible(false);
+		}
 	}
     
 	/**
