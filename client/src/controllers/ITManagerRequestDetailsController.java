@@ -97,7 +97,7 @@ public class ITManagerRequestDetailsController implements Initializable  {
     private Text requestIdField;
 
     /**
-     * Back to S.
+     * Back to Show Requests.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.

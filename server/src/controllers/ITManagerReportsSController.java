@@ -23,18 +23,39 @@ import entity.Request;
 import entity.RequestUser;
 import entity.updateRequest;
 
+/**
+ * The Class ITManagerReportsSController.
+ */
 public class ITManagerReportsSController {
 
+	/** The user. */
 	private String user;
+	
+	/** The req id. */
 	private int reqId;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The msg. */
 	private DBmessage msg;
 
+	/**
+	 * Instantiates a new IT manager reports S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public ITManagerReportsSController(DBmessage msg, Connection connection) {
 		this.connection = connection;
 		this.msg = msg;
 	}
 
+	/**
+	 * Make active su clo.
+	 *
+	 * @return the object
+	 */
 	public Object makeActiveSuClo() {
 		Statement stmt;
 		DBSmessage dbs;
@@ -109,11 +130,24 @@ public class ITManagerReportsSController {
 		return null;
 	}
 
+	/**
+	 * Gets the date diff.
+	 *
+	 * @param date1 the date 1
+	 * @param date2 the date 2
+	 * @param timeUnit the time unit
+	 * @return the date diff
+	 */
 	public int getDateDiff(Date date1, Date date2, TimeUnit timeUnit) {
 		long diffInMillies = date2.getTime() - date1.getTime();
 		return (int) timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
 	}
 
+	/**
+	 * Make performenct.
+	 *
+	 * @return the object
+	 */
 	public Object makePerformenct() {
 
 		Statement stmt;
@@ -143,6 +177,11 @@ public class ITManagerReportsSController {
 
 	}
 
+	/**
+	 * Make delays.
+	 *
+	 * @return the object
+	 */
 	public Object makeDelays() {
 		System.out.println("here");
 

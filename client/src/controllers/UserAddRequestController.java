@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import Enums.MessageType;
-import Enums.Position;
 import entity.DBmessage;
 import entity.ServerFile;
 import javafx.fxml.FXML;
@@ -23,7 +22,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
- * User  add request screen Controller .
+ * User add request screen Controller .
+ * This window is in User GUI and allows the user to add a new request.
  *
  * @author SHIRA
  */
@@ -52,11 +52,11 @@ public class UserAddRequestController implements Initializable
     @FXML
     private Button homeBTN;
     
-    /** The addre BTN. */
+    /** The add request BTN. */
     @FXML
     private Button addreBTN;
     
-    /** The showre BTN. */
+    /** The show request BTN. */
     @FXML
     private Button showreBTN;
     
@@ -72,31 +72,31 @@ public class UserAddRequestController implements Initializable
     @FXML
     private Button logoutBTN;
     
-    /** The submit request user add req. */
+    /** The submit request user add request. */
     @FXML
     private Button submitRequestUserAddReq;
     
-    /** The des ext sit. */
+    /** The describe existing situation. */
     @FXML
     private TextArea desExtSit;
     
-    /** The choose info com. */
+    /** The choose information system comboBox. */
     @FXML
     private ChoiceBox<String> chooseInfoCom;
     
-    /** The des req cha. */
+    /** The describe request change. */
     @FXML
     private TextArea desReqCha;
     
-    /** The exp cha ben. */
+    /** The explain change benefits. */
     @FXML
     private TextArea expChaBen;
     
-    /** The Mor info add. */
+    /** The More info add. */
     @FXML
     private TextArea MorInfoAdd;
     
-    /** The add attachments user add req. */
+    /** The add attachments BTN. */
     @FXML
     private Button addAttachmentsUserAddReq;
     
@@ -104,7 +104,7 @@ public class UserAddRequestController implements Initializable
     @FXML
     private Label badAddRequest;
     
-    /** The good add re. */
+    /** The good add request. */
     @FXML
     private Label goodAddRe;
     
@@ -114,9 +114,9 @@ public class UserAddRequestController implements Initializable
     
     
     /**
-     * Submit request.
-     *
-     * @param event the event
+     * If all fields of the request filled correctly save the data in server 
+     * set a success or fail label
+     * @param event The submit BTN
      */
     @FXML
     void submitRequest(MouseEvent event) 
@@ -151,7 +151,7 @@ public class UserAddRequestController implements Initializable
     }
     
     /**
-     * Sets the on sucsess.
+     * This method  called when the submit of the request succeeded.
      */
     public void setOnSucsess()
     {
@@ -159,9 +159,10 @@ public class UserAddRequestController implements Initializable
     }
     
     /**
-     * Attach file.
+     * If the user press on add attachments BTN, window of choose the file will open
+     * and after the file choose' it will save in server
      *
-     * @param event the event
+     * @param event Add attachments BTN
      */
     @FXML
     private void attachFile(MouseEvent event)
@@ -192,7 +193,7 @@ public class UserAddRequestController implements Initializable
     /**
      * Mouse click event, if "Home" button clicked, open the screen of "Home".
      *
-     * @param event the event
+     * @param event The Home BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -205,7 +206,7 @@ public class UserAddRequestController implements Initializable
     /**
      * Mouse click event, if "Add request" button clicked, open the screen of "Add new request".
      *
-     * @param event the event
+     * @param event The Add request BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -218,7 +219,7 @@ public class UserAddRequestController implements Initializable
     /**
      * Mouse click event, if "help" button clicked, open the screen of "help".
      *
-     * @param event the event
+     * @param event The Help BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -231,7 +232,7 @@ public class UserAddRequestController implements Initializable
     /**
      * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
      *
-     * @param event the event
+     * @param event The Personal info BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -244,7 +245,7 @@ public class UserAddRequestController implements Initializable
     /**
      * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
      *
-     * @param event the event
+     * @param event The Show requests
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -257,7 +258,7 @@ public class UserAddRequestController implements Initializable
     /**
      * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
      *
-     * @param event the event
+     * @param event The Logout BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -269,7 +270,7 @@ public class UserAddRequestController implements Initializable
     }
 	
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open.
 	 *
 	 * @param location the location
 	 * @param resources the resources
@@ -278,11 +279,9 @@ public class UserAddRequestController implements Initializable
 	public void initialize(URL location, ResourceBundle resources)
 	{
 		chooseInfoCom.getItems().add("Moodle");
-    	chooseInfoCom.getItems().add("Information System");
+    	chooseInfoCom.getItems().add("Info System");
     	chooseInfoCom.getItems().add("Libary");
-    	chooseInfoCom.getItems().add("Class Rooms With Computers");
-    	chooseInfoCom.getItems().add("College Website");
-    	chooseInfoCom.getItems().add("Computer Farm");	
-    	chooseInfoCom.getItems().add("Labs");
+    	chooseInfoCom.getItems().add("Computers");
+		
 	}
 }

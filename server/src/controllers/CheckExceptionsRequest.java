@@ -19,12 +19,30 @@ import entity.Request;
 import entity.RequestUser;
 import entity.User;
 
+/**
+ * The Class CheckExceptionsRequest.
+ */
 public class CheckExceptionsRequest 
 {
+   
+   /** The to check. */
    private int toCheck; 
+   
+   /** The req. */
    private Request req;
+   
+   /** The connection. */
    private Connection connection;
+   
+   /** The manager. */
    private User superviser,manager;
+   
+   /**
+    * Instantiates a new check exceptions request.
+    *
+    * @param toCheck the to check
+    * @param connection the connection
+    */
    public CheckExceptionsRequest(int toCheck,Connection connection)
    {
 	   this.toCheck=toCheck;
@@ -33,6 +51,10 @@ public class CheckExceptionsRequest
 	   findsuperviser();
 	   findmanager();
    }
+   
+   /**
+    * Findsuperviser.
+    */
    private void findsuperviser()
 	{
 		Statement stmt;
@@ -49,6 +71,10 @@ public class CheckExceptionsRequest
 		}
 		catch(Exception e) {}	
 	}
+   
+   /**
+    * Findmanager.
+    */
    private void findmanager()
 	{
 		Statement stmt;
@@ -65,6 +91,11 @@ public class CheckExceptionsRequest
 		}
 		catch(Exception e) {}	
 	}
+   
+   /**
+    * Gets the request.
+    *
+    */
    public void getRequest()
    {
 		Statement stmt;
@@ -104,6 +135,12 @@ public class CheckExceptionsRequest
 			e.printStackTrace();
 		}	
    }
+   
+   /**
+    * Check exception.
+    *
+    * @throws SQLException the SQL exception
+    */
    public void checkException() throws SQLException
    {
 	   PreparedStatement reqToAdd;
@@ -202,6 +239,13 @@ public class CheckExceptionsRequest
 		}
 		
      }
+   
+   /**
+    * Send message to manager.
+    *
+    * @param stag the stag
+    * @throws SQLException the SQL exception
+    */
    public void sendMessageToManager(String stag) throws SQLException
    {
 	   PreparedStatement mToAdd;
@@ -215,6 +259,13 @@ public class CheckExceptionsRequest
 	   mToAdd.executeUpdate();	
 	   mToAdd.close();
 	}
+   
+   /**
+    * Send message to superviser.
+    *
+    * @param stag the stag
+    * @throws SQLException the SQL exception
+    */
    public void sendMessageToSuperviser(String stag) throws SQLException
    {
 	   PreparedStatement sToAdd;

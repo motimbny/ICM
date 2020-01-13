@@ -11,15 +11,35 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Messages;
 
+/**
+ * The Class MessagesShowController.
+ */
 public class MessagesShowController
 {
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The db. */
 	private DBmessage db;
+	
+	/**
+	 * Instantiates a new messages show controller.
+	 *
+	 * @param db the db
+	 * @param connection the connection
+	 */
 	public MessagesShowController(DBmessage db,Connection connection)
 	{
 		this.db=db;
 		this.connection=connection;
 	}
+   
+   /**
+    * Mget messages to show.
+    *
+    * @return the DB smessage
+    */
    public DBSmessage MgetMessagesToShow() 
    {
 	    Statement stmt;
@@ -44,6 +64,12 @@ public class MessagesShowController
 		}
 		return null;
 	}
+	
+	/**
+	 * M update messages to show.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage MUpdateMessagesToShow()
 	{
 	    Statement stmt;
@@ -62,6 +88,12 @@ public class MessagesShowController
 		}
 		return MgetMessagesToShow();
 	}
+	
+	/**
+	 * Sget messages to show.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage SgetMessagesToShow() 
 	{
 		Statement stmt;
@@ -86,6 +118,12 @@ public class MessagesShowController
 		}
 		return null;
 	}
+	
+	/**
+	 * S update messages to show.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage SUpdateMessagesToShow() 
 	{
 		    Statement stmt;

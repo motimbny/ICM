@@ -12,11 +12,24 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Request;
 
+/**
+ * The Class ITRequestDetailsSController.
+ */
 public class ITRequestDetailsSController 
 {
+	
+	/** The req id. */
 	private int reqId;
+	
+	/** The connection. */
 	private Connection connection;
 	
+	/**
+	 * Instantiates a new IT request details S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public ITRequestDetailsSController(DBmessage msg,Connection connection)
 	{
 		ArrayList<Object> arry=msg.getObjs();
@@ -24,6 +37,11 @@ public class ITRequestDetailsSController
 		this.connection=connection; 
 	}
 	
+	/**
+	 * Show request details.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage showRequestDetails()
 	{
 		Statement stmt;

@@ -48,15 +48,15 @@ public class UserShowRequestsController implements Initializable  {
     @FXML
     private Button homeBTN;
 
-    /** The addre BTN. */
+    /** The add request BTN. */
     @FXML
     private Button addreBTN;
 
-    /** The showre BTN. */
+    /** The show request BTN. */
     @FXML
     private Button showreBTN;
 
-    /** The person BTN. */
+    /** The personal info BTN. */
     @FXML
     private Button personBTN;
 
@@ -97,9 +97,9 @@ public class UserShowRequestsController implements Initializable  {
     private TextField requestIdTo;
     
     /**
-     * Search request.
+     * This method send to server request to search request based on id that user entered.
      *
-     * @param event the event
+     * @param event The search BTN
      */
     @FXML
     void searchRequest(MouseEvent event)
@@ -123,13 +123,14 @@ public class UserShowRequestsController implements Initializable  {
 	    	try {
 	    		MainAllControllers.sendToAbsServer(dbm);
 			} catch (IOException e) {}
+	    
     	}
     }
     
     /**
      * Mouse click event, if "Add request" button clicked, open the screen of "Add new request".
      *
-     * @param event the event
+     * @param event The Add Request BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -142,7 +143,7 @@ public class UserShowRequestsController implements Initializable  {
     /**
      * Mouse click event, if "help" button clicked, open the screen of "help".
      *
-     * @param event the event
+     * @param event The Help BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -155,7 +156,7 @@ public class UserShowRequestsController implements Initializable  {
     /**
      * Mouse click event, if "Home" button clicked, open the screen of "Home".
      *
-     * @param event the event
+     * @param event The Home
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -168,7 +169,7 @@ public class UserShowRequestsController implements Initializable  {
     /**
      * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
      *
-     * @param event the event
+     * @param event The LogOut BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -182,7 +183,7 @@ public class UserShowRequestsController implements Initializable  {
     /**
      * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
      *
-     * @param event the event
+     * @param event The Personal info BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -195,7 +196,7 @@ public class UserShowRequestsController implements Initializable  {
     /**
      * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
      *
-     * @param event the event
+     * @param event The Show Request BTN
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -206,9 +207,10 @@ public class UserShowRequestsController implements Initializable  {
     }
     
     /**
-     * Show req T.
+     * If double click on request from the requests table pressed , The
+     * details of this request will appear
      *
-     * @param event the event
+     * @param event Double click on request from requests table
      */
     @FXML
     void showReqT(MouseEvent event)  {
@@ -226,13 +228,12 @@ public class UserShowRequestsController implements Initializable  {
     }
     
     /**
-     * Sets the text in table.
+     * This method sets the request details in the rows of the table
      *
-     * @param list the new text in table
+     * @param list The list of Request user 
      */
     public void setTextInTable(ArrayList<Object> list)
     {
-    	
     	rows= FXCollections.observableArrayList();
     	for(Object r:list)
     		rows.add((RequestUser)r);		
@@ -240,7 +241,8 @@ public class UserShowRequestsController implements Initializable  {
     }
 
     /**
-     * Request server.
+     * This method crates a new DBmsg to send to server to show the user all of his request
+     * that are active and closed
      */
     public void requestServer()
     {
@@ -271,7 +273,7 @@ public class UserShowRequestsController implements Initializable  {
 	}
 	
 	/**
-	 * Clear table.
+	 * This method clear the table.
 	 */
 	public void clearTable()
 	{
@@ -279,9 +281,9 @@ public class UserShowRequestsController implements Initializable  {
 	}
 	
 	/**
-	 * Gets the requests table.
+	 * This method gets the requests table.
 	 *
-	 * @return the requests table
+	 * @return The requests table
 	 */
 	public TableView<RequestUser> getRequestsTable() {
 		return requestsTable;

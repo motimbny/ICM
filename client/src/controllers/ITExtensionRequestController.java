@@ -14,8 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-
-
 /**
  * The Class ITExtensionRequestController.
  */
@@ -90,7 +88,7 @@ public class ITExtensionRequestController implements Initializable
     private Label fillAllFields;
 
     /**
-     * Back to S.
+     * Back to ITHandleRequest.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -142,7 +140,7 @@ public class ITExtensionRequestController implements Initializable
 	}
 
 	/**
-	 * Go show req.
+	 * Go show request.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -155,7 +153,7 @@ public class ITExtensionRequestController implements Initializable
 	}
 
 	/**
-	 * Logout page.
+	 * go Logout page.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -201,9 +199,9 @@ public class ITExtensionRequestController implements Initializable
     }
     
     /**
-     * Sets the on sucsess.
+     * Sets the on success.
      *
-     * @param num the new on sucsess
+     * @param num the new on success
      */
     public void setOnSucsess(int num)
     {	

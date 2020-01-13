@@ -11,18 +11,39 @@ import entity.ConnectToDB;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.User;
-
+/**
+ * The Class loginSController.
+ */
 public class loginSController 
 {
+	
+	/** The user. */
 	private String user;
+	
+	/** The password. */
 	private String password;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/**
+	 * Instantiates a new login S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public loginSController(DBmessage msg,Connection connection)
 	{
 		this.user=((String)msg.getObjs().get(0));
 		this.password=((String)msg.getObjs().get(1));
 		this.connection=connection;
 	}
+	
+	/**
+	 * Check log in.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage CheckLogIn()
 	{
     	Statement stmt;

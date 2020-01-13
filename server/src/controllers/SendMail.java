@@ -10,12 +10,27 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * The Class SendMail.
+ */
 public class SendMail {
 	
+	/** The user name. */
 	private String userName;
+	
+	/** The good O rbad. */
 	private int goodORbad;
+	
+	/** The req id. */
 	private int reqId;
 	
+	/**
+	 * Instantiates a new send mail.
+	 *
+	 * @param userName the user name
+	 * @param goodORbad the good O rbad
+	 * @param reqId the req id
+	 */
 	public SendMail(String userName, int goodORbad, int reqId)
 	{
 		this.userName=userName;
@@ -59,6 +74,9 @@ public class SendMail {
         }
     }*/
 	
+	/**
+	 * Send E mail.
+	 */
 	public void sendEMail()
 	{
 	

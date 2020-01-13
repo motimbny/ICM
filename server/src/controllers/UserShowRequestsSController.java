@@ -18,11 +18,26 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.RequestUser;
 
+/**
+ * The Class UserShowRequestsSController.
+ */
 public class UserShowRequestsSController {
+	
+	/** The user. */
 	private String user;
+	
+	/** The user id req. */
 	private int userIdReq;
+	
+	/** The connection. */
 	private Connection connection;
 
+	/**
+	 * Instantiates a new user show requests S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public UserShowRequestsSController(DBmessage msg, Connection connection) {
 		ArrayList<Object> arry = msg.getObjs();
 
@@ -32,6 +47,11 @@ public class UserShowRequestsSController {
 		this.connection = connection;
 	}
 
+	/**
+	 * Show request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage showRequest() {
 		Statement stmt;
 		Statement stmt1;
@@ -127,6 +147,11 @@ public class UserShowRequestsSController {
 		return null;
 	}
 
+	/**
+	 * Show SP request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage showSPRequest() {
 		Statement stmt;
 		Statement stmt1;
@@ -220,6 +245,11 @@ public class UserShowRequestsSController {
 		return null;
 	}
 
+	/**
+	 * Num of request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage numOfRequest() {
 		Statement stmt;
 		DBSmessage dbs;
@@ -239,6 +269,11 @@ public class UserShowRequestsSController {
 		return null;
 	}
 
+	/**
+	 * Mnum of request.
+	 *
+	 * @return the object
+	 */
 	public Object MnumOfRequest() {
 		Statement stmt;
 		DBSmessage dbs;
@@ -258,6 +293,13 @@ public class UserShowRequestsSController {
 		}
 		return null;
 	}
+	
+	/**
+	 * Numof messages.
+	 *
+	 * @param name the name
+	 * @return the int
+	 */
 	public int numofMessages(String name)
 	{
 		Statement stmt;

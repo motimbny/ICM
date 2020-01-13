@@ -19,12 +19,11 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
-
 /**
  * The Class ITCCCRequestMoreInfoController.
  */
 public class ITCCCRequestMoreInfoController implements Initializable {
-	
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
 
@@ -84,7 +83,7 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	private Button BackToShow;
 
 	/**
-	 * Back to S.
+	 * Back to ITHandleRequest.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -132,7 +131,7 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * Go show req.
+	 * Go show request.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -144,7 +143,7 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * Logout page.
+	 * go Logout page.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -153,7 +152,7 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	void logoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+		MainAllControllers.logOutUser();
 	}
 
 	/**
@@ -190,7 +189,7 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	/**
 	 * Initialize.
 	 *
-	 * @param location the location
+	 * @param location  the location
 	 * @param resources the resources
 	 */
 	@Override

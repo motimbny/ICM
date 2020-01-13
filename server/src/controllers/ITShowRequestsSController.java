@@ -14,13 +14,27 @@ import Enums.StageName;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.RequestUser;
-
+/**
+ * The Class ITShowRequestsSController.
+ */
 public class ITShowRequestsSController 
 {
+	
+	/** The user. */
 	private String user;
+	
+	/** The user id req. */
 	private int userIdReq;
+	
+	/** The connection. */
 	private Connection connection;
 	
+	/**
+	 * Instantiates a new IT show requests S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public ITShowRequestsSController(DBmessage msg,Connection connection)
 	{
 		ArrayList<Object> arry=msg.getObjs();
@@ -30,6 +44,11 @@ public class ITShowRequestsSController
 		this.connection=connection;
 	}
 	
+	/**
+	 * Show request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage showRequest()
 	{
 		Statement stmt;
@@ -130,6 +149,11 @@ public class ITShowRequestsSController
 	}
 	
 	
+	/**
+	 * Show SP request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage showSPRequest()
 	{
 		Statement stmt;
@@ -229,6 +253,11 @@ public class ITShowRequestsSController
 		return null;
 	}
 	
+	/**
+	 * Num of request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage numOfRequest()
 	{
 		Statement stmt;

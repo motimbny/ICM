@@ -11,14 +11,29 @@ import Enums.MessageTypeS;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Evluationreport;
-
+/**
+ * The Class ITTestFailurReportSController.
+ */
 public class ITTestFailurReportSController {
 
+	/** The id req. */
 	private int idReq;
+	
+	/** The summry. */
 	private String summry;
+	
+	/** The date. */
 	private String date;
+	
+	/** The connection. */
 	private Connection connection;
 
+	/**
+	 * Instantiates a new IT test failur report S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public ITTestFailurReportSController(DBmessage msg, Connection connection) {
 		ArrayList<Object> arry = msg.getObjs();
 		this.idReq = Integer.parseInt((String)msg.getObjs().get(0));
@@ -27,6 +42,11 @@ public class ITTestFailurReportSController {
 		this.connection = connection;
 	}
 
+	/**
+	 * Submit failur report.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage submitFailurReport() {
 		PreparedStatement ps;
 		DBSmessage dbs;

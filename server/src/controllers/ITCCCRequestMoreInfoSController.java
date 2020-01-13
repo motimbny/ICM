@@ -12,12 +12,29 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.updateRequest;
 
+/**
+ * The Class ITCCCRequestMoreInfoSController.
+ */
 public class ITCCCRequestMoreInfoSController {
+	
+	/** The id req. */
 	private int idReq;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The required info. */
 	private String requiredInfo;
+	
+	/** The date. */
 	private String date;
 
+	/**
+	 * Instantiates a new ITCCC request more info S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public ITCCCRequestMoreInfoSController(DBmessage msg, Connection connection) {
 		ArrayList<Object> arry = msg.getObjs();
 		this.idReq = (int) arry.get(0);
@@ -26,6 +43,11 @@ public class ITCCCRequestMoreInfoSController {
 		this.connection = connection;
 	}
 
+	/**
+	 * Submit require more info.
+	 *
+	 * @return the object
+	 */
 	public Object submitRequireMoreInfo() {
 		Statement stmt;
 		PreparedStatement ps;

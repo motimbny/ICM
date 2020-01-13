@@ -121,7 +121,7 @@ public class ITManagerShowRequestsController implements Initializable
     private Label okR;
     
     /**
-     * Go employees mang.
+     * Go employees management.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -174,7 +174,7 @@ public class ITManagerShowRequestsController implements Initializable
 	}
 
     /**
-     * Go show req.
+     * Go show request.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -187,7 +187,7 @@ public class ITManagerShowRequestsController implements Initializable
 	}
     
     /**
-     * Message page.
+     * go Message page.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -201,7 +201,7 @@ public class ITManagerShowRequestsController implements Initializable
 
    
     /**
-     * Gogenerate report.
+     * Go generate report.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -214,7 +214,7 @@ public class ITManagerShowRequestsController implements Initializable
 	}
     
     /**
-     * Logout page.
+     * go Logout page.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.

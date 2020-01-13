@@ -15,20 +15,48 @@ import Enums.MessageTypeS;
 import entity.DBSmessage;
 import entity.DBmessage;
 
+/**
+ * The Class ITExtensionRequestSController.
+ */
 public class ITExtensionRequestSController {
+	
+	/** The user. */
 	private String user;
+	
+	/** The req id. */
 	private int reqId;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The stage. */
 	private String stage;
+	
+	/** The reason. */
 	private String reason;
+	
+	/** The time to add. */
 	private int timeToAdd;
+	
+	/** The db. */
 	private DBmessage db; 
 
+	/**
+	 * Instantiates a new IT extension request S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public ITExtensionRequestSController(DBmessage msg, Connection connection) {
 		this.db=msg;
 		this.connection = connection;
 	}
 		
+	/**
+	 * Gets the i treq stage.
+	 *
+	 * @return the i treq stage
+	 */
 	public DBSmessage getITreqStage() {
 		ArrayList<Object> arr = db.getObjs();
 		this.user=(String)arr.get(0);
@@ -53,6 +81,11 @@ public class ITExtensionRequestSController {
 		return null;
 	}
 
+	/**
+	 * Submit request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage submitRequest()
 	{
 		ArrayList<Object> arr = db.getObjs();

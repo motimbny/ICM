@@ -151,7 +151,7 @@ public class ITManagerMessagesController implements Initializable
 	}
 
     /**
-     * Go show req.
+     * Go show request.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -164,7 +164,7 @@ public class ITManagerMessagesController implements Initializable
 	}
 
     /**
-     * Gogenerate report.
+     * Go generate report.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -177,7 +177,7 @@ public class ITManagerMessagesController implements Initializable
 	}
 
     /**
-     * Logout page.
+     * go Logout page.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -191,7 +191,7 @@ public class ITManagerMessagesController implements Initializable
 	}
 
     /**
-     * Message page.
+     * go Message page.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -204,7 +204,7 @@ public class ITManagerMessagesController implements Initializable
 	}
     
     /**
-     * Update R.
+     * Update Request.
      *
      * @param event the event
      */

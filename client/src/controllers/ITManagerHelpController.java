@@ -59,7 +59,7 @@ public class ITManagerHelpController {
     private Button logoutBTN;
 
     /**
-     * Go employees mang.
+     * Go employees management.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -111,7 +111,7 @@ public class ITManagerHelpController {
 	}
 
     /**
-     * Go show req.
+     * Go show request.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -124,7 +124,7 @@ public class ITManagerHelpController {
 	}
 
     /**
-     * Gogenerate report.
+     * Go generate report.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -137,7 +137,7 @@ public class ITManagerHelpController {
 	}
     
     /**
-     * Message page.
+     * go Message page.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.
@@ -151,7 +151,7 @@ public class ITManagerHelpController {
 
 
     /**
-     * Logout page.
+     * go Logout page.
      *
      * @param event the event
      * @throws IOException Signals that an I/O exception has occurred.

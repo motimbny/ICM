@@ -23,241 +23,239 @@ import javafx.scene.text.Text;
 
 /**
  * User request details screen Controller .
- *
+ * This window is in User GUI and opened after user press on request from request Table
  * @author SHIRA
  */
-public class UserRequestDetailsController implements Initializable  
-{
-	
+public class UserRequestDetailsController implements Initializable {
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-	
+
 	/**
 	 * Instantiates a new user request details controller.
 	 */
-	public UserRequestDetailsController()
-	{
-    	MainAllControllers=MainAllControllers.getInstance();
+	public UserRequestDetailsController() {
+		MainAllControllers = MainAllControllers.getInstance();
 	}
-	
-    /** The home BTN. */
-    @FXML
-    private Button homeBTN;
 
-    /** The showre BTN. */
-    @FXML
-    private Button showreBTN;
+	/** The home BTN. */
+	@FXML
+	private Button homeBTN;
 
-    /** The person BTN. */
-    @FXML
-    private Button personBTN;
+	/** The show request BTN. */
+	@FXML
+	private Button showreBTN;
 
-    /** The help BTN. */
-    @FXML
-    private Button helpBTN;
-    
-    /** The addre BTN. */
-    @FXML
-    private Button addreBTN;
+	/** The personal info BTN. */
+	@FXML
+	private Button personBTN;
 
-    /** The logout BTN. */
-    @FXML
-    private Button logoutBTN;
+	/** The help BTN. */
+	@FXML
+	private Button helpBTN;
 
-    /** The request id field. */
-    @FXML
-    private Text requestIdField;
+	/** The add request BTN. */
+	@FXML
+	private Button addreBTN;
 
-    /** The Applicant name field. */
-    @FXML
-    private TextField ApplicantNameField;
+	/** The logout BTN. */
+	@FXML
+	private Button logoutBTN;
 
-    /** The Information system field. */
-    @FXML
-    private TextField InformationSystemField;
+	/** The request id field. */
+	@FXML
+	private Text requestIdField;
 
-    /** The request status field. */
-    @FXML
-    private TextField requestStatusField;
+	/** The Applicant name field. */
+	@FXML
+	private TextField ApplicantNameField;
 
-    /** The Description existing situation field. */
-    @FXML
-    private TextArea DescriptionExistingSituationField;
+	/** The Information system field. */
+	@FXML
+	private TextField InformationSystemField;
 
-    /** The Description of request field. */
-    @FXML
-    private TextArea DescriptionOfRequestField;
+	/** The request status field. */
+	@FXML
+	private TextField requestStatusField;
 
-    /** The Request stage field. */
-    @FXML
-    private TextField RequestStageField;
+	/** The Description existing situation field. */
+	@FXML
+	private TextArea DescriptionExistingSituationField;
 
-    /** The Back to show. */
-    @FXML
-    private Button BackToShow;
-    
-    /** The progress B. */
-    @FXML
-    private ProgressBar progressB;
-    
-    /**
-     * Back to S.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void BackToS(MouseEvent event) throws IOException {
+	/** The Description of request field. */
+	@FXML
+	private TextArea DescriptionOfRequestField;
+
+	/** The Request stage field. */
+	@FXML
+	private TextField RequestStageField;
+
+	/** The Back to show. */
+	@FXML
+	private Button BackToShow;
+
+	/** The progress B. */
+	@FXML
+	private ProgressBar progressB;
+
+	/**
+	 * Mouse click event, if "Back to all request" button clicked, open the screen of "Show
+	 * requests".
+	 *
+	 * @param event The Back to all request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void BackToS(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserShowRequests");
 		MainAllControllers.changeWin();
 	}
-    
-    /**
-     * Mouse click event, if "Add request" button clicked, open the screen of "Add new request".
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */   
-    @FXML
-    void addreBTNE(MouseEvent event)throws IOException {
+
+	/**
+	 * Mouse click event, if "Add request" button clicked, open the screen of "Add
+	 * new request".
+	 *
+	 * @param event The Add request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void addreBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserAddRequest");
 		MainAllControllers.changeWin();
 
 	}
-    
-    /**
-     * Mouse click event, if "help" button clicked, open the screen of "help".
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goHelpPage(MouseEvent event) throws IOException {
+
+	/**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The Help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goHelpPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserHelp");
 		MainAllControllers.changeWin();
 	}
-    
-    /**
-     * Mouse click event, if "Home" button clicked, open the screen of "Home".
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goHomePage(MouseEvent event) throws IOException {
+
+	/**
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goHomePage(MouseEvent event) throws IOException {
 
 		MainAllControllers.setWindowVar("userHome");
 		MainAllControllers.changeWin();
 	}
-    
-    /**
-     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goLogoutPage(MouseEvent event) throws IOException {
+
+	/**
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The LogOut BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goLogoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+		MainAllControllers.logOutUser();
 	}
-    
-    /**
-     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goPersonalPage(MouseEvent event) throws IOException {
+
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goPersonalPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserPersonalInfo");
 		MainAllControllers.changeWin();
 	}
-    
-    /**
-     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goShowReqPage(MouseEvent event) throws IOException {
+
+	/**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goShowReqPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserShowRequests");
 		MainAllControllers.changeWin();
 	}
-    
-    /**
-     * Sets the text in fields.
-     *
-     * @param listR the new text in fields
-     */
-    void setTextInFields(ArrayList<Object> listR)
-    {
-    	Request req=(Request)listR.get(0);	
-    	
-    	ApplicantNameField.setText(req.getUserSubFullName());
-    	InformationSystemField.setText(req.getInfoSystem());
-    	requestStatusField.setText(req.getCurrentStatus());
-    	RequestStageField.setText(req.getCurrentStage().toString());
-    	DescriptionExistingSituationField.setText(req.getDesExtSit());
-    	DescriptionOfRequestField.setText(req.getWantedChange());  
-    	setProgressBar(req);
-    }
-    
-    /**
-     * Sets the progress bar.
-     *
-     * @param req the new progress bar
-     */
-    public void setProgressBar(Request req)
-    {
-    	 if(req.getCurrentStage().equals(StageName.supervisorApprovel)||req.getCurrentStage().equals(StageName.waitingEvaluationTime)
-    			 ||req.getCurrentStage().equals(StageName.waitingSupervisorApproveEvaluationTime)||req.getCurrentStage().equals(StageName.meaningAssessment))
-    	 {
-        	 progressB.setStyle("-fx-accent:green");
-         	progressB.setProgress(0.25);
-    	 }
-    	 else if(req.getCurrentStage().equals(StageName.waitingExecutionTime)||req.getCurrentStage().equals(StageName.waitingSupervisorApproveExecutionTime)
-    			 ||req.getCurrentStage().equals(StageName.waitingSupervisorApproveExecutionTime)||req.getCurrentStage().equals(StageName.examinationAndDecision))
-    	 {
-        	 progressB.setStyle("-fx-accent:green");
-         	progressB.setProgress(0.5);
-    	 }
-    	 else if(req.getCurrentStage().equals(StageName.execution)||req.getCurrentStage().equals(StageName.testing))
-    	 {
-        	 progressB.setStyle("-fx-accent:green");
-         	progressB.setProgress(0.75);
-    	 }
-    	 else if(req.getCurrentStage().equals(StageName.closing)||req.getCurrentStage().equals(StageName.Closed))
-    	 {
-        	 progressB.setStyle("-fx-accent:red");
-         	progressB.setProgress(1);
-    	 }
-    }
-    
-    /**
-     * Initializes GUI components before this window open.
-     *
-     * @param location the location
-     * @param resources the resources
-     */
-	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
-		
-		
-		ArrayList<Object> arry=new ArrayList<Object>();
-		int s=MainAllControllers.request;
-		arry.add(s);//request id
-		requestIdField.setText("request number: "+s);
-		DBmessage dbm;
-    	dbm=new DBmessage(MessageType.showRequestDetailsUser, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
+
+	/**
+	 * This method get the request details from DB and sets the text in fields of this screen.
+	 *
+	 * @param listR The list of the request details
+	 */
+	void setTextInFields(ArrayList<Object> listR) {
+		Request req = (Request) listR.get(0);
+
+		ApplicantNameField.setText(req.getUserSubFullName());
+		InformationSystemField.setText(req.getInfoSystem());
+		requestStatusField.setText(req.getCurrentStatus());
+		RequestStageField.setText(req.getCurrentStage().toString());
+		DescriptionExistingSituationField.setText(req.getDesExtSit());
+		DescriptionOfRequestField.setText(req.getWantedChange());
+		setProgressBar(req);
 	}
-    
-    
+
+	/**
+	 * This method sets the progress bar.
+	 * This progress bar show the level of the request
+	 *
+	 * @param req the new progress bar
+	 */
+	public void setProgressBar(Request req) {
+		if (req.getCurrentStage().equals(StageName.supervisorApprovel)
+				|| req.getCurrentStage().equals(StageName.waitingEvaluationTime)
+				|| req.getCurrentStage().equals(StageName.waitingSupervisorApproveEvaluationTime)
+				|| req.getCurrentStage().equals(StageName.meaningAssessment)) {
+			progressB.setStyle("-fx-accent:green");
+			progressB.setProgress(0.25);
+		} else if (req.getCurrentStage().equals(StageName.waitingExecutionTime)
+				|| req.getCurrentStage().equals(StageName.waitingSupervisorApproveExecutionTime)
+				|| req.getCurrentStage().equals(StageName.waitingSupervisorApproveExecutionTime)
+				|| req.getCurrentStage().equals(StageName.examinationAndDecision)) {
+			progressB.setStyle("-fx-accent:green");
+			progressB.setProgress(0.5);
+		} else if (req.getCurrentStage().equals(StageName.execution)
+				|| req.getCurrentStage().equals(StageName.testing)) {
+			progressB.setStyle("-fx-accent:green");
+			progressB.setProgress(0.75);
+		} else if (req.getCurrentStage().equals(StageName.closing) || req.getCurrentStage().equals(StageName.Closed)) {
+			progressB.setStyle("-fx-accent:red");
+			progressB.setProgress(1);
+		}
+	}
+
+	/**
+	 * Initializes GUI components before this window open.
+	 * Get the request details from DB and show in screen 
+	 *
+	 * @param location  the location
+	 * @param resources the resources
+	 */
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		ArrayList<Object> arry = new ArrayList<Object>();
+		int s = MainAllControllers.request;
+		arry.add(s);// request id
+		requestIdField.setText("request number: " + s);
+		DBmessage dbm;
+		dbm = new DBmessage(MessageType.showRequestDetailsUser, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+	}
 
 }

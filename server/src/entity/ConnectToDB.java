@@ -18,6 +18,12 @@ public class ConnectToDB
 		this.password=password;
 		this.BaseName=BaseName;
 	}
+	
+	/**
+	 * Connect.
+	 *
+	 * @return the connection
+	 */
 	public Connection  Connect()
 	{
 		Connection con=null;

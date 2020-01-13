@@ -12,13 +12,30 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.RequestUser;
 
+/**
+ * The Class SupervisorShowRequestsSController.
+ */
 public class SupervisorShowRequestsSController 
 {
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The user. */
 	private String user;
+	
+	/** The user id req. */
 	private int userIdReq;
+	
+	/** The msg. */
 	private DBmessage msg;
 	
+	/**
+	 * Instantiates a new supervisor show requests S controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public SupervisorShowRequestsSController(DBmessage msg,Connection connection)
 	{
 		this.msg=msg;
@@ -26,6 +43,11 @@ public class SupervisorShowRequestsSController
 		this.connection=connection;
 	}
 
+	/**
+	 * Show SP request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage showSPRequest()
 	{
 		ArrayList<Object> arry=msg.getObjs();
@@ -90,6 +112,11 @@ public class SupervisorShowRequestsSController
 	}
 	
 	
+	/**
+	 * Num of request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage numOfRequest()
 	{
 		Statement stmt;
@@ -114,6 +141,13 @@ public class SupervisorShowRequestsSController
 		}	
 		return null;
 	}
+	
+	/**
+	 * Numof messages.
+	 *
+	 * @param name the name
+	 * @return the int
+	 */
 	public int numofMessages(String name)
 	{
 		Statement stmt;
@@ -134,6 +168,11 @@ public class SupervisorShowRequestsSController
 		return 0;
 	}
 
+	/**
+	 * View extension report.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage viewExtensionReport() {
 		Statement stmt;
 		DBSmessage dbs;
@@ -166,6 +205,11 @@ public class SupervisorShowRequestsSController
 		return null;	
 	}
 	
+	/**
+	 * Approvev time.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage approvevTime()
 	{
 		Statement stmt;

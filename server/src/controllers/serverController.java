@@ -17,24 +17,51 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
+/**
+ * The Class serverController.
+ */
 public class serverController 
 {
+    
+    /** The connect. */
     @FXML
     private Button connect;
+    
+    /** The disconnect. */
     @FXML
     private Button disconnect;
+    
+    /** The messagebox. */
     @FXML
     private TextArea messagebox;
+    
+    /** The dbuser. */
     @FXML
     private TextField dbuser;
+    
+    /** The dbscheme. */
     @FXML
     private TextField dbscheme;
+    
+    /** The port. */
     @FXML
     private TextField port;
+    
+    /** The dbpassword. */
     @FXML
     private PasswordField dbpassword;
+    
+    /** The connecti. */
     private ConnectToDB connecti;
+    
+    /** The main server ABS. */
     private mainServerABS mainServerABS;
+    
+    /**
+     * Connect.
+     *
+     * @param event the event
+     */
     @FXML
     void connect(MouseEvent event)
     {
@@ -52,6 +79,12 @@ public class serverController
     	}
     	mainServer.NUM_OF_REQUEST=getNumOfRequest();
     }
+    
+    /**
+     * Gets the num of request.
+     *
+     * @return the num of request
+     */
     private int getNumOfRequest()
     {
     	Statement stmt;
@@ -78,11 +111,23 @@ public class serverController
 		}
 		return 0;
 	}
+	
+	/**
+	 * Disconnect.
+	 *
+	 * @param event the event
+	 */
 	@FXML
     void disconnect(MouseEvent event)
     {
     	mainServerABS.stopServer();
     }
+    
+    /**
+     * Show on screen.
+     *
+     * @param str the str
+     */
     public  void showOnScreen(String str)
     {
     	messagebox.setText(str);

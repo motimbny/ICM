@@ -40,130 +40,194 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * The Class ITManagerReportsController.
+ */
 public class ITManagerReportsController implements Initializable {
+	
+	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	
+	/** The arry ac su co. */
 	private ArrayList<Integer> arryAcSuCo;
+	
+	/** The arry delays info. */
 	private ArrayList<Integer> arryDelaysInfo;
 
+	/**
+	 * Instantiates a new IT manager reports controller.
+	 */
 	public ITManagerReportsController() {
 
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 
+	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
 
+	/** The show request BTN. */
 	@FXML
 	private Button showRequestBTN;
 
+	/** The generate report BTN 1. */
 	@FXML
 	private Button generateReportBTN1;
 
+	/** The employees mang BTN. */
 	@FXML
 	private Button employeesMangBTN;
 
+	/** The Message BTN. */
 	@FXML
 	private Button MessageBTN;
 
+	/** The personal info BTN. */
 	@FXML
 	private Button personalInfoBTN;
 
+	/** The help BTN. */
 	@FXML
 	private Button helpBTN;
 
+	/** The logout BTN. */
 	@FXML
 	private Button logoutBTN;
 
+	/** The choose type of report. */
 	@FXML
 	private ChoiceBox<String> chooseTypeOfReport;
 
+	/** The date from. */
 	@FXML
 	private DatePicker dateFrom;
 
+	/** The Date to. */
 	@FXML
 	private DatePicker DateTo;
 
+	/** The generate report. */
 	@FXML
 	private Button generateReport;
 
+	/** The activity. */
 	@FXML
 	private Pane activity;
 
+	/** The Active su clo. */
 	@FXML
 	private PieChart ActiveSuClo;
 
+	/** The medin T. */
 	@FXML
 	private TextField medinT;
 
+	/** The devesion T. */
 	@FXML
 	private TextField devesionT;
 
+	/** The frequency. */
 	@FXML
 	private TextField frequency;
 
+	/** The deniedreq. */
 	@FXML
 	private TextField deniedreq;
 
+	/** The allreq. */
 	@FXML
 	private TextField allreq;
+	
+	/** The medin delay. */
 	@FXML
 	private TextField medinDelay;
 
+	/** The choosestatus. */
 	@FXML
 	private ChoiceBox<?> choosestatus;
 
+	/** The performence. */
 	@FXML
 	private Pane performence;
 
+	/** The days. */
 	@FXML
 	private TextField days;
 
+	/** The delays in execution. */
 	@FXML
 	private Pane delaysInExecution;
 
+	/** The delayspie. */
 	@FXML
 	private PieChart delayspie;
 
+	/** The number of delays. */
 	@FXML
 	private TextField numberOfDelays;
+	
+	/** The devesion delay. */
 	@FXML
 	private TextField devesionDelay;
 
+	/** The time of delays. */
 	@FXML
 	private TextField timeOfDelays;
+	
+	/** The Frequencygraph. */
 	@FXML
 	private StackedBarChart<Integer, Integer> Frequencygraph;
+	
+	/** The table. */
 	@FXML
 	private TableView<tablefield> table;
 
+	/** The month. */
 	@FXML
 	private TableColumn<tablefield, String> month;
 
+	/** The day. */
 	@FXML
 	private TableColumn<tablefield, Integer> day;
 
+	/** The num. */
 	@FXML
 	private TableColumn<tablefield, Integer> num;
+	
+	/** The medgraph. */
 	@FXML
 	private StackedBarChart<String, Integer> medgraph;
 
+	/** The devgraph. */
 	@FXML
 	private StackedBarChart<?, ?> devgraph;
 
+	/** The freqgraph. */
 	@FXML
 	private StackedBarChart<?, ?> freqgraph;
 
+	/** The freqtable. */
 	@FXML
 	private TableView<tablefield> freqtable;
+	
+	/** The month 1. */
 	@FXML
 	private TableColumn<tablefield, String> month1;
 
+	/** The day 1. */
 	@FXML
 	private TableColumn<tablefield, Integer> day1;
 
+	/** The num 1. */
 	@FXML
 	private TableColumn<tablefield, Integer> num1;
 
+	/**
+	 * Generate report click.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void generateReportClick(MouseEvent event) throws IOException {
 
@@ -189,6 +253,9 @@ public class ITManagerReportsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Make delays.
+	 */
 	private void makeDelays() {
 		DBmessage dbm;
 		String start, end;
@@ -204,6 +271,9 @@ public class ITManagerReportsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Make performenct.
+	 */
 	private void makePerformenct() {
 
 		DBmessage dbm;
@@ -220,6 +290,9 @@ public class ITManagerReportsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Make active su clo.
+	 */
 	public void makeActiveSuClo() {
 		DBmessage dbm;
 		String start, end;
@@ -237,6 +310,11 @@ public class ITManagerReportsController implements Initializable {
 
 	}
 
+	/**
+	 * Sets the active su clo.
+	 *
+	 * @param send the new active su clo
+	 */
 	@SuppressWarnings("unchecked")
 	public void setActiveSuClo(ArrayList<Object> send) {
 
@@ -356,12 +434,24 @@ public class ITManagerReportsController implements Initializable {
 
 	}
 
+	/**
+	 * Go employees mang.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goEmployeesMang(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITManagerEmployeesManagment");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go help page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITManagerHelp");
@@ -369,30 +459,60 @@ public class ITManagerReportsController implements Initializable {
 
 	}
 
+	/**
+	 * Go home page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITManagerHome");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go personal info.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITManagerPersonalInfo");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go show req.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goShowReq(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITManagerShowRequests");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Go generate report.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void gogenerateReport(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITManagerReports");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * go Logout page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void logoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
@@ -400,12 +520,24 @@ public class ITManagerReportsController implements Initializable {
 		MainAllControllers.logOutUser();
 	}
 
+	/**
+	 * go Message page.
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void messagePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITManagerMessages");
 		MainAllControllers.changeWin();
 	}
 
+	/**
+	 * Initialize.
+	 *
+	 * @param arg0 the arg 0
+	 * @param arg1 the arg 1
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		chooseTypeOfReport.getItems().add("Activity");
@@ -417,10 +549,20 @@ public class ITManagerReportsController implements Initializable {
 
 	}
 
+	/**
+	 * Sets the make performenct.
+	 *
+	 * @param send the new make performenct
+	 */
 	public void setmakePerformenct(ArrayList<Object> send) {
 		this.days.setText("" + send.get(0));
 	}
 
+	/**
+	 * Sets the make delays.
+	 *
+	 * @param send the new make delays
+	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void setmakeDelays(ArrayList<Object> send) {
 		String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
@@ -469,6 +611,12 @@ public class ITManagerReportsController implements Initializable {
 		this.Frequencygraph.getData().add(dataSeries1);
 	}
 
+	/**
+	 * Foundmed.
+	 *
+	 * @param arr the arr
+	 * @return the int
+	 */
 	private int foundmed(int[] arr) {
 
 		for (int i = arr.length - 1; i > 0; i--) {
@@ -481,6 +629,13 @@ public class ITManagerReportsController implements Initializable {
 
 	}
 
+	/**
+	 * Swap.
+	 *
+	 * @param arr the arr
+	 * @param i the i
+	 * @param j the j
+	 */
 	public void swap(int[] arr, int i, int j) {
 		int temp = arr[i];
 		arr[i] = arr[j];

@@ -13,16 +13,38 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.requestSuper;
 
+/**
+ * The Class superviserRequestShowController.
+ */
 public class superviserRequestShowController
 {
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The num request. */
 	private int numRequest;
+	
+	/** The msg. */
 	private DBmessage msg;
+	
+	/**
+	 * Instantiates a new superviser request show controller.
+	 *
+	 * @param msg the msg
+	 * @param connection the connection
+	 */
 	public superviserRequestShowController(DBmessage msg,Connection connection)
 	{
 		this.connection=connection;
 		this.msg=msg;
 	}
+	
+	/**
+	 * Gets the request to show.
+	 *
+	 * @return the request to show
+	 */
 	public DBSmessage getRequestToShow()
 	{
 		Statement stmt;
@@ -46,6 +68,12 @@ public class superviserRequestShowController
 		}
 		return null;
 	}
+	
+	/**
+	 * Gets the SP request to show.
+	 *
+	 * @return the SP request to show
+	 */
 	public DBSmessage getSPRequestToShow()
 	{
 		int num=(int) msg.getObjs().get(0);
@@ -70,6 +98,12 @@ public class superviserRequestShowController
 		}
 		return null;
 	}
+	
+	/**
+	 * Update suspend request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage updateSuspendRequest() 
 	{
 		int num=(int) msg.getObjs().get(0);
@@ -98,6 +132,11 @@ public class superviserRequestShowController
 	
 
 	
+	/**
+	 * Updateclose request.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage updatecloseRequest() 
 	{
 		int num=(int) msg.getObjs().get(0);
@@ -137,6 +176,12 @@ public class superviserRequestShowController
 		}
 		return getRequestToShow();
 	}
+	
+	/**
+	 * Mget request to show.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage MgetRequestToShow() 
 	{
 		Statement stmt;
@@ -160,6 +205,12 @@ public class superviserRequestShowController
 		}
 		return null;
 	}
+	
+	/**
+	 * Mget SP request to show.
+	 *
+	 * @return the object
+	 */
 	public Object MgetSPRequestToShow()
 	{
 		int num=(int) msg.getObjs().get(0);
@@ -184,6 +235,12 @@ public class superviserRequestShowController
 		}
 		return null;
 	}
+	
+	/**
+	 * Updaterenew request.
+	 *
+	 * @return the object
+	 */
 	public Object updaterenewRequest() 
 	{
 		int num=(int) msg.getObjs().get(0);

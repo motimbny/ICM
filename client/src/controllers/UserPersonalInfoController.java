@@ -13,33 +13,32 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * User personal information screen Controller .
+ * This window is in User GUI and display the personal information of the user.
  *
  * @author SHIRA
  */
-public class UserPersonalInfoController implements Initializable 
-{
-	
+public class UserPersonalInfoController implements Initializable {
+
 	/**
 	 * Instantiates a new user personal info controller.
 	 */
-	public UserPersonalInfoController() 
-	{
+	public UserPersonalInfoController() {
 		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
-	
+
 	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
 
-	/** The addre BTN. */
+	/** The add request BTN. */
 	@FXML
 	private Button addreBTN;
 
-	/** The showre BTN. */
+	/** The show request BTN. */
 	@FXML
 	private Button showreBTN;
 
-	/** The person BTN. */
+	/** The personal info BTN. */
 	@FXML
 	private Button personBTN;
 
@@ -62,24 +61,24 @@ public class UserPersonalInfoController implements Initializable
 	/** The position. */
 	@FXML
 	private Label position;
-	 
- 	/** The student IMG. */
- 	@FXML
-	    private ImageView studentIMG;
 
-	    /** The lecturer IMG. */
-    	@FXML
-	    private ImageView lecturerIMG;
+	/** The student IMG. */
+	@FXML
+	private ImageView studentIMG;
 
-	    /** The emp IMG. */
-    	@FXML
-	    private ImageView empIMG;
+	/** The lecturer IMG. */
+	@FXML
+	private ImageView lecturerIMG;
 
+	/** The employee IMG. */
+	@FXML
+	private ImageView empIMG;
 
 	/**
-	 * Mouse click event, if "Add request" button clicked, open the screen of "Add new request".
-	 *
-	 * @param event the event
+	 * Mouse click event, if "Add request" button clicked, open the screen of "Add
+	 * new request".
+	 * 
+	 * @param event The Add request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -88,62 +87,65 @@ public class UserPersonalInfoController implements Initializable
 		MainAllControllers.changeWin();
 
 	}
-	 
- 	/**
- 	 * Mouse click event, if "help" button clicked, open the screen of "help".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+
+	/**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 * 
+	 * @param event The Help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 
 	@FXML
 	void helpBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserHelp");
 		MainAllControllers.changeWin();
 	}
-    
-    /**
-     * Mouse click event, if "Home" button clicked, open the screen of "Home".
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+
+	/**
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 * 
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void backHome(MouseEvent event) throws IOException {
 
 		MainAllControllers.setWindowVar("userHome");
 		MainAllControllers.changeWin();
 	}
-	
+
 	/**
-	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
-	 *
-	 * @param event the event
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 * 
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
 	void logoutBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+		MainAllControllers.logOutUser();
 	}
-	 
- 	/**
- 	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 * 
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void personBTNE(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("UserPersonalInfo");
 		MainAllControllers.changeWin();
 	}
-	
+
 	/**
-	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
-	 *
-	 * @param event the event
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 * 
+	 * @param event The Show request
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -155,36 +157,34 @@ public class UserPersonalInfoController implements Initializable
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
 
-/**
- * initialize function - set the relevant user information on the screen: user name, email and position.
- *
- * @param location the location
- * @param resources the resources
- */
+	/**
+	 * Initializes GUI components before this window open. Get the relevant
+	 * information from DB and set the user information on the screen: user name,
+	 * email and position.
+	 * 
+	 * @param location  the location
+	 * @param resources the resources
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		UserName.setText(MainAllControllers.user.getName());
 		email.setText(MainAllControllers.user.getName() + "@braude.ac.il");
 		position.setText(MainAllControllers.user.getstrPosition());
-        switch (MainAllControllers.user.getstrPosition())
-        {
-	        case "lecturer":
-	        {
-	        	lecturerIMG.setVisible(true);
+		switch (MainAllControllers.user.getstrPosition()) {
+		case "lecturer": {
+			lecturerIMG.setVisible(true);
 
-	        }
-	        break;
-	        case "student":
-	        {
-	        	studentIMG.setVisible(true);
-	        }
-	        break;
-	        case "CollegeEmployee":
-	        {
-	        	empIMG.setVisible(true);
-	        }
-	        break;
-        }
+		}
+			break;
+		case "student": {
+			studentIMG.setVisible(true);
+		}
+			break;
+		case "CollegeEmployee": {
+			empIMG.setVisible(true);
+		}
+			break;
+		}
 	}
 
 }
