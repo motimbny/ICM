@@ -7,7 +7,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
@@ -23,6 +25,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
@@ -47,13 +50,13 @@ import javafx.stage.Stage;
  * The Class ITManagerReportsController.
  */
 public class ITManagerReportsController implements Initializable {
-	
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-	
+
 	/** The arry ac su co. */
 	private ArrayList<Integer> arryAcSuCo;
-	
+
 	/** The arry delays info. */
 	private ArrayList<Integer> arryDelaysInfo;
 
@@ -140,7 +143,7 @@ public class ITManagerReportsController implements Initializable {
 	/** The allreq. */
 	@FXML
 	private TextField allreq;
-	
+
 	/** The medin delay. */
 	@FXML
 	private TextField medinDelay;
@@ -168,7 +171,7 @@ public class ITManagerReportsController implements Initializable {
 	/** The number of delays. */
 	@FXML
 	private TextField numberOfDelays;
-	
+
 	/** The devesion delay. */
 	@FXML
 	private TextField devesionDelay;
@@ -176,11 +179,11 @@ public class ITManagerReportsController implements Initializable {
 	/** The time of delays. */
 	@FXML
 	private TextField timeOfDelays;
-	
+
 	/** The Frequencygraph. */
 	@FXML
 	private StackedBarChart<Integer, Integer> Frequencygraph;
-	
+
 	/** The table. */
 	@FXML
 	private TableView<tablefield> table;
@@ -196,7 +199,7 @@ public class ITManagerReportsController implements Initializable {
 	/** The num. */
 	@FXML
 	private TableColumn<tablefield, Integer> num;
-	
+
 	/** The medgraph. */
 	@FXML
 	private BarChart<String, Integer> medgraph;
@@ -212,7 +215,7 @@ public class ITManagerReportsController implements Initializable {
 	/** The freqtable. */
 	@FXML
 	private TableView<tablefield> freqtable;
-	
+
 	/** The month 1. */
 	@FXML
 	private TableColumn<tablefield, String> month1;
@@ -224,6 +227,9 @@ public class ITManagerReportsController implements Initializable {
 	/** The num 1. */
 	@FXML
 	private TableColumn<tablefield, Integer> num1;
+
+	@FXML
+	private BarChart<?, ?> devgraph2;
 
 	/**
 	 * Generate report click.
@@ -321,8 +327,8 @@ public class ITManagerReportsController implements Initializable {
 	@SuppressWarnings("unchecked")
 	public void setActiveSuClo(ArrayList<Object> send) {
 
-		int devesion ,medfail, medsuc, medsusp;
-		float avrgf = 0,avrgs = 0,avrgsus = 0, devf = 0,devs = 0,devsus = 0 ;
+		int devesion, medfail, medsuc, medsusp;
+		float avrgf = 0, avrgs = 0, avrgsus = 0, devf = 0, devs = 0, devsus = 0;
 		ArrayList<Object> failur = (ArrayList<Object>) send.get(0);
 		ArrayList<Object> suc = (ArrayList<Object>) send.get(1);
 		ArrayList<Object> susp = (ArrayList<Object>) send.get(2);
@@ -348,77 +354,71 @@ public class ITManagerReportsController implements Initializable {
 		medsuc = foundmed(success);
 		medsusp = foundmed(susppend);
 		XYChart.Series medf = new XYChart.Series<>();
-		medf.getData().add(new XYChart.Data<>("failure" , medfail));
+		medf.getData().add(new XYChart.Data<>("failure", medfail));
 		XYChart.Series meds = new XYChart.Series();
-		meds.getData().add(new XYChart.Data<>("success" , medsuc));
+		meds.getData().add(new XYChart.Data<>("success", medsuc));
 		XYChart.Series medsus = new XYChart.Series();
-		
-		medsus.getData().add(new XYChart.Data<>("susppend" ,medsusp));
+
+		medsus.getData().add(new XYChart.Data<>("susppend", medsusp));
 		this.medgraph.getData().add(meds);
 		this.medgraph.getData().add(medf);
 		this.medgraph.getData().add(medsus);
 		XYChart.Series freqs = new XYChart.Series();
 		XYChart.Series freqf = new XYChart.Series<>();
 		XYChart.Series freqsus = new XYChart.Series();
-	/*	int[] n= {1,4,3,2,5,8,3,7,2,7,1,6};
-		int[] d= {2,7,1,6,1,4,3,2,5,8,3,7};
-
-		int[] s= {0,0,0,0,5,8,7,1,6,3,7,2};*/
+		/*
+		 * int[] n= {1,4,3,2,5,8,3,7,2,7,1,6}; int[] d= {2,7,1,6,1,4,3,2,5,8,3,7};
+		 * 
+		 * int[] s= {0,0,0,0,5,8,7,1,6,3,7,2};
+		 */
 		freqf.setName("failure");
 		freqs.setName("success");
 		freqsus.setName("susppend");
-		for(int i=0;i<12;i++)
-		{
-			freqf.getData().add(new XYChart.Data<>(""+(i+1) , failure[i]));
-			
-			freqs.getData().add(new XYChart.Data<>(""+(i+1) , success[i]));
-			
-			
-			freqsus.getData().add(new XYChart.Data<>(""+(i+1) , susppend[i]));
+		for (int i = 0; i < 12; i++) {
+			freqf.getData().add(new XYChart.Data<>("" + (i + 1), failure[i]));
+
+			freqs.getData().add(new XYChart.Data<>("" + (i + 1), success[i]));
+
+			freqsus.getData().add(new XYChart.Data<>("" + (i + 1), susppend[i]));
 		}
 		this.freqgraph.getData().add(freqsus);
 		this.freqgraph.getData().add(freqs);
 		this.freqgraph.getData().add(freqf);
-		
-		for(int i=0;i<12;i++)
-		{
-			avrgf+=failure[i];
-			avrgs+=success[i];
-			avrgsus+=susppend[i];
+
+		for (int i = 0; i < 12; i++) {
+			avrgf += failure[i];
+			avrgs += success[i];
+			avrgsus += susppend[i];
 		}
-		avrgf=avrgf/12;
-		avrgs=avrgs/12;
-		avrgsus=avrgsus/12;
-		
-		
-		for (int j = 0; j < 12; j++)
-		{
+		avrgf = avrgf / 12;
+		avrgs = avrgs / 12;
+		avrgsus = avrgsus / 12;
+
+		for (int j = 0; j < 12; j++) {
 			devf += (float) Math.pow(failure[j] - avrgf, 2);
 			devs += (float) Math.pow(success[j] - avrgs, 2);
 			devsus += (float) Math.pow(susppend[j] - avrgsus, 2);
 		}
-		devf=(float)Math.sqrt(devf / 12);
-		devs=(float)Math.sqrt(devs / 12);
-		devsus=(float)Math.sqrt(devsus / 12);
-	
+		devf = (float) Math.sqrt(devf / 12);
+		devs = (float) Math.sqrt(devs / 12);
+		devsus = (float) Math.sqrt(devsus / 12);
+
 		CategoryAxis xAxis = new CategoryAxis();
-	       xAxis.setLabel("status request");
-	 
-	       NumberAxis yAxis = new NumberAxis();
-		       yAxis.setLabel("Standard deviation:");
-	   //    this.freqgraph= new BarChart<String, Number>(xAxis, yAxis);
+		xAxis.setLabel("status request");
+
+		NumberAxis yAxis = new NumberAxis();
+		yAxis.setLabel("Standard deviation:");
+		// this.freqgraph= new BarChart<String, Number>(xAxis, yAxis);
 		XYChart.Series avrf = new XYChart.Series<>();
-		avrf.getData().add(new XYChart.Data<>("failure" , 5));
+		avrf.getData().add(new XYChart.Data<>("failure", 5));
 		XYChart.Series avrs = new XYChart.Series();
-		avrs.getData().add(new XYChart.Data<>("success" , 5));
+		avrs.getData().add(new XYChart.Data<>("success", 5));
 		XYChart.Series avrsus = new XYChart.Series();
-		
-		avrsus.getData().add(new XYChart.Data<>("susppend" , 7));
+
+		avrsus.getData().add(new XYChart.Data<>("susppend", 7));
 		this.devgraph.getData().add(avrf);
 		this.devgraph.getData().add(avrs);
 		this.devgraph.getData().add(avrsus);
-		
-
 
 	}
 
@@ -544,6 +544,35 @@ public class ITManagerReportsController implements Initializable {
 	 */
 	public void setmakePerformenct(ArrayList<Object> send) {
 		this.days.setText("" + send.get(0));
+		Map<Integer, Object> mapDev = (Map<Integer, Object>) send.get(1);
+		int j = 0;
+		int[] sumDev = new int[4];
+		for(int i=0;i<4;i++)
+			sumDev[i]=0;
+
+		for (Map.Entry<Integer, Object> entry : mapDev.entrySet()) {
+			int[] nums=(int[]) entry.getValue();
+			for(int i=0;i<4;i++)
+				sumDev[i]+=nums[i];	
+		}
+
+		XYChart.Series stage1 = new XYChart.Series<>();
+		stage1.setName("stage 1");
+		stage1.getData().add(new XYChart.Data<>("1", sumDev[0]));
+		XYChart.Series stage2 = new XYChart.Series();
+		stage2.getData().add(new XYChart.Data<>("2", sumDev[1]));
+		XYChart.Series stage3 = new XYChart.Series();
+		stage3.getData().add(new XYChart.Data<>("3", sumDev[2]));
+		XYChart.Series stage4 = new XYChart.Series();
+		stage4.getData().add(new XYChart.Data<>("4", sumDev[3]));
+		stage2.setName("stage 2");
+		stage3.setName("stage 3");
+		stage4.setName("stage 4");
+		this.devgraph2.getData().add(stage1);
+		this.devgraph2.getData().add(stage2);
+		this.devgraph2.getData().add(stage3);
+		this.devgraph2.getData().add(stage4);
+
 	}
 
 	/**
@@ -621,8 +650,8 @@ public class ITManagerReportsController implements Initializable {
 	 * Swap.
 	 *
 	 * @param arr the arr
-	 * @param i the i
-	 * @param j the j
+	 * @param i   the i
+	 * @param j   the j
 	 */
 	public void swap(int[] arr, int i, int j) {
 		int temp = arr[i];
