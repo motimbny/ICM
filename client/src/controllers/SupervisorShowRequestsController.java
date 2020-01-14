@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
+import entity.Messages;
 import entity.requestSuper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,10 +31,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * The Class SupervisorShowRequestsController. This window is in Supervisor GUI
- * and display the requests table
- * 
- * @author SHIRA
+ * The Class SupervisorShowRequestsController.
  */
 public class SupervisorShowRequestsController implements Initializable {
 	
@@ -54,7 +52,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	@FXML
 	private Button homeBTN;
 
-	/** The show request BTN. */
+	/** The showre BTN. */
 	@FXML
 	private Button showreBTN;
 
@@ -131,10 +129,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	private Label stagenotmatch;
 
 	/**
-	 * if supervisor press on Close BTN, this method check if the request that
-	 * chosen can closed - according to the process
+	 * Close request.
 	 *
-	 * @param event Close BTN
+	 * @param event the event
 	 */
 	@FXML
 	void closeRequest(MouseEvent event) {
@@ -170,20 +167,23 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method set the labels visible
+	 * Vis not.
 	 *
-	 * @param event The BTN
+	 * @param event the event
 	 */
 	@FXML
 	void visNot(MouseEvent event) {
 		closeNot.setVisible(false);
 		susNot.setVisible(false);
+		 SuprvisorUpdateRequestBTN.setStyle("");
+		   SuprvisorTime.setStyle("");
+		   SuprvisorCloseRequestBTN.setStyle("");
 	}
 	
 	/**
 	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event The Help BTN
+	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -195,7 +195,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	/**
 	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event The Home BTN
+	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -204,49 +204,66 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.changeWin();
 	}
 	 
-	/**
-	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
-	 * and clean the fields.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+ 	/**
+ 	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+ 	 *
+ 	 * @param event the event
+ 	 * @throws IOException Signals that an I/O exception has occurred.
+ 	 */
 	@FXML
 	void goLogoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
 		MainAllControllers.changeWin();
 		MainAllControllers.logOutUser();
 	}
-	/**
-	 * If double click on request from the requests table pressed , The details of
-	 * this request will appear
-	 * 
-	 * @param event Double click on request
-	 */
 	  @FXML
 	    void showRequestInfo(MouseEvent event) 
 	    {
-		  requestTable.setOnMouseClicked((MouseEvent ev ) -> {
-	            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2){
-	                try {
+		  requestTable.setOnMouseClicked((MouseEvent ev ) -> 
+		  {
+	            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2)
+	            {
+	                try 
+	                {
 	                	MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
 	                	MainAllControllers.nowWin="SupervisorShowRequests";
 						MainAllControllers.setWindowVar("SupervisorRequestDetalies");
 						MainAllControllers.changeWin();
-					} catch (IOException e) {
+					} 
+	                catch (IOException e)
+	                {
 						e.printStackTrace();
 					}                
 	            }
-	        });
+	       
+		  if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1){
+		  {
+			  if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("supervisorApprovel"))
+			   {
+				   SuprvisorUpdateRequestBTN.setStyle("-fx-background-color: #ffdd99");
+			   }
+			   if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveEvaluationTime"))
+			   {
+				   SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
+			   }
+			   if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveExecutionTime"))
+			   {
+				   SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
+			   }
+			   if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("closing"))
+			   {
+				   SuprvisorCloseRequestBTN.setStyle("-fx-background-color: #ffdd99");
+			   }
+		   }
+		  }});
 	    }
-
-	  /**
-		 * Mouse click event, if "Personal info" button clicked, open the screen of
-		 * "Personal information".
-		 *
-		 * @param event The Personal info BTN
-		 * @throws IOException Signals that an I/O exception has occurred.
-		 */
+	 
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
+	 *
+	 * @param event the event
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorPersonalInfo");
@@ -254,10 +271,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 	
 	/**
-	 * Mouse click event, if "Show requests" button clicked, open the screen of
-	 * "Show requests".
+	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
 	 *
-	 * @param event The Show request BTN
+	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -267,10 +283,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 	
 	/**
-	 * Mouse click event, if "Messages" button clicked, open the screen of
-	 * "Messages".
+	 * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
 	 *
-	 * @param event The Messages BTN
+	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -280,10 +295,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * If supervisor press on Update request time BTN this method create a new DB message 
-	 * to send to server to approve time for the request 
+	 * View time.
 	 *
-	 * @param event The Update request time BTN
+	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -301,7 +315,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method Sets the Supervisor time request window.
+	 * Sets the time window.
 	 *
 	 * @param list the new time window
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -320,10 +334,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * if supervisor press on Suspend Request BTN, this method check if the request
-	 * that chosen can suspend - according to the process
+	 * Suspend request.
 	 *
-	 * @param event The Click on the request from table
+	 * @param event the event
 	 */
 	@FXML
 	void suspendRequest(MouseEvent event) {
@@ -359,10 +372,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method crates a new DBmsg to send to server that request suspend and
-	 * update the DB
+	 * Suspend request.
 	 *
-	 * @param id the request id
+	 * @param id the id
 	 */
 	private void suspendRequest(int id) {
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -378,10 +390,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method crates a new DBmsg to send to server that request closed and
-	 * update the DB
+	 * Close request.
 	 *
-	 * @param id the request id
+	 * @param id the id
 	 */
 	private void closeRequest(int id) {
 
@@ -398,10 +409,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * If supervisor click on View extension request BTN the window of View
-	 * extension request open .
+	 * View extension report.
 	 *
-	 * @param event the View extension request BTN
+	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -416,10 +426,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * If supervisor click on Update request time BTN the window of Update request
-	 * time open .
+	 * Update request.
 	 *
-	 * @param event the Update request time BTN
+	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -442,10 +451,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method send to server request to search request based on id that user
-	 * entered.
+	 * Search request.
 	 *
-	 * @param event The search BTN
+	 * @param event the event
 	 */
 	@FXML
 	void searchRequest(MouseEvent event) {
@@ -469,9 +477,9 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * Initializes GUI components before this window open.
+	 * Initialize.
 	 *
-	 * @param location  the location
+	 * @param location the location
 	 * @param resources the resources
 	 */
 	@Override
@@ -491,9 +499,13 @@ public class SupervisorShowRequestsController implements Initializable {
                 } 
                 else if (item.getCurrentStage().equals("supervisorApprovel")||item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) 
                 {
-                    setStyle("-fx-background-color: #ff6666;");
+                    setStyle("-fx-background-color: #ffdd99;");
                 } 
-                else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||item.getCurrentStage().equals("closing")) 
+                else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime"))
+                {
+                    setStyle("-fx-background-color: #ffdd99;");
+                }
+                else if (item.getCurrentStage().equals("closing"))
                 {
                     setStyle("-fx-background-color: #ff6666;");
                 }
@@ -511,7 +523,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method create new message to server to show requests of supervisor
+	 * Request server.
 	 */
 	public void requestServer() {
 		DBmessage dbm;
@@ -523,16 +535,16 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method clear the request table
+	 * Clear table.
 	 */
 	public void clearTable() {
 		requestTable.getItems().clear();
 	}
 
 	/**
-	 * This method sets the request details in the rows of the table
+	 * Sets the text in table.
 	 *
-	 * @param list the requests of supervisor
+	 * @param list the new text in table
 	 */
 	public void setTextInTable(ArrayList<Object> list) {
 		rows = FXCollections.observableArrayList();
@@ -542,11 +554,10 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method sets the label visible
+	 * Setvisable.
 	 */
 	public void setvisable() {
 		stagenotmatch.setVisible(true);
-
 	}
 
 }
