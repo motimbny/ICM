@@ -17,11 +17,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class SupervisorTimeRequestController.
- * This window is in Supervisor GUI and display after "Update request time" pressed .
+ * The Class SupervisorTimeRequestController. This window is in Supervisor GUI
+ * and display after "Update request time" pressed .
  */
 public class SupervisorTimeRequestController implements Initializable {
-	
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
 
@@ -133,8 +133,8 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * This method crates a new DBmsg to send to server after "Deny" BTN clicked
-	 * to deny and update the execution time of the request
+	 * This method crates a new DBmsg to send to server after "Deny" BTN clicked to
+	 * deny and update the execution time of the request
 	 *
 	 * @param event The Deny BTN
 	 */
@@ -151,8 +151,8 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * This method crates a new DBmsg to send to server after "Deny" BTN clicked
-	 * to deny and update the evaluation time of the request
+	 * This method crates a new DBmsg to send to server after "Deny" BTN clicked to
+	 * deny and update the evaluation time of the request
 	 *
 	 * @param event the event
 	 */
@@ -169,9 +169,9 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * Back to S.
+	 * Back to Show requests.
 	 *
-	 * @param event the event
+	 * @param event the Back button
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -180,36 +180,37 @@ public class SupervisorTimeRequestController implements Initializable {
 		MainAllControllers.changeWin();
 	}
 
-	   /**
-     * Mouse click event, if "help" button clicked, open the screen of "help".
-     *
-     * @param event The help BTN
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	/**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorHelp");
 		MainAllControllers.changeWin();
 	}
 
-    /**
-     * Mouse click event, if "Home" button clicked, open the screen of "Home".
-     *
-     * @param event The Home BTN
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	/**
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorHome");
 		MainAllControllers.changeWin();
 	}
 
-    /**
-     * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
-     *
-     * @param event The Logout BTN
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	/**
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The Logout BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goLogoutPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("login");
@@ -217,36 +218,39 @@ public class SupervisorTimeRequestController implements Initializable {
 		MainAllControllers.logOutUser();
 	}
 
-    /**
-     * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
-     *
-     * @param event The Personal info BTN
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorPersonalInfo");
 		MainAllControllers.changeWin();
 	}
 
-    /**
-     * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
-     *
-     * @param event The Show request BTN
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	/**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goShowReqPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorShowRequests");
 		MainAllControllers.changeWin();
 	}
 
-    /**
-     * Mouse click event, if "Messages" button clicked, open the screen of "Messages".
-     *
-     * @param event The Messages BTN
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	/**
+	 * Mouse click event, if "Messages" button clicked, open the screen of
+	 * "Messages".
+	 *
+	 * @param event The Messages BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void messagePage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorMessages");
@@ -256,7 +260,7 @@ public class SupervisorTimeRequestController implements Initializable {
 	/**
 	 * Request info window.
 	 *
-	 * @param event the event
+	 * @param event The request details BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -266,7 +270,7 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * Sets the to fields.
+	 * Sets stage name on table
 	 *
 	 * @param list the new to fields
 	 */
@@ -285,9 +289,9 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open.
 	 *
-	 * @param location the location
+	 * @param location  the location
 	 * @param resources the resources
 	 */
 	@Override
@@ -305,7 +309,7 @@ public class SupervisorTimeRequestController implements Initializable {
 	}
 
 	/**
-	 * Sets the on sucsess.
+	 * This method set the label visible
 	 */
 	public void setOnSucsess() {
 		saved.setVisible(true);

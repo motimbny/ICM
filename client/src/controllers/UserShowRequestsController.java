@@ -24,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * User show requests screen Controller .
+ * This window is in User GUI and show a table with the user requests
  *
  * @author SHIRA
  */
