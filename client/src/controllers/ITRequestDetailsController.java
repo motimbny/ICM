@@ -17,7 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class ITRequestDetailsController.
+ * The Class ITRequestDetailsController.This window is in IT
+ * GUI and display the request details
  */
 public class ITRequestDetailsController implements Initializable 
 {
@@ -98,11 +99,12 @@ public class ITRequestDetailsController implements Initializable
     private Button BackToShow;
 
     /**
-     * Back to S.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Back" button clicked, open the screen of "Show
+	 * requests".
+	 *
+	 * @param event The Back BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void BackToS(MouseEvent event) throws IOException 
     {
@@ -110,12 +112,13 @@ public class ITRequestDetailsController implements Initializable
 		MainAllControllers.changeWin();
     }
 
-	/**
-	 * Go help page.
+    /**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
+
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -124,9 +127,9 @@ public class ITRequestDetailsController implements Initializable
 	}
 
 	/**
-	 * Go home page.
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event the event
+	 * @param event The Home BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -137,9 +140,10 @@ public class ITRequestDetailsController implements Initializable
 	}
 
 	/**
-	 * Go personal info.
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
 	 *
-	 * @param event the event
+	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -150,9 +154,10 @@ public class ITRequestDetailsController implements Initializable
 	}
 
 	/**
-	 * Go show req.
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
 	 *
-	 * @param event the event
+	 * @param event The Show request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -163,9 +168,10 @@ public class ITRequestDetailsController implements Initializable
 	}
 
 	/**
-	 * Logout page.
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
 	 *
-	 * @param event the event
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -177,7 +183,8 @@ public class ITRequestDetailsController implements Initializable
 	}
 	
     /**
-     * Sets the text in fields.
+     * This method get the request details from DB and sets the text in fields of
+	 * this screen.
      *
      * @param listR the new text in fields
      */
@@ -193,7 +200,8 @@ public class ITRequestDetailsController implements Initializable
     }
 	
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open. Get the relevant
+	 * information from DB and set the request details on fields
 	 *
 	 * @param location the location
 	 * @param resources the resources

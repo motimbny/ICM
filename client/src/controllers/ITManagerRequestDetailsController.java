@@ -17,239 +17,237 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 /**
- * The Class ITManagerRequestDetailsController.
+ * The Class ITManagerRequestDetailsController. This window is in IT Manager GUI
+ * and display the request details.
  */
-public class ITManagerRequestDetailsController implements Initializable  {
-	
+public class ITManagerRequestDetailsController implements Initializable {
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-	
+
 	/**
 	 * Instantiates a new IT manager request details controller.
 	 */
-	public ITManagerRequestDetailsController()
-	{
-		MainAllControllers=controllers.MainAllControllers.getInstance();
-	}
-    
-    /** The home BTN. */
-    @FXML
-    private Button homeBTN;
-
-    /** The show request BTN. */
-    @FXML
-    private Button showRequestBTN;
-
-    /** The generate report BTN 1. */
-    @FXML
-    private Button generateReportBTN1;
-
-    /** The employees mang BTN. */
-    @FXML
-    private Button employeesMangBTN;
-
-    /** The Message BTN. */
-    @FXML
-    private Button MessageBTN;
-
-    /** The personal info BTN. */
-    @FXML
-    private Button personalInfoBTN;
-
-    /** The help BTN. */
-    @FXML
-    private Button helpBTN;
-
-    /** The logout BTN. */
-    @FXML
-    private Button logoutBTN;
-
-    /** The Applicant name field. */
-    @FXML
-    private TextField ApplicantNameField;
-
-    /** The Information system field. */
-    @FXML
-    private TextField InformationSystemField;
-
-    /** The request status field. */
-    @FXML
-    private TextField requestStatusField;
-
-    /** The Description existing situation field. */
-    @FXML
-    private TextArea DescriptionExistingSituationField;
-
-    /** The Description of request field. */
-    @FXML
-    private TextArea DescriptionOfRequestField;
-
-    /** The Request stage field. */
-    @FXML
-    private TextField RequestStageField;
-
-    /** The Back to show. */
-    @FXML
-    private Button BackToShow;
-
-    /** The request id field. */
-    @FXML
-    private Text requestIdField;
-
-    /**
-     * Back to Show Requests.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void BackToS(MouseEvent event) throws IOException {
-    	MainAllControllers.setWindowVar("ITManagerShowRequests");
-    	MainAllControllers.changeWin();
+	public ITManagerRequestDetailsController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 
+	/** The home BTN. */
+	@FXML
+	private Button homeBTN;
 
-    /**
-     * Go employees mang.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goEmployeesMang(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerEmployeesManagment");
-    	MainAllControllers.changeWin();
-	}
+	/** The show request BTN. */
+	@FXML
+	private Button showRequestBTN;
 
-    /**
-     * Go help page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerHelp");
-    	MainAllControllers.changeWin();
-	}
+	/** The generate report BTN 1. */
+	@FXML
+	private Button generateReportBTN1;
 
-    /**
-     * Go home page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerHome");
-    	MainAllControllers.changeWin();
-	}
+	/** The employees mang BTN. */
+	@FXML
+	private Button employeesMangBTN;
 
+	/** The Message BTN. */
+	@FXML
+	private Button MessageBTN;
 
-    /**
-     * Go personal info.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goPersonalInfo(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerPersonalInfo");
-    	MainAllControllers.changeWin();
-	}
-    
-    /**
-     * Go show req.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goShowReq(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerShowRequests");
-    	MainAllControllers.changeWin();
-	}
+	/** The personal info BTN. */
+	@FXML
+	private Button personalInfoBTN;
 
-    /**
-     * Gogenerate report.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void gogenerateReport(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerReports");
-    	MainAllControllers.changeWin();
-	}
+	/** The help BTN. */
+	@FXML
+	private Button helpBTN;
 
-    /**
-     * Logout page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void logoutPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
-	}
+	/** The logout BTN. */
+	@FXML
+	private Button logoutBTN;
 
-    /**
-     * Message page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void messagePage(MouseEvent event)throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerMessages");
-    	MainAllControllers.changeWin();
-	}
-    
-    /**
-     * Sets the text in fields.
-     *
-     * @param listR the new text in fields
-     */
-    void setTextInFields(ArrayList<Object> listR)
-    {
-    	Request req=(Request)listR.get(0);	
-    	
-    	ApplicantNameField.setText(req.getUserSubFullName());
-    	InformationSystemField.setText(req.getInfoSystem());
-    	requestStatusField.setText(req.getCurrentStatus());
-    	RequestStageField.setText(req.getCurrentStage().toString());
-    	DescriptionExistingSituationField.setText(req.getDesExtSit());
-    	DescriptionOfRequestField.setText(req.getWantedChange());   	
-    }
+	/** The Applicant name field. */
+	@FXML
+	private TextField ApplicantNameField;
+
+	/** The Information system field. */
+	@FXML
+	private TextField InformationSystemField;
+
+	/** The request status field. */
+	@FXML
+	private TextField requestStatusField;
+
+	/** The Description existing situation field. */
+	@FXML
+	private TextArea DescriptionExistingSituationField;
+
+	/** The Description of request field. */
+	@FXML
+	private TextArea DescriptionOfRequestField;
+
+	/** The Request stage field. */
+	@FXML
+	private TextField RequestStageField;
+
+	/** The Back to show. */
+	@FXML
+	private Button BackToShow;
+
+	/** The request id field. */
+	@FXML
+	private Text requestIdField;
 
 	/**
-	 * Initialize.
+	 * Mouse click event, if "Back" button clicked, open the screen of "Show
+	 * requests".
+	 *
+	 * @param event The Back BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void BackToS(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerShowRequests");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Management" button clicked, open the screen of
+	 * "Employees management".
+	 *
+	 * @param event The Management BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goEmployeesMang(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerEmployeesManagment");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerHelp");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerHome");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goPersonalInfo(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerPersonalInfo");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goShowReq(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerShowRequests");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Reports" button clicked, open the screen of "Reports".
+	 *
+	 * @param event The Reports BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void gogenerateReport(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerReports");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The Logout BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void logoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.logOutUser();
+	}
+
+	/**
+	 * Mouse click event, if "Messages" button clicked, open the screen of
+	 * "Messages".
+	 *
+	 * @param event The Messages BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void messagePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerMessages");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * This method get the request details from DB and sets the text in fields of
+	 * this screen.
+	 *
+	 * @param listR the new text in fields
+	 */
+	void setTextInFields(ArrayList<Object> listR) {
+		Request req = (Request) listR.get(0);
+
+		ApplicantNameField.setText(req.getUserSubFullName());
+		InformationSystemField.setText(req.getInfoSystem());
+		requestStatusField.setText(req.getCurrentStatus());
+		RequestStageField.setText(req.getCurrentStage().toString());
+		DescriptionExistingSituationField.setText(req.getDesExtSit());
+		DescriptionOfRequestField.setText(req.getWantedChange());
+	}
+
+	/**
+	 * Initializes GUI components before this window open. Get the relevant
+	 * information from DB and set the request details on fields
 	 *
 	 * @param arg0 the arg 0
 	 * @param arg1 the arg 1
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		ArrayList<Object> arry=new ArrayList<Object>();
-		int s=MainAllControllers.request;
-		arry.add(s);//request id
-		requestIdField.setText("request number: "+s);
+		ArrayList<Object> arry = new ArrayList<Object>();
+		int s = MainAllControllers.request;
+		arry.add(s);// request id
+		requestIdField.setText("request number: " + s);
 		DBmessage dbm;
-    	dbm=new DBmessage(MessageType.showRequestDetailsITManager, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
-		
+		dbm = new DBmessage(MessageType.showRequestDetailsITManager, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+
 	}
 
 }

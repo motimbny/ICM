@@ -20,9 +20,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-
 /**
  * IT manager employees management screen Controller .
+ * This This window is in IT Manager GUI and display table with all employees and
+ * IT Manager can change between them
  *
  * @author SHIRA
  */
@@ -112,11 +113,11 @@ public class ITManagerEmployeesManagmentController implements Initializable
     private Label submitChnage;
     
     /**
-     * Go employees mang.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Management" button clicked, open the screen of "Employees management".
+	 *
+	 * @param event The Management BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goEmployeesMang(MouseEvent event) throws IOException 
 	{
@@ -125,11 +126,11 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
 
     /**
-     * Go help page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -138,11 +139,11 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
 
     /**
-     * Go home page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goHomePage(MouseEvent event) throws IOException 
 	{
@@ -151,11 +152,12 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
 
     /**
-     * Logout page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The Logout BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void logoutPage(MouseEvent event) throws IOException 
 	{
@@ -165,11 +167,12 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
 
     /**
-     * Go personal info.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goPersonalInfo(MouseEvent event) throws IOException 
 	{
@@ -178,11 +181,12 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
 
     /**
-     * Go show req.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goShowReq(MouseEvent event)  throws IOException 
 	{
@@ -191,8 +195,9 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
     
     /**
-     * Request server.
-     */
+	 * This method crates a new DBmsg to send to server to show all of the employees
+	 * 
+	 */
     public void requestServer()
     {
 		DBmessage dbm;
@@ -203,7 +208,7 @@ public class ITManagerEmployeesManagmentController implements Initializable
     }
     
     /**
-     * Sets the text in table.
+     * This method sets the employees details on table
      *
      * @param list the new text in table
      */
@@ -216,11 +221,12 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
     
     /**
-     * Gogenerate report.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+   	 * Mouse click event, if "Reports" button clicked, open the screen of
+   	 * "Reports".
+   	 *
+   	 * @param event The Reports BTN
+   	 * @throws IOException Signals that an I/O exception has occurred.
+   	 */
     @FXML
     void gogenerateReport(MouseEvent event) throws IOException 
 	{
@@ -229,11 +235,12 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
 
     /**
-     * Message page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Messages" button clicked, open the screen of
+	 * "Messages".
+	 *
+	 * @param event The Messages BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void messagePage(MouseEvent event) throws IOException 
 	{
@@ -242,9 +249,9 @@ public class ITManagerEmployeesManagmentController implements Initializable
 	}
     
     /**
-     * Changep.
+     * This method change the position of the employee according to the IT Manager choose
      *
-     * @param event the event
+     * @param event The Change position BTN 
      */
     @FXML
     void changep(MouseEvent event) 
@@ -262,7 +269,7 @@ public class ITManagerEmployeesManagmentController implements Initializable
     }
     
      /**
-      * Sets the visable.
+      * Sets the  label visible.
       */
      public void setVisable()
      {
@@ -270,7 +277,7 @@ public class ITManagerEmployeesManagmentController implements Initializable
      }
      
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open. 
 	 *
 	 * @param arg0 the arg 0
 	 * @param arg1 the arg 1

@@ -106,10 +106,10 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 		MainAllControllers.changeWin();
     }
 
-	/**
-	 * Go help page.
+    /**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -120,9 +120,9 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	}
 
 	/**
-	 * Go home page.
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event the event
+	 * @param event The Home BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -133,9 +133,10 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	}
 
 	/**
-	 * Go personal info.
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
 	 *
-	 * @param event the event
+	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -146,9 +147,10 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	}
 
 	/**
-	 * Go show req.
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
 	 *
-	 * @param event the event
+	 * @param event The Show request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -159,9 +161,10 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	}
 
 	/**
-	 * Logout page.
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
 	 *
-	 * @param event the event
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -173,9 +176,10 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	}
 
     /**
-     * Submit evaluation report.
+     * If IT press on Submit evaluation report this method create DBmsg to send to server
+     * to submit evaluation report
      *
-     * @param event the event
+     * @param event The submit BTN 
      * @throws IOException Signals that an I/O exception has occurred.
      */
     @FXML
@@ -210,7 +214,7 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
     }
 
     /**
-     * Sets the on sucsess.
+     * Sets the label visible
      */
     public void setOnSucsess()
     {	
@@ -223,7 +227,7 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 		MainAllControllers.changeWin();
     }
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open.
 	 *
 	 * @param location the location
 	 * @param resources the resources

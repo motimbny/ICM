@@ -14,24 +14,23 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 /**
- * IT home screen Controller .
+ * IT home screen Controller . This This window is in IT GUI and this is the
+ * first window after successful login.
  *
  * @author SHIRA
  */
-public class ITHomeController implements Initializable
-{	
-	
+public class ITHomeController implements Initializable {
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-    
-    /**
-     * Instantiates a new IT home controller.
-     */
-    public ITHomeController()
-    {
-    	MainAllControllers=controllers.MainAllControllers.getInstance();
-    }
-    
+
+	/**
+	 * Instantiates a new IT home controller.
+	 */
+	public ITHomeController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
+	}
+
 	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
@@ -60,100 +59,99 @@ public class ITHomeController implements Initializable
 	@FXML
 	private Label ExistingReq;
 
-	 /**
- 	 * Mouse click event, if "help" button clicked, open the screen of "help".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+	/**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 
 	@FXML
-	void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHelp");
-    	MainAllControllers.changeWin();
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHelp");
+		MainAllControllers.changeWin();
 	}
-	 
- 	/**
- 	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+
+	/**
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
-	void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHome");
-    	MainAllControllers.changeWin();
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHome");
+		MainAllControllers.changeWin();
 	}
-	 
- 	/**
- 	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
-	void goPersonalInfo(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITPersonalInfo");
-    	MainAllControllers.changeWin();
+	void goPersonalInfo(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITPersonalInfo");
+		MainAllControllers.changeWin();
 	}
-	 
- 	/**
- 	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+
+	/**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
-	void goShowReq(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITshowRequests");
-    	MainAllControllers.changeWin();
+	void goShowReq(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITshowRequests");
+		MainAllControllers.changeWin();
 	}
-	 
- 	/**
- 	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+
+	/**
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The Logout BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
-	void logoutPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+	void logoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.logOutUser();
 	}
-	
+
 	/**
 	 * This function set number of request in the screen.
 	 *
 	 * @param num the new request number
 	 */
-    void setRequestNumber(int num)
-    {
-    	ExistingReq.setText("Existing requests: "+Integer.toString(num));
-    }
-	
+	void setRequestNumber(int num) {
+		ExistingReq.setText("Existing requests: " + Integer.toString(num));
+	}
+
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open. Get the user name from
+	 * the DB and show it in this screen Also get the number of request of this user
+	 * from DB
 	 *
-	 * @param location the location
+	 * @param location  the location
 	 * @param resources the resources
 	 */
 	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{
-		helloIT.setText("Hello "+MainAllControllers.user.getName());
-		ArrayList<Object> arry=new ArrayList<Object>();
+	public void initialize(URL location, ResourceBundle resources) {
+		helloIT.setText("Hello " + MainAllControllers.user.getName());
+		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName());
 		DBmessage dbm;
-    	dbm=new DBmessage(MessageType.IThomeRequestNum, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
+		dbm = new DBmessage(MessageType.IThomeRequestNum, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
 
 }

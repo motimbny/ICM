@@ -11,177 +11,177 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class ITManagerPersonalInfoController.
+ * The Class ITManagerPersonalInfoController. This window is in IT Manager GUI
+ * and display the personal information of the IT Manager.
  */
 public class ITManagerPersonalInfoController implements Initializable {
 
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-	
+
 	/**
 	 * Instantiates a new IT manager personal info controller.
 	 */
-	public ITManagerPersonalInfoController()
-	{
-		MainAllControllers=controllers.MainAllControllers.getInstance();
-	}
-    
-    /** The home BTN. */
-    @FXML
-    private Button homeBTN;
-
-    /** The show request BTN. */
-    @FXML
-    private Button showRequestBTN;
-
-    /** The generate report BTN 1. */
-    @FXML
-    private Button generateReportBTN1;
-
-    /** The employees mang BTN. */
-    @FXML
-    private Button employeesMangBTN;
-
-    /** The logout BTN 1. */
-    @FXML
-    private Button logoutBTN1;
-
-    /** The personal info BTN. */
-    @FXML
-    private Button personalInfoBTN;
-
-    /** The help BTN. */
-    @FXML
-    private Button helpBTN;
-
-    /** The Message BTN. */
-    @FXML
-    private Button MessageBTN;
-    
-    /** The logout BTN. */
-    @FXML
-    private Button logoutBTN;
-
-    /** The User name. */
-    @FXML
-    private Label UserName;
-
-    /** The email. */
-    @FXML
-    private Label email;
-
-    /** The position. */
-    @FXML
-    private Label position;
-
-    /**
-     * Go employees mang.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goEmployeesMang(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerEmployeesManagment");
-    	MainAllControllers.changeWin();
+	public ITManagerPersonalInfoController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
 	}
 
-    /**
-     * Go help page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerHelp");
-    	MainAllControllers.changeWin();
-	
-    }
+	/** The home BTN. */
+	@FXML
+	private Button homeBTN;
 
-    /**
-     * Go home page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerHome");
-    	MainAllControllers.changeWin();
-	}
+	/** The show request BTN. */
+	@FXML
+	private Button showRequestBTN;
 
-    /**
-     * Go personal info.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goPersonalInfo(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerPersonalInfo");
-    	MainAllControllers.changeWin();
-	}
+	/** The generate report BTN 1. */
+	@FXML
+	private Button generateReportBTN1;
 
-    /**
-     * Go show req.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void goShowReq(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerShowRequests");
-    	MainAllControllers.changeWin();
-	}
-    
-    /**
-     * Message page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void messagePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerMessages");
-    	MainAllControllers.changeWin();
-	}
+	/** The employees mang BTN. */
+	@FXML
+	private Button employeesMangBTN;
 
-    /**
-     * Gogenerate report.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void gogenerateReport(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITManagerReports");
-    	MainAllControllers.changeWin();
-	}
-    
-    /**
-     * Logout page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void logoutPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+	/** The logout BTN 1. */
+	@FXML
+	private Button logoutBTN1;
+
+	/** The personal info BTN. */
+	@FXML
+	private Button personalInfoBTN;
+
+	/** The help BTN. */
+	@FXML
+	private Button helpBTN;
+
+	/** The Message BTN. */
+	@FXML
+	private Button MessageBTN;
+
+	/** The logout BTN. */
+	@FXML
+	private Button logoutBTN;
+
+	/** The User name. */
+	@FXML
+	private Label UserName;
+
+	/** The email. */
+	@FXML
+	private Label email;
+
+	/** The position. */
+	@FXML
+	private Label position;
+
+	/**
+	 * Mouse click event, if "Management" button clicked, open the screen of
+	 * "Employees management".
+	 *
+	 * @param event The Management BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goEmployeesMang(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerEmployeesManagment");
+		MainAllControllers.changeWin();
 	}
 
 	/**
-	 * Initialize.
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerHelp");
+		MainAllControllers.changeWin();
+
+	}
+
+	/**
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerHome");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goPersonalInfo(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerPersonalInfo");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goShowReq(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerShowRequests");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Messages" button clicked, open the screen of
+	 * "Messages".
+	 *
+	 * @param event The Messages BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void messagePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerMessages");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "Reports" button clicked, open the screen of "Reports".
+	 *
+	 * @param event The Reports BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void gogenerateReport(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITManagerReports");
+		MainAllControllers.changeWin();
+	}
+
+	/**
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The Logout BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void logoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.logOutUser();
+	}
+
+	/**
+	 * Initializes GUI components before this window open. Get the relevant
+	 * information from DB and set the user information on the screen: user name,
+	 * email and position.
+	 * 
 	 *
 	 * @param arg0 the arg 0
 	 * @param arg1 the arg 1
@@ -191,7 +191,7 @@ public class ITManagerPersonalInfoController implements Initializable {
 		UserName.setText(MainAllControllers.user.getName());
 		email.setText(MainAllControllers.user.getName() + "@braude.ac.il");
 		position.setText(MainAllControllers.user.getstrPosition());
-		
+
 	}
 
 }

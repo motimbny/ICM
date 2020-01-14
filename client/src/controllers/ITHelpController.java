@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 /**
- * IT help screen Controller .
+ * IT help screen Controller .This window show the IT's options.
  *
  * @author SHIRA
  */
@@ -44,12 +44,12 @@ public class ITHelpController {
 	@FXML
 	private Button logoutBTN;
 	 
- 	/**
- 	 * Mouse click event, if "help" button clicked, open the screen of "help".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+	/**
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHelpPage(MouseEvent event) throws IOException 
 	{
@@ -57,12 +57,12 @@ public class ITHelpController {
     	MainAllControllers.changeWin();
 	}
 	 
- 	/**
- 	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+	/**
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goHomePage(MouseEvent event) throws IOException 
 	{
@@ -70,25 +70,27 @@ public class ITHelpController {
     	MainAllControllers.changeWin();
 	}
 	 
- 	/**
- 	 * Mouse click event, if "Personal info" button clicked, open the screen of "Personal information".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException 
 	{
     	MainAllControllers.setWindowVar("ITPersonalInfo");
     	MainAllControllers.changeWin();
 	}
-	 
- 	/**
- 	 * Mouse click event, if "Show requests" button clicked, open the screen of "Show requests".
- 	 *
- 	 * @param event the event
- 	 * @throws IOException Signals that an I/O exception has occurred.
- 	 */
+	
+	/**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goShowReq(MouseEvent event) throws IOException 
 	{
@@ -97,9 +99,10 @@ public class ITHelpController {
 	}
 	
 	/**
-	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut" and clean the fields.
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
 	 *
-	 * @param event the event
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML

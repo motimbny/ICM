@@ -14,7 +14,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class ITManagerHomeController.
+ *  The Class ITManagerHomeController.
+ *  This This window is in IT Manager GUI and this is
+ *  the first window after successful login.
+ *  
+ *  @author SHIRA
  */
 public class ITManagerHomeController implements Initializable 
 {
@@ -79,11 +83,12 @@ public class ITManagerHomeController implements Initializable
     private Label newMessage;
     
     /**
-     * Go employees mang.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Management" button clicked, open the screen of
+	 * "Employees management".
+	 *
+	 * @param event The Management BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goEmployeesMang(MouseEvent event) throws IOException 
 	{
@@ -92,11 +97,11 @@ public class ITManagerHomeController implements Initializable
 	}
     
     /**
-     * Go help page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
+	 *
+	 * @param event The help BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goHelpPage(MouseEvent event) 	throws IOException 
     	{
@@ -105,11 +110,11 @@ public class ITManagerHomeController implements Initializable
     	}
 
     /**
-     * Go home page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
+	 *
+	 * @param event The Home BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goHomePage(MouseEvent event) throws IOException 
 	{
@@ -118,11 +123,12 @@ public class ITManagerHomeController implements Initializable
 	}
 
     /**
-     * Go personal info.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goPersonalInfo(MouseEvent event) throws IOException 
 	{
@@ -131,11 +137,12 @@ public class ITManagerHomeController implements Initializable
 	}
 
     /**
-     * Go show req.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void goShowReq(MouseEvent event) throws IOException 
 	{
@@ -145,11 +152,11 @@ public class ITManagerHomeController implements Initializable
 
 
     /**
-     * Go generate report.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Reports" button clicked, open the screen of "Reports".
+	 *
+	 * @param event The Reports BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void gogenerateReport(MouseEvent event) throws IOException 
 	{
@@ -158,11 +165,12 @@ public class ITManagerHomeController implements Initializable
 	}
     
     /**
-     * Message page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "Messages" button clicked, open the screen of
+	 * "Messages".
+	 *
+	 * @param event The Messages BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void messagePage(MouseEvent event) throws IOException 
 	{
@@ -172,11 +180,12 @@ public class ITManagerHomeController implements Initializable
 
 
     /**
-     * Logout page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The Logout BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
     @FXML
     void logoutPage(MouseEvent event) throws IOException 
 	{
@@ -186,9 +195,9 @@ public class ITManagerHomeController implements Initializable
 	}
     
     /**
-     * Sets the request number.
-     *
-     * @param num the new request number
+     * Set requests number in the screen .
+	 * 
+	 * @param num The number of total requests
      */
     void setRequestNumber(int num)
     {
@@ -196,9 +205,9 @@ public class ITManagerHomeController implements Initializable
     }
     
     /**
-     * Sets the messages number.
-     *
-     * @param num the new messages number
+     * Sets the number of messages in the screen.
+	 *
+	 * @param num the new messages number
      */
     void setMessagesNumber(int num)
     {
@@ -206,7 +215,9 @@ public class ITManagerHomeController implements Initializable
     }
     
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open. Get the user name from
+	 * the DB and show it in this screen Also get the number of request of this user
+	 * from DB
 	 *
 	 * @param arg0 the arg 0
 	 * @param arg1 the arg 1
