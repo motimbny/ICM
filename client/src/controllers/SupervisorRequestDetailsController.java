@@ -99,7 +99,6 @@ public class SupervisorRequestDetailsController implements Initializable {
 	 @FXML
 	 void showAttachfile(MouseEvent event)
 	 {
-		   System.out.println("im here op");
 		   ArrayList<Object> arry=new ArrayList<Object>();
 			arry.add(MainAllControllers.request);
 			arry.add(MainAllControllers.request);
@@ -224,7 +223,6 @@ public class SupervisorRequestDetailsController implements Initializable {
 		RequestStageField.setText(req.getCurrentStage().toString());
 		DescriptionExistingSituationField.setText(req.getDesExtSit());
 		DescriptionOfRequestField.setText(req.getWantedChange());
-		System.out.println(req.getAddDocuments());
 		if(req.getAddDocuments()==1)
 			showAttach.setVisible(true);
 			

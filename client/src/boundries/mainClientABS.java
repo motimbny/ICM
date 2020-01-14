@@ -348,6 +348,18 @@ public class mainClientABS extends AbstractClient
 				MainAllControllers.SupervisorRequestDetailesFile(send);
 			}
 			break;
+			case superviserAttachFileIT:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.ITRequestDetailesFile(send);
+			}
+			break;
+			case superviserAttachFileM:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				MainAllControllers.ITManagerRequestDetailesFile(send);
+			}
+			break;
 			case showRequestDetailsSuperviser:
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();

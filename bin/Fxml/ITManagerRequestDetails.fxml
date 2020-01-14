@@ -129,7 +129,7 @@
                   </Label>
                   <TextArea fx:id="DescriptionOfRequestField" layoutX="73.0" layoutY="416.0" prefHeight="116.0" prefWidth="566.0" wrapText="true" />
                   <TextField fx:id="RequestStageField" editable="false" layoutX="171.0" layoutY="169.0" prefHeight="23.0" prefWidth="174.0" />
-                  <Button fx:id="BackToShow" layoutX="515.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="23.0" prefWidth="123.0" text="Back to all requests">
+                  <Button fx:id="BackToShow" layoutX="80.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#BackToS" prefHeight="45.0" prefWidth="123.0" styleClass="buttonBlackBorder" text="Back">
                      <font>
                         <Font size="12.0" />
                      </font>
@@ -139,6 +139,15 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
+                  <Button fx:id="showAttach" layoutX="525.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#showAttachfile" prefHeight="37.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="See attchment" textAlignment="CENTER" wrapText="true">
+                     <graphic>
+                        <ImageView fitHeight="46.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../Images/attach.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
                </children>
             </Pane>
          </children>

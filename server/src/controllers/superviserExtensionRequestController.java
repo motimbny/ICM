@@ -240,15 +240,12 @@ public class superviserExtensionRequestController
 	 }
 	public DBSmessage getAttachRequest() 
 	{
-		System.out.println("im here server");
 		ArrayList<Object> toSend= new ArrayList<Object>();
 		DBSmessage dbsm=null;
          ServerFile fileOfUser; 
 		 String LocalfilePath="serverfile/";
 		 LocalfilePath=LocalfilePath+""+numReport+""+FindUserName();
 		 fileOfUser= new ServerFile(numReport+""+FindUserName());
-			System.out.println("im here server + "+LocalfilePath);
-
 	      try{ 	
 	  	    	  File newFile=new File(LocalfilePath);
 	  		      byte [] mybytearray  = new byte [(int)newFile.length()];
@@ -258,7 +255,6 @@ public class superviserExtensionRequestController
 	  		      fileOfUser.setSize(mybytearray.length); 
 	  		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length); 	
 	  		      toSend.add(fileOfUser);
-	  			System.out.println("im here server 2"+fileOfUser);
 	  			 dbsm=new DBSmessage(MessageTypeS.superviserAttachFile,toSend);
 	  			return dbsm;
 	  		    }

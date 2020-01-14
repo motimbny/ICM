@@ -166,7 +166,14 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
-			
+			case showattachfileIT: {
+				ITRequestDetailsSController itRequestDetailsSController = new ITRequestDetailsSController(dbm, connection);
+				try {
+					client.sendToClient(itRequestDetailsSController.showRequestDetailsFile());
+				} catch (IOException e) {
+				}
+				break;
+			}
 			case approveEvaluationReport: {
 				ITCCCEvaluationReportSController ITCCCEvaluationReportSController = new ITCCCEvaluationReportSController(dbm, connection);
 				try {
@@ -622,6 +629,17 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}
+		case showattachfileM:
+		{
+		 ITManagerRequestDetailsSController iTManagerRequestDetailsSController = new ITManagerRequestDetailsSController(dbm,connection);
+			try {
+				
+				client.sendToClient(iTManagerRequestDetailsSController.getAttachRequest());
+			} catch (IOException e) {
+			}
+			break;
+		}
+		
 		case showRequestDetailsSuperviser:
 		{
 			superviserExtensionRequestController superviserExtensionRequestController = new superviserExtensionRequestController(

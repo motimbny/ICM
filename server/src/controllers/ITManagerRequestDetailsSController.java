@@ -1,5 +1,8 @@
 package controllers;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,6 +14,7 @@ import Enums.StageName;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Request;
+import entity.ServerFile;
 
 /**
  * The Class ITManagerRequestDetailsSController.
@@ -104,6 +108,48 @@ public class ITManagerRequestDetailsSController
 		}	
 		return null;
 	}
+
+
+	public DBSmessage getAttachRequest() 
+	{
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		DBSmessage dbsm=null;
+         ServerFile fileOfUser; 
+		 String LocalfilePath="serverfile/";
+		 LocalfilePath=LocalfilePath+""+reqId+""+FindUserName();
+		 fileOfUser= new ServerFile(reqId+""+FindUserName());
+	      try{ 	
+	  	    	  File newFile=new File(LocalfilePath);
+	  		      byte [] mybytearray  = new byte [(int)newFile.length()];
+	  		      FileInputStream fis = new FileInputStream(newFile);	
+	  		      BufferedInputStream bis = new BufferedInputStream(fis);			     
+				  fileOfUser.initArray(mybytearray.length);
+	  		      fileOfUser.setSize(mybytearray.length); 
+	  		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length); 	
+	  		      toSend.add(fileOfUser);
+	  			 dbsm=new DBSmessage(MessageTypeS.superviserAttachFileM,toSend);
+	  			return dbsm;
+	  		    }
+	  		catch (Exception e) {
+	  			System.out.println("Error send File to Server");
+	  		}
+		return dbsm;
+	}
+	 public String FindUserName()
+	 {
+		 Statement stmt;
+		 String num=null;
+		 try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT userSubFullName FROM request WHERE id="+reqId+"");
+				while(rs.next()!=false)
+				{
+				  num=rs.getString(1);
+				}
+				rs.close();
+		} catch (SQLException e) {	}
+			return num;
+	 }
 	
 
 }

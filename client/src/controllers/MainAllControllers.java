@@ -951,5 +951,27 @@ public class MainAllControllers
 		}});
 		
 	}
+
+	public void ITManagerRequestDetailesFile(ArrayList<Object> send)
+	{
+		Platform.runLater(new Runnable()
+		{
+		@Override
+		public void run() 
+		{
+		((ITManagerRequestDetailsController) WindowToShow.controller).openRequest(send);	
+		}});
+		
+	}
+	public void ITRequestDetailesFile(ArrayList<Object> send)
+	{
+		Platform.runLater(new Runnable()
+		{
+		@Override
+		public void run() 
+		{
+		((ITRequestDetailsController) WindowToShow.controller).openRequest(send);	
+		}});	
+	}
 	
 }

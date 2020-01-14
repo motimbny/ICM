@@ -521,11 +521,11 @@ public class SupervisorShowRequestsController implements Initializable {
                 {
                     setStyle("");
                 } 
-                else if (item.getCurrentStage().equals("supervisorApprovel")||item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) 
+                else if (item.getCurrentStage().equals("supervisorApprovel")) 
                 {
-                    setStyle("-fx-background-color: #ffdd99;");
+                    setStyle("-fx-background-color: #b3ffb3;");
                 } 
-                else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime"))
+                else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime"))
                 {
                     setStyle("-fx-background-color: #ffdd99;");
                 }

@@ -1,5 +1,9 @@
 package controllers;
 
+import java.awt.Desktop;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -8,6 +12,7 @@ import java.util.ResourceBundle;
 import Enums.MessageType;
 import entity.DBmessage;
 import entity.Request;
+import entity.ServerFile;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -97,7 +102,8 @@ public class ITRequestDetailsController implements Initializable
     /** The Back to show. */
     @FXML
     private Button BackToShow;
-
+    @FXML
+    private Button showAttach;
     /**
 	 * Mouse click event, if "Back" button clicked, open the screen of "Show
 	 * requests".
@@ -196,7 +202,9 @@ public class ITRequestDetailsController implements Initializable
     	requestStatusField.setText(req.getCurrentStatus());
     	RequestStageField.setText(req.getCurrentStage().toString());
     	DescriptionExistingSituationField.setText(req.getDesExtSit());
-    	DescriptionOfRequestField.setText(req.getWantedChange());   	
+    	DescriptionOfRequestField.setText(req.getWantedChange());  
+    	if(req.getAddDocuments()==1)
+			showAttach.setVisible(true);
     }
 	
 	/**
@@ -219,5 +227,52 @@ public class ITRequestDetailsController implements Initializable
     		MainAllControllers.sendToAbsServer(dbm);
 		} catch (IOException e) {}
 	}
+	 @FXML
+	    void showAttachfile(MouseEvent event)
+	    {
+		    ArrayList<Object> arry=new ArrayList<Object>();
+			arry.add(MainAllControllers.request);
+			arry.add(MainAllControllers.request);
+			DBmessage dbm;
+	    	dbm=new DBmessage(MessageType.showattachfileIT, arry);   
+	    	try {
+	    		MainAllControllers.sendToAbsServer(dbm);
+			} catch (IOException e) {}
+	    }
+
+	 public void openRequest(ArrayList<Object> send)
+		{
+			  ServerFile sf;
+			  sf=(ServerFile) send.get(0);
+			  int fileSize =sf.getSize(); 
+			  System.out.println("Message received: " + sf);
+			  System.out.println("length "+ fileSize); 
+			  String LocalfilePath="clientfile/";
+			  try{
+				      File newFile = new File (LocalfilePath+sf.getFileName());    		      
+				      byte [] mybytearray  = sf.getMybytearray();		  
+				      FileOutputStream fos = new FileOutputStream(newFile);
+					  BufferedOutputStream bos = new BufferedOutputStream(fos);
+					  bos.write(mybytearray,0,sf.getSize());
+				      bos.flush();
+				      fos.flush();
+				    }
+				catch (Exception e) {
+					System.out.println("Error send ((Files)msg) to Server");
+				}
+			fileopen(LocalfilePath+sf.getFileName());
+		}
+	 private void fileopen(String path)
+		{
+			File file = new File(path);
+			Desktop desktop = Desktop.getDesktop();
+	        if(file.exists())
+				try {
+					desktop.open(file);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		}
 
 }
