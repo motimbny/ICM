@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -350,6 +351,34 @@ public class ITManagerShowRequestsController implements Initializable {
 		RequestID.setCellValueFactory(new PropertyValueFactory<>("id"));
 		RequestStatus.setCellValueFactory(new PropertyValueFactory<>("currentStatus"));
 		RequestProcessStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
+		requestTable.setRowFactory(tv -> new TableRow<requestSuper>() 
+		{
+			@Override
+            public void updateItem(requestSuper item, boolean empty) 
+			{
+                super.updateItem(item, empty);
+                if (item == null) 
+                {
+                    setStyle("");
+                } 
+                else if (item.getCurrentStatus().equals("Suspend")) 
+                {
+                    setStyle("-fx-background-color: #ffdd99;");
+                } 
+                else if (item.getCurrentStatus().equals("Active")) 
+                {
+                    setStyle("-fx-background-color: #b3ffb3;");
+                } 
+                else if (item.getCurrentStatus().equals("Closed")) 
+                {
+                    setStyle("-fx-background-color: #ff6666;");
+                } 
+                else if (!item.getCurrentStatus().equals("Closed")||!item.getCurrentStatus().equals("Suspend")) 
+                {
+                    setStyle("");
+                } 
+            }
+		});
 		requestServer();
 
 	}

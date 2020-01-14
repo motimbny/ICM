@@ -523,7 +523,7 @@ public class SupervisorShowRequestsController implements Initializable {
                 } 
                 else if (item.getCurrentStage().equals("supervisorApprovel")) 
                 {
-                    setStyle("-fx-background-color: #b3ffb3;");
+                	setStyle("-fx-background-color: #ffdd99;");
                 } 
                 else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime"))
                 {
@@ -533,13 +533,17 @@ public class SupervisorShowRequestsController implements Initializable {
                 {
                     setStyle("-fx-background-color: #ff6666;");
                 }
+                else if (item.getCurrentStage().equals("Closed"))
+                {
+                    setStyle("-fx-background-color: #b3b3b3;");
+                }
                 else if (!item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||!item.getCurrentStage().equals("closing")) 
                 {
-                    setStyle("");
+                	setStyle("-fx-background-color: #b3ffb3;");
                 }
                 else if (!item.getCurrentStage().equals("supervisorApprovel")||!item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) 
                 {
-                    setStyle("");
+                	setStyle("-fx-background-color: #b3ffb3;");
                 } 
             }
 		});
