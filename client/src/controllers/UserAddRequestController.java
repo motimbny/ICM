@@ -172,13 +172,13 @@ public class UserAddRequestController implements Initializable
         File file = chooser.showOpenDialog(new Stage());
         fileName.setText("+"+file.getName());
         fileName.setVisible(true);
-        fileOfUser= new ServerFile(MainAllControllers.user.getName()+"-");
+        fileOfUser= new ServerFile(MainAllControllers.user.getName());
   	    String LocalfilePath=file.getPath();
 
         try{ 	
   	    	 File newFile=new File(LocalfilePath);
   		      byte [] mybytearray  = new byte [(int)newFile.length()];
-  		      FileInputStream fis = new FileInputStream(newFile);
+  		      FileInputStream fis = new FileInputStream(newFile);	
   		      BufferedInputStream bis = new BufferedInputStream(fis);			     
   		      fileOfUser.initArray(mybytearray.length);
   		      fileOfUser.setSize(mybytearray.length); 

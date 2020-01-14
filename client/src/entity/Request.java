@@ -104,7 +104,7 @@ public class Request implements Serializable {
 	 * @param wantedChange the wanted change
 	 */
 	public Request(int id, String userSubFullName, String infoSystem, String currentStatus, StageName currentStage,
-			String desExtSit, String wantedChange) {
+			String desExtSit, String wantedChange ,int addDocuments) {
 		this.id = id;
 		this.userSubFullName = userSubFullName;
 		this.infoSystem = infoSystem;
@@ -112,6 +112,8 @@ public class Request implements Serializable {
 		this.currentStage = currentStage;
 		this.desExtSit = desExtSit;
 		this.wantedChange = wantedChange;
+		this.addDocuments = addDocuments;
+
 	}
 
 	/**

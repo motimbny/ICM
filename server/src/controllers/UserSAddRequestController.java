@@ -38,11 +38,14 @@ public class UserSAddRequestController
 		{
 		 sf=(ServerFile)arry.get(7);
 		addDoc=1;
-		saveFileToServerFolder();
 		}
 		request=new Request((String)arry.get(0),"pending",StageName.supervisorApprovel,(String)arry.get(1), (String)arry.get(2),
 				             (String)arry.get(3), (String)arry.get(4), (String)arry.get(5), (String)arry.get(6) ,
 				             java.time.LocalDate.now().toString(),addDoc);	
+		if(arry.size()==8)
+		{
+		saveFileToServerFolder();
+		}
 		SupervisorUpdateRequestSController getListOfIT=new SupervisorUpdateRequestSController(dbm,connection);
 		listOfIT=getListOfIT.getListOfITforUserAdd().getObjs();
 		this.CEO=(String)getListOfIT.getCC().getObjs().get(0);
@@ -184,9 +187,12 @@ public class UserSAddRequestController
 	      int fileSize =sf.getSize(); 
 		  System.out.println("Message received: " + sf);
 		  System.out.println("length "+ fileSize); 
-		  String LocalfilePath="serverfile/";	
+		  String LocalfilePath="serverfile/";
+		  String nameTOgive=Integer.toString(request.getId());
+		  nameTOgive=nameTOgive.concat(sf.getFileName());
+		  System.out.println(nameTOgive);
 		  try{
-			      File newFile = new File (LocalfilePath+sf.getFileName()); //concat(Integer.toString(request.getId())));     		      
+			      File newFile = new File (LocalfilePath+nameTOgive);    		      
 			      byte [] mybytearray  = sf.getMybytearray();		  
 			      FileOutputStream fos = new FileOutputStream(newFile);
 				  BufferedOutputStream bos = new BufferedOutputStream(fos);

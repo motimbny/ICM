@@ -939,5 +939,17 @@ public class MainAllControllers
 		}});
 		
 	}
+
+	public void SupervisorRequestDetailesFile(ArrayList<Object> send) 
+	{
+		Platform.runLater(new Runnable()
+		{
+		@Override
+		public void run() 
+		{
+		((SupervisorRequestDetailsController) WindowToShow.controller).openRequest(send);	
+		}});
+		
+	}
 	
 }

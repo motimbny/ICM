@@ -612,7 +612,16 @@ public class mainServerABS extends AbstractServer {
 			}
 			break;
 		}
-			
+		case showattachfile:
+		{
+			superviserExtensionRequestController superviserExtensionRequestController = new superviserExtensionRequestController(
+					dbm, connection);
+			try {
+				client.sendToClient(superviserExtensionRequestController.getAttachRequest());
+			} catch (IOException e) {
+			}
+			break;
+		}
 		case showRequestDetailsSuperviser:
 		{
 			superviserExtensionRequestController superviserExtensionRequestController = new superviserExtensionRequestController(

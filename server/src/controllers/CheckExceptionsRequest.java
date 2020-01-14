@@ -53,7 +53,7 @@ public class CheckExceptionsRequest
    }
    
    /**
-    * Findsuperviser.
+    * this method finds the superviser in the data base for later use in the class.
     */
    private void findsuperviser()
 	{
@@ -73,7 +73,7 @@ public class CheckExceptionsRequest
 	}
    
    /**
-    * Findmanager.
+    *  this method finds the manager in the data base for later use in the class..
     */
    private void findmanager()
 	{
@@ -102,7 +102,7 @@ public class CheckExceptionsRequest
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange FROM request WHERE id='"+toCheck+ "'");
+			ResultSet rs = stmt.executeQuery("SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange,addDocuments FROM request WHERE id='"+toCheck+ "'");
 				while(rs.next()!=false)
 				{
 					StageName name=null;
@@ -127,7 +127,7 @@ public class CheckExceptionsRequest
 						name=StageName.closing;
 						break;		
 					}
-					req=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7));
+					req=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7),rs.getInt(8));
 				}
 		} 
 		catch (SQLException e)

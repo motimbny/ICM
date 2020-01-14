@@ -1,5 +1,8 @@
 package controllers;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +15,7 @@ import Enums.StageName;
 import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Request;
+import entity.ServerFile;
 import entity.User;
 import entity.extensionrequest;
 
@@ -58,7 +62,7 @@ public class superviserExtensionRequestController
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange FROM request WHERE id='"+numReport+ "'");
+			ResultSet rs = stmt.executeQuery("SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange,addDocuments FROM request WHERE id='"+numReport+ "'");
 				while(rs.next()!=false)
 				{
 					StageName name=null;
@@ -98,7 +102,7 @@ public class superviserExtensionRequestController
 						name=StageName.Closed;
 						break;
 					}
-					tosend=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7));
+					tosend=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7),rs.getInt(8));
 					toSendA.add(tosend);
 				}
 				dbs=new DBSmessage(MessageTypeS.showRequestDetailsSuperviser,toSendA);
@@ -172,7 +176,7 @@ public class superviserExtensionRequestController
 	
 	public void sendMessageToManager(String reqid) throws SQLException
 	   {
-		findmanager();
+		   findmanager();
 		   PreparedStatement mToAdd;
 		   mToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
 		   mToAdd.setString(1,manager.getName());
@@ -219,4 +223,48 @@ public class superviserExtensionRequestController
 		} catch (SQLException e) {	}
 			return num;
 	 }
+	 public String FindUserName()
+	 {
+		 Statement stmt;
+		 String num=null;
+		 try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT userSubFullName FROM request WHERE id="+numReport+"");
+				while(rs.next()!=false)
+				{
+				  num=rs.getString(1);
+				}
+				rs.close();
+		} catch (SQLException e) {	}
+			return num;
+	 }
+	public DBSmessage getAttachRequest() 
+	{
+		System.out.println("im here server");
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		DBSmessage dbsm=null;
+         ServerFile fileOfUser; 
+		 String LocalfilePath="serverfile/";
+		 LocalfilePath=LocalfilePath+""+numReport+""+FindUserName();
+		 fileOfUser= new ServerFile(numReport+""+FindUserName());
+			System.out.println("im here server + "+LocalfilePath);
+
+	      try{ 	
+	  	    	  File newFile=new File(LocalfilePath);
+	  		      byte [] mybytearray  = new byte [(int)newFile.length()];
+	  		      FileInputStream fis = new FileInputStream(newFile);	
+	  		      BufferedInputStream bis = new BufferedInputStream(fis);			     
+				  fileOfUser.initArray(mybytearray.length);
+	  		      fileOfUser.setSize(mybytearray.length); 
+	  		      bis.read(fileOfUser.getMybytearray(),0,mybytearray.length); 	
+	  		      toSend.add(fileOfUser);
+	  			System.out.println("im here server 2"+fileOfUser);
+	  			 dbsm=new DBSmessage(MessageTypeS.superviserAttachFile,toSend);
+	  			return dbsm;
+	  		    }
+	  		catch (Exception e) {
+	  			System.out.println("Error send File to Server");
+	  		}
+		return dbsm;
+	}
 }

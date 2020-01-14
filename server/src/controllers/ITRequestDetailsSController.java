@@ -51,7 +51,7 @@ public class ITRequestDetailsSController
 		try 
 		{
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange FROM request WHERE id='"+reqId+ "'");
+			ResultSet rs = stmt.executeQuery("SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange,addDocuments FROM request WHERE id='"+reqId+ "'");
 				while(rs.next()!=false)
 				{
 					StageName name=null;
@@ -91,7 +91,7 @@ public class ITRequestDetailsSController
 						name=StageName.Closed;
 						break;
 					}
-					tosend=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7));
+					tosend=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7),rs.getInt(8));
 					toSendA.add(tosend);
 				}
 				dbs=new DBSmessage(MessageTypeS.showRequestDetailsIT,toSendA);
