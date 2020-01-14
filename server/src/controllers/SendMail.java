@@ -24,6 +24,7 @@ public class SendMail {
 	/** The req id. */
 	private int reqId;
 	
+	private String stage="";
 	/**
 	 * Instantiates a new send mail.
 	 *
@@ -36,6 +37,13 @@ public class SendMail {
 		this.userName=userName;
 		this.goodORbad=goodORbad;
 		this.reqId=reqId;
+	}
+	public SendMail(String userName, int goodORbad, int reqId, String stage)
+	{
+		this.userName=userName;
+		this.goodORbad=goodORbad;
+		this.reqId=reqId;
+		this.stage=stage;
 	}
 	
 	/*public static void main(String[] args) {
@@ -101,17 +109,24 @@ public class SendMail {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress("icm6348@gmail.com"));
             
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(this.userName+"@gmail.com"));   //s.braude.ac.il
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(this.userName+"@s.braude.ac.il"));   //gmail.com
       
             if(this.goodORbad==1)  //1->good
             {
             	message.setSubject("Handling request number "+this.reqId+" has finished successfully");
             	message.setText("Dear "+this.userName+",  Handling request number "+this.reqId+" has finished successfully.");
             }
-            else  //0->bad
+            else if(this.goodORbad==0)  //0->bad
             {
             	message.setSubject("Handling request number "+this.reqId+" has denied");
             	message.setText("Dear "+this.userName+",  Your request was denied by the committie members.");	
+            }
+            else if(this.goodORbad==2)  //2-> send mail one day before finishd stage
+            {
+            	System.out.println("good");
+            	message.setSubject("Handling request number "+this.reqId+" - reminder message");
+            	message.setText("Dear "+this.userName+", Reminder: tomorrow is the scheduled date for completion the stage "+this.stage+" .");
+          System.out.println("done");
             }
           
             Transport.send(message);
