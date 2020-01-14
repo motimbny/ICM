@@ -103,34 +103,38 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="chooseTypeOfReport" layoutX="240.0" layoutY="80.0" prefHeight="27.0" prefWidth="252.0" />
-            <Label layoutX="31.0" layoutY="80.0" prefHeight="27.0" prefWidth="197.0" text="Choose type of report">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="31.0" layoutY="120.0" prefHeight="27.0" prefWidth="129.0" text="Choose Date">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-            <Label layoutX="151.0" layoutY="121.0" prefHeight="25.0" prefWidth="59.0" text="From : ">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <DatePicker fx:id="dateFrom" layoutX="198.0" layoutY="120.0" prefHeight="27.0" prefWidth="113.0" />
-            <Label layoutX="325.0" layoutY="121.0" prefHeight="25.0" prefWidth="33.0" text="To : ">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <DatePicker fx:id="DateTo" layoutX="356.0" layoutY="120.0" prefHeight="27.0" prefWidth="113.0" />
-            <Button fx:id="generateReport" alignment="CENTER" layoutX="492.0" layoutY="115.0" mnemonicParsing="false" onMouseClicked="#generateReportClick" prefHeight="37.0" prefWidth="123.0" styleClass="buttonBlackBorder" text="generate report" textAlignment="CENTER">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Button>
+            <Pane fx:id="chooseDate" layoutX="6.0" layoutY="15.0" prefHeight="150.0" prefWidth="645.0">
+               <children>
+                  <ChoiceBox fx:id="chooseTypeOfReport" layoutX="226.0" layoutY="62.0" prefHeight="27.0" prefWidth="252.0" />
+                  <Label layoutX="15.0" layoutY="62.0" prefHeight="27.0" prefWidth="197.0" text="Choose type of report">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="138.0" layoutY="110.0" prefHeight="25.0" prefWidth="59.0" text="From : ">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="dateFrom" layoutX="187.0" layoutY="109.0" prefHeight="27.0" prefWidth="113.0" />
+                  <Label layoutX="336.0" layoutY="110.0" prefHeight="25.0" prefWidth="33.0" text="To : ">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <DatePicker fx:id="DateTo" layoutX="376.0" layoutY="109.0" prefHeight="27.0" prefWidth="113.0" />
+                  <Button fx:id="generateReport" alignment="CENTER" layoutX="508.0" layoutY="104.0" mnemonicParsing="false" onMouseClicked="#generateReportClick" prefHeight="37.0" prefWidth="123.0" styleClass="buttonBlackBorder" text="generate report" textAlignment="CENTER">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="16.0" layoutY="109.0" prefHeight="27.0" prefWidth="129.0" text="Choose Date">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
             <Pane fx:id="activity" layoutX="4.0" layoutY="187.0" prefHeight="407.0" prefWidth="654.0" visible="false">
                <children>
                   <PieChart fx:id="ActiveSuClo" layoutX="277.0" layoutY="144.0" prefHeight="253.0" prefWidth="363.0" />
@@ -269,6 +273,13 @@
                   </Label>
                </children>
             </Pane>
+            <TableView fx:id="Recentreports" layoutX="43.0" layoutY="187.0" onMouseClicked="#showRequestInfo" prefHeight="339.0" prefWidth="534.0">
+              <columns>
+                <TableColumn fx:id="fromtable" prefWidth="136.80006408691406" text="From" />
+                <TableColumn fx:id="totable" prefWidth="126.39996337890625" text="To" />
+                  <TableColumn fx:id="typetable" prefWidth="270.4000244140625" text="type" />
+              </columns>
+            </TableView>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
