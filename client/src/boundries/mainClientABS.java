@@ -47,6 +47,7 @@ public class mainClientABS extends AbstractClient
 	protected void handleMessageFromServer(Object msg)
 	{
 			DBSmessage dbs=(DBSmessage)msg;
+			System.out.println(dbs.getType());
 			switch(dbs.getType()) 
 			{
 			case Login:
@@ -328,6 +329,14 @@ public class mainClientABS extends AbstractClient
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.showSuperviserRequestList(send);
+			}
+			break;
+			case viewrecentreport:
+			{
+				System.out.println("ll");
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
+				System.out.println("kkkk");
+				MainAllControllers.viewrecentreport(send);
 			}
 			break;
 			case MangerRequestShow:

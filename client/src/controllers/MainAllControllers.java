@@ -973,5 +973,17 @@ public class MainAllControllers
 		((ITRequestDetailsController) WindowToShow.controller).openRequest(send);	
 		}});	
 	}
+
+	public void viewrecentreport(ArrayList<Object> send) {
+		Platform.runLater(new Runnable()
+		{
+		@Override
+		public void run() 
+		{
+			System.out.println("main");
+		((ITManagerReportsController) WindowToShow.controller).setTextInTable(send);
+		}});
+		
+	}
 	
 }

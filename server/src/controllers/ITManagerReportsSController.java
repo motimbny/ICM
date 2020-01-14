@@ -23,6 +23,8 @@ import entity.DBSmessage;
 import entity.DBmessage;
 import entity.Request;
 import entity.RequestUser;
+import entity.recentreport;
+import entity.requestSuper;
 import entity.updateRequest;
 
 /**
@@ -264,6 +266,33 @@ public class ITManagerReportsSController {
 		}
 		return null;
 
+	}
+	public Object viewrecentreport()
+	{
+		Statement stmt;
+		DBSmessage dbs;
+		ArrayList<Object> toSend= new ArrayList<Object>();
+		try 
+		{
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM reports");
+				while(rs.next()!=false)
+				{
+					recentreport toAdd=new recentreport(rs.getString(1), rs.getString(2), rs.getString(3));
+					System.out.println(rs.getString(1));
+					System.out.println(rs.getString(2));
+					System.out.println(rs.getString(3));
+					toSend.add(toAdd);
+				}
+				
+				dbs=new DBSmessage(MessageTypeS.viewrecentreport,toSend);
+				return dbs;
+		} 
+		catch (SQLException e)
+		{
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 }

@@ -409,6 +409,15 @@ public class mainServerABS extends AbstractServer {
 				}
 				break;
 			}
+			case viewrecentreport: {
+				ITManagerReportsSController ITManagerReportsSController = new ITManagerReportsSController(dbm,
+						connection);
+				try {
+					client.sendToClient(ITManagerReportsSController.viewrecentreport());
+				} catch (IOException e) {
+				}
+				break;
+			}
 			case MangerRequestShow: {
 				superviserRequestShowController ManagerRequestShowController = new superviserRequestShowController(dbm,
 						connection);

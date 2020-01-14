@@ -15,6 +15,8 @@ import java.util.function.Predicate;
 
 import Enums.MessageType;
 import entity.DBmessage;
+import entity.recentreport;
+import entity.requestSuper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -39,6 +41,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -53,6 +56,8 @@ public class ITManagerReportsController implements Initializable {
 
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
+	/** The rows. */
+	private ObservableList<recentreport> rows;
 
 	/** The arry ac su co. */
 	private ArrayList<Integer> arryAcSuCo;
@@ -230,6 +235,20 @@ public class ITManagerReportsController implements Initializable {
 
 	@FXML
 	private BarChart<?, ?> devgraph2;
+	@FXML
+	private TableView<recentreport> Recentreports;
+
+	@FXML
+	private TableColumn<?, ?> fromtable;
+
+	@FXML
+	private TableColumn<?, ?> totable;
+
+	@FXML
+	private TableColumn<?, ?> typetable;
+
+    @FXML
+    private Pane chooseDate;
 
 	/**
 	 * Generate report click.
@@ -243,19 +262,22 @@ public class ITManagerReportsController implements Initializable {
 		freqgraph.getData().clear();
 		devgraph.getData().clear();
 		medgraph.getData().clear();
+		
 		delaysInExecution.setVisible(false);
 		performence.setVisible(false);
 		activity.setVisible(false);
+		Recentreports.setVisible(false);
 		if (chooseTypeOfReport.getValue().equals("Activity")) {
-			makeActiveSuClo();
+			
+			makeActiveSuClo(null,null);
 			activity.setVisible(true);
 		}
 		if (chooseTypeOfReport.getValue().equals("Performence")) {
-			makePerformenct();
+			makePerformenct(null,null);
 			performence.setVisible(true);
 		}
 		if (chooseTypeOfReport.getValue().equals("Delays in execution")) {
-			makeDelays();
+			makeDelays(null,null);
 			delaysInExecution.setVisible(true);
 		} else {
 
@@ -265,48 +287,76 @@ public class ITManagerReportsController implements Initializable {
 	/**
 	 * Make delays.
 	 */
-	private void makeDelays() {
+	private void makeDelays(String s,String e) {
+		
 		DBmessage dbm;
 		String start, end;
-		start = this.dateFrom.getValue().toString();
-		end = this.DateTo.getValue().toString();
+		if(e==null&&s==null)
+		{
+			start = this.dateFrom.getValue().toString();
+			end = this.DateTo.getValue().toString();
+		}
+		else
+		{
+			start = s;
+			end =e;
+			
+		}
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
 		arry.add(end);
 		dbm = new DBmessage(MessageType.makeDelays, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {
+		} catch (IOException we) {
 		}
 	}
 
 	/**
 	 * Make performenct.
 	 */
-	private void makePerformenct() {
+	private void makePerformenct(String s,String e) {
 
 		DBmessage dbm;
 		String start, end;
-		start = this.dateFrom.getValue().toString();
-		end = this.DateTo.getValue().toString();
+		if(e==null&&s==null)
+		{
+			start = this.dateFrom.getValue().toString();
+			end = this.DateTo.getValue().toString();
+		}
+		else
+		{
+			start = s;
+			end =e;
+			
+		}
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
 		arry.add(end);
 		dbm = new DBmessage(MessageType.makePerformenct, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {
+		} catch (IOException we) {
 		}
 	}
 
 	/**
 	 * Make active su clo.
 	 */
-	public void makeActiveSuClo() {
+	public void makeActiveSuClo(String s,String e) {
 		DBmessage dbm;
 		String start, end;
-		start = this.dateFrom.getValue().toString();
-		end = this.DateTo.getValue().toString();
+		if(e==null&&s==null)
+		{
+			start = this.dateFrom.getValue().toString();
+			end = this.DateTo.getValue().toString();
+		}
+		else
+		{
+			start = s;
+			end =e;
+			
+		}
 
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
@@ -314,7 +364,7 @@ public class ITManagerReportsController implements Initializable {
 		dbm = new DBmessage(MessageType.makeActiveSuClo, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {
+		} catch (IOException we) {
 		}
 
 	}
@@ -534,7 +584,10 @@ public class ITManagerReportsController implements Initializable {
 		month.setCellValueFactory(new PropertyValueFactory<>("month"));
 		day.setCellValueFactory(new PropertyValueFactory<>("day"));
 		num.setCellValueFactory(new PropertyValueFactory<>("num"));
-
+		fromtable.setCellValueFactory(new PropertyValueFactory<>("From"));
+		totable.setCellValueFactory(new PropertyValueFactory<>("To"));
+		typetable.setCellValueFactory(new PropertyValueFactory<>("type"));
+		viewrecentreport();
 	}
 
 	/**
@@ -547,13 +600,13 @@ public class ITManagerReportsController implements Initializable {
 		Map<Integer, Object> mapDev = (Map<Integer, Object>) send.get(1);
 		int j = 0;
 		int[] sumDev = new int[4];
-		for(int i=0;i<4;i++)
-			sumDev[i]=0;
+		for (int i = 0; i < 4; i++)
+			sumDev[i] = 0;
 
 		for (Map.Entry<Integer, Object> entry : mapDev.entrySet()) {
-			int[] nums=(int[]) entry.getValue();
-			for(int i=0;i<4;i++)
-				sumDev[i]+=nums[i];	
+			int[] nums = (int[]) entry.getValue();
+			for (int i = 0; i < 4; i++)
+				sumDev[i] += nums[i];
 		}
 
 		XYChart.Series stage1 = new XYChart.Series<>();
@@ -658,5 +711,58 @@ public class ITManagerReportsController implements Initializable {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
+	  @FXML
+	    void showRequestInfo(MouseEvent event) 
+	    {
+		  Recentreports.setOnMouseClicked((MouseEvent ev ) -> 
+		  {
+	            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2)
+	            {
+	                String stage=Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getStage();
+	                String start=Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getFrom();
+	                String end=Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getTo();
+					freqgraph.getData().clear();
+					devgraph.getData().clear();
+					medgraph.getData().clear();
+					chooseDate.setVisible(false);
+					delaysInExecution.setVisible(false);
+					performence.setVisible(false);
+					activity.setVisible(false);
+					if (stage.equals("Activity")) {
+						makeActiveSuClo(start,end);
+						activity.setVisible(true);
+					}
+					if (stage.equals("Performence")) {
+						makePerformenct(start,end);
+						performence.setVisible(true);
+					}
+					if (stage.equals("Delays in execution")) {
+						makeDelays(start,end);
+						delaysInExecution.setVisible(true);
+					} else {
+
+					}                
+	            }
+		  });
+		  
+	    }
+
+		public void viewrecentreport() {
+		DBmessage dbm;
+		dbm = new DBmessage(MessageType.viewrecentreport, null);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
+	}
+
+		public void setTextInTable(ArrayList<Object> list) {
+			System.out.println("im here");
+			rows = FXCollections.observableArrayList();
+			for (Object r : list)
+				rows.add((recentreport) r);
+			Recentreports.setItems(rows);
+			
+		}
 
 }
