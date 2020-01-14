@@ -21,6 +21,7 @@ import javafx.scene.input.MouseEvent;
 
 /**
  * The Class ITCCCRequestMoreInfoController.
+ * This window is in IT GUI 
  */
 public class ITCCCRequestMoreInfoController implements Initializable {
 
@@ -83,9 +84,10 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	private Button BackToShow;
 
 	/**
-	 * Back to ITHandleRequest.
+	 *  Mouse click event, if "Back" button clicked, open the screen of
+	 * "IT Handle Request".
 	 *
-	 * @param event the event
+	 * @param event The Back BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -95,9 +97,9 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * Go help page.
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -107,9 +109,9 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * Go home page.
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event the event
+	 * @param event The Home BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -119,21 +121,23 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * Go personal info.
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
 	 *
-	 * @param event the event
+	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+	 */	
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITPersonalInfo");
 		MainAllControllers.changeWin();
 	}
 
-	/**
-	 * Go show request.
+	 /**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
 	 *
-	 * @param event the event
+	 * @param event The Show request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -143,9 +147,10 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * go Logout page.
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
 	 *
-	 * @param event the event
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -156,9 +161,10 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * Submit require more info.
+	 * If it press on Submit BTN this method create DBMessage to send
+	 * to server to require more info.
 	 *
-	 * @param event the event
+	 * @param event The Submit BTN
 	 */
 	@FXML
 	void submitRequireMoreInfo(MouseEvent event) {
@@ -180,14 +186,14 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * Sets the on sucsess.
+	 * This method set the label visible.
 	 */
 	public void setOnSucsess() {
 		requestWasSubmitted.setVisible(true);
 	}
 
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open.
 	 *
 	 * @param location  the location
 	 * @param resources the resources

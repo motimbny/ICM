@@ -18,7 +18,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class ITCCCEvaluationReportController.
+ * The Class ITCCCEvaluationReportController. This window is in IT GUI and show
+ * the evaluation report of IT
  */
 public class ITCCCEvaluationReportController implements Initializable {
 
@@ -93,9 +94,10 @@ public class ITCCCEvaluationReportController implements Initializable {
 	private Button backBTN;
 
 	/**
-	 * Back.
+	 * Mouse click event, if "Back" button clicked, open the screen of "IT Handle
+	 * Request".
 	 *
-	 * @param event the event
+	 * @param event The Back BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -105,9 +107,9 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Approve evaluation report.
+	 * If approve BTN pressed, this method create new DBmessage to send to server
 	 *
-	 * @param event the event
+	 * @param event the Approve BTN
 	 */
 	@FXML
 	void approveEvaluationReport(MouseEvent event) {
@@ -133,9 +135,9 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Deny evaluation report.
+	 * If Deny BTN pressed, this method create new DBmessage to send to server
 	 *
-	 * @param event the event
+	 * @param event the Deny BTN
 	 */
 	@FXML
 	void denyEvaluationReport(MouseEvent event) {
@@ -161,9 +163,9 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Go help page.
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -173,9 +175,9 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Go home page.
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event the event
+	 * @param event The Home BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -185,9 +187,10 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Go personal info.
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
 	 *
-	 * @param event the event
+	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -197,9 +200,10 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Go show request.
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
 	 *
-	 * @param event the event
+	 * @param event The Show request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -209,9 +213,10 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * go Logout page.
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
 	 *
-	 * @param event the event
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -224,7 +229,7 @@ public class ITCCCEvaluationReportController implements Initializable {
 	/**
 	 * Require more info.
 	 *
-	 * @param event the event
+	 * @param event the BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -234,7 +239,7 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Sets the text in fields.
+	 * This method sets the text in fields.
 	 *
 	 * @param ev the new text in fields
 	 */
@@ -249,7 +254,7 @@ public class ITCCCEvaluationReportController implements Initializable {
 	}
 
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open.
 	 *
 	 * @param location  the location
 	 * @param resources the resources

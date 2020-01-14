@@ -34,6 +34,7 @@ import javafx.stage.Stage;
 
 /**
  * The Class ITHandleRequestController.
+ * This window is in IT GUI 
  */
 public class ITHandleRequestController implements Initializable {
 	
@@ -165,7 +166,7 @@ public class ITHandleRequestController implements Initializable {
 	/**
 	 * Appoint tester.
 	 *
-	 * @param event the event
+	 * @param event the BTN
 	 */
 	@FXML
 	void AppointTester(MouseEvent event) {
@@ -174,7 +175,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Show list of IT.
+	 * This method show list of IT.
 	 *
 	 * @param NameOfPositionChange the name of position change
 	 */
@@ -216,7 +217,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * List of it.
+	 * This method create new DBmessage to send to server 
 	 */
 	public void listOfIt() {
 		DBmessage dbm;
@@ -389,9 +390,9 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Go help page.
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -401,9 +402,9 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Go home page.
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event the event
+	 * @param event The Home BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -413,11 +414,12 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Go personal info.
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
 	 *
-	 * @param event the event
+	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
+	 */	
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITPersonalInfo");
@@ -425,9 +427,10 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Go show req.
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
 	 *
-	 * @param event the event
+	 * @param event The Show request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -437,9 +440,10 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Logout page.
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
 	 *
-	 * @param event the event
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -450,7 +454,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open.
 	 *
 	 * @param location the location
 	 * @param resources the resources
@@ -473,7 +477,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Sets the pane.
+	 * This method sets the pane in the window according to the IT job.
 	 *
 	 * @param list the new pane
 	 */
@@ -597,7 +601,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Sets the on success.
+	 * Sets the label visible.
 	 */
 	public void setOnSucsess() {
 		successful.setVisible(true);
