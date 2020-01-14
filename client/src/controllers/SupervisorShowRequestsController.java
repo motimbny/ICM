@@ -242,15 +242,15 @@ public class SupervisorShowRequestsController implements Initializable {
 			   {
 				   SuprvisorUpdateRequestBTN.setStyle("-fx-background-color: #ffdd99");
 			   }
-			   if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveEvaluationTime"))
+			  else if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveEvaluationTime"))
 			   {
 				   SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
 			   }
-			   if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveExecutionTime"))
+			  else if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveExecutionTime"))
 			   {
 				   SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
 			   }
-			   if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("closing"))
+			  else  if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("closing"))
 			   {
 				   SuprvisorCloseRequestBTN.setStyle("-fx-background-color: #ffdd99");
 			   }
