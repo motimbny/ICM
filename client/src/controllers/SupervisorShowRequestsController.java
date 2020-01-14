@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 
 import Enums.MessageType;
 import entity.DBmessage;
+import entity.Messages;
 import entity.requestSuper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -457,8 +459,35 @@ public class SupervisorShowRequestsController implements Initializable {
 		RequestID.setCellValueFactory(new PropertyValueFactory<>("id"));
 		RequestStatus.setCellValueFactory(new PropertyValueFactory<>("currentStatus"));
 		RequestProcessStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
+		requestTable.setRowFactory(tv -> new TableRow<requestSuper>() 
+		{
+			@Override
+            public void updateItem(requestSuper item, boolean empty) 
+			{
+                super.updateItem(item, empty);
+                if (item == null) 
+                {
+                    setStyle("");
+                } 
+                else if (item.getCurrentStage().equals("supervisorApprovel")||item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) 
+                {
+                    setStyle("-fx-background-color: #ff6666;");
+                } 
+                else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||item.getCurrentStage().equals("closing")) 
+                {
+                    setStyle("-fx-background-color: #ff6666;");
+                }
+                else if (!item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||!item.getCurrentStage().equals("closing")) 
+                {
+                    setStyle("");
+                }
+                else if (!item.getCurrentStage().equals("supervisorApprovel")||!item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) 
+                {
+                    setStyle("");
+                } 
+            }
+		});
 		requestServer();
-
 	}
 
 	/**
