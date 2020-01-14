@@ -254,6 +254,12 @@ public class SupervisorShowRequestsController implements Initializable {
 			   {
 				   SuprvisorCloseRequestBTN.setStyle("-fx-background-color: #ffdd99");
 			   }
+			   else
+			   {
+				   SuprvisorUpdateRequestBTN.setStyle("");
+				   SuprvisorTime.setStyle("");
+				   SuprvisorCloseRequestBTN.setStyle("");
+			   }
 		   }
 		  }});
 	    }
