@@ -380,7 +380,6 @@ public class ITManagerShowRequestsController implements Initializable {
             }
 		});
 		requestServer();
-
 	}
 
 	/**
