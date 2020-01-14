@@ -1,5 +1,6 @@
 package controllers;
 
+import java.awt.Desktop;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -272,7 +273,20 @@ public class SupervisorRequestDetailsController implements Initializable {
 			catch (Exception e) {
 				System.out.println("Error send ((Files)msg) to Server");
 			}
-		
+		fileopen(LocalfilePath+sf.getFileName());
+	}
+
+	private void fileopen(String path)
+	{
+		File file = new File(path);
+		Desktop desktop = Desktop.getDesktop();
+        if(file.exists())
+			try {
+				desktop.open(file);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	}
 
 }
