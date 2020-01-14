@@ -86,10 +86,10 @@
                   <TableColumn fx:id="RequestProcessStage" prefWidth="202.0" text="Request process stage" />
                </columns>
             </TableView>
-            <Button fx:id="SuprvisorUpdateRequestBTN" ellipsisString="" layoutX="41.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#UpdateRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Update Request IT" />
-            <Button fx:id="SuprvisorCloseRequestBTN" layoutX="524.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#closeRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Close Request" />
-            <Button fx:id="SuprvisorSuspendRequestBTN" layoutX="284.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#suspendRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Suspend Request" textAlignment="CENTER" wrapText="true" />
-            <Button fx:id="SuprvisorExtensionRequestBTN" layoutX="404.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#viewExtensionReport" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="View Extension Request" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="SuprvisorUpdateRequestBTN" alignment="TOP_CENTER" ellipsisString="" layoutX="41.0" layoutY="439.0" mnemonicParsing="false" onMouseClicked="#UpdateRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Update Request IT" />
+            <Button fx:id="SuprvisorCloseRequestBTN" alignment="TOP_CENTER" layoutX="524.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#closeRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Close Request" />
+            <Button fx:id="SuprvisorSuspendRequestBTN" alignment="TOP_CENTER" layoutX="284.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#suspendRequest" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Suspend Request" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="SuprvisorExtensionRequestBTN" alignment="TOP_CENTER" layoutX="404.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#viewExtensionReport" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="View Extension Request" textAlignment="CENTER" wrapText="true" />
             <Button fx:id="search" layoutX="485.0" layoutY="81.0" mnemonicParsing="false" onMouseClicked="#searchRequest" prefHeight="27.0" prefWidth="155.0" styleClass="buttonBlackBorder" text="Search" />
             <Label layoutX="44.0" layoutY="84.0" text="Search request id:">
                <font>
@@ -107,7 +107,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Button fx:id="SuprvisorTime" layoutX="164.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#viewTime" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Update request time" textAlignment="CENTER" wrapText="true" />
+            <Button fx:id="SuprvisorTime" alignment="TOP_CENTER" layoutX="164.0" layoutY="438.0" mnemonicParsing="false" onMouseClicked="#viewTime" prefHeight="76.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="Update request time" textAlignment="CENTER" wrapText="true" />
             <Label fx:id="stagenotmatch" layoutX="272.0" layoutY="515.0" prefHeight="46.0" prefWidth="140.0" style="-fx-text-fill: red;" text="ACTION NOT ALLOWED" textAlignment="CENTER" visible="false" wrapText="true" />
             <Label layoutX="409.0" layoutY="535.0" text="Double click to see request info">
                <font>
@@ -117,6 +117,31 @@
                   <Glow />
                </effect>
             </Label>
+            <ImageView fitHeight="41.0" fitWidth="35.0" layoutX="82.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/employee.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="46.0" layoutX="199.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/time.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="37.0" layoutX="323.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/suspend.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="35.0" fitWidth="33.0" layoutX="441.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/exnt.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="27.0" fitWidth="53.0" layoutX="558.0" layoutY="477.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/close.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
