@@ -207,7 +207,7 @@ public class ITManagerReportsController implements Initializable {
 
 	/** The freqgraph. */
 	@FXML
-	private BarChart<String, Number> freqgraph;
+	private BarChart<?, ?> freqgraph;
 
 	/** The freqtable. */
 	@FXML
@@ -369,12 +369,12 @@ public class ITManagerReportsController implements Initializable {
 		freqsus.setName("susppend");
 		for(int i=0;i<12;i++)
 		{
-			freqf.getData().add(new XYChart.Data<>(""+i , failure[i]));
+			freqf.getData().add(new XYChart.Data<>(""+(i+1) , failure[i]));
 			
-			freqs.getData().add(new XYChart.Data<>(""+i , success[i]));
+			freqs.getData().add(new XYChart.Data<>(""+(i+1) , success[i]));
 			
 			
-			freqsus.getData().add(new XYChart.Data<>(""+i , susppend[i]));
+			freqsus.getData().add(new XYChart.Data<>(""+(i+1) , susppend[i]));
 		}
 		this.freqgraph.getData().add(freqsus);
 		this.freqgraph.getData().add(freqs);
@@ -406,7 +406,7 @@ public class ITManagerReportsController implements Initializable {
 	 
 	       NumberAxis yAxis = new NumberAxis();
 		       yAxis.setLabel("Standard deviation:");
-	       this.freqgraph= new BarChart<String, Number>(xAxis, yAxis);
+	   //    this.freqgraph= new BarChart<String, Number>(xAxis, yAxis);
 		XYChart.Series avrf = new XYChart.Series<>();
 		avrf.getData().add(new XYChart.Data<>("failure" , 5));
 		XYChart.Series avrs = new XYChart.Series();

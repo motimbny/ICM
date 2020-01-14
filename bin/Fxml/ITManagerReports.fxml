@@ -161,7 +161,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="allreq" editable="false" layoutX="228.0" layoutY="55.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <BarChart fx:id="freqgraph" layoutY="105.0" prefHeight="260.0" prefWidth="316.0">
+                  <BarChart fx:id="freqgraph" animated="false" layoutY="105.0" prefHeight="260.0" prefWidth="316.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -169,7 +169,7 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </BarChart>
-                  <BarChart fx:id="devgraph" layoutX="357.0" layoutY="235.0" prefHeight="116.0" prefWidth="262.0">
+                  <BarChart fx:id="devgraph" animated="false" layoutX="357.0" layoutY="235.0" prefHeight="116.0" prefWidth="262.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -177,7 +177,7 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </BarChart>
-                  <BarChart fx:id="medgraph" layoutX="377.0" layoutY="55.0" prefHeight="116.0" prefWidth="228.0">
+                  <BarChart fx:id="medgraph" animated="false" layoutX="377.0" layoutY="55.0" prefHeight="116.0" prefWidth="228.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
