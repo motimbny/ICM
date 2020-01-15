@@ -80,15 +80,29 @@ public class ITManagerReportsSController {
 		int numofFailor = 0, numOfSec = 0, numOfSus = 0, AllReq = 0;
 
 		try {
-			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
- 			req.setString(1, start);
- 			req.setString(2, end);
- 			req.setString(3,"Activity");
- 			req.executeUpdate();	
- 			req.close();
-			stmt = connection.createStatement();
+		stmt = connection.createStatement();
+			
+			ResultSet rs = stmt.executeQuery(
+					"SELECT count(*) FROM reports where stage='Activity' and start='"+start+"' and end='"+end+"'");
+	
 		
-			ResultSet rs = stmt
+		req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+			req.setString(1, start);
+			req.setString(2, end);
+			req.setString(3,"Activity");
+			try {
+				req.executeUpdate();	
+			req.close();
+			}
+			catch (Exception e) {
+				
+			}
+			
+	
+			
+			
+			
+			 rs = stmt
 					.executeQuery("SELECT * FROM failurreport WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 
@@ -183,14 +197,29 @@ public class ITManagerReportsSController {
 
 		
 		try {
-			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
- 			req.setString(1, start);
- 			req.setString(2, end);
- 			req.setString(3,"Performence");
- 			req.executeUpdate();	
- 			req.close();
+			
 			stmt = connection.createStatement();
+			
 			ResultSet rs = stmt.executeQuery(
+					"SELECT count(*) FROM reports where stage='Performence' and start='"+start+"' and end='"+end+"'");
+	
+		req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+			req.setString(1, start);
+			req.setString(2, end);
+			req.setString(3,"Performence");
+				try
+				{
+					req.executeUpdate();
+					req.close();
+				}
+				catch (Exception e) {
+				
+				}
+			
+			
+	
+		
+			 rs = stmt.executeQuery(
 					"SELECT * FROM extensionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 				sum += rs.getInt(5);
@@ -262,16 +291,27 @@ public class ITManagerReportsSController {
 		ArrayList<Object> arry = msg.getObjs();
 		String start = (String) arry.get(0);
 		String end = (String) arry.get(1);
+		
 
 		try {
-			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
- 			req.setString(1, start);
- 			req.setString(2, end);
- 			req.setString(3,"Delays in execution");
- 			req.executeUpdate();	
- 			req.close();
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(
+		
+					ResultSet rs = stmt.executeQuery(
+							"SELECT count(*) FROM reports where stage='Delays in execution' and start='"+start+"' and end='"+end+"'");
+				req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+	 			req.setString(1, start);
+	 			req.setString(2, end);
+	 			req.setString(3,"Delays in execution");
+	 			try {
+					req.executeUpdate();	
+				req.close();
+				}
+				catch (Exception e) {
+					
+				}
+			
+		
+			 rs = stmt.executeQuery(
 					"SELECT * FROM exceptionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 				String[] dateParts = rs.getString(4).split("-");

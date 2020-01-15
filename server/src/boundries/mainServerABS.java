@@ -414,7 +414,7 @@ public class mainServerABS extends AbstractServer {
 				ITManagerReportsSController ITManagerReportsSController = new ITManagerReportsSController(dbm,
 						connection);
 				try {
-					System.out.println("try");
+				
 					client.sendToClient(ITManagerReportsSController.viewrecentreport());
 				} catch (IOException e) {
 				}

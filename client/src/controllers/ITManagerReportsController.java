@@ -169,6 +169,8 @@ public class ITManagerReportsController implements Initializable {
 	/** The days. */
 	@FXML
 	private TextField days;
+    @FXML
+    private Label click;
 
 	/** The delays in execution. */
 	@FXML
@@ -272,6 +274,7 @@ public class ITManagerReportsController implements Initializable {
 		performence.setVisible(false);
 		activity.setVisible(false);
 		Recentreports.setVisible(false);
+		this.click.setVisible(false);
 		if (chooseTypeOfReport.getValue().equals("Activity")) {
 
 			makeActiveSuClo(null, null);
@@ -346,7 +349,7 @@ public class ITManagerReportsController implements Initializable {
 	 * Make active su clo.
 	 */
 	public void makeActiveSuClo(String s, String e) {
-		System.out.println("befor");
+		
 		DBmessage dbm;
 		String start, end;
 		if (e == null && s == null) {
@@ -719,6 +722,7 @@ public class ITManagerReportsController implements Initializable {
 			if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
 				Recentreports.setVisible(false);
 				Recentlabel.setVisible(false);
+				this.click.setVisible(false);
 				backrep.setVisible(true);
 				String stage = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex())
 						.getType();
@@ -764,7 +768,7 @@ public class ITManagerReportsController implements Initializable {
 	public void setTextInTable(ArrayList<Object> list) {
 		rows = FXCollections.observableArrayList();
 
-		System.out.println(list);
+		
 		for (Object r : list)
 			rows.add((recentreport) r);
 		Recentreports.setItems(rows);
