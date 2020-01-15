@@ -285,11 +285,9 @@ public class ITManagerReportsSController {
 				{
 					recentreport toAdd=new recentreport(rs.getString(1), rs.getString(2), rs.getString(3));
 					System.out.println(rs.getString(1));
-					System.out.println(rs.getString(2));
-					System.out.println(rs.getString(3));
 					toSend.add(toAdd);
 				}
-				
+				System.out.println("finish");
 				dbs=new DBSmessage(MessageTypeS.viewrecentreport,toSend);
 				return dbs;
 		} 

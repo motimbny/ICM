@@ -76,6 +76,7 @@ public class ITManagerReportsController implements Initializable {
 	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
+	private String startr,endr;
 
 	/** The show request BTN. */
 	@FXML
@@ -241,13 +242,13 @@ public class ITManagerReportsController implements Initializable {
 	private TableView<recentreport> Recentreports;
 
 	@FXML
-	private TableColumn<?, ?> fromtable;
+	private TableColumn<recentreport, String> fromtable;
 
 	@FXML
-	private TableColumn<?, ?> totable;
+	private TableColumn<recentreport, String> totable;
 
 	@FXML
-	private TableColumn<?, ?> typetable;
+	private TableColumn<recentreport, String> typetable;
 
     @FXML
     private Pane chooseDate;
@@ -263,7 +264,6 @@ public class ITManagerReportsController implements Initializable {
 
 		freqgraph.getData().clear();
 		devgraph.getData().clear();
-		medgraph.getData().clear();
 		
 		delaysInExecution.setVisible(false);
 		performence.setVisible(false);
@@ -296,13 +296,16 @@ public class ITManagerReportsController implements Initializable {
 		if(e==null&&s==null)
 		{
 			start = this.dateFrom.getValue().toString();
+			this.startr=start;
 			end = this.DateTo.getValue().toString();
+			this.endr=end;
 		}
 		else
 		{
 			start = s;
 			end =e;
-			
+			this.startr=s;
+			this.endr=e;
 		}
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
@@ -410,11 +413,10 @@ public class ITManagerReportsController implements Initializable {
 		XYChart.Series meds = new XYChart.Series();
 		meds.getData().add(new XYChart.Data<>("success", medsuc));
 		XYChart.Series medsus = new XYChart.Series();
-
 		medsus.getData().add(new XYChart.Data<>("susppend", medsusp));
-		this.medgraph.getData().add(meds);
-		this.medgraph.getData().add(medf);
-		this.medgraph.getData().add(medsus);
+		//this.medgraph.getData().add(meds);
+		//this.medgraph.getData().add(medf);
+		//this.medgraph.getData().add(medsus);
 		XYChart.Series freqs = new XYChart.Series();
 		XYChart.Series freqf = new XYChart.Series<>();
 		XYChart.Series freqsus = new XYChart.Series();
@@ -442,6 +444,13 @@ public class ITManagerReportsController implements Initializable {
 			avrgs += success[i];
 			avrgsus += susppend[i];
 		}
+		 ObservableList<PieChart.Data> pieChartData =
+		            FXCollections.observableArrayList(
+		                    new PieChart.Data("failure", avrgf),
+		                    new PieChart.Data("success", avrgs),
+		                    new PieChart.Data("susppend", avrgsus));
+		    ActiveSuClo.setData(pieChartData);
+		    ActiveSuClo.setTitle("sum request");
 		avrgf = avrgf / 12;
 		avrgs = avrgs / 12;
 		avrgsus = avrgsus / 12;
@@ -655,7 +664,6 @@ public class ITManagerReportsController implements Initializable {
 		}
 		this.numberOfDelays.setText("" + numOfDelay);
 		this.timeOfDelays.setText("" + numOfDays);
-
 		int medin = foundmed(daysReq);
 		this.medinDelay.setText("" + medin);
 		float avrg = 0;
@@ -725,7 +733,7 @@ public class ITManagerReportsController implements Initializable {
 	                String end=Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getTo();
 					freqgraph.getData().clear();
 					devgraph.getData().clear();
-					medgraph.getData().clear();
+			//		medgraph.getData().clear();
 					chooseDate.setVisible(false);
 					delaysInExecution.setVisible(false);
 					performence.setVisible(false);
@@ -750,6 +758,7 @@ public class ITManagerReportsController implements Initializable {
 	    }
 
 		public void viewrecentreport() {
+			
 		DBmessage dbm;
 		dbm = new DBmessage(MessageType.viewrecentreport, null);
 		try {

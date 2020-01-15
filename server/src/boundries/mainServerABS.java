@@ -410,9 +410,11 @@ public class mainServerABS extends AbstractServer {
 				break;
 			}
 			case viewrecentreport: {
+				
 				ITManagerReportsSController ITManagerReportsSController = new ITManagerReportsSController(dbm,
 						connection);
 				try {
+					System.out.println("try");
 					client.sendToClient(ITManagerReportsSController.viewrecentreport());
 				} catch (IOException e) {
 				}

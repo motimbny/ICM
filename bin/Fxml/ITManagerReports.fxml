@@ -137,12 +137,7 @@
             </Pane>
             <Pane fx:id="activity" layoutX="4.0" layoutY="187.0" prefHeight="407.0" prefWidth="654.0" visible="false">
                <children>
-                  <PieChart fx:id="ActiveSuClo" layoutX="277.0" layoutY="144.0" prefHeight="253.0" prefWidth="363.0" />
-                  <Label layoutX="377.0" layoutY="31.0" text="Median:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                  <PieChart fx:id="ActiveSuClo" layoutX="359.0" layoutY="14.0" prefHeight="185.0" prefWidth="265.0" title="sum request" />
                   <Label layoutX="365.0" layoutY="201.0" prefHeight="20.0" prefWidth="123.0" text="Standard deviation:">
                      <font>
                         <Font size="14.0" />
@@ -166,14 +161,6 @@
                   </Label>
                   <TextField fx:id="allreq" editable="false" layoutX="228.0" layoutY="55.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
                   <BarChart fx:id="freqgraph" animated="false" layoutX="10.0" layoutY="110.0" prefHeight="274.0" prefWidth="351.0">
-                    <xAxis>
-                      <CategoryAxis side="BOTTOM" />
-                    </xAxis>
-                    <yAxis>
-                      <NumberAxis side="LEFT" />
-                    </yAxis>
-                  </BarChart>
-                  <BarChart fx:id="medgraph" animated="false" layoutX="362.0" layoutY="51.0" prefHeight="133.0" prefWidth="252.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>

@@ -407,6 +407,7 @@ public class SupervisorUpdateRequestController implements Initializable {
 	 * @param arrayList the new list of IT
 	 */
 	public void setListOfIT(ArrayList<Object> arrayList) {
+		System.out.println(arrayList);
 		this.list = arrayList;
 	}
 

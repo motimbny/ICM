@@ -1,6 +1,8 @@
 package entity;
 
-public class recentreport {
+import java.io.Serializable;
+
+public class recentreport implements Serializable{
 	
 	private String from;
 	private String to;
