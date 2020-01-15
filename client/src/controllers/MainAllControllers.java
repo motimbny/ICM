@@ -980,7 +980,6 @@ public class MainAllControllers
 		@Override
 		public void run() 
 		{
-			System.out.println("main");
 		((ITManagerReportsController) WindowToShow.controller).setTextInTable(send);
 		}});
 		

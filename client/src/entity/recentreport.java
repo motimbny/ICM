@@ -5,11 +5,11 @@ import java.io.Serializable;
 public class recentreport implements Serializable{
 	private String from;
 	private String to;
-	private String stage;
+	private String type;
 	public recentreport(String f,String t,String s)
 	{
 		this.setFrom(f);
-		this.setStage(s);
+		this.setType(s);
 		this.setTo(t);
 	}
 	public String getFrom() {
@@ -18,17 +18,17 @@ public class recentreport implements Serializable{
 	public void setFrom(String from) {
 		this.from = from;
 	}
-	public String getStage() {
-		return stage;
-	}
-	public void setStage(String stage) {
-		this.stage = stage;
-	}
 	public String getTo() {
 		return to;
 	}
 	public void setTo(String to) {
 		this.to = to;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 
 }

@@ -76,12 +76,13 @@ public class ITManagerReportsController implements Initializable {
 	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
-	private String startr,endr;
+	private String startr, endr;
 
 	/** The show request BTN. */
 	@FXML
 	private Button showRequestBTN;
-
+    @FXML
+    private Button backrep;
 	/** The generate report BTN 1. */
 	@FXML
 	private Button generateReportBTN1;
@@ -97,6 +98,9 @@ public class ITManagerReportsController implements Initializable {
 	/** The personal info BTN. */
 	@FXML
 	private Button personalInfoBTN;
+
+    @FXML
+    private Label Recentlabel;
 
 	/** The help BTN. */
 	@FXML
@@ -217,12 +221,11 @@ public class ITManagerReportsController implements Initializable {
 	/** The freqgraph. */
 	@FXML
 	private BarChart<String, Integer> freqgraph;
-	
-
 
 	/** The freqtable. */
 	@FXML
 	private TableView<tablefield> freqtable;
+  
 
 	/** The month 1. */
 	@FXML
@@ -250,8 +253,8 @@ public class ITManagerReportsController implements Initializable {
 	@FXML
 	private TableColumn<recentreport, String> typetable;
 
-    @FXML
-    private Pane chooseDate;
+	@FXML
+	private Pane chooseDate;
 
 	/**
 	 * Generate report click.
@@ -264,22 +267,22 @@ public class ITManagerReportsController implements Initializable {
 
 		freqgraph.getData().clear();
 		devgraph.getData().clear();
-		
+
 		delaysInExecution.setVisible(false);
 		performence.setVisible(false);
 		activity.setVisible(false);
 		Recentreports.setVisible(false);
 		if (chooseTypeOfReport.getValue().equals("Activity")) {
-			
-			makeActiveSuClo(null,null);
+
+			makeActiveSuClo(null, null);
 			activity.setVisible(true);
 		}
 		if (chooseTypeOfReport.getValue().equals("Performence")) {
-			makePerformenct(null,null);
+			makePerformenct(null, null);
 			performence.setVisible(true);
 		}
 		if (chooseTypeOfReport.getValue().equals("Delays in execution")) {
-			makeDelays(null,null);
+			makeDelays(null, null);
 			delaysInExecution.setVisible(true);
 		} else {
 
@@ -289,23 +292,20 @@ public class ITManagerReportsController implements Initializable {
 	/**
 	 * Make delays.
 	 */
-	private void makeDelays(String s,String e) {
-		
+	private void makeDelays(String s, String e) {
+
 		DBmessage dbm;
 		String start, end;
-		if(e==null&&s==null)
-		{
+		if (e == null && s == null) {
 			start = this.dateFrom.getValue().toString();
-			this.startr=start;
+			this.startr = start;
 			end = this.DateTo.getValue().toString();
-			this.endr=end;
-		}
-		else
-		{
+			this.endr = end;
+		} else {
 			start = s;
-			end =e;
-			this.startr=s;
-			this.endr=e;
+			end = e;
+			this.startr = s;
+			this.endr = e;
 		}
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
@@ -320,20 +320,17 @@ public class ITManagerReportsController implements Initializable {
 	/**
 	 * Make performenct.
 	 */
-	private void makePerformenct(String s,String e) {
+	private void makePerformenct(String s, String e) {
 
 		DBmessage dbm;
 		String start, end;
-		if(e==null&&s==null)
-		{
+		if (e == null && s == null) {
 			start = this.dateFrom.getValue().toString();
 			end = this.DateTo.getValue().toString();
-		}
-		else
-		{
+		} else {
 			start = s;
-			end =e;
-			
+			end = e;
+
 		}
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
@@ -348,20 +345,17 @@ public class ITManagerReportsController implements Initializable {
 	/**
 	 * Make active su clo.
 	 */
-	public void makeActiveSuClo(String s,String e) {
+	public void makeActiveSuClo(String s, String e) {
 		System.out.println("befor");
 		DBmessage dbm;
 		String start, end;
-		if(e==null&&s==null)
-		{
+		if (e == null && s == null) {
 			start = this.dateFrom.getValue().toString();
 			end = this.DateTo.getValue().toString();
-		}
-		else
-		{
+		} else {
 			start = s;
-			end =e;
-			
+			end = e;
+
 		}
 
 		ArrayList<Object> arry = new ArrayList<Object>();
@@ -414,9 +408,9 @@ public class ITManagerReportsController implements Initializable {
 		meds.getData().add(new XYChart.Data<>("success", medsuc));
 		XYChart.Series medsus = new XYChart.Series();
 		medsus.getData().add(new XYChart.Data<>("susppend", medsusp));
-		//this.medgraph.getData().add(meds);
-		//this.medgraph.getData().add(medf);
-		//this.medgraph.getData().add(medsus);
+		// this.medgraph.getData().add(meds);
+		// this.medgraph.getData().add(medf);
+		// this.medgraph.getData().add(medsus);
 		XYChart.Series freqs = new XYChart.Series();
 		XYChart.Series freqf = new XYChart.Series<>();
 		XYChart.Series freqsus = new XYChart.Series();
@@ -444,13 +438,11 @@ public class ITManagerReportsController implements Initializable {
 			avrgs += success[i];
 			avrgsus += susppend[i];
 		}
-		 ObservableList<PieChart.Data> pieChartData =
-		            FXCollections.observableArrayList(
-		                    new PieChart.Data("failure", avrgf),
-		                    new PieChart.Data("success", avrgs),
-		                    new PieChart.Data("susppend", avrgsus));
-		    ActiveSuClo.setData(pieChartData);
-		    ActiveSuClo.setTitle("sum request");
+		ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList(
+				new PieChart.Data("failure", avrgf), new PieChart.Data("success", avrgs),
+				new PieChart.Data("susppend", avrgsus));
+		ActiveSuClo.setData(pieChartData);
+		ActiveSuClo.setTitle("sum request");
 		avrgf = avrgf / 12;
 		avrgs = avrgs / 12;
 		avrgsus = avrgsus / 12;
@@ -720,44 +712,47 @@ public class ITManagerReportsController implements Initializable {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
-	  @FXML
-	    void showRequestInfo(MouseEvent event) 
-	    {
-		  Recentreports.setOnMouseClicked((MouseEvent ev ) -> 
-		  {
-	            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2)
-	            {
-	                String stage=Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getStage();
-	                String start=Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getFrom();
-	                String end=Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getTo();
-					freqgraph.getData().clear();
-					devgraph.getData().clear();
-			//		medgraph.getData().clear();
-					chooseDate.setVisible(false);
-					delaysInExecution.setVisible(false);
-					performence.setVisible(false);
-					activity.setVisible(false);
-					if (stage.equals("Activity")) {
-						makeActiveSuClo(start,end);
-						activity.setVisible(true);
-					}
-					if (stage.equals("Performence")) {
-						makePerformenct(start,end);
-						performence.setVisible(true);
-					}
-					if (stage.equals("Delays in execution")) {
-						makeDelays(start,end);
-						delaysInExecution.setVisible(true);
-					} else {
 
-					}                
-	            }
-		  });
-		  
-	    }
+	@FXML
+	void showRequestInfo(MouseEvent event) {
+		Recentreports.setOnMouseClicked((MouseEvent ev) -> {
+			if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+				Recentreports.setVisible(false);
+				Recentlabel.setVisible(false);
+				backrep.setVisible(true);
+				String stage = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex())
+						.getType();
+				String start = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex())
+						.getFrom();
+				String end = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getTo();
+				freqgraph.getData().clear();
+				devgraph.getData().clear();
+				// medgraph.getData().clear();
+				chooseDate.setVisible(false);
+				delaysInExecution.setVisible(false);
+				performence.setVisible(false);
+				activity.setVisible(false);
+				if (stage.equals("Activity")) {
+					makeActiveSuClo(start, end);
+					activity.setVisible(true);
+				}
+				if (stage.equals("Performence")) {
+					makePerformenct(start, end);
+					performence.setVisible(true);
+				}
+				if (stage.equals("Delays in execution")) {
+					makeDelays(start, end);
+					delaysInExecution.setVisible(true);
+				} else {
 
-		public void viewrecentreport() {
-			
+				}
+			}
+		});
+
+	}
+
+	public void viewrecentreport() {
+
 		DBmessage dbm;
 		dbm = new DBmessage(MessageType.viewrecentreport, null);
 		try {
@@ -766,13 +761,14 @@ public class ITManagerReportsController implements Initializable {
 		}
 	}
 
-		public void setTextInTable(ArrayList<Object> list) {
-			rows = FXCollections.observableArrayList();
-			System.out.println(list.size());
-			for (Object r : list)
-				rows.add((recentreport) r);
-			Recentreports.setItems(rows);
-			
-		}
+	public void setTextInTable(ArrayList<Object> list) {
+		rows = FXCollections.observableArrayList();
+
+		System.out.println(list);
+		for (Object r : list)
+			rows.add((recentreport) r);
+		Recentreports.setItems(rows);
+
+	}
 
 }

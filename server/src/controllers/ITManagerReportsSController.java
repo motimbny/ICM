@@ -62,6 +62,7 @@ public class ITManagerReportsSController {
 	 */
 	public Object makeActiveSuClo() {
 		Statement stmt;
+		PreparedStatement req;
 		DBSmessage dbs;
 		ArrayList<Object> toSendA = new ArrayList<Object>();
 		ArrayList<Object> arry = msg.getObjs();
@@ -79,6 +80,12 @@ public class ITManagerReportsSController {
 		int numofFailor = 0, numOfSec = 0, numOfSus = 0, AllReq = 0;
 
 		try {
+			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+ 			req.setString(1, start);
+ 			req.setString(2, end);
+ 			req.setString(3,"Activity");
+ 			req.executeUpdate();	
+ 			req.close();
 			stmt = connection.createStatement();
 		
 			ResultSet rs = stmt
@@ -159,6 +166,7 @@ public class ITManagerReportsSController {
 	 */
 	public Object makePerformenct() {
 
+		PreparedStatement req;
 		Statement stmt;
 		DBSmessage dbs;
 		ArrayList<Object> toSendA = new ArrayList<Object>();
@@ -173,7 +181,14 @@ public class ITManagerReportsSController {
 
 		int sum = 0;
 
+		
 		try {
+			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+ 			req.setString(1, start);
+ 			req.setString(2, end);
+ 			req.setString(3,"Performence");
+ 			req.executeUpdate();	
+ 			req.close();
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(
 					"SELECT * FROM extensionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
@@ -237,6 +252,7 @@ public class ITManagerReportsSController {
 	 */
 	public Object makeDelays() {
 		
+		PreparedStatement req;
 
 		Statement stmt;
 		DBSmessage dbs;
@@ -249,7 +265,12 @@ public class ITManagerReportsSController {
 		String end = (String) arry.get(1);
 
 		try {
-			
+			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+ 			req.setString(1, start);
+ 			req.setString(2, end);
+ 			req.setString(3,"Delays in execution");
+ 			req.executeUpdate();	
+ 			req.close();
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(
 					"SELECT * FROM exceptionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
@@ -284,6 +305,7 @@ public class ITManagerReportsSController {
 				{
 					recentreport toAdd=new recentreport(rs.getString(1), rs.getString(2), rs.getString(3));
 					toSend.add(toAdd);
+				
 				}
 				
 				dbs=new DBSmessage(MessageTypeS.viewrecentreport,toSend);

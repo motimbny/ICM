@@ -260,13 +260,19 @@
                   </Label>
                </children>
             </Pane>
-                  <TableView fx:id="Recentreports" layoutX="62.0" layoutY="200.0" onMouseClicked="#showRequestInfo" prefHeight="339.0" prefWidth="534.0">
+                  <TableView fx:id="Recentreports" layoutX="62.0" layoutY="200.0" onMousePressed="#showRequestInfo" prefHeight="339.0" prefWidth="534.0">
                     <columns>
                       <TableColumn fx:id="fromtable" prefWidth="136.80006408691406" text="From" />
                       <TableColumn fx:id="totable" prefWidth="126.39996337890625" text="To" />
                         <TableColumn fx:id="typetable" prefWidth="270.4000244140625" text="type" />
                     </columns>
                   </TableView>
+            <Label fx:id="Recentlabel" layoutX="22.0" layoutY="166.0" prefHeight="27.0" prefWidth="149.0" text="Recent reports:">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="backrep" layoutX="10.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#gogenerateReport" prefHeight="37.0" prefWidth="230.0" styleClass="buttonBlackBorder" text="Back to all reports" visible="false" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
