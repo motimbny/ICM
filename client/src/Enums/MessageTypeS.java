@@ -41,6 +41,6 @@ public enum MessageTypeS
 	SuperviserShowMessages,SuperviserUpdateMessages, ITaddTimeEstimated, SupervisorApproveEvluationTime, 
 	approveTime, SupervisorDenyEvluationTime, SupervisorApproveExecutionTime, makeActiveSuClo, 
 	makePerformenct, makeDelays, ITshowReqAgain, 
-	ITrequestDaysLeft,showattachfile, superviserAttachFile, superviserAttachFileM, superviserAttachFileIT, viewrecentreport
+	ITrequestDaysLeft,showattachfile, superviserAttachFile, superviserAttachFileM, superviserAttachFileIT, viewrecentreport, SupervisorUpdateRequest1
 
 }

@@ -47,7 +47,6 @@ public class mainClientABS extends AbstractClient
 	protected void handleMessageFromServer(Object msg)
 	{
 			DBSmessage dbs=(DBSmessage)msg;
-			System.out.println(dbs.getType());
 			switch(dbs.getType()) 
 			{
 			case Login:
@@ -349,6 +348,11 @@ public class mainClientABS extends AbstractClient
 			{
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 				MainAllControllers.SupervisorUpdateRequest(send);
+			}
+			break;
+			case SupervisorUpdateRequest1:
+			{
+				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
 			}
 			break;
 			case superviserAttachFile:

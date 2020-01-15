@@ -19,7 +19,7 @@ import javafx.scene.input.MouseEvent;
 
 public class SupervisorUpdateRequestSController 
 {
-		private int flag=0;
+		private int flag=0,flag2=0;
 	   private Connection connection;
 	   private ArrayList<Object> list;
 	    private DBmessage msg;
@@ -59,7 +59,10 @@ public class SupervisorUpdateRequestSController
 					toSend.add(rs.getString(3));
 				}
 				//toSend.add(up);
-				dbs=new DBSmessage(MessageTypeS.SupervisorUpdateRequest,toSend);
+				if(flag2==0)
+				    dbs=new DBSmessage(MessageTypeS.SupervisorUpdateRequest,toSend);
+				else
+					dbs=new DBSmessage(MessageTypeS.SupervisorUpdateRequest1,toSend);
 				return dbs;
 			} 
 			catch (SQLException e)
@@ -85,6 +88,7 @@ public class SupervisorUpdateRequestSController
 			{
 				e.printStackTrace();
 			}
+			flag2=1;
 			return getReport();
 		}
 		public DBSmessage getListOfIT() 
