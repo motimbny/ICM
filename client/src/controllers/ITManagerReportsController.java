@@ -466,7 +466,6 @@ public class ITManagerReportsController implements Initializable {
 
 		CategoryAxis xAxis = new CategoryAxis();
 		xAxis.setLabel("status request");
-
 		NumberAxis yAxis = new NumberAxis();
 		yAxis.setLabel("Standard deviation:");
 		// this.freqgraph= new BarChart<String, Number>(xAxis, yAxis);

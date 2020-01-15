@@ -3,7 +3,6 @@ package entity;
 import java.io.Serializable;
 
 public class recentreport implements Serializable{
-	
 	private String from;
 	private String to;
 	private String stage;
