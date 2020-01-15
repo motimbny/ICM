@@ -283,7 +283,7 @@ public class SupervisorUpdateRequestSController
 				
 				PreparedStatement req = connection.prepareStatement("INSERT INTO updates VALUES(?,?,?)");
 				req.setString(1,(String)msg.getObjs().get(3));
-				req.setString(2,"employee changed "+java.time.LocalDate.now().toString());
+				req.setString(2,"employee changed in request "+num+" date is: "+new Date().toString());
 				req.setString(3,java.time.LocalDate.now().toString());
 				req.executeUpdate();	
 	 			req.close();
