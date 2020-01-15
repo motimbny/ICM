@@ -200,29 +200,26 @@ public class ITManagerReportsSController {
 			rs = stmt.executeQuery(
 					"SELECT * FROM requesttime WHERE meaningAssessmentStart BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
-
+				if(rs.getDate(10)!=null)
+				{
+					
 				Date date1 = null;
 				Date date2 = null;
 				for (int j = 2, i = 0; i < 4; i++, j = j + 2) {
 					date1 = rs.getDate(j);
 					date2 = rs.getDate(j + 1);
-		
-					long diff = date2.getTime() - date1.getTime();
-					dev[i] = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+			
+						long diff = date2.getTime() - date1.getTime();
+						dev[i] = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 				}
 				mapDev.put(rs.getInt(1), dev);
+				}
 
-			}
-			rs = stmt.executeQuery("SELECT * FROM request WHERE reqDatel BETWEEN '" + start + "' AND '" + end + "'");
-			while (rs.next() != false) {
-
-				mapDev2.put(rs.getInt(1), null);
-	
 			}
 			rs = stmt.executeQuery("SELECT * FROM requeststages");
 			while (rs.next() != false) {
 
-				if (mapDev2.containsKey(rs.getInt(1)))
+				if (mapDev.containsKey(rs.getInt(1)))
 				{
 					int[] temp=(int[]) mapDev.get(rs.getInt(1));
 					temp[0]-=rs.getInt(10);

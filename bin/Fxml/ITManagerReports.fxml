@@ -228,7 +228,7 @@
                         <TableColumn fx:id="num" prefWidth="144.79998779296875" text="Number of request" />
                      </columns>
                   </TableView>
-                  <StackedBarChart fx:id="Frequencygraph" layoutX="357.0" layoutY="206.0" prefHeight="214.0" prefWidth="252.0">
+                  <StackedBarChart fx:id="Frequencygraph" animated="false" layoutX="357.0" layoutY="206.0" prefHeight="214.0" prefWidth="252.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
