@@ -80,16 +80,18 @@ public class ITManagerReportsSController {
 
 		try {
 			stmt = connection.createStatement();
+		
 			ResultSet rs = stmt
 					.executeQuery("SELECT * FROM failurreport WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 
-				String[] dateParts = rs.getString(3).split("-");
+				String[] dateParts = rs.getString(2).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
 				int sum = (int) fail.get(month);
 				sum++;
 				fail.set(month, sum);
+	
 			}
 
 			rs = stmt.executeQuery("SELECT * FROM request WHERE reqDatel BETWEEN '" + start + "' AND '" + end + "'");
@@ -102,17 +104,20 @@ public class ITManagerReportsSController {
 				int sum = (int) suc.get(month);
 				sum++;
 				suc.set(month, sum);
+			
 			}
 
 			rs = stmt.executeQuery("SELECT * FROM suspendrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 
 			while (rs.next() != false) {
+				
 				String[] dateParts = rs.getString(3).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
 				int sum = (int) susp.get(month);
 				sum++;
 				susp.set(month, sum);
+				
 			}
 
 			rs = stmt.executeQuery("SELECT * FROM requesttime WHERE meaningAssessmentStart AND closingEND BETWEEN '"
@@ -125,6 +130,7 @@ public class ITManagerReportsSController {
 			toSendA.add(suc);
 			toSendA.add(susp);
 			toSendA.add(AllReq);
+		
 			dbs = new DBSmessage(MessageTypeS.makeActiveSuClo, toSendA);
 			return dbs;
 		} catch (SQLException e) {
@@ -185,8 +191,7 @@ public class ITManagerReportsSController {
 				for (int j = 2, i = 0; i < 4; i++, j = j + 2) {
 					date1 = rs.getDate(j);
 					date2 = rs.getDate(j + 1);
-					System.out.println(date1);
-					System.out.println(date2);
+		
 					long diff = date2.getTime() - date1.getTime();
 					dev[i] = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 				}
@@ -197,10 +202,11 @@ public class ITManagerReportsSController {
 			while (rs.next() != false) {
 
 				mapDev2.put(rs.getInt(1), null);
-
+	
 			}
 			rs = stmt.executeQuery("SELECT * FROM requeststages");
 			while (rs.next() != false) {
+
 				if (mapDev2.containsKey(rs.getInt(1)))
 				{
 					int[] temp=(int[]) mapDev.get(rs.getInt(1));
@@ -214,7 +220,6 @@ public class ITManagerReportsSController {
 
 			}
 
-			
 			toSendA.add(mapDev);
 			dbs = new DBSmessage(MessageTypeS.makePerformenct, toSendA);
 			return dbs;

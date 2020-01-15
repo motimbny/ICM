@@ -211,11 +211,13 @@ public class ITManagerReportsController implements Initializable {
 
 	/** The devgraph. */
 	@FXML
-	private BarChart<?, ?> devgraph;
+	private BarChart<String, Integer> devgraph;
 
 	/** The freqgraph. */
 	@FXML
-	private BarChart<?, ?> freqgraph;
+	private BarChart<String, Integer> freqgraph;
+	
+
 
 	/** The freqtable. */
 	@FXML
@@ -344,6 +346,7 @@ public class ITManagerReportsController implements Initializable {
 	 * Make active su clo.
 	 */
 	public void makeActiveSuClo(String s,String e) {
+		System.out.println("befor");
 		DBmessage dbm;
 		String start, end;
 		if(e==null&&s==null)
@@ -376,7 +379,6 @@ public class ITManagerReportsController implements Initializable {
 	 */
 	@SuppressWarnings("unchecked")
 	public void setActiveSuClo(ArrayList<Object> send) {
-
 		int devesion, medfail, medsuc, medsusp;
 		float avrgf = 0, avrgs = 0, avrgsus = 0, devf = 0, devs = 0, devsus = 0;
 		ArrayList<Object> failur = (ArrayList<Object>) send.get(0);
