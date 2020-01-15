@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerReportsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerReportsController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -273,7 +273,7 @@
                </font>
             </Label>
             <Button fx:id="backrep" layoutX="10.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#gogenerateReport" prefHeight="37.0" prefWidth="230.0" styleClass="buttonBlackBorder" text="Back to all reports" visible="false" />
-            <Label fx:id="click" layoutX="397.0" layoutY="536.0" prefHeight="37.0" prefWidth="208.0" text="Double click to handle report" />
+            <Label fx:id="click" layoutX="397.0" layoutY="536.0" prefHeight="37.0" prefWidth="208.0" text="Double click to see report" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
