@@ -228,7 +228,7 @@ public class CheckExceptionsRequest
 				reqToAdd.setInt(1, req.getId());
 				reqToAdd.setString(2,stag);
 				reqToAdd.setInt(3,diffrence);
-				   SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");  
+				   SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
 				    Date date = new Date();  
 				    reqToAdd.setString(4,formatter.format(date)); 
 				reqToAdd.executeUpdate();	

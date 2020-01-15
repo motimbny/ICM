@@ -200,12 +200,14 @@ public class ITManagerReportsSController {
 			rs = stmt.executeQuery(
 					"SELECT * FROM requesttime WHERE meaningAssessmentStart BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
-				if(rs.getDate(10)!=null)
+				if(rs.getDate(2)!=null)
 				{
 					
 				Date date1 = null;
 				Date date2 = null;
 				for (int j = 2, i = 0; i < 4; i++, j = j + 2) {
+					if(rs.getDate(j)==null||rs.getDate(j+1)==null)
+					continue;
 					date1 = rs.getDate(j);
 					date2 = rs.getDate(j + 1);
 			
