@@ -607,7 +607,7 @@ public class MainAllControllers
 		@Override
 		public void run() 
 		{
-		((SupervisorUpdateRequestController) WindowToShow.controller).setToFields(list);
+		((SupervisorUpdateRequestController) WindowToShow.controller).setToFields(list);  
 		}});
 	}
 	

@@ -346,6 +346,7 @@ public class SupervisorUpdateRequestController implements Initializable {
 		dbm = new DBmessage(MessageType.changeExecuter, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
+			
 		} catch (IOException e) {
 		}
 	}

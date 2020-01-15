@@ -33,6 +33,7 @@ public class SupervisorUpdateRequestSController
 		{
 			int numReport=(int)list.get(0);
 			Statement stmt;
+			Statement stmt1;
 			DBSmessage dbs;
 			updateRequest up = null;
 			ArrayList<Object> toSend= new ArrayList<Object>();
@@ -45,10 +46,12 @@ public class SupervisorUpdateRequestSController
 					up=new updateRequest(rs.getInt(1),rs.getString(4), rs.getString(8),rs.getString(9),rs.getInt(10),rs.getInt(11), rs.getInt(12),rs.getInt(13));
 					if(rs.getString(3).equals("supervisorApprovel")&&flag==1)
 					{
-						stmt.executeUpdate("UPDATE request SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
-						stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+numReport+"");
-						stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
-						stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+numReport+"");			
+						stmt1 = connection.createStatement();
+						stmt1.executeUpdate("UPDATE request SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
+						stmt1.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+numReport+"");
+						stmt1.executeUpdate("UPDATE requeststages SET currentStage='waitingEvaluationTime' WHERE id="+numReport+"");
+						stmt1.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+numReport+"");			
+					
 					}
 					toSend.add(numReport);
 					toSend.add(rs.getString(4));

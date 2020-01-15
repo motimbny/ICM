@@ -1,6 +1,7 @@
 package controllers;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -107,8 +108,9 @@ public class superviserRequestShowController
 	public DBSmessage updateSuspendRequest() 
 	{
 		int num=(int) msg.getObjs().get(0);
-		System.out.println(num);
 		Statement stmt;
+		PreparedStatement ps;
+		String stage;
 		try 
 		{
 			stmt = connection.createStatement();
@@ -122,12 +124,34 @@ public class superviserRequestShowController
 				{
 					System.out.println("updateSuspendRequeststages");
 				}
+			ps=connection.prepareStatement("INSERT INTO suspendrequest VALUES(?,?,?)");
+			ps.setInt(1, num);
+			ps.setString(2, this.getStage(num));
+			ps.setString(3,  java.time.LocalDate.now().toString());
+			ps.executeUpdate();	
+ 			ps.close();	
 		} 
 		catch (SQLException e)
 		{
 			e.printStackTrace();
 		}
 		return getRequestToShow();
+	}
+	
+	public String getStage(int id)
+	{
+		Statement stmt;
+		String stage="";
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM request WHERE id="+id+ "");
+			while(rs.next()!=false)
+			{
+				stage=rs.getString(1);
+			}
+		} catch (SQLException e) {}
+		return stage;
+		
 	}
 	
 
