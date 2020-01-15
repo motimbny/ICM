@@ -332,9 +332,7 @@ public class mainClientABS extends AbstractClient
 			break;
 			case viewrecentreport:
 			{
-				System.out.println("ll");
 				ArrayList<Object> send=(ArrayList<Object>) dbs.getObjs();
-				System.out.println("kkkk");
 				MainAllControllers.viewrecentreport(send);
 			}
 			break;

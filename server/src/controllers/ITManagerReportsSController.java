@@ -236,7 +236,7 @@ public class ITManagerReportsSController {
 	 * @return the object
 	 */
 	public Object makeDelays() {
-		System.out.println("here");
+		
 
 		Statement stmt;
 		DBSmessage dbs;
@@ -249,8 +249,7 @@ public class ITManagerReportsSController {
 		String end = (String) arry.get(1);
 
 		try {
-			System.out.println(start);
-			System.out.println(end);
+			
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery(
 					"SELECT * FROM exceptionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
@@ -284,10 +283,9 @@ public class ITManagerReportsSController {
 				while(rs.next()!=false)
 				{
 					recentreport toAdd=new recentreport(rs.getString(1), rs.getString(2), rs.getString(3));
-					System.out.println(rs.getString(1));
 					toSend.add(toAdd);
 				}
-				System.out.println("finish");
+				
 				dbs=new DBSmessage(MessageTypeS.viewrecentreport,toSend);
 				return dbs;
 		} 

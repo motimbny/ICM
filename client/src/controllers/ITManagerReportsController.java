@@ -767,8 +767,8 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 		public void setTextInTable(ArrayList<Object> list) {
-			System.out.println("im here");
 			rows = FXCollections.observableArrayList();
+			System.out.println(list.size());
 			for (Object r : list)
 				rows.add((recentreport) r);
 			Recentreports.setItems(rows);
