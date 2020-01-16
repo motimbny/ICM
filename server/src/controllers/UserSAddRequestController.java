@@ -118,7 +118,6 @@ public class UserSAddRequestController
  			requeststages.setString(5,this.CEO);
  			requeststages.setString(6, this.CCC2);
  			requeststages.setString(7, this.CCC3);
- 			System.out.println(listOfIT);
  			c2=rand.nextInt(listOfIT.size()-1);
  			while(c1==c2)
  	 			c2=rand.nextInt(listOfIT.size());	
