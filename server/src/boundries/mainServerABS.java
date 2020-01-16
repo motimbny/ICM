@@ -33,22 +33,47 @@ import entity.DBmessage;
 import entity.User;
 import ocsf.server.AbstractServer;
 import ocsf.server.ConnectionToClient;
+
 /**
- * The handler of the sending and receiving data to/from Client
- * @author SHIRA
+ * The handler of the sending and receiving data to/from Client.
  *
+ * @author SHIRA
  */
 public class mainServerABS extends AbstractServer {
+	
+	/** The controller. */
 	Object controller;
+	
+	/** The connection. */
 	private Connection connection;
+	
+	/** The Is DB connected. */
 	private boolean IsDBConnected = false;
+	
+	/** The server controller. */
 	private serverController serverController;
+    
+    /** The logged. */
     private ArrayList<User> logged;
+	
+	/**
+	 * Instantiates a new main server ABS.
+	 *
+	 * @param port the port
+	 * @param serverController the server controller
+	 */
 	public mainServerABS(int port, serverController serverController) {
 		super(port);
 		this.serverController = serverController;
 		logged=new ArrayList<User>();
 	}
+    
+    /**
+     * Check user connected.
+     *
+     * @param toadd the toadd
+     * @return true, if successful
+     */
     public boolean checkUserConnected(User toadd)
     {
     	if(logged.size()==0)
@@ -64,21 +89,35 @@ public class mainServerABS extends AbstractServer {
 		logged.add(toadd);
 		return true;
     }
+	
+	/**
+	 * Connect to db.
+	 *
+	 * @param connection the connection
+	 */
 	public void connectToDb(Connection connection) 
 	{
 		this.connection = connection;
 		IsDBConnected = true;
 	}
-	 public void removeConnected(User toadd)
+	 
+ 	/**
+ 	 * Removes the connected.
+ 	 *
+ 	 * @param toadd the toadd
+ 	 */
+ 	public void removeConnected(User toadd)
 	    {
 			for(User i:logged)
 				if(toadd.getName().equals(i.getName()))
 					logged.remove(i);
 	    }
+	
 	/**
 	 *  Handles a message sent from the Client to this Server.
-	 *  @param msg - the message sent. 
-	 *  @param client
+	 *
+	 * @param msg - the message sent.
+	 * @param client the client
 	 */
 	@Override
 	protected void handleMessageFromClient(Object msg, ConnectionToClient client)
@@ -702,6 +741,9 @@ public class mainServerABS extends AbstractServer {
 		}
 	}
 
+	/**
+	 * Start server.
+	 */
 	public void startServer() {
 		try {
 			this.listen(); // Start listening for connections
@@ -710,6 +752,9 @@ public class mainServerABS extends AbstractServer {
 		}
 	}
 
+	/**
+	 * Stop server.
+	 */
 	public void stopServer() {
 		try {
 			this.stopListening(); // Start listening for connections
@@ -718,14 +763,25 @@ public class mainServerABS extends AbstractServer {
 		}
 	}
 
+	/**
+	 * Server started.
+	 */
 	protected void serverStarted() {
 		serverController.showOnScreen("> Server listening for connections on port " + getPort());
 	}
 
+	/**
+	 * Server stopped.
+	 */
 	protected void serverStopped() {
 		serverController.showOnScreen("> Server has stopped listening for connections.");
 	}
 
+	/**
+	 * Checks if is DB connected.
+	 *
+	 * @return the checks if is DB connected
+	 */
 	public boolean getIsDBConnected() {
 		return IsDBConnected;
 	}

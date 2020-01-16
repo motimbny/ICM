@@ -11,23 +11,23 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class ITPersonalInfoController.This window is in IT GUI
- * and display the personal information of the IT.
+ * The Class ITPersonalInfoController.This window is in IT GUI and display the
+ * personal information of the IT.
+ * 
+ * @author SHIRA
  */
-public class ITPersonalInfoController implements Initializable 
-{
-	
+public class ITPersonalInfoController implements Initializable {
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-    
-    /**
-     * Instantiates a new IT personal info controller.
-     */
-    public ITPersonalInfoController()
-    {
-    	MainAllControllers=controllers.MainAllControllers.getInstance();
-    }
-	
+
+	/**
+	 * Instantiates a new IT personal info controller.
+	 */
+	public ITPersonalInfoController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
+	}
+
 	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
@@ -47,30 +47,29 @@ public class ITPersonalInfoController implements Initializable
 	/** The logout BTN. */
 	@FXML
 	private Button logoutBTN;
-	
-    /** The User name. */
-    @FXML
-    private Label UserName;
 
-    /** The email. */
-    @FXML
-    private Label email;
+	/** The User name. */
+	@FXML
+	private Label UserName;
 
-    /** The position. */
-    @FXML
-    private Label position;
+	/** The email. */
+	@FXML
+	private Label email;
 
-    /**
+	/** The position. */
+	@FXML
+	private Label position;
+
+	/**
 	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
 	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHelp");
-    	MainAllControllers.changeWin();
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHelp");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -80,10 +79,9 @@ public class ITPersonalInfoController implements Initializable
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHome");
-    	MainAllControllers.changeWin();
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHome");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -94,10 +92,9 @@ public class ITPersonalInfoController implements Initializable
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goPersonalInfo(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITPersonalInfo");
-    	MainAllControllers.changeWin();
+	void goPersonalInfo(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITPersonalInfo");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -108,10 +105,9 @@ public class ITPersonalInfoController implements Initializable
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goShowReq(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITshowRequests");
-    	MainAllControllers.changeWin();
+	void goShowReq(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITshowRequests");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -122,11 +118,10 @@ public class ITPersonalInfoController implements Initializable
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void logoutPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+	void logoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.logOutUser();
 	}
 
 	/**
@@ -134,15 +129,14 @@ public class ITPersonalInfoController implements Initializable
 	 * information from DB and set the user information on the screen: user name,
 	 * email and position.
 	 *
-	 * @param location the location
+	 * @param location  the location
 	 * @param resources the resources
 	 */
 	@Override
-	public void initialize(URL location, ResourceBundle resources) 
-	{
+	public void initialize(URL location, ResourceBundle resources) {
 		UserName.setText(MainAllControllers.user.getName());
 		email.setText(MainAllControllers.user.getName() + "@braude.ac.il");
 		position.setText(MainAllControllers.user.getstrPosition());
-		
+
 	}
 }

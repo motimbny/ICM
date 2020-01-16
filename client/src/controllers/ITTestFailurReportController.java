@@ -19,194 +19,186 @@ import javafx.scene.input.MouseEvent;
 /**
  * The Class ITTestFailurReportController.
  */
-public class ITTestFailurReportController implements Initializable 
-{
+public class ITTestFailurReportController implements Initializable {
 
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-    
-    /**
-     * Instantiates a new IT test failur report controller.
-     */
-    public ITTestFailurReportController()
-    {
-    	MainAllControllers=controllers.MainAllControllers.getInstance();
-    }
-    
-    /** The home BTN. */
-    @FXML
-    private Button homeBTN;
 
-    /** The show request BTN. */
-    @FXML
-    private Button showRequestBTN;
+	/**
+	 * Instantiates a new IT test failure report controller.
+	 */
+	public ITTestFailurReportController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
+	}
 
-    /** The personal info BTN. */
-    @FXML
-    private Button personalInfoBTN;
+	/** The home BTN. */
+	@FXML
+	private Button homeBTN;
 
-    /** The help BTN. */
-    @FXML
-    private Button helpBTN;
+	/** The show request BTN. */
+	@FXML
+	private Button showRequestBTN;
 
-    /** The logout BTN. */
-    @FXML
-    private Button logoutBTN;
+	/** The personal info BTN. */
+	@FXML
+	private Button personalInfoBTN;
 
-    /** The Req ID. */
-    @FXML
-    private TextField ReqID;
+	/** The help BTN. */
+	@FXML
+	private Button helpBTN;
 
-    /** The submit failur report BTN. */
-    @FXML
-    private Button submitFailurReportBTN;
+	/** The logout BTN. */
+	@FXML
+	private Button logoutBTN;
 
-    /** The Report summry. */
-    @FXML
-    private TextArea ReportSummry;
+	/** The Req ID. */
+	@FXML
+	private TextField ReqID;
 
-    /** The fill all fields. */
-    @FXML
-    private Label fillAllFields;
+	/** The submit failur report BTN. */
+	@FXML
+	private Button submitFailurReportBTN;
 
-    /** The report was submitted. */
-    @FXML
-    private Label reportWasSubmitted;
+	/** The Report summry. */
+	@FXML
+	private TextArea ReportSummry;
 
-    /** The Back to show. */
-    @FXML
-    private Button BackToShow;
+	/** The fill all fields. */
+	@FXML
+	private Label fillAllFields;
 
-    /** The date. */
-    @FXML
-    private TextField date;
-    
-    /**
-     * Back to S.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void BackToS(MouseEvent event) throws IOException 
-    {
+	/** The report was submitted. */
+	@FXML
+	private Label reportWasSubmitted;
+
+	/** The Back to show. */
+	@FXML
+	private Button BackToShow;
+
+	/** The date. */
+	@FXML
+	private TextField date;
+
+	/**
+	 * Mouse click event, if "Back" button clicked, open the screen of "IT Handle
+	 * Request".
+	 *
+	 * @param event The Back BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void BackToS(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITHandleRequest");
 		MainAllControllers.changeWin();
-    }
-	
-	/**
-	 * Go help page.
-	 *
-	 * @param event the event
-	 * @throws IOException Signals that an I/O exception has occurred.
-	 */
-	@FXML
-	void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHelp");
-    	MainAllControllers.changeWin();
 	}
 
 	/**
-	 * Go home page.
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHome");
-    	MainAllControllers.changeWin();
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHelp");
+		MainAllControllers.changeWin();
 	}
 
 	/**
-	 * Go personal info.
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event the event
+	 * @param event The Home BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goPersonalInfo(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITPersonalInfo");
-    	MainAllControllers.changeWin();
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHome");
+		MainAllControllers.changeWin();
 	}
 
 	/**
-	 * Go show req.
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
 	 *
-	 * @param event the event
+	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goShowReq(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITshowRequests");
-    	MainAllControllers.changeWin();
+	void goPersonalInfo(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITPersonalInfo");
+		MainAllControllers.changeWin();
 	}
 
-    /**
-     * Logout page.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void logoutPage(MouseEvent event) throws IOException 
-    {
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
-    }
+	/**
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
+	 *
+	 * @param event The Show request BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void goShowReq(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITshowRequests");
+		MainAllControllers.changeWin();
+	}
 
-    /**
-     * Submit failur report.
-     *
-     * @param event the event
-     */
-    @FXML
-    void submitFailurReport(MouseEvent event) 
-    {
-    	if(ReportSummry.getText().equals(""))
-    	{
-    		fillAllFields.setVisible(true);
-    	}
-    	else
-    	{
-    		fillAllFields.setVisible(false);
-        	ArrayList<Object> arr=new ArrayList<Object>();
-        	arr.add(ReqID.getText());
-        	arr.add(date.getText());
-        	arr.add(ReportSummry.getText());
-        	DBmessage dbm=new DBmessage(MessageType.ITFailurReport, arr);
-        	try {
+	/**
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
+	 *
+	 * @param event The Logout BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void logoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.logOutUser();
+	}
+
+	/**
+	 * If it press on Submit BTN this method create DBMessage to send to server to
+	 * submit failure report.
+	 *
+	 * @param event The Submit BTN
+	 */
+	@FXML
+	void submitFailurReport(MouseEvent event) {
+		if (ReportSummry.getText().equals("")) {
+			fillAllFields.setVisible(true);
+		} else {
+			fillAllFields.setVisible(false);
+			ArrayList<Object> arr = new ArrayList<Object>();
+			arr.add(ReqID.getText());
+			arr.add(date.getText());
+			arr.add(ReportSummry.getText());
+			DBmessage dbm = new DBmessage(MessageType.ITFailurReport, arr);
+			try {
 				MainAllControllers.sendToAbsServer(dbm);
-			} catch (IOException e) {}
-    	}
-    }
-    
-    /**
-     * Sets the on sucsess.
-     */
-    public void setOnSucsess()
-    {
-    	reportWasSubmitted.setVisible(true);
-    }
+			} catch (IOException e) {
+			}
+		}
+	}
 
 	/**
-	 * Initialize.
+	 * This method set the label visible.
+	 */
+	public void setOnSucsess() {
+		reportWasSubmitted.setVisible(true);
+	}
+
+	/**
+	 * Initializes GUI components before this window open.
 	 *
-	 * @param location the location
+	 * @param location  the location
 	 * @param resources the resources
 	 */
 	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{	
-		ArrayList<Object> arry=new ArrayList<Object>();
-		int s=MainAllControllers.request;
-		arry.add(s);//request id
-		ReqID.setText(""+s);
+	public void initialize(URL location, ResourceBundle resources) {
+		ArrayList<Object> arry = new ArrayList<Object>();
+		int s = MainAllControllers.request;
+		arry.add(s);// request id
+		ReqID.setText("" + s);
 		LocalDate myObj = LocalDate.now();
 		date.setText("" + myObj);
 	}

@@ -9,14 +9,33 @@ import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * The Class mainServer.
+ */
 public class mainServer extends Application
 {
+	
+	/** The num of request. */
 	public static int NUM_OF_REQUEST=0;
+     
+     /** The controller. */
      serverController controller;
+     
+     /** The pane. */
      Pane pane;
+     
+     /** The s 1. */
      Scene s1;
-	 Stage window;
-	 @Override
+	 
+ 	/** The window. */
+ 	Stage window;
+	 
+ 	/**
+ 	 * This method load the server GUI and display it to the screen.
+ 	 *
+ 	 * @param primaryStage the primary stage
+ 	 */
+ 	@Override
 	 public void start(Stage primaryStage) 
 	 {
 		    window=primaryStage;
@@ -37,7 +56,13 @@ public class mainServer extends Application
 	        window.setScene(s1);
 	        window.show(); 
 	  }  
-	 public static void main(String[]args)
+	 
+ 	/**
+ 	 * The main method.
+ 	 *
+ 	 * @param args the arguments
+ 	 */
+ 	public static void main(String[]args)
 	   {
 		   launch(args);
 	   }

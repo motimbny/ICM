@@ -3,7 +3,7 @@ package entity;
 import java.io.Serializable;
 
 /**
- * The Class requestSuper.
+ * The Class requestSuper is for the supervisor.
  */
 public class requestSuper implements Serializable
 {
@@ -20,7 +20,7 @@ public class requestSuper implements Serializable
    /**
     * Instantiates a new request super.
     *
-    * @param id the id
+    * @param id the request id
     * @param currentStatus the current status
     * @param currentStage the current stage
     */

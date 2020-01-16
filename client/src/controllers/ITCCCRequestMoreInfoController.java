@@ -20,8 +20,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class ITCCCRequestMoreInfoController.
- * This window is in IT GUI 
+ * The Class ITCCCRequestMoreInfoController. This window is in IT GUI and
+ * display to the IT the option to add more information to the request
+ * 
+ * @author SHIRA
  */
 public class ITCCCRequestMoreInfoController implements Initializable {
 
@@ -84,8 +86,8 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	private Button BackToShow;
 
 	/**
-	 *  Mouse click event, if "Back" button clicked, open the screen of
-	 * "IT Handle Request".
+	 * Mouse click event, if "Back" button clicked, open the screen of "IT Handle
+	 * Request".
 	 *
 	 * @param event The Back BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -126,14 +128,14 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	 *
 	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 */	
+	 */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITPersonalInfo");
 		MainAllControllers.changeWin();
 	}
 
-	 /**
+	/**
 	 * Mouse click event, if "Show requests" button clicked, open the screen of
 	 * "Show requests".
 	 *
@@ -161,8 +163,8 @@ public class ITCCCRequestMoreInfoController implements Initializable {
 	}
 
 	/**
-	 * If it press on Submit BTN this method create DBMessage to send
-	 * to server to require more info.
+	 * If it press on Submit BTN this method create DBMessage to send to server to
+	 * require more info.
 	 *
 	 * @param event The Submit BTN
 	 */

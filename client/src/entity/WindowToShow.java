@@ -193,7 +193,7 @@ public class WindowToShow
 	 * Inits the login.
 	 */
 	public void initLogin() {
-		LoginController controller = new LoginController();//LoginController
+		LoginController controller = new LoginController();
 		pathfxml = "/Fxml/Login.fxml";
 		windowName = "ICM-Login";
 	}
@@ -202,7 +202,7 @@ public class WindowToShow
 	 * Inits the user home.
 	 */
 	public void initUserHome() {
-		UserHomeController controller = new UserHomeController(); // UserHomeController
+		UserHomeController controller = new UserHomeController(); 
 		pathfxml = "/Fxml/UserHome.fxml";
 		windowName = "ICM-UserHome";
 	}
@@ -213,7 +213,7 @@ public class WindowToShow
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void initUserShowRequests() throws IOException {
-		UserShowRequestsController controller = new UserShowRequestsController(); // UserShowRequestsController
+		UserShowRequestsController controller = new UserShowRequestsController(); 
 		pathfxml = "/Fxml/UserShowRequests.fxml";
 		windowName = "ICM-UserShowRequests";
 	}
@@ -241,7 +241,7 @@ public class WindowToShow
 	 * Inits the user request details.
 	 */
 	private void initUserRequestDetails() {
-		UserRequestDetailsController controller = new UserRequestDetailsController(); // UserRequestDetailsController
+		UserRequestDetailsController controller = new UserRequestDetailsController(); 
 		pathfxml = "/Fxml/UserRequestDetails.fxml";
 		windowName = "ICM-UserRequestDetails";
 	}
@@ -250,7 +250,7 @@ public class WindowToShow
 	 * Inits the user help.
 	 */
 	private void initUserHelp() {
-		UserHelpController controller = new UserHelpController(); // UserAddRequestController
+		UserHelpController controller = new UserHelpController(); 
 		pathfxml = "/Fxml/UserHelp.fxml";
 		windowName = "ICM-UserHelp";
 
@@ -261,7 +261,7 @@ public class WindowToShow
 	 */
 	private void initSupervisorTimeRequest()
 	{
-		SupervisorTimeRequestController controller = new SupervisorTimeRequestController(); // SupervisorHomeController
+		SupervisorTimeRequestController controller = new SupervisorTimeRequestController(); 
 		pathfxml = "/Fxml/SuperviserTimeManage.fxml";
 		windowName = "ICM-SupervisorRequestTime";
 	}
@@ -270,7 +270,7 @@ public class WindowToShow
 	 * Inits the supervisor home.
 	 */
 	public void initSupervisorHome() {
-		SupervisorHomeController controller = new SupervisorHomeController(); // SupervisorHomeController
+		SupervisorHomeController controller = new SupervisorHomeController(); 
 		pathfxml = "/Fxml/SupervisorHome.fxml";
 		windowName = "ICM-SupervisorHome";
 	}
@@ -292,7 +292,7 @@ public class WindowToShow
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void initSupervisorShowRequestDetailes() throws IOException {
-		SupervisorRequestDetailsController controller = new SupervisorRequestDetailsController(); // SupervisorShowRequestsController
+		SupervisorRequestDetailsController controller = new SupervisorRequestDetailsController(); 
 		pathfxml = "/Fxml/SupervisorRequestDetails.fxml";
 		windowName = "ICM-SupervisorRequestDetails";
 	}
@@ -301,7 +301,7 @@ public class WindowToShow
 	 * Inits the supervisor help.
 	 */
 	public void initSupervisorHelp() {
-		SupervisorHelpController controller = new SupervisorHelpController(); // SupervisorHelpController
+		SupervisorHelpController controller = new SupervisorHelpController(); 
 		pathfxml = "/Fxml/SupervisorHelp.fxml";
 		windowName = "ICM-SupervisorHelp";
 	}
@@ -310,7 +310,7 @@ public class WindowToShow
 	 * Inits the supervisor update request.
 	 */
 	public void initSupervisorUpdateRequest() {
-		SupervisorUpdateRequestController controller = new SupervisorUpdateRequestController(); // SupervisorUpdateRequestController
+		SupervisorUpdateRequestController controller = new SupervisorUpdateRequestController(); 
 		pathfxml = "/Fxml/SupervisorUpdateRequest.fxml";
 		windowName = "ICM-SupervisorUpdateRequest";
 	}
@@ -319,7 +319,7 @@ public class WindowToShow
 	 * Inits the supervisor personal info.
 	 */
 	public void initSupervisorPersonalInfo() {
-		SupervisorPersonalInfoController controller = new SupervisorPersonalInfoController(); // SupervisorPersonalInfoController
+		SupervisorPersonalInfoController controller = new SupervisorPersonalInfoController(); 
 		pathfxml = "/Fxml/SupervisorPersonalInfo.fxml";
 		windowName = "ICM-SupervisorPersonalInfo";
 	}
@@ -328,7 +328,7 @@ public class WindowToShow
 	 * Inits the supervisor extention request.
 	 */
 	public void initSupervisorExtentionRequest() {
-		SupervisorExtensionRequestController controller = new SupervisorExtensionRequestController(); // SupervisorExtentionRequestController
+		SupervisorExtensionRequestController controller = new SupervisorExtensionRequestController();
 		pathfxml = "/Fxml/SupervisorExtentionRequest.fxml";
 		windowName = "ICM-SupervisorExtentionRequest";
 	}
@@ -337,7 +337,7 @@ public class WindowToShow
 	 * Inits the supervisor messages.
 	 */
 	private void initSupervisorMessages() {
-		SupervisorMessagesController controller = new SupervisorMessagesController(); // SupervisorHelpController
+		SupervisorMessagesController controller = new SupervisorMessagesController(); 
 		pathfxml = "/Fxml/SupervisorMessages.fxml";
 		windowName = "ICM-SupervisorMessages";
 		

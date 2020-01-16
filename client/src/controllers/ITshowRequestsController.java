@@ -25,6 +25,8 @@ import javafx.scene.input.MouseEvent;
 /**
  * The Class ITshowRequestsController. This window is in IT GUI and show a table
  * with the requests
+ * 
+ * @author SHIRA
  */
 public class ITshowRequestsController implements Initializable {
 

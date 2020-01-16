@@ -17,106 +17,106 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 /**
- * The Class ITMeaningAssessmentEvaluationReportController.
+ * The Class ITMeaningAssessmentEvaluationReportController.This window is in IT
+ * GUI.
+ * 
+ * @author SHIRA
  */
-public class ITMeaningAssessmentEvaluationReportController implements Initializable
-{
-	
+public class ITMeaningAssessmentEvaluationReportController implements Initializable {
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-    
-    /**
-     * Instantiates a new IT meaning assessment evaluation report controller.
-     */
-    public ITMeaningAssessmentEvaluationReportController()
-    {
-    	MainAllControllers=controllers.MainAllControllers.getInstance();
-    }
-    
-    /** The home BTN. */
-    @FXML
-    private Button homeBTN;
 
-    /** The show request BTN. */
-    @FXML
-    private Button showRequestBTN;
+	/**
+	 * Instantiates a new IT meaning assessment evaluation report controller.
+	 */
+	public ITMeaningAssessmentEvaluationReportController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
+	}
 
-    /** The personal info BTN. */
-    @FXML
-    private Button personalInfoBTN;
+	/** The home BTN. */
+	@FXML
+	private Button homeBTN;
 
-    /** The help BTN. */
-    @FXML
-    private Button helpBTN;
+	/** The show request BTN. */
+	@FXML
+	private Button showRequestBTN;
 
-    /** The logout BTN. */
-    @FXML
-    private Button logoutBTN;
+	/** The personal info BTN. */
+	@FXML
+	private Button personalInfoBTN;
 
-    /** The Location. */
-    @FXML
-    private TextField Location;
+	/** The help BTN. */
+	@FXML
+	private Button helpBTN;
 
-    /** The description of change required. */
-    @FXML
-    private TextArea descriptionOfChangeRequired;
+	/** The logout BTN. */
+	@FXML
+	private Button logoutBTN;
 
-    /** The result of change. */
-    @FXML
-    private TextArea resultOfChange;
+	/** The Location. */
+	@FXML
+	private TextField Location;
 
-    /** The time estimated. */
-    @FXML
-    private TextField timeEstimated;
+	/** The description of change required. */
+	@FXML
+	private TextArea descriptionOfChangeRequired;
 
-    /** The constraints and risks. */
-    @FXML
-    private TextArea constraintsAndRisks;
+	/** The result of change. */
+	@FXML
+	private TextArea resultOfChange;
 
-    /** The request ID. */
-    @FXML
-    private TextField requestID;
+	/** The time estimated. */
+	@FXML
+	private TextField timeEstimated;
 
-    /** The submit evaluation report BTN. */
-    @FXML
-    private Button submitEvaluationReportBTN;
-    
-    /** The request was submitted. */
-    @FXML
-    private Label requestWasSubmitted;
+	/** The constraints and risks. */
+	@FXML
+	private TextArea constraintsAndRisks;
 
-    /** The fill all fields. */
-    @FXML
-    private Label fillAllFields;
-    
-    /** The Back to show. */
-    @FXML
-    private Button BackToShow;
+	/** The request ID. */
+	@FXML
+	private TextField requestID;
 
-    /**
-     * Back to S.
-     *
-     * @param event the event
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void BackToS(MouseEvent event) throws IOException 
-    {
+	/** The submit evaluation report BTN. */
+	@FXML
+	private Button submitEvaluationReportBTN;
+
+	/** The request was submitted. */
+	@FXML
+	private Label requestWasSubmitted;
+
+	/** The fill all fields. */
+	@FXML
+	private Label fillAllFields;
+
+	/** The Back to show. */
+	@FXML
+	private Button BackToShow;
+
+	/**
+	 * Mouse click event, if "Back" button clicked, open the screen of "IT Handle
+	 * Request".
+	 *
+	 * @param event The Back BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void BackToS(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITHandleRequest");
 		MainAllControllers.changeWin();
-    }
+	}
 
-    /**
+	/**
 	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
 	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHelp");
-    	MainAllControllers.changeWin();
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHelp");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -126,10 +126,9 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHome");
-    	MainAllControllers.changeWin();
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHome");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -140,10 +139,9 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goPersonalInfo(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITPersonalInfo");
-    	MainAllControllers.changeWin();
+	void goPersonalInfo(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITPersonalInfo");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -154,10 +152,9 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goShowReq(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITshowRequests");
-    	MainAllControllers.changeWin();
+	void goShowReq(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITshowRequests");
+		MainAllControllers.changeWin();
 	}
 
 	/**
@@ -168,92 +165,85 @@ public class ITMeaningAssessmentEvaluationReportController implements Initializa
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void logoutPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+	void logoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.logOutUser();
 	}
 
-    /**
-     * If IT press on Submit evaluation report this method create DBmsg to send to server
-     * to submit evaluation report
-     *
-     * @param event The submit BTN 
-     * @throws IOException Signals that an I/O exception has occurred.
-     */
-    @FXML
-    void submitEvaluationReport(MouseEvent event) throws IOException 
-    {
-    	if(timeEstimated.getText().equals("")||constraintsAndRisks.getText().equals("")||resultOfChange.getText().equals("")||descriptionOfChangeRequired.getText().equals(""))
-    	{
-    		fillAllFields.setVisible(true);
-    	}
-    	if(timeEstimated.getText().matches("[0-100]"))
-    	{
-    		fillAllFields.setVisible(true);
-    	}
-    	else
-    	{
-    		fillAllFields.setVisible(false);
-    		ArrayList<Object> arry=new ArrayList<Object>();
-    		arry.add(Integer.parseInt(requestID.getText()));
-    		arry.add(Location.getText());
-    		arry.add(timeEstimated.getText());
-    		arry.add(descriptionOfChangeRequired.getText());
-    		arry.add(resultOfChange.getText());
-    		arry.add(constraintsAndRisks.getText());
-    		DBmessage dbm;
-			dbm = new DBmessage(MessageType.ITSubmitEvaluationReport, arry); 
+	/**
+	 * If IT press on Submit evaluation report this method create DBmsg to send to
+	 * server to submit evaluation report
+	 *
+	 * @param event The submit BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
+	@FXML
+	void submitEvaluationReport(MouseEvent event) throws IOException {
+		if (timeEstimated.getText().equals("") || constraintsAndRisks.getText().equals("")
+				|| resultOfChange.getText().equals("") || descriptionOfChangeRequired.getText().equals("")) {
+			fillAllFields.setVisible(true);
+		}
+		if (timeEstimated.getText().matches("[0-100]")) {
+			fillAllFields.setVisible(true);
+		} else {
+			fillAllFields.setVisible(false);
+			ArrayList<Object> arry = new ArrayList<Object>();
+			arry.add(Integer.parseInt(requestID.getText()));
+			arry.add(Location.getText());
+			arry.add(timeEstimated.getText());
+			arry.add(descriptionOfChangeRequired.getText());
+			arry.add(resultOfChange.getText());
+			arry.add(constraintsAndRisks.getText());
+			DBmessage dbm;
+			dbm = new DBmessage(MessageType.ITSubmitEvaluationReport, arry);
 			try {
 				MainAllControllers.sendToAbsServer(dbm);
 			} catch (IOException e) {
 			}
-    	}
-    	goShowReq(event);
-    }
+		}
+		goShowReq(event);
+	}
 
-    /**
-     * Sets the label visible
-     */
-    public void setOnSucsess()
-    {	
-    	requestWasSubmitted.setVisible(true);
-    }
-    
-    public void showReqAgain() throws IOException
-    {
-    	MainAllControllers.setWindowVar("ITshowRequests");
+	/**
+	 * Sets the label visible
+	 */
+	public void setOnSucsess() {
+		requestWasSubmitted.setVisible(true);
+	}
+
+	public void showReqAgain() throws IOException {
+		MainAllControllers.setWindowVar("ITshowRequests");
 		MainAllControllers.changeWin();
-    }
+	}
+
 	/**
 	 * Initializes GUI components before this window open.
 	 *
-	 * @param location the location
+	 * @param location  the location
 	 * @param resources the resources
 	 */
 	@Override
-	public void initialize(URL location, ResourceBundle resources)
-	{	
-		ArrayList<Object> arry=new ArrayList<Object>();
-		int s=MainAllControllers.request;
-		arry.add(s); //request id
-		requestID.setText(""+s);
+	public void initialize(URL location, ResourceBundle resources) {
+		ArrayList<Object> arry = new ArrayList<Object>();
+		int s = MainAllControllers.request;
+		arry.add(s); // request id
+		requestID.setText("" + s);
 		DBmessage dbm;
-    	dbm=new DBmessage(MessageType.ITgetLocation, arry);   
-    	try {
-    		MainAllControllers.sendToAbsServer(dbm);
-		} catch (IOException e) {}
+		dbm = new DBmessage(MessageType.ITgetLocation, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
+		}
 	}
-	
-    /**
-     * Sets the text in fields.
-     *
-     * @param list the new text in fields
-     */
-    void setTextInFields(ArrayList<Object> list)
-    {
-    	Location.setText((String)list.get(0));
-    }
+
+	/**
+	 * Sets the text in fields.
+	 *
+	 * @param list the new text in fields
+	 */
+	void setTextInFields(ArrayList<Object> list) {
+		Location.setText((String) list.get(0));
+	}
 
 }

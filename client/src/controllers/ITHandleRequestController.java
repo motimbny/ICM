@@ -34,7 +34,10 @@ import javafx.stage.Stage;
 
 /**
  * The Class ITHandleRequestController.
- * This window is in IT GUI 
+ * This window is in IT GUI and display the IT the activities he can handle in
+ * this stage.
+ * 
+ * @author SHIRA
  */
 public class ITHandleRequestController implements Initializable {
 	
@@ -264,7 +267,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Req for time extension.
+	 * Request for time extension.
 	 *
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.

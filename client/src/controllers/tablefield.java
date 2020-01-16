@@ -3,6 +3,7 @@ package controllers;
 import java.io.Serializable;
 /**
  * The Class tablefield.
+ * 
  */
 public class tablefield implements Serializable
 {
