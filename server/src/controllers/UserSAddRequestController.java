@@ -188,7 +188,7 @@ public class UserSAddRequestController
 	      int fileSize =sf.getSize(); 
 		  System.out.println("Message received: " + sf);
 		  System.out.println("length "+ fileSize); 
-		  String LocalfilePath="serverfile/";
+		  String LocalfilePath="C:\\serverfile/";
 		  String nameTOgive=Integer.toString(request.getId());
 		  nameTOgive=nameTOgive.concat(sf.getFileName());
 		  System.out.println(nameTOgive);

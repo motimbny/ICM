@@ -259,7 +259,7 @@ public class SupervisorRequestDetailsController implements Initializable {
 		  int fileSize =sf.getSize(); 
 		  System.out.println("Message received: " + sf);
 		  System.out.println("length "+ fileSize); 
-		  String LocalfilePath="clientfile/";
+		  String LocalfilePath="C:\\clientfile/";
 		  try{
 			      File newFile = new File (LocalfilePath+sf.getFileName());    		      
 			      byte [] mybytearray  = sf.getMybytearray();		  
