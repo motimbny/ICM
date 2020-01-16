@@ -128,7 +128,6 @@ public class ITManagerReportsSController {
 				int sum = (int) suc.get(month);
 				sum++;
 				suc.set(month, sum);
-			
 			}
 
 			rs = stmt.executeQuery("SELECT * FROM suspendrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
