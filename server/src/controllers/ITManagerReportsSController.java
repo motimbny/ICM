@@ -220,6 +220,7 @@ public class ITManagerReportsSController {
 					"SELECT * FROM requesttime WHERE meaningAssessmentStart BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) 
 			{
+				
 				int id = rs.getInt(1);
 				mapDev.put(id,new int[4]);
 				if (rs.getDate(2) != null)
@@ -236,22 +237,15 @@ public class ITManagerReportsSController {
 						long diff = date2.getTime() - date1.getTime();
 						mapDev.get(id)[i] = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
 					}		
-				//	mapDev.put(id, dev);
-					System.out.println("l");
+				
 				}
 			}
-			System.out.println();
 			rs = stmt.executeQuery("SELECT * FROM requeststages ");
 			while (rs.next() != false) {
 				int id = rs.getInt(1);
-				System.out.println("key from table is : " + id);
 				if (mapDev.containsKey(id)) {
 					int[] temp;
 					temp = (int[]) mapDev.get(id);
-					for (int i = 0; i < temp.length; i++) {
-						System.out.print(temp[i] + " ");
-					}
-					System.out.println();
 					temp[0] -= rs.getInt(10);
 					temp[1] -= rs.getInt(11);
 					temp[2] -= rs.getInt(12);
@@ -259,7 +253,6 @@ public class ITManagerReportsSController {
 					mapDev.put(id, temp);
 
 				}
-				System.out.println();
 			}
 		
 			toSendA.add(mapDev);
@@ -320,6 +313,7 @@ public class ITManagerReportsSController {
 				toSendA.set(month - 1 + 12, sum);
 
 			}
+		
 			dbs = new DBSmessage(MessageTypeS.makeDelays, toSendA);
 			return dbs;
 		} catch (SQLException e) {

@@ -392,14 +392,7 @@ public class ITManagerReportsController implements Initializable {
 		XYChart.Series freqs = new XYChart.Series();
 		XYChart.Series freqf = new XYChart.Series<>();
 		XYChart.Series freqsus = new XYChart.Series();
-		/*
-		 * int[] n= {1,4,3,2,5,8,3,7,2,7,1,6}; int[] d= {2,7,1,6,1,4,3,2,5,8,3,7};
-		 * 
-		 * int[] s= {0,0,0,0,5,8,7,1,6,3,7,2};
-		 */
-		freqf.setName("failure");
-		freqs.setName("success");
-		freqsus.setName("susppend");
+		
 		for (int i = 0; i < 12; i++) {
 			freqf.getData().add(new XYChart.Data<>("" + (i + 1), failure[i]));
 
@@ -407,6 +400,9 @@ public class ITManagerReportsController implements Initializable {
 
 			freqsus.getData().add(new XYChart.Data<>("" + (i + 1), susppend[i]));
 		}
+		freqf.setName("failure");
+		freqs.setName("success");
+		freqsus.setName("susppend");
 		this.freqgraph.getData().add(freqsus);
 		this.freqgraph.getData().add(freqs);
 		this.freqgraph.getData().add(freqf);
@@ -635,6 +631,12 @@ public class ITManagerReportsController implements Initializable {
 			numOfDays += daysReq[i];
 			numOfDelay += freq[i];
 		}
+		XYChart.Series dataSeries1 = new XYChart.Series();
+		ObservableList<tablefield> rows = FXCollections.observableArrayList();
+		for (int j = 0; j < 12; j++) {
+			rows.add(new tablefield(months[j], daysReq[j], freq[j]));
+			dataSeries1.getData().add(new XYChart.Data(months[j],daysReq[j]*freq[j]));
+		}
 		this.numberOfDelays.setText("" + numOfDelay);
 		this.timeOfDelays.setText("" + numOfDays);
 		int medin = foundmed(daysReq);
@@ -650,17 +652,8 @@ public class ITManagerReportsController implements Initializable {
 			sum += (float) Math.pow(daysReq[j] - avrg, 2);
 		String devesion = String.format("%.2f", Math.sqrt(sum / 12));
 		this.devesionDelay.setText(devesion);
-		ObservableList<tablefield> rows = FXCollections.observableArrayList();
-		XYChart.Series dataSeries1 = new XYChart.Series();
-
-		for (int j = 0; j < 12; j++) {
-			rows.add(new tablefield(months[j], daysReq[j], freq[j]));
-			dataSeries1.getData().add(new XYChart.Data("" + daysReq[j], freq[j]));
-		}
-
 		table.setItems(rows);
-		dataSeries1.setName("Delays request");
-
+	
 		this.Frequencygraph.getData().add(dataSeries1);
 	}
 
@@ -757,6 +750,7 @@ public class ITManagerReportsController implements Initializable {
 		});
 
 	}
+	
 
 	public void viewrecentreport() {
 
@@ -776,7 +770,6 @@ public class ITManagerReportsController implements Initializable {
 		Recentreports.setItems(rows);
 
 	}
-
 	public int getmonth(String start, String end) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate localDate = LocalDate.parse(start, formatter);
