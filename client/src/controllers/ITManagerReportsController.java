@@ -576,6 +576,7 @@ public class ITManagerReportsController implements Initializable {
 	 * @param send the new make performenct
 	 */
 	public void setmakePerformenct(ArrayList<Object> send) {
+		this.devgraph2.getData().clear();
 		this.devgraph2.getData().removeAll();
 		this.days.setText("" + send.get(0));
 		Map<Integer, Object> mapDev = (Map<Integer, Object>) send.get(1);
@@ -616,6 +617,7 @@ public class ITManagerReportsController implements Initializable {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void setmakeDelays(ArrayList<Object> send) {
+		this.Frequencygraph.getData().clear();
 		this.Frequencygraph.getData().removeAll();
 		String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
 				"October", "November", "December" };

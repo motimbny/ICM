@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.concurrent.TimeUnit;
 
 import javax.print.attribute.HashAttributeSet;
@@ -83,64 +84,58 @@ public class ITManagerReportsSController {
 		int numofFailor = 0, numOfSec = 0, numOfSus = 0, AllReq = 0;
 
 		try {
-		stmt = connection.createStatement();
-			
-			ResultSet rs = stmt.executeQuery(
-					"SELECT count(*) FROM reports where stage='Activity' and start='"+start+"' and end='"+end+"'");
-	
-		
-		req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+			stmt = connection.createStatement();
+
+			ResultSet rs = stmt.executeQuery("SELECT count(*) FROM reports where stage='Activity' and start='" + start
+					+ "' and end='" + end + "'");
+
+			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
 			req.setString(1, start);
 			req.setString(2, end);
-			req.setString(3,"Activity");
+			req.setString(3, "Activity");
 			try {
-				req.executeUpdate();	
-			req.close();
+				req.executeUpdate();
+				req.close();
+			} catch (Exception e) {
+
 			}
-			catch (Exception e) {
-				
-			}
-			
-	
-			
-			
-			
-			 rs = stmt
-					.executeQuery("SELECT * FROM failurreport WHERE date BETWEEN '" + start + "' AND '" + end + "'");
+
+			rs = stmt.executeQuery("SELECT * FROM failurreport WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 
 				String[] dateParts = rs.getString(2).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
-				int sum = (int) fail.get(month-1);
+				int sum = (int) fail.get(month - 1);
 				sum++;
-				fail.set(month-1, sum);
-	
+				fail.set(month - 1, sum);
+
 			}
 
-			rs = stmt.executeQuery("SELECT * FROM request WHERE currentStatus='Active' and reqDatel BETWEEN '" + start + "' AND '" + end + "'");
+			rs = stmt.executeQuery("SELECT * FROM request WHERE currentStatus='Active' and reqDatel BETWEEN '" + start
+					+ "' AND '" + end + "'");
 
 			while (rs.next() != false) {
 
 				String[] dateParts = rs.getString(13).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
-				int sum = (int) suc.get(month-1);
+				int sum = (int) suc.get(month - 1);
 				sum++;
-				suc.set(month-1, sum);
+				suc.set(month - 1, sum);
 			}
 
 			rs = stmt.executeQuery("SELECT * FROM suspendrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 
 			while (rs.next() != false) {
-				
+
 				String[] dateParts = rs.getString(3).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
-				int sum = (int) susp.get(month-1);
+				int sum = (int) susp.get(month - 1);
 				sum++;
-				susp.set(month-1, sum);
-				
+				susp.set(month - 1, sum);
+
 			}
 
 			rs = stmt.executeQuery("SELECT * FROM requesttime WHERE meaningAssessmentStart AND closingEND BETWEEN '"
@@ -153,7 +148,7 @@ public class ITManagerReportsSController {
 			toSendA.add(suc);
 			toSendA.add(susp);
 			toSendA.add(AllReq);
-		
+
 			dbs = new DBSmessage(MessageTypeS.makeActiveSuClo, toSendA);
 			return dbs;
 		} catch (SQLException e) {
@@ -192,36 +187,29 @@ public class ITManagerReportsSController {
 		int[] real = new int[4];
 		int[] dev = new int[4];
 		ArrayList<Object> deviation = new ArrayList<Object>();
-		Map<Integer, Object> mapDev = new HashMap<Integer, Object>();
-		Map<Integer, Object> mapDev2 = new HashMap<Integer, Object>();
-
+		Map<Integer, int[]> mapDev = new HashMap<Integer, int[]>();
+		Map<Integer, Object> mapDev2 = new TreeMap<Integer, Object>();
 		int sum = 0;
 
-		
 		try {
-			
+
 			stmt = connection.createStatement();
-			
-			ResultSet rs = stmt.executeQuery(
-					"SELECT count(*) FROM reports where stage='Performence' and start='"+start+"' and end='"+end+"'");
-	
-		req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+
+			ResultSet rs = stmt.executeQuery("SELECT count(*) FROM reports where stage='Performence' and start='"
+					+ start + "' and end='" + end + "'");
+
+			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
 			req.setString(1, start);
 			req.setString(2, end);
-			req.setString(3,"Performence");
-				try
-				{
-					req.executeUpdate();
-					req.close();
-				}
-				catch (Exception e) {
-				
-				}
-			
-			
-	
-		
-			 rs = stmt.executeQuery(
+			req.setString(3, "Performence");
+			try {
+				req.executeUpdate();
+				req.close();
+			} catch (Exception e) {
+
+			}
+
+			rs = stmt.executeQuery(
 					"SELECT * FROM extensionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 				sum += rs.getInt(5);
@@ -230,41 +218,50 @@ public class ITManagerReportsSController {
 
 			rs = stmt.executeQuery(
 					"SELECT * FROM requesttime WHERE meaningAssessmentStart BETWEEN '" + start + "' AND '" + end + "'");
-			while (rs.next() != false) {
-				if(rs.getDate(2)!=null)
+			while (rs.next() != false) 
+			{
+				int id = rs.getInt(1);
+				mapDev.put(id,new int[4]);
+				if (rs.getDate(2) != null)
 				{
-					
-				Date date1 = null;
-				Date date2 = null;
-				for (int j = 2, i = 0; i < 4; i++, j = j + 2) {
-					if(rs.getDate(j)==null||rs.getDate(j+1)==null)
-					continue;
-					date1 = rs.getDate(j);
-					date2 = rs.getDate(j + 1);
-			
+					Date date1 = null;
+					Date date2 = null;
+					for (int j = 2, i = 0; i < 4; i++, j = j + 2)
+					{
+						dev[i] = 0;
+						if (rs.getDate(j) == null || rs.getDate(j + 1) == null)
+							continue;
+						date1 = rs.getDate(j);
+						date2 = rs.getDate(j + 1);
 						long diff = date2.getTime() - date1.getTime();
-						dev[i] = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+						mapDev.get(id)[i] = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+					}		
+				//	mapDev.put(id, dev);
+					System.out.println("l");
 				}
-				mapDev.put(rs.getInt(1), dev);
-				}
-
 			}
-			rs = stmt.executeQuery("SELECT * FROM requeststages");
+			System.out.println();
+			rs = stmt.executeQuery("SELECT * FROM requeststages ");
 			while (rs.next() != false) {
-
-				if (mapDev.containsKey(rs.getInt(1)))
-				{
-					int[] temp=(int[]) mapDev.get(rs.getInt(1));
-					temp[0]-=rs.getInt(10);
-					temp[1]-=rs.getInt(11);
-					temp[2]-=rs.getInt(12);
-					temp[3]-=rs.getInt(13);
-					mapDev.put(rs.getInt(1), temp);
+				int id = rs.getInt(1);
+				System.out.println("key from table is : " + id);
+				if (mapDev.containsKey(id)) {
+					int[] temp;
+					temp = (int[]) mapDev.get(id);
+					for (int i = 0; i < temp.length; i++) {
+						System.out.print(temp[i] + " ");
+					}
+					System.out.println();
+					temp[0] -= rs.getInt(10);
+					temp[1] -= rs.getInt(11);
+					temp[2] -= rs.getInt(12);
+					temp[3] -= rs.getInt(13);
+					mapDev.put(id, temp);
 
 				}
-
+				System.out.println();
 			}
-
+		
 			toSendA.add(mapDev);
 			dbs = new DBSmessage(MessageTypeS.makePerformenct, toSendA);
 			return dbs;
@@ -281,7 +278,7 @@ public class ITManagerReportsSController {
 	 * @return the object
 	 */
 	public Object makeDelays() {
-		
+
 		PreparedStatement req;
 
 		Statement stmt;
@@ -293,36 +290,34 @@ public class ITManagerReportsSController {
 		ArrayList<Object> arry = msg.getObjs();
 		String start = (String) arry.get(0);
 		String end = (String) arry.get(1);
-		
 
 		try {
 			stmt = connection.createStatement();
-		
-					ResultSet rs = stmt.executeQuery(
-							"SELECT count(*) FROM reports where stage='Delays in execution' and start='"+start+"' and end='"+end+"'");
-				req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
-	 			req.setString(1, start);
-	 			req.setString(2, end);
-	 			req.setString(3,"Delays in execution");
-	 			try {
-					req.executeUpdate();	
+
+			ResultSet rs = stmt
+					.executeQuery("SELECT count(*) FROM reports where stage='Delays in execution' and start='" + start
+							+ "' and end='" + end + "'");
+			req = connection.prepareStatement("INSERT INTO reports VALUES(?,?,?)");
+			req.setString(1, start);
+			req.setString(2, end);
+			req.setString(3, "Delays in execution");
+			try {
+				req.executeUpdate();
 				req.close();
-				}
-				catch (Exception e) {
-					
-				}
-			
-		
-			 rs = stmt.executeQuery(
+			} catch (Exception e) {
+
+			}
+
+			rs = stmt.executeQuery(
 					"SELECT * FROM exceptionrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
 			while (rs.next() != false) {
 				String[] dateParts = rs.getString(4).split("-");
 				int month = Integer.parseInt(dateParts[1]);
-				int days = (int) toSendA.get(month-1) + rs.getInt(3);
-				toSendA.set(month-1, days);
-				int sum = (int) toSendA.get(month-1 + 12);
+				int days = (int) toSendA.get(month - 1) + rs.getInt(3);
+				toSendA.set(month - 1, days);
+				int sum = (int) toSendA.get(month - 1 + 12);
 				sum++;
-				toSendA.set(month-1 + 12, sum);
+				toSendA.set(month - 1 + 12, sum);
 
 			}
 			dbs = new DBSmessage(MessageTypeS.makeDelays, toSendA);
@@ -333,27 +328,23 @@ public class ITManagerReportsSController {
 		return null;
 
 	}
-	public Object viewrecentreport()
-	{
+
+	public Object viewrecentreport() {
 		Statement stmt;
 		DBSmessage dbs;
-		ArrayList<Object> toSend= new ArrayList<Object>();
-		try 
-		{
+		ArrayList<Object> toSend = new ArrayList<Object>();
+		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT * FROM reports");
-				while(rs.next()!=false)
-				{
-					recentreport toAdd=new recentreport(rs.getString(1), rs.getString(2), rs.getString(3));
-					toSend.add(toAdd);
-				
-				}
-				
-				dbs=new DBSmessage(MessageTypeS.viewrecentreport,toSend);
-				return dbs;
-		} 
-		catch (SQLException e)
-		{
+			while (rs.next() != false) {
+				recentreport toAdd = new recentreport(rs.getString(1), rs.getString(2), rs.getString(3));
+				toSend.add(toAdd);
+
+			}
+
+			dbs = new DBSmessage(MessageTypeS.viewrecentreport, toSend);
+			return dbs;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
