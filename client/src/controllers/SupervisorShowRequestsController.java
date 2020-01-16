@@ -180,6 +180,8 @@ public class SupervisorShowRequestsController implements Initializable {
 		 SuprvisorUpdateRequestBTN.setStyle("");
 		   SuprvisorTime.setStyle("");
 		   SuprvisorCloseRequestBTN.setStyle("");
+		   SuprvisorExtensionRequestBTN.setStyle("");
+
 	}
 	
 	/**
@@ -263,11 +265,16 @@ public class SupervisorShowRequestsController implements Initializable {
 			   {
 				   SuprvisorCloseRequestBTN.setStyle("-fx-background-color: #ffdd99");
 			   }
+			  else  if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().equals("Active-Extension"))
+			   {
+				  SuprvisorExtensionRequestBTN.setStyle("-fx-background-color:#ffdd99");
+			   }
 			   else
 			   {
 				   SuprvisorUpdateRequestBTN.setStyle("");
 				   SuprvisorTime.setStyle("");
 				   SuprvisorCloseRequestBTN.setStyle("");
+				   SuprvisorExtensionRequestBTN.setStyle("");
 			   }
 		   }
 		  }});
@@ -522,6 +529,10 @@ public class SupervisorShowRequestsController implements Initializable {
                     setStyle("");
                 } 
                 else if (item.getCurrentStage().equals("supervisorApprovel")) 
+                {
+                	setStyle("-fx-background-color: #ffdd99;");
+                } 
+                else if (item.getCurrentStatus().equals("Active-Extension")) 
                 {
                 	setStyle("-fx-background-color: #ffdd99;");
                 } 

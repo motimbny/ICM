@@ -127,6 +127,11 @@
                         <Glow />
                      </effect>
                   </Label>
+                  <ImageView fitHeight="107.0" fitWidth="170.0" layoutX="40.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Images/managerinfo%20.jpg" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
          </children>

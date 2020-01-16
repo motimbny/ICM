@@ -142,6 +142,11 @@
                   <Image url="@../Images/close.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="82.0" fitWidth="258.0" layoutX="43.0" layoutY="517.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Images/superviserinfo.jpg" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">
