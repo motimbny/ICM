@@ -225,6 +225,7 @@ public class SupervisorRequestDetailsController implements Initializable {
 		DescriptionOfRequestField.setText(req.getWantedChange());
 		if(req.getAddDocuments()==1)
 			showAttach.setVisible(true);
+		System.out.println(req.getAddDocuments());
 			
 	}
 

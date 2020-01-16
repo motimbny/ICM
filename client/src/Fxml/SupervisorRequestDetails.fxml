@@ -118,7 +118,7 @@
                   <Font size="12.0" />
                </font>
             </Button>
-            <Button fx:id="showAttach" layoutX="519.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#showAttachfile" prefHeight="46.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="See attchment" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="showAttach" layoutX="519.0" layoutY="523.0" mnemonicParsing="false" onMouseClicked="#showAttachfile" prefHeight="46.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="See attchment" textAlignment="CENTER" visible="false" wrapText="true">
                <graphic>
                   <ImageView fitHeight="46.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>

@@ -139,7 +139,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <Button fx:id="showAttach" layoutX="525.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#showAttachfile" prefHeight="37.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="See attchment" textAlignment="CENTER" wrapText="true">
+                  <Button fx:id="showAttach" layoutX="525.0" layoutY="539.0" mnemonicParsing="false" onMouseClicked="#showAttachfile" prefHeight="37.0" prefWidth="116.0" styleClass="buttonBlackBorder" text="See attchment" textAlignment="CENTER" visible="false" wrapText="true">
                      <graphic>
                         <ImageView fitHeight="46.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
