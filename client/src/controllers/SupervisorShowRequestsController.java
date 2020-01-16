@@ -31,14 +31,14 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 /**
- * The Class SupervisorShowRequestsController.
- * This window is in Supervisor GUI and show a table with the requests
+ * The Class SupervisorShowRequestsController. This window is in Supervisor GUI
+ * and show a table with the requests
  */
 public class SupervisorShowRequestsController implements Initializable {
-	
+
 	/** The rows. */
 	private ObservableList<requestSuper> rows;
-	
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
 
@@ -108,15 +108,15 @@ public class SupervisorShowRequestsController implements Initializable {
 	/** The search. */
 	@FXML
 	private Button search;
-	
+
 	/** The Suprvisor time. */
 	@FXML
 	private Button SuprvisorTime;
-	
+
 	/** The request id to. */
 	@FXML
 	private TextField requestIdTo;
-	
+
 	/** The sus not. */
 	@FXML
 	private Label susNot;
@@ -124,7 +124,7 @@ public class SupervisorShowRequestsController implements Initializable {
 	/** The close not. */
 	@FXML
 	private Label closeNot;
-	
+
 	/** The stagenotmatch. */
 	@FXML
 	private Label stagenotmatch;
@@ -148,7 +148,7 @@ public class SupervisorShowRequestsController implements Initializable {
 		button1.addEventHandler(ActionEvent.ACTION, (e) -> {
 			if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage()
 					.contentEquals("closing")) {
-				
+
 				String x = requestTable.getId();
 
 				this.closeRequest(
@@ -177,13 +177,13 @@ public class SupervisorShowRequestsController implements Initializable {
 	void visNot(MouseEvent event) {
 		closeNot.setVisible(false);
 		susNot.setVisible(false);
-		 SuprvisorUpdateRequestBTN.setStyle("");
-		   SuprvisorTime.setStyle("");
-		   SuprvisorCloseRequestBTN.setStyle("");
-		   SuprvisorExtensionRequestBTN.setStyle("");
+		SuprvisorUpdateRequestBTN.setStyle("");
+		SuprvisorTime.setStyle("");
+		SuprvisorCloseRequestBTN.setStyle("");
+		SuprvisorExtensionRequestBTN.setStyle("");
 
 	}
-	
+
 	/**
 	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
@@ -195,7 +195,7 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.setWindowVar("SupervisorHelp");
 		MainAllControllers.changeWin();
 	}
-	
+
 	/**
 	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
@@ -207,7 +207,7 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.setWindowVar("SupervisorHome");
 		MainAllControllers.changeWin();
 	}
-	 
+
 	/**
 	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
 	 * and clean the fields.
@@ -221,78 +221,69 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.changeWin();
 		MainAllControllers.logOutUser();
 	}
+
 	/**
 	 * If double click on request from the requests table pressed , The details of
 	 * this request will appear
 	 * 
 	 * @param event double click on the request from table
 	 */
-	  @FXML
-	    void showRequestInfo(MouseEvent event) 
-	    {
-		  requestTable.setOnMouseClicked((MouseEvent ev ) -> 
-		  {
-	            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2)
-	            {
-	                try 
-	                {
-	                	MainAllControllers.request=requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getId();
-	                	MainAllControllers.nowWin="SupervisorShowRequests";
-						MainAllControllers.setWindowVar("SupervisorRequestDetalies");
-						MainAllControllers.changeWin();
-					} 
-	                catch (IOException e)
-	                {
-						e.printStackTrace();
-					}                
-	            }
-	       
-		  if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1){
-		  {
-			  if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("supervisorApprovel"))
-			   {
-				   SuprvisorUpdateRequestBTN.setStyle("-fx-background-color: #ffdd99");
-			   }
-			  else if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveEvaluationTime"))
-			   {
-				   SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
-			   }
-			  else if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("waitingSupervisorApproveExecutionTime"))
-			   {
-				   SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
-			   }
-			  else  if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStage().equals("closing"))
-			   {
-				   SuprvisorCloseRequestBTN.setStyle("-fx-background-color: #ffdd99");
-			   }
-			  else  if(requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex()).getCurrentStatus().equals("Active-Extension"))
-			   {
-				  SuprvisorExtensionRequestBTN.setStyle("-fx-background-color:#ffdd99");
-			   }
-			   else
-			   {
-				   SuprvisorUpdateRequestBTN.setStyle("");
-				   SuprvisorTime.setStyle("");
-				   SuprvisorCloseRequestBTN.setStyle("");
-				   SuprvisorExtensionRequestBTN.setStyle("");
-			   }
-		   }
-		  }});
-	    }
-	 
-	  /**
-		 * Mouse click event, if "Personal info" button clicked, open the screen of
-		 * "Personal information".
-		 *
-		 * @param event The Personal info BTN
-		 * @throws IOException Signals that an I/O exception has occurred.
-		 */
+	@FXML
+	void showRequestInfo(MouseEvent event) {
+		requestTable.setOnMouseClicked((MouseEvent ev) -> {
+			if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+				try {
+					MainAllControllers.request = requestTable.getItems()
+							.get(requestTable.getSelectionModel().getSelectedIndex()).getId();
+					MainAllControllers.nowWin = "SupervisorShowRequests";
+					MainAllControllers.setWindowVar("SupervisorRequestDetalies");
+					MainAllControllers.changeWin();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 1) {
+				{
+					if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex())
+							.getCurrentStage().equals("supervisorApprovel")) {
+						SuprvisorUpdateRequestBTN.setStyle("-fx-background-color: #ffdd99");
+					} else if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex())
+							.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) {
+						SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
+					} else if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex())
+							.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")) {
+						SuprvisorTime.setStyle("-fx-background-color: #ffdd99");
+					} else if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex())
+							.getCurrentStage().equals("closing")) {
+						SuprvisorCloseRequestBTN.setStyle("-fx-background-color: #ffdd99");
+					} else if (requestTable.getItems().get(requestTable.getSelectionModel().getSelectedIndex())
+							.getCurrentStatus().equals("Active-Extension")) {
+						SuprvisorExtensionRequestBTN.setStyle("-fx-background-color:#ffdd99");
+					} else {
+						SuprvisorUpdateRequestBTN.setStyle("");
+						SuprvisorTime.setStyle("");
+						SuprvisorCloseRequestBTN.setStyle("");
+						SuprvisorExtensionRequestBTN.setStyle("");
+					}
+				}
+			}
+		});
+	}
+
+	/**
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
+	 *
+	 * @param event The Personal info BTN
+	 * @throws IOException Signals that an I/O exception has occurred.
+	 */
 	@FXML
 	void goPersonalPage(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("SupervisorPersonalInfo");
 		MainAllControllers.changeWin();
 	}
-	
+
 	/**
 	 * Mouse click event, if "Show requests" button clicked, open the screen of
 	 * "Show requests".
@@ -305,7 +296,7 @@ public class SupervisorShowRequestsController implements Initializable {
 		MainAllControllers.setWindowVar("SupervisorShowRequests");
 		MainAllControllers.changeWin();
 	}
-	
+
 	/**
 	 * Mouse click event, if "Messages" button clicked, open the screen of
 	 * "Messages".
@@ -320,7 +311,8 @@ public class SupervisorShowRequestsController implements Initializable {
 	}
 
 	/**
-	 * This method create a DBmsg to send to server after approve the time of the request
+	 * This method create a DBmsg to send to server after approve the time of the
+	 * request
 	 *
 	 * @param event The approve BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -346,14 +338,11 @@ public class SupervisorShowRequestsController implements Initializable {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	public void setTimeWindow(ArrayList<Object> list) throws IOException {
-		if(list.get(1).equals(1))
-		{
-			MainAllControllers.request = (int)list.get(0);
+		if (list.get(1).equals(1)) {
+			MainAllControllers.request = (int) list.get(0);
 			MainAllControllers.setWindowVar("SupervisorTimeRequest");
 			MainAllControllers.changeWin();
-		}
-		else if(list.get(1).equals(0))
-		{
+		} else if (list.get(1).equals(0)) {
 			stagenotmatch.setVisible(true);
 		}
 	}
@@ -518,45 +507,31 @@ public class SupervisorShowRequestsController implements Initializable {
 		RequestID.setCellValueFactory(new PropertyValueFactory<>("id"));
 		RequestStatus.setCellValueFactory(new PropertyValueFactory<>("currentStatus"));
 		RequestProcessStage.setCellValueFactory(new PropertyValueFactory<>("currentStage"));
-		requestTable.setRowFactory(tv -> new TableRow<requestSuper>() 
-		{
+		requestTable.setRowFactory(tv -> new TableRow<requestSuper>() {
 			@Override
-            public void updateItem(requestSuper item, boolean empty) 
-			{
-                super.updateItem(item, empty);
-                if (item == null) 
-                {
-                    setStyle("");
-                } 
-                else if (item.getCurrentStage().equals("supervisorApprovel")) 
-                {
-                	setStyle("-fx-background-color: #ffdd99;");
-                } 
-                else if (item.getCurrentStatus().equals("Active-Extension")) 
-                {
-                	setStyle("-fx-background-color: #ffdd99;");
-                } 
-                else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime"))
-                {
-                    setStyle("-fx-background-color: #ffdd99;");
-                }
-                else if (item.getCurrentStage().equals("closing"))
-                {
-                    setStyle("-fx-background-color: #ff6666;");
-                }
-                else if (item.getCurrentStage().equals("Closed"))
-                {
-                    setStyle("-fx-background-color: #b3b3b3;");
-                }
-                else if (!item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")||!item.getCurrentStage().equals("closing")) 
-                {
-                	setStyle("-fx-background-color: #b3ffb3;");
-                }
-                else if (!item.getCurrentStage().equals("supervisorApprovel")||!item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) 
-                {
-                	setStyle("-fx-background-color: #b3ffb3;");
-                } 
-            }
+			public void updateItem(requestSuper item, boolean empty) {
+				super.updateItem(item, empty);
+				if (item == null) {
+					setStyle("");
+				} else if (item.getCurrentStage().equals("supervisorApprovel")) {
+					setStyle("-fx-background-color: #ffdd99;");
+				} else if (item.getCurrentStatus().equals("Active-Extension")) {
+					setStyle("-fx-background-color: #ffdd99;");
+				} else if (item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")
+						|| item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) {
+					setStyle("-fx-background-color: #ffdd99;");
+				} else if (item.getCurrentStage().equals("closing")) {
+					setStyle("-fx-background-color: #ff6666;");
+				} else if (item.getCurrentStage().equals("Closed")) {
+					setStyle("-fx-background-color: #b3b3b3;");
+				} else if (!item.getCurrentStage().equals("waitingSupervisorApproveExecutionTime")
+						|| !item.getCurrentStage().equals("closing")) {
+					setStyle("-fx-background-color: #b3ffb3;");
+				} else if (!item.getCurrentStage().equals("supervisorApprovel")
+						|| !item.getCurrentStage().equals("waitingSupervisorApproveEvaluationTime")) {
+					setStyle("-fx-background-color: #b3ffb3;");
+				}
+			}
 		});
 		requestServer();
 	}

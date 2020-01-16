@@ -17,274 +17,233 @@ import entity.requestSuper;
 /**
  * The Class superviserRequestShowController.
  */
-public class superviserRequestShowController
-{
-	
+public class superviserRequestShowController {
+
 	/** The connection. */
 	private Connection connection;
-	
+
 	/** The num request. */
 	private int numRequest;
-	
+
 	/** The msg. */
 	private DBmessage msg;
-	
+
 	/**
 	 * Instantiates a new superviser request show controller.
 	 *
-	 * @param msg the msg
+	 * @param msg        the msg
 	 * @param connection the connection
 	 */
-	public superviserRequestShowController(DBmessage msg,Connection connection)
-	{
-		this.connection=connection;
-		this.msg=msg;
+	public superviserRequestShowController(DBmessage msg, Connection connection) {
+		this.connection = connection;
+		this.msg = msg;
 	}
-	
+
 	/**
-	 * Gets the request to show.
+	 * this method get all the request in data base to show the superviser
 	 *
 	 * @return the request to show
 	 */
-	public DBSmessage getRequestToShow()
-	{
+	public DBSmessage getRequestToShow() {
 		Statement stmt;
 		DBSmessage dbs;
-		ArrayList<Object> toSend= new ArrayList<Object>();
-		try 
-		{
+		ArrayList<Object> toSend = new ArrayList<Object>();
+		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request");
-				while(rs.next()!=false)
-				{
-					requestSuper toAdd=new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
-					toSend.add(toAdd);
-				}
-				dbs=new DBSmessage(MessageTypeS.superviserRequestShow,toSend);
-				return dbs;
-		} 
-		catch (SQLException e)
-		{
+			while (rs.next() != false) {
+				requestSuper toAdd = new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
+				toSend.add(toAdd);
+			}
+			dbs = new DBSmessage(MessageTypeS.superviserRequestShow, toSend);
+			return dbs;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Gets the SP request to show.
+	 * this method gets the specific request asked after superviser search it in the
+	 * serach bar
 	 *
 	 * @return the SP request to show
 	 */
-	public DBSmessage getSPRequestToShow()
-	{
-		int num=(int) msg.getObjs().get(0);
+	public DBSmessage getSPRequestToShow() {
+		int num = (int) msg.getObjs().get(0);
 		Statement stmt;
 		DBSmessage dbs;
-		ArrayList<Object> toSend= new ArrayList<Object>();
-		try 
-		{
+		ArrayList<Object> toSend = new ArrayList<Object>();
+		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request WHERE id="+num+"");
-				while(rs.next()!=false)
-				{
-					requestSuper toAdd=new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
-					toSend.add(toAdd);
-				}
-				dbs=new DBSmessage(MessageTypeS.superviserRequestShow,toSend);
-				return dbs;
-		} 
-		catch (SQLException e)
-		{
+			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request WHERE id=" + num + "");
+			while (rs.next() != false) {
+				requestSuper toAdd = new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
+				toSend.add(toAdd);
+			}
+			dbs = new DBSmessage(MessageTypeS.superviserRequestShow, toSend);
+			return dbs;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Update suspend request.
+	 * this method susspend request after superviser press on button. it change in
+	 * data base
 	 *
 	 * @return the DB smessage
 	 */
-	public DBSmessage updateSuspendRequest() 
-	{
-		int num=(int) msg.getObjs().get(0);
+	public DBSmessage updateSuspendRequest() {
+		int num = (int) msg.getObjs().get(0);
 		Statement stmt;
 		PreparedStatement ps;
 		String stage;
-		try 
-		{
-			stmt = connection.createStatement();
-			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Suspend' WHERE id="+num+"");
-				if(rs==1)
-				{
-					System.out.println("updateSuspendRequest");
-				}
-			int ds = stmt.executeUpdate("UPDATE requeststages SET currentStatus='Suspend' WHERE id="+num+"");
-				if(rs==1)
-				{
-					System.out.println("updateSuspendRequeststages");
-				}
-			ps=connection.prepareStatement("INSERT INTO suspendrequest VALUES(?,?,?)");
-			ps.setInt(1, num);
-			ps.setString(2, this.getStage(num));
-			ps.setString(3,  java.time.LocalDate.now().toString());
-			ps.executeUpdate();	
- 			ps.close();	
-		} 
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}
-		return getRequestToShow();
-	}
-	
-	public String getStage(int id)
-	{
-		Statement stmt;
-		String stage="";
 		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM request WHERE id="+id+ "");
-			while(rs.next()!=false)
-			{
-				stage=rs.getString(1);
+			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Suspend' WHERE id=" + num + "");
+			if (rs == 1) {
+				System.out.println("updateSuspendRequest");
 			}
-		} catch (SQLException e) {}
-		return stage;
-		
-	}
-	
-
-	
-	/**
-	 * Updateclose request.
-	 *
-	 * @return the DB smessage
-	 */
-	public DBSmessage updatecloseRequest() 
-	{
-		int num=(int) msg.getObjs().get(0);
-		Statement stmt;
-		String name="";
-		int x=1;
-		Date date = new Date();
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		try 
-		{
-			stmt = connection.createStatement();
-			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Closed' WHERE id="+num+"");
-			stmt.executeUpdate("UPDATE request SET currentStage='Closed' WHERE id="+num+"");
-			stmt.executeUpdate("UPDATE requeststages SET currentStatus='Closed' WHERE id="+num+"");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='Closed' WHERE id="+num+"");
-			stmt.executeUpdate("UPDATE requesttime SET closingEND='"+formatter.format(date)+"' WHERE id="+num+"");
-
-		
-			ResultSet rss = stmt.executeQuery("SELECT userSubFullName FROM request WHERE id="+num+ "");
-			while(rss.next()!=false)
-			{
-				name=rss.getString(1);
+			int ds = stmt.executeUpdate("UPDATE requeststages SET currentStatus='Suspend' WHERE id=" + num + "");
+			if (rs == 1) {
+				System.out.println("updateSuspendRequeststages");
 			}
-			rss = stmt.executeQuery("SELECT timeTest FROM requeststages WHERE id="+num+ "");
-			while(rss.next()!=false)
-			{
-				x=rss.getInt(1);
-				if(x!=0)
-					x=1;
-			}
-			SendMail s=new SendMail(name,x,num);
-			s.sendEMail();
-		} 
-		catch (SQLException e)
-		{
+			ps = connection.prepareStatement("INSERT INTO suspendrequest VALUES(?,?,?)");
+			ps.setInt(1, num);
+			ps.setString(2, this.getStage(num));
+			ps.setString(3, java.time.LocalDate.now().toString());
+			ps.executeUpdate();
+			ps.close();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return getRequestToShow();
 	}
-	
+
+	public String getStage(int id) {
+		Statement stmt;
+		String stage = "";
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM request WHERE id=" + id + "");
+			while (rs.next() != false) {
+				stage = rs.getString(1);
+			}
+		} catch (SQLException e) {
+		}
+		return stage;
+
+	}
+
 	/**
-	 * Mget request to show.
+	 * this method closed the request in database in two placces in data base
 	 *
 	 * @return the DB smessage
 	 */
-	public DBSmessage MgetRequestToShow() 
-	{
+	public DBSmessage updatecloseRequest() {
+		int num = (int) msg.getObjs().get(0);
+		Statement stmt;
+		String name = "";
+		int x = 1;
+		Date date = new Date();
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			stmt = connection.createStatement();
+			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Closed' WHERE id=" + num + "");
+			stmt.executeUpdate("UPDATE request SET currentStage='Closed' WHERE id=" + num + "");
+			stmt.executeUpdate("UPDATE requeststages SET currentStatus='Closed' WHERE id=" + num + "");
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='Closed' WHERE id=" + num + "");
+			stmt.executeUpdate(
+					"UPDATE requesttime SET closingEND='" + formatter.format(date) + "' WHERE id=" + num + "");
+
+			ResultSet rss = stmt.executeQuery("SELECT userSubFullName FROM request WHERE id=" + num + "");
+			while (rss.next() != false) {
+				name = rss.getString(1);
+			}
+			rss = stmt.executeQuery("SELECT timeTest FROM requeststages WHERE id=" + num + "");
+			while (rss.next() != false) {
+				x = rss.getInt(1);
+				if (x != 0)
+					x = 1;
+			}
+			SendMail s = new SendMail(name, x, num);
+			s.sendEMail();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return getRequestToShow();
+	}
+
+	/**
+	 * This method get the requests details from data base
+	 *
+	 * @return the DB smessage
+	 */
+	public DBSmessage MgetRequestToShow() {
 		Statement stmt;
 		DBSmessage dbs;
-		ArrayList<Object> toSend= new ArrayList<Object>();
-		try 
-		{
+		ArrayList<Object> toSend = new ArrayList<Object>();
+		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request");
-				while(rs.next()!=false)
-				{
-					requestSuper toAdd=new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
-					toSend.add(toAdd);
-				}
-				dbs=new DBSmessage(MessageTypeS.MangerRequestShow,toSend);
-				return dbs;
-		} 
-		catch (SQLException e)
-		{
+			while (rs.next() != false) {
+				requestSuper toAdd = new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
+				toSend.add(toAdd);
+			}
+			dbs = new DBSmessage(MessageTypeS.MangerRequestShow, toSend);
+			return dbs;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Mget SP request to show.
+	 * This method get the details of specific request from data base.
 	 *
 	 * @return the object
 	 */
-	public Object MgetSPRequestToShow()
-	{
-		int num=(int) msg.getObjs().get(0);
+	public Object MgetSPRequestToShow() {
+		int num = (int) msg.getObjs().get(0);
 		Statement stmt;
 		DBSmessage dbs;
-		ArrayList<Object> toSend= new ArrayList<Object>();
-		try 
-		{
+		ArrayList<Object> toSend = new ArrayList<Object>();
+		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request WHERE id="+num+"");
-				while(rs.next()!=false)
-				{
-					requestSuper toAdd=new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
-					toSend.add(toAdd);
-				}
-				dbs=new DBSmessage(MessageTypeS.SearchReqManager,toSend);
-				return dbs;
-		} 
-		catch (SQLException e)
-		{
+			ResultSet rs = stmt.executeQuery("SELECT id,currentStatus,currentStage FROM request WHERE id=" + num + "");
+			while (rs.next() != false) {
+				requestSuper toAdd = new requestSuper(rs.getInt(1), rs.getString(2), rs.getString(3));
+				toSend.add(toAdd);
+			}
+			dbs = new DBSmessage(MessageTypeS.SearchReqManager, toSend);
+			return dbs;
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Updaterenew request.
+	 * this method renew the request status in data base
 	 *
 	 * @return the object
 	 */
-	public Object updaterenewRequest() 
-	{
-		int num=(int) msg.getObjs().get(0);
+	public Object updaterenewRequest() {
+		int num = (int) msg.getObjs().get(0);
 		Statement stmt;
-		try 
-		{
+		try {
 			stmt = connection.createStatement();
-			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id="+num+"");
-				if(rs==1)
-				{
-					System.out.println("updateSuspendRequest");
-				}
-				int ds = stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id="+num+"");
-				if(rs==1)
-				{
-					System.out.println("updateSuspendRequeststages");
-				}
-		} 
-		catch (SQLException e)
-		{
+			int rs = stmt.executeUpdate("UPDATE request SET currentStatus='Active' WHERE id=" + num + "");
+			if (rs == 1) {
+				System.out.println("updateSuspendRequest");
+			}
+			int ds = stmt.executeUpdate("UPDATE requeststages SET currentStatus='Active' WHERE id=" + num + "");
+			if (rs == 1) {
+				System.out.println("updateSuspendRequeststages");
+			}
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return MgetRequestToShow();

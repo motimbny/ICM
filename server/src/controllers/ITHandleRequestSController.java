@@ -17,18 +17,39 @@ import entity.DBmessage;
 import entity.RequestUser;
 import entity.updateRequest;
 
+/**
+ * The Class ITHandleRequestSController.
+ */
 public class ITHandleRequestSController {
 
+	/** The user. */
 	private String user;
+
+	/** The request id. */
 	private int reqId;
+
+	/** The connection. */
 	private Connection connection;
+
+	/** The msg. */
 	private DBmessage msg;
 
+	/**
+	 * Instantiates a new IT handle request S controller.
+	 *
+	 * @param msg        the msg
+	 * @param connection the connection
+	 */
 	public ITHandleRequestSController(DBmessage msg, Connection connection) {
 		this.connection = connection;
 		this.msg = msg;
 	}
 
+	/**
+	 * This method get the IT job from data base.
+	 *
+	 * @return the IT job
+	 */
 	public DBSmessage getITjob() {
 
 		ArrayList<Object> arry = msg.getObjs();
@@ -55,7 +76,7 @@ public class ITHandleRequestSController {
 					toSend.add("PerformanceLeader");
 				else if (rs.getString(8).equals(user))
 					toSend.add("Tester");
-			toSend.add(rs.getString(2));
+				toSend.add(rs.getString(2));
 			}
 			dbs = new DBSmessage(MessageTypeS.ITjobInReq, toSend);
 			return dbs;
@@ -66,6 +87,12 @@ public class ITHandleRequestSController {
 
 	}
 
+	/**
+	 * This method adds the time estimated that IT entered and save it in the data
+	 * base.
+	 *
+	 * @return the object
+	 */
 	public Object addTimeEstimated() {
 		int id = (int) msg.getObjs().get(0);
 		int timeEstimatedEvaluation = (int) msg.getObjs().get(1);
@@ -75,19 +102,22 @@ public class ITHandleRequestSController {
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id=" + id + "");
-			while (rs.next() != false) 
-			{
+			while (rs.next() != false) {
 				stage = rs.getString(1);
-				if (stage.equals("waitingEvaluationTime")) 
-				{
+				if (stage.equals("waitingEvaluationTime")) {
 					stmt = connection.createStatement();
-					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation=" + timeEstimatedEvaluation+ " WHERE id=" + id + "");
-					stmt.executeUpdate("UPDATE request SET currentStage='waitingSupervisorApproveEvaluationTime' WHERE id=" + id + "");
-					stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingSupervisorApproveEvaluationTime' WHERE id=" + id + "");
+					stmt.executeUpdate("UPDATE requeststages SET timeEvaluation=" + timeEstimatedEvaluation
+							+ " WHERE id=" + id + "");
+					stmt.executeUpdate(
+							"UPDATE request SET currentStage='waitingSupervisorApproveEvaluationTime' WHERE id=" + id
+									+ "");
+					stmt.executeUpdate(
+							"UPDATE requeststages SET currentStage='waitingSupervisorApproveEvaluationTime' WHERE id="
+									+ id + "");
 					arr.add(1);
 				} else
 					arr.add(0);
-				
+
 			}
 			DBSmessage dbs = new DBSmessage(MessageTypeS.ITaddTimeEstimated, arr);
 			return dbs;
@@ -98,6 +128,12 @@ public class ITHandleRequestSController {
 
 	}
 
+	/**
+	 * This method adds the time estimated that performance entered and save it in
+	 * the data base.
+	 *
+	 * @return the object
+	 */
 	public Object addTimeEstimatedPerformance() {
 		ArrayList<Object> arr = new ArrayList<Object>();
 		int id = (int) msg.getObjs().get(0);
@@ -107,29 +143,36 @@ public class ITHandleRequestSController {
 		try {
 			stmt = connection.createStatement();
 			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id=" + id + "");
-			while (rs.next() != false) 
-			{
+			while (rs.next() != false) {
 				stage = rs.getString(1);
-				if (stage.equals("waitingExecutionTime")) 
-				{
+				if (stage.equals("waitingExecutionTime")) {
 					stmt = connection.createStatement();
-					stmt.executeUpdate("UPDATE requeststages SET timePerform=" + timeEstimatedPerform + " WHERE id=" + id + "");
-					stmt.executeUpdate("UPDATE request SET currentStage='waitingSupervisorApproveExecutionTime' WHERE id=" + id + "");
-					stmt.executeUpdate("UPDATE requeststages SET currentStage='waitingSupervisorApproveExecutionTime' WHERE id=" + id + "");
+					stmt.executeUpdate(
+							"UPDATE requeststages SET timePerform=" + timeEstimatedPerform + " WHERE id=" + id + "");
+					stmt.executeUpdate(
+							"UPDATE request SET currentStage='waitingSupervisorApproveExecutionTime' WHERE id=" + id
+									+ "");
+					stmt.executeUpdate(
+							"UPDATE requeststages SET currentStage='waitingSupervisorApproveExecutionTime' WHERE id="
+									+ id + "");
 					arr.add(1);
-				}
-				else
-				{
+				} else {
 					arr.add(0);
-				}	
+				}
 			}
 			DBSmessage dbs = new DBSmessage(MessageTypeS.addTimeEstimatedPerformance, arr);
 			return dbs;
+		} catch (SQLException e) {
 		}
-		catch (SQLException e) {}
 		return null;
 	}
 
+	/**
+	 * This method Save in data base that the change completed and update the
+	 * relevant values.
+	 *
+	 * @return the object
+	 */
 	public Object saveChangeCompleted() {
 		ArrayList<Object> toSend = new ArrayList<Object>();
 		ArrayList<Object> arry = msg.getObjs();
@@ -139,13 +182,15 @@ public class ITHandleRequestSController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE requesttime SET executionEND='"+formatter.format(date)+"' WHERE id="+reqId+"");
-			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(reqId,connection);
+			stmt.executeUpdate(
+					"UPDATE requesttime SET executionEND='" + formatter.format(date) + "' WHERE id=" + reqId + "");
+			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(reqId, connection);
 			checkExp.checkException();
 			stmt.executeUpdate("UPDATE request SET currentStage='testing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='testing' WHERE id=" + reqId + "");
 			stmt.executeUpdate("UPDATE requeststages SET timeTest=7 WHERE id=" + reqId + "");
-			stmt.executeUpdate("UPDATE requesttime SET testingStart='"+formatter.format(date)+"' WHERE id="+reqId+"");
+			stmt.executeUpdate(
+					"UPDATE requesttime SET testingStart='" + formatter.format(date) + "' WHERE id=" + reqId + "");
 			toSend.add(1);
 			DBSmessage dbs = new DBSmessage(MessageTypeS.ITshowReqAgain, toSend);
 			return dbs;
@@ -154,6 +199,12 @@ public class ITHandleRequestSController {
 		return null;
 	}
 
+	/**
+	 * This method Save in data base that the test approval and update the relevant
+	 * values.
+	 *
+	 * @return the object
+	 */
 	public Object saveTestApproval() {
 		ArrayList<Object> toSend = new ArrayList<Object>();
 		ArrayList<Object> arry = msg.getObjs();
@@ -163,11 +214,12 @@ public class ITHandleRequestSController {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			stmt = connection.createStatement();
-			stmt.executeUpdate("UPDATE requesttime SET testingExepted='"+formatter.format(date)+"' WHERE id="+reqId+"");
-			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(reqId,connection);
+			stmt.executeUpdate(
+					"UPDATE requesttime SET testingExepted='" + formatter.format(date) + "' WHERE id=" + reqId + "");
+			CheckExceptionsRequest checkExp = new CheckExceptionsRequest(reqId, connection);
 			checkExp.checkException();
 			stmt.executeUpdate("UPDATE request SET currentStage='closing' WHERE id=" + reqId + "");
-			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id=" + reqId + "");	
+			stmt.executeUpdate("UPDATE requeststages SET currentStage='closing' WHERE id=" + reqId + "");
 			toSend.add(1);
 			DBSmessage dbs = new DBSmessage(MessageTypeS.ITshowReqAgain, toSend);
 			return dbs;
@@ -176,6 +228,11 @@ public class ITHandleRequestSController {
 		return null;
 	}
 
+	/**
+	 * This method gets the list of IT.
+	 *
+	 * @return the list of IT
+	 */
 	public DBSmessage getListOfIT() {
 		Statement stmt;
 		DBSmessage dbs;
@@ -185,8 +242,10 @@ public class ITHandleRequestSController {
 		ArrayList<Object> listOfIT = new ArrayList<Object>();
 		try {
 			stmt = connection.createStatement();
-		//ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE employeePos='IT' OR employeePos='IT-operator'");
-			ResultSet rs = stmt.executeQuery("SELECT * FROM itemployees WHERE (employeePos='IT') AND employeeName <> (SELECT itAppraiser FROM requeststages WHERE id="+reqId+") AND employeeName <> (SELECT itPerformanceLeader FROM requeststages WHERE id="+reqId+")");
+			ResultSet rs = stmt.executeQuery(
+					"SELECT * FROM itemployees WHERE (employeePos='IT') AND employeeName <> (SELECT itAppraiser FROM requeststages WHERE id="
+							+ reqId + ") AND employeeName <> (SELECT itPerformanceLeader FROM requeststages WHERE id="
+							+ reqId + ")");
 			while (rs.next() != false) {
 				listOfIT.add(rs.getString(2).toString());
 			}
@@ -200,6 +259,11 @@ public class ITHandleRequestSController {
 		return null;
 	}
 
+	/**
+	 * This method update the IT Tester.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage saveTester() {
 		DBSmessage dbs;
 		Statement stmt;
@@ -219,6 +283,11 @@ public class ITHandleRequestSController {
 		return null;
 	}
 
+	/**
+	 * This method update the Number of days for each stage.
+	 *
+	 * @return the DB smessage
+	 */
 	public DBSmessage numOfDays() {
 		DBSmessage dbs;
 		Statement stmt;
@@ -226,88 +295,88 @@ public class ITHandleRequestSController {
 		ArrayList<Object> arry = msg.getObjs();
 		this.reqId = (int) arry.get(0);
 		String timeStage = "";
-		String startTime= "";
+		String startTime = "";
 		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id="+reqId+""); 
-				while(rs.next()!=false)
-				{
-					StageName name=null;
-					
-					switch(rs.getString(1))
-					{
-					case "supervisorApprovel":
-						name = StageName.supervisorApprovel;
-						break;
-					case "waitingEvaluationTime":
-						name = StageName.waitingEvaluationTime;
-						break;
-					case "waitingSupervisorApproveEvaluationTime":
-						name = StageName.waitingSupervisorApproveEvaluationTime;
-						break;
-					case "meaningAssessment":
-						name = StageName.meaningAssessment;
-						timeStage = "timeEvaluation";
-						startTime="meaningAssessmentStart";
-						break;
-					case "waitingExecutionTime":
-						name = StageName.waitingExecutionTime;
-						timeStage = "timeExaminationDecision";
-						startTime="examinationAndDecisionStart";
-						break;
-					case "waitingSupervisorApproveExecutionTime":
-						name = StageName.waitingSupervisorApproveExecutionTime;
-						timeStage = "timeExaminationDecision";
-						startTime="examinationAndDecisionStart";
-						break;
-					case "examinationAndDecision":
-						name = StageName.examinationAndDecision;
-						timeStage = "timeExaminationDecision";
-						startTime="examinationAndDecisionStart";
-						break;
-					case "execution":
-						name = StageName.execution;
-						timeStage = "timePerform";
-						startTime="executiondStart";
-						break;
-					case "testing":
-						name = StageName.testing;
-						timeStage = "timeTest";
-						startTime="testingStart";
-						break;
-					case "closing":
-						name = StageName.closing;
-						break;
-					case "Closed":
-						name = StageName.Closed;
-						break;
-					}
-				}
-				
-			int x = 0, timeleft;
-					Date today = new Date();
-					DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
-					Date start = null;
-					if (timeStage.equals(""))
-						timeleft = 0;
-					else {
-						stmt = connection.createStatement();
-						ResultSet daters = stmt.executeQuery("SELECT " + timeStage + " FROM requeststages WHERE id=" +reqId+ "");
-						while (daters.next() != false) {
-							x = daters.getInt(1);
-						}
-						stmt = connection.createStatement();
-						ResultSet startrs = stmt.executeQuery("SELECT " + startTime + " FROM requesttime WHERE id=" + reqId + "");
-						while (startrs.next() != false) {
-							start = startrs.getDate(1);
-						}
-						float diffrence = (today.getDate() - start.getDate());
-						timeleft = (int) (x - diffrence);
-					}
+			ResultSet rs = stmt.executeQuery("SELECT currentStage FROM requeststages WHERE id=" + reqId + "");
+			while (rs.next() != false) {
+				StageName name = null;
 
-					send.add(timeleft);
-				dbs=new DBSmessage(MessageTypeS.ITrequestDaysLeft,send);
-				return dbs;
+				switch (rs.getString(1)) {
+				case "supervisorApprovel":
+					name = StageName.supervisorApprovel;
+					break;
+				case "waitingEvaluationTime":
+					name = StageName.waitingEvaluationTime;
+					break;
+				case "waitingSupervisorApproveEvaluationTime":
+					name = StageName.waitingSupervisorApproveEvaluationTime;
+					break;
+				case "meaningAssessment":
+					name = StageName.meaningAssessment;
+					timeStage = "timeEvaluation";
+					startTime = "meaningAssessmentStart";
+					break;
+				case "waitingExecutionTime":
+					name = StageName.waitingExecutionTime;
+					timeStage = "timeExaminationDecision";
+					startTime = "examinationAndDecisionStart";
+					break;
+				case "waitingSupervisorApproveExecutionTime":
+					name = StageName.waitingSupervisorApproveExecutionTime;
+					timeStage = "timeExaminationDecision";
+					startTime = "examinationAndDecisionStart";
+					break;
+				case "examinationAndDecision":
+					name = StageName.examinationAndDecision;
+					timeStage = "timeExaminationDecision";
+					startTime = "examinationAndDecisionStart";
+					break;
+				case "execution":
+					name = StageName.execution;
+					timeStage = "timePerform";
+					startTime = "executiondStart";
+					break;
+				case "testing":
+					name = StageName.testing;
+					timeStage = "timeTest";
+					startTime = "testingStart";
+					break;
+				case "closing":
+					name = StageName.closing;
+					break;
+				case "Closed":
+					name = StageName.Closed;
+					break;
+				}
+			}
+
+			int x = 0, timeleft;
+			Date today = new Date();
+			DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
+			Date start = null;
+			if (timeStage.equals(""))
+				timeleft = 0;
+			else {
+				stmt = connection.createStatement();
+				ResultSet daters = stmt
+						.executeQuery("SELECT " + timeStage + " FROM requeststages WHERE id=" + reqId + "");
+				while (daters.next() != false) {
+					x = daters.getInt(1);
+				}
+				stmt = connection.createStatement();
+				ResultSet startrs = stmt
+						.executeQuery("SELECT " + startTime + " FROM requesttime WHERE id=" + reqId + "");
+				while (startrs.next() != false) {
+					start = startrs.getDate(1);
+				}
+				float diffrence = (today.getDate() - start.getDate());
+				timeleft = (int) (x - diffrence);
+			}
+
+			send.add(timeleft);
+			dbs = new DBSmessage(MessageTypeS.ITrequestDaysLeft, send);
+			return dbs;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

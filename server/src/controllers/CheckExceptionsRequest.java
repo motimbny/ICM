@@ -22,261 +22,234 @@ import entity.User;
 /**
  * The Class CheckExceptionsRequest.
  */
-public class CheckExceptionsRequest 
-{
-   
-   /** The to check. */
-   private int toCheck; 
-   
-   /** The req. */
-   private Request req;
-   
-   /** The connection. */
-   private Connection connection;
-   
-   /** The manager. */
-   private User superviser,manager;
-   
-   /**
-    * Instantiates a new check exceptions request.
-    *
-    * @param toCheck the to check
-    * @param connection the connection
-    */
-   public CheckExceptionsRequest(int toCheck,Connection connection)
-   {
-	   this.toCheck=toCheck;
-	   this.connection=connection;
-	   getRequest();
-	   findsuperviser();
-	   findmanager();
-   }
-   
-   /**
-    * this method finds the superviser in the data base for later use in the class.
-    */
-   private void findsuperviser()
-	{
-		Statement stmt;
-		User toAdd=null;
-		try 
-		{
-			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE position='superviser'");
-				while(rs.next()!=false)
-				{
-				  superviser=new User(rs.getString(1),Integer.toString(rs.getInt(2)),rs.getString(3));
-				}
-				rs.close();
-		}
-		catch(Exception e) {}	
-	}
-   
-   /**
-    *  this method finds the manager in the data base for later use in the class..
-    */
-   private void findmanager()
-	{
-		Statement stmt;
-		User toAdd=null;
-		try 
-		{
-			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE position='IT-manager'");
-				while(rs.next()!=false)
-				{
-				  manager=new User(rs.getString(1),Integer.toString(rs.getInt(2)),rs.getString(3));
-				}
-				rs.close();
-		}
-		catch(Exception e) {}	
-	}
-   
-   /**
-    * Gets the request.
-    *
-    */
-   public void getRequest()
-   {
-		Statement stmt;
-		try 
-		{
-			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange,addDocuments FROM request WHERE id='"+toCheck+ "'");
-				while(rs.next()!=false)
-				{
-					StageName name=null;
-					switch(rs.getString(5))
-					{
-					case "supervisorApprovel":
-						name=StageName.supervisorApprovel;
-						break;
-					case "meaningAssessment":
-						name=StageName.meaningAssessment;
-						break;
-					case "examinationAndDecision":
-						name=StageName.examinationAndDecision;
-						break;
-					case "execution":
-						name=StageName.execution;
-						break;	
-					case "testing":
-						name=StageName.testing;
-						break;		
-					case "closing":
-						name=StageName.closing;
-						break;		
-					}
-					req=new Request(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),name,rs.getString(6),rs.getString(7),rs.getInt(8));
-				}
-		} 
-		catch (SQLException e)
-		{
-			e.printStackTrace();
-		}	
-   }
-   
-   /**
-    * Check exception.
-    *
-    * @throws SQLException the SQL exception
-    */
-   public void checkException() throws SQLException
-   {
-	   PreparedStatement reqToAdd;
-	   String stag="";
-	   String topick ="",topick1="",topick2="";
-	   Date d1=null;
-	   Date d2 = null;
-	   int dif=0;
-	   Statement stmt;
-	   ResultSet rs,ds;
-	   switch(req.getCurrentStage())
-	   {
-	       case meaningAssessment:
-	       {
-	    	   stag="meaningAssessment";
-	    	   topick="meaningAssessmentStart";
-	    	   topick2="meaningAssessmentEND";
-	    	   topick1="timeEvaluation";
-	       }
-	       break;
-	       case examinationAndDecision:
-	       {
-	    	   stag="examinationAndDecision";
-	    	   topick="examinationAndDecisionStart";
-	    	   topick2="examinationAndDecisiondEND"; 
-	    	   topick1="timeExaminationDecision";
-	       }
-	       break;
-	       case execution:
-	       {
-	    	   stag="execution";
-	    	   topick="executiondStart";
-	    	   topick2="executionEND";
-	    	   topick1="timePerform";
+public class CheckExceptionsRequest {
 
-	       }
-	    	   break;
-	       case testing:
-	       {
-	    	   stag="testing";
-	    	   topick="testingStart";
-	    	   topick2="testingExepted";
-	    	   topick1="timeTest";
+	/** The to check. */
+	private int toCheck;
 
-	       }
-	    	   break;
-	       case closing: 
-	       {
-	    	   stag="closing";
-	    	   topick="";
-	    	   topick2="closingEND";
-	       }
-	    	   break;
-	       default:
-		break;	   
-	   }
+	/** The request. */
+	private Request req;
+
+	/** The connection. */
+	private Connection connection;
+
+	/** The manager. */
+	private User superviser, manager;
+
+	/**
+	 * Instantiates a new check exceptions request.
+	 *
+	 * @param toCheck    the to check
+	 * @param connection the connection
+	 */
+	public CheckExceptionsRequest(int toCheck, Connection connection) {
+		this.toCheck = toCheck;
+		this.connection = connection;
+		getRequest();
+		findsuperviser();
+		findmanager();
+	}
+
+	/**
+	 * this method finds the supervisor in the data base for later use in the class.
+	 */
+	private void findsuperviser() {
+		Statement stmt;
+		User toAdd = null;
 		try {
 			stmt = connection.createStatement();
-			rs = stmt.executeQuery("SELECT "+topick+","+topick2+" FROM requesttime WHERE id="+toCheck+"");
-			while(rs.next()!=false)
-			{
-				d1=rs.getDate(1);
-				d2=rs.getDate(2);
+			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE position='superviser'");
+			while (rs.next() != false) {
+				superviser = new User(rs.getString(1), Integer.toString(rs.getInt(2)), rs.getString(3));
 			}
-			if(topick1.equals(""))
-			{
-				ds = stmt.executeQuery("SELECT "+topick1+" FROM requeststages WHERE id="+toCheck+"");
-				while(ds.next()!=false)
-				{
-					dif=rs.getInt(1);
+			rs.close();
+		} catch (Exception e) {
+		}
+	}
+
+	/**
+	 * this method finds the manager in the data base for later use in the class..
+	 */
+	private void findmanager() {
+		Statement stmt;
+		User toAdd = null;
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE position='IT-manager'");
+			while (rs.next() != false) {
+				manager = new User(rs.getString(1), Integer.toString(rs.getInt(2)), rs.getString(3));
+			}
+			rs.close();
+		} catch (Exception e) {
+		}
+	}
+
+	/**
+	 * Gets the request.
+	 *
+	 */
+	public void getRequest() {
+		Statement stmt;
+		try {
+			stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(
+					"SELECT id, userSubFullName, infoSystem, currentStatus,currentStage, desExtSit, wantedChange,addDocuments FROM request WHERE id='"
+							+ toCheck + "'");
+			while (rs.next() != false) {
+				StageName name = null;
+				switch (rs.getString(5)) {
+				case "supervisorApprovel":
+					name = StageName.supervisorApprovel;
+					break;
+				case "meaningAssessment":
+					name = StageName.meaningAssessment;
+					break;
+				case "examinationAndDecision":
+					name = StageName.examinationAndDecision;
+					break;
+				case "execution":
+					name = StageName.execution;
+					break;
+				case "testing":
+					name = StageName.testing;
+					break;
+				case "closing":
+					name = StageName.closing;
+					break;
 				}
+				req = new Request(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), name,
+						rs.getString(6), rs.getString(7), rs.getInt(8));
 			}
-		} 
-		catch (SQLException e)
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		if(!topick1.equals(""))
-		{
-		int diffrence=(d2.getDate()-d1.getDate())-dif;
-		if(diffrence>0)
-			{
-			    diffrence-=dif;
+	}
+
+	/**
+	 * Check exception.
+	 *
+	 * @throws SQLException the SQL exception
+	 */
+	public void checkException() throws SQLException {
+		PreparedStatement reqToAdd;
+		String stag = "";
+		String topick = "", topick1 = "", topick2 = "";
+		Date d1 = null;
+		Date d2 = null;
+		int dif = 0;
+		Statement stmt;
+		ResultSet rs, ds;
+		switch (req.getCurrentStage()) {
+		case meaningAssessment: {
+			stag = "meaningAssessment";
+			topick = "meaningAssessmentStart";
+			topick2 = "meaningAssessmentEND";
+			topick1 = "timeEvaluation";
+		}
+			break;
+		case examinationAndDecision: {
+			stag = "examinationAndDecision";
+			topick = "examinationAndDecisionStart";
+			topick2 = "examinationAndDecisiondEND";
+			topick1 = "timeExaminationDecision";
+		}
+			break;
+		case execution: {
+			stag = "execution";
+			topick = "executiondStart";
+			topick2 = "executionEND";
+			topick1 = "timePerform";
+
+		}
+			break;
+		case testing: {
+			stag = "testing";
+			topick = "testingStart";
+			topick2 = "testingExepted";
+			topick1 = "timeTest";
+
+		}
+			break;
+		case closing: {
+			stag = "closing";
+			topick = "";
+			topick2 = "closingEND";
+		}
+			break;
+		default:
+			break;
+		}
+		try {
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery("SELECT " + topick + "," + topick2 + " FROM requesttime WHERE id=" + toCheck + "");
+			while (rs.next() != false) {
+				d1 = rs.getDate(1);
+				d2 = rs.getDate(2);
+			}
+			if (topick1.equals("")) {
+				ds = stmt.executeQuery("SELECT " + topick1 + " FROM requeststages WHERE id=" + toCheck + "");
+				while (ds.next() != false) {
+					dif = rs.getInt(1);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		if (!topick1.equals("")) {
+			int diffrence = (d2.getDate() - d1.getDate()) - dif;
+			if (diffrence > 0) {
+				diffrence -= dif;
 				reqToAdd = connection.prepareStatement("INSERT INTO exceptionrequest VALUES(?,?,?,?)");
 				reqToAdd.setInt(1, req.getId());
-				reqToAdd.setString(2,stag);
-				reqToAdd.setInt(3,diffrence);
-				   SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
-				    Date date = new Date();  
-				    reqToAdd.setString(4,formatter.format(date)); 
-				reqToAdd.executeUpdate();	
+				reqToAdd.setString(2, stag);
+				reqToAdd.setInt(3, diffrence);
+				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				Date date = new Date();
+				reqToAdd.setString(4, formatter.format(date));
+				reqToAdd.executeUpdate();
 				reqToAdd.close();
-				sendMessageToManager(stag+" "+req.getId());
-				sendMessageToSuperviser(stag+" "+req.getId());	
+				sendMessageToManager(stag + " " + req.getId());
+				sendMessageToSuperviser(stag + " " + req.getId());
 			}
 		}
-		
-     }
-   
-   /**
-    * Send message to manager.
-    *
-    * @param stag the stag
-    * @throws SQLException the SQL exception
-    */
-   public void sendMessageToManager(String stag) throws SQLException
-   {
-	   PreparedStatement mToAdd;
-	   mToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
-	   mToAdd.setString(1,manager.getName());
-	   mToAdd.setString(2,"System ICM");
-	   mToAdd.setString(3,stag);
-	   mToAdd.setString(4,stag+" was late");
-	   mToAdd.setString(5,java.time.LocalDate.now().toString());
-	   mToAdd.setInt(6,0);
-	   mToAdd.executeUpdate();	
-	   mToAdd.close();
+
 	}
-   
-   /**
-    * Send message to superviser.
-    *
-    * @param stag the stag
-    * @throws SQLException the SQL exception
-    */
-   public void sendMessageToSuperviser(String stag) throws SQLException
-   {
-	   PreparedStatement sToAdd;
-	   sToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
-	   sToAdd.setString(1,superviser.getName());
-	   sToAdd.setString(2,"System ICM");
-	   sToAdd.setString(3,stag);
-	   sToAdd.setString(4,stag+" was late");
-	   sToAdd.setString(5,java.time.LocalDate.now().toString());
-	   sToAdd.setInt(6,0);
-	   sToAdd.executeUpdate();	
-	   sToAdd.close();
-   }
+
+	/**
+	 * Send message to manager.
+	 *
+	 * @param stag the stag
+	 * @throws SQLException the SQL exception
+	 */
+	public void sendMessageToManager(String stag) throws SQLException {
+		PreparedStatement mToAdd;
+		mToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
+		mToAdd.setString(1, manager.getName());
+		mToAdd.setString(2, "System ICM");
+		mToAdd.setString(3, stag);
+		mToAdd.setString(4, stag + " was late");
+		mToAdd.setString(5, java.time.LocalDate.now().toString());
+		mToAdd.setInt(6, 0);
+		mToAdd.executeUpdate();
+		mToAdd.close();
+	}
+
+	/**
+	 * Send message to superviser.
+	 *
+	 * @param stag the stag
+	 * @throws SQLException the SQL exception
+	 */
+	public void sendMessageToSuperviser(String stag) throws SQLException {
+		PreparedStatement sToAdd;
+		sToAdd = connection.prepareStatement("INSERT INTO messages VALUES(?,?,?,?,?,?)");
+		sToAdd.setString(1, superviser.getName());
+		sToAdd.setString(2, "System ICM");
+		sToAdd.setString(3, stag);
+		sToAdd.setString(4, stag + " was late");
+		sToAdd.setString(5, java.time.LocalDate.now().toString());
+		sToAdd.setInt(6, 0);
+		sToAdd.executeUpdate();
+		sToAdd.close();
+	}
 }

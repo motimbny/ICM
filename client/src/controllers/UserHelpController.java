@@ -7,8 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 
 /**
- * User Help screen Controller .
- * This window show the User's options.
+ * User Help screen Controller . This window show the User's options.
  *
  * @author SHIRA
  */

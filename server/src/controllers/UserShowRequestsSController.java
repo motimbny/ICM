@@ -22,20 +22,20 @@ import entity.RequestUser;
  * The Class UserShowRequestsSController.
  */
 public class UserShowRequestsSController {
-	
+
 	/** The user. */
 	private String user;
-	
+
 	/** The user id req. */
 	private int userIdReq;
-	
+
 	/** The connection. */
 	private Connection connection;
 
 	/**
 	 * Instantiates a new user show requests S controller.
 	 *
-	 * @param msg the msg
+	 * @param msg        the msg
 	 * @param connection the connection
 	 */
 	public UserShowRequestsSController(DBmessage msg, Connection connection) {
@@ -48,7 +48,7 @@ public class UserShowRequestsSController {
 	}
 
 	/**
-	 * Show request.
+	 * This method return all the request by the specific user
 	 *
 	 * @return the DB smessage
 	 */
@@ -148,7 +148,7 @@ public class UserShowRequestsSController {
 	}
 
 	/**
-	 * Show SP request.
+	 * This method return a specific request after user search it in user GUI
 	 *
 	 * @return the DB smessage
 	 */
@@ -166,7 +166,7 @@ public class UserShowRequestsSController {
 			while (rs.next() != false) {
 				StageName name = null;
 				String timeStage = "";
-				String startTime= "";
+				String startTime = "";
 				switch (rs.getString(3)) {
 				case "supervisorApprovel":
 					name = StageName.supervisorApprovel;
@@ -180,32 +180,32 @@ public class UserShowRequestsSController {
 				case "meaningAssessment":
 					name = StageName.meaningAssessment;
 					timeStage = "timeEvaluation";
-					startTime="meaningAssessmentStart";
+					startTime = "meaningAssessmentStart";
 					break;
 				case "waitingExecutionTime":
 					name = StageName.waitingExecutionTime;
 					timeStage = "timeExaminationDecision";
-					startTime="examinationAndDecisionStart";
+					startTime = "examinationAndDecisionStart";
 					break;
 				case "waitingSupervisorApproveExecutionTime":
 					name = StageName.waitingSupervisorApproveExecutionTime;
 					timeStage = "timeExaminationDecision";
-					startTime="examinationAndDecisionStart";
+					startTime = "examinationAndDecisionStart";
 					break;
 				case "examinationAndDecision":
 					name = StageName.examinationAndDecision;
 					timeStage = "timeExaminationDecision";
-					startTime="examinationAndDecisionStart";
+					startTime = "examinationAndDecisionStart";
 					break;
 				case "execution":
 					name = StageName.execution;
 					timeStage = "timePerform";
-					startTime="executiondStart";
+					startTime = "executiondStart";
 					break;
 				case "testing":
 					name = StageName.testing;
 					timeStage = "timeTest";
-					startTime="testingStart";
+					startTime = "testingStart";
 					break;
 				case "closing":
 					name = StageName.closing;
@@ -214,25 +214,27 @@ public class UserShowRequestsSController {
 					name = StageName.Closed;
 					break;
 				}
-				int id=rs.getInt(1), x=0, timeleft;
-				Date today=new Date();
-				DateFormat d=new SimpleDateFormat("yyyy-MM-dd");
-				Date start=null;
+				int id = rs.getInt(1), x = 0, timeleft;
+				Date today = new Date();
+				DateFormat d = new SimpleDateFormat("yyyy-MM-dd");
+				Date start = null;
 				if (timeStage.equals(""))
 					timeleft = 0;
 				else {
 					stmt1 = connection.createStatement();
-					ResultSet daters = stmt1.executeQuery("SELECT " + timeStage + " FROM requeststages WHERE id=" + id + "");
+					ResultSet daters = stmt1
+							.executeQuery("SELECT " + timeStage + " FROM requeststages WHERE id=" + id + "");
 					while (daters.next() != false) {
-						x = daters.getInt(1);}
-					stmt2 = connection.createStatement();
-					ResultSet startrs = stmt2.executeQuery("SELECT " + startTime + " FROM requesttime WHERE id=" + id + "");
-					while(startrs.next()!=false)
-					{
-						start=startrs.getDate(1);
+						x = daters.getInt(1);
 					}
-					float diffrence=(today.getDate()-start.getDate());
-					timeleft=(int) (x-diffrence);
+					stmt2 = connection.createStatement();
+					ResultSet startrs = stmt2
+							.executeQuery("SELECT " + startTime + " FROM requesttime WHERE id=" + id + "");
+					while (startrs.next() != false) {
+						start = startrs.getDate(1);
+					}
+					float diffrence = (today.getDate() - start.getDate());
+					timeleft = (int) (x - diffrence);
 				}
 				RequestUser toAdd = new RequestUser(id, rs.getString(2), name, timeleft);
 				toSend.add(toAdd);
@@ -246,7 +248,7 @@ public class UserShowRequestsSController {
 	}
 
 	/**
-	 * Num of request.
+	 * This method return the number of request associate to user
 	 *
 	 * @return the DB smessage
 	 */
@@ -270,7 +272,7 @@ public class UserShowRequestsSController {
 	}
 
 	/**
-	 * Mnum of request.
+	 * This method return the number of request associate to IT Manager
 	 *
 	 * @return the object
 	 */
@@ -293,28 +295,25 @@ public class UserShowRequestsSController {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Numof messages.
+	 * This method return the number of messages associate to IT Manager
 	 *
 	 * @param name the name
 	 * @return the int
 	 */
-	public int numofMessages(String name)
-	{
+	public int numofMessages(String name) {
 		Statement stmt;
 		DBSmessage dbs;
 		int num;
 		try {
 			stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM messages WHERE toWho='"+name+"' AND read1=0");
+			ResultSet rs = stmt.executeQuery("SELECT COUNT(*) FROM messages WHERE toWho='" + name + "' AND read1=0");
 			if (!rs.next())
-				num=0;
+				num = 0;
 			else
 				return rs.getInt(1);
-		}
-		catch (SQLException e) 
-		{
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return 0;

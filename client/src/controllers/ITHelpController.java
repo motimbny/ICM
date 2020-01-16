@@ -15,15 +15,14 @@ public class ITHelpController {
 
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-    
-    /**
-     * Instantiates a new IT help controller.
-     */
-    public ITHelpController()
-    {
-    	MainAllControllers=controllers.MainAllControllers.getInstance();
-    }
-   
+
+	/**
+	 * Instantiates a new IT help controller.
+	 */
+	public ITHelpController() {
+		MainAllControllers = controllers.MainAllControllers.getInstance();
+	}
+
 	/** The home BTN. */
 	@FXML
 	private Button homeBTN;
@@ -43,7 +42,7 @@ public class ITHelpController {
 	/** The logout BTN. */
 	@FXML
 	private Button logoutBTN;
-	 
+
 	/**
 	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
@@ -51,12 +50,11 @@ public class ITHelpController {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goHelpPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHelp");
-    	MainAllControllers.changeWin();
+	void goHelpPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHelp");
+		MainAllControllers.changeWin();
 	}
-	 
+
 	/**
 	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
@@ -64,12 +62,11 @@ public class ITHelpController {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goHomePage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITHome");
-    	MainAllControllers.changeWin();
+	void goHomePage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITHome");
+		MainAllControllers.changeWin();
 	}
-	 
+
 	/**
 	 * Mouse click event, if "Personal info" button clicked, open the screen of
 	 * "Personal information".
@@ -78,12 +75,11 @@ public class ITHelpController {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goPersonalInfo(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITPersonalInfo");
-    	MainAllControllers.changeWin();
+	void goPersonalInfo(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITPersonalInfo");
+		MainAllControllers.changeWin();
 	}
-	
+
 	/**
 	 * Mouse click event, if "Show requests" button clicked, open the screen of
 	 * "Show requests".
@@ -92,12 +88,11 @@ public class ITHelpController {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void goShowReq(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("ITshowRequests");
-    	MainAllControllers.changeWin();
+	void goShowReq(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("ITshowRequests");
+		MainAllControllers.changeWin();
 	}
-	
+
 	/**
 	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
 	 * and clean the fields.
@@ -106,10 +101,9 @@ public class ITHelpController {
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
-	void logoutPage(MouseEvent event) throws IOException 
-	{
-    	MainAllControllers.setWindowVar("login");
-    	MainAllControllers.changeWin();
-    	MainAllControllers.logOutUser();
+	void logoutPage(MouseEvent event) throws IOException {
+		MainAllControllers.setWindowVar("login");
+		MainAllControllers.changeWin();
+		MainAllControllers.logOutUser();
 	}
 }

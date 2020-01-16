@@ -60,7 +60,7 @@ public class ITManagerReportsSController {
 	}
 
 	/**
-	 * Make active su clo.
+	 * This method create data for activity report.
 	 *
 	 * @return the object
 	 */
@@ -158,7 +158,7 @@ public class ITManagerReportsSController {
 	}
 
 	/**
-	 * Gets the date diff.
+	 * This method return the date difference.
 	 *
 	 * @param date1    the date 1
 	 * @param date2    the date 2
@@ -171,7 +171,7 @@ public class ITManagerReportsSController {
 	}
 
 	/**
-	 * Make performenct.
+	 * This method create data for performance report.
 	 *
 	 * @return the object
 	 */
@@ -218,17 +218,14 @@ public class ITManagerReportsSController {
 
 			rs = stmt.executeQuery(
 					"SELECT * FROM requesttime WHERE meaningAssessmentStart BETWEEN '" + start + "' AND '" + end + "'");
-			while (rs.next() != false) 
-			{
-				
+			while (rs.next() != false) {
+
 				int id = rs.getInt(1);
-				mapDev.put(id,new int[4]);
-				if (rs.getDate(2) != null)
-				{
+				mapDev.put(id, new int[4]);
+				if (rs.getDate(2) != null) {
 					Date date1 = null;
 					Date date2 = null;
-					for (int j = 2, i = 0; i < 4; i++, j = j + 2)
-					{
+					for (int j = 2, i = 0; i < 4; i++, j = j + 2) {
 						dev[i] = 0;
 						if (rs.getDate(j) == null || rs.getDate(j + 1) == null)
 							continue;
@@ -236,8 +233,8 @@ public class ITManagerReportsSController {
 						date2 = rs.getDate(j + 1);
 						long diff = date2.getTime() - date1.getTime();
 						mapDev.get(id)[i] = (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
-					}		
-				
+					}
+
 				}
 			}
 			rs = stmt.executeQuery("SELECT * FROM requeststages ");
@@ -254,7 +251,7 @@ public class ITManagerReportsSController {
 
 				}
 			}
-		
+
 			toSendA.add(mapDev);
 			dbs = new DBSmessage(MessageTypeS.makePerformenct, toSendA);
 			return dbs;
@@ -266,7 +263,7 @@ public class ITManagerReportsSController {
 	}
 
 	/**
-	 * Make delays.
+	 * This method create data for delays report.
 	 *
 	 * @return the object
 	 */
@@ -313,7 +310,7 @@ public class ITManagerReportsSController {
 				toSendA.set(month - 1 + 12, sum);
 
 			}
-		
+
 			dbs = new DBSmessage(MessageTypeS.makeDelays, toSendA);
 			return dbs;
 		} catch (SQLException e) {

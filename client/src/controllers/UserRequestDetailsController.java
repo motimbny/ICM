@@ -22,8 +22,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 /**
- * User request details screen Controller .
- * This window is in User GUI and opened after user press on request from request Table
+ * User request details screen Controller . This window is in User GUI and
+ * opened after user press on request from request Table
+ * 
  * @author SHIRA
  */
 public class UserRequestDetailsController implements Initializable {
@@ -99,8 +100,8 @@ public class UserRequestDetailsController implements Initializable {
 	private ProgressBar progressB;
 
 	/**
-	 * Mouse click event, if "Back to all request" button clicked, open the screen of "Show
-	 * requests".
+	 * Mouse click event, if "Back to all request" button clicked, open the screen
+	 * of "Show requests".
 	 *
 	 * @param event The Back to all request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
@@ -191,7 +192,8 @@ public class UserRequestDetailsController implements Initializable {
 	}
 
 	/**
-	 * This method get the request details from DB and sets the text in fields of this screen.
+	 * This method get the request details from DB and sets the text in fields of
+	 * this screen.
 	 *
 	 * @param listR The list of the request details
 	 */
@@ -208,8 +210,8 @@ public class UserRequestDetailsController implements Initializable {
 	}
 
 	/**
-	 * This method sets the progress bar.
-	 * This progress bar show the level of the request
+	 * This method sets the progress bar. This progress bar show the level of the
+	 * request
 	 *
 	 * @param req the new progress bar
 	 */
@@ -237,8 +239,8 @@ public class UserRequestDetailsController implements Initializable {
 	}
 
 	/**
-	 * Initializes GUI components before this window open.
-	 * Get the request details from DB and show in screen 
+	 * Initializes GUI components before this window open. Get the request details
+	 * from DB and show in screen
 	 *
 	 * @param location  the location
 	 * @param resources the resources

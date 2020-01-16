@@ -7,9 +7,7 @@ import java.util.Collection;
 import java.util.ResourceBundle;
 
 import Enums.MessageType;
-import Enums.Position;
 import entity.DBmessage;
-import entity.Request;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -31,19 +29,17 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-
 /**
- * The Class ITHandleRequestController.
- * This window is in IT GUI and display the IT the activities he can handle in
- * this stage.
+ * The Class ITHandleRequestController. This window is in IT GUI and display the
+ * IT the activities he can handle in this stage.
  * 
  * @author SHIRA
  */
 public class ITHandleRequestController implements Initializable {
-	
+
 	/** The Main all controllers. */
 	private MainAllControllers MainAllControllers;
-	
+
 	/** The list. */
 	private ArrayList<Object> list;
 
@@ -153,19 +149,19 @@ public class ITHandleRequestController implements Initializable {
 	/** The l 2. */
 	@FXML
 	private Label l2;
-	
-    /** The l 3. */
-    @FXML
-    private Label l3;
 
-    /** The l 4. */
-    @FXML
-    private Label l4;
-    
-    /** The positon req. */
-    @FXML
-    private Text positonReq;
-	
+	/** The l 3. */
+	@FXML
+	private Label l3;
+
+	/** The l 4. */
+	@FXML
+	private Label l4;
+
+	/** The positonreq. */
+	@FXML
+	private Text positonReq;
+
 	/**
 	 * Appoint tester.
 	 *
@@ -193,7 +189,8 @@ public class ITHandleRequestController implements Initializable {
 		EmployeesTable.getColumns().addAll(employeeName);
 		Collection<String> rows = new ArrayList<>();
 		employeeName.setCellValueFactory(data -> new SimpleStringProperty(data.getValue()));
-		while (list == null) {}
+		while (list == null) {
+		}
 		for (Object r : list)
 			rows.add(r.toString());
 		ObservableList<String> details = FXCollections.observableArrayList(rows);
@@ -220,7 +217,7 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * This method create new DBmessage to send to server 
+	 * This method create new DBmessage to send to server
 	 */
 	public void listOfIt() {
 		DBmessage dbm;
@@ -243,9 +240,9 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Creates the evaluation report.
+	 * This method creates the evaluation report.
 	 *
-	 * @param event the event
+	 * @param event the crate BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -255,9 +252,9 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Report failure.
+	 * This method create the Report failure.
 	 *
-	 * @param event the event
+	 * @param event the Crate report failure
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -269,7 +266,7 @@ public class ITHandleRequestController implements Initializable {
 	/**
 	 * Request for time extension.
 	 *
-	 * @param event the event
+	 * @param event Request for time extension BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -279,9 +276,9 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Show request details.
+	 * This method is to Show request details.
 	 *
-	 * @param event the event
+	 * @param event Show request details BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -291,9 +288,9 @@ public class ITHandleRequestController implements Initializable {
 	}
 
 	/**
-	 * Submit time estimate evaluation.
+	 * This method Submit time estimate evaluation.
 	 *
-	 * @param event the event
+	 * @param event the Submit BTN
 	 */
 	@FXML
 	void SubmitTimeEstimateEvaluation(MouseEvent event) {
@@ -312,7 +309,7 @@ public class ITHandleRequestController implements Initializable {
 	/**
 	 * Submit time estimate performance.
 	 *
-	 * @param event the event
+	 * @param event The Submit BTN
 	 */
 	@FXML
 	void SubmitTimeEstimatePerformance(MouseEvent event) {
@@ -331,7 +328,7 @@ public class ITHandleRequestController implements Initializable {
 	/**
 	 * Test approval.
 	 *
-	 * @param event the event
+	 * @param event The test success BTN
 	 */
 	@FXML
 	void TestApproval(MouseEvent event) {
@@ -341,26 +338,25 @@ public class ITHandleRequestController implements Initializable {
 		dbm = new DBmessage(MessageType.ITTestApproval, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-			Platform.runLater(new Runnable()
-			{
-			@Override
-			public void run() 
-			{
-			try {
-				MainAllControllers.setWindowVar("ITshowRequests");
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			MainAllControllers.changeWin();
-			}});
+			Platform.runLater(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						MainAllControllers.setWindowVar("ITshowRequests");
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					MainAllControllers.changeWin();
+				}
+			});
 		} catch (IOException e) {
 		}
 	}
 
 	/**
-	 * View evaluation report.
+	 * This method is show evaluation report.
 	 *
-	 * @param event the event
+	 * @param event The View evaluation report BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -372,7 +368,7 @@ public class ITHandleRequestController implements Initializable {
 	/**
 	 * Change completed.
 	 *
-	 * @param event the event
+	 * @param event the Change BTN
 	 */
 	@FXML
 	void changeCompleted(MouseEvent event) {
@@ -385,9 +381,14 @@ public class ITHandleRequestController implements Initializable {
 		} catch (IOException e) {
 		}
 	}
-	
-	public void showRequests() throws IOException
-	{
+
+	/**
+	 * This method is show all requests
+	 * 
+	 * @throws IOException
+	 */
+
+	public void showRequests() throws IOException {
 		MainAllControllers.setWindowVar("ITshowRequests");
 		MainAllControllers.changeWin();
 	}
@@ -422,7 +423,7 @@ public class ITHandleRequestController implements Initializable {
 	 *
 	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
-	 */	
+	 */
 	@FXML
 	void goPersonalInfo(MouseEvent event) throws IOException {
 		MainAllControllers.setWindowVar("ITPersonalInfo");
@@ -459,7 +460,7 @@ public class ITHandleRequestController implements Initializable {
 	/**
 	 * Initializes GUI components before this window open.
 	 *
-	 * @param location the location
+	 * @param location  the location
 	 * @param resources the resources
 	 */
 	@Override
@@ -467,7 +468,7 @@ public class ITHandleRequestController implements Initializable {
 
 		int s = MainAllControllers.request;
 		requestIdField.setText("Request ID: " + s);
-		positonReq.setText("Position: "+MainAllControllers.itHandlejob);
+		positonReq.setText("Position: " + MainAllControllers.itHandlejob);
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(MainAllControllers.user.getName()); // it name
 		arry.add(s); // request id
@@ -488,16 +489,15 @@ public class ITHandleRequestController implements Initializable {
 		String job = (String) list.get(0);
 		MainAllControllers.itHandlejob = job;
 		switch (job) {
-		case "Appraiser":
-		{	EvaluationStage.setVisible(true);
+		case "Appraiser": {
+			EvaluationStage.setVisible(true);
 			if (list.get(1).equals("waitingEvaluationTime")) {
 				CreateEvaluationReportBTN.setVisible(false);
 				SubmitTimeEstimateBTN.setVisible(true);
 				timeEstimatedEvaluation.setVisible(true);
 				l1.setVisible(true);
 				l2.setVisible(true);
-			}
-			else if (list.get(1).equals("meaningAssessment")) {
+			} else if (list.get(1).equals("meaningAssessment")) {
 				CreateEvaluationReportBTN.setVisible(true);
 				SubmitTimeEstimateBTN.setVisible(false);
 				timeEstimatedEvaluation.setVisible(false);
@@ -513,8 +513,8 @@ public class ITHandleRequestController implements Initializable {
 			}
 		}
 			break;
-		case "ControlCommitte":
-		{	examinationAndDecisionStage.setVisible(true);
+		case "ControlCommitte": {
+			examinationAndDecisionStage.setVisible(true);
 			if (list.get(1).equals("examinationAndDecision"))
 				ViewEvaluationReportBTN.setVisible(true);
 			else {
@@ -523,8 +523,8 @@ public class ITHandleRequestController implements Initializable {
 			}
 		}
 			break;
-		case "CEOControlCommitte":
-		{	examinationAndDecisionStage.setVisible(true);
+		case "CEOControlCommitte": {
+			examinationAndDecisionStage.setVisible(true);
 			if (list.get(1).equals("examinationAndDecision")) {
 				ViewEvaluationReportBTN.setVisible(true);
 				AppointTesterBTN.setVisible(true);
@@ -535,27 +535,21 @@ public class ITHandleRequestController implements Initializable {
 			}
 		}
 			break;
-		case "PerformanceLeader":
-		{
+		case "PerformanceLeader": {
 			PerformanceStage.setVisible(true);
-			if (list.get(1).equals("waitingExecutionTime"))
-			{
+			if (list.get(1).equals("waitingExecutionTime")) {
 				changeCompletedBTN.setVisible(false);
 				timeEstimatedPerformance.setVisible(true);
 				SubmitTimeEstimatePerformanceBTN.setVisible(true);
 				l3.setVisible(true);
 				l4.setVisible(true);
-			}
-			else if (list.get(1).equals("execution"))
-			{
+			} else if (list.get(1).equals("execution")) {
 				changeCompletedBTN.setVisible(true);
 				timeEstimatedPerformance.setVisible(false);
 				SubmitTimeEstimatePerformanceBTN.setVisible(false);
 				l3.setVisible(false);
 				l4.setVisible(false);
-			}
-			else
-			{
+			} else {
 				ReqForTimeExtensionBTN.setVisible(false);
 				changeCompletedBTN.setVisible(false);
 				timeEstimatedPerformance.setVisible(false);
@@ -563,30 +557,29 @@ public class ITHandleRequestController implements Initializable {
 				l3.setVisible(false);
 				l4.setVisible(false);
 			}
-			
+
 		}
 			break;
 		case "Tester":
 			TestStage.setVisible(true);
-			if (list.get(1).equals("testing"))
-			{
+			if (list.get(1).equals("testing")) {
 				ReportFailureBTN.setVisible(true);
 				TestApprovalBTN.setVisible(true);
-			}
-			else
-			{
+			} else {
 				ReportFailureBTN.setVisible(false);
 				TestApprovalBTN.setVisible(false);
 				ReqForTimeExtensionBTN.setVisible(false);
 			}
 			break;
-			
+
 		}
 		this.checkDaysLeft();
 	}
-	
-	public void checkDaysLeft()
-	{
+
+	/**
+	 * This method check the day left
+	 */
+	public void checkDaysLeft() {
 		int s = MainAllControllers.request;
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(s); // request id
@@ -597,9 +590,13 @@ public class ITHandleRequestController implements Initializable {
 		} catch (IOException e) {
 		}
 	}
-	
-	public void visableExtensionBTN(boolean con)
-	{
+
+	/**
+	 * This method show the extension BTN
+	 * 
+	 * @param con
+	 */
+	public void visableExtensionBTN(boolean con) {
 		ReqForTimeExtensionBTN.setVisible(con);
 	}
 

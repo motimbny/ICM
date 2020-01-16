@@ -7,29 +7,26 @@ import javafx.stage.Stage;
 /**
  * The Class MainToRun.
  */
-public class MainToRun extends Application
-{
-	
+public class MainToRun extends Application {
+
 	/**
-	 * Start.
+	 * This is the start method.
 	 *
 	 * @param stage the stage
 	 * @throws Exception the exception
 	 */
 	@Override
-	public void start(Stage stage) throws Exception 
-	{
-		MainAllControllers mc =MainAllControllers.getInstance();
+	public void start(Stage stage) throws Exception {
+		MainAllControllers mc = MainAllControllers.getInstance();
 		mc.initMainAllControllers(stage);
 	}
-	
+
 	/**
 	 * The main method.
 	 *
 	 * @param args the arguments
 	 */
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 		launch(args);
 	}
 }

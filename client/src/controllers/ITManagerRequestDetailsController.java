@@ -100,8 +100,9 @@ public class ITManagerRequestDetailsController implements Initializable {
 	/** The request id field. */
 	@FXML
 	private Text requestIdField;
-	 @FXML
-	    private Button showAttach;
+	@FXML
+	private Button showAttach;
+
 	/**
 	 * Mouse click event, if "Back" button clicked, open the screen of "Show
 	 * requests".
@@ -232,7 +233,7 @@ public class ITManagerRequestDetailsController implements Initializable {
 		RequestStageField.setText(req.getCurrentStage().toString());
 		DescriptionExistingSituationField.setText(req.getDesExtSit());
 		DescriptionOfRequestField.setText(req.getWantedChange());
-		if(req.getAddDocuments()==1)
+		if (req.getAddDocuments() == 1)
 			showAttach.setVisible(true);
 	}
 
@@ -256,52 +257,66 @@ public class ITManagerRequestDetailsController implements Initializable {
 		} catch (IOException e) {
 		}
 	}
-	 @FXML
-	    void showAttachfile(MouseEvent event)
-	    {
-		    ArrayList<Object> arry=new ArrayList<Object>();
-			arry.add(MainAllControllers.request);
-			arry.add(MainAllControllers.request);
-			DBmessage dbm;
-	    	dbm=new DBmessage(MessageType.showattachfileM, arry);   
-	    	try {
-	    		MainAllControllers.sendToAbsServer(dbm);
-			} catch (IOException e) {}
-	    }
 
-	 public void openRequest(ArrayList<Object> send)
-		{
-			  ServerFile sf;
-			  sf=(ServerFile) send.get(0);
-			  int fileSize =sf.getSize(); 
-			  System.out.println("Message received: " + sf);
-			  System.out.println("length "+ fileSize); 
-			  String LocalfilePath="C:\\clientfile/";
-			  try{
-				      File newFile = new File (LocalfilePath+sf.getFileName());    		      
-				      byte [] mybytearray  = sf.getMybytearray();		  
-				      FileOutputStream fos = new FileOutputStream(newFile);
-					  BufferedOutputStream bos = new BufferedOutputStream(fos);
-					  bos.write(mybytearray,0,sf.getSize());
-				      bos.flush();
-				      fos.flush();
-				    }
-				catch (Exception e) {
-					System.out.println("Error send ((Files)msg) to Server");
-				}
-			fileopen(LocalfilePath+sf.getFileName());
+	/**
+	 * This method is to show the attached file associate to request
+	 * 
+	 * @param Show file
+	 */
+	@FXML
+	void showAttachfile(MouseEvent event) {
+		ArrayList<Object> arry = new ArrayList<Object>();
+		arry.add(MainAllControllers.request);
+		arry.add(MainAllControllers.request);
+		DBmessage dbm;
+		dbm = new DBmessage(MessageType.showattachfileM, arry);
+		try {
+			MainAllControllers.sendToAbsServer(dbm);
+		} catch (IOException e) {
 		}
-	 private void fileopen(String path)
-		{
-			File file = new File(path);
-			Desktop desktop = Desktop.getDesktop();
-	        if(file.exists())
-				try {
-					desktop.open(file);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	}
+
+	/**
+	 * This method save the attachment in specific location
+	 * 
+	 * @param send
+	 */
+	public void openRequest(ArrayList<Object> send) {
+		ServerFile sf;
+		sf = (ServerFile) send.get(0);
+		int fileSize = sf.getSize();
+		System.out.println("Message received: " + sf);
+		System.out.println("length " + fileSize);
+		String LocalfilePath = "C:\\clientfile/";
+		try {
+			File newFile = new File(LocalfilePath + sf.getFileName());
+			byte[] mybytearray = sf.getMybytearray();
+			FileOutputStream fos = new FileOutputStream(newFile);
+			BufferedOutputStream bos = new BufferedOutputStream(fos);
+			bos.write(mybytearray, 0, sf.getSize());
+			bos.flush();
+			fos.flush();
+		} catch (Exception e) {
+			System.out.println("Error send ((Files)msg) to Server");
 		}
+		fileopen(LocalfilePath + sf.getFileName());
+	}
+
+	/**
+	 * This method is to open the file
+	 * 
+	 * @param path
+	 */
+	private void fileopen(String path) {
+		File file = new File(path);
+		Desktop desktop = Desktop.getDesktop();
+		if (file.exists())
+			try {
+				desktop.open(file);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
 
 }

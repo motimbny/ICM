@@ -264,7 +264,7 @@ public class SupervisorUpdateRequestController implements Initializable {
 	/**
 	 * This method create new DBmessage to send to server and update the changes
 	 * 
-	 * @param event 
+	 * @param event
 	 * @throws IOException
 	 */
 	@FXML
@@ -346,7 +346,7 @@ public class SupervisorUpdateRequestController implements Initializable {
 		dbm = new DBmessage(MessageType.changeExecuter, arry);
 		try {
 			MainAllControllers.sendToAbsServer(dbm);
-			
+
 		} catch (IOException e) {
 		}
 	}

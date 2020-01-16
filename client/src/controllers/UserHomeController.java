@@ -14,8 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 /**
- * User home screen Controller.
- * This window is in User GUI , this is the first window after successful login.
+ * User home screen Controller. This window is in User GUI , this is the first
+ * window after successful login.
  *
  * @author SHIRA
  */

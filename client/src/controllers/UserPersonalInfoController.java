@@ -12,8 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 /**
- * User personal information screen Controller .
- * This window is in User GUI and display the personal information of the user.
+ * User personal information screen Controller . This window is in User GUI and
+ * display the personal information of the user.
  *
  * @author SHIRA
  */

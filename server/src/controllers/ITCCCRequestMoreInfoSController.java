@@ -16,23 +16,23 @@ import entity.updateRequest;
  * The Class ITCCCRequestMoreInfoSController.
  */
 public class ITCCCRequestMoreInfoSController {
-	
-	/** The id req. */
+
+	/** The id request. */
 	private int idReq;
-	
+
 	/** The connection. */
 	private Connection connection;
-	
+
 	/** The required info. */
 	private String requiredInfo;
-	
+
 	/** The date. */
 	private String date;
 
 	/**
 	 * Instantiates a new ITCCC request more info S controller.
 	 *
-	 * @param msg the msg
+	 * @param msg        the msg
 	 * @param connection the connection
 	 */
 	public ITCCCRequestMoreInfoSController(DBmessage msg, Connection connection) {
@@ -44,7 +44,8 @@ public class ITCCCRequestMoreInfoSController {
 	}
 
 	/**
-	 * Submit require more info.
+	 * If IT require more info and press the Submit BTN this method update the data
+	 * base.
 	 *
 	 * @return the object
 	 */
@@ -63,7 +64,7 @@ public class ITCCCRequestMoreInfoSController {
 
 			stmt = connection.createStatement();
 			stmt.executeUpdate("UPDATE request SET currentStage='meaningAssessment' WHERE id=" + idReq + "");
-			stmt.executeUpdate("DELETE FROM evluationreport WHERE id="+idReq+"");
+			stmt.executeUpdate("DELETE FROM evluationreport WHERE id=" + idReq + "");
 			stmt.executeUpdate("UPDATE requeststages SET currentStage='meaningAssessment' WHERE id=" + idReq + "");
 			dbs = new DBSmessage(MessageTypeS.ITsubmitRequireMoreInfo, toSend);
 		} catch (SQLException e) {

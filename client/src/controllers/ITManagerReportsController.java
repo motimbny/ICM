@@ -1,41 +1,28 @@
 package controllers;
 
-import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.function.Predicate;
 
 import Enums.MessageType;
 import entity.DBmessage;
 import entity.recentreport;
-import entity.requestSuper;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
-import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -46,13 +33,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 /**
  * The Class ITManagerReportsController.
+ * This method show the reports.
+ * 
+ * @author SHIRA
  */
 public class ITManagerReportsController implements Initializable {
 
@@ -268,9 +254,9 @@ public class ITManagerReportsController implements Initializable {
 	private TextField medfa1;
 
 	/**
-	 * Generate report click.
+	 * This method show the repore choosen by user.
 	 *
-	 * @param event the event
+	 * @param event Generate report BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -305,7 +291,7 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Make delays.
+	 * This method create a new DB message to send to sever of delays.
 	 */
 	private void makeDelays(String start, String end) {
 
@@ -321,7 +307,7 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Make performenct.
+	 * This method create a new DB message to send to sever of Performance.
 	 */
 	private void makePerformenct(String start, String end) {
 
@@ -337,7 +323,7 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Make active su clo.
+	 * This method create a new DB message to send to sever of Activity.
 	 */
 	public void makeActiveSuClo(String start, String end) {
 
@@ -354,9 +340,9 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Sets the active su clo.
+	 * This method sets the activity report .
 	 *
-	 * @param send the new active su clo
+	 * @param send the new active report
 	 */
 	@SuppressWarnings("unchecked")
 	public void setActiveSuClo(ArrayList<Object> send) {
@@ -386,13 +372,13 @@ public class ITManagerReportsController implements Initializable {
 		medfail = foundmed(failure);
 		medsuc = foundmed(success);
 		medsusp = foundmed(susppend);
-		this.medfa1.setText(""+medfail);
-		this.medsuc1.setText(""+medsuc);
-		this.medsus1.setText(""+medsusp);
+		this.medfa1.setText("" + medfail);
+		this.medsuc1.setText("" + medsuc);
+		this.medsus1.setText("" + medsusp);
 		XYChart.Series freqs = new XYChart.Series();
 		XYChart.Series freqf = new XYChart.Series<>();
 		XYChart.Series freqsus = new XYChart.Series();
-		
+
 		for (int i = 0; i < 12; i++) {
 			freqf.getData().add(new XYChart.Data<>("" + (i + 1), failure[i]));
 
@@ -434,7 +420,6 @@ public class ITManagerReportsController implements Initializable {
 		xAxis.setLabel("status request");
 		NumberAxis yAxis = new NumberAxis();
 		yAxis.setLabel("Standard deviation:");
-		// this.freqgraph= new BarChart<String, Number>(xAxis, yAxis);
 		XYChart.Series avrf = new XYChart.Series<>();
 		avrf.getData().add(new XYChart.Data<>("failure", 5));
 		XYChart.Series avrs = new XYChart.Series();
@@ -449,9 +434,10 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Go employees mang.
+	 * Mouse click event, if "Management" button clicked, open the screen of
+	 * "Employees management".
 	 *
-	 * @param event the event
+	 * @param event The Management BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -461,9 +447,9 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Go help page.
+	 * Mouse click event, if "help" button clicked, open the screen of "help".
 	 *
-	 * @param event the event
+	 * @param event The help BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -474,9 +460,9 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Go home page.
+	 * Mouse click event, if "Home" button clicked, open the screen of "Home".
 	 *
-	 * @param event the event
+	 * @param event The Home BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -486,9 +472,10 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Go personal info.
+	 * Mouse click event, if "Personal info" button clicked, open the screen of
+	 * "Personal information".
 	 *
-	 * @param event the event
+	 * @param event The Personal info BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -498,9 +485,10 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Go show req.
+	 * Mouse click event, if "Show requests" button clicked, open the screen of
+	 * "Show requests".
 	 *
-	 * @param event the event
+	 * @param event The Show request BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -510,9 +498,9 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Go generate report.
+	 * Mouse click event, if "Reports" button clicked, open the screen of "Reports".
 	 *
-	 * @param event the event
+	 * @param event The Reports BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -522,9 +510,10 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * go Logout page.
+	 * Mouse click event, if "logOut" button clicked, open the screen of "LogOut"
+	 * and clean the fields.
 	 *
-	 * @param event the event
+	 * @param event The Logout BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -535,9 +524,10 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * go Message page.
+	 * Mouse click event, if "Messages" button clicked, open the screen of
+	 * "Messages".
 	 *
-	 * @param event the event
+	 * @param event The Messages BTN
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
 	@FXML
@@ -547,7 +537,7 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Initialize.
+	 * Initializes GUI components before this window open.
 	 *
 	 * @param arg0 the arg 0
 	 * @param arg1 the arg 1
@@ -567,7 +557,7 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Sets the make performenct.
+	 * This method sets the performance report .
 	 *
 	 * @param send the new make performenct
 	 */
@@ -607,7 +597,7 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Sets the make delays.
+	 * This method sets the delay report .
 	 *
 	 * @param send the new make delays
 	 */
@@ -635,7 +625,7 @@ public class ITManagerReportsController implements Initializable {
 		ObservableList<tablefield> rows = FXCollections.observableArrayList();
 		for (int j = 0; j < 12; j++) {
 			rows.add(new tablefield(months[j], daysReq[j], freq[j]));
-			dataSeries1.getData().add(new XYChart.Data(months[j],daysReq[j]*freq[j]));
+			dataSeries1.getData().add(new XYChart.Data(months[j], daysReq[j] * freq[j]));
 		}
 		this.numberOfDelays.setText("" + numOfDelay);
 		this.timeOfDelays.setText("" + numOfDays);
@@ -653,12 +643,12 @@ public class ITManagerReportsController implements Initializable {
 		String devesion = String.format("%.2f", Math.sqrt(sum / 12));
 		this.devesionDelay.setText(devesion);
 		table.setItems(rows);
-	
+
 		this.Frequencygraph.getData().add(dataSeries1);
 	}
 
 	/**
-	 * Foundmed.
+	 * This method is to find median of the arr he get.
 	 *
 	 * @param arr the arr
 	 * @return the int
@@ -700,7 +690,7 @@ public class ITManagerReportsController implements Initializable {
 	}
 
 	/**
-	 * Swap.
+	 * This method is to swap 2 parameters from array
 	 *
 	 * @param arr the arr
 	 * @param i   the i
@@ -712,6 +702,11 @@ public class ITManagerReportsController implements Initializable {
 		arr[j] = temp;
 	}
 
+	/**
+	 * This method is to show the reports seen by IT Manager
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void showRequestInfo(MouseEvent event) {
 		Recentreports.setOnMouseClicked((MouseEvent ev) -> {
@@ -725,11 +720,10 @@ public class ITManagerReportsController implements Initializable {
 				String start = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex())
 						.getFrom();
 				String end = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getTo();
-				this.startr=start;
-				this.endr=end;
+				this.startr = start;
+				this.endr = end;
 				freqgraph.getData().clear();
 				devgraph.getData().clear();
-				// medgraph.getData().clear();
 				chooseDate.setVisible(false);
 				delaysInExecution.setVisible(false);
 				performence.setVisible(false);
@@ -737,20 +731,22 @@ public class ITManagerReportsController implements Initializable {
 				if (stage.equals("Activity")) {
 					makeActiveSuClo(start, end);
 					activity.setVisible(true);
-				}
-				else if (stage.equals("Performence")) {
+				} else if (stage.equals("Performence")) {
 					makePerformenct(start, end);
 					performence.setVisible(true);
-				}
-				else if (stage.equals("Delays in execution")) {
+				} else if (stage.equals("Delays in execution")) {
 					makeDelays(start, end);
 					delaysInExecution.setVisible(true);
-				} 
+				}
 			}
 		});
 
 	}
-	
+
+	/**
+	 * This method create a new DB message to send to server to get the recent
+	 * reports
+	 */
 
 	public void viewrecentreport() {
 
@@ -762,6 +758,11 @@ public class ITManagerReportsController implements Initializable {
 		}
 	}
 
+	/**
+	 * This method is to set the table
+	 * 
+	 * @param list
+	 */
 	public void setTextInTable(ArrayList<Object> list) {
 		rows = FXCollections.observableArrayList();
 
@@ -770,6 +771,14 @@ public class ITManagerReportsController implements Initializable {
 		Recentreports.setItems(rows);
 
 	}
+
+	/**
+	 * This method is to get the month selected
+	 * 
+	 * @param start
+	 * @param end
+	 * @return
+	 */
 	public int getmonth(String start, String end) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate localDate = LocalDate.parse(start, formatter);
