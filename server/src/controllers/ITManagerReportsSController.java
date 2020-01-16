@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -115,7 +118,7 @@ public class ITManagerReportsSController {
 	
 			}
 
-			rs = stmt.executeQuery("SELECT * FROM request WHERE reqDatel BETWEEN '" + start + "' AND '" + end + "'");
+			rs = stmt.executeQuery("SELECT * FROM request WHERE currentStatus='Active' and reqDatel BETWEEN '" + start + "' AND '" + end + "'");
 
 			while (rs.next() != false) {
 

@@ -103,7 +103,7 @@
                   <Font name="System Bold" size="40.0" />
                </font>
             </Label>
-           <Pane fx:id="chooseDate" layoutX="6.0" layoutY="15.0" prefHeight="150.0" prefWidth="645.0">
+           <Pane fx:id="chooseDate" layoutX="3.0" layoutY="21.0" prefHeight="150.0" prefWidth="645.0">
                <children>
                   <ChoiceBox fx:id="chooseTypeOfReport" layoutX="226.0" layoutY="62.0" prefHeight="27.0" prefWidth="252.0" />
                   <Label layoutX="15.0" layoutY="62.0" prefHeight="27.0" prefWidth="197.0" text="Choose type of report">
@@ -143,7 +143,7 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="6.0" layoutY="85.0" text="Frequency distribution:">
+                  <Label layoutX="14.0" layoutY="211.0" text="Frequency distribution:">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -154,13 +154,13 @@
                      </font>
                   </Label>
                   <TextField fx:id="deniedreq" editable="false" layoutX="228.0" layoutY="19.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <Label layoutX="6.0" layoutY="57.0" text="numbers of work days on requests:">
+                  <Label layoutX="6.0" layoutY="57.0" text="Numbers of work days on requests:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                   <TextField fx:id="allreq" editable="false" layoutX="228.0" layoutY="55.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
-                  <BarChart fx:id="freqgraph" animated="false" layoutX="10.0" layoutY="110.0" prefHeight="274.0" prefWidth="351.0">
+                  <BarChart fx:id="freqgraph" animated="false" layoutX="10.0" layoutY="237.0" prefHeight="166.0" prefWidth="289.0">
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
                     </xAxis>
@@ -176,6 +176,24 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </BarChart>
+                  <Label layoutX="6.0" layoutY="97.0" text="Median of active requests">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="6.0" layoutY="129.0" text="Median of susppend requests">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="6.0" layoutY="170.0" text="Median of failure requests">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="medsuc1" editable="false" layoutX="228.0" layoutY="94.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
+                  <TextField fx:id="medsus1" editable="false" layoutX="228.0" layoutY="127.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
+                  <TextField fx:id="medfa1" editable="false" layoutX="228.0" layoutY="168.0" prefHeight="25.0" prefWidth="123.0" style="-fx-background-color: E8E1DF;" />
                </children>
             </Pane>
             <Pane fx:id="performence" layoutX="43.0" layoutY="208.0" prefHeight="365.0" prefWidth="591.0" visible="false">

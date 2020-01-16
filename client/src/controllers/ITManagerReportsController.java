@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -81,8 +83,8 @@ public class ITManagerReportsController implements Initializable {
 	/** The show request BTN. */
 	@FXML
 	private Button showRequestBTN;
-    @FXML
-    private Button backrep;
+	@FXML
+	private Button backrep;
 	/** The generate report BTN 1. */
 	@FXML
 	private Button generateReportBTN1;
@@ -99,8 +101,8 @@ public class ITManagerReportsController implements Initializable {
 	@FXML
 	private Button personalInfoBTN;
 
-    @FXML
-    private Label Recentlabel;
+	@FXML
+	private Label Recentlabel;
 
 	/** The help BTN. */
 	@FXML
@@ -169,8 +171,8 @@ public class ITManagerReportsController implements Initializable {
 	/** The days. */
 	@FXML
 	private TextField days;
-    @FXML
-    private Label click;
+	@FXML
+	private Label click;
 
 	/** The delays in execution. */
 	@FXML
@@ -227,7 +229,6 @@ public class ITManagerReportsController implements Initializable {
 	/** The freqtable. */
 	@FXML
 	private TableView<tablefield> freqtable;
-  
 
 	/** The month 1. */
 	@FXML
@@ -257,6 +258,14 @@ public class ITManagerReportsController implements Initializable {
 
 	@FXML
 	private Pane chooseDate;
+	@FXML
+	private TextField medsuc1;
+
+	@FXML
+	private TextField medsus1;
+
+	@FXML
+	private TextField medfa1;
 
 	/**
 	 * Generate report click.
@@ -267,6 +276,8 @@ public class ITManagerReportsController implements Initializable {
 	@FXML
 	void generateReportClick(MouseEvent event) throws IOException {
 
+		this.startr = this.dateFrom.getValue().toString();
+		this.endr = this.DateTo.getValue().toString();
 		freqgraph.getData().clear();
 		devgraph.getData().clear();
 
@@ -275,17 +286,18 @@ public class ITManagerReportsController implements Initializable {
 		activity.setVisible(false);
 		Recentreports.setVisible(false);
 		this.click.setVisible(false);
+
 		if (chooseTypeOfReport.getValue().equals("Activity")) {
 
-			makeActiveSuClo(null, null);
+			makeActiveSuClo(this.startr, this.endr);
 			activity.setVisible(true);
 		}
 		if (chooseTypeOfReport.getValue().equals("Performence")) {
-			makePerformenct(null, null);
+			makePerformenct(this.startr, this.endr);
 			performence.setVisible(true);
 		}
 		if (chooseTypeOfReport.getValue().equals("Delays in execution")) {
-			makeDelays(null, null);
+			makeDelays(this.startr, this.endr);
 			delaysInExecution.setVisible(true);
 		} else {
 
@@ -295,21 +307,9 @@ public class ITManagerReportsController implements Initializable {
 	/**
 	 * Make delays.
 	 */
-	private void makeDelays(String s, String e) {
+	private void makeDelays(String start, String end) {
 
 		DBmessage dbm;
-		String start, end;
-		if (e == null && s == null) {
-			start = this.dateFrom.getValue().toString();
-			this.startr = start;
-			end = this.DateTo.getValue().toString();
-			this.endr = end;
-		} else {
-			start = s;
-			end = e;
-			this.startr = s;
-			this.endr = e;
-		}
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
 		arry.add(end);
@@ -323,18 +323,9 @@ public class ITManagerReportsController implements Initializable {
 	/**
 	 * Make performenct.
 	 */
-	private void makePerformenct(String s, String e) {
+	private void makePerformenct(String start, String end) {
 
 		DBmessage dbm;
-		String start, end;
-		if (e == null && s == null) {
-			start = this.dateFrom.getValue().toString();
-			end = this.DateTo.getValue().toString();
-		} else {
-			start = s;
-			end = e;
-
-		}
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
 		arry.add(end);
@@ -348,19 +339,9 @@ public class ITManagerReportsController implements Initializable {
 	/**
 	 * Make active su clo.
 	 */
-	public void makeActiveSuClo(String s, String e) {
-		
+	public void makeActiveSuClo(String start, String end) {
+
 		DBmessage dbm;
-		String start, end;
-		if (e == null && s == null) {
-			start = this.dateFrom.getValue().toString();
-			end = this.DateTo.getValue().toString();
-		} else {
-			start = s;
-			end = e;
-
-		}
-
 		ArrayList<Object> arry = new ArrayList<Object>();
 		arry.add(start);
 		arry.add(end);
@@ -379,25 +360,25 @@ public class ITManagerReportsController implements Initializable {
 	 */
 	@SuppressWarnings("unchecked")
 	public void setActiveSuClo(ArrayList<Object> send) {
-		int devesion, medfail, medsuc, medsusp;
+		this.freqgraph.getData().removeAll();
+		this.ActiveSuClo.getData().removeAll();
+		this.devgraph.getData().removeAll();
+		int medfail, medsuc, medsusp;
 		float avrgf = 0, avrgs = 0, avrgsus = 0, devf = 0, devs = 0, devsus = 0;
 		ArrayList<Object> failur = (ArrayList<Object>) send.get(0);
 		ArrayList<Object> suc = (ArrayList<Object>) send.get(1);
 		ArrayList<Object> susp = (ArrayList<Object>) send.get(2);
 		int allreq = (int) send.get(3);
 		this.allreq.setText("" + allreq);
-		ArrayList<String> arry = new ArrayList<String>();
 		int[] failure = new int[12];
 		int[] success = new int[12];
 		int[] susppend = new int[12];
 		int denied = 0;
-		int numOfDays = 0;
 
 		for (int i = 0; i < 12; i++) {
 			failure[i] = (int) failur.get(i);
 			denied += failure[i];
 			success[i] = (int) suc.get(i);
-
 			susppend[i] = (int) susp.get(i);
 
 		}
@@ -405,15 +386,9 @@ public class ITManagerReportsController implements Initializable {
 		medfail = foundmed(failure);
 		medsuc = foundmed(success);
 		medsusp = foundmed(susppend);
-		XYChart.Series medf = new XYChart.Series<>();
-		medf.getData().add(new XYChart.Data<>("failure", medfail));
-		XYChart.Series meds = new XYChart.Series();
-		meds.getData().add(new XYChart.Data<>("success", medsuc));
-		XYChart.Series medsus = new XYChart.Series();
-		medsus.getData().add(new XYChart.Data<>("susppend", medsusp));
-		// this.medgraph.getData().add(meds);
-		// this.medgraph.getData().add(medf);
-		// this.medgraph.getData().add(medsus);
+		this.medfa1.setText(""+medfail);
+		this.medsuc1.setText(""+medsuc);
+		this.medsus1.setText(""+medsusp);
 		XYChart.Series freqs = new XYChart.Series();
 		XYChart.Series freqf = new XYChart.Series<>();
 		XYChart.Series freqsus = new XYChart.Series();
@@ -601,6 +576,7 @@ public class ITManagerReportsController implements Initializable {
 	 * @param send the new make performenct
 	 */
 	public void setmakePerformenct(ArrayList<Object> send) {
+		this.devgraph2.getData().removeAll();
 		this.days.setText("" + send.get(0));
 		Map<Integer, Object> mapDev = (Map<Integer, Object>) send.get(1);
 		int j = 0;
@@ -640,6 +616,7 @@ public class ITManagerReportsController implements Initializable {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void setmakeDelays(ArrayList<Object> send) {
+		this.Frequencygraph.getData().removeAll();
 		String[] months = { "January", "February", "March", "April", "May", "June", "July", "August", "September",
 				"October", "November", "December" };
 		int[] daysReq = new int[12];
@@ -692,7 +669,32 @@ public class ITManagerReportsController implements Initializable {
 	 * @return the int
 	 */
 	private int foundmed(int[] arr) {
+		if (getmonth(this.startr, this.endr) > 12)
+			return getmedian(arr);
+		int[] temp;
+		String[] datestart = this.startr.split("-");
+		int months = Integer.parseInt(datestart[1]);
+		String[] dateend = this.endr.split("-");
+		int monthe = Integer.parseInt(dateend[1]);
+		if (monthe == months)
+			return arr[monthe];
+		if (months < monthe) {
+			temp = new int[monthe - months];
+			for (int i = months, j = 0; i < monthe; i++, j++)
+				temp[j] = arr[i];
+			return getmedian(temp);
+		}
+		int sizearr = 12 - months + monthe;
+		temp = new int[sizearr];
+		for (int i = months, j = 0; i < 12; i++, j++)
+			temp[j] = arr[i];
+		for (int i = 0, j = 12 - months; i < monthe; i++, j++)
+			temp[j] = arr[i];
+		return getmedian(temp);
 
+	}
+
+	private int getmedian(int[] arr) {
 		for (int i = arr.length - 1; i > 0; i--) {
 			for (int j = 0; j < i; j++) {
 				if (arr[j] > arr[j + 1])
@@ -700,7 +702,6 @@ public class ITManagerReportsController implements Initializable {
 			}
 		}
 		return arr[(int) arr.length / 2];
-
 	}
 
 	/**
@@ -729,6 +730,8 @@ public class ITManagerReportsController implements Initializable {
 				String start = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex())
 						.getFrom();
 				String end = Recentreports.getItems().get(Recentreports.getSelectionModel().getSelectedIndex()).getTo();
+				this.startr=start;
+				this.endr=end;
 				freqgraph.getData().clear();
 				devgraph.getData().clear();
 				// medgraph.getData().clear();
@@ -740,16 +743,14 @@ public class ITManagerReportsController implements Initializable {
 					makeActiveSuClo(start, end);
 					activity.setVisible(true);
 				}
-				if (stage.equals("Performence")) {
+				else if (stage.equals("Performence")) {
 					makePerformenct(start, end);
 					performence.setVisible(true);
 				}
-				if (stage.equals("Delays in execution")) {
+				else if (stage.equals("Delays in execution")) {
 					makeDelays(start, end);
 					delaysInExecution.setVisible(true);
-				} else {
-
-				}
+				} 
 			}
 		});
 
@@ -768,10 +769,19 @@ public class ITManagerReportsController implements Initializable {
 	public void setTextInTable(ArrayList<Object> list) {
 		rows = FXCollections.observableArrayList();
 
-		
 		for (Object r : list)
 			rows.add((recentreport) r);
 		Recentreports.setItems(rows);
+
+	}
+
+	public int getmonth(String start, String end) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate localDate = LocalDate.parse(start, formatter);
+		LocalDate localDate1 = LocalDate.parse(end, formatter);
+		LocalDate dateBefore = localDate;
+		LocalDate dateAfter = localDate1;
+		return (int) ChronoUnit.MONTHS.between(dateBefore, dateAfter);
 
 	}
 
