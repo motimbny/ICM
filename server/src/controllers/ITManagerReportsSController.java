@@ -112,9 +112,9 @@ public class ITManagerReportsSController {
 				String[] dateParts = rs.getString(2).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
-				int sum = (int) fail.get(month);
+				int sum = (int) fail.get(month-1);
 				sum++;
-				fail.set(month, sum);
+				fail.set(month-1, sum);
 	
 			}
 
@@ -125,9 +125,9 @@ public class ITManagerReportsSController {
 				String[] dateParts = rs.getString(13).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
-				int sum = (int) suc.get(month);
+				int sum = (int) suc.get(month-1);
 				sum++;
-				suc.set(month, sum);
+				suc.set(month-1, sum);
 			}
 
 			rs = stmt.executeQuery("SELECT * FROM suspendrequest WHERE date BETWEEN '" + start + "' AND '" + end + "'");
@@ -137,9 +137,9 @@ public class ITManagerReportsSController {
 				String[] dateParts = rs.getString(3).split("-");
 				int month = Integer.parseInt(dateParts[1]);
 
-				int sum = (int) susp.get(month);
+				int sum = (int) susp.get(month-1);
 				sum++;
-				susp.set(month, sum);
+				susp.set(month-1, sum);
 				
 			}
 
@@ -318,11 +318,11 @@ public class ITManagerReportsSController {
 			while (rs.next() != false) {
 				String[] dateParts = rs.getString(4).split("-");
 				int month = Integer.parseInt(dateParts[1]);
-				int days = (int) toSendA.get(month) + rs.getInt(3);
-				toSendA.set(month, days);
-				int sum = (int) toSendA.get(month + 12);
+				int days = (int) toSendA.get(month-1) + rs.getInt(3);
+				toSendA.set(month-1, days);
+				int sum = (int) toSendA.get(month-1 + 12);
 				sum++;
-				toSendA.set(month + 12, sum);
+				toSendA.set(month-1 + 12, sum);
 
 			}
 			dbs = new DBSmessage(MessageTypeS.makeDelays, toSendA);
