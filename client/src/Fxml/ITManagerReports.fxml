@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -17,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerReportsController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../CSS/it.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ITManagerReportsController">
    <children>
       <VBox layoutY="112.0" prefHeight="488.0" prefWidth="140.0">
          <children>
@@ -221,7 +222,7 @@
             <Pane fx:id="delaysInExecution" layoutX="6.0" layoutY="164.0" prefHeight="452.0" prefWidth="638.0" visible="false">
                <children>
                   <PieChart fx:id="delayspie" layoutX="259.0" layoutY="114.0" prefHeight="260.0" prefWidth="296.0" />
-                  <Label layoutX="24.0" layoutY="113.0" text="Standard deviation:">
+                  <Label layoutX="287.0" layoutY="38.0" text="Standard deviation:">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -238,14 +239,14 @@
                      </font>
                   </Label>
                   <TextField fx:id="timeOfDelays" editable="false" layoutX="156.0" layoutY="72.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <TableView fx:id="table" layoutX="14.0" layoutY="206.0" prefHeight="228.0" prefWidth="296.0">
+                  <TableView fx:id="table" layoutX="14.0" layoutY="152.0" prefHeight="282.0" prefWidth="296.0">
                      <columns>
                         <TableColumn fx:id="month" prefWidth="61.60003662109375" text="Month" />
                         <TableColumn fx:id="day" prefWidth="104.79998779296875" text="Number of days" />
                         <TableColumn fx:id="num" prefWidth="144.79998779296875" text="Number of request" />
                      </columns>
                   </TableView>
-                  <StackedBarChart fx:id="Frequencygraph" animated="false" layoutX="357.0" layoutY="206.0" prefHeight="214.0" prefWidth="252.0">
+                  <StackedBarChart fx:id="Frequencygraph" animated="false" layoutX="357.0" layoutY="160.0" prefHeight="260.0" prefWidth="265.0">
                      <xAxis>
                         <CategoryAxis side="BOTTOM" />
                      </xAxis>
@@ -253,19 +254,19 @@
                         <NumberAxis side="LEFT" />
                      </yAxis>
                   </StackedBarChart>
-                  <TextField fx:id="devesionDelay" editable="false" layoutX="156.0" layoutY="110.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <TextField fx:id="medinDelay" editable="false" layoutX="156.0" layoutY="143.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
-                  <Label layoutX="33.0" layoutY="146.0" prefHeight="20.0" prefWidth="100.0" text="medin:">
+                  <TextField fx:id="devesionDelay" editable="false" layoutX="426.0" layoutY="36.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <TextField fx:id="medinDelay" editable="false" layoutX="426.0" layoutY="73.0" prefHeight="20.0" prefWidth="100.0" style="-fx-background-color: E8E1DF;" />
+                  <Label layoutX="287.0" layoutY="75.0" prefHeight="20.0" prefWidth="100.0" text="medin:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="33.0" layoutY="179.0" prefHeight="20.0" prefWidth="155.0" text="Frequency:">
+                  <Label layoutX="33.0" layoutY="114.0" prefHeight="20.0" prefWidth="155.0" text="Frequency:">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="317.0" layoutY="292.0" prefHeight="20.0" prefWidth="81.0" rotate="270.0" text="Frequency">
+                  <Label layoutX="306.0" layoutY="290.0" prefHeight="20.0" prefWidth="81.0" rotate="270.0" text="Frequency">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -290,7 +291,7 @@
                </font>
             </Label>
             <Button fx:id="backrep" layoutX="10.0" layoutY="119.0" mnemonicParsing="false" onMouseClicked="#gogenerateReport" prefHeight="37.0" prefWidth="230.0" styleClass="buttonBlackBorder" text="Back to all reports" visible="false" />
-            <Label fx:id="click" layoutX="397.0" layoutY="536.0" prefHeight="37.0" prefWidth="208.0" text="Double click to see report" />
+            <Label fx:id="click" layoutX="397.0" layoutY="536.0" prefHeight="37.0" prefWidth="208.0" text="Double click to handle report" />
          </children>
       </Pane>
       <Pane prefHeight="116.0" prefWidth="140.0">

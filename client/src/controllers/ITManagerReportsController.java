@@ -716,6 +716,7 @@ public class ITManagerReportsController implements Initializable {
 		arr[i] = arr[j];
 		arr[j] = temp;
 	}
+
 	@FXML
 	void showRequestInfo(MouseEvent event) {
 		Recentreports.setOnMouseClicked((MouseEvent ev) -> {
