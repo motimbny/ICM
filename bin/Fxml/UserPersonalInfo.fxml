@@ -100,17 +100,17 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <ImageView fx:id="studentIMG" fitHeight="150.0" fitWidth="200.0" layoutX="389.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="studentIMG" fitHeight="150.0" fitWidth="200.0" layoutX="457.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../Images/student.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="lecturerIMG" fitHeight="150.0" fitWidth="200.0" layoutX="397.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="lecturerIMG" fitHeight="150.0" fitWidth="200.0" layoutX="465.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../Images/lecturer.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="empIMG" fitHeight="166.0" fitWidth="173.0" layoutX="383.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="empIMG" fitHeight="166.0" fitWidth="173.0" layoutX="451.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../Images/emp.png" />
                </image>
