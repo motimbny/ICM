@@ -22,11 +22,11 @@ public class recentreport implements Serializable{
 	 * @param t the t
 	 * @param s the s
 	 */
-	public recentreport(String f,String t,String s)
+	public recentreport(String from,String to,String type)
 	{
-		this.setFrom(f);
-		this.setType(s);
-		this.setTo(t);
+		this.setFrom(from);
+		this.setType(type);
+		this.setTo(to);
 	}
 	
 	/**
@@ -82,11 +82,11 @@ public class recentreport implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Boolean comper(recentreport one,recentreport two)
+	public Boolean comper(recentreport one)
 	{
-		if(one.getFrom().equals(two.getFrom()))
-			if(one.getTo().equals(two.getTo()))
-				if(one.getType().equals(one.getType()))
+		if(this.getFrom().equals(one.getFrom()))
+			if(this.getTo().equals(one.getTo()))
+				if(this.getType().equals(one.getType()))
 					return true;
 		return false;
 	}
