@@ -82,5 +82,13 @@ public class recentreport implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
+	public Boolean comper(recentreport one,recentreport two)
+	{
+		if(one.getFrom().equals(two.getFrom()))
+			if(one.getTo().equals(two.getTo()))
+				if(one.getType().equals(one.getType()))
+					return true;
+		return false;
+	}
 
 }
