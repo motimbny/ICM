@@ -14,6 +14,16 @@ class calculationTest {
 	
 	//check surveyScore function with too many args(more then three)
 	@Test
+	public void emptyreq()
+	{
+		calculatwithoutDB.success.clear();
+		ArrayList<Object> get=universalScoring.makeActiveSuClo("2020-01-10","2020-01-22");
+		Object med=get.get(1);
+		Object dev=get.get(0);
+		assertEquals(0,med);
+		assertEquals(0,dev);
+	}
+	@Test
 	public void testevenlenth()
 	{
 		calculatwithoutDB.success.clear();

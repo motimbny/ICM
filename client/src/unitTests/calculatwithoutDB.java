@@ -13,6 +13,13 @@ public class calculatwithoutDB implements IExtentionUniversalScoring {
 
 		universalScoring set=new universalScoring();
 		ArrayList<Object> send=new ArrayList<Object>();
+		if(success.size()==0)
+		{
+			send.add(0);
+			send.add(0);
+			return send;
+		}
+	
 		for(int i=0;i<success.size();i++)
 		{
 			temp[i]=(int) success.get(i);
