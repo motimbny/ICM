@@ -27,11 +27,16 @@ class calculationTest {
 	public void testevenlenth()
 	{
 		calculatwithoutDB.success.clear();
-		calculatwithoutDB.success.add((int)0);
-		calculatwithoutDB.success.add((int)1);
-		calculatwithoutDB.success.add((int)2);
-		calculatwithoutDB.success.add((int)3);
-		calculatwithoutDB.success.add((int)4);
+		report f1=new report("2020-01-10","2020-01-22",0);
+		report f2=new report("2020-01-10","2020-01-22",1);
+		report f3=new report("2020-01-10","2020-01-22",2);
+		report f4=new report("2020-01-10","2020-01-22",3);
+		report f5=new report("2020-01-10","2020-01-22",4);
+		calculatwithoutDB.success.add(f1);
+		calculatwithoutDB.success.add(f2);
+		calculatwithoutDB.success.add(f3);
+		calculatwithoutDB.success.add(f4);
+		calculatwithoutDB.success.add(f5);
 		ArrayList<Object> get=universalScoring.makeActiveSuClo("2020-01-10","2020-01-22");
 		Object med=get.get(1);
 		Object dev=get.get(0);
@@ -40,12 +45,15 @@ class calculationTest {
 	}
 	@Test
 	public void testoddlenth()
-	{
-		calculatwithoutDB.success.clear();
-		calculatwithoutDB.success.add((int)0);
-		calculatwithoutDB.success.add((int)1);
-		calculatwithoutDB.success.add((int)2);
-		calculatwithoutDB.success.add((int)3);
+	{		calculatwithoutDB.success.clear();
+	report f1=new report("2020-01-10","2020-01-22",0);
+	report f2=new report("2020-01-10","2020-01-22",1);
+	report f3=new report("2020-01-10","2020-01-22",2);
+	report f4=new report("2020-01-10","2020-01-22",3);
+	calculatwithoutDB.success.add(f1);
+	calculatwithoutDB.success.add(f2);
+	calculatwithoutDB.success.add(f3);
+	calculatwithoutDB.success.add(f4);
 		ArrayList<Object> get=universalScoring.makeActiveSuClo("2020-01-10","2020-01-22");
 		Object med=get.get(1);
 		Object dev=get.get(0);
@@ -57,15 +65,38 @@ class calculationTest {
 	public void testOneReq()
 	{
 		calculatwithoutDB.success.clear();
-
-		calculatwithoutDB.success.add((int)3);
+		report f4=new report("2020-01-10","2020-01-22",3);
+		calculatwithoutDB.success.add(f4);
 		ArrayList<Object> get=universalScoring.makeActiveSuClo("2020-01-10","2020-01-22");
 		Object med=get.get(1);
 		Object dev=get.get(0);
 		assertEquals(3,med);
 		assertEquals((float)Math.sqrt(0),dev);
 	}
-	
+	@Test
+	public void testDiffrentStart()
+	{
+		calculatwithoutDB.success.clear();
+		report f4=new report("2020-01-10","2020-01-22",3);
+		calculatwithoutDB.success.add(f4);
+		ArrayList<Object> get=universalScoring.makeActiveSuClo("2020-02-10","2020-01-22");
+		Object med=get.get(1);
+		Object dev=get.get(0);
+		assertEquals(0,med);
+		assertEquals((float)Math.sqrt(0),dev);
+	}
+	@Test
+	public void testDiffrentEnd()
+	{
+		calculatwithoutDB.success.clear();
+		report f4=new report("2020-01-10","2020-01-22",3);
+		calculatwithoutDB.success.add(f4);
+		ArrayList<Object> get=universalScoring.makeActiveSuClo("2020-01-10","2020-01-10");
+		Object med=get.get(1);
+		Object dev=get.get(0);
+		assertEquals(0,med);
+		assertEquals((float)Math.sqrt(0),dev);
+	}
 
 
 	
