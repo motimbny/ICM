@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 class calculationTest {
 
 
-	public universalScoring test;
+	public universalScoring test=new universalScoring(new calculatwithoutDB()) ;
 	public calculatwithoutDB stub=new calculatwithoutDB();
 	
 	//check surveyScore function with too many args(more then three)

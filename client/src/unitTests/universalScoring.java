@@ -67,13 +67,16 @@ public class universalScoring implements Initializable {
 
 	/** The arry delays info. */
 	private ArrayList<Integer> arryDelaysInfo;
+	public static IExtentionUniversalScoring universalScoring;
+
 
 	/**
 	 * Instantiates a new IT manager reports controller.
 	 */
-	public universalScoring() {
+	public universalScoring(IExtentionUniversalScoring type) {
 
 		MainAllControllers = controllers.MainAllControllers.getInstance();
+		universalScoring=type;
 	}
 
 	/** The home BTN. */
@@ -267,7 +270,6 @@ public class universalScoring implements Initializable {
 
 	@FXML
 	private TextField medfa1;
-	public static calculatwithoutDB universalScoring=new calculatwithoutDB();
 
 	/**
 	 * Generate report click.
@@ -275,17 +277,7 @@ public class universalScoring implements Initializable {
 	 * @param event the event
 	 * @throws IOException Signals that an I/O exception has occurred.
 	 */
-	public static void main(String[] args) {
 
-		universalScoring set=new universalScoring();
-		int[] temp=new int[5];
-		for(int i=0;i<5;i++)
-			temp[i]=i;
-		System.out.println(set.StandardDeviation(temp));
-		System.out.println(set.getmedian(temp));
-	
-		
-	}
 	
 	@FXML
 	void generateReportClick(MouseEvent event) throws IOException {

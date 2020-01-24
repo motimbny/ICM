@@ -20,7 +20,7 @@ public class calculatwithoutDB implements IExtentionUniversalScoring {
 		String start=(String)arry.get(0);
 		String end=(String)arry.get(1);
 		int[] temp=new int[success.size()];
-		universalScoring set=new universalScoring();
+		universalScoring set=new universalScoring(new calculatwithoutDB());
 		ArrayList<Object> send=new ArrayList<Object>();
 		if(success.size()==0)
 		{
