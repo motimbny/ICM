@@ -52,7 +52,7 @@ public class SendMail {
 	public void sendEMail() {
 
 		final String username = "icm6348@gmail.com";
-		final String password = "Aa123456!";
+		final String password = "**************";
 
 		Properties props = new Properties();
 		props.put("mail.smtp.starttls.enable", "true");
